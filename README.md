@@ -45,13 +45,13 @@ After you've included barba.js in your project, it's enough to call
 Barba.Pjax.start();
 ```
 
-When the link is clicked, barba.js do a couple of things, let's see them briefly:
-1.  See if it's a valid link (through `Barba.Pjax.preventCheck`), if yes, the link will be prevented, otherwise, the browser will follow the link normally
-2. Change the URL with the new one (using [pushstate](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState))
-3. Start fetching the new page with ajax
-4. Start a transition instance
-5. As soon the new page is loaded, barba.js parses the new HTML (taking `.barba-container`)  and put the new content on the DOM (inside `#barba-wrapper`).
-6. The transition instance will take care to hide the old container and show the new one
+When the link is clicked, barba.js do a couple of things, let's see them briefly:  
+1.  See if it's a valid link (through `Barba.Pjax.preventCheck`), if yes, the link will be prevented, otherwise, the browser will follow the link normally.  
+2. Change the URL with the new one (using [pushstate](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState))  
+3. Start fetching the new page with ajax.  
+4. Start a transition instance.  
+5. As soon the new page is loaded, barba.js parses the new HTML (taking `.barba-container`)  and put the new content on the DOM (inside `#barba-wrapper`).  
+6. The transition instance will take care to hide the old container and show the new one.  
 
 
 # Events
