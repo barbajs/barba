@@ -20,7 +20,7 @@ It helps reducing delay between your pages, minimizing browser HTTP requests and
 -----
 *barba.js* supports **AMD**, **CommonJS** and **Browser global** (it uses [UMD](https://github.com/umdjs/umd))
 
-You can install it using [npm](https://www.npmjs.com): `npm install barba.js --save-dev`
+You can install it using [npm](https://www.npmjs.com): `npm install barba.js --save-dev` (not available yet)
 
 or just including the script in your page:
 ```
@@ -192,9 +192,6 @@ In order to work, *barba.js* needs [pushstate](https://developer.mozilla.org/en-
 - How can I update Google Analytics (or any other tracking sytem?)
     - It's enough to listen the event... and...
 
-- How can I update my website menu?
-- How can I 
-
 # License
 -----
 *barba.js* is released under **MIT License**
@@ -213,6 +210,8 @@ For any problem/question do not hesitate to open an issue.
 # TO DO
 -----
 - Test with backend partial output
-- Mousehover
+- Make mousehover prefetch with vanilla js
 - Localstorage cache
 - CSS Transition
+- Better DOC
+- Make demos
