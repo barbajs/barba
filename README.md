@@ -1,6 +1,10 @@
+☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠
+# Use at your own risk, still work in progress
+☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠
+
 # barba.js
 -----
-*barba.js* it's a small (*1kb* minified and gzipped), flexible and dependency free library that helps you creating fluid and smooth transition between your website's pages.
+*barba.js* it's a small, flexible and dependency free library that helps you creating fluid and smooth transition between your website's pages.
 
 It helps reducing delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.
 
@@ -205,7 +209,6 @@ For any problem/question do not hesitate to open an issue.
 
 - [@taylorhakes](https://github.com/taylorhakes) - for his [promise-polyfill](https://github.com/taylorhakes/promise-polyfill)
 - [@danielemeli](https://twitter.com/danielemeli) - for the name idea :)
-- 
 
 # TO DO
 -----
