@@ -227,8 +227,11 @@ var Pjax = {
     if (this.transitionProgress)
       this.forceGoTo(newUrl);
 
-    if (this.History.currentUrl === newUrl)
+    if (this.History.currentStatus().url === newUrl)
       return false;
+
+    var newContainer = this.load(newUrl);
+    var transition = Object.create(this.getTransition());
 
     this.History.add(newUrl);
     this.transitionProgress = true;
@@ -237,9 +240,6 @@ var Pjax = {
       this.History.currentStatus(),
       this.History.prevStatus()
     );
-
-    var newContainer = this.load(newUrl);
-    var transition = Object.create(this.getTransition());
 
     var transitionInstance = transition.init(
       this.Dom.getContainer(),
