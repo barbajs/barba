@@ -35,22 +35,6 @@ var HistoryManager = {
   },
 
   /**
-   * Return the last url from states
-   * @return {String} currentUrl
-   */
-  currentUrl: function() {
-    return this.currentStatus.url;
-  },
-
-  /**
-   * [currentNamespace description]
-   * @return {String} currentNamespace
-   */
-  currentNamespace: function() {
-    return this.currentStatus.namespace;
-  },
-
-  /**
    * [prevStatus description]
    * @return {Object} [description]
    */
