@@ -165,9 +165,9 @@ var Pjax = {
     if (this.preventCheck(evt, el)) {
       evt.stopPropagation();
       evt.preventDefault();
-      this.goTo(el.href);
 
       Dispatcher.trigger('linkClicked', evt);
+      this.goTo(el.href);
     }
   },
 
@@ -198,7 +198,7 @@ var Pjax = {
     //In case you're trying to load the same page
     if (Utils.cleanLink(element.href) == Utils.cleanLink(location.href))
       return false;
-        
+
     if (element.classList.contains('no-barba'))
       return false;
 
