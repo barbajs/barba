@@ -1,6 +1,10 @@
+☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠
+# Use at your own risk, still work in progress
+☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠
+
 # barba.js
 -----
-*barba.js* it's a small (*1kb* minified and gzipped), flexible and dependency free library that helps you creating fluid and smooth transition between your website's pages.
+*barba.js* it's a small, flexible and dependency free library that helps you creating fluid and smooth transition between your website's pages.
 
 It helps reducing delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.
 
@@ -16,7 +20,7 @@ It helps reducing delay between your pages, minimizing browser HTTP requests and
 -----
 *barba.js* supports **AMD**, **CommonJS** and **Browser global** (it uses [UMD](https://github.com/umdjs/umd))
 
-You can install it using [npm](https://www.npmjs.com): `npm install barba.js --save-dev`
+You can install it using [npm](https://www.npmjs.com): `npm install barba.js --save-dev` (not available yet)
 
 or just including the script in your page:
 ```
@@ -41,13 +45,13 @@ After you've included barba.js in your project, it's enough to call
 Barba.Pjax.start();
 ```
 
-When the link is clicked, barba.js do a couple of things, let's see them briefly:
-1.  See if it's a valid link (through `Barba.Pjax.preventCheck`), if yes, the link will be prevented, otherwise, the browser will follow the link normally
-2. Change the URL with the new one (using [pushstate](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState))
-3. Start fetching the new page with ajax
-4. Start a transition instance
-5. As soon the new page is loaded, barba.js parses the new HTML (taking `.barba-container`)  and put the new content on the DOM (inside `#barba-wrapper`).
-6. The transition instance will take care to hide the old container and show the new one
+When the link is clicked, barba.js do a couple of things, let's see them briefly:  
+1.  See if it's a valid link (through `Barba.Pjax.preventCheck`), if yes, the link will be prevented, otherwise, the browser will follow the link normally.  
+2. Change the URL with the new one (using [pushstate](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState))  
+3. Start fetching the new page with ajax.  
+4. Start a transition instance.  
+5. As soon the new page is loaded, barba.js parses the new HTML (taking `.barba-container`)  and put the new content on the DOM (inside `#barba-wrapper`).  
+6. The transition instance will take care to hide the old container and show the new one.  
 
 
 # Events
@@ -188,9 +192,6 @@ In order to work, *barba.js* needs [pushstate](https://developer.mozilla.org/en-
 - How can I update Google Analytics (or any other tracking sytem?)
     - It's enough to listen the event... and...
 
-- How can I update my website menu?
-- How can I 
-
 # License
 -----
 *barba.js* is released under **MIT License**
@@ -205,11 +206,12 @@ For any problem/question do not hesitate to open an issue.
 
 - [@taylorhakes](https://github.com/taylorhakes) - for his [promise-polyfill](https://github.com/taylorhakes/promise-polyfill)
 - [@danielemeli](https://twitter.com/danielemeli) - for the name idea :)
-- 
 
 # TO DO
 -----
 - Test with backend partial output
-- Mousehover
+- Make mousehover prefetch with vanilla js
 - Localstorage cache
 - CSS Transition
+- Better DOC
+- Make demos
