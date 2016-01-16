@@ -1,6 +1,4 @@
 node_modules
-dist
-demo
 logs
 *.log
 npm-debug.log*
