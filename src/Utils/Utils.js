@@ -60,13 +60,15 @@ var Utils = {
    * @return {object}
    */
   extend: function(obj, props) {
+    var newObj = Object.create(obj);
+
     for(var prop in props) {
       if(props.hasOwnProperty(prop)) {
-        obj[prop] = props[prop];
+        newObj[prop] = props[prop];
       }
     }
 
-    return obj;
+    return newObj;
   },
 
   /**
