@@ -8,6 +8,9 @@
 
 It helps reducing delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.
 
+![Grid demo](http://a66.imgup.net/barba_gride5e8.gif "Grid demo")  
+[View grid demo](http://luruke.github.io/barba.js/demo/grid/index.html)
+
 # Main features
 -----
 - Pjax
