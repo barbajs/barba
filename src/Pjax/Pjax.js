@@ -47,7 +47,7 @@ var Pjax = {
    */
   init: function() {
     this.History.add(
-      this.getCurrentUrl,
+      this.getCurrentUrl(),
       this.Dom.getNamespace(this.Dom.getContainer())
     );
 
