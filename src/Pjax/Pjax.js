@@ -166,7 +166,7 @@ var Pjax = {
       evt.stopPropagation();
       evt.preventDefault();
 
-      Dispatcher.trigger('linkClicked', evt);
+      Dispatcher.trigger('linkClicked', el);
       this.goTo(el.href);
     }
   },
