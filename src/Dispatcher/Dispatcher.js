@@ -28,7 +28,7 @@ var Dispatcher = {
    * @param  {Function} function
    */
   off: function(e, f) {
-    if(event in this.events === false)
+    if(e in this.events === false)
       return;
 
     this.events[e].splice(this.events[e].indexOf(f), 1);
