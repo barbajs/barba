@@ -17,12 +17,13 @@ It helps reducing delay between your pages, minimizing browser HTTP requests and
 - Transitions
 - Views
 - Cache
+- Prefetch
 
 # Installation
 -----
 *barba.js* supports **AMD**, **CommonJS** and **Browser global** (it uses [UMD](https://github.com/umdjs/umd))
 
-You can install it using [npm](https://www.npmjs.com): `npm install barba.js --save-dev` (not available yet)
+You can install it using [npm](https://www.npmjs.com): `npm install barba.js --save-dev`
 
 or just including the script in your page:
 ```
