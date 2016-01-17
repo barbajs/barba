@@ -8,8 +8,10 @@
 
 It helps reducing delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.
 
-![Grid demo](http://a66.imgup.net/barba_gride5e8.gif "Grid demo")  
-[View grid demo](http://luruke.github.io/barba.js/demo/grid/index.html)
+<img src="http://a66.imgup.net/barba_gride5e8.gif" width="300">  
+[View grid demo](http://luruke.github.io/barba.js/demo/grid/index.html)    
+<img src="http://g56.imgup.net/ezgif-3823162d.gif" width="300">  
+[View next/prev demo](http://luruke.github.io/barba.js/demo/nextprev/index.html)  
 
 # Main features
 -----
