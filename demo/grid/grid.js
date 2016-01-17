@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
     },
 
     showNewPage: function() {
-      this.newContainer.style.display = 'block';
+      this.newContainer.style.visibility = 'visible';
       this.done();
     }
   });
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
       var _this = this;
 
       this.oldContainer.style.zIndex = '10';
-      this.newContainer.style.display = 'block';
+      this.newContainer.style.visibility = 'visible';
 
       var href = Barba.HistoryManager.prevStatus().url.split('/').pop();
       var destThumb = this.newContainer.querySelector('a[href="' + href + '"]');

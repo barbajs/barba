@@ -104,7 +104,7 @@ var FadeTransition = Barba.BaseTransition.extend({
   fadeIn: function() {
     /**
      * this.newContainer is the HTMLElement of the new Container
-     * At this stage newContainer is on the DOM (inside our #barba-container and with display: none)
+     * At this stage newContainer is on the DOM (inside our #barba-container and with visibility: hidden)
      * Please note, newContainer is available just after newContainerLoading is resolved!
      */
 
@@ -114,7 +114,7 @@ var FadeTransition = Barba.BaseTransition.extend({
     $(this.oldContainer).hide();
 
     $el.css({
-      display : 'block',
+      visibility : 'visible',
       opacity : 0
     });
 

@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
 
       TweenLite.set(this.newContainer, {
-        display: 'block',
+        visibility: 'visible',
         xPercent: goingForward ? 100 : -100,
         position: 'fixed',
         left: 0,
