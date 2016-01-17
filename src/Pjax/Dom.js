@@ -67,7 +67,7 @@ var Dom = {
    */
   putContainer: function(element) {
     //User customizable
-    element.style.display = 'none';
+    element.style.visibility = 'hidden';
     document.getElementById('barba-wrapper').appendChild(element);
   },
 

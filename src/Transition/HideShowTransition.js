@@ -13,8 +13,8 @@ var HideShowTransition = BaseTransition.extend({
   },
 
   hideShow: function() {
-    this.oldContainer.style.display = 'none';
-    this.newContainer.style.display = 'block';
+    this.oldContainer.style.visibility = 'hidden';
+    this.newContainer.style.visibility = 'visible';
     document.body.scrollTop = 0;
 
     this.done();
