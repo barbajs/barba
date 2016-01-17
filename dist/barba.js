@@ -55,7 +55,10 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	//Promise polyfill https://github.com/taylorhakes/promise-polyfill
-	__webpack_require__(1);
+	
+	if (typeof Promise !== 'function') {
+	 window.Promise = __webpack_require__(1);
+	}
 	
 	var Barba = {
 	  version: '0.0.1',
@@ -480,7 +483,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @param  {Function} function
 	   */
 	  off: function(e, f) {
-	    if(event in this.events === false)
+	    if(e in this.events === false)
 	      return;
 	
 	    this.events[e].splice(this.events[e].indexOf(f), 1);
@@ -1134,8 +1137,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  hideShow: function() {
-	    this.oldContainer.style.display = 'none';
-	    this.newContainer.style.display = 'block';
+	    this.oldContainer.style.visibility = 'hidden';
+	    this.newContainer.style.visibility = 'visible';
 	    document.body.scrollTop = 0;
 	
 	    this.done();
@@ -1277,7 +1280,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 	  putContainer: function(element) {
 	    //User customizable
-	    element.style.display = 'none';
+	    element.style.visibility = 'hidden';
 	    document.getElementById('barba-wrapper').appendChild(element);
 	  },
 	
