@@ -944,14 +944,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var _this = this;
 	    var xhr;
 	
-	    if (this.cacheEnabled && this.Cache)
-	      xhr = this.Cache.get(url);
+	    xhr = this.Cache.get(url);
 	
 	    if (!xhr) {
 	      xhr = Utils.xhr(url);
-	
-	      if (this.cacheEnabled)
-	        this.Cache.set(url, xhr);
+	      this.Cache.set(url, xhr);
 	    }
 	
 	    xhr.then(
@@ -960,6 +957,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var namespace = _this.Dom.getNamespace(container);
 	
 	        _this.Dom.putContainer(container);
+	
+	        if (!_this.cacheEnabled)
+	          _this.Cache.reset();
 	
 	        deferred.resolve(container);
 	      },
@@ -1190,6 +1190,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 	  get: function(key) {
 	    return this.data[key];
+	  },
+	
+	  /**
+	   * Reset all the cache stored
+	   * @memberOf Barba.BaseCache
+	   */
+	  reset: function() {
+	    this.data = [];
 	  }
 	};
 	
@@ -1296,15 +1304,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Pjax = __webpack_require__(9);
 	
 	/**
-	 * BaseCache it's a simple static cache
-	 * @namespace Barba.BaseCache
+	 * Prefetch
+	 * @namespace Barba.Prefetch
 	 */
 	var Prefetch = {
 	  init: function() {
-	    //document.body.addEventListener('mouseenter', this.onLinkEnter.bind(this));
-	
-	    //TODO IN VANILLA with mouseover event...
-	    //$(document).on('mouseenter', 'a', this.onLinkEnter.bind(this));
+	    document.body.addEventListener('mouseover', this.onLinkEnter.bind(this));
+	    document.body.addEventListener('touchstart', this.onLinkEnter.bind(this));
 	  },
 	
 	  onLinkEnter: function(evt) {
@@ -1314,14 +1320,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	      el = el.parentNode;
 	    }
 	
+	    if (!el) {
+	      return;
+	    }
+	
 	    var url = el.href;
 	
 	    //Check if the link is elegible for Pjax
 	    if (Pjax.preventCheck(evt, el) && !Pjax.Cache.get(url)) {
 	      var xhr = Utils.xhr(url);
-	
-	      if (Pjax.cacheEnabled)
-	        Pjax.Cache.set(url, xhr);
+	      Pjax.Cache.set(url, xhr);
 	    }
 	  }
 	};
