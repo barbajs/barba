@@ -1,7 +1,8 @@
 {
   "name": "barba.js",
   "version": "0.0.1",
-  "description": "Barba.js is a microframework for the *REAL WEB*.",
+  "description": "Barba.js it's a small, flexible and dependency free library that helps you creating fluid and smooth transition between your website's pages.",
+  "keywords": [ "pjax", "transitions", "navigation" ],
   "main": "dist/barba.js",
   "scripts": {
     "generatedoc": "jsdoc src -r -d docs --configure jsdoc.json --verbose",
@@ -10,8 +11,15 @@
     "minify": "uglifyjs --screw-ie8 --mangle --compress -o ./dist/barba.min.js ./dist/barba.js",
     "build": "npm run js && npm run minify"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luruke/barba.js"
+  },
+  "bugs": {
+    "url": "https://github.com/luruke/barba.js/issues"
+  },
+  "author": "Luigi De Rosa <lurukee@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
     "jaguarjs-jsdoc": "0.0.1",
     "jsdoc": "git+https://github.com/jsdoc3/jsdoc.git",
