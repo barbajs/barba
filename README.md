@@ -17,7 +17,6 @@ It helps reducing delay between your pages, minimizing browser HTTP requests and
 - Transitions
 - Views
 - Cache
-- Mousehover prefetch
 
 # Installation
 -----
@@ -213,7 +212,6 @@ For any problem/question do not hesitate to open an issue.
 # TO DO
 -----
 - Test with backend partial output
-- Make mousehover prefetch with vanilla js
 - Localstorage cache
 - CSS Transition
 - Better DOC
