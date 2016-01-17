@@ -118,14 +118,11 @@ var Pjax = {
     var _this = this;
     var xhr;
 
-    if (this.cacheEnabled && this.Cache)
-      xhr = this.Cache.get(url);
+    xhr = this.Cache.get(url);
 
     if (!xhr) {
       xhr = Utils.xhr(url);
-
-      if (this.cacheEnabled)
-        this.Cache.set(url, xhr);
+      this.Cache.set(url, xhr);
     }
 
     xhr.then(
@@ -134,6 +131,9 @@ var Pjax = {
         var namespace = _this.Dom.getNamespace(container);
 
         _this.Dom.putContainer(container);
+
+        if (!_this.cacheEnabled)
+          _this.Cache.reset();
 
         deferred.resolve(container);
       },

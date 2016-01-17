@@ -2,15 +2,13 @@ var Utils = require('../Utils/Utils');
 var Pjax = require('./Pjax');
 
 /**
- * BaseCache it's a simple static cache
- * @namespace Barba.BaseCache
+ * Prefetch
+ * @namespace Barba.Prefetch
  */
 var Prefetch = {
   init: function() {
-    //document.body.addEventListener('mouseenter', this.onLinkEnter.bind(this));
-
-    //TODO IN VANILLA with mouseover event...
-    //$(document).on('mouseenter', 'a', this.onLinkEnter.bind(this));
+    document.body.addEventListener('mouseover', this.onLinkEnter.bind(this));
+    document.body.addEventListener('touchstart', this.onLinkEnter.bind(this));
   },
 
   onLinkEnter: function(evt) {
@@ -20,14 +18,16 @@ var Prefetch = {
       el = el.parentNode;
     }
 
+    if (!el) {
+      return;
+    }
+
     var url = el.href;
 
     //Check if the link is elegible for Pjax
     if (Pjax.preventCheck(evt, el) && !Pjax.Cache.get(url)) {
       var xhr = Utils.xhr(url);
-
-      if (Pjax.cacheEnabled)
-        Pjax.Cache.set(url, xhr);
+      Pjax.Cache.set(url, xhr);
     }
   }
 };

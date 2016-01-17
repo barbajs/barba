@@ -39,6 +39,14 @@ var BaseCache = {
    */
   get: function(key) {
     return this.data[key];
+  },
+
+  /**
+   * Reset all the cache stored
+   * @memberOf Barba.BaseCache
+   */
+  reset: function() {
+    this.data = [];
   }
 };
 
