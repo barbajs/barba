@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
   var lastElementClicked;
   Barba.Pjax.init();
+  Barba.Prefetch.init();
 
   Barba.Dispatcher.on('linkClicked', function(el) {
     lastElementClicked = el;
