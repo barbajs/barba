@@ -1,5 +1,8 @@
 //Promise polyfill https://github.com/taylorhakes/promise-polyfill
-require('promise-polyfill');
+
+if (typeof Promise !== 'function') {
+ window.Promise = require('promise-polyfill');
+}
 
 var Barba = {
   version: '0.0.1',
