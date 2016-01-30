@@ -61,12 +61,12 @@ When the link is clicked, barba.js do a couple of things, let's see them briefly
 
 # Events
 -----
-During a page change, *barba.js* fires some events (with relative arguments):
-1. `linkClicked` - ( event)
-2. `initStateChange` - (currentStatus)
-3. `newPageReady` - (currentStatus, prevStatus)
-4. `transitionCompleted` - (currentStatus, prevStatus)
-
+During a page change, *barba.js* fires some events (with relative arguments):  
+1. `linkClicked` - (HTMLElement)  
+2. `initStateChange` - (currentStatus)  
+3. `newPageReady` - (currentStatus, prevStatus)  
+4. `transitionCompleted` - (currentStatus, prevStatus)  
+  
 To listen an event, it's enough:
 ```javascript
 Barba.Dispatcher.on(eventName, function() {
@@ -175,6 +175,17 @@ var Homepage = Barba.BaseView.extend({
 //Don't forget to init the view!
 Homepage.init();
 ```
+
+# Prefetch
+-----
+With *barba.js* we can start prefetch the new page at the user mouseover/touchstart on the link.  
+Since there is a 100-300ms delay during the user hover and the click, most of the time this timeframe is enough to have the next page ready!  
+Enable it calling:  
+
+```
+Barba.Prefetch.init();
+```
+
 # Cache
 -----
 By default *barba.js* uses a simple Cache to save pages, in this way if the user navigate to a page already visited, there will be no xhr call.
@@ -194,12 +205,12 @@ In order to work, *barba.js* needs [pushstate](https://developer.mozilla.org/en-
 - *I want to ignore barba.js on some links*
     - You can just add the class `.no-barba`, or add you own check logic replacing the function `Barba.Pjax.preventCheck`
 
-- How can I update Google Analytics (or any other tracking sytem?)
-    - It's enough to listen the event... and...
+- *How can I update Google Analytics (or any other tracking sytem?)*
+    - It's enough to listen the event `initStateChange` and update Google analytics accordingly
 
 # License
 -----
-*barba.js* is released under **MIT License**
+*barba.js* is released under **MIT License** and created by Luigi De Rosa.
 
 # Contribute
 -----
@@ -218,4 +229,4 @@ For any problem/question do not hesitate to open an issue.
 - Localstorage cache
 - CSS Transition
 - Better DOC
-- Make demos
+- Make more demos
