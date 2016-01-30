@@ -4,9 +4,9 @@
 
 # barba.js
 -----
-*barba.js* it's a small, flexible and dependency free library that helps you creating fluid and smooth transition between your website's pages.
+*barba.js* it's a small, flexible and dependency free library that helps you creating fluid and smooth transitions between your website's pages.
 
-It helps reducing delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.
+It helps reducing the delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.
 
 <img src="http://a66.imgup.net/barba_gride5e8.gif" width="300">  
 [View grid demo](http://luruke.github.io/barba.js/demo/grid/index.html)    
@@ -147,9 +147,9 @@ Barba.Pjax.getTransition = function() {
 
 # Views
 -----
-One of the hardest things with a pushstate navigation is to handle and takes care of all the javascript states/events in the different pages.
+One of the hardest things with a pushstate navigation is to handle and take care of all the javascript states/events in the different pages.
 
-For example, the homepage page could have a fullscreen slider with touch/scroll preventdefault, while an internal page do not need that.
+For example, the homepage page could have a fullscreen slider with touch/scroll preventdefault, while an internal page could not need that.
 
 To associate a `View` with a `container`, it's enough to specify a common namespace:
 ```
@@ -172,13 +172,13 @@ var Homepage = Barba.BaseView.extend({
         // The container has just been removed from the DOM.
     }
 });
-//Don't forget to init the view!
+// Don't forget to init the view!
 Homepage.init();
 ```
 
 # Prefetch
 -----
-With *barba.js* we can start prefetch the new page at the user mouseover/touchstart on the link.  
+With *barba.js* we can start prefetching the new page at the user mouseover/touchstart on the link.  
 Since there is a 100-300ms delay during the user hover and the click, most of the time this timeframe is enough to have the next page ready!  
 Enable it calling:  
 
@@ -188,25 +188,25 @@ Barba.Prefetch.init();
 
 # Cache
 -----
-By default *barba.js* uses a simple Cache to save pages, in this way if the user navigate to a page already visited, there will be no xhr call.
+By default *barba.js* uses a simple Cache to save pages, in this way if the user navigates to a page already visited, there will be no xhr call.
 
-You can access to the cache through the object `Barba.Pjax.Cache` or disabling it setting `Barba.Pjax.cacheEnabled` as `false`.
+You can access the cache through the object `Barba.Pjax.Cache` or disable it setting `Barba.Pjax.cacheEnabled` as `false`.
 
-The actual Cache is a plain javascript obejct, and it's destroyed at the user's browser refresh.
+The actual Cache is a plain JavaScript obejct, and it's destroyed at the user's browser refresh.
 
-In the future is also planned to create a more permanent cache based on `LocalStorage`
+In the future it is also planned to create a more permanent cache based on `LocalStorage`
 
 # Browser support
 -----
-In order to work, *barba.js* needs [pushstate](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState), so it works in all almost all the recent browsers. Have a look on [canisue.com](http://caniuse.com/#search=pushstate) for more detailed information.
+In order to work, *barba.js* needs [pushstate](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState), so it works in almost all the recent browsers. Have a look on [canisue.com](http://caniuse.com/#search=pushstate) for more detailed informations.
 
 # FAQ
 -----
 - *I want to ignore barba.js on some links*
-    - You can just add the class `.no-barba`, or add you own check logic replacing the function `Barba.Pjax.preventCheck`
+    - You can just add the class `.no-barba`, or add your own check logic replacing the function `Barba.Pjax.preventCheck`
 
 - *How can I update Google Analytics (or any other tracking sytem?)*
-    - It's enough to listen the event `initStateChange` and update Google analytics accordingly
+    - It's enough to listen to the event `initStateChange` and update Google analytics accordingly
 
 # License
 -----
@@ -214,7 +214,7 @@ In order to work, *barba.js* needs [pushstate](https://developer.mozilla.org/en-
 
 # Contribute
 -----
-Any help is more than welcome.  
+Any help is more than welcomed.  
 For any problem/question do not hesitate to open an issue.
 
 # Thanks to
