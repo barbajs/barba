@@ -1,0 +1,158 @@
+---
+# Front matter comment to ensure Jekyll properly reads file.
+---
+
+{% include header.html %}
+
+
+<div id="barba-wrapper">
+<div class="barba-container">
+
+<h1>Transition</h1>
+
+<p>A transition is a javascript object that will take care to hide the old Container and display the new one.</p>
+
+<p>All the transitions need to extend the <a href="https://github.com/luruke/barba.js/blob/master/src/Transition/BaseTransition.js" target="_blank">Barba.BaseTransiton</a> object.</p>
+
+<p>Extending this object your transition will inherit the following members:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Member</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><code>start</code></td>
+      <td><code>function</code> that will be called automatically when your transition starts. (you can consider it as the constructor of your transition)</td>
+    </tr>
+    <tr>
+      <td><code>done</code></td>
+      <td>
+        <code>function</code> that needs to be called when your transition is finished.<br>
+        <b>Do not forget to call this function!</b>
+      </td>
+    </tr>
+    <tr>
+      <td><code>oldContainer</code></td>
+      <td><code>HTMLElement</code> of the old Container.</td>
+    </tr>
+    <tr>
+      <td><code>newContainerLoading</code></td>
+      <td><code>Promise</code> that will indicate the loading of the next container.</td>
+    </tr>
+    <tr>
+      <td><code>newContainer</code></td>
+      <td>
+        <code>HTMLElement</code> of the new container. (with <code>visibility: hidden;</code>)<br>
+        <b>Please note, it's <code>undefined</code> until <code>newContainerLoading</code> is resolved!</b>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>By default barba.js uses a simple HideShow transition, in order to understand how it works let's recreate it:</p>
+
+{% highlight javascript %}
+var HideShowTransition = Barba.BaseTransition.extend({
+  start: function() {
+    this.newContainerLoading.then(this.hideShow.bind(this));
+  },
+
+  hideShow: function() {
+    this.oldContainer.style.visibility = 'hidden';
+    this.newContainer.style.visibility = 'visible';
+    document.body.scrollTop = 0;
+
+    this.done();
+  }
+});
+{% endhighlight %}
+
+<p>Next, we have to tell barba.js to use our new transition:</p>
+
+{% highlight javascript %}
+Barba.Pjax.getTransition = function() {
+  return HideShowTransition;
+};
+{% endhighlight %}
+
+<p>Let's create now a more complex transition, a FadeTransition using jquery .animate()</p>
+
+<blockquote>
+  <p>Of course you can use any JS library/plain javascript/css transitions and more.</p>
+</blockquote>
+
+{% highlight javascript %}
+var FadeTransition = Barba.BaseTransition.extend({
+  start: function() {
+    /**
+     * This function is automatically called as soon the Transition starts
+     * this.newContainerLoading is a Promise for the loading of the new container
+     * (Barba.js also comes with an handy Promise polyfill!)
+     */
+
+    // As soon the loading is finished and the old page is faded out, let's fade the new page
+    Promise
+      .all([this.newContainerLoading, this.fadeOut()])
+      .then(this.fadeIn.bind(this));
+  },
+
+  fadeOut: function() {
+    /**
+     * this.oldContainer is the HTMLElement of the old Container
+     */
+
+    return $(this.oldContainer).animate({ opacity: 0 }).promise();
+  },
+
+  fadeIn: function() {
+    /**
+     * this.newContainer is the HTMLElement of the new Container
+     * At this stage newContainer is on the DOM (inside our #barba-container and with visibility: hidden)
+     * Please note, newContainer is available just after newContainerLoading is resolved!
+     */
+
+    var _this = this;
+    var $el = $(this.newContainer);
+
+    $(this.oldContainer).hide();
+
+    $el.css({
+      visibility : 'visible',
+      opacity : 0
+    });
+
+    $el.animate({ opacity: 1 }, 400, function() {
+      /**
+       * Do not forget to call .done() as soon your transition is finished!
+       * .done() will automatically remove from the DOM the old Container
+       */
+
+      _this.done();
+    });
+  }
+});
+
+/**
+ * Next step, you have to tell Barba to use the new Transition
+ */
+
+Barba.Pjax.getTransition = function() {
+  /**
+   * Here you can use your own logic!
+   * For example you can use different Transition based on the current page or link...
+   */
+
+  return FadeTransition;
+};
+{% endhighlight %}
+
+</div>
+</div>
+
+{% include nav.html %}
+{% include footer.html %}

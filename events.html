@@ -1,0 +1,64 @@
+---
+# Front matter comment to ensure Jekyll properly reads file.
+---
+
+{% include header.html %}
+
+
+<div id="barba-wrapper">
+<div class="barba-container">
+
+<h1>Events</h1>
+
+<p>During all the lifecycle of the page transition, barba will emit a series of events, with useful information:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Arguments</th>
+      <th>When</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><code>linkClicked</code></td>
+      <td><code>HTMLElement</code></td>
+      <td>The user click on a link elegible for PJAX.</td>
+    </tr>
+    <tr>
+      <td><code>initStateChange</code></td>
+      <td><code>currentStatus</code></b></td>
+      <td>The link has just been changed.</td>
+    </tr>
+    <tr>
+      <td><code>newPageReady</code></td>
+      <td><code>currentStatus</code>[, <code>prevStatus</code>]</td>
+      <td>The new container has been loaded and injected in the wrapper.</td>
+    </tr>
+    <tr>
+      <td><code>transitionCompleted</code></td>
+      <td><code>currentStatus</code>[, <code>prevStatus</code>]</td>
+      <td>The transition has just finished and the old Container has been removed from the DOM.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><code>currentStatus</code> and <code>prevStatus</code> are plain object with url of the page and eventually the namespace.</p>
+</blockquote>
+
+<p>To listen an event, it's enough:</p>
+
+{% highlight javascript %}
+Barba.Dispatcher.on(eventName, function() {
+  //your listener
+});
+{% endhighlight %}
+
+</div>
+</div>
+
+{% include nav.html %}
+{% include footer.html %}

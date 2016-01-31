@@ -1,0 +1,84 @@
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+ol#menu {
+  width: 100%;
+  text-align: left;
+  padding: 0;
+  list-style: none;
+  border: 1px solid #ddd;
+  border-radius: 0.3rem;
+  max-width: 40rem;
+  margin: 0 auto;
+
+  li {
+    border-bottom: 1px solid #ddd;
+    padding: 0.2rem 0.5rem;
+  }
+
+  li.active {
+    background-color: #F7F7F7;
+  }
+
+  a {
+    display: block;
+  }
+
+  @include ifmore(60rem) {
+    border: 0;
+  }
+}
+
+
+@include ifmore(60rem) {
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  #barba-wrapper {
+    float: right;
+    width: 70%;
+  }
+
+  nav {
+    position: fixed;
+    width: 30%;
+    max-width: 260px;
+    overflow: scroll;
+    bottom: 0;
+    top: 0;
+    border-right: 1px solid #ddd;
+  }
+}
+
+#barba-wrapper {
+  padding: 2rem 1rem;
+  max-width: 65rem;
+  margin: 0 auto;
+
+  @include ifmore(60rem) {
+    padding: 3rem 2rem;
+  }
+}
+
+.barba-container.homepage {
+  text-align: center;
+}
+
+#logo {
+  width: 70%;
+  max-width: 230px;
+}

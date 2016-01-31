@@ -1,0 +1,14 @@
+<nav>
+  <ol id="menu">
+    {% for item in site.navigation %}
+      {% assign class = nil %}
+      {% if page.url contains item.url %}
+        {% assign class = 'active' %}
+      {% endif %}
+
+      <li class="{{ class }}">
+        <a href="{{ item.url }}">{{ item.title }}</a>
+      </li>
+    {% endfor %}
+  </ol>
+</nav>
