@@ -2,17 +2,20 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Namespace: Dom</title>
+    <title>Barba.js</title>
+    
+    <meta name="description" content="barba.js it's a small, flexible and dependency free library that helps you creating fluid and smooth transition between your website's pages." />
+    
+        <meta name="keywords" content="pjax, ajax, barba.js, transitions" />
+        <meta name="keyword" content="pjax, ajax, barba.js, transitions" />
     
     
     
-    
-    
-    <meta property="og:title" content=""/>
+    <meta property="og:title" content="Barba.js"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content=""/>
-    
-    <meta property="og:url" content=""/>
+    <meta property="og:site_name" content="Barba.js"/>
+    <meta property="og:url" content="http://barbajs.org"/>
     
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -26,17 +29,29 @@
     
     
     <script>
-    var config = {"monospaceLinks":false,"cleverLinks":false,"applicationName":"Demo","disqus":"","googleAnalytics":"","openGraph":{"title":"","type":"website","image":"","site_name":"","url":""},"meta":{"title":"","description":"","keyword":""},"linenums":true,"default":{}};
+    var config = {"monospaceLinks":false,"cleverLinks":false,"applicationName":"Barba.js","disqus":"","googleAnalytics":"UA-73202407-1","openGraph":{"title":"Barba.js","type":"website","image":"","site_name":"Barba.js","url":"http://barbajs.org"},"meta":{"title":"Barba.js","description":"barba.js it's a small, flexible and dependency free library that helps you creating fluid and smooth transition between your website's pages.","keyword":"pjax, ajax, barba.js, transitions"},"linenums":true,"default":{}};
     </script>
     
 
+    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', config.googleAnalytics]);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
     
 </head>
 <body>
 <div id="wrap" class="clearfix">
     
 <div class="navigation">
-    <h3 class="applicationName"><a href="index.html">Demo</a></h3>
+    <h3 class="applicationName"><a href="index.html">Barba.js</a></h3>
 
     <div class="search">
         <input id="search" type="text" class="form-control input-sm" placeholder="Search Documentations">
@@ -67,6 +82,8 @@
                 <li data-name="Barba.BaseCache.extend"><a href="Barba.BaseCache.html#.extend">extend</a></li>
             
                 <li data-name="Barba.BaseCache.get"><a href="Barba.BaseCache.html#.get">get</a></li>
+            
+                <li data-name="Barba.BaseCache.reset"><a href="Barba.BaseCache.html#.reset">reset</a></li>
             
                 <li data-name="Barba.BaseCache.set"><a href="Barba.BaseCache.html#.set">set</a></li>
             
@@ -221,7 +238,11 @@
             
             <span class="subtitle">Methods</span>
             
-                <li data-name="Barba.Pjax.Dom.getContainer"><a href="Barba.Pjax.Dom.html#.getContainer">getContainer</a></li>
+                <li data-name="Barba.Pjax.Dom.getNamespace"><a href="Barba.Pjax.Dom.html#.getNamespace">getNamespace</a></li>
+            
+                <li data-name="Barba.Pjax.Dom.parseContainer"><a href="Barba.Pjax.Dom.html#.parseContainer">parseContainer</a></li>
+            
+                <li data-name="Barba.Pjax.Dom.putContainer"><a href="Barba.Pjax.Dom.html#.putContainer">putContainer</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -232,6 +253,27 @@
         <li class="item" data-name="Barba.Pjax.HistoryManager">
             <span class="title">
                 <a href="Barba.Pjax.HistoryManager.html">Barba.Pjax.HistoryManager</a>
+                
+                <span class="static">static</span>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Barba.Prefetch">
+            <span class="title">
+                <a href="Barba.Prefetch.html">Barba.Prefetch</a>
                 
                 <span class="static">static</span>
                 
@@ -358,14 +400,14 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id=".getContainer">
+        <h4 class="name" id=".getNamespace">
             
-            <span class="type-signature static">static</span>Barba.Pjax.Dom.getContainer<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{HTMLElement}</span>
+            <span class="type-signature static">static</span>Barba.Pjax.Dom.getNamespace<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{String}</span>
         </h4>
     
         
         <div class="tag-source">
-            Pjax/Dom.js, line 27
+            Pjax/Dom.js, line 58
         </div>
         
     </div>
@@ -376,7 +418,7 @@
     
     
     <div class="description">
-        [getContainer description]
+        Get the namespace of the container
     </div>
     
 
@@ -390,8 +432,6 @@
 <table class="params">
     <thead>
 	<tr>
-		
-		<th>Name</th>
 		
 		
 		<th>Type</th>
@@ -407,8 +447,6 @@
 	
         <tr>
             
-                <td class="name"><code>document.body</code></td>
-            
             
             <td class="type">
             
@@ -422,13 +460,6 @@
             
             
             <td class="description last">
-                
-                    
-                        <span class="optional">optional</span>
-                    
-                    
-                        
-                    
                 
                 </td>
         </tr>
@@ -482,6 +513,243 @@
     
 </dd>
 
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".parseContainer">
+            
+            <span class="type-signature static">static</span>Barba.Pjax.Dom.parseContainer<span class="signature">(element)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{HTMLElement}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            Pjax/Dom.js, line 80
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Get container selector
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>element</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id=".putContainer">
+            
+            <span class="type-signature static">static</span>Barba.Pjax.Dom.putContainer<span class="signature">(element)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            Pjax/Dom.js, line 68
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Put the container on the page
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>element</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
         </dl>
     
     
@@ -499,7 +767,7 @@
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0-dev</a> on Sun Nov 15 2015 18:16:35 GMT+0100 (CET)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.0-dev</a> on Tue Feb 02 2016 00:16:05 GMT+0100 (CET)
         </footer>
     </div>
 </div>
