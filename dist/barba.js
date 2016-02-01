@@ -61,7 +61,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	
 	var Barba = {
-	  version: '0.0.1',
+	  version: '0.0.3',
 	  Dispatcher: __webpack_require__(4),
 	  HistoryManager: __webpack_require__(5),
 	  BaseTransition: __webpack_require__(6),
@@ -1289,10 +1289,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  /**
-	   * [parseContainer description]
+	   * Get container selector
 	   * @memberOf Barba.Pjax.Dom
-	   * @param  {[type]} element [description]
-	   * @return {[type]}         [description]
+	   * @param  {HTMLElement} element
+	   * @return {HTMLElement} element
 	   */
 	  parseContainer: function(element) {
 	    //User customizable
