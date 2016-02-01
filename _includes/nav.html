@@ -1,14 +1,20 @@
 <nav>
-  <ol id="menu">
+  <ol class="menu">
     {% for item in site.navigation %}
       {% assign class = nil %}
+
       {% if page.url contains item.url %}
         {% assign class = 'active' %}
       {% endif %}
 
       <li class="{{ class }}">
-        <a href="{{ item.url }}">{{ item.title }}</a>
+        <a href="{{ item.url }}"{% if item.external %} target="_blank"{% endif %}>{{ item.title }}</a>
       </li>
     {% endfor %}
+  </ol>
+
+  <ol class="menu">
+    <li><a href="https://github.com/luruke/barba.js" target="_blank">Github</a></li>
+    <li><a href="https://twitter.com/luruke" target="_blank">@luruke</a></li>
   </ol>
 </nav>

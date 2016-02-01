@@ -5,50 +5,17 @@
 {% include header.html %}
 
 <div id="barba-wrapper">
-  <div class="barba-container">
-    <h1>Installation</h1>
+<div class="barba-container">
+<h1>Demos</h1>
 
-    <p>barba.js supports AMD, CommonJS and Browser global (it uses UMD)</p>
-    <p>You can install it using npm:</p>
+<a href="demo/grid/index.html" target="_blank"><img src="images/grid.gif" width="300" alt="grid demo"></a>
+<a href="demo/nextprev/index.html" target="_blank"><img src="images/nextprev.gif" width="300" alt="nextprev demo"></a>
 
-    {% highlight bash %}
-      npm install barba.js --save-dev
-    {% endhighlight %}
+<blockquote>
+  <p>Want to submit your demo? Open an <a href="https://github.com/luruke/barba.js/issues" target="_bank">issue.</a></p>
+</blockquote>
 
-    <p>Then:</p>
-
-    {% highlight javascript %}
-      var Barba = require('barba.js');
-    {% endhighlight %}
-
-    <p>or just including the script in your page:</p>
-
-    {% highlight html %}
-      <script src="barba.min.js" type="text/javascript"></script>
-    {% endhighlight %}
-
-    <p>barba.js needs to know a little bit about your DOM structure. By default uses this markup structure in your pages:</p>
-
-    {% highlight html %}
-    <div id="barba-wrapper">
-      <div class="barba-container">
-        ...your main page...
-      </div>
-    </div>
-    {% endhighlight %}
-
-    <p>After you've included barba.js in your project it's time to initialize it</p>
-
-    {% highlight javascript %}
-      //Please note, the DOM should be ready
-      Barba.Pjax.start();
-    {% endhighlight %}
-
-    <blockquote>
-      <p>Please note, all the selector (#barba-wrapper, .barba-container) are easily editable, see the API section.</p>
-    </blockquote>
-
-  </div>
+</div>
 </div>
 
 {% include nav.html %}

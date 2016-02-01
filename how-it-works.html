@@ -13,24 +13,24 @@
     <p>Here is al walkthrough of what happens when the user click a link:</p>
     <ol>
       <li>Check if the link is valid and elegible for PJAX, if yes, prevent the normal browser behavior.</li>
-      <li>Change the URL.</li>
-      <li>Sart fetching the new page.</li>
-      <li>Create a new transition instance.</li>
-      <li>As soon the new page is loaded, barba.js parses the new HTML (taking .barba-container) and put the new content on the DOM.</li>
-      <li>The transition instance will take care to hide the old container and show the new one.</li>
-      <li>As soon the transition is finished, the old page is removed from the DOM.</li>
+      <li>Change the URL using <a href="https://developer.mozilla.org/en-US/docs/Web/API/History/pushState" target="_blank">push state API.</a></li>
+      <li>Start fetching the new page via XMLHttpRequest.</li>
+      <li>Create a <b>new</b> <a href="transition.html">transition</a> instance.</li>
+      <li>As soon the new page is loaded, barba.js parses the new HTML (taking <code>.barba-container</code>) and put the new content on the DOM inside <code>#barba-wrapper</code>.</li>
+      <li>The <a href="transition.html">transition</a> instance will take care to hide the old container and show the new one.</li>
+      <li>As soon the transition is finished, the old container is removed from the DOM.</li>
     </ol>
+
+    <blockquote>
+      <p>Please note, on server side, your pages will need to be served normally. Barba.js works as ehnancement for your website, everything should work normally without Javascript.</p>
+    </blockquote>
 
     <h2>Why?</h2>
     <p>Using this technique will bring numerous benefit:</p>
     <ul>
-      <li>Possibility to create transition between pages.</li>
-      <li>Reduce HTTP requests. (why load the logo/css/js at each page change?)</li>
+      <li>Possibility to create nice transition between pages.</li>
+      <li>Reduce HTTP requests. (why reload the css/js at each page change?)</li>
     </ul>
-
-    <blockquote>
-      <p>Please note, on server side, your pages will need to be served normally.</p>
-    </blockquote>
   </div>
 </div>
 

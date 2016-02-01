@@ -12,13 +12,14 @@ html {
   box-sizing: inherit;
 }
 
-ol#menu {
+ol.menu {
   width: 100%;
   text-align: left;
   padding: 0;
   list-style: none;
   border: 1px solid #ddd;
   border-radius: 0.3rem;
+  margin-top: 1rem;
   max-width: 40rem;
   margin: 0 auto;
 

@@ -20,7 +20,8 @@ navigation:
   - title: Prefetch
     url: prefetch.html
   - title: API
-    url: api.html
+    url: docs/
+    external: true
   - title: Demos
     url: demos.html
   - title: FAQ

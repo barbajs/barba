@@ -14,6 +14,10 @@
 
 <p>All the transitions need to extend the <a href="https://github.com/luruke/barba.js/blob/master/src/Transition/BaseTransition.js" target="_blank">Barba.BaseTransiton</a> object.</p>
 
+<blockquote>
+  <p>Please note, the transition starts even before the new page is loaded. In this way you can start your own transition even before the next page is loaded.</p>
+</blockquote>
+
 <p>Extending this object your transition will inherit the following members:</p>
 
 <table>
@@ -54,6 +58,8 @@
   </tbody>
 </table>
 
+<h2>HideShow Example</h2>
+
 <p>By default barba.js uses a simple HideShow transition, in order to understand how it works let's recreate it:</p>
 
 {% highlight javascript %}
@@ -72,6 +78,10 @@ var HideShowTransition = Barba.BaseTransition.extend({
 });
 {% endhighlight %}
 
+<blockquote>
+  <p>As you noticed we used a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank"><code>Promise</code></a>, barba.js also comes with an handy Promise polyfill.</p>
+</blockquote>
+
 <p>Next, we have to tell barba.js to use our new transition:</p>
 
 {% highlight javascript %}
@@ -79,6 +89,8 @@ Barba.Pjax.getTransition = function() {
   return HideShowTransition;
 };
 {% endhighlight %}
+
+<h2>FadeTransition Example</h2>
 
 <p>Let's create now a more complex transition, a FadeTransition using jquery .animate()</p>
 
