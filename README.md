@@ -47,3 +47,13 @@ After you've included barba.js in your project it's time to initialize it
 //Please note, the DOM should be ready
 Barba.Pjax.start();
 ```
+
+## Contribute
+
+Barba.js is created in the spare time by [Luigi De Rosa](https://twitter.com/luruke) and released under MIT licence.  
+Any help on the project is more than welcomed.  
+For any problem/question do not hesitate to open an issue.  
+
+## Other
+
+For any other information, please visit the [website](http://barbajs.org)
