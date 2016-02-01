@@ -3,6 +3,7 @@
 ---
 
 {% include header.html %}
+{% include nav.html %}
 
 <div id="barba-wrapper">
 <div class="barba-container">
@@ -12,13 +13,17 @@
   <dt>What barba means?</dt>
   <dd><i>/ˈbarba/</i> is the italian for beard. Thanks <a href="https://twitter.com/danielemeli" target="_blank">@danielemeli</a> for the suggestion.</dd>
 
-  <dt>Markdown in HTML</dt>
-  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
+  <dt>I's possible to ignore barba.js on some links?</dt>
+  <dd>You can just add the class <code>.no-barba</code>, or add your own check logic replacing the function <code>Barba.Pjax.preventCheck</code></dd>
+
+  <dt>How can I update Google Analytics (or any other tracking sytem)?</dt>
+  <dd>It's enough to listen to the event <code>initStateChange</code> and update Google analytics accordingly.</dd>
+
+  <dt>Which browser supports barba.js?</dt>
+  <dd>In order to work, barba.js needs pushstate, so it works in almost all the recent browsers. Have a look on <a href="http://caniuse.com/#search=pushstate" target="_blank">canisue.com</a> for more detailed informations.</dd>
 </dl>
 
-
 </div>
 </div>
 
-{% include nav.html %}
 {% include footer.html %}

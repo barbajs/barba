@@ -15,16 +15,16 @@ html {
 ol.menu {
   width: 100%;
   text-align: left;
-  padding: 0;
+  padding: 0!important;
   list-style: none;
-  border: 1px solid #ddd;
+  border: 0.1rem solid #ddd;
   border-radius: 0.3rem;
-  margin-top: 1rem;
+  margin-top: 2rem!important;
   max-width: 40rem;
   margin: 0 auto;
 
   li {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 0.1rem solid #ddd;
     padding: 0.2rem 0.5rem;
   }
 
@@ -41,27 +41,29 @@ ol.menu {
   }
 }
 
+nav {
+  width: 100%;
+  text-align: center;
+}
 
 @include ifmore(60rem) {
   main {
-    max-width: 900px;
+    max-width: 90rem;
     margin: 0 auto;
     width: 100%;
   }
 
   #barba-wrapper {
     float: right;
-    width: 70%;
   }
 
   nav {
     position: fixed;
-    width: 30%;
-    max-width: 260px;
+    max-width: 24rem;
     overflow: scroll;
     bottom: 0;
     top: 0;
-    border-right: 1px solid #ddd;
+    border-right: 0.1rem solid #ddd;
   }
 }
 
@@ -80,6 +82,7 @@ ol.menu {
 }
 
 #logo {
+  margin-top: 2rem;
   width: 70%;
-  max-width: 230px;
+  max-width: 23rem;
 }
