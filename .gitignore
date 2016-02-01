@@ -3,3 +3,4 @@ logs
 *.log
 npm-debug.log*
 .DS_Store
+docs
