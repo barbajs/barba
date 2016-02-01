@@ -72,10 +72,10 @@ var Dom = {
   },
 
   /**
-   * [parseContainer description]
+   * Get container selector
    * @memberOf Barba.Pjax.Dom
-   * @param  {[type]} element [description]
-   * @return {[type]}         [description]
+   * @param  {HTMLElement} element
+   * @return {HTMLElement} element
    */
   parseContainer: function(element) {
     //User customizable
