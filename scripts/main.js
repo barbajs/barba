@@ -16,3 +16,8 @@ Barba.Dispatcher.on('linkClicked', function(el) {
 
   el.parentElement.classList.add('active');
 });
+
+// Update Analytics
+Barba.Dispatcher.on('initStateChange', function() {
+  ga('send', 'pageview', location.pathname);
+});
