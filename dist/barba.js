@@ -1016,6 +1016,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (evt.which > 1 || evt.metaKey || evt.ctrlKey || evt.shiftKey || evt.altKey)
 	      return false;
 	
+	    //Ignore target with _blank target
+	    if (element.target && element.target === '_blank')
+	      return false;
+	
 	    //Check if it's the same domain
 	    if (window.location.protocol !== element.protocol || window.location.hostname !== element.hostname)
 	      return false;
