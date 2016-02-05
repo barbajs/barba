@@ -86,7 +86,14 @@ nav {
 }
 
 #logo {
+  display: inline-block;
   margin-top: 2rem;
   width: 70%;
   max-width: 23rem;
+  position: relative;
+}
+
+#logo svg {
+  width: 100%;
+  height: 100%; //Fix Safari bug
 }
