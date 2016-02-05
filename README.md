@@ -8,7 +8,7 @@ It helps reducing the delay between your pages, minimizing browser HTTP requests
 [View grid demo](http://barbajs.org/demo/grid/index.html)    
 <img src="http://g56.imgup.net/ezgif-3823162d.gif" width="300">  
 [View next/prev demo](http://barbajs.org/demo/nextprev/index.html)  
-<img src="http://y88i.imgup.net/barba_clip862d.gif" width="300">  
+<img src="http://y88.imgup.net/barba_clip862d.gif" width="300">  
 [View next/prev circle clipping demo](http://barbajs.org/demo/nextprev-circle/index.html)  
 
 ## Features
