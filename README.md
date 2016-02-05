@@ -4,12 +4,16 @@
 
 It helps reducing the delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.
 
-<img src="http://a66.imgup.net/barba_gride5e8.gif" width="300">  
-[View grid demo](http://barbajs.org/demo/grid/index.html)    
-<img src="http://g56.imgup.net/ezgif-3823162d.gif" width="300">  
-[View next/prev demo](http://barbajs.org/demo/nextprev/index.html)  
-<img src="http://y88.imgup.net/barba_clip862d.gif" width="300">  
-[View next/prev circle clipping demo](http://barbajs.org/demo/nextprev-circle/index.html)  
+### Grid Demo [(view)](http://barbajs.org/demo/grid/index.html)
+[<img src="http://a66.imgup.net/barba_gride5e8.gif" width="300">](http://barbajs.org/demo/grid/index.html)
+
+
+### Next/Prev demo [(view)](http://barbajs.org/demo/nextprev/index.html)
+[<img src="http://g56.imgup.net/ezgif-3823162d.gif" width="300">](http://barbajs.org/demo/nextprev/index.html)
+
+
+### Circles demo [(view)](http://barbajs.org/demo/nextprev-circle/index.html)
+[<img src="http://y88.imgup.net/barba_clip862d.gif" width="300">](http://barbajs.org/demo/nextprev-circle/index.html)
 
 ## Features
 
@@ -46,7 +50,7 @@ barba.js needs to know a little bit about your DOM structure. By default uses th
 After you've included barba.js in your project it's time to initialize it
 
 ```
-//Please note, the DOM should be ready
+// Please note, the DOM should be ready
 Barba.Pjax.start();
 ```
 
