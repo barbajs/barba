@@ -5,7 +5,7 @@ if (typeof Promise !== 'function') {
 }
 
 var Barba = {
-  version: '0.0.3',
+  version: '0.0.4',
   Dispatcher: require('./Dispatcher/Dispatcher'),
   HistoryManager: require('./Pjax/HistoryManager'),
   BaseTransition: require('./Transition/BaseTransition'),
