@@ -18,7 +18,7 @@ var Dom = {
     var titleEl = wrapper.querySelector('title');
 
     if (titleEl)
-      document.title = titleEl.innerText;
+      document.title = titleEl.textContent;
 
     return this.getContainer(wrapper);
   },
