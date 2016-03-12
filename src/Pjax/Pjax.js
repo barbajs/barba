@@ -234,10 +234,11 @@ var Pjax = {
     if (this.History.currentStatus().url === newUrl)
       return false;
 
+    this.History.add(newUrl);
+
     var newContainer = this.load(newUrl);
     var transition = Object.create(this.getTransition());
 
-    this.History.add(newUrl);
     this.transitionProgress = true;
 
     Dispatcher.trigger('initStateChange',
