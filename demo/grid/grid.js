@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
   Barba.Pjax.getTransition = function() {
     var transitionObj = ExpandTransition;
 
-    if (Barba.HistoryManager.currentStatus().namespace === 'detail') {
+    if (Barba.HistoryManager.prevStatus().namespace === 'detail') {
       transitionObj = ShrinkTransition;
     }
 
