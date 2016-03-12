@@ -61,7 +61,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	
 	var Barba = {
-	  version: '0.0.1',
+	  version: '0.0.5',
 	  Dispatcher: __webpack_require__(4),
 	  HistoryManager: __webpack_require__(5),
 	  BaseTransition: __webpack_require__(6),
@@ -1063,10 +1063,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (this.History.currentStatus().url === newUrl)
 	      return false;
 	
+	    this.History.add(newUrl);
+	
 	    var newContainer = this.load(newUrl);
 	    var transition = Object.create(this.getTransition());
 	
-	    this.History.add(newUrl);
 	    this.transitionProgress = true;
 	
 	    Dispatcher.trigger('initStateChange',
@@ -1235,7 +1236,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var titleEl = wrapper.querySelector('title');
 	
 	    if (titleEl)
-	      document.title = titleEl.innerText;
+	      document.title = titleEl.textContent;
 	
 	    return this.getContainer(wrapper);
 	  },
@@ -1289,10 +1290,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  /**
-	   * [parseContainer description]
+	   * Get container selector
 	   * @memberOf Barba.Pjax.Dom
-	   * @param  {[type]} element [description]
-	   * @return {[type]}         [description]
+	   * @param  {HTMLElement} element
+	   * @return {HTMLElement} element
 	   */
 	  parseContainer: function(element) {
 	    //User customizable
