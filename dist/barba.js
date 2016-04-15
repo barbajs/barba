@@ -61,7 +61,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	
 	var Barba = {
-	  version: '0.0.6dev',
+	  version: '0.0.6',
 	  Dispatcher: __webpack_require__(4),
 	  HistoryManager: __webpack_require__(5),
 	  BaseTransition: __webpack_require__(6),
