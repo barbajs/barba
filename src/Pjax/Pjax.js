@@ -196,6 +196,10 @@ var Pjax = {
     if (window.location.protocol !== element.protocol || window.location.hostname !== element.hostname)
       return false;
 
+    //Check if the port is the same
+    if (window.location.port !== element.port)
+      return false;
+
     //Ignore case when a hash is being tacked on the current URL
     if (element.href.indexOf('#') > -1)
       return false;
