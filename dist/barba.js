@@ -61,7 +61,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	
 	var Barba = {
-	  version: '0.0.5',
+	  version: '0.0.6dev',
 	  Dispatcher: __webpack_require__(4),
 	  HistoryManager: __webpack_require__(5),
 	  BaseTransition: __webpack_require__(6),
@@ -705,6 +705,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	
 	    req.open('GET', url);
+	    req.setRequestHeader('x-barba', 'yes');
 	    req.send();
 	
 	    return deferred.promise;
@@ -775,10 +776,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    );
 	
 	    Dispatcher.on('newPageReady',
-	      function(newStatus, oldStatus) {
-	        //The new page has been loaded and is ready on the DOM.
+	      function(newStatus, oldStatus, container) {
 	        if (newStatus.namespace === _this.namespace)
 	          _this.onEnter();
+	
+	        this.container = container;
 	      }
 	    );
 	
@@ -875,14 +877,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @private
 	   */
 	  init: function() {
+	    var container = this.Dom.getContainer();
+	
 	    this.History.add(
 	      this.getCurrentUrl(),
-	      this.Dom.getNamespace(this.Dom.getContainer())
+	      this.Dom.getNamespace(container)
 	    );
 	
 	    //Fire for the current view.
 	    Dispatcher.trigger('initStateChange', this.History.currentStatus());
-	    Dispatcher.trigger('newPageReady', this.History.currentStatus());
+	    Dispatcher.trigger('newPageReady', this.History.currentStatus(), {}, container);
 	    Dispatcher.trigger('transitionCompleted', this.History.currentStatus());
 	
 	    this.bindEvents();
@@ -957,7 +961,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    xhr.then(
 	      function(data) {
 	        var container = _this.Dom.parseResponse(data);
-	        var namespace = _this.Dom.getNamespace(container);
 	
 	        _this.Dom.putContainer(container);
 	
@@ -1008,6 +1011,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @return {Boolean}     [description]
 	   */
 	  preventCheck: function(evt, element) {
+	    if (!history.pushState)
+	      return false;
+	
 	    //User
 	    if (!element || !element.href)
 	      return false;
@@ -1022,6 +1028,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    //Check if it's the same domain
 	    if (window.location.protocol !== element.protocol || window.location.hostname !== element.hostname)
+	      return false;
+	
+	    //Check if the port is the same
+	    if (window.location.port !== element.port)
 	      return false;
 	
 	    //Ignore case when a hash is being tacked on the current URL
@@ -1054,7 +1064,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @private
 	   */
 	  onStateChange: function() {
-	    var _this = this;
 	    var newUrl = this.getCurrentUrl();
 	
 	    if (this.transitionProgress)
@@ -1101,7 +1110,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    Dispatcher.trigger('newPageReady',
 	      this.History.currentStatus(),
-	      this.History.prevStatus()
+	      this.History.prevStatus(),
+	      container
 	    );
 	  },
 	
@@ -1127,7 +1137,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Utils = __webpack_require__(7);
 	var BaseTransition = __webpack_require__(6);
 	
 	/**
@@ -1275,7 +1284,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 	  getNamespace: function(element) {
 	    //User customizable
-	    return element && element.dataset ? element.dataset.namespace : null;
+	    if (element && element.dataset) {
+	      return element.dataset.namespace;
+	    } else if (element) {
+	      return element.getAttribute('data-namespace');
+	    }
+	
+	    return null;
 	  },
 	
 	  /**
