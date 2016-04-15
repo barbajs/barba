@@ -130,7 +130,6 @@ var Pjax = {
     xhr.then(
       function(data) {
         var container = _this.Dom.parseResponse(data);
-        var namespace = _this.Dom.getNamespace(container);
 
         _this.Dom.putContainer(container);
 
@@ -227,7 +226,6 @@ var Pjax = {
    * @private
    */
   onStateChange: function() {
-    var _this = this;
     var newUrl = this.getCurrentUrl();
 
     if (this.transitionProgress)

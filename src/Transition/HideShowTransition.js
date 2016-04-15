@@ -1,4 +1,3 @@
-var Utils = require('../Utils/Utils.js');
 var BaseTransition = require('./BaseTransition');
 
 /**
