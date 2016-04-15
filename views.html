@@ -44,6 +44,10 @@ Homepage.init();
 {% endhighlight %}
 
 <blockquote>
+  <p>Is suggested to .init() the Views before calling Pjax.start() - In this way Pjax.start() will emit onEnter() and onEnterCompleted() for the current view.</p>
+</blockquote>
+
+<blockquote>
   <p>If you don't like data-namespace you can change it, see the API section.</p>
 </blockquote>
 
