@@ -47,6 +47,7 @@ var Utils = {
     };
 
     req.open('GET', url);
+    req.setRequestHeader('x-barba', 'yes');
     req.send();
 
     return deferred.promise;
