@@ -23,7 +23,7 @@ var BaseView  = {
         if (newStatus.namespace === _this.namespace)
           _this.onEnter();
 
-        this.container = container;
+        _this.container = container;
       }
     );
 
