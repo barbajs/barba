@@ -20,10 +20,10 @@ var BaseView  = {
 
     Dispatcher.on('newPageReady',
       function(newStatus, oldStatus, container) {
+        _this.container = container;
+
         if (newStatus.namespace === _this.namespace)
           _this.onEnter();
-
-        _this.container = container;
       }
     );
 
