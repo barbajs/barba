@@ -57,7 +57,13 @@ var Dom = {
    */
   getNamespace: function(element) {
     //User customizable
-    return element && element.dataset ? element.dataset.namespace : null;
+    if (element && element.dataset) {
+      return element.dataset.namespace;
+    } else if (element) {
+      return element.getAttribute('data-namespace');
+    }
+
+    return null;
   },
 
   /**

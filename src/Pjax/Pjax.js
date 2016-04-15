@@ -180,6 +180,9 @@ var Pjax = {
    * @return {Boolean}     [description]
    */
   preventCheck: function(evt, element) {
+    if (!history.pushState)
+      return false;
+
     //User
     if (!element || !element.href)
       return false;
