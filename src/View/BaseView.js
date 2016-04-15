@@ -19,10 +19,11 @@ var BaseView  = {
     );
 
     Dispatcher.on('newPageReady',
-      function(newStatus, oldStatus) {
-        //The new page has been loaded and is ready on the DOM.
+      function(newStatus, oldStatus, container) {
         if (newStatus.namespace === _this.namespace)
           _this.onEnter();
+
+        this.container = container;
       }
     );
 

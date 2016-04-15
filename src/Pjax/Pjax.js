@@ -46,14 +46,16 @@ var Pjax = {
    * @private
    */
   init: function() {
+    var container = this.Dom.getContainer();
+
     this.History.add(
       this.getCurrentUrl(),
-      this.Dom.getNamespace(this.Dom.getContainer())
+      this.Dom.getNamespace(container)
     );
 
     //Fire for the current view.
     Dispatcher.trigger('initStateChange', this.History.currentStatus());
-    Dispatcher.trigger('newPageReady', this.History.currentStatus());
+    Dispatcher.trigger('newPageReady', this.History.currentStatus(), {}, container);
     Dispatcher.trigger('transitionCompleted', this.History.currentStatus());
 
     this.bindEvents();
@@ -272,7 +274,8 @@ var Pjax = {
 
     Dispatcher.trigger('newPageReady',
       this.History.currentStatus(),
-      this.History.prevStatus()
+      this.History.prevStatus(),
+      container
     );
   },
 
