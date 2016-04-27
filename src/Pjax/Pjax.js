@@ -163,7 +163,7 @@ var Pjax = {
       el = el.parentNode;
     }
 
-    if (this.isValidLink(evt, el)) {
+    if (this.preventCheck(evt, el)) {
       evt.stopPropagation();
       evt.preventDefault();
 
@@ -179,7 +179,7 @@ var Pjax = {
    * @param {HTMLElement} element
    * @return {Boolean}     [description]
    */
-  isValidLink: function(evt, element) {
+  preventCheck: function(evt, element) {
     if (!history.pushState)
       return false;
 

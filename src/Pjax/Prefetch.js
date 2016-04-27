@@ -25,7 +25,7 @@ var Prefetch = {
     var url = el.href;
 
     //Check if the link is elegible for Pjax
-    if (Pjax.isValidLink(evt, el) && !Pjax.Cache.get(url)) {
+    if (Pjax.preventCheck(evt, el) && !Pjax.Cache.get(url)) {
       var xhr = Utils.xhr(url);
       Pjax.Cache.set(url, xhr);
     }
