@@ -163,7 +163,7 @@ var Pjax = {
       el = el.parentNode;
     }
 
-    if (this.preventCheck(evt, el)) {
+    if (this.checkPrevent(evt, el)) {
       evt.stopPropagation();
       evt.preventDefault();
 
@@ -179,7 +179,7 @@ var Pjax = {
    * @param {HTMLElement} element
    * @return {Boolean}     [description]
    */
-  preventCheck: function(evt, element) {
+  checkPrevent: function(evt, element) {
     if (!history.pushState)
       return false;
 
