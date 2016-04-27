@@ -5,3 +5,5 @@ npm-debug.log*
 .DS_Store
 docs
 demo
+.sass-cache
+_site
