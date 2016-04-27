@@ -200,7 +200,7 @@ var Pjax = {
       return false;
 
     //Check if the port is the same
-    if (window.location.port !== element.port)
+    if (Utils.getPort() !== Utils.getPort(element.port))
       return false;
 
     //Ignore case when a hash is being tacked on the current URL

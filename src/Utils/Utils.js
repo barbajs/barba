@@ -87,6 +87,27 @@ var Utils = {
         this.reject = reject;
       }.bind(this));
     };
+  },
+
+  /**
+   * Return the port number normalized, eventually you can pass a string to be normalized.
+   *
+   * @param  {String} p
+   * @return {Int} port
+   */
+
+  getPort: function(p) {
+    var port = typeof p !== 'undefined' ? p : window.location.port;
+    var protocol = window.location.protocol;
+
+    if (port != '')
+      return parseInt(port);
+
+    if (protocol === 'http:')
+      return 80;
+
+    if (protocol === 'https:')
+      return 443;
   }
 };
 
