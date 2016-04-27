@@ -61,7 +61,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	
 	var Barba = {
-	  version: '0.0.6',
+	  version: '0.0.6dev',
 	  Dispatcher: __webpack_require__(4),
 	  HistoryManager: __webpack_require__(5),
 	  BaseTransition: __webpack_require__(6),
@@ -745,6 +745,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.reject = reject;
 	      }.bind(this));
 	    };
+	  },
+	
+	  /**
+	   * Return the port number normalized, eventually you can pass a string to be normalized.
+	   *
+	   * @param  {String} p
+	   * @return {Int} port
+	   */
+	
+	  getPort: function(p) {
+	    var port = typeof p !== 'undefined' ? p : window.location.port;
+	    var protocol = window.location.protocol;
+	
+	    if (port != '')
+	      return parseInt(port);
+	
+	    if (protocol === 'http:')
+	      return 80;
+	
+	    if (protocol === 'https:')
+	      return 443;
 	  }
 	};
 	
@@ -1031,7 +1052,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return false;
 	
 	    //Check if the port is the same
-	    if (window.location.port !== element.port)
+	    if (Utils.getPort() !== Utils.getPort(element.port))
 	      return false;
 	
 	    //Ignore case when a hash is being tacked on the current URL

@@ -14,7 +14,8 @@
     "dev": "webpack-dev-server --inline --hot",
     "js": "webpack",
     "minify": "uglifyjs --screw-ie8 --mangle --compress -o ./dist/barba.min.js ./dist/barba.js",
-    "build": "npm run js && npm run minify"
+    "build": "npm run js && npm run minify",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
