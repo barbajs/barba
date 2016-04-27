@@ -36,12 +36,12 @@ You can install it using npm:
 npm install barba.js --save-dev
 ```
 or just including the script in your page:   
-```
+```html
 <script src="barba.min.js" type="text/javascript"></script>
 ```
 barba.js needs to know a little bit about your DOM structure. By default uses this markup structure in your pages:
 
-```
+```html
 <div id="barba-wrapper">
   <div class="barba-container">
     ...Put here the content you wish to change between pages...
@@ -53,7 +53,7 @@ barba.js needs to know a little bit about your DOM structure. By default uses th
 
 After you've included barba.js in your project it's time to initialize it
 
-```
+```javascript
 // Please note, the DOM should be ready
 Barba.Pjax.start();
 ```
