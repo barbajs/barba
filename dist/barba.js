@@ -1015,7 +1015,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      el = el.parentNode;
 	    }
 	
-	    if (this.checkPrevent(evt, el)) {
+	    if (this.isValidLink(evt, el)) {
 	      evt.stopPropagation();
 	      evt.preventDefault();
 	
@@ -1031,7 +1031,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @param {HTMLElement} element
 	   * @return {Boolean}     [description]
 	   */
-	  checkPrevent: function(evt, element) {
+	  isValidLink: function(evt, element) {
 	    if (!history.pushState)
 	      return false;
 	
@@ -1371,7 +1371,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var url = el.href;
 	
 	    //Check if the link is elegible for Pjax
-	    if (Pjax.checkPrevent(evt, el) && !Pjax.Cache.get(url)) {
+	    if (Pjax.isValidLink(evt, el) && !Pjax.Cache.get(url)) {
 	      var xhr = Utils.xhr(url);
 	      Pjax.Cache.set(url, xhr);
 	    }
