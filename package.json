@@ -29,7 +29,7 @@
   "devDependencies": {
     "jaguarjs-jsdoc": "0.0.1",
     "jsdoc": "git+https://github.com/jsdoc3/jsdoc.git",
-    "promise-polyfill": "^2.1.0",
+    "promise-polyfill": "^5.2.1",
     "uglify-js": "^2.6.1",
     "webpack": "^1.12.4",
     "webpack-dev-server": "^1.12.1"
