@@ -50,17 +50,43 @@ var Dom = {
   },
 
   /**
+   * The name of the data attribute on the container
+   *
+   * @memberOf Barba.Pjax.Dom
+   * @static
+   * @type {String}
+   */
+  dataNamespace: 'namespace',
+
+  /**
+   * Id of the main wrapper
+   *
+   * @memberOf Barba.Pjax.Dom
+   * @static
+   * @type {String}
+   */
+  wrapperId: 'barba-wrapper',
+
+  /**
+   * Class name used to identify the containers
+   *
+   * @memberOf Barba.Pjax.Dom
+   * @static
+   * @type {String}
+   */
+  containerClass: 'barba-container',
+
+  /**
    * Get the namespace of the container
    * @memberOf Barba.Pjax.Dom
    * @param  {HTMLElement}
    * @return {String}
    */
   getNamespace: function(element) {
-    //User customizable
     if (element && element.dataset) {
-      return element.dataset.namespace;
+      return element.dataset[this.dataNamespace];
     } else if (element) {
-      return element.getAttribute('data-namespace');
+      return element.getAttribute('data-' + this.dataNamespace);
     }
 
     return null;
@@ -72,9 +98,8 @@ var Dom = {
    * @param  {HTMLElement} element
    */
   putContainer: function(element) {
-    //User customizable
     element.style.visibility = 'hidden';
-    document.getElementById('barba-wrapper').appendChild(element);
+    document.getElementById(this.wrapperId).appendChild(element);
   },
 
   /**
@@ -84,8 +109,7 @@ var Dom = {
    * @return {HTMLElement} element
    */
   parseContainer: function(element) {
-    //User customizable
-    return element.querySelector('.barba-container');
+    return element.querySelector('.' + this.containerClass);
   }
 };
 
