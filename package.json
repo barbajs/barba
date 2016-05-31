@@ -34,6 +34,7 @@
     "jsdoc": "git+https://github.com/jsdoc3/jsdoc.git",
     "karma": "^0.13.22",
     "karma-coverage": "^1.0.0",
+    "karma-coveralls": "^1.1.2",
     "karma-firefox-launcher": "^1.0.0",
     "karma-jasmine": "^1.0.2",
     "karma-webpack": "^1.7.0",
