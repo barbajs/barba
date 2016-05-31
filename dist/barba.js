@@ -72,6 +72,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	module.exports = Barba;
+	window.Barba = Barba;
 
 
 /***/ },

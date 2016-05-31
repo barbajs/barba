@@ -16,3 +16,4 @@ var Barba = {
 };
 
 module.exports = Barba;
+window.Barba = Barba;

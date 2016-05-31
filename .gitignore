@@ -7,3 +7,4 @@ docs
 demo
 .sass-cache
 _site
+coverage

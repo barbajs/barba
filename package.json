@@ -10,6 +10,7 @@
   ],
   "main": "dist/barba.js",
   "scripts": {
+    "test": "./node_modules/.bin/karma start --single-run --browsers Firefox",
     "generatedoc": "jsdoc src -r -d docs --configure jsdoc.json --verbose",
     "dev": "webpack-dev-server --inline --hot",
     "js": "webpack",
@@ -27,11 +28,18 @@
   "author": "Luigi De Rosa <lurukee@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "istanbul-instrumenter-loader": "^0.2.0",
     "jaguarjs-jsdoc": "0.0.1",
+    "jasmine-core": "^2.4.1",
     "jsdoc": "git+https://github.com/jsdoc3/jsdoc.git",
+    "karma": "^0.13.22",
+    "karma-coverage": "^1.0.0",
+    "karma-firefox-launcher": "^1.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-webpack": "^1.7.0",
     "promise-polyfill": "^5.2.1",
     "uglify-js": "^2.6.1",
-    "webpack": "^1.12.4",
+    "webpack": "^1.13.1",
     "webpack-dev-server": "^1.12.1"
   }
 }
