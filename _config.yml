@@ -22,6 +22,8 @@ navigation:
   - title: API
     url: docs/
     external: true
+  - title: Examples
+    url: examples.html
   - title: Demos
     url: demos.html
   - title: FAQ
