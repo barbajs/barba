@@ -7,17 +7,12 @@
 It helps reducing the delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.
 
 ---
+## Websites using Barba.js
+<a href="https://www.stanleystella.com" target="_blank"><img src="http://v18.imgup.net/ezgif-2010437e.gif" width="288"></a>
+<a href="http://www.poigneedemainvirile.com" target="_blank"><img src="http://u43.imgup.net/ezgif-324794c0.gif" width="288"></a>
+<a href="http://www.budidiokojinedostaje.hr" target="_blank"><img src="http://k77.imgup.net/ezgif-1820c351.gif" width="288"></a>
 
-### Grid Demo [(view)](http://barbajs.org/demo/grid/index.html)
-[<img src="http://a66.imgup.net/barba_gride5e8.gif" width="300">](http://barbajs.org/demo/grid/index.html)
-
-
-### Next/Prev demo [(view)](http://barbajs.org/demo/nextprev/index.html)
-[<img src="http://g56.imgup.net/ezgif-3823162d.gif" width="300">](http://barbajs.org/demo/nextprev/index.html)
-
-
-### Circles demo [(view)](http://barbajs.org/demo/nextprev-circle/index.html)
-[<img src="http://y88.imgup.net/barba_clip862d.gif" width="300">](http://barbajs.org/demo/nextprev-circle/index.html)
+[View demos](http://barbajs.org/demos.html)
 
 ## Features
 
