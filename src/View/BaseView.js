@@ -1,13 +1,41 @@
 var Dispatcher = require('../Dispatcher/Dispatcher');
 var Utils = require('../Utils/Utils.js');
 
+/**
+ * BaseView to be extended
+ *
+ * @namespace Barba.BaseView
+ * @type {Object}
+ */
 var BaseView  = {
+  /**
+   * Namespace of the view.
+   * (need to be associated with the data-namespace of the container)
+   *
+   * @memberOf Barba.BaseView
+   * @type {String}
+   */
   namespace: null,
 
+  /**
+   * Helper to extend the object
+   *
+   * @memberOf Barba.BaseView
+   * @param  {Object} newObject
+   * @return {Object} newInheritObject
+   */
   extend: function(obj){
     return Utils.extend(this, obj);
   },
 
+  /**
+   * Init the view.
+   * P.S. Is suggested to init the view before starting Barba.Pjax.start(),
+   * in this way .onEnter() and .onEnterCompleted() will be fired for the current
+   * container when the page is loaded.
+   *
+   * @memberOf Barba.BaseView
+   */
   init: function() {
     var _this = this;
 
@@ -38,30 +66,40 @@ var BaseView  = {
     );
   },
 
-  /*
-    Fired when the DOM is in the page
-  */
-
  /**
-  * [onEnter description]
+  * This function will be fired when the container
+  * is ready and attached to the DOM.
   *
+  * @memberOf Barba.BaseView
   * @abstract
   */
   onEnter: function() {},
 
-  /*
-    Fired when the page transition is done
-  */
+  /**
+   * This function will be fired when the transition
+   * to this container has just finished.
+   *
+   * @memberOf Barba.BaseView
+   * @abstract
+   */
   onEnterCompleted: function() {},
 
-  /*
-    Fired when the exit transition starts
-  */
+  /**
+   * This function will be fired when the transition
+   * to a new container has just started.
+   *
+   * @memberOf Barba.BaseView
+   * @abstract
+   */
   onLeave: function() {},
 
-  /*
-    Fired when the exit transition is done
-  */
+  /**
+   * This function will be fired when the container
+   * has just been removed from the DOM.
+   *
+   * @memberOf Barba.BaseView
+   * @abstract
+   */
   onLeaveCompleted: function() {}
 }
 

@@ -1,11 +1,13 @@
 /**
  * Just an object with some helpful functions
+ *
  * @type {Object}
  * @namespace Barba.Utils
  */
 var Utils = {
   /**
-   * Return current url
+   * Return the current url
+   *
    * @memberOf Barba.Utils
    * @return {String} currentUrl
    */
@@ -17,7 +19,8 @@ var Utils = {
   },
 
   /**
-   * Return a version of the url without the hash
+   * Given an url, return it without the hash
+   *
    * @memberOf Barba.Utils
    * @param  {String} url
    * @return {String} newCleanUrl
@@ -28,6 +31,7 @@ var Utils = {
 
   /**
    * Start an XMLHttpRequest() and return a Promise
+   *
    * @memberOf Barba.Utils
    * @param  {String} url
    * @return {Promise}
@@ -55,6 +59,7 @@ var Utils = {
 
   /**
    * Get obj and props and return a new object with the property merged
+   *
    * @memberOf Barba.Utils
    * @param  {object} obj
    * @param  {object} props
@@ -75,6 +80,7 @@ var Utils = {
   /**
    * Return a new "Deferred" object
    * https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/Promise.jsm/Deferred
+   *
    * @return {Deferred}
    */
   deferred: function() {
@@ -95,7 +101,6 @@ var Utils = {
    * @param  {String} p
    * @return {Int} port
    */
-
   getPort: function(p) {
     var port = typeof p !== 'undefined' ? p : window.location.port;
     var protocol = window.location.protocol;

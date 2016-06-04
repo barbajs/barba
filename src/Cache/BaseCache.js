@@ -1,18 +1,23 @@
 /**
  * BaseCache it's a simple static cache
+ *
  * @namespace Barba.BaseCache
+ * @type {Object}
  */
 var BaseCache = {
   /**
    * The array that keeps everything.
+   *
    * @memberOf Barba.BaseCache
    * @type {Array}
    */
   data: [],
 
   /**
-   * Helper that
+   * Helper to extend the object
+   *
    * @memberOf Barba.BaseCache
+   * @private
    * @param  {Object} newObject
    * @return {Object} newInheritObject
    */
@@ -23,6 +28,7 @@ var BaseCache = {
   /**
    * Set a key, value data, mainly Barba is going to save Ajax
    * promise object.
+   *
    * @memberOf Barba.BaseCache
    * @param {String} key
    * @param {*} value
@@ -33,6 +39,7 @@ var BaseCache = {
 
   /**
    * Retrieve the data by the key
+   *
    * @memberOf Barba.BaseCache
    * @param  {String} key
    * @return {*}
@@ -43,6 +50,7 @@ var BaseCache = {
 
   /**
    * Reset all the cache stored
+   *
    * @memberOf Barba.BaseCache
    */
   reset: function() {

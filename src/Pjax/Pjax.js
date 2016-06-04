@@ -20,6 +20,7 @@ var Pjax = {
 
   /**
    * Indicate wether or not use the cache
+   *
    * @memberOf Barba.Pjax
    * @type {Boolean}
    */
@@ -27,6 +28,7 @@ var Pjax = {
 
   /**
    * Indicate if there is an animation in progress
+   *
    * @memberOf Barba.Pjax
    * @readOnly
    * @type {Boolean}
@@ -35,6 +37,7 @@ var Pjax = {
 
   /**
    * Function to be called to start Pjax
+   *
    * @memberOf Barba.Pjax
    */
   start: function() {
@@ -42,7 +45,9 @@ var Pjax = {
   },
 
   /**
-   * [init description]
+   * Init the events
+   *
+   * @memberOf Barba.Pjax
    * @private
    */
   init: function() {
@@ -63,6 +68,7 @@ var Pjax = {
 
   /**
    * Attach the eventlisteners
+   *
    * @memberOf Barba.Pjax
    * @private
    */
@@ -77,7 +83,8 @@ var Pjax = {
   },
 
   /**
-   * Return the currentURL
+   * Return the currentURL cleaned
+   *
    * @memberOf Barba.Pjax
    * @return {String} currentUrl
    */
@@ -89,6 +96,7 @@ var Pjax = {
 
   /**
    * Change the URL with pushstate and trigger the state change
+   *
    * @memberOf Barba.Pjax
    * @param  {String} newUrl
    */
@@ -99,6 +107,7 @@ var Pjax = {
 
   /**
    * Force the browser to go to a certain url
+   *
    * @memberOf Barba.Pjax
    * @param  {String} url
    * @private
@@ -151,6 +160,7 @@ var Pjax = {
 
   /**
    * Callback called from click event
+   *
    * @private
    * @param  {MouseEvent} evt
    */
@@ -174,10 +184,11 @@ var Pjax = {
 
   /**
    * Determine if the link should be followed
+   *
    * @memberOf Barba.Pjax
-   * @param  {MouseEvent} evt [description]
+   * @param  {MouseEvent} evt
    * @param {HTMLElement} element
-   * @return {Boolean}     [description]
+   * @return {Boolean}
    */
   preventCheck: function(evt, element) {
     if (!history.pushState)
@@ -219,6 +230,7 @@ var Pjax = {
 
   /**
    * Return a transition object
+   *
    * @memberOf Barba.Pjax
    * @return {Barba.Transition} Transition object
    */
@@ -229,6 +241,7 @@ var Pjax = {
 
   /**
    * Method called after a 'popstate' or from .goTo()
+   *
    * @memberOf Barba.Pjax
    * @private
    */
@@ -269,6 +282,7 @@ var Pjax = {
 
   /**
    * Function called as soon the new container is ready
+   *
    * @memberOf Barba.Pjax
    * @private
    * @param  {HTMLElement} container
@@ -286,6 +300,7 @@ var Pjax = {
 
   /**
    * Function called as soon the transition is finished
+   *
    * @memberOf Barba.Pjax
    * @private
    */

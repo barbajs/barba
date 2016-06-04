@@ -3,14 +3,29 @@ var Pjax = require('./Pjax');
 
 /**
  * Prefetch
+ *
  * @namespace Barba.Prefetch
+ * @type {Object}
  */
 var Prefetch = {
+  /**
+   * Init the event listener on mouseover and touchstart
+   * for the prefetch
+   *
+   * @memberOf Barba.Prefetch
+   */
   init: function() {
     document.body.addEventListener('mouseover', this.onLinkEnter.bind(this));
     document.body.addEventListener('touchstart', this.onLinkEnter.bind(this));
   },
 
+  /**
+   * Callback for the mousehover/touchstart
+   *
+   * @memberOf Barba.Prefetch
+   * @private
+   * @param  {Object} evt
+   */
   onLinkEnter: function(evt) {
     var el = evt.target;
 
