@@ -79,8 +79,6 @@
             
             <span class="subtitle">Methods</span>
             
-                <li data-name="Barba.BaseCache.extend"><a href="Barba.BaseCache.html#.extend">extend</a></li>
-            
                 <li data-name="Barba.BaseCache.get"><a href="Barba.BaseCache.html#.get">get</a></li>
             
                 <li data-name="Barba.BaseCache.reset"><a href="Barba.BaseCache.html#.reset">reset</a></li>
@@ -128,6 +126,45 @@
             </ul>
         </li>
     
+        <li class="item" data-name="Barba.BaseView">
+            <span class="title">
+                <a href="Barba.BaseView.html">Barba.BaseView</a>
+                
+                <span class="static">static</span>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="Barba.BaseView.namespace"><a href="Barba.BaseView.html#.namespace">namespace</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Barba.BaseView.extend"><a href="Barba.BaseView.html#.extend">extend</a></li>
+            
+                <li data-name="Barba.BaseView.init"><a href="Barba.BaseView.html#.init">init</a></li>
+            
+                <li data-name="Barba.BaseView.onEnter"><a href="Barba.BaseView.html#.onEnter">onEnter</a></li>
+            
+                <li data-name="Barba.BaseView.onEnterCompleted"><a href="Barba.BaseView.html#.onEnterCompleted">onEnterCompleted</a></li>
+            
+                <li data-name="Barba.BaseView.onLeave"><a href="Barba.BaseView.html#.onLeave">onLeave</a></li>
+            
+                <li data-name="Barba.BaseView.onLeaveCompleted"><a href="Barba.BaseView.html#.onLeaveCompleted">onLeaveCompleted</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
         <li class="item" data-name="Barba.Dispatcher">
             <span class="title">
                 <a href="Barba.Dispatcher.html">Barba.Dispatcher</a>
@@ -154,27 +191,6 @@
                 <li data-name="Barba.Dispatcher.on"><a href="Barba.Dispatcher.html#.on">on</a></li>
             
                 <li data-name="Barba.Dispatcher.trigger"><a href="Barba.Dispatcher.html#.trigger">trigger</a></li>
-            
-            </ul>
-            <ul class="events itemMembers">
-            
-            </ul>
-        </li>
-    
-        <li class="item" data-name="Barba.HideShowTransition">
-            <span class="title">
-                <a href="Barba.HideShowTransition.html">Barba.HideShowTransition</a>
-                
-                <span class="static">static</span>
-                
-            </span>
-            <ul class="members itemMembers">
-            
-            </ul>
-            <ul class="typedefs itemMembers">
-            
-            </ul>
-            <ul class="methods itemMembers">
             
             </ul>
             <ul class="events itemMembers">
@@ -244,14 +260,6 @@
             </ul>
             <ul class="methods itemMembers">
             
-            <span class="subtitle">Methods</span>
-            
-                <li data-name="Barba.Pjax.Dom.getNamespace"><a href="Barba.Pjax.Dom.html#.getNamespace">getNamespace</a></li>
-            
-                <li data-name="Barba.Pjax.Dom.parseContainer"><a href="Barba.Pjax.Dom.html#.parseContainer">parseContainer</a></li>
-            
-                <li data-name="Barba.Pjax.Dom.putContainer"><a href="Barba.Pjax.Dom.html#.putContainer">putContainer</a></li>
-            
             </ul>
             <ul class="events itemMembers">
             
@@ -267,11 +275,21 @@
             </span>
             <ul class="members itemMembers">
             
+            <span class="subtitle">Members</span>
+            
+                <li data-name="Barba.Pjax.HistoryManager.states"><a href="Barba.Pjax.HistoryManager.html#.states">states</a></li>
+            
             </ul>
             <ul class="typedefs itemMembers">
             
             </ul>
             <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Barba.Pjax.HistoryManager.currentStatus"><a href="Barba.Pjax.HistoryManager.html#.currentStatus">currentStatus</a></li>
+            
+                <li data-name="Barba.Pjax.HistoryManager.prevStatus"><a href="Barba.Pjax.HistoryManager.html#.prevStatus">prevStatus</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -293,6 +311,10 @@
             
             </ul>
             <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Barba.Prefetch.init"><a href="Barba.Prefetch.html#.init">init</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -404,7 +426,7 @@
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id=".events"><span class="type-signature static">static</span>Barba.Dispatcher.events<span class="type-signature type object">Object</span> </h4>
+        <h4 class="name" id=".events"><span class="type-signature static">static,readonly</span>Barba.Dispatcher.events<span class="type-signature type object">Object</span> </h4>
     </div>
     
     
@@ -462,7 +484,7 @@
     
         
         <div class="tag-source">
-            Dispatcher/Dispatcher.js, line 30
+            Dispatcher/Dispatcher.js, line 36
         </div>
         
     </div>
@@ -473,7 +495,7 @@
     
     
     <div class="description">
-        Unbind
+        Unbind event
     </div>
     
 
@@ -601,7 +623,7 @@
     
         
         <div class="tag-source">
-            Dispatcher/Dispatcher.js, line 19
+            Dispatcher/Dispatcher.js, line 24
         </div>
         
     </div>
@@ -735,12 +757,12 @@
     <div class="nameContainer">
         <h4 class="name" id=".trigger">
             
-            <span class="type-signature static">static</span>Barba.Dispatcher.trigger<span class="signature">(eventName)</span>
+            <span class="type-signature static">static</span>Barba.Dispatcher.trigger<span class="signature">(eventName, args)</span>
         </h4>
     
         
         <div class="tag-source">
-            Dispatcher/Dispatcher.js, line 42
+            Dispatcher/Dispatcher.js, line 50
         </div>
         
     </div>
@@ -797,6 +819,41 @@
             
             
             <td class="description last">
+                
+                    
+                    
+                        
+                    
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                    
+                    
+                        
+                    
+                        <span class="repeatable">repeatable</span>
+                    
                 
                 </td>
         </tr>
@@ -862,7 +919,7 @@
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.0-dev</a> on Sun May 29 2016 22:12:33 GMT+0200 (CEST)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.0-dev</a> on Sun Jun 05 2016 00:51:05 GMT+0200 (CEST)
         </footer>
     </div>
 </div>
