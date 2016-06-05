@@ -72,7 +72,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	module.exports = Barba;
-	window.Barba = Barba;
 
 
 /***/ },
@@ -755,6 +754,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  /**
+	   * Time in millisecond after the xhr request goes in timeout
+	   *
+	   * @memberOf Barba.Utils
+	   * @type {Number}
+	   * @default
+	   */
+	  xhrTimeout: 5000,
+	
+	  /**
 	   * Start an XMLHttpRequest() and return a Promise
 	   *
 	   * @memberOf Barba.Utils
@@ -770,12 +778,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (req.status === 200) {
 	          return deferred.resolve(req.responseText);
 	        } else {
-	          return deferred.reject();
+	          return deferred.reject('fail');
 	        }
 	      }
 	    };
 	
+	    req.ontimeout = function() {
+	      return deferred.reject('fail');
+	    };
+	
 	    req.open('GET', url);
+	    req.timeout = this.xhrTimeout;
 	    req.setRequestHeader('x-barba', 'yes');
 	    req.send();
 	
@@ -985,6 +998,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   *
 	   * @memberOf Barba.Pjax
 	   * @type {Boolean}
+	   * @default
 	   */
 	  cacheEnabled: true,
 	
@@ -1113,7 +1127,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        //Something went wrong (timeout, 404, 505...)
 	        _this.forceGoTo(url);
 	
-	        deferred.reject();
+	        deferred.reject('fail');
 	      }
 	    );
 	
@@ -1440,6 +1454,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   *
 	   * @memberOf Barba.Pjax.Dom
 	   * @type {String}
+	   * @default
 	   */
 	  dataNamespace: 'namespace',
 	
@@ -1448,6 +1463,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   *
 	   * @memberOf Barba.Pjax.Dom
 	   * @type {String}
+	   * @default
 	   */
 	  wrapperId: 'barba-wrapper',
 	
@@ -1456,6 +1472,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   *
 	   * @memberOf Barba.Pjax.Dom
 	   * @type {String}
+	   * @default
 	   */
 	  containerClass: 'barba-container',
 	
