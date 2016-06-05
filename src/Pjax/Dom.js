@@ -57,6 +57,7 @@ var Dom = {
    *
    * @memberOf Barba.Pjax.Dom
    * @type {String}
+   * @default
    */
   dataNamespace: 'namespace',
 
@@ -65,6 +66,7 @@ var Dom = {
    *
    * @memberOf Barba.Pjax.Dom
    * @type {String}
+   * @default
    */
   wrapperId: 'barba-wrapper',
 
@@ -73,6 +75,7 @@ var Dom = {
    *
    * @memberOf Barba.Pjax.Dom
    * @type {String}
+   * @default
    */
   containerClass: 'barba-container',
 

@@ -23,6 +23,7 @@ var Pjax = {
    *
    * @memberOf Barba.Pjax
    * @type {Boolean}
+   * @default
    */
   cacheEnabled: true,
 
