@@ -1,5 +1,9 @@
 <p align="center"><a href="http://barbajs.org" target="_blank"><img width="300" src="http://barbajs.org/images/logo.svg"></a></p>
 
+<p align="center">
+<a href='https://travis-ci.org/luruke/barba.js'><img src='https://travis-ci.org/luruke/barba.js.svg?branch=dev' alt='Build Status' /></a>
+<a href='https://coveralls.io/github/luruke/barba.js?branch=dev'><img src='https://coveralls.io/repos/github/luruke/barba.js/badge.svg?branch=dev' alt='Coverage Status' /></a>
+</p>
 ---
 
 *barba.js* is a small *(4.4kb minified and gzipped)*, flexible and dependency free library that helps you creating fluid and smooth transitions between your website's pages.
