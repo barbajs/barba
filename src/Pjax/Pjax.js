@@ -152,7 +152,7 @@ var Pjax = {
         //Something went wrong (timeout, 404, 505...)
         _this.forceGoTo(url);
 
-        deferred.reject('fail');
+        deferred.reject();
       }
     );
 
