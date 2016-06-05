@@ -30,6 +30,15 @@ var Utils = {
   },
 
   /**
+   * Time in millisecond after the xhr request goes in timeout
+   *
+   * @memberOf Barba.Utils
+   * @type {Number}
+   * @default
+   */
+  xhrTimeout: 5000,
+
+  /**
    * Start an XMLHttpRequest() and return a Promise
    *
    * @memberOf Barba.Utils
@@ -50,7 +59,12 @@ var Utils = {
       }
     };
 
+    req.ontimeout = function() {
+      return deferred.reject('fail');
+    };
+
     req.open('GET', url);
+    req.timeout = this.xhrTimeout;
     req.setRequestHeader('x-barba', 'yes');
     req.send();
 
