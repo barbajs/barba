@@ -1,7 +1,8 @@
 var Utils = require('../Utils/Utils.js');
 
 /**
- * [BaseTransition description]
+ * BaseTransition to extend
+ *
  * @namespace Barba.BaseTransition
  * @type {Object}
  */
@@ -25,7 +26,8 @@ var BaseTransition = {
   newContainerLoading: undefined,
 
   /**
-   * Helper that
+   * Helper to extend the object
+   *
    * @memberOf Barba.BaseTransition
    * @param  {Object} newObject
    * @return {Object} newInheritObject
@@ -37,6 +39,7 @@ var BaseTransition = {
   /**
    * This function is called from Pjax module to initialize
    * the transition.
+   *
    * @memberOf Barba.BaseTransition
    * @private
    * @param  {HTMLElement} oldContainer
@@ -64,7 +67,8 @@ var BaseTransition = {
   },
 
   /**
-   * This function needs to be called as soon the Transition is done
+   * This function needs to be called as soon the Transition is finished
+   *
    * @memberOf Barba.BaseTransition
    */
   done: function() {
@@ -74,6 +78,7 @@ var BaseTransition = {
 
   /**
    * Function to be implemented
+   *
    * @abstract
    */
   start: function() {},

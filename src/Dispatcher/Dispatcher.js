@@ -1,17 +1,22 @@
 /**
  * Little Dispatcher inspired by MicroEvent.js
+ *
  * @namespace Barba.Dispatcher
+ * @type {Object}
  */
 var Dispatcher = {
   /**
    * Event array
+   *
    * @memberOf Barba.Dispatcher
+   * @readOnly
    * @type {Object}
    */
   events: {},
 
   /**
    * Bind a callback to an event
+   *
    * @memberOf Barba.Dispatcher
    * @param  {String} eventName
    * @param  {Function} function
@@ -22,7 +27,8 @@ var Dispatcher = {
   },
 
   /**
-   * Unbind
+   * Unbind event
+   *
    * @memberOf Barba.Dispatcher
    * @param  {String} eventName
    * @param  {Function} function
@@ -36,8 +42,10 @@ var Dispatcher = {
 
   /**
    * Fire the event running all the event associated
+   *
    * @memberOf Barba.Dispatcher
    * @param  {String} eventName
+   * @param {...*} args
    */
   trigger: function(e) {//e, ...args
     if (e in this.events === false)

@@ -2,19 +2,25 @@
  * HistoryManager helps to keep track of the navigation
  *
  * @namespace Barba.Pjax.HistoryManager
+ * @type {Object}
  */
 var HistoryManager = {
   /**
    * Keep track of the states in historic order
-   * @memberOf Barba.Pjax.HistoryManger
+   *
+   * @memberOf Barba.Pjax.HistoryManager
+   * @readOnly
    * @type {Array}
    */
   states: [],
 
   /**
    * Add a new set of url and namespace
+   *
+   * @memberOf Barba.Pjax.HistoryManager
    * @param {String} url
-   * @param {String} [namespae] namespace
+   * @param {String} namespace
+   * @private
    */
   add: function(url, namespace) {
     if (!namespace)
@@ -27,16 +33,20 @@ var HistoryManager = {
   },
 
   /**
-   * [currentStatus description]
-   * @return {Object} [description]
+   * Return information about the current status
+   *
+   * @memberOf Barba.Pjax.HistoryManager
+   * @return {Object}
    */
   currentStatus: function() {
     return this.states[this.states.length - 1];
   },
 
   /**
-   * [prevStatus description]
-   * @return {Object} [description]
+   * Return information about the previous status
+   *
+   * @memberOf Barba.Pjax.HistoryManager
+   * @return {Object}
    */
   prevStatus: function() {
     var states = this.states;

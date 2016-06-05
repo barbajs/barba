@@ -1,11 +1,13 @@
 /**
  * Dom object
+ *
  * @namespace Barba.Pjax.Dom
  * @type {Object}
  */
 var Dom = {
   /**
    * Parse the responseText obtained from the xhr call
+   *
    * @memberOf Barba.Pjax.Dom
    * @private
    * @param  {String} responseText
@@ -26,6 +28,7 @@ var Dom = {
   /**
    * get the container on the current DOM,
    * or from an HTMLElement passed via argument
+   *
    * @memberOf Barba.Pjax.Dom
    * @private
    * @param  {HTMLElement} [element]
@@ -53,7 +56,6 @@ var Dom = {
    * The name of the data attribute on the container
    *
    * @memberOf Barba.Pjax.Dom
-   * @static
    * @type {String}
    */
   dataNamespace: 'namespace',
@@ -62,7 +64,6 @@ var Dom = {
    * Id of the main wrapper
    *
    * @memberOf Barba.Pjax.Dom
-   * @static
    * @type {String}
    */
   wrapperId: 'barba-wrapper',
@@ -71,14 +72,15 @@ var Dom = {
    * Class name used to identify the containers
    *
    * @memberOf Barba.Pjax.Dom
-   * @static
    * @type {String}
    */
   containerClass: 'barba-container',
 
   /**
    * Get the namespace of the container
+   *
    * @memberOf Barba.Pjax.Dom
+   * @private
    * @param  {HTMLElement}
    * @return {String}
    */
@@ -94,7 +96,9 @@ var Dom = {
 
   /**
    * Put the container on the page
+   *
    * @memberOf Barba.Pjax.Dom
+   * @private
    * @param  {HTMLElement} element
    */
   putContainer: function(element) {
@@ -104,7 +108,9 @@ var Dom = {
 
   /**
    * Get container selector
+   *
    * @memberOf Barba.Pjax.Dom
+   * @private
    * @param  {HTMLElement} element
    * @return {HTMLElement} element
    */

@@ -3,6 +3,8 @@ var BaseTransition = require('./BaseTransition');
 /**
  * Basic Transition object, wait for the new Container to be ready
  * and, after that, hide the oldContainer
+ *
+ * @private
  * @namespace Barba.HideShowTransition
  * @augments Barba.BaseTransition
  */
