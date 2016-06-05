@@ -61,7 +61,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	
 	var Barba = {
-	  version: '0.0.8',
+	  version: '0.0.9',
 	  Dispatcher: __webpack_require__(4),
 	  HistoryManager: __webpack_require__(5),
 	  BaseTransition: __webpack_require__(6),
@@ -499,18 +499,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * Little Dispatcher inspired by MicroEvent.js
+	 *
 	 * @namespace Barba.Dispatcher
+	 * @type {Object}
 	 */
 	var Dispatcher = {
 	  /**
 	   * Event array
+	   *
 	   * @memberOf Barba.Dispatcher
+	   * @readOnly
 	   * @type {Object}
 	   */
 	  events: {},
 	
 	  /**
 	   * Bind a callback to an event
+	   *
 	   * @memberOf Barba.Dispatcher
 	   * @param  {String} eventName
 	   * @param  {Function} function
@@ -521,7 +526,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  /**
-	   * Unbind
+	   * Unbind event
+	   *
 	   * @memberOf Barba.Dispatcher
 	   * @param  {String} eventName
 	   * @param  {Function} function
@@ -535,8 +541,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  /**
 	   * Fire the event running all the event associated
+	   *
 	   * @memberOf Barba.Dispatcher
 	   * @param  {String} eventName
+	   * @param {...*} args
 	   */
 	  trigger: function(e) {//e, ...args
 	    if (e in this.events === false)
@@ -558,50 +566,60 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * HistoryManager helps to keep track of the navigation
 	 *
-	 * @namespace Barba.Pjax.HistoryManager
+	 * @namespace Barba.HistoryManager
+	 * @type {Object}
 	 */
 	var HistoryManager = {
 	  /**
-	   * Keep track of the states in historic order
-	   * @memberOf Barba.Pjax.HistoryManger
+	   * Keep track of the status in historic order
+	   *
+	   * @memberOf Barba.HistoryManager
+	   * @readOnly
 	   * @type {Array}
 	   */
-	  states: [],
+	  history: [],
 	
 	  /**
 	   * Add a new set of url and namespace
+	   *
+	   * @memberOf Barba.HistoryManager
 	   * @param {String} url
-	   * @param {String} [namespae] namespace
+	   * @param {String} namespace
+	   * @private
 	   */
 	  add: function(url, namespace) {
 	    if (!namespace)
 	      namespace = undefined;
 	
-	    this.states.push({
+	    this.history.push({
 	      url: url,
 	      namespace: namespace
 	    });
 	  },
 	
 	  /**
-	   * [currentStatus description]
-	   * @return {Object} [description]
+	   * Return information about the current status
+	   *
+	   * @memberOf Barba.HistoryManager
+	   * @return {Object}
 	   */
 	  currentStatus: function() {
-	    return this.states[this.states.length - 1];
+	    return this.history[this.history.length - 1];
 	  },
 	
 	  /**
-	   * [prevStatus description]
-	   * @return {Object} [description]
+	   * Return information about the previous status
+	   *
+	   * @memberOf Barba.HistoryManager
+	   * @return {Object}
 	   */
 	  prevStatus: function() {
-	    var states = this.states;
+	    var history = this.history;
 	
-	    if (states.length < 2)
+	    if (history.length < 2)
 	      return null;
 	
-	    return states[states.length - 2];
+	    return history[history.length - 2];
 	  }
 	};
 	
@@ -615,7 +633,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Utils = __webpack_require__(7);
 	
 	/**
-	 * [BaseTransition description]
+	 * BaseTransition to extend
+	 *
 	 * @namespace Barba.BaseTransition
 	 * @type {Object}
 	 */
@@ -639,7 +658,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  newContainerLoading: undefined,
 	
 	  /**
-	   * Helper that
+	   * Helper to extend the object
+	   *
 	   * @memberOf Barba.BaseTransition
 	   * @param  {Object} newObject
 	   * @return {Object} newInheritObject
@@ -651,6 +671,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /**
 	   * This function is called from Pjax module to initialize
 	   * the transition.
+	   *
 	   * @memberOf Barba.BaseTransition
 	   * @private
 	   * @param  {HTMLElement} oldContainer
@@ -678,7 +699,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  /**
-	   * This function needs to be called as soon the Transition is done
+	   * This function needs to be called as soon the Transition is finished
+	   *
 	   * @memberOf Barba.BaseTransition
 	   */
 	  done: function() {
@@ -688,6 +710,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  /**
 	   * Function to be implemented
+	   *
 	   * @abstract
 	   */
 	  start: function() {},
@@ -702,12 +725,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * Just an object with some helpful functions
+	 *
 	 * @type {Object}
 	 * @namespace Barba.Utils
 	 */
 	var Utils = {
 	  /**
-	   * Return current url
+	   * Return the current url
+	   *
 	   * @memberOf Barba.Utils
 	   * @return {String} currentUrl
 	   */
@@ -719,7 +744,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  /**
-	   * Return a version of the url without the hash
+	   * Given an url, return it without the hash
+	   *
 	   * @memberOf Barba.Utils
 	   * @param  {String} url
 	   * @return {String} newCleanUrl
@@ -730,6 +756,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  /**
 	   * Start an XMLHttpRequest() and return a Promise
+	   *
 	   * @memberOf Barba.Utils
 	   * @param  {String} url
 	   * @return {Promise}
@@ -757,6 +784,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  /**
 	   * Get obj and props and return a new object with the property merged
+	   *
 	   * @memberOf Barba.Utils
 	   * @param  {object} obj
 	   * @param  {object} props
@@ -777,6 +805,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /**
 	   * Return a new "Deferred" object
 	   * https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/Promise.jsm/Deferred
+	   *
 	   * @return {Deferred}
 	   */
 	  deferred: function() {
@@ -797,7 +826,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @param  {String} p
 	   * @return {Int} port
 	   */
-	
 	  getPort: function(p) {
 	    var port = typeof p !== 'undefined' ? p : window.location.port;
 	    var protocol = window.location.protocol;
@@ -823,13 +851,41 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Dispatcher = __webpack_require__(4);
 	var Utils = __webpack_require__(7);
 	
+	/**
+	 * BaseView to be extended
+	 *
+	 * @namespace Barba.BaseView
+	 * @type {Object}
+	 */
 	var BaseView  = {
+	  /**
+	   * Namespace of the view.
+	   * (need to be associated with the data-namespace of the container)
+	   *
+	   * @memberOf Barba.BaseView
+	   * @type {String}
+	   */
 	  namespace: null,
 	
+	  /**
+	   * Helper to extend the object
+	   *
+	   * @memberOf Barba.BaseView
+	   * @param  {Object} newObject
+	   * @return {Object} newInheritObject
+	   */
 	  extend: function(obj){
 	    return Utils.extend(this, obj);
 	  },
 	
+	  /**
+	   * Init the view.
+	   * P.S. Is suggested to init the view before starting Barba.Pjax.start(),
+	   * in this way .onEnter() and .onEnterCompleted() will be fired for the current
+	   * container when the page is loaded.
+	   *
+	   * @memberOf Barba.BaseView
+	   */
 	  init: function() {
 	    var _this = this;
 	
@@ -860,30 +916,40 @@ return /******/ (function(modules) { // webpackBootstrap
 	    );
 	  },
 	
-	  /*
-	    Fired when the DOM is in the page
-	  */
-	
 	 /**
-	  * [onEnter description]
+	  * This function will be fired when the container
+	  * is ready and attached to the DOM.
 	  *
+	  * @memberOf Barba.BaseView
 	  * @abstract
 	  */
 	  onEnter: function() {},
 	
-	  /*
-	    Fired when the page transition is done
-	  */
+	  /**
+	   * This function will be fired when the transition
+	   * to this container has just finished.
+	   *
+	   * @memberOf Barba.BaseView
+	   * @abstract
+	   */
 	  onEnterCompleted: function() {},
 	
-	  /*
-	    Fired when the exit transition starts
-	  */
+	  /**
+	   * This function will be fired when the transition
+	   * to a new container has just started.
+	   *
+	   * @memberOf Barba.BaseView
+	   * @abstract
+	   */
 	  onLeave: function() {},
 	
-	  /*
-	    Fired when the exit transition is done
-	  */
+	  /**
+	   * This function will be fired when the container
+	   * has just been removed from the DOM.
+	   *
+	   * @memberOf Barba.BaseView
+	   * @abstract
+	   */
 	  onLeaveCompleted: function() {}
 	}
 	
@@ -916,6 +982,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  /**
 	   * Indicate wether or not use the cache
+	   *
 	   * @memberOf Barba.Pjax
 	   * @type {Boolean}
 	   */
@@ -923,6 +990,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  /**
 	   * Indicate if there is an animation in progress
+	   *
 	   * @memberOf Barba.Pjax
 	   * @readOnly
 	   * @type {Boolean}
@@ -931,6 +999,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  /**
 	   * Function to be called to start Pjax
+	   *
 	   * @memberOf Barba.Pjax
 	   */
 	  start: function() {
@@ -938,7 +1007,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  /**
-	   * [init description]
+	   * Init the events
+	   *
+	   * @memberOf Barba.Pjax
 	   * @private
 	   */
 	  init: function() {
@@ -959,6 +1030,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  /**
 	   * Attach the eventlisteners
+	   *
 	   * @memberOf Barba.Pjax
 	   * @private
 	   */
@@ -973,7 +1045,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  /**
-	   * Return the currentURL
+	   * Return the currentURL cleaned
+	   *
 	   * @memberOf Barba.Pjax
 	   * @return {String} currentUrl
 	   */
@@ -985,6 +1058,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  /**
 	   * Change the URL with pushstate and trigger the state change
+	   *
 	   * @memberOf Barba.Pjax
 	   * @param  {String} newUrl
 	   */
@@ -995,6 +1069,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  /**
 	   * Force the browser to go to a certain url
+	   *
 	   * @memberOf Barba.Pjax
 	   * @param  {String} url
 	   * @private
@@ -1047,6 +1122,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  /**
 	   * Callback called from click event
+	   *
 	   * @private
 	   * @param  {MouseEvent} evt
 	   */
@@ -1070,10 +1146,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  /**
 	   * Determine if the link should be followed
+	   *
 	   * @memberOf Barba.Pjax
-	   * @param  {MouseEvent} evt [description]
+	   * @param  {MouseEvent} evt
 	   * @param {HTMLElement} element
-	   * @return {Boolean}     [description]
+	   * @return {Boolean}
 	   */
 	  preventCheck: function(evt, element) {
 	    if (!history.pushState)
@@ -1115,6 +1192,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  /**
 	   * Return a transition object
+	   *
 	   * @memberOf Barba.Pjax
 	   * @return {Barba.Transition} Transition object
 	   */
@@ -1125,6 +1203,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  /**
 	   * Method called after a 'popstate' or from .goTo()
+	   *
 	   * @memberOf Barba.Pjax
 	   * @private
 	   */
@@ -1165,6 +1244,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  /**
 	   * Function called as soon the new container is ready
+	   *
 	   * @memberOf Barba.Pjax
 	   * @private
 	   * @param  {HTMLElement} container
@@ -1182,6 +1262,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  /**
 	   * Function called as soon the transition is finished
+	   *
 	   * @memberOf Barba.Pjax
 	   * @private
 	   */
@@ -1207,6 +1288,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Basic Transition object, wait for the new Container to be ready
 	 * and, after that, hide the oldContainer
+	 *
+	 * @private
 	 * @namespace Barba.HideShowTransition
 	 * @augments Barba.BaseTransition
 	 */
@@ -1233,19 +1316,24 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * BaseCache it's a simple static cache
+	 *
 	 * @namespace Barba.BaseCache
+	 * @type {Object}
 	 */
 	var BaseCache = {
 	  /**
 	   * The array that keeps everything.
+	   *
 	   * @memberOf Barba.BaseCache
 	   * @type {Array}
 	   */
-	  data: [],
+	  data: {},
 	
 	  /**
-	   * Helper that
+	   * Helper to extend the object
+	   *
 	   * @memberOf Barba.BaseCache
+	   * @private
 	   * @param  {Object} newObject
 	   * @return {Object} newInheritObject
 	   */
@@ -1256,6 +1344,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /**
 	   * Set a key, value data, mainly Barba is going to save Ajax
 	   * promise object.
+	   *
 	   * @memberOf Barba.BaseCache
 	   * @param {String} key
 	   * @param {*} value
@@ -1266,6 +1355,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  /**
 	   * Retrieve the data by the key
+	   *
 	   * @memberOf Barba.BaseCache
 	   * @param  {String} key
 	   * @return {*}
@@ -1276,10 +1366,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  /**
 	   * Reset all the cache stored
+	   *
 	   * @memberOf Barba.BaseCache
 	   */
 	  reset: function() {
-	    this.data = [];
+	    this.data = {};
 	  }
 	};
 	
@@ -1292,12 +1383,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * Dom object
+	 *
 	 * @namespace Barba.Pjax.Dom
 	 * @type {Object}
 	 */
 	var Dom = {
 	  /**
 	   * Parse the responseText obtained from the xhr call
+	   *
 	   * @memberOf Barba.Pjax.Dom
 	   * @private
 	   * @param  {String} responseText
@@ -1318,6 +1411,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /**
 	   * get the container on the current DOM,
 	   * or from an HTMLElement passed via argument
+	   *
 	   * @memberOf Barba.Pjax.Dom
 	   * @private
 	   * @param  {HTMLElement} [element]
@@ -1345,7 +1439,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * The name of the data attribute on the container
 	   *
 	   * @memberOf Barba.Pjax.Dom
-	   * @static
 	   * @type {String}
 	   */
 	  dataNamespace: 'namespace',
@@ -1354,7 +1447,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * Id of the main wrapper
 	   *
 	   * @memberOf Barba.Pjax.Dom
-	   * @static
 	   * @type {String}
 	   */
 	  wrapperId: 'barba-wrapper',
@@ -1363,14 +1455,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * Class name used to identify the containers
 	   *
 	   * @memberOf Barba.Pjax.Dom
-	   * @static
 	   * @type {String}
 	   */
 	  containerClass: 'barba-container',
 	
 	  /**
 	   * Get the namespace of the container
+	   *
 	   * @memberOf Barba.Pjax.Dom
+	   * @private
 	   * @param  {HTMLElement}
 	   * @return {String}
 	   */
@@ -1386,7 +1479,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  /**
 	   * Put the container on the page
+	   *
 	   * @memberOf Barba.Pjax.Dom
+	   * @private
 	   * @param  {HTMLElement} element
 	   */
 	  putContainer: function(element) {
@@ -1396,7 +1491,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  /**
 	   * Get container selector
+	   *
 	   * @memberOf Barba.Pjax.Dom
+	   * @private
 	   * @param  {HTMLElement} element
 	   * @return {HTMLElement} element
 	   */
@@ -1417,14 +1514,29 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	/**
 	 * Prefetch
+	 *
 	 * @namespace Barba.Prefetch
+	 * @type {Object}
 	 */
 	var Prefetch = {
+	  /**
+	   * Init the event listener on mouseover and touchstart
+	   * for the prefetch
+	   *
+	   * @memberOf Barba.Prefetch
+	   */
 	  init: function() {
 	    document.body.addEventListener('mouseover', this.onLinkEnter.bind(this));
 	    document.body.addEventListener('touchstart', this.onLinkEnter.bind(this));
 	  },
 	
+	  /**
+	   * Callback for the mousehover/touchstart
+	   *
+	   * @memberOf Barba.Prefetch
+	   * @private
+	   * @param  {Object} evt
+	   */
 	  onLinkEnter: function(evt) {
 	    var el = evt.target;
 	
