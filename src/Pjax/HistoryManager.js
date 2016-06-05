@@ -6,13 +6,13 @@
  */
 var HistoryManager = {
   /**
-   * Keep track of the states in historic order
+   * Keep track of the status in historic order
    *
    * @memberOf Barba.HistoryManager
    * @readOnly
    * @type {Array}
    */
-  states: [],
+  history: [],
 
   /**
    * Add a new set of url and namespace
@@ -26,7 +26,7 @@ var HistoryManager = {
     if (!namespace)
       namespace = undefined;
 
-    this.states.push({
+    this.history.push({
       url: url,
       namespace: namespace
     });
@@ -39,7 +39,7 @@ var HistoryManager = {
    * @return {Object}
    */
   currentStatus: function() {
-    return this.states[this.states.length - 1];
+    return this.history[this.history.length - 1];
   },
 
   /**
@@ -49,12 +49,12 @@ var HistoryManager = {
    * @return {Object}
    */
   prevStatus: function() {
-    var states = this.states;
+    var history = this.history;
 
-    if (states.length < 2)
+    if (history.length < 2)
       return null;
 
-    return states[states.length - 2];
+    return history[history.length - 2];
   }
 };
 

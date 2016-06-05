@@ -3,13 +3,13 @@ describe('HistoryManager', function() {
 
   it('exists', function() {
     expect(historyManager).toBeTruthy();
-    expect(historyManager.states.length).toBe(0);
+    expect(historyManager.history.length).toBe(0);
   });
 
   it('.add', function() {
     historyManager.add('url1', 'namespace1');
 
-    expect(historyManager.states.length).toBe(1);
+    expect(historyManager.history.length).toBe(1);
   });
 
   it('.currentStatus', function() {
@@ -27,7 +27,7 @@ describe('HistoryManager', function() {
     var current = historyManager.currentStatus();
     var prev = historyManager.prevStatus();
 
-    expect(historyManager.states.length).toBe(2);
+    expect(historyManager.history.length).toBe(2);
     expect(current.url).toBe('url2');
     expect(current.namespace).toBeFalsy();
     expect(prev.url).toBe('url1');
