@@ -11,7 +11,7 @@ var BaseCache = {
    * @memberOf Barba.BaseCache
    * @type {Array}
    */
-  data: [],
+  data: {},
 
   /**
    * Helper to extend the object
@@ -54,7 +54,7 @@ var BaseCache = {
    * @memberOf Barba.BaseCache
    */
   reset: function() {
-    this.data = [];
+    this.data = {};
   }
 };
 
