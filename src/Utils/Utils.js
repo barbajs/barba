@@ -45,7 +45,7 @@ var Utils = {
         if (req.status === 200) {
           return deferred.resolve(req.responseText);
         } else {
-          return deferred.reject();
+          return deferred.reject('fail');
         }
       }
     };
