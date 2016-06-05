@@ -13,9 +13,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      //'dist/barba.js',
       'src/index.js',
-      //'tests/index.html',
       'tests/index.js'
     ],
 
