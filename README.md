@@ -24,13 +24,13 @@ Barba.js uses *PJAX* (aka push state ajax) to enhance the user's experience.
 
 This technique consist in preventing the normal link behavior, changing manually the browser url, and injecting manually the new content in the page. In this way there will be no browser *"hard refresh"*.
 
-Here is al walkthrough of what happens when the user click a link:
+Here is a walkthrough of what happens when the user clicks a link:
 
-1.  Check if the link is valid and elegible for *PJAX*, if yes, prevent the normal browser behavior.
+1.  Check if the link is valid and eligible for *PJAX*, if yes, prevent the normal browser behavior.
 2.  Change the URL using [Push State API](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState).
 3.  Start fetching the new page via `XMLHttpRequest`.
 4.  Create a **new** [transition](http://barbajs.org/transition.html) instance.
-5.  As soon the new page is loaded, barba.js parses the new HTML (taking `.barba-container`) and put the new content on the DOM inside `#barba-wrapper`.
+5.  As soon the new page is loaded, barba.js parses the new HTML (taking `.barba-container`) and puts the new content on the DOM inside `#barba-wrapper`.
 6.  The [transition](http://barbajs.org/transition.html) instance will take care to hide the old container and show the new one.
 7.  As soon the transition is finished, the old container is removed from the DOM.
 
@@ -39,7 +39,7 @@ Here is al walkthrough of what happens when the user click a link:
 
 ## Why?
 
-Using this technique will bring numerous benefit:
+Using this technique will bring numerous benefits:
 
 *   Possibility to create nice transition between pages enhancing the user's experience.
 *   Reduce HTTP requests. (why reload the css/js at each page change?)
