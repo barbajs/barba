@@ -6,6 +6,8 @@
 </p>
 ---
 
+[![Join the chat at https://gitter.im/luruke/barba.js](https://badges.gitter.im/luruke/barba.js.svg)](https://gitter.im/luruke/barba.js?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 *barba.js* is a small *(4.4kb minified and gzipped)*, flexible and dependency free library that helps you creating fluid and smooth transitions between your website's pages.
 
 It helps reducing the delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.
