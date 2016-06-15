@@ -1,3 +1,9 @@
 # barba.js gh-pages
 
-dev: `bundle exec jekyll serve --watch`
+## Install
+Make sure to have installed ruby and bundler.  
+`bundle install`
+
+## Run
+Run the website on local:  
+`bundle exec jekyll serve --watch`
