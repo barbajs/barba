@@ -10,12 +10,12 @@
 
 <h1>Transition</h1>
 
-<p>A transition is a javascript object that will take care to hide the old Container and display the new one.</p>
+<p>A transition is a Javascript object that will make sure to hide the old container and display the new one.</p>
 
 <p>All the transitions need to extend the <a href="https://github.com/luruke/barba.js/blob/master/src/Transition/BaseTransition.js" target="_blank">Barba.BaseTransiton</a> object.</p>
 
 <blockquote>
-  <p>Please note, the transition starts even before the new page is loaded. In this way you can start your own transition even before the next page is loaded.</p>
+  <p>Please note: the transition starts even before the new page is loaded. This way you can start your own transition even before the next page is loaded.</p>
 </blockquote>
 
 <p>Extending this object your transition will inherit the following members:</p>
@@ -31,7 +31,7 @@
   <tbody>
     <tr>
       <td><code>start</code></td>
-      <td><code>function</code> that will be called automatically when your transition starts. (you can consider it as the constructor of your transition)</td>
+      <td><code>function</code> that will be called automatically when your transition starts. (you can consider it the constructor of your transition)</td>
     </tr>
     <tr>
       <td><code>done</code></td>
@@ -42,7 +42,7 @@
     </tr>
     <tr>
       <td><code>oldContainer</code></td>
-      <td><code>HTMLElement</code> of the old Container.</td>
+      <td><code>HTMLElement</code> of the old container.</td>
     </tr>
     <tr>
       <td><code>newContainerLoading</code></td>
@@ -60,7 +60,7 @@
 
 <h2>HideShow Example</h2>
 
-<p>By default barba.js uses a simple HideShow transition, in order to understand how it works let's recreate it:</p>
+<p>By default barba.js uses a simple HideShow transition. In order to understand how it works, let's recreate it:</p>
 
 {% highlight javascript %}
 var HideShowTransition = Barba.BaseTransition.extend({
@@ -79,7 +79,7 @@ var HideShowTransition = Barba.BaseTransition.extend({
 {% endhighlight %}
 
 <blockquote>
-  <p>As you noticed we used a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank"><code>Promise</code></a>, barba.js also comes with an handy Promise polyfill.</p>
+  <p>As you noticed we used a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank"><code>Promise</code></a>; barba.js also comes with an handy Promise polyfill.</p>
 </blockquote>
 
 <p>Next, we have to tell barba.js to use our new transition:</p>
@@ -92,10 +92,10 @@ Barba.Pjax.getTransition = function() {
 
 <h2>FadeTransition Example</h2>
 
-<p>Let's create now a more complex transition, a FadeTransition using jquery .animate()</p>
+<p>Let's create now a more complex transition, a FadeTransition using jQuery's <code>.animate()</code></p>
 
 <blockquote>
-  <p>Of course you can use any JS library/plain javascript/css transitions and more.</p>
+  <p>Of course you can use any JS library, plain Javascript method, CSS transitions, or something else instead.</p>
 </blockquote>
 
 {% highlight javascript %}

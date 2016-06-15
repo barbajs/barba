@@ -9,21 +9,21 @@
   <div class="barba-container">
     <h1>How it works</h1>
     <p>barba.js uses PJAX (aka push state ajax) to enhance the user's experience.</p>
-    <p>This technique consist in preventing the normal link behavior, changing manually the browser url, and injecting manually the new content in the page. In this way there will be no browser "hard refresh".</p>
+    <p>This technique consist of preventing the normal link behavior, changing the browser url manually, and manually injecting the new content in the page. In this way there will be no browser "hard refresh".</p>
 
     <p>Here is a walkthrough of what happens when the user clicks a link:</p>
     <ol>
-      <li>Check if the link is valid and eligible for PJAX, if yes, prevent the normal browser behavior.</li>
-      <li>Change the URL using <a href="https://developer.mozilla.org/en-US/docs/Web/API/History/pushState" target="_blank">push state API.</a></li>
-      <li>Start fetching the new page via XMLHttpRequest.</li>
+      <li>Check if the link is valid and eligible for PJAX. If yes, prevent the normal browser behavior.</li>
+      <li>Change the URL using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/History/pushState" target="_blank">push state API.</a></li>
+      <li>Start fetching the new page via a XMLHttpRequest.</li>
       <li>Create a <b>new</b> <a href="transition.html">transition</a> instance.</li>
       <li>As soon the new page is loaded, barba.js parses the new HTML (taking <code>.barba-container</code>) and puts the new content on the DOM inside <code>#barba-wrapper</code>.</li>
-      <li>The <a href="transition.html">transition</a> instance will take care to hide the old container and show the new one.</li>
+      <li>The <a href="transition.html">transition</a> instance will take care of hiding the old container and showing the new one.</li>
       <li>As soon the transition is finished, the old container is removed from the DOM.</li>
     </ol>
 
     <blockquote>
-      <p>Please note, on server side, your pages will need to be served normally. Barba.js works as ehnancement for your website, everything should work normally without Javascript.</p>
+      <p>Please note: on the server side your pages will need to be served normally. Barba.js works as ehnancement for your website, everything should work normally without Javascript.</p>
     </blockquote>
 
     <h2>Why?</h2>
