@@ -2,8 +2,8 @@
 
 <p align="center">
 <a href="https://gitter.im/luruke/barba.js"><img src="https://badges.gitter.im/luruke/barba.js.svg" /></a>
-<a href='https://travis-ci.org/luruke/barba.js'><img src='https://travis-ci.org/luruke/barba.js.svg?branch=dev' alt='Build Status' /></a>
-<a href='https://coveralls.io/github/luruke/barba.js?branch=dev'><img src='https://coveralls.io/repos/github/luruke/barba.js/badge.svg?branch=dev' alt='Coverage Status' /></a>
+<a href='https://travis-ci.org/luruke/barba.js'><img src='https://travis-ci.org/luruke/barba.js.svg?branch=master' alt='Build Status' /></a>
+<a href='https://coveralls.io/github/luruke/barba.js?branch=master'><img src='https://coveralls.io/repos/github/luruke/barba.js/badge.svg?branch=master' alt='Coverage Status' /></a>
 </p>
 ---
 
