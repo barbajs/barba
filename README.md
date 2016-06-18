@@ -1,8 +1,9 @@
 <p align="center"><a href="http://barbajs.org" target="_blank"><img width="300" src="http://barbajs.org/images/logo.svg"></a></p>
 
 <p align="center">
-<a href='https://travis-ci.org/luruke/barba.js'><img src='https://travis-ci.org/luruke/barba.js.svg?branch=dev' alt='Build Status' /></a>
-<a href='https://coveralls.io/github/luruke/barba.js?branch=dev'><img src='https://coveralls.io/repos/github/luruke/barba.js/badge.svg?branch=dev' alt='Coverage Status' /></a>
+<a href="https://gitter.im/luruke/barba.js"><img src="https://badges.gitter.im/luruke/barba.js.svg" /></a>
+<a href='https://travis-ci.org/luruke/barba.js'><img src='https://travis-ci.org/luruke/barba.js.svg?branch=master' alt='Build Status' /></a>
+<a href='https://coveralls.io/github/luruke/barba.js?branch=master'><img src='https://coveralls.io/repos/github/luruke/barba.js/badge.svg?branch=master' alt='Coverage Status' /></a>
 </p>
 ---
 
@@ -83,7 +84,6 @@ After you've included barba.js in your project it's time to initialize it
 // Please note, the DOM should be ready
 Barba.Pjax.start();
 ```
-
 ## Contribute
 
 Barba.js is created in the spare time by [Luigi De Rosa](https://twitter.com/luruke) and released under MIT licence.  
