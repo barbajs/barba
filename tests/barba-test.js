@@ -1,9 +1,9 @@
 describe('Barba exists', function() {
-  it('Promise exists', function() {
+  it('should have Promise', function() {
     expect(window.Promise).toBeTruthy();
   });
 
-  it('Barba version is a string', function() {
+  it('should have a version string', function() {
     expect(Barba.version).toEqual(jasmine.any(String));
   });
 });

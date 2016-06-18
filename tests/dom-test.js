@@ -19,11 +19,11 @@ describe('Dom', function() {
   dom.wrapperId = 'custom-barba-wrapper';
   dom.containerClass = 'custom-barba-container';
 
-  it('exists', function() {
+  it('should exists', function() {
     expect(dom).toBeTruthy();
   });
 
-  it('.parseResponse', function() {
+  it('should be able to parse the dom', function() {
     container = dom.parseResponse(fakePage);
     var text = container.querySelector('h1').textContent;
 
@@ -31,7 +31,7 @@ describe('Dom', function() {
     expect(document.title).toBe('titlepage');
   });
 
-  it('.getNamespace', function() {
+  it('should be able to get the namespace', function() {
     var namespace = dom.getNamespace(container);
 
     expect(dom.getNamespace()).toBeFalsy();
