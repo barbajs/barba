@@ -99,7 +99,7 @@ var Pjax = {
    * Change the URL with pushstate and trigger the state change
    *
    * @memberOf Barba.Pjax
-   * @param  {String} newUrl
+   * @param {String} newUrl
    */
   goTo: function(url) {
     window.history.pushState(null, null, url);
@@ -110,7 +110,7 @@ var Pjax = {
    * Force the browser to go to a certain url
    *
    * @memberOf Barba.Pjax
-   * @param  {String} url
+   * @param {String} url
    * @private
    */
   forceGoTo: function(url) {
@@ -162,8 +162,9 @@ var Pjax = {
   /**
    * Callback called from click event
    *
+   * @memberOf Barba.Pjax
    * @private
-   * @param  {MouseEvent} evt
+   * @param {MouseEvent} evt
    */
   onLinkClick: function(evt) {
     var el = evt.target;
@@ -188,7 +189,7 @@ var Pjax = {
    *
    * @memberOf Barba.Pjax
    * @param  {MouseEvent} evt
-   * @param {HTMLElement} element
+   * @param  {HTMLElement} element
    * @return {Boolean}
    */
   preventCheck: function(evt, element) {
@@ -286,7 +287,7 @@ var Pjax = {
    *
    * @memberOf Barba.Pjax
    * @private
-   * @param  {HTMLElement} container
+   * @param {HTMLElement} container
    */
   onNewContainerLoaded: function(container) {
     var currentStatus = this.History.currentStatus();

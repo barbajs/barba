@@ -77,8 +77,9 @@ var BaseTransition = {
   },
 
   /**
-   * Function to be implemented
+   * Constructor for your Transition
    *
+   * @memberOf Barba.BaseTransition
    * @abstract
    */
   start: function() {},

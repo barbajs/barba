@@ -22,6 +22,7 @@ var Utils = {
    * Given an url, return it without the hash
    *
    * @memberOf Barba.Utils
+   * @private
    * @param  {String} url
    * @return {String} newCleanUrl
    */
@@ -95,6 +96,7 @@ var Utils = {
    * Return a new "Deferred" object
    * https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/Promise.jsm/Deferred
    *
+   * @memberOf Barba.Utils
    * @return {Deferred}
    */
   deferred: function() {
@@ -112,6 +114,8 @@ var Utils = {
   /**
    * Return the port number normalized, eventually you can pass a string to be normalized.
    *
+   * @memberOf Barba.Utils
+   * @private
    * @param  {String} p
    * @return {Int} port
    */

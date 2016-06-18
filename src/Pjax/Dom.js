@@ -1,5 +1,5 @@
 /**
- * Dom object
+ * Object that is going to deal with DOM parsing/manipulation
  *
  * @namespace Barba.Pjax.Dom
  * @type {Object}
@@ -26,12 +26,12 @@ var Dom = {
   },
 
   /**
-   * get the container on the current DOM,
+   * Get the container on the current DOM,
    * or from an HTMLElement passed via argument
    *
    * @memberOf Barba.Pjax.Dom
    * @private
-   * @param  {HTMLElement} [element]
+   * @param  {HTMLElement} element
    * @return {HTMLElement}
    */
   getContainer: function(element) {
@@ -84,7 +84,7 @@ var Dom = {
    *
    * @memberOf Barba.Pjax.Dom
    * @private
-   * @param  {HTMLElement}
+   * @param  {HTMLElement} element
    * @return {String}
    */
   getNamespace: function(element) {

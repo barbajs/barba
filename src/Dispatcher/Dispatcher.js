@@ -6,7 +6,7 @@
  */
 var Dispatcher = {
   /**
-   * Event array
+   * Object that keeps all the events
    *
    * @memberOf Barba.Dispatcher
    * @readOnly
@@ -41,11 +41,11 @@ var Dispatcher = {
   },
 
   /**
-   * Fire the event running all the event associated
+   * Fire the event running all the event associated to it
    *
    * @memberOf Barba.Dispatcher
    * @param  {String} eventName
-   * @param {...*} args
+   * @param  {...*} args
    */
   trigger: function(e) {//e, ...args
     if (e in this.events === false)
