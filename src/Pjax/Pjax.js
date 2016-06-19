@@ -37,6 +37,15 @@ var Pjax = {
   transitionProgress: false,
 
   /**
+   * Class name used to ignore links
+   *
+   * @memberOf Barba.Pjax
+   * @type {String}
+   * @default
+   */
+  ignoreClassLink: 'no-barba',
+
+  /**
    * Function to be called to start Pjax
    *
    * @memberOf Barba.Pjax
@@ -224,7 +233,7 @@ var Pjax = {
     if (Utils.cleanLink(element.href) == Utils.cleanLink(location.href))
       return false;
 
-    if (element.classList.contains('no-barba'))
+    if (element.classList.contains(this.ignoreClassLink))
       return false;
 
     return true;
