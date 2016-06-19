@@ -20,6 +20,7 @@
       "selenium_port"  : 4444,
       "selenium_host"  : "localhost",
       "silent": true,
+      "filter": "*/test.js",
       "screenshots" : {
         "enabled" : false,
         "path" : ""
