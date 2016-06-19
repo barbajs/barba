@@ -14,6 +14,7 @@
     "generatedoc": "jsdoc src -r -d docs --configure jsdoc.json --verbose",
     "dev": "webpack-dev-server --inline --hot",
     "js": "webpack",
+    "filesize": "echo \"scale=2; $(gzip -c dist/barba.min.js | wc -c) / 1024\" | bc; echo \"kb\"",
     "minify": "uglifyjs --screw-ie8 --mangle --compress -o ./dist/barba.min.js ./dist/barba.js",
     "build": "npm run js && npm run minify",
     "prepublish": "npm run build"
