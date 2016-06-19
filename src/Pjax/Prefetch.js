@@ -9,12 +9,25 @@ var Pjax = require('./Pjax');
  */
 var Prefetch = {
   /**
+   * Class name used to ignore prefetch on links
+   *
+   * @memberOf Barba.Prefetch
+   * @type {String}
+   * @default
+   */
+  ignoreClassLink: 'no-barba-prefetch',
+
+  /**
    * Init the event listener on mouseover and touchstart
    * for the prefetch
    *
    * @memberOf Barba.Prefetch
    */
   init: function() {
+    if (!window.history.pushState) {
+      return false;
+    }
+
     document.body.addEventListener('mouseover', this.onLinkEnter.bind(this));
     document.body.addEventListener('touchstart', this.onLinkEnter.bind(this));
   },
@@ -33,7 +46,7 @@ var Prefetch = {
       el = el.parentNode;
     }
 
-    if (!el) {
+    if (!el || el.classList.contains(this.ignoreClassLink)) {
       return;
     }
 
