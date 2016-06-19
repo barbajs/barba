@@ -202,7 +202,7 @@ var Pjax = {
    * @return {Boolean}
    */
   preventCheck: function(evt, element) {
-    if (!history.pushState)
+    if (!window.history.pushState)
       return false;
 
     //User
