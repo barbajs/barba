@@ -10,7 +10,10 @@
   ],
   "main": "dist/barba.js",
   "scripts": {
-    "test": "./node_modules/.bin/karma start --single-run --browsers Firefox",
+    "test": "npm run http-server -s && npm run unit && npm run e2e",
+    "e2e": "./node_modules/nightwatch/bin/nightwatch",
+    "unit": "./node_modules/.bin/karma start --single-run --browsers Firefox",
+    "http-server": "./node_modules/http-server/bin/http-server -p 9966 -s . &",
     "generatedoc": "jsdoc src -r -d docs --configure jsdoc.json --verbose",
     "dev": "webpack-dev-server --inline --hot",
     "js": "webpack",
@@ -29,6 +32,7 @@
   "author": "Luigi De Rosa <lurukee@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "http-server": "^0.9.0",
     "istanbul-instrumenter-loader": "^0.2.0",
     "jaguarjs-jsdoc": "0.0.1",
     "jasmine-core": "^2.4.1",
@@ -39,7 +43,9 @@
     "karma-firefox-launcher": "^1.0.0",
     "karma-jasmine": "^1.0.2",
     "karma-webpack": "^1.7.0",
+    "nightwatch": "^0.9.4",
     "promise-polyfill": "^5.2.1",
+    "selenium-server": "^2.53.0",
     "uglify-js": "^2.6.1",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.12.1"
