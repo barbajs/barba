@@ -1,8 +1,8 @@
 var BaseTransition = require('./BaseTransition');
 
 /**
- * Basic Transition object, wait for the new Container to be ready
- * and, after that, hide the oldContainer
+ * Basic Transition object, wait for the new Container to be ready,
+ * scroll top, and finish the transition (removing the old container and displaying the new one)
  *
  * @private
  * @namespace Barba.HideShowTransition
@@ -10,14 +10,11 @@ var BaseTransition = require('./BaseTransition');
  */
 var HideShowTransition = BaseTransition.extend({
   start: function() {
-    this.newContainerLoading.then(this.hideShow.bind(this));
+    this.newContainerLoading.then(this.finish.bind(this));
   },
 
-  hideShow: function() {
-    this.oldContainer.style.visibility = 'hidden';
-    this.newContainer.style.visibility = 'visible';
+  finish: function() {
     document.body.scrollTop = 0;
-
     this.done();
   }
 });
