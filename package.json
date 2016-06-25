@@ -1,6 +1,6 @@
 {
   "name": "barba.js",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Barba.js it's a small, flexible and dependency free library that helps you creating fluid and smooth transition between your website's pages.",
   "homepage": "http://barbajs.org",
   "keywords": [
