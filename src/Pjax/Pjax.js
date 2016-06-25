@@ -62,6 +62,9 @@ var Pjax = {
    */
   init: function() {
     var container = this.Dom.getContainer();
+    var wrapper = this.Dom.getWrapper();
+
+    wrapper.setAttribute('aria-live', 'polite');
 
     this.History.add(
       this.getCurrentUrl(),

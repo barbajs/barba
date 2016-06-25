@@ -6,6 +6,33 @@
  */
 var Dom = {
   /**
+   * The name of the data attribute on the container
+   *
+   * @memberOf Barba.Pjax.Dom
+   * @type {String}
+   * @default
+   */
+  dataNamespace: 'namespace',
+
+  /**
+   * Id of the main wrapper
+   *
+   * @memberOf Barba.Pjax.Dom
+   * @type {String}
+   * @default
+   */
+  wrapperId: 'barba-wrapper',
+
+  /**
+   * Class name used to identify the containers
+   *
+   * @memberOf Barba.Pjax.Dom
+   * @type {String}
+   * @default
+   */
+  containerClass: 'barba-container',
+
+  /**
    * Parse the responseText obtained from the xhr call
    *
    * @memberOf Barba.Pjax.Dom
@@ -23,6 +50,21 @@ var Dom = {
       document.title = titleEl.textContent;
 
     return this.getContainer(wrapper);
+  },
+
+  /**
+   * Get the main barba wrapper by the ID `wrapperId`
+   *
+   * @memberOf Barba.Pjax.Dom
+   * @return {HTMLElement} element
+   */
+  getWrapper: function() {
+    var wrapper = document.getElementById(this.wrapperId);
+
+    if (!wrapper)
+      throw new Error('Barba.js: wrapper not found!');
+
+    return wrapper;
   },
 
   /**
@@ -53,33 +95,6 @@ var Dom = {
   },
 
   /**
-   * The name of the data attribute on the container
-   *
-   * @memberOf Barba.Pjax.Dom
-   * @type {String}
-   * @default
-   */
-  dataNamespace: 'namespace',
-
-  /**
-   * Id of the main wrapper
-   *
-   * @memberOf Barba.Pjax.Dom
-   * @type {String}
-   * @default
-   */
-  wrapperId: 'barba-wrapper',
-
-  /**
-   * Class name used to identify the containers
-   *
-   * @memberOf Barba.Pjax.Dom
-   * @type {String}
-   * @default
-   */
-  containerClass: 'barba-container',
-
-  /**
    * Get the namespace of the container
    *
    * @memberOf Barba.Pjax.Dom
@@ -106,7 +121,9 @@ var Dom = {
    */
   putContainer: function(element) {
     element.style.visibility = 'hidden';
-    document.getElementById(this.wrapperId).appendChild(element);
+
+    var wrapper = this.getWrapper();
+    wrapper.appendChild(element);
   },
 
   /**
