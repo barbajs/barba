@@ -1,3 +1,5 @@
+var Utils = require('../Utils/Utils.js');
+
 /**
  * BaseCache it's a simple static cache
  *
