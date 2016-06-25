@@ -7,7 +7,7 @@
 </p>
 ---
 
-*barba.js* is a small *(3.94kb minified and gzipped)*, flexible and dependency free library that helps you creating fluid and smooth transitions between your website's pages.
+*barba.js* is a small *(4kb minified and gzipped)*, flexible and dependency free library that helps you creating fluid and smooth transitions between your website's pages.
 
 It helps reducing the delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.
 
