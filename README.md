@@ -68,7 +68,7 @@ or just including the script in your page:
 ```
 or you can use [cdnjs](https://cdnjs.com/libraries/barba.js):   
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/0.1.0/barba.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/0.0.10/barba.min.js" type="text/javascript"></script>
 ```
 
 barba.js needs to know a little bit about your DOM structure. By default uses this markup structure in your pages:
