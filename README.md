@@ -38,6 +38,8 @@ Here is a walkthrough of what happens when the user clicks a link:
 > Please note, on server side, your pages will need to be served normally.   
 > Barba.js works as ehnancement for your website, everything should work normally without Javascript.
 
+In order to have a better understanding on how Barba.js works I suggest you to read this [article](https://www.smashingmagazine.com/2016/07/improving-user-flow-through-page-transitions/) I wrote for Smashing Magazine.
+
 ## Why?
 
 Using this technique will bring numerous benefits:
