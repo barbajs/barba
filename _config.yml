@@ -19,6 +19,8 @@ navigation:
     url: cache.html
   - title: Prefetch
     url: prefetch.html
+  - title: Partial output
+    url: partial-output.html
   - title: API
     url: docs/
     external: true

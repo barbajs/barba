@@ -1,0 +1,21 @@
+---
+# Front matter comment to ensure Jekyll properly reads file.
+---
+
+{% include header.html %}
+{% include nav.html %}
+
+<div id="barba-wrapper">
+  <div class="barba-container">
+    <h1>Partial Output</h1>
+    <p>Barba.js sends a custom HTTP Header <code>x-barba</code> in the <code>XMLHttpRequest</code>.</p>
+    <p>If you are using a server side language, you could detect this custom HTTP Header and output just the container instead of the entire page.</p>
+    <p>This could result in less bandwith usage and less server-side load.</p>
+
+    <blockquote>
+      <p>Please note: doing so, you have to handle manually the upate of the title of the page.</p>
+    </blockquote>
+  </div>
+</div>
+
+{% include footer.html %}
