@@ -13,9 +13,11 @@ It helps reducing the delay between your pages, minimizing browser HTTP requests
 
 ---
 ## Websites using Barba.js
-<a href="https://www.stanleystella.com" target="_blank"><img src="http://v18.imgup.net/ezgif-2010437e.gif" width="288"></a>
-<a href="http://www.poigneedemainvirile.com" target="_blank"><img src="http://u43.imgup.net/ezgif-324794c0.gif" width="288"></a>
-<a href="http://www.budidiokojinedostaje.hr" target="_blank"><img src="http://k77.imgup.net/ezgif-1820c351.gif" width="288"></a>
+<a href="https://www.stanleystella.com" target="_blank"><img src="http://barbajs.org/images/1.gif" width="288"></a>
+<a href="http://www.poigneedemainvirile.com" target="_blank"><img src="http://barbajs.org/images/2.gif" width="288"></a>
+<a href="http://www.budidiokojinedostaje.hr" target="_blank"><img src="http://barbajs.org/images/3.gif" width="288"></a>
+<a href="http://magacom.fr" target="_blank"><img src="http://barbajs.org/images/4.gif" width="288"></a>
+<a href="http://adrenalinmedia.com.au" target="_blank"><img src="http://barbajs.org/images/5.gif" width="288"></a>
 
 [View demos](http://barbajs.org/demos.html)
 
