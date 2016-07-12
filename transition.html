@@ -63,7 +63,7 @@
 <p>By default barba.js uses a simple HideShow transition. In order to understand how it works, let's recreate it:</p>
 
 {% highlight javascript %}
-var HideShowTransition = BaseTransition.extend({
+var HideShowTransition = Barba.BaseTransition.extend({
   start: function() {
     this.newContainerLoading.then(this.finish.bind(this));
   },
