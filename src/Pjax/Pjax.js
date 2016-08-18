@@ -53,7 +53,7 @@ var Pjax = {
   start: function() {
     this.init();
   },
-evt
+
   /**
    * Init the events
    *
