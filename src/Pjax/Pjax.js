@@ -191,7 +191,7 @@ var Pjax = {
       evt.stopPropagation();
       evt.preventDefault();
 
-      Dispatcher.trigger('linkClicked', el);
+      Dispatcher.trigger('linkClicked', el, evt);
       this.goTo(el.href);
     }
   },
