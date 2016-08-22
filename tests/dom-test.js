@@ -37,4 +37,11 @@ describe('Dom', function() {
     expect(dom.getNamespace()).toBeFalsy();
     expect(namespace).toBe('test');
   });
+
+  it('should have a default currentHTML', function() {
+    var html = dom.currentHTML;
+
+    expect(html).toBeTruthy();
+    expect(html).toContain('titlepage');
+  });
 });

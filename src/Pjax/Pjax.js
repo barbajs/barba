@@ -73,7 +73,12 @@ var Pjax = {
 
     //Fire for the current view.
     Dispatcher.trigger('initStateChange', this.History.currentStatus());
-    Dispatcher.trigger('newPageReady', this.History.currentStatus(), {}, container);
+    Dispatcher.trigger('newPageReady',
+      this.History.currentStatus(),
+      {},
+      container,
+      this.Dom.currentHTML
+    );
     Dispatcher.trigger('transitionCompleted', this.History.currentStatus());
 
     this.bindEvents();
@@ -308,7 +313,8 @@ var Pjax = {
     Dispatcher.trigger('newPageReady',
       this.History.currentStatus(),
       this.History.prevStatus(),
-      container
+      container,
+      this.Dom.currentHTML
     );
   },
 
