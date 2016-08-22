@@ -5,7 +5,7 @@ if (typeof Promise !== 'function') {
 }
 
 var Barba = {
-  version: '0.0.10',
+  version: '1.0.0',
   BaseTransition: require('./Transition/BaseTransition'),
   BaseView: require('./View/BaseView'),
   BaseCache: require('./Cache/BaseCache'),
