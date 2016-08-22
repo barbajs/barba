@@ -61,7 +61,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	
 	var Barba = {
-	  version: '0.0.10',
+	  version: '1.0.0',
 	  BaseTransition: __webpack_require__(4),
 	  BaseView: __webpack_require__(6),
 	  BaseCache: __webpack_require__(8),
@@ -1123,7 +1123,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    //Fire for the current view.
 	    Dispatcher.trigger('initStateChange', this.History.currentStatus());
-	    Dispatcher.trigger('newPageReady', this.History.currentStatus(), {}, container);
+	    Dispatcher.trigger('newPageReady',
+	      this.History.currentStatus(),
+	      {},
+	      container,
+	      this.Dom.currentHTML
+	    );
 	    Dispatcher.trigger('transitionCompleted', this.History.currentStatus());
 	
 	    this.bindEvents();
@@ -1241,7 +1246,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      evt.stopPropagation();
 	      evt.preventDefault();
 	
-	      Dispatcher.trigger('linkClicked', el);
+	      Dispatcher.trigger('linkClicked', el, evt);
 	      this.goTo(el.href);
 	    }
 	  },
@@ -1358,7 +1363,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Dispatcher.trigger('newPageReady',
 	      this.History.currentStatus(),
 	      this.History.prevStatus(),
-	      container
+	      container,
+	      this.Dom.currentHTML
 	    );
 	  },
 	
@@ -1448,6 +1454,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	  containerClass: 'barba-container',
 	
 	  /**
+	   * Full HTML String of the current page.
+	   * By default is the innerHTML of the initial loaded page.
+	   *
+	   * Each time a new page is loaded, the value is the response of the xhr call.
+	   *
+	   * @memberOf Barba.Pjax.Dom
+	   * @type {String}
+	   */
+	  currentHTML: document.documentElement.innerHTML,
+	
+	  /**
 	   * Parse the responseText obtained from the xhr call
 	   *
 	   * @memberOf Barba.Pjax.Dom
@@ -1456,6 +1473,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @return {HTMLElement}
 	   */
 	  parseResponse: function(responseText) {
+	    this.currentHTML = responseText;
+	
 	    var wrapper = document.createElement('div');
 	    wrapper.innerHTML = responseText;
 	
