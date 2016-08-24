@@ -237,6 +237,10 @@ var Pjax = {
     if (element.href.indexOf('#') > -1)
       return false;
 
+    //Ignore case where there is download attribute
+    if (typeof element.download !== 'undefined')
+      return false;
+
     //In case you're trying to load the same page
     if (Utils.cleanLink(element.href) == Utils.cleanLink(location.href))
       return false;
