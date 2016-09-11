@@ -1265,7 +1265,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return undefined;
 	    }
 	
-	    if (typeof el.getAttribute('xlink:href') === 'string') {
+	    if (el.getAttribute && typeof el.getAttribute('xlink:href') === 'string') {
 	      return el.getAttribute('xlink:href');
 	    }
 	
@@ -1342,7 +1342,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return false;
 	
 	    //Ignore case where there is download attribute
-	    if (typeof element.download !== 'undefined')
+	    if (element.getAttribute && typeof element.download === 'string')
 	      return false;
 	
 	    //In case you're trying to load the same page
