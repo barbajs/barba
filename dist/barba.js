@@ -61,7 +61,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	
 	var Barba = {
-	  version: '0.0.10',
+	  version: '1.0.0',
 	  BaseTransition: __webpack_require__(4),
 	  BaseView: __webpack_require__(6),
 	  BaseCache: __webpack_require__(8),
@@ -400,6 +400,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	// shim for using process in browser
 	
 	var process = module.exports = {};
+	
+	// cached from whatever global is present so that test runners that stub it
+	// don't break things.  But we need to wrap it in a try catch in case it is
+	// wrapped in strict mode code which doesn't define any globals.  It's inside a
+	// function because try/catches deoptimize in certain engines.
+	
+	var cachedSetTimeout;
+	var cachedClearTimeout;
+	
+	(function () {
+	  try {
+	    cachedSetTimeout = setTimeout;
+	  } catch (e) {
+	    cachedSetTimeout = function () {
+	      throw new Error('setTimeout is not defined');
+	    }
+	  }
+	  try {
+	    cachedClearTimeout = clearTimeout;
+	  } catch (e) {
+	    cachedClearTimeout = function () {
+	      throw new Error('clearTimeout is not defined');
+	    }
+	  }
+	} ())
 	var queue = [];
 	var draining = false;
 	var currentQueue;
@@ -424,7 +449,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (draining) {
 	        return;
 	    }
-	    var timeout = setTimeout(cleanUpNextTick);
+	    var timeout = cachedSetTimeout(cleanUpNextTick);
 	    draining = true;
 	
 	    var len = queue.length;
@@ -441,7 +466,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    currentQueue = null;
 	    draining = false;
-	    clearTimeout(timeout);
+	    cachedClearTimeout(timeout);
 	}
 	
 	process.nextTick = function (fun) {
@@ -453,7 +478,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    queue.push(new Item(fun, args));
 	    if (queue.length === 1 && !draining) {
-	        setTimeout(drainQueue, 0);
+	        cachedSetTimeout(drainQueue, 0);
 	    }
 	};
 	
@@ -1123,7 +1148,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    //Fire for the current view.
 	    Dispatcher.trigger('initStateChange', this.History.currentStatus());
-	    Dispatcher.trigger('newPageReady', this.History.currentStatus(), {}, container);
+	    Dispatcher.trigger('newPageReady',
+	      this.History.currentStatus(),
+	      {},
+	      container,
+	      this.Dom.currentHTML
+	    );
 	    Dispatcher.trigger('transitionCompleted', this.History.currentStatus());
 	
 	    this.bindEvents();
@@ -1222,6 +1252,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  /**
+	   * Get the .href parameter out of an element
+	   * and handle special cases (like xlink:href)
+	   *
+	   * @private
+	   * @memberOf Barba.Pjax
+	   * @param  {HTMLElement} el
+	   * @return {String} href
+	   */
+	  getHref: function(el) {
+	    if (!el) {
+	      return undefined;
+	    }
+	
+	    if (typeof el.getAttribute('xlink:href') === 'string') {
+	      return el.getAttribute('xlink:href');
+	    }
+	
+	    if (typeof el.href === 'string') {
+	      return el.href;
+	    }
+	
+	    return undefined;
+	  },
+	
+	  /**
 	   * Callback called from click event
 	   *
 	   * @memberOf Barba.Pjax
@@ -1232,8 +1287,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var el = evt.target;
 	
 	    //Go up in the nodelist until we
-	    //find something with .href
-	    while (el && !el.href) {
+	    //find something with an href
+	    while (el && !this.getHref(el)) {
 	      el = el.parentNode;
 	    }
 	
@@ -1241,8 +1296,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      evt.stopPropagation();
 	      evt.preventDefault();
 	
-	      Dispatcher.trigger('linkClicked', el);
-	      this.goTo(el.href);
+	      Dispatcher.trigger('linkClicked', el, evt);
+	
+	      var href = this.getHref(el);
+	      this.goTo(href);
 	    }
 	  },
 	
@@ -1258,8 +1315,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (!window.history.pushState)
 	      return false;
 	
+	    var href = this.getHref(element);
+	
 	    //User
-	    if (!element || !element.href)
+	    if (!element || !href)
 	      return false;
 	
 	    //Middle click, cmd click, and ctrl click
@@ -1279,11 +1338,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return false;
 	
 	    //Ignore case when a hash is being tacked on the current URL
-	    if (element.href.indexOf('#') > -1)
+	    if (href.indexOf('#') > -1)
+	      return false;
+	
+	    //Ignore case where there is download attribute
+	    if (typeof element.download !== 'undefined')
 	      return false;
 	
 	    //In case you're trying to load the same page
-	    if (Utils.cleanLink(element.href) == Utils.cleanLink(location.href))
+	    if (Utils.cleanLink(href) == Utils.cleanLink(location.href))
 	      return false;
 	
 	    if (element.classList.contains(this.ignoreClassLink))
@@ -1358,7 +1421,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Dispatcher.trigger('newPageReady',
 	      this.History.currentStatus(),
 	      this.History.prevStatus(),
-	      container
+	      container,
+	      this.Dom.currentHTML
 	    );
 	  },
 	
@@ -1448,6 +1512,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	  containerClass: 'barba-container',
 	
 	  /**
+	   * Full HTML String of the current page.
+	   * By default is the innerHTML of the initial loaded page.
+	   *
+	   * Each time a new page is loaded, the value is the response of the xhr call.
+	   *
+	   * @memberOf Barba.Pjax.Dom
+	   * @type {String}
+	   */
+	  currentHTML: document.documentElement.innerHTML,
+	
+	  /**
 	   * Parse the responseText obtained from the xhr call
 	   *
 	   * @memberOf Barba.Pjax.Dom
@@ -1456,6 +1531,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @return {HTMLElement}
 	   */
 	  parseResponse: function(responseText) {
+	    this.currentHTML = responseText;
+	
 	    var wrapper = document.createElement('div');
 	    wrapper.innerHTML = responseText;
 	
@@ -1605,7 +1682,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  onLinkEnter: function(evt) {
 	    var el = evt.target;
 	
-	    while (el && !el.href) {
+	    while (el && !Pjax.getHref(el)) {
 	      el = el.parentNode;
 	    }
 	
@@ -1613,7 +1690,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return;
 	    }
 	
-	    var url = el.href;
+	    var url = Pjax.getHref(el);
 	
 	    //Check if the link is elegible for Pjax
 	    if (Pjax.preventCheck(evt, el) && !Pjax.Cache.get(url)) {
