@@ -190,7 +190,7 @@ var Pjax = {
       return undefined;
     }
 
-    if (typeof el.getAttribute('xlink:href') === 'string') {
+    if (el.getAttribute && typeof el.getAttribute('xlink:href') === 'string') {
       return el.getAttribute('xlink:href');
     }
 
