@@ -1342,7 +1342,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return false;
 	
 	    //Ignore case where there is download attribute
-	    if (element.getAttribute && typeof element.download === 'string')
+	    if (element.getAttribute && typeof element.getAttribute('download') === 'string')
 	      return false;
 	
 	    //In case you're trying to load the same page
