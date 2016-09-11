@@ -177,6 +177,31 @@ var Pjax = {
   },
 
   /**
+   * Get the .href parameter out of an element
+   * and handle special cases (like xlink:href)
+   *
+   * @private
+   * @memberOf Barba.Pjax
+   * @param  {HTMLElement} el
+   * @return {String} href
+   */
+  getHref: function(el) {
+    if (!el) {
+      return undefined;
+    }
+
+    if (typeof el.getAttribute('xlink:href') === 'string') {
+      return el.getAttribute('xlink:href');
+    }
+
+    if (typeof el.href === 'string') {
+      return el.href;
+    }
+
+    return undefined;
+  },
+
+  /**
    * Callback called from click event
    *
    * @memberOf Barba.Pjax
@@ -187,8 +212,8 @@ var Pjax = {
     var el = evt.target;
 
     //Go up in the nodelist until we
-    //find something with .href
-    while (el && !el.href) {
+    //find something with an href
+    while (el && !this.getHref(el)) {
       el = el.parentNode;
     }
 
@@ -197,7 +222,9 @@ var Pjax = {
       evt.preventDefault();
 
       Dispatcher.trigger('linkClicked', el, evt);
-      this.goTo(el.href);
+
+      var href = this.getHref(el);
+      this.goTo(href);
     }
   },
 
@@ -213,8 +240,10 @@ var Pjax = {
     if (!window.history.pushState)
       return false;
 
+    var href = this.getHref(element);
+
     //User
-    if (!element || !element.href)
+    if (!element || !href)
       return false;
 
     //Middle click, cmd click, and ctrl click
@@ -234,7 +263,7 @@ var Pjax = {
       return false;
 
     //Ignore case when a hash is being tacked on the current URL
-    if (element.href.indexOf('#') > -1)
+    if (href.indexOf('#') > -1)
       return false;
 
     //Ignore case where there is download attribute
@@ -242,7 +271,7 @@ var Pjax = {
       return false;
 
     //In case you're trying to load the same page
-    if (Utils.cleanLink(element.href) == Utils.cleanLink(location.href))
+    if (Utils.cleanLink(href) == Utils.cleanLink(location.href))
       return false;
 
     if (element.classList.contains(this.ignoreClassLink))

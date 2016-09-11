@@ -42,7 +42,7 @@ var Prefetch = {
   onLinkEnter: function(evt) {
     var el = evt.target;
 
-    while (el && !el.href) {
+    while (el && !Pjax.getHref(el)) {
       el = el.parentNode;
     }
 
@@ -50,7 +50,7 @@ var Prefetch = {
       return;
     }
 
-    var url = el.href;
+    var url = Pjax.getHref(el);
 
     //Check if the link is elegible for Pjax
     if (Pjax.preventCheck(evt, el) && !Pjax.Cache.get(url)) {
