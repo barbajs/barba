@@ -267,7 +267,7 @@ var Pjax = {
       return false;
 
     //Ignore case where there is download attribute
-    if (typeof element.download !== 'undefined')
+    if (element.getAttribute && typeof element.download === 'string')
       return false;
 
     //In case you're trying to load the same page
