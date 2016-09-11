@@ -14,7 +14,25 @@
   <dd><i>/ˈbarba/</i> is the Italian word for beard. Thanks to <a href="https://twitter.com/danielemeli" target="_blank">@danielemeli</a> for the suggestion.</dd>
 
   <dt>Is it possible to ignore barba.js on some links?</dt>
-  <dd>You can just add the class <code>.no-barba</code>, or add your own checking logic by replacing the function <code>Barba.Pjax.preventCheck</code></dd>
+  <dd>
+    <p>You can just add the class <code>.no-barba</code>, or add your own checking logic by replacing the function <code>Barba.Pjax.preventCheck</code>.</p>
+    <p>Note that the existing <code>Barba.Pjax.preventCheck</code> method does a lot of internal sanity checking so most often you will want to call it along side your custom prevention checks. For example to stop Barba from taking over links to PDFs:</p>
+<pre><code>Barba.Pjax.originalPreventCheck = Barba.Pjax.preventCheck;
+
+Barba.Pjax.preventCheck = function(evt, element) {
+  if (!Barba.Pjax.originalPreventCheck(evt, element)) {
+    return false;
+  }
+
+  // No need to check for element.href -
+  // originalPreventCheck does this for us! (and more!)
+  if (/.pdf/.test(element.href.toLowerCase())) {
+    return false;
+  }
+
+  return true;
+};</code></pre>
+  </dd>
 
   <dt>How can I update Google Analytics (or any other tracking sytem)?</dt>
   <dd>It's enough to listen to the event <code>initStateChange</code> and update Google analytics accordingly.</dd>
