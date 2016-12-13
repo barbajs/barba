@@ -18,6 +18,7 @@ It helps reducing the delay between your pages, minimizing browser HTTP requests
 <a href="http://www.budidiokojinedostaje.hr" target="_blank"><img src="http://barbajs.org/images/3.gif" width="288"></a>
 <a href="http://magacom.fr" target="_blank"><img src="http://barbajs.org/images/4.gif" width="288"></a>
 <a href="http://adrenalinmedia.com.au" target="_blank"><img src="http://barbajs.org/images/5.gif" width="288"></a>
+<a href="http://www.ruggeri.io" target="_blank"><img src="http://barbajs.org/images/6.gif" width="288"></a>
 
 [View demos](http://barbajs.org/demos.html)
 
