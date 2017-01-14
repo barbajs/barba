@@ -253,6 +253,10 @@ var Pjax = {
     //Ignore target with _blank target
     if (element.target && element.target === '_blank')
       return false;
+      
+    if (element.hasAttribute('disabled')) {
+      return false;
+    }
 
     //Check if it's the same domain
     if (window.location.protocol !== element.protocol || window.location.hostname !== element.hostname)
