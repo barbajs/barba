@@ -22,11 +22,10 @@ html, body {
 }
 
 a.back {
-  color: white;
+  color: aqua;
   position: absolute;
   top: 10px;
   left: 10px;
-  color: #000;
 }
 
 .barba-container {
