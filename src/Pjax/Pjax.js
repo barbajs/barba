@@ -157,6 +157,8 @@ var Pjax = {
     xhr.then(
       function(data) {
         var container = _this.Dom.parseResponse(data);
+        
+        Barba.Dispatcher.trigger('newHTMLLoaded', container);
 
         _this.Dom.putContainer(container);
 
