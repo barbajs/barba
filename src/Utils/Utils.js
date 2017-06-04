@@ -46,37 +46,19 @@ var Utils = {
    * @param  {String} url
    * @return {Promise}
    */
+  xhr: function(url) {
+    var deferred = this.deferred();
+    var req = new XMLHttpRequest();
 
-  req.onreadystatechange = function () {
-  if (req.readyState === 4) {
-    console.log(req.status);
-    if (req.status === 200) {
-      return deferred.resolve(req.responseText);
-    } else if (req.status === 404) {
-      // If the page could not be found,
-      // then load the default error page. This fixes issue #148
-      // where the history gets corrupted when a 404 is returned.
-      var errorReq = new XMLHttpRequest();
-      var errorUrl = window.host + "404/";
-      errorReq.onreadystatechange = function () {
-        if (errorReq.readyState === 4) {
-          if (errorReq.status === 404) {
-            deferred.resolve(errorReq.responseText)
-          } else {
-            console.log('xhr: Could not find 404 error page');
-          }
+    req.onreadystatechange = function() {
+      if (req.readyState === 4) {
+        if (req.status === 200) {
+          return deferred.resolve(req.responseText);
+        } else {
+          return deferred.reject(new Error('xhr: HTTP code is not 200'));
         }
-      };
-      errorReq.ontimeout = function () {
-        return deferred.reject(new Error('xhr: Timeout exceeded'));
-      };
-      errorReq.open('GET', errorUrl);
-      errorReq.send();
-    } else {
-      return deferred.reject(new Error('xhr: Error fetching page content'))
-    }
-  }
-};
+      }
+    };
 
     req.ontimeout = function() {
       return deferred.reject(new Error('xhr: Timeout exceeded'));
