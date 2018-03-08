@@ -67,6 +67,7 @@ var Utils = {
     req.open('GET', url);
     req.timeout = this.xhrTimeout;
     req.setRequestHeader('x-barba', 'yes');
+    req.setRequestHeader('Accept', 'text/html,application/xhtml+xml,application/xml');
     req.send();
 
     return deferred.promise;
