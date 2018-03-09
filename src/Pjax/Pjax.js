@@ -274,8 +274,13 @@ var Pjax = {
     if (Utils.cleanLink(href) == Utils.cleanLink(location.href))
       return false;
 
-    if (element.classList.contains(this.ignoreClassLink))
-      return false;
+    var checking = element;
+    do {
+      if (checking.classList.contains(this.ignoreClassLink))
+        return false;
+      
+      checking = checking.parentElement;
+    } while (checking);
 
     return true;
   },
