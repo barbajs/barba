@@ -279,7 +279,7 @@ var Pjax = {
       if (checking.classList.contains(this.ignoreClassLink))
         return false;
       
-      checking = checking.parentNode;
+      checking = checking.parentElement;
     } while (checking);
 
     return true;
