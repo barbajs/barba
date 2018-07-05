@@ -72,7 +72,7 @@ var BaseTransition = {
    * @memberOf Barba.BaseTransition
    */
   done: function() {
-    this.oldContainer.parentNode.removeChild(this.oldContainer);
+    if(this.oldContainer.parentNode) this.oldContainer.parentNode.removeChild(this.oldContainer);
     this.newContainer.style.visibility = 'visible';
     this.deferred.resolve();
   },
