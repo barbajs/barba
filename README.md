@@ -39,7 +39,7 @@ Here is a walkthrough of what happens when the user clicks a link:
 7.  As soon the transition is finished, the old container is removed from the DOM.
 
 > Please note, on server side, your pages will need to be served normally.   
-> Barba.js works as ehnancement for your website, everything should work normally without Javascript.
+> Barba.js works as enhancement for your website, everything should work normally without Javascript.
 
 In order to have a better understanding on how Barba.js works I suggest you to read this [article](https://www.smashingmagazine.com/2016/07/improving-user-flow-through-page-transitions/) I wrote for Smashing Magazine.
 
