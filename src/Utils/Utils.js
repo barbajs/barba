@@ -49,6 +49,7 @@ var Utils = {
   xhr: function(url) {
     var deferred = this.deferred();
     var req = new XMLHttpRequest();
+    var async = true;
 
     req.onreadystatechange = function() {
       if (req.readyState === 4) {
@@ -64,7 +65,7 @@ var Utils = {
       return deferred.reject(new Error('xhr: Timeout exceeded'));
     };
 
-    req.open('GET', url);
+    req.open('GET', url, async);
     req.timeout = this.xhrTimeout;
     req.setRequestHeader('x-barba', 'yes');
     req.send();
