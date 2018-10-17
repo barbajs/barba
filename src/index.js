@@ -1,5 +1,5 @@
-console.log('Hello world');
+import Test from './test.js';
 
-function test() {
-  console.log('a');
-}
+import { version } from '../package.json';
+
+console.log(`Hello world ${Test()}, ${version}`);
