@@ -1,0 +1,5 @@
+- Find correct open source license
+  - anyone can do what they want but:
+    - they can't resell it
+    - I have the right in any moment to disallow a specific use.
+
