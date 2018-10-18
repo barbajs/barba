@@ -1,7 +1,7 @@
 import barba from 'barba.js';
 
 // Views
-// we can also get the namespace by .prototype.constructor.name
+// we can also get the view name by .prototype.constructor.name
 // no more view init. The views are always already-defined before barba.init()
 class Home {
   beforeEenter() {}
@@ -32,6 +32,11 @@ barba.init({
   }, // in this way, you can still use plain ES5 objects as view
 });
 
+// Edge case that are possible with a custom `transition` function:
+// Use specific transition based on screen size?
+
+// `transition` function can be async, it can wait the new container? and then decide once you have prev/next views/namespaces?
+
 // Events
 barba.on('pageReady', () => {});
 
@@ -40,8 +45,8 @@ barba.cache; // { url: 'responseHTML' ... }
 
 // Access to History
 barba.history; // [{..}, {..}]
-barba.current; // { url: 'http://', namespace: 'home' }
-barba.previous; // { url: 'http://', namespace: 'about' }
+barba.current; // { url: 'http://', view: 'home' }
+barba.previous; // { url: 'http://', view: 'about' }
 
 // Destroy
 barba.destroy();
