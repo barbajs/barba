@@ -1,50 +1,47 @@
 {
-  "name": "barba-next",
-  "version": "2.0.0",
-  "description": "Barba.js is a ...",
-  "keywords": [
-    "pjax",
-    "navigation",
-    "sfsf"
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "@commitlint/config-conventional": "7.1.2",
+    "@commitlint/config-lerna-scopes": "7.2.1",
+    "commitizen": "3.0.4",
+    "cpx": "1.5.0",
+    "cross-env": "5.2.0",
+    "cz-ccgls": "0.2.0",
+    "inquirer": "5.2.0",
+    "lerna": "3.4.3",
+    "lerna-alias": "3.0.2",
+    "lint-staged": "7.3.0",
+    "npm-run-all": "4.1.3",
+    "prettier": "1.14.3",
+    "rimraf": "2.6.2"
+  },
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
   ],
-  "homepage": "https://gitlab.com/luruke/barba-next#readme",
-  "author": "Luigi De Rosa <lurukee@gmail.com> (http://luruke.com/)",
-  "bugs": {
-    "url": "https://gitlab.com/luruke/barba-next/issues",
-    "email": "lurukee@gmail.com"
-  },
-  "license": "ISC",
-  "main": "src/index.js",
-  "browser": "dist/barba.min.js",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@gitlab.com/luruke/barba-next.git"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c"
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build",
+    "clean": "lerna clean",
+    "clear": "lerna run clear",
+    "commit": "npx git-cz || exit 0",
+    "commit-retry": "npx git-cz --retry || exit 0",
+    "lint": "eslint packages/**/src/**",
+    "ls": "lerna ls",
+    "prerelease": "npm run build",
+    "release": "lerna publish",
+    "test": "lerna exec yarn test",
+    "watch": "lerna run watch --parallel"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lerna run --concurrency 1 --stream precommit"
     }
   },
-  "lint-staged": {
-    "*.{js,json,css,md}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "devDependencies": {
-    "@ampproject/rollup-plugin-closure-compiler": "^0.7.3",
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
-    "husky": "^1.1.2",
-    "lint-staged": "^7.3.0",
-    "prettier": "1.14.3",
-    "rollup": "^0.66.6",
-    "rollup-plugin-babel": "^4.0.3",
-    "rollup-plugin-json": "^3.1.0",
-    "rollup-plugin-node-resolve": "^3.4.0"
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-ccgls"
+    }
   }
 }
