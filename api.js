@@ -4,7 +4,7 @@ import barba from 'barba.js';
 // we can also get the view name by .prototype.constructor.name
 // no more view init. The views are always already-defined before barba.init()
 class Home {
-  beforeEenter() {}
+  beforeEnter() {}
   enter() {}
   afterEnter() {}
 

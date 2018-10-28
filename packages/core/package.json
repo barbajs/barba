@@ -31,6 +31,10 @@
     "clear": "rimraf dist esm lib",
     "lint": "eslint src/**",
     "precommit": "lint-staged",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint src/** && jest --coverage",
+    "watch": "jest --colors --watch"
+  },
+  "dependencies": {
+    "run-async": "^2.3.0"
   }
 }

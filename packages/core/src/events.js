@@ -7,16 +7,9 @@ export default {
   },
 
   once(e, f) {
-    // let self = this;
-
-    // function newf() {
-    //   self.off(e, newf);
-    //   f.apply(this, arguments);
-    // };
-
-    const newf = () => {
+    const newf = (...args) => {
       this.off(e, newf);
-      f.apply(this, arguments);
+      f.apply(this, args);
     };
 
     this.on(e, newf);
@@ -31,6 +24,7 @@ export default {
   },
 
   trigger(e, ...args) {
+    console.info('TRIGGER', e, args);
     if (e in this.events === false) {
       return;
     }

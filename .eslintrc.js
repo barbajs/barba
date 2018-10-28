@@ -1,26 +1,23 @@
 module.exports = {
-  'env': {
-    'browser': true,
-    'commonjs': true,
-    'es6': true,
-    'node': true
+  env: {
+    browser: true,
+    commonjs: true,
+    es6: true,
+    node: true,
   },
-  'extends': 'eslint:recommended',
-  'parser': 'babel-eslint',
-  'rules': {
+  extends: 'eslint:recommended',
+  parser: 'babel-eslint',
+  rules: {
     'accessor-pairs': 2,
     'array-callback-return': 2,
     'array-bracket-spacing': 2,
     'arrow-body-style': 2,
-    'arrow-parens': [
-      2,
-      'as-needed',
-    ],
+    'arrow-parens': [2, 'as-needed'],
     'arrow-spacing': 2,
     'block-scoped-var': 2,
     'block-spacing': 2,
     'brace-style': 2,
-    'camelcase': [
+    camelcase: [
       2,
       {
         properties: 'always',
@@ -34,24 +31,18 @@ module.exports = {
       },
     ],
     'class-methods-use-this': 2,
-    'comma-dangle': [
-      1,
-      'always-multiline',
-    ],
+    'comma-dangle': [1, 'always-multiline'],
     'comma-spacing': 2,
     'comma-style': 2,
     'computed-property-spacing': 2,
     'consistent-return': 2,
     'consistent-this': 2,
-    'curly': 2,
+    curly: 2,
     'default-case': 2,
-    'dot-location': [
-      1,
-      'property',
-    ],
+    'dot-location': [1, 'property'],
     'dot-notation': 2,
     'eol-last': 2,
-    'eqeqeq': 2,
+    eqeqeq: 2,
     'func-call-spacing': 2,
     'func-name-matching': 2,
     'func-names': 2,
@@ -64,7 +55,7 @@ module.exports = {
         max: 24,
       },
     ],
-    'indent': [
+    indent: [
       2,
       2,
       {
@@ -207,20 +198,14 @@ module.exports = {
     'no-useless-return': 2,
     'no-var': 2,
     'no-void': 2,
-    'no-warning-comments': 2,
+    'no-warning-comments': 1,
     'no-whitespace-before-property': 2,
     'no-with': 2,
     'object-shorthand': 2,
     'object-property-newline': 2,
     'operator-assignment': 2,
-    'operator-linebreak': [
-      2,
-      'after',
-    ],
-    'padded-blocks': [
-      2,
-      'never',
-    ],
+    'operator-linebreak': 2,
+    'padded-blocks': [2, 'never'],
     'prefer-arrow-callback': 2,
     'prefer-const': 2,
     'prefer-destructuring': 2,
@@ -228,19 +213,13 @@ module.exports = {
     'prefer-rest-params': 2,
     'prefer-spread': 2,
     'prefer-template': 2,
-    'quote-props': [
-      2,
-      'consistent-as-needed',
-    ],
-    'quotes': [
-      2,
-      'single',
-    ],
-    'radix': 2,
+    'quote-props': [2, 'consistent-as-needed'],
+    quotes: [2, 'single'],
+    radix: 2,
     'require-await': 2,
     'require-jsdoc': 2,
     'rest-spread-spacing': 2,
-    'semi': 2,
+    semi: 2,
     'semi-spacing': 2,
     'space-before-blocks': 2,
     'space-in-parens': 2,
@@ -253,13 +232,13 @@ module.exports = {
       },
     ],
     'spaced-comment': 2,
-    'strict': 2,
+    strict: 2,
     'symbol-description': 2,
     'template-curly-spacing': 2,
     'valid-jsdoc': 2,
     'vars-on-top': 2,
     'wrap-iife': 2,
     'wrap-regex': 2,
-    'yoda': 2
+    yoda: 2,
   },
 };
