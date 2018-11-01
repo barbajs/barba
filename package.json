@@ -17,6 +17,7 @@
     "eslint-plugin-jest": "^21.26.2",
     "inquirer": "5.2.0",
     "jest": "^23.6.0",
+    "jest-watch-lerna-packages": "^1.1.0",
     "lerna": "3.4.3",
     "lerna-alias": "3.0.2",
     "lint-staged": "7.3.0",
@@ -39,8 +40,8 @@
     "ls": "lerna ls",
     "prerelease": "npm run build",
     "release": "lerna publish",
-    "test": "lerna exec yarn test",
-    "watch": "lerna run watch --parallel"
+    "test": "eslint packages/**/src/** && yarn jest --coverage",
+    "watch": "yarn jest --watch"
   },
   "husky": {
     "hooks": {
