@@ -1,0 +1,9 @@
+### Custom ###
+/__mocks__
+/__tests__
+/coverage
+/src
+/report.html
+/*.md
+!/README.md
+!/CHANGELOG.md

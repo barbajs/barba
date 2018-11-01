@@ -1,4 +1,3 @@
-/* global it, expect */
 import manager from '../src/manager';
 
 it('manages promises', async () => {

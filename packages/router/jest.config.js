@@ -4,7 +4,7 @@ module.exports = {
   ...jestBase,
   collectCoverageFrom: [
     ...jestBase.collectCoverageFrom,
-    '!<rootDir>/src/(schema|utils).js',
+    '!<rootDir>/src/utils.js',
   ],
   coverageThreshold: {
     global: {

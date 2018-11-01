@@ -1,4 +1,3 @@
-/* global it, expect, afterEach */
 import barba from '../src';
 
 const wrapper = document.createElement('div');
@@ -55,7 +54,6 @@ it('has barba current', () => {
   expect(barba.current).toBeDefined();
   expect(barba.current.namespace).toBe(namespace);
   expect(barba.current.url).toBe('http://localhost/');
-  expect(barba.current.route).toBeNull();
   expect(barba.current.container).toStrictEqual(container);
   expect(barba.current.html).toMatch(/^<head>.+<\/body>$/);
 });

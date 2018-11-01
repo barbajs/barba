@@ -1,7 +1,5 @@
 module.exports = {
-  collectCoverageFrom: [
-    '<rootDir>/src/*.{js,jsx}',
-  ],
+  collectCoverageFrom: ['<rootDir>/src/*.{js,jsx}'],
   resetMocks: true,
   verbose: true,
 };
