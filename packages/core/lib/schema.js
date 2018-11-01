@@ -1,3 +1,10 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.pageSchema = exports.attributeSchema = void 0;
+
 /**
  * Attributes
  * data-barba
@@ -7,21 +14,23 @@
  *    ="disable"
  * data-barba-namespace
  */
-export const attributeSchema = {
+var attributeSchema = {
   prefix: 'data-barba',
   wrapper: 'wrapper',
   container: 'container',
   prefetch: 'prefetch',
   disable: 'disable',
-  namespace: 'namespace',
+  namespace: 'namespace'
 };
-
 /**
  * Pages (current and next structure)
  */
-export const pageSchema = {
+
+exports.attributeSchema = attributeSchema;
+var pageSchema = {
   namespace: undefined,
   url: undefined,
   container: undefined,
-  html: undefined,
+  html: undefined
 };
+exports.pageSchema = pageSchema;

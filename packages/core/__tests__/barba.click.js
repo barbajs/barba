@@ -1,4 +1,3 @@
-/* global it, expect */
 import barba from '../src';
 
 const wrapper = document.createElement('div');

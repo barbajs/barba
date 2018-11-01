@@ -1,5 +1,5 @@
-/* global it, expect */
-import barba from '../src';
+import barba from '@barba/core';
+import router from '../src';
 
 const wrapper = document.createElement('div');
 const container = document.createElement('div');
@@ -10,12 +10,9 @@ container.dataset.barba = 'container';
 document.body.appendChild(wrapper);
 document.body.appendChild(container);
 
+barba.use(router, { routes: { foo: '/foo' } });
 barba.init();
 
-it('has correct version', () => {
-  expect(barba.version).toBe('1.0.0');
-});
-
-it('has one default transitions', () => {
-  expect(barba.transitions.all).toHaveLength(1);
+it('has routes', () => {
+  expect(router.routes).toMatchObject({ foo: '/foo' });
 });

@@ -1,11 +1,11 @@
 {
-  "name": "@barba/core",
+  "name": "@barba/router",
   "version": "1.0.0",
   "description": "Barba is a ...",
   "publishConfig": {
     "access": "public"
   },
-  "browser": "dist/barba.min.js",
+  "browser": "dist/barba-router.min.js",
   "main": "lib/index.js",
   "module": "esm/index.js",
   "files": [
@@ -14,9 +14,8 @@
     "esm"
   ],
   "keywords": [
-    "pjax",
-    "navigation",
-    "sfsf"
+    "barba",
+    "router"
   ],
   "homepage": "https://gitlab.com/luruke/barba-next#readme",
   "bugs": {
@@ -38,8 +37,5 @@
     "precommit": "lint-staged",
     "test": "eslint src/** && jest --coverage",
     "watch": "jest --colors --watch"
-  },
-  "dependencies": {
-    "run-async": "^2.3.0"
   }
 }
