@@ -32,28 +32,28 @@ it('needs barba container', () => {
 
 it('has barba wrapper', () => {
   document.body.appendChild(wrapper);
-  document.body.appendChild(container);
+  wrapper.appendChild(container);
 
   barba.init();
-  expect(barba.wrapper).toBeDefined();
+  expect(barba.wrapper).toBe(wrapper);
 });
 
 it('has barba container', () => {
   document.body.appendChild(wrapper);
-  document.body.appendChild(container);
+  wrapper.appendChild(container);
 
   barba.init();
-  expect(barba.current.container).toBeDefined();
+  expect(barba.current.container).toBe(container);
 });
 
 it('has barba current', () => {
   document.body.appendChild(wrapper);
-  document.body.appendChild(container);
+  wrapper.appendChild(container);
 
   barba.init();
   expect(barba.current).toBeDefined();
   expect(barba.current.namespace).toBe(namespace);
   expect(barba.current.url).toBe('http://localhost/');
-  expect(barba.current.container).toStrictEqual(container);
+  expect(barba.current.container).toBe(container);
   expect(barba.current.html).toMatch(/^<head>.+<\/body>$/);
 });

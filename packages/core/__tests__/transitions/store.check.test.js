@@ -1,4 +1,4 @@
-import transitions from '../src/transitions';
+import { store } from '../../src/transitions';
 
 let match = {};
 
@@ -27,12 +27,12 @@ beforeEach(() => {
  * @returns {undefined}
  */
 function runStrings(transition, rule, page, direction) {
-  const fail = transitions.check(transition, rule, {}, match, direction);
+  const fail = store.check(transition, rule, {}, match, direction);
 
   expect(fail).toBeFalsy();
   expect(match).toMatchObject({});
 
-  const ok = transitions.check(transition, rule, page, match, direction);
+  const ok = store.check(transition, rule, page, match, direction);
 
   expect(ok).toBeTruthy();
   expect(match).toMatchObject(transition);
@@ -48,12 +48,12 @@ function runStrings(transition, rule, page, direction) {
  * @returns {undefined}
  */
 function runFunction(falsy, truthy, rule, direction) {
-  const fail = transitions.check(falsy, rule, {}, match, direction);
+  const fail = store.check(falsy, rule, {}, match, direction);
 
   expect(fail).toBeFalsy();
   expect(match).toMatchObject({});
 
-  const ok = transitions.check(truthy, rule, {}, match, direction);
+  const ok = store.check(truthy, rule, {}, match, direction);
 
   expect(ok).toBeTruthy();
   expect(match).toMatchObject(truthy);
@@ -62,8 +62,8 @@ function runFunction(falsy, truthy, rule, direction) {
 // "strings" type
 
 it('check inexisting "strings"', () => {
-  const [rule] = transitions.rules.filter(rule => rule.name === 'namespace');
-  const expected = transitions.check({}, rule, { namespace: 'ns' }, match);
+  const [rule] = store.rules.filter(rule => rule.name === 'namespace');
+  const expected = store.check({}, rule, { namespace: 'ns' }, match);
 
   expect(expected).toBeTruthy();
   expect(match).toMatchObject({});
@@ -71,7 +71,7 @@ it('check inexisting "strings"', () => {
 
 it('check single "strings"', () => {
   const transition = { namespace: 'ns' };
-  const [rule] = transitions.rules.filter(rule => rule.name === 'namespace');
+  const [rule] = store.rules.filter(rule => rule.name === 'namespace');
   const page = { namespace: 'ns' };
 
   runStrings(transition, rule, page);
@@ -79,7 +79,7 @@ it('check single "strings"', () => {
 
 it('check single "strings" with "from"', () => {
   const transition = { from: { namespace: 'ns' } };
-  const [rule] = transitions.rules.filter(rule => rule.name === 'namespace');
+  const [rule] = store.rules.filter(rule => rule.name === 'namespace');
   const page = { namespace: 'ns' };
 
   runStrings(transition, rule, page, 'from');
@@ -87,7 +87,7 @@ it('check single "strings" with "from"', () => {
 
 it('check single "strings" with "to"', () => {
   const transition = { to: { namespace: 'ns' } };
-  const [rule] = transitions.rules.filter(rule => rule.name === 'namespace');
+  const [rule] = store.rules.filter(rule => rule.name === 'namespace');
   const page = { namespace: 'ns' };
 
   runStrings(transition, rule, page, 'to');
@@ -95,7 +95,7 @@ it('check single "strings" with "to"', () => {
 
 it('check array "strings"', () => {
   const transition = { namespace: ['ns'] };
-  const [rule] = transitions.rules.filter(rule => rule.name === 'namespace');
+  const [rule] = store.rules.filter(rule => rule.name === 'namespace');
   const page = { namespace: 'ns' };
 
   runStrings(transition, rule, page);
@@ -103,7 +103,7 @@ it('check array "strings"', () => {
 
 it('check array "strings" with "from"', () => {
   const transition = { from: { namespace: ['ns'] } };
-  const [rule] = transitions.rules.filter(rule => rule.name === 'namespace');
+  const [rule] = store.rules.filter(rule => rule.name === 'namespace');
   const page = { namespace: 'ns' };
 
   runStrings(transition, rule, page, 'from');
@@ -111,7 +111,7 @@ it('check array "strings" with "from"', () => {
 
 it('check array "strings" with "to"', () => {
   const transition = { to: { namespace: ['ns'] } };
-  const [rule] = transitions.rules.filter(rule => rule.name === 'namespace');
+  const [rule] = store.rules.filter(rule => rule.name === 'namespace');
   const page = { namespace: 'ns' };
 
   runStrings(transition, rule, page, 'to');
@@ -120,8 +120,8 @@ it('check array "strings" with "to"', () => {
 // "function" type
 
 it('check inexisting "function"', () => {
-  const [rule] = transitions.rules.filter(rule => rule.name === 'custom');
-  const expected = transitions.check({}, rule, {}, match);
+  const [rule] = store.rules.filter(rule => rule.name === 'custom');
+  const expected = store.check({}, rule, {}, match);
 
   expect(expected).toBeTruthy();
   expect(match).toMatchObject({});
@@ -130,7 +130,7 @@ it('check inexisting "function"', () => {
 it('check "function"', () => {
   const falsy = { custom: () => false };
   const truthy = { custom: () => true };
-  const [rule] = transitions.rules.filter(rule => rule.name === 'custom');
+  const [rule] = store.rules.filter(rule => rule.name === 'custom');
 
   runFunction(falsy, truthy, rule);
 });
@@ -138,7 +138,7 @@ it('check "function"', () => {
 it('check "function" with "from"', () => {
   const falsy = { from: { custom: () => false } };
   const truthy = { from: { custom: () => true } };
-  const [rule] = transitions.rules.filter(rule => rule.name === 'custom');
+  const [rule] = store.rules.filter(rule => rule.name === 'custom');
 
   runFunction(falsy, truthy, rule, 'from');
 });
@@ -146,7 +146,7 @@ it('check "function" with "from"', () => {
 it('check "function" with "to"', () => {
   const falsy = { to: { custom: () => false } };
   const truthy = { to: { custom: () => true } };
-  const [rule] = transitions.rules.filter(rule => rule.name === 'custom');
+  const [rule] = store.rules.filter(rule => rule.name === 'custom');
 
   runFunction(falsy, truthy, rule, 'to');
 });

@@ -1,11 +1,10 @@
 import { version } from '../package.json';
 import { attributeSchema, pageSchema } from './schema';
+import { manager, store } from './transitions';
 import cache from './cache';
 import dom from './dom';
 import hooks from './hooks';
-import manager from './manager';
 import prevent from './prevent';
-import transitions from './transitions';
 import { getHref, getUrl } from './utils';
 
 export const barba = {
@@ -14,7 +13,7 @@ export const barba = {
   current: null,
   next: null,
   trigger: null,
-  transitions: null,
+  store: null,
   hooks: hooks.init(),
   pageSchema,
   _plugins: [],
@@ -36,6 +35,7 @@ export const barba = {
 
     return this;
   },
+
   init(
     options = {
       debug: false,
@@ -66,11 +66,8 @@ export const barba = {
     // A11y
     this.wrapper.setAttribute('aria-live', 'polite');
 
-    // Transitions / manager
-    this.transitions = transitions.init(
-      this.options.transitions,
-      this.options.debug
-    );
+    // Store
+    this.store = store.init(this.options.transitions, this.options.debug);
 
     // Init current set
     this.current = { ...this.pageSchema };
@@ -108,7 +105,7 @@ export const barba = {
     this.current = null;
     this.next = null;
     this.trigger = null;
-    this.transitions = null;
+    this.store = null;
     this.hooks = hooks.destroy();
     this.pageSchema = pageSchema;
     this._plugins = [];
@@ -152,7 +149,7 @@ export const barba = {
     // then, make stuff
     const data = this.getData();
 
-    manager.doAppear(this.transitions.get(data, true), data);
+    manager.doAppear(this.store.get(data, true), data);
   },
   go(url, trigger) {
     this.trigger = trigger;
@@ -182,7 +179,7 @@ export const barba = {
     hooks.do('go', data);
 
     // Get transition infos
-    const t = this.transitions.get(data);
+    const t = this.store.get(data);
 
     // Do transition
     // console.info('T', t);

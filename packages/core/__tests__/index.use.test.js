@@ -34,9 +34,17 @@ it('store different plugins', () => {
   expect(barba._plugins).toContain(plugin2);
 });
 
-it('install plugin', () => {
+it('install method plugin', () => {
   plugin.install = jest.fn();
   barba.use(plugin);
 
   expect(plugin.install).toHaveBeenCalledTimes(1);
+});
+
+it('install function plugin', () => {
+  const plugin = jest.fn();
+
+  barba.use(plugin);
+
+  expect(plugin).toHaveBeenCalledTimes(1);
 });

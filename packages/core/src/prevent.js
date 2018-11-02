@@ -4,11 +4,17 @@ import { cleanLink, getPort } from './utils';
  * Prevent tests
  *
  * If check is true, barba is not actionated.
- * Test receives { el, event, href }
+ * Tests receives { el, event, href }
  */
 const prevent = {
   tests: {},
 
+  /**
+   * Init prevent
+   *
+   * @param {object} { attributeSchema } options
+   * @returns {undefined}
+   */
   init({ attributeSchema }) {
     this.attr = attributeSchema;
 
@@ -69,11 +75,26 @@ const prevent = {
     );
   },
 
+  /**
+   * Add test
+   *
+   * @param {string} id test name
+   * @param {function} check test function
+   * @returns {undefined}
+   */
   add(id, check) {
     // #TODO: check for existing test
     this.tests[id] = check;
   },
 
+  /**
+   * Run tests
+   *
+   * @param {HTMLElement} el trigger element
+   * @param {Event} event triggered event
+   * @param {string} href target url
+   * @returns {boolean} prevent if some test returns true
+   */
   check(el, event, href) {
     return Object.keys(this.tests).some(id =>
       this.tests[id]({

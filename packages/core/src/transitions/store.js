@@ -1,4 +1,4 @@
-import { byPriorities, byDirections } from './utils';
+import { byPriorities, byDirections } from './helpers';
 
 // Can move to @barba/transitions? Kind of "collection" with default?
 const defaultTransition = {
@@ -39,7 +39,9 @@ export default {
 
     return this;
   },
+
   update() {
+    this.wait = this.all.some(t => t.to);
     // Reorder by priorities
     this.rules
       .slice()

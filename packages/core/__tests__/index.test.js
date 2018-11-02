@@ -21,8 +21,8 @@ it('has trigger', () => {
   expect(barba.trigger).toBeNull();
 });
 
-it('has transitions', () => {
-  expect(barba.transitions).toBeNull();
+it('has store', () => {
+  expect(barba.store).toBeNull();
 });
 
 it('has hooks', () => {

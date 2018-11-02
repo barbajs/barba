@@ -1,6 +1,6 @@
 /* eslint-disable object-property-newline */
-import prevent from '../src/prevent';
-import { attributeSchema } from '../src/schema';
+import prevent from '../../src/prevent';
+import { attributeSchema } from '../../src/schema';
 
 prevent.init({ attributeSchema });
 
