@@ -12,7 +12,7 @@ export const router = {
     barba.hooks.go(this.onGo, this);
   },
   init() {
-    this.barba.transitions.add('rule', {
+    this.barba.store.add('rule', {
       position: 1,
       value: {
         name: 'route',
