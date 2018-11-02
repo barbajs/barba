@@ -1,6 +1,16 @@
 import runAsync from 'run-async';
 
 export default {
+  /**
+   * Do "appear" transition
+   *
+   * @param {object} transition transition to play
+   * @param {object} data transition data
+   * @param {object} data.current current page
+   * @param {object} data.next next page
+   * @param {object} data.trigger transition trigger
+   * @returns {undefined} TODO: exact return…
+   */
   doAppear(transition, data) {
     if (!transition) {
       return new Error('No transition found');
@@ -28,8 +38,18 @@ export default {
     );
   },
 
+  /**
+   * Do "page" transition
+   *
+   * @param {object} transition transition to play
+   * @param {object} data transition data
+   * @param {object} data.current current page
+   * @param {object} data.next next page
+   * @param {object} data.trigger transition trigger
+   * @returns {undefined} TODO: exact return…
+   */
   // eslint-disable-next-line no-unused-vars
-  doTransition(transition, data) {
+  doPage(transition, data) {
     // Check data for next
     // Check mode transition
     // If no content/html or out-in mode, fetch

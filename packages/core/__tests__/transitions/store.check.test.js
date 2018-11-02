@@ -1,3 +1,4 @@
+/* eslint-disable object-property-newline */
 import { store } from '../../src/transitions';
 
 let match = {};
@@ -22,17 +23,23 @@ beforeEach(() => {
  *
  * @param {object} transition transition
  * @param {object} rule rule
- * @param {object} page page
+ * @param {object} data current + next + trigger
  * @param {string} direction from|to
  * @returns {undefined}
  */
-function runStrings(transition, rule, page, direction) {
-  const fail = store.check(transition, rule, {}, match, direction);
+function runStrings(transition, rule, data, direction) {
+  const fail = store.check(
+    transition,
+    rule,
+    { current: {}, next: {} },
+    match,
+    direction
+  );
 
   expect(fail).toBeFalsy();
   expect(match).toMatchObject({});
 
-  const ok = store.check(transition, rule, page, match, direction);
+  const ok = store.check(transition, rule, data, match, direction);
 
   expect(ok).toBeTruthy();
   expect(match).toMatchObject(transition);
@@ -72,49 +79,49 @@ it('check inexisting "strings"', () => {
 it('check single "strings"', () => {
   const transition = { namespace: 'ns' };
   const [rule] = store.rules.filter(rule => rule.name === 'namespace');
-  const page = { namespace: 'ns' };
+  const data = { current: { namespace: 'ns' } };
 
-  runStrings(transition, rule, page);
+  runStrings(transition, rule, data);
 });
 
 it('check single "strings" with "from"', () => {
   const transition = { from: { namespace: 'ns' } };
   const [rule] = store.rules.filter(rule => rule.name === 'namespace');
-  const page = { namespace: 'ns' };
+  const data = { current: { namespace: 'ns' } };
 
-  runStrings(transition, rule, page, 'from');
+  runStrings(transition, rule, data, 'from');
 });
 
 it('check single "strings" with "to"', () => {
   const transition = { to: { namespace: 'ns' } };
   const [rule] = store.rules.filter(rule => rule.name === 'namespace');
-  const page = { namespace: 'ns' };
+  const data = { next: { namespace: 'ns' } };
 
-  runStrings(transition, rule, page, 'to');
+  runStrings(transition, rule, data, 'to');
 });
 
 it('check array "strings"', () => {
   const transition = { namespace: ['ns'] };
   const [rule] = store.rules.filter(rule => rule.name === 'namespace');
-  const page = { namespace: 'ns' };
+  const data = { current: { namespace: 'ns' } };
 
-  runStrings(transition, rule, page);
+  runStrings(transition, rule, data);
 });
 
 it('check array "strings" with "from"', () => {
   const transition = { from: { namespace: ['ns'] } };
   const [rule] = store.rules.filter(rule => rule.name === 'namespace');
-  const page = { namespace: 'ns' };
+  const data = { current: { namespace: 'ns' } };
 
-  runStrings(transition, rule, page, 'from');
+  runStrings(transition, rule, data, 'from');
 });
 
 it('check array "strings" with "to"', () => {
   const transition = { to: { namespace: ['ns'] } };
   const [rule] = store.rules.filter(rule => rule.name === 'namespace');
-  const page = { namespace: 'ns' };
+  const data = { next: { namespace: 'ns' } };
 
-  runStrings(transition, rule, page, 'to');
+  runStrings(transition, rule, data, 'to');
 });
 
 // "function" type

@@ -30,7 +30,10 @@ export const barba = {
       plugin.install(this, ...args);
     } else if (typeof plugin === 'function') {
       plugin(this, ...args);
+    } else {
+      return false;
     }
+
     installedPlugins.push(plugin);
 
     return this;
@@ -183,7 +186,7 @@ export const barba = {
 
     // Do transition
     // console.info('T', t);
-    manager.doTransition(t, data);
+    manager.doPage(t, data);
   },
   getData() {
     return {

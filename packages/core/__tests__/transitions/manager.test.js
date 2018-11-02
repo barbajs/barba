@@ -1,4 +1,4 @@
-import manager from '../src/manager';
+import { manager } from '../../src/transitions';
 
 it('manages promises', async () => {
   const expected = {
@@ -87,6 +87,16 @@ it('manages sync', async () => {
   };
 
   const result = await manager.doAppear(t, expected);
+
+  expect(result).toBeTruthy();
+});
+
+it('manages minimal transition', async () => {
+  const t = {
+    appear() {}, // eslint-disable-line no-empty-function
+  };
+
+  const result = await manager.doAppear(t);
 
   expect(result).toBeTruthy();
 });

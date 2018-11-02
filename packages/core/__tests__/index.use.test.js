@@ -48,3 +48,11 @@ it('install function plugin', () => {
 
   expect(plugin).toHaveBeenCalledTimes(1);
 });
+
+it('install function plugin', () => {
+  const plugin = {};
+
+  const result = barba.use(plugin);
+
+  expect(result).toBeFalsy();
+});

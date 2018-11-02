@@ -1,7 +1,21 @@
 /* eslint-disable no-empty-function */
 import { store } from '../../src/transitions';
 
-it('add rule and update', () => {
+it('add rule update', () => {
+  const nb = store.rules.length;
+  const r = {
+    name: 'test',
+    type: 'strings',
+  };
+
+  store.add('rule', {
+    value: r,
+  });
+  expect(store.rules).toHaveLength(nb + 1);
+  expect(store.rules[0]).toBe(r);
+});
+
+it('add rule with position and update', () => {
   const nb = store.rules.length;
   const r = {
     name: 'test',

@@ -9,9 +9,8 @@ const defaultTransition = {
 export default {
   // Active transition
   active: undefined,
-  // Rules and modes
+  // Rules and modes, order matters for priorities sorting
   rules: [
-    // Order matters…
     {
       name: 'custom',
       type: 'function',
@@ -27,6 +26,14 @@ export default {
   appear: [],
   // Global
   wait: false, // Needed to wait for catch or fetch (if "to transition" exists)
+
+  /**
+   * Init store
+   *
+   * @param {array} transitions array of transitions
+   * @param {boolean} debug debug mode
+   * @returns {store} this instance
+   */
   init(transitions, debug) {
     this.debug = debug;
 
@@ -40,8 +47,16 @@ export default {
     return this;
   },
 
+  /**
+   * Update store
+   *
+   * Reorder transition by priorities
+   * Get wait transitions
+   * Get appear transitions
+   *
+   * @returns {undefined}
+   */
   update() {
-    this.wait = this.all.some(t => t.to);
     // Reorder by priorities
     this.rules
       .slice()
@@ -52,6 +67,14 @@ export default {
     this.appear = this.all.filter(t => t.appear && !t.from && !t.to);
     this.wait = this.all.some(t => t.to);
   },
+
+  /**
+   * Add rule or transition
+   *
+   * @param {string} type rule | transition
+   * @param {object} data data
+   * @returns {undefined}
+   */
   add(type, data) {
     switch (type) {
       case 'rule':
@@ -67,26 +90,46 @@ export default {
 
     this.update();
   },
+
+  /**
+   * Get active/matching transition
+   *
+   * @param {object} data transition data
+   * @param {object} data.current current page
+   * @param {object} data.next next page
+   * @param {object} data.trigger transition trigger
+   * @param {boolean} [init=false] for appear transition
+   * @returns {object} active transition
+   */
   get(data, init = false) {
     const transitions = init ? this.appear : this.all;
-    const { current, next } = data;
+
     // All matching transition infos
     const matching = new Map();
 
-    // Active = first of valid transitions sorted by directions (from/to, from || to, …)
+    // Active = first of valid transitions
+    // sorted by directions (from/to, from || to, …)
     [this.active] = transitions
       .filter(t => {
         let valid = true;
         const match = {};
 
         // Check rules
+        // TODO: can probably be refactored…
         this.rules.forEach(rule => {
           if (valid) {
-            valid = this.check(t, rule, current, match);
+            valid = this.check(t, rule, data, match);
             // From/to
-            if (t.from || t.to) {
-              valid = this.check(t, rule, current, match, 'from');
-              valid = this.check(t, rule, next, match, 'to');
+            if (t.from && t.to) {
+              valid =
+                this.check(t, rule, data, match, 'from') &&
+                this.check(t, rule, data, match, 'to');
+            }
+            if (t.from && !t.to) {
+              valid = this.check(t, rule, data, match, 'from');
+            }
+            if (!t.from && t.to) {
+              valid = this.check(t, rule, data, match, 'to');
             }
           }
         });
@@ -118,17 +161,21 @@ export default {
    *
    * @param {object} transition transition
    * @param {object} rule rule
-   * @param {object} page current | next
+   * @param {object} data transition data
+   * @param {object} data.current current page
+   * @param {object} data.next next page
+   * @param {object} data.trigger transition trigger
    * @param {object} match debug object
    * @param {string} direction from | to
    * @returns {boolean} valid check or not
    */
-  check(transition, rule, page, match, direction) {
+  check(transition, rule, data, match, direction) {
     let isValid = true;
     let hasMatch = false;
     const t = transition;
     const { name, type } = rule;
     const base = direction ? t[direction] : t; // = t || t.from || t.to
+    const page = direction === 'to' ? data.next : data.current; // = t || t.from || t.to
     const exist = direction ? base && base[name] : base[name];
 
     // If transition rule exists
@@ -151,7 +198,7 @@ export default {
         }
 
         case 'function':
-          if (base[name](page)) {
+          if (base[name](data)) {
             hasMatch = true;
           } else {
             isValid = false;
