@@ -54,7 +54,9 @@ export const barba = {
     // }
 
     // Init dom with data-attributes schema
-    dom.init(this.options.attributeSchema);
+    dom.init({ attributeSchema: this.options.attributeSchema });
+    // Init prevent with data-attributes schema
+    prevent.init({ attributeSchema: this.options.attributeSchema });
 
     // Get wrapper
     this.wrapper = dom.getWrapper();

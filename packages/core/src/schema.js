@@ -4,7 +4,7 @@
  *    ="wrapper"
  *    ="container"
  *    ="prefetch"
- *    ="disable"
+ *    ="prevent"
  * data-barba-namespace
  */
 export const attributeSchema = {
@@ -12,7 +12,7 @@ export const attributeSchema = {
   wrapper: 'wrapper',
   container: 'container',
   prefetch: 'prefetch',
-  disable: 'disable',
+  prevent: 'prevent',
   namespace: 'namespace',
 };
 

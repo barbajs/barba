@@ -9,6 +9,10 @@ export default {
     return this.data[key];
   },
 
+  has(key) {
+    return key in this.data;
+  },
+
   reset() {
     this.data = {};
   },

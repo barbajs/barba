@@ -41,7 +41,7 @@
     "prerelease": "npm run build",
     "release": "lerna publish",
     "test": "eslint packages/**/src/** && yarn jest --coverage",
-    "watch": "yarn jest --watch"
+    "watch": "yarn jest --watch --verbose false"
   },
   "husky": {
     "hooks": {
