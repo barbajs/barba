@@ -27,7 +27,7 @@ var Utils = {
    * @return {String} newCleanUrl
    */
   cleanLink: function(url) {
-    return url.replace(/#.*/, '');
+    return url.replace(/(#.*|\?.*)/, '');
   },
 
   /**
