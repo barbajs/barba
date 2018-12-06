@@ -31,6 +31,7 @@
     "build": "npm-run-all build:commonjs build:umd build:umd:min build:esm",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build:esm": "cpx 'src/**/*.{mjs,js,json}' esm",
+    "build:esm:watch": "cpx 'src/**/*.{mjs,js,json}' esm -w",
     "build:umd": "cross-env BABEL_ENV=umd NODE_ENV=development webpack --progress --profile",
     "build:umd:min": "cross-env BABEL_ENV=umd NODE_ENV=production webpack --progress --profile",
     "clear": "rimraf dist esm lib",
@@ -40,6 +41,9 @@
     "watch": "jest --colors --watch"
   },
   "dependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
     "run-async": "^2.3.0"
   }
 }

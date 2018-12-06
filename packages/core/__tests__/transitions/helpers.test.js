@@ -13,7 +13,6 @@ it('sort by priorities', () => {
 });
 
 it('sort by directions', () => {
-  // eslint-disable-next-line object-property-newline
   const fromTo = { from: true, to: true };
   const from = { from: true };
   const none = {};

@@ -1,4 +1,3 @@
-/* eslint-disable object-property-newline */
 import { store } from '../../src/transitions';
 
 let match = {};

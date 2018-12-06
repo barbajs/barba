@@ -1,4 +1,3 @@
-console.info('babel.config.js:root');
 module.exports = function config(api) {
   api.cache(() => 'barba');
 

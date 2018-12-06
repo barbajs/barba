@@ -204,7 +204,7 @@ module.exports = {
     'no-whitespace-before-property': 2,
     'no-with': 2,
     'object-shorthand': 2,
-    'object-property-newline': 2,
+    'object-property-newline': 0,
     'operator-assignment': 2,
     'operator-linebreak': 2,
     'padded-blocks': [2, 'never'],

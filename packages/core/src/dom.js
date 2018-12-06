@@ -7,16 +7,37 @@ export default {
    */
   init({ attributeSchema }) {
     this.attr = attributeSchema;
+    this.parser = new DOMParser();
+  },
+
+  toString(dom) {
+    return dom.outerHTML;
+  },
+
+  toDocument(html) {
+    return this.parser.parseFromString(html, 'text/html');
   },
 
   /**
-   * Get element + html
+   * Get html content
+   *
+   * @param {HTMLElement} [el=document.documentElement] element
+   * @returns {string} html
+   */
+  getHtml(el = document) {
+    return this.toString(el.documentElement);
+    // DEV
+    // return el.parentNode.innerHTML;
+  },
+
+  /**
+   * Get full document ???
    *
    * @param {HTMLElement} [el=document.body] element
    * @returns {string} html
    */
-  getHtml(el = document.body) {
-    return el.parentNode.innerHTML;
+  getDocument(el = document.documentElement) {
+    return this.toString(el);
   },
 
   /**

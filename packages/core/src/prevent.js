@@ -61,17 +61,15 @@ const prevent = {
     );
 
     // Check same url
-    this.add(
-      'sameUrl',
-      ({ href }) => cleanLink(href) === cleanLink(window.location.href)
-    );
+    // this.add(
+    //   'sameUrl',
+    //   ({ href }) => cleanLink(href) === cleanLink(window.location.href)
+    // );
 
-    // If contains no-barba class
+    // If contains [data-barba="prevent"]
     this.add(
-      'noBarba',
-      ({ el }) =>
-        el.classList.contains('no-barba') ||
-        el.getAttribute(this.attr.prefix) === this.attr.prevent
+      'hasAttr',
+      ({ el }) => el.getAttribute(this.attr.prefix) === this.attr.prevent
     );
   },
 
@@ -103,6 +101,10 @@ const prevent = {
         href,
       })
     );
+  },
+
+  sameUrl(href) {
+    return cleanLink(href) === cleanLink(window.location.href);
   },
 };
 

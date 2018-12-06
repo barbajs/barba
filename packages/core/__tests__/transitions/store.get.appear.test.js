@@ -1,4 +1,4 @@
-/* eslint-disable no-empty-function, object-property-newline */
+/* eslint-disable no-empty-function */
 import { store } from '../../src/transitions';
 
 const tAppear = { appear() {} };

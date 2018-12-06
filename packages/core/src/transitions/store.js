@@ -1,10 +1,14 @@
-import { byPriorities, byDirections } from './helpers';
+import { byPriorities } from './helpers';
 
-// Can move to @barba/transitions? Kind of "collection" with default?
-const defaultTransition = {
-  enter() {}, // eslint-disable-line no-empty-function
-  leave() {}, // eslint-disable-line no-empty-function
-};
+// DEV: Can move to @barba/transitions? Kind of "collection" with default?
+// const defaultTransition = {
+//   leave() {
+//     console.info('defaultTransition:leave');
+//   }, // eslint-disable-line no-empty-function
+//   enter() {
+//     console.info('defaultTransition:enter');
+//   }, // eslint-disable-line no-empty-function
+// };
 
 export default {
   // Active transition
@@ -12,20 +16,23 @@ export default {
   // Rules and modes, order matters for priorities sorting
   rules: [
     {
-      name: 'custom',
-      type: 'function',
-    },
-    {
       name: 'namespace',
       type: 'strings',
     },
+    {
+      name: 'custom',
+      type: 'function',
+    },
   ],
-  modes: ['simultaneous', 'in-out', 'out-in'],
+  // TODO: sync {boolean} TO DELETE?
+  // modes: ['sync', 'in-out', 'out-in'],
   // All vs appear
-  all: [defaultTransition],
+  // all: [defaultTransition],
+  all: [],
   appear: [],
   // Global
-  wait: false, // Needed to wait for catch or fetch (if "to transition" exists)
+  // If we need to for next page content to get the right transition
+  wait: false,
 
   /**
    * Init store
@@ -58,14 +65,12 @@ export default {
    */
   update() {
     // Reorder by priorities
-    this.rules
-      .slice()
-      .reverse()
-      .forEach(rule => {
-        this.all.sort(byPriorities(rule.name));
-      });
+    this.all.sort(byPriorities(this.rules)).reverse();
     this.appear = this.all.filter(t => t.appear && !t.from && !t.to);
-    this.wait = this.all.some(t => t.to);
+    // If some "to" property, except if based on "route"
+    this.wait =
+      // TODO: how to manage "t.to.route" from @barba/router ???
+      this.all.some(t => t.to && !t.to.route);
   },
 
   /**
@@ -109,41 +114,43 @@ export default {
 
     // Active = first of valid transitions
     // sorted by directions (from/to, from || to, …)
-    [this.active] = transitions
-      .filter(t => {
-        let valid = true;
-        const match = {};
+    // DEV transitions are now correctly sorted, .find() should be ok!
+    // [this.active] = transitions.filter(t => {
+    this.active = transitions.find(t => {
+      let valid = true;
+      const match = {};
 
-        // Check rules
-        // TODO: can probably be refactored…
-        this.rules.forEach(rule => {
-          if (valid) {
-            valid = this.check(t, rule, data, match);
-            // From/to
-            if (t.from && t.to) {
-              valid =
-                this.check(t, rule, data, match, 'from') &&
-                this.check(t, rule, data, match, 'to');
-            }
-            if (t.from && !t.to) {
-              valid = this.check(t, rule, data, match, 'from');
-            }
-            if (!t.from && t.to) {
-              valid = this.check(t, rule, data, match, 'to');
-            }
+      // Check rules
+      // TODO: can probably be refactored…
+      this.rules.reverse().forEach(rule => {
+        if (valid) {
+          valid = this.check(t, rule, data, match);
+          // From/to
+          if (t.from && t.to) {
+            valid =
+              this.check(t, rule, data, match, 'from') &&
+              this.check(t, rule, data, match, 'to');
           }
-        });
+          if (t.from && !t.to) {
+            valid = this.check(t, rule, data, match, 'from');
+          }
+          if (!t.from && t.to) {
+            valid = this.check(t, rule, data, match, 'to');
+          }
+        }
+      });
 
-        matching.set(t, match);
+      matching.set(t, match);
 
-        return valid;
-      })
-      .sort(byDirections);
+      return valid;
+    });
+    // DEV transitions are now correctly sorted
+    // .sort(byDirections);
 
     if (this.debug) {
       // Debug info to known criteria applied for matching transition
       // TODO: error/warn/info handler
-      console.info(matching.get(this.active));
+      console.info('DEBUG', matching.get(this.active));
     }
 
     return this.active;
@@ -175,7 +182,7 @@ export default {
     const t = transition;
     const { name, type } = rule;
     const base = direction ? t[direction] : t; // = t || t.from || t.to
-    const page = direction === 'to' ? data.next : data.current; // = t || t.from || t.to
+    const page = direction === 'to' ? data.next : data.current; // = current || next
     const exist = direction ? base && base[name] : base[name];
 
     // If transition rule exists

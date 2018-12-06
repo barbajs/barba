@@ -1,6 +1,6 @@
 import { store } from '../../src/transitions';
 
-/* eslint-disable no-empty-function, object-property-newline */
+/* eslint-disable no-empty-function */
 const [t] = store.all; // Default transition
 const tNs = { enter() {}, namespace: 'ns' };
 const tNsFrom = { enter() {}, from: { namespace: 'nsFrom' } };
@@ -10,7 +10,7 @@ const tNsFromTo = {
   from: { namespace: 'nsFrom' },
   to: { namespace: 'nsTo' },
 };
-/* eslint-enable no-empty-function, object-property-newline */
+/* eslint-enable no-empty-function */
 
 store.init([t, tNs, tNsFrom, tNsTo, tNsFromTo]);
 
