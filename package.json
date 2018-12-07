@@ -53,5 +53,8 @@
     "commitizen": {
       "path": "./node_modules/cz-ccgls"
     }
+  },
+  "dependencies": {
+    "husky": "^1.2.0"
   }
 }
