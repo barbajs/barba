@@ -30,6 +30,7 @@
     "build": "npm-run-all build:commonjs build:umd build:umd:min build:esm",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build:esm": "cpx 'src/**/*.{mjs,js,json}' esm",
+    "build:esm:watch": "cpx 'src/**/*.{mjs,js,json}' esm -w",
     "build:umd": "cross-env BABEL_ENV=umd NODE_ENV=development webpack --progress --profile",
     "build:umd:min": "cross-env BABEL_ENV=umd NODE_ENV=production webpack --progress --profile",
     "clear": "rimraf dist esm lib",
@@ -37,5 +38,8 @@
     "precommit": "lint-staged",
     "test": "eslint src/** && jest --coverage",
     "watch": "jest --colors --watch"
+  },
+  "dependencies": {
+    "path-to-regexp": "^2.4.0"
   }
 }

@@ -3,6 +3,7 @@ import { map } from './utils';
 export default {
   available: [
     'go',
+    'refresh',
     'beforeAppear',
     'appear',
     'afterAppear',

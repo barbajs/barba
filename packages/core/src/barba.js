@@ -69,7 +69,7 @@ export const barba = {
     this.wrapper.setAttribute('aria-live', 'polite');
 
     // Store
-    store.init(transitions, debug);
+    this.store = store.init(transitions, debug);
 
     // Init pages
     this.initPages();
@@ -173,22 +173,18 @@ export const barba = {
     this.go(getHref(el), el);
   },
 
-  onStateChange(e) {
+  onStateChange() {
     const url = getUrl();
-
-    console.info(e);
-
-    return;
 
     this.go(url, 'popstate');
   },
 
   async appear() {
     // Check if appear transition
-    if (store.appear.length > 0) {
+    if (this.store.appear.length > 0) {
       try {
         const data = this.getData();
-        const transition = store.get(data, true);
+        const transition = this.store.get(data, true);
 
         await manager.doAppear({ transition, data });
       } catch (error) {
@@ -214,7 +210,7 @@ export const barba = {
     }
 
     // Need to wait before getting the right transition
-    if (store.wait) {
+    if (this.store.wait) {
       await page.then(html => {
         const nextDocument = dom.toDocument(html);
 
@@ -237,7 +233,7 @@ export const barba = {
     hooks.do('go', data);
 
     try {
-      const transition = store.get(data);
+      const transition = this.store.get(data);
 
       await manager.doPage({
         transition,
