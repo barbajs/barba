@@ -1,4 +1,4 @@
-import { byPriorities } from './helpers';
+import { byPriorities } from './utils';
 
 // DEV: Can move to @barba/transitions? Kind of "collection" with default?
 // const defaultTransition = {

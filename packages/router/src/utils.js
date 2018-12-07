@@ -35,9 +35,9 @@ export function parsePath(p) {
  * Clean URL remove "origin" and leading slash
  *
  * @export
- * @param {String} path location.href
- * @param {String} origin location.origin
- * @returns {String} cleaned URL
+ * @param {string} path location.href
+ * @param {string} origin location.origin
+ * @returns {string} cleaned URL
  */
 export function cleanUrl(path, origin) {
   return path.replace(`${origin}/`, '');

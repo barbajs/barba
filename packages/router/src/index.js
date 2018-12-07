@@ -9,8 +9,6 @@ export const router = {
   routesByName: {},
   install(barba, { routes = [] } = {}) {
     this.barba = barba;
-    // DEV
-    // this.routes = options.routes || [];
 
     routes.forEach(route => {
       const { name, path } = route;
@@ -35,6 +33,7 @@ export const router = {
     barba.hooks.refresh(this.resolveRoutes, this);
   },
   init() {
+    // Wait for store initialization then add new rule for routes
     this.barba.store.add('rule', {
       position: 1,
       value: {
@@ -42,10 +41,11 @@ export const router = {
         type: 'strings',
       },
     });
-    this.barba.current.route = this.resolve(this.barba.current.url);
+    // DEV is resolved through "refresh" hook
+    // this.barba.current.route = this.resolve(this.barba.current.url);
   },
   destroy() {
-    this.routes = {};
+    this.routes = [];
   },
   resolve(url) {
     const fullPath = cleanUrl(url, this.origin);
@@ -64,10 +64,10 @@ export const router = {
   },
   // Hooks
   resolveRoutes(data) {
-    data.current.route = data.current.url
-      ? this.resolve(data.current.url)
-      : undefined;
-    data.next.route = data.next.url ? this.resolve(data.next.url) : undefined;
+    const { current, next } = data;
+
+    current.route = current.url ? this.resolve(current.url) : undefined;
+    next.route = next.url ? this.resolve(next.url) : undefined;
   },
 };
 

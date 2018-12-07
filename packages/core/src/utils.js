@@ -21,9 +21,9 @@ export const getPort = p => {
 /**
  * ForEach for array/object (basic version)
  *
- * @param {Array|Object} collection "collection" to loop over
- * @param {Function} iteratee callback
- * @returns {Array|Object} initial collection
+ * @param {array|object} collection "collection" to loop over
+ * @param {function} iteratee callback
+ * @returns {array|Object} initial collection
  */
 export function forEach(collection, iteratee) {
   if (collection.forEach === undefined) {
@@ -40,9 +40,9 @@ export function forEach(collection, iteratee) {
 /**
  * Map for array/object (basic version)
  *
- * @param {Array|Object} collection "collection" to loop over
- * @param {Function} iteratee callback
- * @returns {Array} "mapped" array
+ * @param {array|object} collection "collection" to loop over
+ * @param {function} iteratee callback
+ * @returns {array} "mapped" array
  */
 export function map(collection, iteratee) {
   if (collection.map === undefined) {

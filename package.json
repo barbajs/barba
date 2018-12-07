@@ -44,11 +44,6 @@
     "test": "eslint packages/**/src/** && yarn jest --coverage",
     "watch": "yarn jest --watch --verbose false"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lerna run --concurrency 1 --stream precommit"
-    }
-  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-ccgls"

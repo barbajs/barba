@@ -18,8 +18,8 @@ export default {
    * Add a new set of url and namespace
    *
    * @memberOf @barba/core/history
-   * @param {String} url page url
-   * @param {String} namespace [data-barba-namespace]
+   * @param {string} url page url
+   * @param {string} namespace [data-barba-namespace]
    * @returns {undefined}
    * @private
    */

@@ -3,10 +3,10 @@
  * - rule name gives tens (index * 10)
  * - from/to properties give units (0, 1 or 2)
  *
- * @param {Object} item transition
- * @param {String} name rule name
- * @param {Number} index rule index
- * @returns {Number} priority
+ * @param {object} item transition
+ * @param {string} name rule name
+ * @param {number} index rule index
+ * @returns {number} priority
  */
 function calculatePriority(item, name, index) {
   let priority = 0;
