@@ -1,8 +1,8 @@
 linters:
-  src/**/*.js:
+  'src/**/*.js':
     - prettier --write
     - eslint
     - git add
-  *.{json,md}:
+  '*.{json,md}':
     - prettier --write
     - git add

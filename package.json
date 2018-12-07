@@ -16,6 +16,7 @@
     "cz-ccgls": "0.2.0",
     "eslint": "^5.8.0",
     "eslint-plugin-jest": "^21.26.2",
+    "husky": "^1.2.0",
     "inquirer": "5.2.0",
     "jest": "^23.6.0",
     "jest-watch-lerna-packages": "^1.1.0",
@@ -53,8 +54,5 @@
     "commitizen": {
       "path": "./node_modules/cz-ccgls"
     }
-  },
-  "dependencies": {
-    "husky": "^1.2.0"
   }
 }
