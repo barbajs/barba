@@ -8,7 +8,7 @@ export default {
   /**
    * Cache object
    *
-   * @memberof @barba/core/history
+   * @memberof @barba/core/cache
    * @type {object}
    * @private
    */

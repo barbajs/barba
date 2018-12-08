@@ -156,7 +156,7 @@ $RECYCLE.BIN/
 
 ### Custom ###
 
-.vscode/settings.json
 esm
 lib
 dist
+docs

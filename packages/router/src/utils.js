@@ -1,9 +1,9 @@
 /**
  * Parse URL for path, query and hash
  *
- * @export
  * @param {string} p path to parse
  * @returns {object} path, query, hash
+ * @private
  */
 export function parsePath(p) {
   let path = p;
@@ -34,10 +34,10 @@ export function parsePath(p) {
 /**
  * Clean URL remove "origin" and leading slash
  *
- * @export
  * @param {string} path location.href
  * @param {string} origin location.origin
  * @returns {string} cleaned URL
+ * @private
  */
 export function cleanUrl(path, origin) {
   return path.replace(`${origin}/`, '');

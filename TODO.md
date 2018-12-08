@@ -26,6 +26,7 @@
   - [ ] auto-update version(s)
   - [ ] auto-update changelogs
   - [ ] auto-update file gzip size (website and readme)
+  - [ ] CI (tests, coverage on push, PR, …)
 - [ ] Community
   - [ ] Github issue template
   - [ ] Forum / chat?

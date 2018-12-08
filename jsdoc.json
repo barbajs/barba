@@ -1,0 +1,14 @@
+{
+  "opts": {
+    "template": "node_modules/jaguarjs-jsdoc"
+  },
+  "templates": {
+    "applicationName": "@barba",
+    "meta": {
+      "title": "Barba.js",
+      "description": "barba.js it's a small, flexible and dependency free library that helps you creating fluid and smooth transition between your website's pages.",
+      "keyword": "pjax, ajax, barba.js, transitions"
+    },
+    "linenums": true
+  }
+}

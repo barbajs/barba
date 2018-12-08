@@ -65,6 +65,7 @@ export default {
    *
    * @memberof @barba/core/transitions/store
    * @type {boolean}
+   * @private
    */
   _debug: false,
 

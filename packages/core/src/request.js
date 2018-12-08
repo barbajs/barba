@@ -6,6 +6,7 @@ const requestTimeout = 5000;
  * @param {number} ms milliseconds
  * @param {promise} promise async function
  * @returns {promise} async function resolution
+ * @private
  */
 function timeout(ms, promise) {
   return new Promise((resolve, reject) => {
@@ -31,6 +32,7 @@ function timeout(ms, promise) {
  *
  * @param {string} url url to fetch
  * @returns {string} text content
+ * @private
  */
 async function request(url) {
   const headers = new Headers({

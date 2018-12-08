@@ -8,6 +8,7 @@
  * data-barba-namespace
  *
  * @type {object}
+ * @private
  */
 // TODO: prefetch or noprefetch or no-prefetch?
 export const attributeSchema = {
@@ -23,6 +24,7 @@ export const attributeSchema = {
  * Pages (current and next structure)
  *
  * @type {object}
+ * @private
  */
 export const pageSchema = {
   namespace: undefined,

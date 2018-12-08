@@ -7,6 +7,7 @@
  * @param {string} name rule name
  * @param {number} index rule index
  * @returns {number} priority
+ * @private
  */
 function calculatePriority(item, name, index) {
   let priority = 0;
