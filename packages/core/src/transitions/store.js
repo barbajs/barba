@@ -1,4 +1,4 @@
-import { byPriorities } from './utils';
+import { addPriority } from './utils';
 
 /**
  * Store and sort transitions
@@ -7,15 +7,6 @@ import { byPriorities } from './utils';
  * @type {object}
  */
 export default {
-  /**
-   * Active transition
-   *
-   * @memberof @barba/core/transitions/store
-   * @type {transition}
-   * @private
-   */
-  _active: undefined,
-
   /**
    * Rules for prioritazing transitions
    *
@@ -53,12 +44,13 @@ export default {
   _appear: [],
 
   /**
-   * To know if we should wait for next container before getting transition
+   * Page transitions
    *
    * @memberof @barba/core/transitions/store
-   * @type {boolean}
+   * @type {array}
+   * @private
    */
-  wait: false,
+  _page: [],
 
   /**
    * Debug mode, log matchong criteria for active transition
@@ -68,6 +60,14 @@ export default {
    * @private
    */
   _debug: false,
+
+  /**
+   * To know if we should wait for next container before getting transition
+   *
+   * @memberof @barba/core/transitions/store
+   * @type {boolean}
+   */
+  wait: false,
 
   /**
    * Check if appear transitions
@@ -101,23 +101,22 @@ export default {
   },
 
   /**
-   * Update store
-   *
-   * Reorder transition by priorities
-   * Get wait transitions
-   * Get appear transitions
+   * Destroy store
    *
    * @memberof @barba/core/transitions/store
-   * @returns {undefined}
-   * @private
+   * @returns {store} this instance
    */
-  _update() {
-    // Reorder by priorities
-    this._all.sort(byPriorities(this._rules)).reverse();
-    this._appear = this._all.filter(t => t.appear && !t.from && !t.to);
-    // If some "to" property, except if based on "route"
-    // TODO: how to manage "t.to.route" from @barba/router ???
-    this.wait = this._all.some(t => t.to && !t.to.route);
+  destroy() {
+    this._active = undefined;
+    this._debug = false;
+    this._all = [];
+    this._appear = [];
+    this._page = [];
+    this.wait = false;
+
+    this._update();
+
+    return this;
   },
 
   /**
@@ -156,16 +155,14 @@ export default {
    * @returns {object} active transition
    */
   get(data, appear = false) {
-    const transitions = appear ? this._appear : this._all;
+    const transitions = appear ? this._appear : this._page;
 
     // All matching transition infos
     const matching = new Map();
 
     // Active = first of valid transitions
     // sorted by directions (from/to, from || to, …)
-    // DEV transitions are now correctly sorted, .find() should be ok!
-    // [this.active] = transitions.filter(t => {
-    this._active = transitions.find(t => {
+    const active = transitions.find(t => {
       let valid = true;
       const match = {};
 
@@ -173,17 +170,19 @@ export default {
       this._rules.reverse().forEach(rule => {
         if (valid) {
           valid = this._check(t, rule, data, match);
-          // From/to
-          if (t.from && t.to) {
-            valid =
-              this._check(t, rule, data, match, 'from') &&
-              this._check(t, rule, data, match, 'to');
-          }
-          if (t.from && !t.to) {
-            valid = this._check(t, rule, data, match, 'from');
-          }
-          if (!t.from && t.to) {
-            valid = this._check(t, rule, data, match, 'to');
+          // From/to check, only for page transitions
+          if (!appear) {
+            if (t.from && t.to) {
+              valid =
+                this._check(t, rule, data, match, 'from') &&
+                this._check(t, rule, data, match, 'to');
+            }
+            if (t.from && !t.to) {
+              valid = this._check(t, rule, data, match, 'from');
+            }
+            if (!t.from && t.to) {
+              valid = this._check(t, rule, data, match, 'to');
+            }
           }
         }
       });
@@ -198,10 +197,39 @@ export default {
     if (this._debug) {
       // Debug info to known criteria applied for matching transition
       // TODO: error/warn/info handler
-      console.info('DEBUG', matching.get(this._active));
+      console.info('DEBUG', matching.get(active));
     }
 
-    return this._active;
+    return active;
+  },
+
+  /**
+   * Update store
+   *
+   * Reorder transition by priorities
+   * Get wait transitions
+   * Get appear transitions
+   *
+   * @memberof @barba/core/transitions/store
+   * @returns {undefined}
+   * @private
+   */
+  _update() {
+    // Reorder by priorities
+    this._all = this._all
+      .map(addPriority(this._rules))
+      .sort((a, b) => a.priority - b.priority)
+      .reverse()
+      .map(t => {
+        delete t.priority;
+
+        return t;
+      });
+    this._page = this._all.filter(t => t.enter || t.leave);
+    this._appear = this._all.filter(t => t.appear);
+    // If some "to" property, except if based on "route"
+    // TODO: how to manage "t.to.route" from @barba/router ???
+    this.wait = this._all.some(t => t.to && !t.to.route);
   },
 
   /**

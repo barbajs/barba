@@ -10,9 +10,21 @@ container.dataset.barba = 'container';
 document.body.appendChild(wrapper);
 document.body.appendChild(container);
 
-barba.use(router, { routes: { foo: '/foo' } });
+barba.use(router, {
+  routes: [
+    {
+      name: 'foo',
+      path: 'foo/:bar',
+    },
+  ],
+});
+
 barba.init();
 
 it('has routes', () => {
-  expect(router.routes).toMatchObject({ foo: '/foo' });
+  expect(router._routes).toEqual(['foo']);
+  expect(router._routesByName.foo).toEqual({
+    path: 'foo/:bar',
+    regex: /^foo\/([^/]+?)(?:\/)?$/i,
+  });
 });
