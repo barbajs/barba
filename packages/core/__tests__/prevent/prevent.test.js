@@ -15,5 +15,5 @@ it('add test ', () => {
 
   prevent.add(name, check);
 
-  expect(prevent.tests[name]).toBe(check);
+  expect(prevent._tests[name]).toBe(check);
 });

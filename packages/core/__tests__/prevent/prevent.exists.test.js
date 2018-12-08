@@ -6,7 +6,7 @@ prevent.init({ attributeSchema });
 let check;
 
 beforeEach(() => {
-  check = jest.fn(data => prevent.tests.exists(data));
+  check = jest.fn(data => prevent._tests.exists(data));
 });
 
 it('pass (with element and href)', () => {

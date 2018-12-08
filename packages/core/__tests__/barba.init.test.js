@@ -55,5 +55,5 @@ it('has barba current', () => {
   expect(barba.current.namespace).toBe(namespace);
   expect(barba.current.url).toBe('http://localhost/');
   expect(barba.current.container).toBe(container);
-  expect(barba.current.html).toMatch(/^<head>.+<\/body>$/);
+  expect(barba.current.html).toMatch(/^<html>.+<\/html>$/);
 });

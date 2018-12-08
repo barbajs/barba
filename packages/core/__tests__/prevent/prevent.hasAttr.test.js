@@ -7,7 +7,7 @@ let check;
 const el = document.createElement('a');
 
 beforeEach(() => {
-  check = jest.fn(data => prevent.tests.noBarba(data));
+  check = jest.fn(data => prevent._tests.hasAttr(data));
   [...el.attributes].forEach(attr => el.removeAttribute(attr.name));
 });
 
@@ -19,14 +19,6 @@ it('pass', () => {
 
 it('prevent with data-barba="prevent"', () => {
   el.dataset.barba = 'prevent';
-
-  check({ el });
-
-  expect(check).toHaveReturnedWith(true);
-});
-
-it('prevent with class="no-barba"', () => {
-  el.classList.add('no-barba');
 
   check({ el });
 

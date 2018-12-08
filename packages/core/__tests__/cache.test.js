@@ -4,7 +4,7 @@ const key = 'key';
 const value = 'value';
 
 it('has data ', () => {
-  expect(cache.data).toBeDefined();
+  expect(cache._data).toBeDefined();
 });
 
 it('set key/value ', () => {
@@ -12,7 +12,7 @@ it('set key/value ', () => {
 
   cache.set(key, value);
 
-  expect(cache.data).toMatchObject(expected);
+  expect(cache._data).toMatchObject(expected);
 });
 
 it('has key ', () => {
@@ -30,5 +30,5 @@ it('get value ', () => {
 it('reset data ', () => {
   cache.reset();
 
-  expect(cache.data).toEqual({});
+  expect(cache._data).toEqual({});
 });

@@ -5,26 +5,21 @@ it('manages promises', async () => {
     current: 'foo',
     next: {},
   };
-  const t = {
+  const transition = {
     beforeAppear(data) {
       expect(data).toBe(expected);
-
-      return Promise.resolve('before');
     },
-    appear(data, beforeData) {
+    appear(data) {
       expect(data).toBe(expected);
-      expect(beforeData).toBe('before');
-
-      return Promise.resolve('appear');
-    },
-    afterAppear(appearData) {
-      expect(appearData).toBe('appear');
 
       return Promise.resolve();
     },
+    afterAppear(data) {
+      expect(data).toBe(expected);
+    },
   };
 
-  const result = await manager.doAppear(t, expected);
+  const result = await manager.doAppear({ transition, data: expected });
 
   expect(result).toBeTruthy();
 });
@@ -34,32 +29,17 @@ it('manages async', async () => {
     current: 'foo',
     next: {},
   };
-  const t = {
-    beforeAppear(data) {
+  const transition = {
+    appear(data) {
       expect(data).toBe(expected);
 
       const done = this.async();
 
-      done(null, 'before');
-    },
-    appear(data, beforeData) {
-      expect(data).toBe(expected);
-      expect(beforeData).toBe('before');
-
-      const done = this.async();
-
-      done(null, 'appear');
-    },
-    afterAppear(appearData) {
-      expect(appearData).toBe('appear');
-
-      const done = this.async();
-
-      done();
+      done(null);
     },
   };
 
-  const result = await manager.doAppear(t, expected);
+  const result = await manager.doAppear({ transition, data: expected });
 
   expect(result).toBeTruthy();
 });
@@ -69,46 +49,35 @@ it('manages sync', async () => {
     current: 'foo',
     next: {},
   };
-  const t = {
-    beforeAppear(data) {
+  const transition = {
+    appear(data) {
       expect(data).toBe(expected);
-
-      return 'before';
-    },
-    appear(data, beforeData) {
-      expect(data).toBe(expected);
-      expect(beforeData).toBe('before');
-
-      return 'appear';
-    },
-    afterAppear(appearData) {
-      expect(appearData).toBe('appear');
     },
   };
 
-  const result = await manager.doAppear(t, expected);
+  const result = await manager.doAppear({ transition, data: expected });
 
   expect(result).toBeTruthy();
 });
 
 it('manages minimal transition', async () => {
-  const t = {
+  const transition = {
     appear() {}, // eslint-disable-line no-empty-function
   };
 
-  const result = await manager.doAppear(t);
+  const result = await manager.doAppear({ transition });
 
   expect(result).toBeTruthy();
 });
 
 it('manages error', async () => {
-  const t = {
+  const transition = {
     appear() {
-      throw new Error('🚨');
+      throw new Error('No transition found');
     },
   };
 
-  const result = await manager.doAppear(t);
+  const result = await manager.doAppear({ transition });
 
   expect(result).toBeFalsy();
 });

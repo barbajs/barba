@@ -44,14 +44,12 @@ export const barba = {
   init({
     debug = false,
     transitions = [],
-    views = [],
+    // DEV
+    // views = [],
     schema = attributeSchema,
     useCache = true,
     usePrefetch = true,
   } = {}) {
-    // DEV
-    console.info(views);
-
     this.useCache = useCache;
     this.usePrefetch = usePrefetch;
 

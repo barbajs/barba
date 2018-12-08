@@ -26,17 +26,12 @@ it('get html', () => {
   document.body.appendChild(wrapper);
 
   const fullBody = new RegExp(
-    `^<head>.+body.+${dom.attr.wrapper}.+${
+    `^<html>.+body.+${dom.attr.wrapper}.+${
       dom.attr.container
-    }.+${namespace}.+</body>$`
-  );
-  const onlyContainer = new RegExp(
-    `^<div.+${dom.attr.container}.+${namespace}.+</div>$`
+    }.+${namespace}.+</html>$`
   );
 
   expect(dom.getHtml()).toMatch(fullBody);
-  expect(dom.getHtml(container)).not.toMatch(fullBody);
-  expect(dom.getHtml(container)).toMatch(onlyContainer);
 });
 
 it('get wrapper', () => {

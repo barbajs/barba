@@ -2,12 +2,12 @@ import { store } from '../../src/transitions';
 
 it('has default transition', () => {
   store.init();
-  expect(store.all).toHaveLength(1);
+  expect(store._all).toHaveLength(0);
 });
 
 it('has no appear transition', () => {
   store.init();
-  expect(store.appear).toHaveLength(0);
+  expect(store._appear).toHaveLength(0);
 });
 
 it('has no wait', () => {
@@ -17,17 +17,17 @@ it('has no wait', () => {
 
 it('has debug mode', () => {
   store.init(undefined, true);
-  expect(store.debug).toBeTruthy();
+  expect(store._debug).toBeTruthy();
 });
 
 it('adds transitions', () => {
   store.init([{}, {}]);
-  expect(store.all).toHaveLength(3);
+  expect(store._all).toHaveLength(2);
 });
 
 it('updates transitions', () => {
-  store.update = jest.fn();
+  store._update = jest.fn();
 
   store.init();
-  expect(store.update).toHaveBeenCalledTimes(1);
+  expect(store._update).toHaveBeenCalledTimes(1);
 });

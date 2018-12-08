@@ -1,14 +1,14 @@
 import hooks from '../src/hooks';
 
-const [hookName] = hooks.available;
+const [hookName] = hooks._available;
 
 afterEach(() => {
   hooks.destroy();
 });
 
 it('has defaults', () => {
-  expect(hooks.available).toBeDefined();
-  expect(hooks.available).toBeDefined();
+  expect(hooks._available).toBeDefined();
+  expect(hooks._available).toBeDefined();
   expect(hooks[hookName]).toBeUndefined();
 });
 
@@ -16,7 +16,7 @@ it('init hooks', () => {
   hooks.init();
 
   expect(hooks[hookName]).toBeDefined();
-  expect(hooks.registered).not.toHaveProperty(hookName);
+  expect(hooks._registered).not.toHaveProperty(hookName);
 });
 
 it('register hooks', () => {
@@ -28,20 +28,20 @@ it('register hooks', () => {
 
   hooks[hookName](fn, ctx);
 
-  expect(hooks.registered).toHaveProperty(hookName);
-  expect(hooks.registered[hookName]).toHaveLength(1);
-  expect(hooks.registered[hookName][0].fn).toBe(fn);
-  expect(hooks.registered[hookName][0].ctx).toBe(ctx);
+  expect(hooks._registered).toHaveProperty(hookName);
+  expect(hooks._registered[hookName]).toHaveLength(1);
+  expect(hooks._registered[hookName][0].fn).toBe(fn);
+  expect(hooks._registered[hookName][0].ctx).toBe(ctx);
 
   hooks[hookName](fn2);
 
-  expect(hooks.registered[hookName][1].fn).toBe(fn2);
-  expect(hooks.registered[hookName][1].ctx).toBeNull();
+  expect(hooks._registered[hookName][1].fn).toBe(fn2);
+  expect(hooks._registered[hookName][1].ctx).toBeNull();
 });
 
 it('do nothing when no hooks', () => {
   const doUnknown = jest.fn(() => hooks.do('unknown'));
-  const doUnregistered = jest.fn(() => hooks.do(hooks.available[1]));
+  const doUnregistered = jest.fn(() => hooks.do(hooks._available[1]));
 
   hooks.init();
 

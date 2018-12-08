@@ -6,7 +6,7 @@ prevent.init({ attributeSchema });
 let check;
 
 beforeEach(() => {
-  check = jest.fn(data => prevent.tests.newTab(data));
+  check = jest.fn(data => prevent._tests.newTab(data));
 });
 
 it('pass', () => {

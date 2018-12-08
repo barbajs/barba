@@ -12,10 +12,6 @@
   - [ ] **views**
   - [ ] **transitions** (basic, ready-to-use. e.g.: fade, slide, …)
   - [ ] **css** (add CSS classes via hooks)
-- [ ] License (find correct open source license)
-  - anyone can do what they want, but:
-  - they can't resell it as it is
-  - I have the right in any moment to not allow a specific use
 - [ ] Tests:
   - [ ] unit tests
   - [ ] e2e tests (puppetteer? / cypress?)
@@ -27,6 +23,15 @@
   - [ ] auto-update changelogs
   - [ ] auto-update file gzip size (website and readme)
   - [ ] CI (tests, coverage on push, PR, …)
+- [ ] License (find correct open source license)
+  - anyone can do what they want, but:
+  - they can't resell it as it is
+  - I have the right in any moment to not allow a specific use
+  - NB: This seems conflicting with open source core principles
+    Following are the most "restrictive" :)
+    - [GNU AGPLv3](https://choosealicense.com/licenses/agpl-3.0/)
+    - [Open Software License 3.0](https://choosealicense.com/licenses/osl-3.0/)
+    - [European Union Public License 1.2](https://choosealicense.com/licenses/eupl-1.2/)
 - [ ] Community
   - [ ] Github issue template
   - [ ] Forum / chat?

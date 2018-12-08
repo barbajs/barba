@@ -7,7 +7,7 @@ let check;
 const el = document.createElement('a');
 
 beforeEach(() => {
-  check = jest.fn(data => prevent.tests.corsDomain(data));
+  check = jest.fn(data => prevent._tests.corsDomain(data));
   [...el.attributes].forEach(attr => el.removeAttribute(attr.name));
 });
 

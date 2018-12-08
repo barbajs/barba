@@ -1,12 +1,11 @@
 import { store } from '../../src/transitions';
 
 /* eslint-disable no-empty-function */
-const [t] = store.all; // Default transition
-const tNs = { enter() {}, namespace: 'ns' };
-const tNsFrom = { enter() {}, from: { namespace: 'nsFrom' } };
-const tNsTo = { enter() {}, to: { namespace: 'nsTo' } };
+const t = {};
+const tNs = { namespace: 'ns' };
+const tNsFrom = { from: { namespace: 'nsFrom' } };
+const tNsTo = { to: { namespace: 'nsTo' } };
 const tNsFromTo = {
-  enter() {},
   from: { namespace: 'nsFrom' },
   to: { namespace: 'nsTo' },
 };

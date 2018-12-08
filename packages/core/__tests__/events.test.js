@@ -8,27 +8,27 @@ const cb2 = () => {};
 /* eslint-enable no-empty-function */
 
 afterEach(() => {
-  events.events = {};
+  events._events = {};
 });
 
 it('has events ', () => {
-  expect(events.events).toEqual({});
+  expect(events._events).toEqual({});
 });
 
 it('add event', () => {
   events.on(name, cb);
 
-  expect(events.events[name]).toHaveLength(1);
-  expect(events.events[name][0]).toBe(cb);
+  expect(events._events[name]).toHaveLength(1);
+  expect(events._events[name][0]).toBe(cb);
 });
 
 it('add event with different callbacks', () => {
   events.on(name, cb);
   events.on(name, cb2);
 
-  expect(events.events[name]).toHaveLength(2);
-  expect(events.events[name][0]).toBe(cb);
-  expect(events.events[name][1]).toBe(cb2);
+  expect(events._events[name]).toHaveLength(2);
+  expect(events._events[name][0]).toBe(cb);
+  expect(events._events[name][1]).toBe(cb2);
 });
 
 it('remove nothing with inexisting event', () => {
@@ -43,7 +43,7 @@ it('remove event', () => {
   events.on(name, cb);
   events.off(name, cb);
 
-  expect(events.events[name]).toHaveLength(0);
+  expect(events._events[name]).toHaveLength(0);
 });
 
 it('trigger nothing with inexisting event', () => {
@@ -72,9 +72,9 @@ it('handle event once', done => {
   }
   events.once(name, cb);
 
-  expect(events.events[name]).toHaveLength(1);
+  expect(events._events[name]).toHaveLength(1);
 
   events.trigger(name, arg);
 
-  expect(events.events[name]).toHaveLength(0);
+  expect(events._events[name]).toHaveLength(0);
 });
