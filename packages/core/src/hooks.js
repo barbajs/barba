@@ -1,20 +1,52 @@
 import { map } from './utils';
 
+/**
+ * Manage the hooks
+ *
+ * @namespace @barba/core/hooks
+ * @type {object}
+ */
 export default {
-  available: [
+  /**
+   * List of available hooks
+   *
+   * @memberof @barba/core/hooks
+   * @type {array}
+   * @private
+   */
+  _available: [
     'go',
     'refresh',
+    // Containers
+    'currentAdded',
+    'currentRemoved',
+    'nextAdded',
+    'nextRemoved',
+    // Transitions
     'beforeAppear',
     'appear',
     'afterAppear',
-    'beforeEnter',
-    'enter',
-    'afterEnter',
+    'appearCanceled',
+    'before',
     'beforeLeave',
     'leave',
     'afterLeave',
+    'leaveCanceled',
+    'beforeEnter',
+    'enter',
+    'afterEnter',
+    'enterCanceled',
+    'after',
   ],
-  registered: {},
+
+  /**
+   * List of registered hooks by name
+   *
+   * @memberof @barba/core/hooks
+   * @type {object}
+   * @private
+   */
+  _registered: {},
 
   /**
    * Init available hooks
@@ -22,17 +54,19 @@ export default {
    * A hook is a function that receive:
    * - function to execute
    * - optional context
+   *
+   * @memberof @barba/core/hooks
    * @returns {hooks} this instance
    */
   init() {
-    this.available.forEach(hook => {
+    this._available.forEach(hook => {
       if (this[hook]) {
         return;
       }
 
       this[hook] = (fn, ctx = null) => {
-        this.registered[hook] = this.registered[hook] || [];
-        this.registered[hook].push({
+        this._registered[hook] = this._registered[hook] || [];
+        this._registered[hook].push({
           fn,
           ctx,
         });
@@ -45,10 +79,11 @@ export default {
   /**
    * Clean registered hooks
    *
+   * @memberof @barba/core/hooks
    * @returns {hooks} this instance
    */
   destroy() {
-    this.registered = {};
+    this._registered = {};
 
     return this;
   },
@@ -56,16 +91,17 @@ export default {
   /**
    * Do hook
    *
+   * @memberof @barba/core/hooks
    * @param {string} hook hook name
    * @param {...*} args arguments to be passed to the hook function
    * @returns {undefined}
    */
   do(hook, ...args) {
-    if (hook in this.registered === false) {
+    if (hook in this._registered === false) {
       return;
     }
 
-    this.registered[hook].forEach(hook => {
+    this._registered[hook].forEach(hook => {
       hook.fn.apply(hook.ctx, args);
     });
   },
@@ -73,12 +109,13 @@ export default {
   /**
    * Help, print available and registered hooks
    *
+   * @memberof @barba/core/hooks
    * @returns {undefined}
    */
   help() {
-    console.info(`Available hooks: ${this.available}`);
+    console.info(`Available hooks: ${this._available}`);
     console.info(
-      `Registered hooks: ${map(this.registered, (hooks, name) => name)}`
+      `Registered hooks: ${map(this._registered, (hooks, name) => name)}`
     );
   },
 };

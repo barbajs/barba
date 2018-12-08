@@ -181,7 +181,7 @@ export const barba = {
 
   async appear() {
     // Check if appear transition
-    if (this.store.appear.length > 0) {
+    if (this.store.hasAppear) {
       try {
         const data = this.getData();
         const transition = this.store.get(data, true);

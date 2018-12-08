@@ -1,6 +1,6 @@
 /**
- * Calculate priority
- * - rule name gives tens (index * 10)
+ * Calculate transition priority based on:
+ * - rule "position" gives tens (index * 10)
  * - from/to properties give units (0, 1 or 2)
  *
  * @param {object} item transition

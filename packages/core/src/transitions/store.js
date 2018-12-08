@@ -1,20 +1,29 @@
 import { byPriorities } from './utils';
 
-// DEV: Can move to @barba/transitions? Kind of "collection" with default?
-// const defaultTransition = {
-//   leave() {
-//     console.info('defaultTransition:leave');
-//   }, // eslint-disable-line no-empty-function
-//   enter() {
-//     console.info('defaultTransition:enter');
-//   }, // eslint-disable-line no-empty-function
-// };
-
+/**
+ * Store and sort transitions
+ *
+ * @namespace @barba/core/transitions/store
+ * @type {object}
+ */
 export default {
-  // Active transition
-  active: undefined,
-  // Rules and modes, order matters for priorities sorting
-  rules: [
+  /**
+   * Active transition
+   *
+   * @memberof @barba/core/transitions/store
+   * @type {transition}
+   * @private
+   */
+  _active: undefined,
+
+  /**
+   * Rules for prioritazing transitions
+   *
+   * @memberof @barba/core/transitions/store
+   * @type {array}
+   * @private
+   */
+  _rules: [
     {
       name: 'namespace',
       type: 'strings',
@@ -24,32 +33,68 @@ export default {
       type: 'function',
     },
   ],
-  // TODO: sync {boolean} TO DELETE?
-  // modes: ['sync', 'in-out', 'out-in'],
-  // All vs appear
-  // all: [defaultTransition],
-  all: [],
-  appear: [],
-  // Global
-  // If we need to for next page content to get the right transition
+
+  /**
+   * All transitions
+   *
+   * @memberof @barba/core/transitions/store
+   * @type {array}
+   * @private
+   */
+  _all: [],
+
+  /**
+   * Appear transitions
+   *
+   * @memberof @barba/core/transitions/store
+   * @type {array}
+   * @private
+   */
+  _appear: [],
+
+  /**
+   * To know if we should wait for next container before getting transition
+   *
+   * @memberof @barba/core/transitions/store
+   * @type {boolean}
+   */
   wait: false,
+
+  /**
+   * Debug mode, log matchong criteria for active transition
+   *
+   * @memberof @barba/core/transitions/store
+   * @type {boolean}
+   */
+  _debug: false,
+
+  /**
+   * Check if appear transitions
+   *
+   * @memberof @barba/core/transitions/store
+   * @returns {boolean} yes or not
+   */
+  get hasAppear() {
+    return this._appear.length > 0;
+  },
 
   /**
    * Init store
    *
+   * @memberof @barba/core/transitions/store
    * @param {array} transitions array of transitions
    * @param {boolean} debug debug mode
    * @returns {store} this instance
    */
   init(transitions, debug) {
-    this.debug = debug;
+    this._debug = debug;
 
     if (transitions) {
       // TODO: add check for valid transitions? criteria? (appear || enter && leave)
-      this.all = this.all.concat(transitions);
+      this._all = this._all.concat(transitions);
     }
 
-    this.update();
+    this._update();
 
     return this;
   },
@@ -61,22 +106,24 @@ export default {
    * Get wait transitions
    * Get appear transitions
    *
+   * @memberof @barba/core/transitions/store
    * @returns {undefined}
+   * @private
    */
-  update() {
+  _update() {
     // Reorder by priorities
-    this.all.sort(byPriorities(this.rules)).reverse();
-    this.appear = this.all.filter(t => t.appear && !t.from && !t.to);
+    this._all.sort(byPriorities(this._rules)).reverse();
+    this._appear = this._all.filter(t => t.appear && !t.from && !t.to);
     // If some "to" property, except if based on "route"
-    this.wait =
-      // TODO: how to manage "t.to.route" from @barba/router ???
-      this.all.some(t => t.to && !t.to.route);
+    // TODO: how to manage "t.to.route" from @barba/router ???
+    this.wait = this._all.some(t => t.to && !t.to.route);
   },
 
   /**
    * Add rule or transition
    *
-   * @param {string} type rule | transition
+   * @memberof @barba/core/transitions/store
+   * @param {string} type rule or transition
    * @param {object} data data
    * @returns {undefined}
    */
@@ -84,30 +131,31 @@ export default {
     switch (type) {
       case 'rule':
         // TODO: check for valid rule
-        this.rules.splice(data.position || 0, 0, data.value);
+        this._rules.splice(data.position || 0, 0, data.value);
         break;
       case 'transition':
         // TODO: check for valid transition
-        this.all.push(data);
+        this._all.push(data);
         break;
       default:
     }
 
-    this.update();
+    this._update();
   },
 
   /**
    * Get active/matching transition
    *
+   * @memberof @barba/core/transitions/store
    * @param {object} data transition data
    * @param {object} data.current current page
    * @param {object} data.next next page
    * @param {object} data.trigger transition trigger
-   * @param {boolean} [init=false] for appear transition
+   * @param {boolean} [appear=false] for appear transition
    * @returns {object} active transition
    */
-  get(data, init = false) {
-    const transitions = init ? this.appear : this.all;
+  get(data, appear = false) {
+    const transitions = appear ? this._appear : this._all;
 
     // All matching transition infos
     const matching = new Map();
@@ -116,26 +164,25 @@ export default {
     // sorted by directions (from/to, from || to, …)
     // DEV transitions are now correctly sorted, .find() should be ok!
     // [this.active] = transitions.filter(t => {
-    this.active = transitions.find(t => {
+    this._active = transitions.find(t => {
       let valid = true;
       const match = {};
 
       // Check rules
-      // TODO: can probably be refactored…
-      this.rules.reverse().forEach(rule => {
+      this._rules.reverse().forEach(rule => {
         if (valid) {
-          valid = this.check(t, rule, data, match);
+          valid = this._check(t, rule, data, match);
           // From/to
           if (t.from && t.to) {
             valid =
-              this.check(t, rule, data, match, 'from') &&
-              this.check(t, rule, data, match, 'to');
+              this._check(t, rule, data, match, 'from') &&
+              this._check(t, rule, data, match, 'to');
           }
           if (t.from && !t.to) {
-            valid = this.check(t, rule, data, match, 'from');
+            valid = this._check(t, rule, data, match, 'from');
           }
           if (!t.from && t.to) {
-            valid = this.check(t, rule, data, match, 'to');
+            valid = this._check(t, rule, data, match, 'to');
           }
         }
       });
@@ -147,13 +194,13 @@ export default {
     // DEV transitions are now correctly sorted
     // .sort(byDirections);
 
-    if (this.debug) {
+    if (this._debug) {
       // Debug info to known criteria applied for matching transition
       // TODO: error/warn/info handler
-      console.info('DEBUG', matching.get(this.active));
+      console.info('DEBUG', matching.get(this._active));
     }
 
-    return this.active;
+    return this._active;
   },
 
   /**
@@ -166,6 +213,7 @@ export default {
    *     - "strings" should be present on both side (transition + view) and match
    *     - "function" should return true
    *
+   * @memberof @barba/core/transitions/store
    * @param {object} transition transition
    * @param {object} rule rule
    * @param {object} data transition data
@@ -175,8 +223,9 @@ export default {
    * @param {object} match debug object
    * @param {string} direction from | to
    * @returns {boolean} valid check or not
+   * @private
    */
-  check(transition, rule, data, match, direction) {
+  _check(transition, rule, data, match, direction) {
     let isValid = true;
     let hasMatch = false;
     const t = transition;

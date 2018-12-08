@@ -2,35 +2,48 @@
  * Manage the navigation
  *
  * @namespace @barba/core/history
- * @type {Object}
+ * @type {object}
  */
 export default {
   /**
    * Keep track of the status in historic order
    *
-   * @memberOf @barba/core/history
-   * @readOnly
-   * @type {Array}
+   * @memberof @barba/core/history
+   * @type {array}
+   * @private
    */
   _history: [],
 
   /**
    * Add a new set of url and namespace
    *
-   * @memberOf @barba/core/history
+   * @memberof @barba/core/history
    * @param {string} url page url
    * @param {string} namespace [data-barba-namespace]
    * @returns {undefined}
-   * @private
    */
   add(url, namespace = undefined) {
     this._history.push({ url, namespace });
   },
 
+  /**
+   * Remove last set of url and namespace
+   *
+   * @memberof @barba/core/history
+   * @returns {undefined}
+   */
   remove() {
     this._history.pop();
   },
 
+  /**
+   * Add to history and go to URL
+   *
+   * @memberof @barba/core/history
+   * @param {string} url page url
+   * @param {string} namespace [data-barba-namespace]
+   * @returns {undefined}
+   */
   go(url, namespace = undefined) {
     this.add(url, namespace);
 
@@ -39,6 +52,14 @@ export default {
     }
   },
 
+  /**
+   * Remove from history and go back
+   *
+   * @memberof @barba/core/history
+   * @param {string} url page url
+   * @param {string} namespace [data-barba-namespace]
+   * @returns {undefined}
+   */
   cancel() {
     this.remove();
 
@@ -50,7 +71,7 @@ export default {
   /**
    * Return information about the current status
    *
-   * @memberOf @barba/core/history
+   * @memberof @barba/core/history
    * @return {Object} current status
    */
   current() {
@@ -62,7 +83,7 @@ export default {
   /**
    * Return information about the previous status
    *
-   * @memberOf @barba/core/history
+   * @memberof @barba/core/history
    * @return {Object} previous status
    */
   previous() {

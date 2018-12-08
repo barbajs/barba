@@ -1,46 +1,5 @@
 const requestTimeout = 5000;
 
-// TODO: unused?
-/**
- * Add statuses to promise
- * Based on: https://bit.ly/2StVSb0
- * @param {promise} promise promise to add statuses
- * @returns {promise} customized promise
- */
-function status(promise) {
-  // Don't modify any promise that has been already modified.
-  if (promise.isResolved) {
-    return promise;
-  }
-
-  // Set initial state
-  let isPending = true;
-  let isRejected = false;
-  let isResolved = false;
-
-  // Observe the promise, saving the fulfillment in a closure scope.
-  const result = promise.then(
-    value => {
-      isResolved = true;
-      isPending = false;
-
-      return value;
-    },
-    reason => {
-      isRejected = true;
-      isPending = false;
-
-      throw reason;
-    }
-  );
-
-  result.isResolved = () => isResolved;
-  result.isPending = () => isPending;
-  result.isRejected = () => isRejected;
-
-  return result;
-}
-
 /**
  * Timeout wrapper
  *

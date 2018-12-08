@@ -5,13 +5,24 @@ import { cleanLink, getPort } from './utils';
  *
  * If check is true, barba is not actionated.
  * Tests receives { el, event, href }
+ *
+ * @namespace @barba/core/prevent
+ * @type {object}
  */
 const prevent = {
-  tests: {},
+  /**
+   * Tests by name
+   *
+   * @memberof @barba/core/prevent
+   * @type {array}
+   * @private
+   */
+  _tests: {},
 
   /**
    * Init prevent
    *
+   * @memberof @barba/core/prevent
    * @param {object} { attributeSchema } options
    * @returns {undefined}
    */
@@ -76,26 +87,28 @@ const prevent = {
   /**
    * Add test
    *
+   * @memberof @barba/core/prevent
    * @param {string} id test name
    * @param {function} check test function
    * @returns {undefined}
    */
   add(id, check) {
     // #TODO: check for existing test
-    this.tests[id] = check;
+    this._tests[id] = check;
   },
 
   /**
    * Run tests
    *
+   * @memberof @barba/core/prevent
    * @param {HTMLElement} el trigger element
    * @param {Event} event triggered event
    * @param {string} href target url
    * @returns {boolean} prevent if some test returns true
    */
   check(el, event, href) {
-    return Object.keys(this.tests).some(id =>
-      this.tests[id]({
+    return Object.keys(this._tests).some(id =>
+      this._tests[id]({
         el,
         event,
         href,
@@ -103,6 +116,8 @@ const prevent = {
     );
   },
 
+  // TODO: outside of global tests to avoid hard refresh on same URL
+  // Can be discussed
   sameUrl(href) {
     return cleanLink(href) === cleanLink(window.location.href);
   },

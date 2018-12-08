@@ -6,7 +6,10 @@
  *    ="prefetch"
  *    ="prevent"
  * data-barba-namespace
+ *
+ * @type {object}
  */
+// TODO: prefetch or noprefetch or no-prefetch?
 export const attributeSchema = {
   prefix: 'data-barba',
   wrapper: 'wrapper',
@@ -18,6 +21,8 @@ export const attributeSchema = {
 
 /**
  * Pages (current and next structure)
+ *
+ * @type {object}
  */
 export const pageSchema = {
   namespace: undefined,

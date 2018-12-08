@@ -7,4 +7,12 @@ module.exports = {
   trailingComma: 'es5',
   bracketSpacing: true,
   arrowParens: 'avoid',
+  overrides: [
+    {
+      files: '*.md',
+      options: {
+        parser: 'markdown',
+      },
+    },
+  ],
 };
