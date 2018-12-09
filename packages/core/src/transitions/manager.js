@@ -5,6 +5,8 @@ import hooks from '../hooks';
 // TODO: define events to trigger
 // TODO: define hook params (all vs specific -current or next-)
 // TODO: error handling
+// TODO: "resolve" with data? pass through all the "pipeline"? (at least between leave/enter?)
+// TODO: returns ?
 
 /**
  * Manage the transitions
@@ -72,8 +74,7 @@ export default {
     const t = transition;
     const sync = t.sync === true || false;
 
-    // Check mode transition, wait for next content
-    // if (mode === 'sync' || mode === 'in-out') {
+    // Check sync mode, wait for next content
     if (sync) {
       await page.then(html => {
         const nextDocument = dom.toDocument(html);
@@ -94,11 +95,75 @@ export default {
 
     hooks.do('before', data);
     t.before && t.before(data);
-    hooks.do('beforeLeave', data);
-    // CSS: add leave-active
-    t.beforeLeave && t.beforeLeave(data);
 
     if (sync) {
+      await Promise.all([
+        this.doLeave(t, data),
+        this.doEnter(t, data, page, wrapper),
+      ]);
+    } else {
+      let leaveResult = false;
+
+      // Leave
+      leaveResult = await this.doLeave(t, data);
+
+      // Enter
+      /* istanbul ignore else */
+      if (leaveResult !== false) {
+        await this.doEnter(t, data, page, wrapper, leaveResult);
+      }
+
+      // DEV: already removed?
+      // data.current.container.remove();
+      // hooks.do('currentRemoved', data);
+    }
+
+    hooks.do('after', data);
+    t.after && t.after(data);
+  },
+
+  async doLeave(t, data) {
+    try {
+      hooks.do('beforeLeave', data);
+      // CSS: add leave-active
+      t.beforeLeave && t.beforeLeave(data);
+      hooks.do('leave', data);
+
+      return await runAsync(t.leave)(data).then(leaveData => {
+        hooks.do('afterLeave', data);
+        // CSS: remove leave-to
+        // CSS: remove leave-active
+        t.afterLeave && t.afterLeave(data);
+
+        data.current.container.remove();
+        hooks.do('currentRemoved', data);
+
+        return leaveData;
+      });
+    } catch (error) {
+      hooks.do('leaveCanceled', data);
+      // CSS: remove leave
+      // CSS: remove leave-to
+      // CSS: remove leave-active
+      t.leaveCanceled && t.leaveCanceled(data);
+
+      console.error(error);
+      throw new Error('Transition error');
+    }
+  },
+
+  async doEnter(t, data, page, wrapper, leaveResult) {
+    try {
+      if (!data.next.html) {
+        await page.then(html => {
+          const nextDocument = dom.toDocument(html);
+
+          data.next.namespace = dom.getNamespace(nextDocument);
+          data.next.container = dom.getContainer(nextDocument);
+          data.next.html = dom.getHtml(nextDocument);
+        });
+      }
+
       hooks.do('beforeEnter', data);
       // CSS: add enter
       // CSS: add enter-active
@@ -106,113 +171,25 @@ export default {
 
       wrapper.appendChild(data.next.container);
       hooks.do('nextAdded', data);
-
       // CSS: remove enter
-      hooks.do('leave', data);
-      // CSS: add leave-to
       hooks.do('enter', data);
       // CSS: add enter-to
 
-      await Promise.all([runAsync(t.leave)(data), runAsync(t.enter)(data)])
-        .then(() => {
-          hooks.do('afterLeave', data);
-          // CSS: remove leave-to
-          // CSS: remove leave-active
-          t.afterLeave && t.afterLeave(data);
+      return await runAsync(t.enter)(data, leaveResult).then(() => {
+        hooks.do('afterEnter', data);
+        // CSS: remove enter-to
+        // CSS: remove enter-active
+        t.afterEnter && t.afterEnter(data);
+      });
+    } catch (error) {
+      hooks.do('enterCanceled', data);
+      // CSS: remove enter
+      // CSS: remove enter-to
+      // CSS: remove enter-active
+      t.enterCanceled && t.enterCanceled(data);
 
-          data.current.container.remove();
-          hooks.do('currentRemoved', data);
-
-          hooks.do('afterEnter', data);
-          // CSS: remove enter-to
-          // CSS: remove enter-active
-          t.afterEnter && t.afterEnter(data);
-
-          hooks.do('after', data);
-          t.after && t.after(data);
-        })
-        .catch(err => {
-          hooks.do('leaveCanceled', data);
-          // CSS: remove leave
-          // CSS: remove leave-to
-          // CSS: remove leave-active
-          t.leaveCanceled && t.leaveCanceled(data);
-
-          hooks.do('enterCanceled', data);
-          // CSS: remove enter
-          // CSS: remove enter-to
-          // CSS: remove enter-active
-          t.enterCanceled && t.enterCanceled(data);
-
-          console.error(err);
-          throw new Error('Transition error');
-        });
-    } else {
-      await runAsync(t.leave)(data)
-        .then(() => {
-          hooks.do('afterLeave', data);
-          // CSS: remove leave-to
-          // CSS: remove leave-active
-          t.afterLeave && t.afterLeave(data);
-
-          data.current.container.remove();
-          hooks.do('currentRemoved', data);
-        })
-        .catch(err => {
-          hooks.do('leaveCanceled', data);
-          // CSS: remove leave
-          // CSS: remove leave-to
-          // CSS: remove leave-active
-          t.leaveCanceled && t.leaveCanceled(data);
-
-          console.error(err);
-          throw new Error('Transition error');
-        })
-        .then(async () => {
-          // If no next data, wait
-          if (!data.next.html) {
-            await page.then(html => {
-              const nextDocument = dom.toDocument(html);
-
-              data.next.namespace = dom.getNamespace(nextDocument);
-              data.next.container = dom.getContainer(nextDocument);
-              data.next.html = dom.getHtml(nextDocument);
-            });
-          }
-
-          hooks.do('enter', data);
-          // CSS: add enter
-          // CSS: add enter-active
-
-          wrapper.appendChild(data.next.container);
-          hooks.do('nextAdded', data);
-          // CSS: remove enter
-          // CSS: add enter-to
-
-          return runAsync(t.enter)(data);
-        })
-        .then(() => {
-          hooks.do('afterEnter', data);
-          // CSS: remove enter-to
-          // CSS: remove enter-active
-          t.afterEnter && t.afterEnter(data);
-
-          hooks.do('after', data);
-          t.after && t.after(data);
-
-          data.current.container.remove();
-          hooks.do('currentRemoved', data);
-        })
-        .catch(err => {
-          hooks.do('enterCanceled', data);
-          // CSS: remove enter
-          // CSS: remove enter-to
-          // CSS: remove enter-active
-          t.enterCanceled && t.enterCanceled(data);
-
-          console.error(err);
-          throw new Error('Transition error');
-        });
+      console.error(error);
+      throw new Error('Transition error');
     }
   },
 };

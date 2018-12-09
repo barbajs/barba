@@ -101,10 +101,11 @@ export const router = {
    * @memberof @barba/router
    * @returns {undefined}
    */
-  destroy() {
-    this._routes = [];
-    this._routesByName = {};
-  },
+  // DEV
+  // destroy() {
+  //   this._routes = [];
+  //   this._routesByName = {};
+  // },
 
   /**
    * Resolve URL to route name

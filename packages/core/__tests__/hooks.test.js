@@ -97,7 +97,6 @@ it('print help', () => {
   global.console = {
     ...global.console,
     info: jest.fn(),
-    table: jest.fn(),
   };
 
   hooks.init();

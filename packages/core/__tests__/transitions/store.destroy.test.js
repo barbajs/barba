@@ -1,7 +1,7 @@
 /* eslint-disable no-empty-function */
 import { store } from '../../src/transitions';
 
-it('has defaults', () => {
+it('resets defaults', () => {
   store.init([{ appear() {} }, { enter() {} }, { to: {} }], true);
   store.destroy();
 

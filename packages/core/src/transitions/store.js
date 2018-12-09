@@ -134,10 +134,10 @@ export default {
         this._rules.splice(data.position || 0, 0, data.value);
         break;
       case 'transition':
+      default:
         // TODO: check for valid transition
         this._all.push(data);
         break;
-      default:
     }
 
     this._update();

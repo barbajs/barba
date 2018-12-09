@@ -9,15 +9,51 @@ import prevent from './prevent';
 import request from './request';
 import { getHref, getUrl } from './utils';
 
+/**
+ * Barba core
+ *
+ * @namespace @barba/core
+ * @type {object}
+ */
 export const barba = {
+  /**
+   * Version
+   *
+   * @memberof @barba/core
+   * @type {string}
+   */
   version,
-  wrapper: null,
-  current: null,
-  next: null,
-  trigger: null,
-  store: null,
+
+  /**
+   * Transitions store
+   *
+   * @memberof @barba/core
+   * @type {store}
+   */
+  store,
+
+  /**
+   * Hooks
+   *
+   * @memberof @barba/core
+   * @type {hooks}
+   */
   hooks: hooks.init(),
+
+  /**
+   * Page object structure
+   *
+   * @memberof @barba/core
+   * @type {object}
+   */
   pageSchema,
+
+  /**
+   * Plugins list
+   *
+   * @memberof @barba/core
+   * @type {array}
+   */
   _plugins: [],
 
   use(plugin, ...args) {
@@ -50,8 +86,8 @@ export const barba = {
     useCache = true,
     usePrefetch = true,
   } = {}) {
-    this.useCache = useCache;
-    this.usePrefetch = usePrefetch;
+    this._useCache = useCache;
+    this._usePrefetch = usePrefetch;
 
     // Init dom with data-attributes schema
     dom.init({ attributeSchema: schema });
@@ -59,36 +95,37 @@ export const barba = {
     prevent.init({ attributeSchema: schema });
 
     // Get wrapper
-    this.wrapper = dom.getWrapper();
-    if (!this.wrapper) {
+    this._wrapper = dom.getWrapper();
+    if (!this._wrapper) {
       throw new Error('No Barba wrapper found');
     }
     // A11y
-    this.wrapper.setAttribute('aria-live', 'polite');
+    this._wrapper.setAttribute('aria-live', 'polite');
 
     // Store
     this.store = store.init(transitions, debug);
 
     // Init pages
-    this.initPages();
-    history.add(this.current.url, this.current.namespace);
+    this._initPages();
 
-    if (!this.current.container) {
+    // Set/update history
+    history.add(this._current.url, this._current.namespace);
+
+    if (!this._current.container) {
       throw new Error('No Barba container found');
     }
 
     // Add to cache
-    cache.set(this.current.url, Promise.resolve(this.current.html));
-
-    // Set/update history
+    cache.set(this._current.url, Promise.resolve(this._current.html));
 
     // Bindings
-    if (this.useCache && this.usePrefetch) {
-      this.onLinkEnter = this.onLinkEnter.bind(this);
-      this.onLinkClick = this.onLinkClick.bind(this);
+    /* istanbul ignore else */
+    if (this._useCache && this._usePrefetch) {
+      this._onLinkEnter = this._onLinkEnter.bind(this);
+      this._onLinkClick = this._onLinkClick.bind(this);
     }
-    this.onStateChange = this.onStateChange.bind(this);
-    this.bind();
+    this._onStateChange = this._onStateChange.bind(this);
+    this._bind();
 
     // Init plugins
     this._plugins.forEach(plugin => plugin.init());
@@ -96,36 +133,35 @@ export const barba = {
     this.appear();
   },
 
-  destroy() {
-    this.wrapper = null;
-    this.current = null;
-    this.next = null;
-    this.trigger = null;
-    this.hooks = hooks.destroy();
-    this._plugins = [];
+  // DEV
+  // destroy() {
+  //   this.hooks = hooks.destroy();
+  //   this._plugins = [];
 
-    this.unbind();
-  },
+  //   this._unbind();
+  // },
 
-  bind() {
-    if (this.useCache && this.usePrefetch) {
-      document.addEventListener('mouseover', this.onLinkEnter);
-      document.addEventListener('touchstart', this.onLinkEnter);
+  _bind() {
+    /* istanbul ignore else */
+    if (this._useCache && this._usePrefetch) {
+      document.addEventListener('mouseover', this._onLinkEnter);
+      document.addEventListener('touchstart', this._onLinkEnter);
     }
-    document.addEventListener('click', this.onLinkClick);
-    window.addEventListener('popstate', this.onStateChange);
+    document.addEventListener('click', this._onLinkClick);
+    window.addEventListener('popstate', this._onStateChange);
   },
 
-  unbind() {
-    if (this.useCache && this.usePrefetch) {
-      document.removeEventListener('mouseover', this.onLinkEnter);
-      document.removeEventListener('touchstart', this.onLinkEnter);
-    }
-    document.removeEventListener('click', this.onLinkClick);
-    window.removeEventListener('popstate', this.onStateChange);
-  },
+  // DEV
+  // _unbind() {
+  //   if (this._useCache && this._usePrefetch) {
+  //     document.removeEventListener('mouseover', this._onLinkEnter);
+  //     document.removeEventListener('touchstart', this._onLinkEnter);
+  //   }
+  //   document.removeEventListener('click', this._onLinkClick);
+  //   window.removeEventListener('popstate', this._onStateChange);
+  // },
 
-  onLinkEnter(e) {
+  _onLinkEnter(e) {
     let el = e.target;
 
     while (el && !getHref(el)) {
@@ -133,7 +169,7 @@ export const barba = {
     }
 
     // Check prevent
-    if (!el || prevent.tests.hasAttr({ el })) {
+    if (!el || prevent._tests.hasAttr({ el })) {
       return;
     }
 
@@ -147,7 +183,7 @@ export const barba = {
     cache.set(url, request(url));
   },
 
-  onLinkClick(e) {
+  _onLinkClick(e) {
     let el = e.target;
 
     while (el && !getHref(el)) {
@@ -171,7 +207,7 @@ export const barba = {
     this.go(getHref(el), el);
   },
 
-  onStateChange() {
+  _onStateChange() {
     const url = getUrl();
 
     this.go(url, 'popstate');
@@ -181,7 +217,7 @@ export const barba = {
     // Check if appear transition
     if (this.store.hasAppear) {
       try {
-        const data = this.getData();
+        const data = this._getData();
         const transition = this.store.get(data, true);
 
         await manager.doAppear({ transition, data });
@@ -193,8 +229,8 @@ export const barba = {
   },
 
   async go(url, trigger = 'barba') {
-    this.next.url = url;
-    this.trigger = trigger;
+    this._next.url = url;
+    this._trigger = trigger;
 
     // TODO: question? can be used for "back/reverse" transition (naming?)
     // bof: which use case. do not play well with go/back/go…
@@ -212,19 +248,19 @@ export const barba = {
       await page.then(html => {
         const nextDocument = dom.toDocument(html);
 
-        this.next.namespace = dom.getNamespace(nextDocument);
-        this.next.container = dom.getContainer(nextDocument);
-        this.next.html = dom.getHtml(nextDocument);
+        this._next.namespace = dom.getNamespace(nextDocument);
+        this._next.container = dom.getContainer(nextDocument);
+        this._next.html = dom.getHtml(nextDocument);
       });
     }
 
     if (trigger === 'popstate') {
-      history.add(url, this.next.namespace);
+      history.add(url, this._next.namespace);
     } else {
-      history.go(url, this.next.namespace);
+      history.go(url, this._next.namespace);
     }
 
-    const data = this.getData();
+    const data = this._getData();
 
     // Hook: between trigger and transition
     // Can be used to resolve "route"…
@@ -237,7 +273,7 @@ export const barba = {
         transition,
         data,
         page,
-        wrapper: this.wrapper,
+        wrapper: this._wrapper,
       });
 
       this.refreshPages();
@@ -255,31 +291,31 @@ export const barba = {
     window.location = url;
   },
 
-  getData() {
+  _getData() {
     return {
-      current: this.current,
-      next: this.next,
-      trigger: this.trigger,
+      current: this._current,
+      next: this._next,
+      trigger: this._trigger,
     };
   },
 
-  initPages() {
-    this.refreshPages();
+  _initPages() {
+    this._refreshPages();
   },
 
-  refreshPages() {
-    this.current = { ...this.pageSchema };
-    this.next = { ...this.pageSchema };
+  _refreshPages() {
+    this._current = { ...this.pageSchema };
+    this._next = { ...this.pageSchema };
 
-    this.current.namespace = dom.getNamespace();
-    this.current.url = getUrl();
-    this.current.container = dom.getContainer();
-    this.current.html = dom.getHtml();
+    this._current.namespace = dom.getNamespace();
+    this._current.url = getUrl();
+    this._current.container = dom.getContainer();
+    this._current.html = dom.getHtml();
 
     // Hook: reset current/next pages
     // Can be used to resolve "route"…
     // TODO: naming…
-    hooks.do('refresh', this.getData());
+    hooks.do('refresh', this._getData());
   },
 };
 

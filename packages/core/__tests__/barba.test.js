@@ -1,30 +1,13 @@
 import barba from '../src';
+import hooks from '../src/hooks';
+import store from '../src/transitions/store';
+import { pageSchema } from '../src/schema';
 import { version } from '../package.json';
 
-it('has correct version', () => {
+it('has defaults', () => {
   expect(barba.version).toBe(version);
-});
-
-it('has wrapper', () => {
-  expect(barba.wrapper).toBeNull();
-});
-
-it('has current', () => {
-  expect(barba.current).toBeNull();
-});
-
-it('has next', () => {
-  expect(barba.next).toBeNull();
-});
-
-it('has trigger', () => {
-  expect(barba.trigger).toBeNull();
-});
-
-it('has store', () => {
-  expect(barba.store).toBeNull();
-});
-
-it('has hooks', () => {
-  expect(barba.hooks).toBeDefined();
+  expect(barba.store).toBe(store);
+  expect(barba.hooks).toBe(hooks);
+  expect(barba.pageSchema).toBe(pageSchema);
+  expect(barba._plugins).toHaveLength(0);
 });

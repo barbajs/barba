@@ -1,10 +1,14 @@
+/* eslint-disable no-empty-function */
 import barba from '../src';
+import { init } from 'barba';
+
+init();
 
 const plugin = {
-  install() {}, // eslint-disable-line no-empty-function
+  install() {},
 };
 const plugin2 = {
-  install() {}, // eslint-disable-line no-empty-function
+  install() {},
 };
 
 beforeEach(() => {
@@ -42,17 +46,24 @@ it('install method plugin', () => {
 });
 
 it('install function plugin', () => {
-  const plugin = jest.fn();
+  const p = jest.fn();
 
-  barba.use(plugin);
+  barba.use(p);
 
-  expect(plugin).toHaveBeenCalledTimes(1);
+  expect(p).toHaveBeenCalledTimes(1);
 });
 
 it('install function plugin', () => {
-  const plugin = {};
-
-  const result = barba.use(plugin);
+  const p = {};
+  const result = barba.use(p);
 
   expect(result).toBeFalsy();
+});
+
+it('init plugin', () => {
+  plugin.init = jest.fn();
+  barba.use(plugin);
+  barba.init();
+
+  expect(plugin.init).toHaveBeenCalledTimes(1);
 });

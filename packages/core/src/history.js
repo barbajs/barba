@@ -47,6 +47,7 @@ export default {
   go(url, namespace = undefined) {
     this.add(url, namespace);
 
+    /* istanbul ignore else  */
     if (window.history) {
       window.history.pushState(null, '', url);
     }
@@ -63,6 +64,7 @@ export default {
   cancel() {
     this.remove();
 
+    /* istanbul ignore else  */
     if (window.history) {
       window.history.back();
     }
