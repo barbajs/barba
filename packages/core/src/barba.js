@@ -276,7 +276,7 @@ export const barba = {
         wrapper: this._wrapper,
       });
 
-      this.refreshPages();
+      this._refreshPages();
     } catch (error) {
       // TODO: !!! infinite loop on transition error???
       history.cancel();
