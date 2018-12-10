@@ -5,8 +5,11 @@
 > - leave vs enter?:
 >   - leave current, enter next
 >   - enter transition === first step, leave transition === last step
-> - canceled vs progress
-> - more global events
+> - canceled vs progress (probably both)
+> - more global events?
+> - scroll/lock util?
+> - build module/nomodule?
+> - unpkg
 
 - [ ] @barba/
   - [ ] **views**
