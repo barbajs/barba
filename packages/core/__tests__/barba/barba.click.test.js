@@ -1,4 +1,4 @@
-import barba from '../src';
+import barba from '../../src';
 import { init } from 'barba';
 
 const { link, span, click } = init();

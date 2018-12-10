@@ -1,8 +1,8 @@
-import barba from '../src';
-import hooks from '../src/hooks';
-import store from '../src/transitions/store';
-import { pageSchema } from '../src/schema';
-import { version } from '../package.json';
+import barba from '../../src';
+import hooks from '../../src/hooks';
+import store from '../../src/transitions/store';
+import { pageSchema } from '../../src/schema';
+import { version } from '../../package.json';
 
 it('has defaults', () => {
   expect(barba.version).toBe(version);

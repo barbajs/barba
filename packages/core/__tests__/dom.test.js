@@ -19,9 +19,9 @@ wrapper.appendChild(container);
 
 // Expected
 const checkDoc = new RegExp(
-  `^<html>.+body.+${dom.attr.wrapper}.+${
+  `^<html>[\\s\\S]+body[\\s\\S]+${dom.attr.wrapper}[\\s\\S]+${
     dom.attr.container
-  }.+${namespace}.+</html>$`
+  }[\\s\\S]+${namespace}[\\s\\S]+</html>$`
 );
 
 afterEach(() => {

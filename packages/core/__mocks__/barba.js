@@ -3,10 +3,11 @@ import barba from '../src';
 /**
  * Init barba with basic DOM for testing
  *
+ * @param {array} transitions transitions list
  * @returns {object} elements + events
  * @export
  */
-export function init() {
+export function init(transitions = []) {
   const wrapper = document.createElement('div');
   const container = document.createElement('div');
   const link = document.createElement('a');
@@ -26,7 +27,7 @@ export function init() {
   mouseover.initEvent('mouseover', true, false);
   click.initEvent('click', true, false);
 
-  barba.init();
+  barba.init({ transitions });
 
   return { wrapper, container, link, span, mouseover, click };
 }

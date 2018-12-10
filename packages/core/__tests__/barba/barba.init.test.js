@@ -1,6 +1,6 @@
-import barba from '../src';
-import cache from '../src/cache';
-import history from '../src/history';
+import barba from '../../src';
+import cache from '../../src/cache';
+import history from '../../src/history';
 
 const wrapper = document.createElement('div');
 const container = document.createElement('div');

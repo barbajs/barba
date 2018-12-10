@@ -2,6 +2,8 @@
 
 export const getHref = el => el.href;
 export const getUrl = () => window.location.href;
+// TODO: check
+// https://github.com/luruke/barba.js/pull/323
 export const cleanLink = url => url.replace(/#.*/, '');
 export const getPort = p => {
   const port = typeof p === 'undefined' ? window.location.port : p;

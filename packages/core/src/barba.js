@@ -223,7 +223,8 @@ export const barba = {
         await manager.doAppear({ transition, data });
       } catch (error) {
         // TODO: handle errors
-        console.error(error);
+        // console.error(error);
+        throw new Error(error);
       }
     }
   },
@@ -237,7 +238,7 @@ export const barba = {
     // const back = history.previous() && url === history.previous().url;
     let page;
 
-    if (this.useCache) {
+    if (this._useCache) {
       page = cache.has(url) ? cache.get(url) : cache.set(url, request(url));
     } else {
       page = request(url);
@@ -281,14 +282,15 @@ export const barba = {
       // TODO: !!! infinite loop on transition error???
       history.cancel();
       // TODO: handle errors
-      console.error(error);
+      // console.error(error);
+      throw new Error(error);
     }
   },
 
   // DEV
   // Can be used waiting animation cancellation management…
   force(url) {
-    window.location = url;
+    window.location.assign(url);
   },
 
   _getData() {

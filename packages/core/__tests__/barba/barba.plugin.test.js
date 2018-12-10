@@ -1,5 +1,5 @@
 /* eslint-disable no-empty-function */
-import barba from '../src';
+import barba from '../../src';
 import { init } from 'barba';
 
 init();

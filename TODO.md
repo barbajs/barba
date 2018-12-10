@@ -2,14 +2,21 @@
 
 > Questions…
 >
-> - leave vs enter?:
+> - leave vs enter ✅
 >   - leave current, enter next
 >   - enter transition === first step, leave transition === last step
 > - canceled vs progress (probably both)
+>   - À AJOUTER + force
 > - more global events?
 > - scroll/lock util?
-> - build module/nomodule?
+> - build module/nomodule? BOFFFFFF
+> - Support
 > - unpkg
+> - release `-pre` + "hard reset" move to github?
+>   - next…
+> - views
+>   - core ✅ / beforeEnter, beforeLeave, afterEnter, afterLeave
+>   - doit fonctionner avec IE <= 11 ???
 
 - [ ] @barba/
   - [ ] **views**
