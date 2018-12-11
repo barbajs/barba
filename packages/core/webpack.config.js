@@ -6,8 +6,23 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: isProd ? 'barba.min.js' : 'barba.js',
-    library: 'Barba core',
+    library: 'barba',
+    libraryExport: 'default',
     libraryTarget: 'umd',
     umdNamedDefine: true,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|mjs)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: ['@babel/plugin-transform-runtime'],
+          },
+        },
+      },
+    ],
   },
 };

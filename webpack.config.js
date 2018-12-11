@@ -9,24 +9,6 @@ const config = {
   resolve: {
     mainFields: ['module', 'browser', 'main'],
   },
-  module: {
-    rules: [
-      {
-        test: /\.(js|mjs)$/,
-        // DEV
-        // exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          // options: {
-          //   plugins: [
-          //     '@babel/plugin-proposal-class-properties',
-          //     '@babel/plugin-proposal-object-rest-spread',
-          //   ],
-          // },
-        },
-      },
-    ],
-  },
   plugins: [
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',

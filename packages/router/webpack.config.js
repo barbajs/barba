@@ -6,8 +6,23 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: isProd ? 'barba-router.min.js' : 'barba-router.js',
-    library: 'Barba router',
+    library: 'barba-router',
+    libraryExport: 'default',
     libraryTarget: 'umd',
     umdNamedDefine: true,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|mjs)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: ['@babel/plugin-proposal-object-rest-spread'],
+          },
+        },
+      },
+    ],
   },
 };

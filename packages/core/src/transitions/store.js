@@ -272,11 +272,11 @@ export default {
           const names = Array.isArray(base[name]) ? base[name] : [base[name]];
 
           // For matching, prop should be present on both sides and match
-          if (page[name] && names.includes(page[name])) {
+          if (page[name] && names.indexOf(page[name]) !== -1) {
             hasMatch = true;
           }
           // If transition prop is different from current, not valid
-          if (!names.includes(page[name])) {
+          if (!names.indexOf(page[name]) !== -1) {
             isValid = false;
           }
           break;
