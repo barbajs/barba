@@ -230,6 +230,13 @@ export const barba = {
   },
 
   async go(url, trigger = 'barba') {
+    // If animation running, force reload
+    if (manager.running) {
+      this.force(url);
+
+      return;
+    }
+
     this._next.url = url;
     this._trigger = trigger;
 

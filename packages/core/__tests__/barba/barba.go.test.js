@@ -118,6 +118,22 @@ it('do go [no use cache]', () => {
   expect(spyCacheSet).toHaveBeenCalledTimes(0);
 });
 
+it('force when manager running', () => {
+  barba.force = jest.fn();
+  manager.doPage = jest.fn();
+  hooks.do = jest.fn();
+
+  store.add('transition', { leave() {}, enter() {} });
+  manager.running = true;
+  barba.go('http://localhost/foo');
+
+  expect(barba.force).toHaveBeenCalledTimes(1);
+  expect(hooks.do).not.toHaveBeenCalled();
+  expect(manager.doPage).not.toHaveBeenCalled();
+
+  manager.running = false;
+});
+
 it('catch error', async () => {
   console.error = jest.fn();
   history.cancel = jest.fn();

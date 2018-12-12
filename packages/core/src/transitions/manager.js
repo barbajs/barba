@@ -16,6 +16,14 @@ import hooks from '../hooks';
  */
 export default {
   /**
+   * Animation running status
+   *
+   * @memberof @barba/core/transitions/manager
+   * @type {boolean}
+   */
+  running: false,
+
+  /**
    * Do "appear" transition
    *
    * @memberof @barba/core/transitions/manager
@@ -34,6 +42,8 @@ export default {
 
     const t = transition;
 
+    this.running = true;
+
     hooks.do('beforeAppear', data);
     t.beforeAppear && t.beforeAppear(data);
     hooks.do('appear', data);
@@ -49,6 +59,8 @@ export default {
         console.error(err);
         throw new Error('Transition error');
       });
+
+    this.running = false;
   },
 
   /**
@@ -73,6 +85,8 @@ export default {
 
     const t = transition;
     const sync = t.sync === true || false;
+
+    this.running = true;
 
     // Check sync mode, wait for next content
     if (sync) {
@@ -120,6 +134,8 @@ export default {
 
     hooks.do('after', data);
     t.after && t.after(data);
+
+    this.running = false;
   },
 
   async doLeave(t, data) {
