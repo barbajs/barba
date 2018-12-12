@@ -16,7 +16,7 @@ import { getHref, getUrl } from './utils';
  * @namespace @barba/core
  * @type {object}
  */
-export const barba = {
+export default {
   /**
    * Version
    *
@@ -45,7 +45,7 @@ export const barba = {
    * Page object structure
    *
    * @memberof @barba/core
-   * @type {object}
+   * @type {import('./defs.js').pageSchema}
    */
   pageSchema,
 
@@ -54,9 +54,17 @@ export const barba = {
    *
    * @memberof @barba/core
    * @type {array}
+   * @private
    */
   _plugins: [],
 
+  /**
+   * Use plugin
+   *
+   * @param {plugin} plugin - Plugin
+   * @param  {...any} args - Other arguments
+   * @returns {this} - Current instance
+   */
   use(plugin, ...args) {
     const installedPlugins = this._plugins;
 
@@ -78,6 +86,20 @@ export const barba = {
     return this;
   },
 
+  /* eslint-disable */
+  /**
+   * Init barba
+   *
+   * @memberof @barba/core
+   * @param {Object} options - Options
+   * @param {boolean} [options.debug=false] - Debug
+   * @param {import('./defs.js').transition[]} options.transitions - Transition array
+   * @param {import('./defs.js').attributeSchema=} options.schema - Schema
+   * @param {boolean} [options.useCache=true] - Cache
+   * @param {boolean} [options.usePrefetch=true] - Prefetch
+   * @returns {undefined}
+   */
+  /* eslint-enable */
   init({
     debug = false,
     transitions = [],
@@ -329,5 +351,3 @@ export const barba = {
     hooks.do('refresh', this._getData());
   },
 };
-
-export default barba;
