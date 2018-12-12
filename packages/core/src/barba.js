@@ -7,6 +7,7 @@ import history from './history';
 import hooks from './hooks';
 import prevent from './prevent';
 import request from './request';
+import viewsManager from './views';
 import { getHref, getUrl } from './utils';
 
 /**
@@ -80,8 +81,7 @@ export const barba = {
   init({
     debug = false,
     transitions = [],
-    // DEV
-    // views = [],
+    views = [],
     schema = attributeSchema,
     useCache = true,
     usePrefetch = true,
@@ -104,6 +104,8 @@ export const barba = {
 
     // Store
     this.store = store.init(transitions, debug);
+    // Views manager
+    viewsManager.init(this, views);
 
     // Init pages
     this._initPages();
