@@ -2707,6 +2707,14 @@ commitizen@3.0.4:
     shelljs "0.7.6"
     strip-json-comments "2.0.1"
 
+commitlint-config-ccgls@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/commitlint-config-ccgls/-/commitlint-config-ccgls-1.0.1.tgz#7debb8c29ef03303b646291eb4433e8511b9a66d"
+  integrity sha512-D2KZJI6grlG2SocvFi5MSochg1eqla825MOckQdtto4B+01VLZ2UH7XwXIuiGRJ0eZTeKjuGMS5jrRBSXQKxwQ==
+  dependencies:
+    "@commitlint/config-conventional" "7.1.2"
+    import-from "^2.1.0"
+
 commondir@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
