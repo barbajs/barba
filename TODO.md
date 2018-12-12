@@ -32,6 +32,7 @@
   - [ ] auto-update changelogs
   - [ ] auto-update file gzip size (website and readme)
   - [ ] CI (tests, coverage on push, PR, …)
+  - [ ] Force git commit to follow a certain schema
 - [ ] License (find correct open source license)
   - anyone can do what they want, but:
   - they can't resell it as it is
