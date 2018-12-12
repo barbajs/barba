@@ -276,7 +276,7 @@ export default {
             hasMatch = true;
           }
           // If transition prop is different from current, not valid
-          if (!names.indexOf(page[name]) !== -1) {
+          if (names.indexOf(page[name]) === -1) {
             isValid = false;
           }
           break;
