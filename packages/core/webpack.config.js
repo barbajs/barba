@@ -19,6 +19,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
+            // Used for `async`/`await`
             plugins: ['@babel/plugin-transform-runtime'],
           },
         },
