@@ -37,8 +37,14 @@
     "clear": "rimraf dist esm lib",
     "lint": "eslint src/**",
     "precommit": "lint-staged",
-    "test": "eslint src/** && jest --coverage",
-    "watch": "jest --colors --watch"
+    "watch": "jest --colors --watch",
+    "test": "npm-run-all lint unit build e2e",
+    "unit": "jest --coverage",
+    "start-server": "http-server . -p 8111",
+    "e2e-test": "cypress run --browser chrome",
+    "e2e-gui": "cypress open",
+    "e2e": "start-server-and-test start-server :8111 e2e-test",
+    "e2edev": "start-server-and-test start-server :8111 e2e-gui"
   },
   "dependencies": {
     "@babel/runtime": "^7.2.0",

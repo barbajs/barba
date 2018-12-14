@@ -1,0 +1,4 @@
+{
+  "integrationFolder": "./__e2e__/tests",
+  "baseUrl": "http://localhost:8111"
+}
