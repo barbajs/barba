@@ -263,7 +263,7 @@ var Pjax = {
       return false;
 
     //Ignore case when a hash is being tacked on the current URL
-    if (href.indexOf('#') > -1)
+    if (location.href.indexOf(href) > -1 && href.indexOf('#') > -1)
       return false;
 
     //Ignore case where there is download attribute
