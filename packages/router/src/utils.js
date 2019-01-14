@@ -40,5 +40,5 @@ export function parsePath(p) {
  * @private
  */
 export function cleanUrl(path, origin) {
-  return path.replace(`${origin}/`, '');
+  return path.replace(origin, '');
 }

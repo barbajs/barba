@@ -27,13 +27,13 @@ export const router = {
   _origin: window.location.origin,
 
   /**
-   * List of routes
+   * List of route names
    *
    * @memberof @barba/router
    * @type {array}
    * @private
    */
-  _routes: [],
+  _routeNames: [],
 
   /**
    * List of routes by name
@@ -59,7 +59,7 @@ export const router = {
       const { name, path } = route;
       const regex = pathToRegexp(path, []);
 
-      this._routes.push(name);
+      this._routeNames.push(name);
 
       if (this._routesByName[name]) {
         console.warn(`Duplicated route name [${name}]`);
@@ -103,7 +103,7 @@ export const router = {
    */
   // DEV
   // destroy() {
-  //   this._routes = [];
+  //   this._routeNames = [];
   //   this._routesByName = {};
   // },
 
@@ -119,8 +119,8 @@ export const router = {
     const fullPath = cleanUrl(url, this._origin);
     const { path } = parsePath(fullPath);
 
-    for (let i = 0, l = this._routes.length; i < l; i++) {
-      const name = this._routes[i];
+    for (let i = 0, l = this._routeNames.length; i < l; i++) {
+      const name = this._routeNames[i];
       const { regex } = this._routesByName[name];
 
       if (path.match(regex)) {

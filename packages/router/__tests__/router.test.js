@@ -13,14 +13,14 @@ document.body.appendChild(container);
 const routes = [
   {
     name: 'foo',
-    path: 'foo/:bar',
+    path: '/foo/:bar',
   },
 ];
 
 it('has defaults', () => {
-  expect(router._routes).toHaveLength(0);
+  expect(router._routeNames).toHaveLength(0);
   router.install(barba);
-  expect(router._routes).toHaveLength(0);
+  expect(router._routeNames).toHaveLength(0);
 });
 
 it('has routes', () => {
@@ -28,10 +28,10 @@ it('has routes', () => {
     routes,
   });
 
-  expect(router._routes).toEqual(['foo']);
+  expect(router._routeNames).toEqual(['foo']);
   expect(router._routesByName.foo).toEqual({
-    path: 'foo/:bar',
-    regex: /^foo\/([^/]+?)(?:\/)?$/i,
+    path: '/foo/:bar',
+    regex: /^\/foo\/([^/]+?)(?:\/)?$/i,
   });
 });
 
