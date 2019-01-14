@@ -1,5 +1,11 @@
 # Todos
 
+1. No transitions ? weird behavior…
+2. BS, how to fix it (definitely)
+3. Router : allow leading slash ?
+
+---
+
 > Questions…
 >
 > - [x] leave vs enter
