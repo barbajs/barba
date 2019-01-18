@@ -7,6 +7,10 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](https://github.com/luruke/barba-next/blob/master/LICENSE)
 [![Slack channel](https://img.shields.io/badge/slack-channel-purple.svg?style=flat-square&logo=slack)](https://barbajs.slack.com)
 
+__Barba__ is a small (8kb minified and gzipped) and easy-to-use library that helps you creating fluid and smooth transitions between your website's pages.
+
+It helps reducing the delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.
+
 > This is pre-release version. Do not use in production!<br>
 > Thanks in advance for reporting bugs. #sharethelove 😊
 

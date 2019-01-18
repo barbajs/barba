@@ -2,7 +2,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/@barba/router.svg?style=flat-square)](https://www.npmjs.com/package/@barba/router)
 
-> TBD
+> TBD ([GitHub repo](https://github.com/luruke/barba-next.js))
 
 ## Install
 
