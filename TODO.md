@@ -1,7 +1,8 @@
 # Todos
 
 - [x][m] Router : allow leading slash ?
-- [ ][m] Reload current page
+- [x][m] Reload current page
+- [ ][m] Prevent `xlink:href` on link enter (eg: SVG)
 - [ ][s] No transitions ? weird behavior…
 - [ ][w] BS, how to fix it (definitely)
 
@@ -67,3 +68,6 @@
           @barba/core: babel.config.js:root
           @barba/core: .babelrc.js:core
       ```
+  - [ ] Repo transfer?
+    - [doc](https://help.github.com/articles/transferring-a-repository/)
+    - [hack post](https://francisco.io/blog/transferring-github-stars/)
