@@ -225,6 +225,8 @@ export default {
     // Check prevent sameURL
     if (!el || prevent.sameUrl(el.href)) {
       // TODO: do nothing or force reload?
+      this.force(el.href);
+
       return;
     }
 
