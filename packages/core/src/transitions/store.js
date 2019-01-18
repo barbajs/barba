@@ -239,7 +239,7 @@ export default {
    * 1. transition has no rule "property":
    *    - always returns true
    * 2. transition has rule "property":
-   *     - "strings" should be present on both side (transition + view) and match
+   *     - "strings" should be present on both side (transition + page) and match
    *     - "function" should return true
    *
    * @memberof @barba/core/transitions/store

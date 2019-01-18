@@ -1,8 +1,9 @@
 # Todos
 
-1. No transitions ? weird behavior…
-2. BS, how to fix it (definitely)
-3. Router : allow leading slash ?
+- [x][m] Router : allow leading slash ?
+- [ ][m] Reload current page
+- [ ][s] No transitions ? weird behavior…
+- [ ][w] BS, how to fix it (definitely)
 
 ---
 
@@ -40,9 +41,10 @@
   - [ ] CI (tests, coverage on push, PR, …)
   - [ ] Force git commit to follow a certain schema
 - [ ] License (find correct open source license)
-  - anyone can do what they want, but:
-  - they can't resell it as it is
-  - I have the right in any moment to not allow a specific use
+  - > Luigi said: anyone can do what they want, but:
+    >
+    > - they can't resell it as it is
+    > - I have the right in any moment to not allow a specific use
   - NB: This seems conflicting with open source core principles
     Following are the most "restrictive" :)
     - [GNU AGPLv3](https://choosealicense.com/licenses/agpl-3.0/)
@@ -50,7 +52,7 @@
     - [European Union Public License 1.2](https://choosealicense.com/licenses/eupl-1.2/)
 - [ ] Community
   - [ ] Github issue template
-  - [ ] Forum / chat?
+  - [x] Forum / chat -> [Slack](https://barbajs.slack.com)
 - [ ] Other
   - [ ] Make jest work with `babel.config.js` (global + optional local merge)
     - https://github.com/babel/babel/issues/7208

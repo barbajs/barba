@@ -1,5 +1,7 @@
 # @barba/core
 
+[![NPM version](https://img.shields.io/npm/v/@barba/core.svg?style=flat-square)](https://www.npmjs.com/package/@barba/core)
+
 > TBD
 
 ## Install

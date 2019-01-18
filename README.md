@@ -1,17 +1,56 @@
 # Barba v2
 
-![stability-wip](https://img.shields.io/badge/stability-work_in_progress-lightgrey.svg?style=flat-square) [![Coverage Status](https://img.shields.io/coveralls/github/epicagency/barba/master.svg?style=flat-square)](https://travis-ci.com/epicagency/barba) [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](https://gitlab.com/luruke/barba-next/blob/master/LICENSE) [![NPM version](https://img.shields.io/npm/v/@barba/core.svg?style=flat-square)](https://www.npmjs.com/package/@barba/core) [![NPM version](https://img.shields.io/npm/v/@barba/router.svg?style=flat-square)](https://www.npmjs.com/package/@barba/router)
+![stability-wip](https://img.shields.io/badge/stability-work_in_progress-lightgrey.svg?style=flat-square)
+[![Coverage Status](https://img.shields.io/coveralls/github/epicagency/barba/master.svg?style=flat-square)](https://travis-ci.com/epicagency/barba)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=flat-square)](https://conventionalcommits.org)
+[![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](https://github.com/luruke/barba-next/blob/master/LICENSE)
+[![Slack channel](https://img.shields.io/badge/slack-channel-purple.svg?style=flat-square&logo=slack)](https://barbajs.slack.com)
 
-> This is pre-release version. Do not use in production!
-> CommonJS or UMD builds are not tested. Prefer "module" aka "esm"… (default with Webpack 4).
->
+> This is pre-release version. Do not use in production!<br>
 > Thanks in advance for reporting bugs. #sharethelove 😊
 
-## Basic usage
+## What's new?
 
-### @barba/core
+- Simplified API
+- Hook sytem for `transitions` and `views`
+- _Transition resolution_: declare your transitions and let Barba pick the right one
+- Use of `data-barba` attributes
+- Sync mode
+- Plugin system
+  - `@barba/router`: use of routes for _transition resolution_
+  - `@barba/css`: automatic addition of CSS classes _(coming soon)_
+  - `@barba/transition`: ready-to-use basic transitions pack (fade, slide, …) _(coming soon)_
 
-#### HTML
+## Main changes (TL;DR)
+
+- Barba container and wrapper now use `data-barba` attribute
+- Same for namespace via `data-barba-namespace`
+- 2 main methods: `barba.init()` and `barba.use()` (for plugins)
+- Transitions:
+  - are plain JS objects
+  - are declared via the `barba.init({ transitions })`
+  - use "hooks" corresponding to animation steps
+    - `leave` and `enter` hooks are required
+    - required hooks can be synchronous or asynchronous (via `this.async()` or promise based)
+    - all hooks receive same [`data` argument](#dataargument)
+  - use "rules" to select which transition to use
+    - default rules are `namespace` and `custom`
+    - `@barba/router` adds `route` rule
+    - they can be combined within `from` and `to` properties
+- Views:
+  - are plain JS objects
+  - are declared via the `barba.init({ views })`
+  - use a subset of animation "hooks":
+    - `beforeLeave`, `afterLeave`, `beforeEnter`, `afterEnter`
+    - receive the same [`data` argument](#dataargument)
+- Sync mode will start `leave` and `enter` transitions concurrently
+
+---
+
+## @barba/core
+
+### Usage
 
 ```html
 <div data-barba="wrapper">
@@ -21,152 +60,126 @@
 </div>
 ```
 
-#### JS
-
 ```js
 import barba from '@barba/core';
 
 barba.init(<options>);
 ```
 
-#### `barba.init(<options>)`
+### `barba.init(<options>)`
 
 | Option      | Type    | Default          | Description                                                    |
 | ----------- | ------- | ---------------- | -------------------------------------------------------------- |
 | transitions | Array   | []               | Array of `<transition>` ([see below](#transitionobject))       |
+| views       | Array   | []               | Array of `<view>` ([see below](#viewobject))                   |
 | debug       | Boolean | false            | Log extra informations                                         |
 | schema      | Object  | `attributSchema` | Data attributes ([see schema.js](packages/core/src/schema.js)) |
 | useCache    | Boolean | true             | Cache your pages                                               |
 | usePrefetch | Boolean | true             | Prefetch your pages                                            |
 
-##### `<transition>` object
+### `<transition>` object
 
-> All methods receive `data` object ([see below](#dataargument))
+#### Hooks
 
-##### 1. Main methods (sync or async)
+> All hooks are methods and receive the same `data` object ([see below](#dataargument))
 
-| Method | Type     | Argument | Description                       |
-| ------ | -------- | -------- | --------------------------------- |
-| leave  | function | data     | current page __leave__ transition |
-| enter  | function | data     | next page __enter__ transition    |
-
-> These methods can be run either synchronously or asynchronously using the common `this.async()` style ([see run-async](https://github.com/sboudrias/run-async#readme))
-
-- returning a promise
-    > ```js
-    > async leave(data) {
-    >   await asyncAnimation(data.current.container);
-    > }
-    > // or
-    > leave(data) {
-    >   return asyncAnimation(data.current.container);
-    > }
-    > // or
-    > leave(data) {
-    >   return new Promise(resolve => {
-    >     callbackAnimation(data.current.container, {
-    >       onComplete: () => {
-    >         resolve();
-    >       },
-    >     });
-    >   });
-    > },
-    > ```
-- using `this.async()`
-    > ```js
-    > leave(data) {
-    >   const done = this.async();
-    >   callbackAnimation(data.current.container, {
-    >     onComplete: () => {
-    >       done();
-    >     },
-    >   });
-    > }
-    > ```
-- synchronous
-    > ```js
-    > leave(data) {
-    >   data.current.container.style.opacity = 0;
-    > }
-    > ```
-
-##### 2. Other methods (only sync)
-
-| Method      | Type     | Argument | Description                                                      |
-| ----------- | -------- | -------- | ---------------------------------------------------------------- |
-| before      | function | data     | Occurs right before `beforeLeave()`                              |
-| beforeLeave | function | data     | Occurs before __leave__ transition                               |
-| afterLeave  | function | data     | Occurs after removing __current container__                      |
-| beforeEnter | function | data     | Occurs before __enter__ transition and adding __next container__ |
-| afterEnter  | function | data     | Occurs after removing __next container__                         |
-| after       | function | data     | Occurs right after `afterEnter()`                                |
-
-> If you use `sync: true`, as __leave__ and __enter__ will be concurrent, order will differ (all before*, enter/leave, all after*)
+| order | name        | required | async | description                                               |
+| ----- | ----------- | -------- | ----- | --------------------------------------------------------- |
+| 1     | before      |          |       | before everything                                         |
+| 2     | beforeLeave |          |       | before __leave__ transition                               |
+| 3     | __leave__   | __x__    | __x__ | current page __leave__ transition                         |
+| 4     | afterLeave  |          |       | after removing __current container__                      |
+| 5     | beforeEnter |          |       | before __enter__ transition and adding __next container__ |
+| 6     | __enter__   | __x__    | __x__ | next page __enter__ transition                            |
+| 7     | afterEnter  |          |       | after removing __next container__                         |
+| 8     | after       |          |       | after everything                                          |
 
 ##### `data` argument
 
-- `data.current` (object):
-  - `container` [HTMLElement] -> container
-  - `namespace` [string] -> namespace (`[data-barba-namespace]`)
-  - `url` [string] -> complete URL
-  - `html` [string] -> HTML of the page
-- `data.next` (object): same as `data.current`.<br>
-    > Depending on your transitions properties (see below), can have `undefined` properties.
-- `data.trigger` (HTMLElement | string):
-  - link that triggered the transition
-  - `'popstate'` (browser back/forward)
-  - `'barba'` (programmatic navigation)
+| property       | detail                  | type/value  | description                        |
+| -------------- | ----------------------- | ----------- | ---------------------------------- |
+| `data.current` |                         | object      | current page related               |
+|                | `container`             | HTMLElement | barba container                    |
+|                | `namespace`             | string      | barba namespace                    |
+|                | `url`                   | string      | url                                |
+|                | `html`                  | string      | HTML of the  page                  |
+|                | `route`                 | string      | route name (`@barba/router`)       |
+| `data.next`    | same as `data.current`… | object      | next page related                  |
+| `data.trigger` | -                       | HTMLElement | link that triggered the transition |
+|                | -                       | 'popstate'  | browser back/forward               |
+|                | -                       | 'barba'     | programmatic navigation            |
 
-##### 3. Rules
+##### Notes
 
-| Name      | Type            | Argument | Description                                                                  |
-| --------- | --------------- | -------- | ---------------------------------------------------------------------------- |
-| namespace | String or Array | -        | Transition applies for matching namespace(s)                                 |
-| custom    | function        | data     | Transition applies when custom function returns `true`                       |
-| route     | String or Array | -        | Transition applies for matching route(s) ([see @barba/router](#barbarouter)) |
-| from      | Object          | -        | Allows using rules for `data.current` (with namespace, route, custom)        |
-| to        | Object          | -        | Allows using rules for `data.next` (with namespace, route, custom)           |
+> "async" hooks can be run either synchronously or asynchronously using the common `this.async()` style ([see run-async](https://github.com/sboudrias/run-async#readme)) or returning a promise ([see examples](#examples)).
+>
+> If you use [`sync: true`](#sync), as __leave__ and __enter__ will be concurrent, order will differ (all before*, then enter/leave, then all after*).
+>
+> Depending on rules, sync mode or cache availability, some properties can be `undefined`.
 
-**Important!!!**
+#### Rules
 
-The "transition resolution" (selecting the right transition) follows some rules.
+Rules define the _transition resolution_ (selecting the right transition to use).<br>
+You can combine multiple rules.
 
-- By priorities:
-  1. `custom()`
-  2. `route` ([see @barba/router](#barbarouter))
-  3. `namespace`
-  4. none
-- By properties (same priority)
-  1. `from` AND `to`
-  2. `from` OR `to`
-  3. none
-- By order (same priority, same property)
-  1. first declared
+| priority | name        | type             | argument | apply when…                                           |
+| -------- | ----------- | ---------------- | -------- | ----------------------------------------------------- |
+| 1        | `custom`    | function         | data     | return `true`                                         |
+| 2        | `route`     | string\|string[] | -        | `current.route` match ([@barba/router](#barbarouter)) |
+| 3        | `namespace` | string\|string[] | -        | `current.namespace` match                             |
 
-> The common/default behaviour is to start __leave__ as soon as possible.
-> __enter__ will be called when __leave__ ends _AND_ next page is "available" (fetched or get from the cache).
-> If you use some `to` logic, Barba can not predict and select the right transition until the next page is available.
-> This also applies when using `sync: true`.
+Any rules can be used within `from` and/or `to` properties [object].
+
+| priority | usage           | apply when…                                 |
+| -------- | --------------- | ------------------------------------------- |
+| x.1      | `from` AND `to` | rule(s) match for `current` AND `next` data |
+| x.2      | `to`            | rule(s) match for `next` data               |
+| x.3      | `from`          | rule(s) match for `current` data            |
+
+##### Notes (**important!!!**)
+
+The _transition resolution_ follows this order:
+
+1. Rule(s) priority
+2. `from` and/or `to` priority
+3. Declaration order
+
+> The common/default behaviour is to start __leave__ as soon as possible.<br>
+> __enter__ will be called when __leave__ ends _AND_ next page is "available" (fetched or get from the cache).<br>
+> If you use some `to` logic, Barba can not predict and select the right transition until the next page is available.<br>
+> This also applies when using `sync: true`.<br>
 > But this does not apply if `to` is used with `route` property because "next route" is known when the click occurs…
 >
 > Bear with this!
 
-##### 4. Other
+Example:
+
+```js
+const transition = {
+  from: {
+    route: '/home',
+    custom: ({ trigger }) => trigger.classList && trigger.classList.contains('cta'),
+  },
+  to: { namespace: '/products' },
+  leave() {},
+  enter() {},
+}
+```
+
+#### Sync mode
 
 | Name | Type    | Default | Description                        |
 | ---- | ------- | ------- | ---------------------------------- |
 | sync | Boolean | false   | __Sync__ mode ([see below](#sync)) |
 
-###### sync
-
 When set to `true`, __leave__ and __enter__ will "play together".
-This implies waiting for the full load of the next page.
+This involves waiting until the next page is available (fetch or cache).
 
 ---
 
-### @barba/router
+## @barba/router
 
-Barba router allows you to use __routes__ for custom page transitions.
+Barba router allows you to use __routes__ for page transitions.
 It adds a __route__ rule to Barba (less important than `custom()` but more than `namespace`).
 
 ```js
@@ -179,31 +192,30 @@ barba.use(router, { routes });
 barba.init(<options>);
 ```
 
-#### `barba.use(router, <options>)`
+### `barba.use(router, <options>)`
 
 | Option | Type  | Default | Description                                    |
 | ------ | ----- | ------- | ---------------------------------------------- |
-| routes | Array | []      | Array of `<route>` ([see below](#routeobject)) |
+| routes | array | []      | array of `<route>` ([see below](#routeobject)) |
 
-##### `<route>` object
+### `<route>` object
 
-| Property | Type   | Description                                                  |
-| -------- | ------ | ------------------------------------------------------------ |
-| name     | String | value to be used with `transition[.from|.to].route` property |
-| path     | String | URL pattern                                                  |
-
-###### Note
+| Property | Type   | Description                                         |
+| -------- | ------ | --------------------------------------------------- |
+| name     | string | value to be used with `transition[.from|.to].route` |
+| path     | string | URL pattern                                         |
 
 > `path` accepts dynamic segments (`/product/:id`) and regular expressions (`/:lang(fr|en)/:post`) ([see path-to-regexp](https://github.com/pillarjs/path-to-regexp))
 
 ---
 
-## Some transition examples
+## Examples
 
-### `leave` / `enter` (async)
+### `leave` / `enter`
 
 ```js
 const t = {
+  // Async/await style
   async leave(data) {
     await asyncAnimation(data.current.container);
   },
@@ -212,6 +224,7 @@ const t = {
 
 ```js
 const t = {
+  // Returning a promise
   leave(data) {
     return asyncAnimation(data.current.container);
   },
@@ -220,6 +233,7 @@ const t = {
 
 ```js
 const t = {
+  // Returning a promise
   leave(data) {
     return new Promise(resolve => {
       callbackAnimation(data.current.container, {
@@ -234,6 +248,7 @@ const t = {
 
 ```js
 const t = {
+  // `this.async()` style
   leave(data) {
     const done = this.async();
     callbackAnimation(data.current.container, {
@@ -309,9 +324,15 @@ const t = {
 
 ---
 
+## How to contribute
+
+[Follow those instructions](CONTRIBUTING.md)
+
 ## Next steps
 
 - [ ] Testing, debugging, fixing, testing…
-- [ ] Write complete documentation
+- [ ] e2e testing suite
+- [ ] CI setup (PR, publish, …)
+- [ ] Write manual documentation
 - [ ] Generate code documentation
 - [ ] New website
