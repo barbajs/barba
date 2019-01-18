@@ -13,7 +13,7 @@ This project uses:
 
 ## Install
 
-- `git clone git@github.com:luruke/barba-next.git`
+- `git clone git@github.com:barbajs/barba-next.git`
 - `cd barba-next`
 - `yarn install`
 - `lerna bootstrap`

@@ -17,14 +17,14 @@
     "barba",
     "router"
   ],
-  "homepage": "https://gitlab.com/luruke/barba-next#readme",
+  "homepage": "https://github.com/barbajs/barba-next#readme",
   "bugs": {
-    "url": "https://gitlab.com/luruke/barba-next/issues"
+    "url": "https://github.com/barbajs/barba-next/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/luruke/barba-next.git"
+    "url": "git+ssh://git@github.com/barbajs/barba-next.git"
   },
   "scripts": {
     "build": "npm-run-all build:commonjs build:umd build:umd:min build:esm",
