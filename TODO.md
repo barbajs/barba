@@ -71,3 +71,4 @@
   - [ ] Repo transfer?
     - [doc](https://help.github.com/articles/transferring-a-repository/)
     - [hack post](https://francisco.io/blog/transferring-github-stars/)
+  - VSCode extensions recommandations? settings?
