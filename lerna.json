@@ -1,7 +1,8 @@
 {
   "command": {
     "publish": {
-      "conventionalCommits": true
+      "conventionalCommits": true,
+      "npmClient": "npm"
     }
   },
   "npmClient": "yarn",
