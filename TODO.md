@@ -8,24 +8,6 @@
 
 ---
 
-> Questions…
->
-> - [x] leave vs enter
->   - ✅ leave current, enter next
->   - ⛔️ enter transition === first step, leave transition === last step
-> - [x] canceled vs progress (probably both)
->   - [x] À AJOUTER + force
-> - more global events?
-> - scroll/lock util?
-> - build module/nomodule? BOFFFFFF
-> - Support
-> - unpkg
-> - release `-alpha` + "hard reset" move to github?
->   - next…
-> - [ ] views
->   - [x] core ✅ / beforeEnter, beforeLeave, afterEnter, afterLeave
->   - [ ] doit fonctionner avec IE <= 11 ???
-
 - [ ] @barba/
   - [ ] **transitions** (basic, ready-to-use. e.g.: fade, slide, …)
   - [ ] **css** (add CSS classes via hooks)
@@ -52,7 +34,7 @@
     - [Open Software License 3.0](https://choosealicense.com/licenses/osl-3.0/)
     - [European Union Public License 1.2](https://choosealicense.com/licenses/eupl-1.2/)
 - [ ] Community
-  - [ ] Github issue template
+  - [x] Github issue template
   - [x] Forum / chat -> [Slack](https://barbajs.slack.com)
 - [ ] Other
   - [ ] Make jest work with `babel.config.js` (global + optional local merge)
