@@ -3,7 +3,7 @@
 ## Prerelease `publish`
 
 ```sh
-lerna publish --registry http://localhost:4873 --canary --preid next
+lerna publish --canary --preid next
 ```
 
 ## Test `publish` with [verdaccio](https://www.npmjs.com/package/verdaccio)
