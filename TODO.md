@@ -11,6 +11,7 @@
 - [ ] @barba/
   - [ ] **transitions** (basic, ready-to-use. e.g.: fade, slide, …)
   - [ ] **css** (add CSS classes via hooks)
+  - [ ] **loader** ??? (programatically fetch and cache pages - also see [quicklink](https://github.com/GoogleChromeLabs/quicklink))
 - [ ] Tests:
   - [ ] unit tests
   - [ ] e2e tests (puppetteer? / cypress?)
