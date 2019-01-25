@@ -1,7 +1,7 @@
 <p align="center"><a href="http://barbajs.org" target="_blank"><img width="300" src="http://barbajs.org/images/logo.svg"></a></p>
 
 <p align="center">
-<a href="https://gitter.im/luruke/barba.js"><img src="https://badges.gitter.im/luruke/barba.js.svg" /></a>
+<a href="https://join.slack.com/t/barbajs/shared_invite/enQtNTI4OTgzNDc0OTYzLTNjMjIyMzI5NWNkNmI5MzNjYTJjNWJjMThiYjIzNjY3Y2IyZTQyNzEyMTEzZWMxMDM5ZTY1ZmJjMDg5MDY1ODE"><img src="https://img.shields.io/badge/slack-channel-purple.svg?style=flat-square&logo=slack" /></a>
 <a href='https://travis-ci.org/luruke/barba.js'><img src='https://travis-ci.org/luruke/barba.js.svg?branch=master' alt='Build Status' /></a>
 <a href='https://coveralls.io/github/luruke/barba.js?branch=master'><img src='https://coveralls.io/repos/github/luruke/barba.js/badge.svg?branch=master' alt='Coverage Status' /></a>
 </p>
