@@ -1,7 +1,7 @@
 linters:
   'src/**/*.js':
     - prettier --write
-    - eslint
+    - npm run lint
     - git add
   '*.{json,md}':
     - prettier --write
