@@ -160,5 +160,6 @@ esm
 lib
 dist
 docs
-report.html
 cypress
+PERSONAL.md
+report.html
