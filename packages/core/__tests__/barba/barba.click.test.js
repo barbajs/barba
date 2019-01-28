@@ -22,7 +22,7 @@ it('handle link enter with same url', () => {
 
 it('handle link enter with prevent', () => {
   link.href = 'foo';
-  link.dataset.barba = 'prevent';
+  link.dataset.barbaPrevent = '';
   span.dispatchEvent(click);
 
   expect(barba.go).toHaveBeenCalledTimes(0);

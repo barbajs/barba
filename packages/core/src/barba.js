@@ -10,6 +10,8 @@ import request from './request';
 import viewsManager from './views';
 import { getHref, getUrl } from './utils';
 
+import './polyfills';
+
 /**
  * Barba core
  *
@@ -193,11 +195,13 @@ export default {
     }
 
     // Check prevent
-    if (!el || prevent._tests.hasAttr({ el })) {
+    // if (!el || prevent._tests.hasAttr({ el })) {
+    // TODO: all prevent tests before fetching/caching?
+    if (!el || prevent.check(el, e, el.href)) {
       return;
     }
 
-    const url = el.href;
+    const url = getHref(el);
 
     // Already in cache
     if (cache.has(url)) {

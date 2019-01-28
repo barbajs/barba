@@ -8,11 +8,11 @@
  * data-barba-namespace
  *
  * @property {string} prefix - The prefix
- * @property {string} wrapper - The wrapper
- * @property {string} container - The container
- * @property {string} prefetch - The prefetch
- * @property {string} prevent - The prevent
- * @property {string} namespace - The namespace
+ * @property {string} wrapper - Set the wrapper
+ * @property {string} container - Set the container
+ * @property {string} prefetch - Prefetch (to be discussed)
+ * @property {string} prevent - Prevent link(s) of using transition
+ * @property {string} namespace - Namespace for transitions and views
  * @private
  */
 // TODO: prefetch or noprefetch or no-prefetch?
