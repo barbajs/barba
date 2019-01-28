@@ -1,6 +1,7 @@
 import barba from '../../src';
 import cache from '../../src/cache';
 import history from '../../src/history';
+import prevent from '../../src/prevent';
 
 const wrapper = document.createElement('div');
 const container = document.createElement('div');
@@ -33,6 +34,23 @@ it('needs barba container', () => {
   document.body.appendChild(wrapper);
 
   expect(init).toThrow('No Barba container found');
+});
+
+it('needs valid prevent custom', () => {
+  const init = function init() {
+    barba.init({ prevent: 'bad' });
+  };
+
+  expect(init).toThrow('Prevent should be a function');
+  expect(prevent._tests).not.toHaveProperty('preventCustom');
+});
+
+it('adds prevent custom', () => {
+  document.body.appendChild(wrapper);
+  wrapper.appendChild(container);
+  barba.init({ prevent() {} }); // eslint-disable-line no-empty-function
+
+  expect(prevent._tests).toHaveProperty('preventCustom');
 });
 
 it('has DOM elements', () => {

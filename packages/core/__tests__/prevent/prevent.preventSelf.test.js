@@ -4,13 +4,10 @@ import { attributeSchema } from '../../src/schema';
 prevent.init({ attributeSchema });
 
 let check;
-const parent = document.createElement('div');
 const el = document.createElement('a');
 
-parent.appendChild(el);
-
 beforeEach(() => {
-  check = jest.fn(data => prevent._tests.hasPreventAll(data));
+  check = jest.fn(data => prevent._tests.preventSelf(data));
   [...el.attributes].forEach(attr => el.removeAttribute(attr.name));
 });
 
@@ -20,8 +17,16 @@ it('pass', () => {
   expect(check).toHaveReturnedWith(false);
 });
 
-it('prevent with data-barba-prevent="all"', () => {
-  parent.dataset.barbaPrevent = 'all';
+it('prevent with data-barba-prevent', () => {
+  el.dataset.barbaPrevent = '';
+
+  check({ el });
+
+  expect(check).toHaveReturnedWith(true);
+});
+
+it('prevent with data-barba-prevent="self"', () => {
+  el.dataset.barbaPrevent = 'self';
 
   check({ el });
 

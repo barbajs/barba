@@ -78,12 +78,12 @@ const prevent = {
     // );
 
     // If contains [data-barba-prevent] or [data-barba-prevent="self"]
-    this.add('hasPrevent', ({ el }) =>
+    this.add('preventSelf', ({ el }) =>
       el.hasAttribute(`${this.attr.prefix}-${this.attr.prevent}`)
     );
 
     // If ancestor contains [data-barba-prevent="all"]
-    this.add('hasPreventAll', ({ el }) =>
+    this.add('preventAll', ({ el }) =>
       Boolean(el.closest(`[${this.attr.prefix}-${this.attr.prevent}="all"]`))
     );
   },

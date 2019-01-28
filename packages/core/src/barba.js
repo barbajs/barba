@@ -107,6 +107,7 @@ export default {
     transitions = [],
     views = [],
     schema = attributeSchema,
+    prevent: preventCustom = null,
     useCache = true,
     usePrefetch = true,
   } = {}) {
@@ -117,12 +118,21 @@ export default {
     dom.init({ attributeSchema: schema });
     // Init prevent with data-attributes schema
     prevent.init({ attributeSchema: schema });
+    // Add prevent custom
+    if (preventCustom !== null) {
+      if (typeof preventCustom !== 'function') {
+        throw new Error('Prevent should be a function');
+      }
+
+      prevent.add('preventCustom', preventCustom);
+    }
 
     // Get wrapper
     this._wrapper = dom.getWrapper();
     if (!this._wrapper) {
       throw new Error('No Barba wrapper found');
     }
+
     // A11y
     this._wrapper.setAttribute('aria-live', 'polite');
 
