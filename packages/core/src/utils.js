@@ -1,6 +1,5 @@
-// TODO: handle SVG or other special cases.
-
-export const getHref = el => el.href;
+export const getHref = el =>
+  el.getAttribute && el.getAttribute('href') ? el.href : undefined;
 export const getUrl = () => window.location.href;
 // TODO: check
 // https://github.com/luruke/barba.js/pull/323
