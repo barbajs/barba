@@ -1,0 +1,121 @@
+// Remove the unit of a length
+// @param {Number} $number - Number to remove unit from
+// @return {Number} - Unitless number
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
+
+// Convert the unit of a length
+// @param {Number} $number - Number to convert the unit
+// @param {String} $unit - Unit to append to number
+/// @return {Number} - Number with unit
+@function convert-unit($number, $unit) {
+  @return unquote(strip-unit($number) + $unit);
+}
+
+
+// Calculate a ratio
+// @param {Number} $target - Target size
+// @param {Number} $context - Context size
+@function calc-ratio($target, $context) {
+  @return strip-unit($target / $context);
+}
+
+
+// Calculate a ratio into percentage
+// @param {Number} $target - Target size
+// @param {Number} $context - Context size
+@function calc-percent($target, $context) {
+  @return percentage(calc-ratio($target, $context));
+}
+
+@function get-font-size($tag) {
+  @return map-get($font-sizes, $tag);
+}
+
+
+// Px to Rem:
+// Converts px to rem
+// @param {Number} $number - The px value
+// @return {Number} - The rem value
+@function rem($number) {
+  @return convert-unit((strip-unit($number) / strip-unit($base-font-size)), 'rem');
+}
+
+
+// Convert the Photoshop letter-spacing to CSS value.
+// Basically we devide the Photoshop value by 1000 to get the correct CSS value.
+// @param {Number} $number - The Photoshop letter-spacing value
+@function ls($number) {
+  @return strip-unit($number) / 1000;
+}
+
+
+// Check minimum breakpoint eligibility.
+// String: Get the value from the `mq-breakpoints` map.
+// Number: Set the value to the variable.
+// @param {String | Number} $breakpoint
+// @return {Number}
+@function valid-breakpoint($breakpoint) {
+  $type: type-of($breakpoint);
+  @if $type == 'string' {
+    @if variable-exists(mq-breakpoints) {
+      @if map-get($mq-breakpoints, $breakpoint) {
+        @return map-get($mq-breakpoints, $breakpoint);
+      } @else {
+        @warn 'Undefined breakpoint value.'; // sass-lint:disable-line no-warn
+        @return false;
+      }
+    } @else {
+      @warn 'No breakpoints map defined.'; // sass-lint:disable-line no-warn
+      @return false;
+    }
+  } @else if $type == 'number' {
+    @return $breakpoint;
+  } @else {
+    @warn 'Unknown type of breakpoint value.'; // sass-lint:disable-line no-warn
+    @return false;
+  }
+}
+
+// Get z-layer value from map
+// See the `$z-layers` map in `_variables.scss` for more informations.
+// @param {String} key - The key to use to get the value
+@function layer($key) {
+  @if variable-exists(z-layers) {
+    @if map-has-key($z-layers, $key) == true {
+      @return map-get($z-layers, $key);
+    } @else {
+      @warn 'Unknown `z-layers` key: ' + $key; // sass-lint:disable-line no-warn
+      @return auto;
+    }
+  } @else {
+    @warn 'Undefined variables `$z-layers`'; // sass-lint:disable-line no-warn
+    @return auto;
+  }
+}
+
+// Get the size of x columns
+// @param {Number} $number - The number of columns
+// @return {Number} - The percent value
+@function col($number, $total: 20) {
+  @return 100% / $total * $number;
+}
+
+// Get the size of x columns in the wrapper
+// @param {Number} $number - The number of columns
+// @return {Number} - The percent value
+@function col-wrapper($number, $total: 20) {
+  @return $wrapper-max-width / $total * $number;
+}
+
+// Get the size of x columns in the wrapper redux
+// @param {Number} $number - The number of columns
+// @return {Number} - The percent value
+@function col-wrapper-redux($number, $total: 20) {
+  @return $wrapper-redux-max-width / $total * $number;
+}

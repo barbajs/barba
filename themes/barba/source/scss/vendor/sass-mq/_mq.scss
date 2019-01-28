@@ -1,0 +1,166 @@
+// sass-lint:disable no-warn, max-line-length
+@charset 'UTF-8';
+
+// To enable support for browsers that do not support @media queries,
+// (IE <= 8, Firefox <= 3, Opera <= 9) set $mq-responsive to false
+// Create a separate stylesheet served exclusively to these browsers,
+// meaning @media queries will be rasterized, relying on the cascade itself
+$mq-responsive: true !default;
+
+// Name your breakpoints in a way that creates a ubiquitous language
+// across team members. It will improve communication between
+// stakeholders, designers, developers, and testers.
+$mq-breakpoints: (
+  'mobile':  320px,
+  'tablet':  740px,
+  'desktop': 980px,
+  'wide':    1300px
+) !default;
+
+// Define the breakpoint from the $mq-breakpoints list that should
+// be used as the target width when outputting a static stylesheet
+// (i.e. when $mq-responsive is set to 'false').
+$mq-static-breakpoint: 'desktop' !default;
+
+// If you want to display the currently active breakpoint in the top
+// right corner of your site during development, add the breakpoints
+// to this list, ordered by width, e.g. (mobile, tablet, desktop).
+$mq-show-breakpoints: () !default;
+
+@function mq-px2em($px, $base-font-size: 16px) {
+  @if (unitless($px)) {
+    @warn 'Assuming #{$px} to be in pixels, attempting to convert it into pixels for you';
+    @return mq-px2em($px * 1px); // That may fail.
+  } @else if (unit($px) == em) {
+    @return $px;
+  }
+  @return ($px / $base-font-size) * 1em;
+}
+
+@function mq-get-breakpoint-width($name) {
+  @if(map-has-key($mq-breakpoints, $name)) {
+    @return map-get($mq-breakpoints, $name);
+  } @else {
+    @warn 'Breakpoint #{$name} does not exist';
+  }
+}
+
+// Media Query mixin
+// Usage:
+// .element {
+//   @include mq($from: mobile) {
+//     color: red;
+//   }
+//   @include mq($until: tablet) {
+//     color: blue;
+//   }
+//   @include mq(mobile, tablet) {
+//     color: green;
+//   }
+//   @include mq($from: tablet, $and: '(orientation: landscape)') {
+//     color: teal;
+//   }
+//   @include mq(950px) {
+//     color: hotpink;
+//   }
+// }
+
+@mixin mq($from: false, $until: false, $and: false, $to: null) {
+
+  // Deprecate use of $to for $until, because $until implies the exclusive
+  // boundary that is in place, whereas $to is unclear.
+  @if $to {
+    @if not $until {
+      @warn '$to is deprecated, you should use $until instead';
+      $until: $to;
+    } @else {
+      @warn 'You are using $until and $to together. $to is deprecated and has been ignored. You should remove it.';
+    }
+  }
+
+
+  // Initialize variables
+  $min-width: 0;
+  $max-width: 0;
+  $media-query: '';
+
+  // From: this breakpoint (inclusive)
+  @if $from {
+    @if type-of($from) == number {
+      $min-width: mq-px2em($from);
+    } @else {
+      $min-width: mq-px2em(mq-get-breakpoint-width($from));
+    }
+  }
+
+  // Until: that breakpoint (exclusive)
+  @if $until {
+    @if type-of($until) == number {
+      $max-width: mq-px2em($until);
+    } @else {
+      $max-width: mq-px2em(mq-get-breakpoint-width($until)) - .01em;
+    }
+  }
+
+  // Responsive support is disabled, rasterize the output outside @media blocks
+  // The browser will rely on the cascade itself.
+  @if ($mq-responsive == false) {
+    $static-breakpoint-width: mq-get-breakpoint-width($mq-static-breakpoint);
+    @if type-of($static-breakpoint-width) == number {
+      $target-width: mq-px2em($static-breakpoint-width);
+      // Output only rules that start at or span our target width
+      @if ($and == false and ($min-width <= $target-width) and (($until == false) or ($max-width >= $target-width))) {
+        @content;
+      }
+    } @else {
+      // Throw a warning if $mq-static-breakpoint is not in the $mq-breakpoints list
+      @warn 'No static styles will be output: #{$static-breakpoint-width}';
+    }
+  } @else {
+    // Responsive support is enabled, output rules inside @media queries
+    @if $min-width != 0 { $media-query: '#{$media-query} and (min-width: #{$min-width})'; }
+    @if $max-width != 0 { $media-query: '#{$media-query} and (max-width: #{$max-width})'; }
+    @if $and            { $media-query: '#{$media-query} and #{$and}'; }
+
+    $media-query: unquote(#{$media-query});
+
+    @media #{only screen+$media-query} {
+      @content;
+    }
+  }
+}
+
+// Add a breakpoint
+// Usage: $mq-breakpoints: mq-add-breakpoint(tvscreen, 1920px);
+@function mq-add-breakpoint($name, $breakpoint) {
+  $new-breakpoint: ($name: $breakpoint);
+  @return map-merge($mq-breakpoints, $new-breakpoint);
+}
+
+@mixin mq-show-breakpoints($breakpoints) {
+  // Show the active breakpoint in the top right corner of the viewport
+  @if (length($breakpoints) > 0) {
+    body::before {
+      position: fixed;
+      z-index: 1000;
+      bottom: 0;
+      left: 0;
+      min-width: 14rem;
+      border-top: 1px solid lighten($c-dev-bg, 25%);
+      padding: 3px 6px;
+      background-color: rgba($c-dev-bg, .75);
+      color: $white;
+      font: small-caption;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+
+      // Loop through the breakpoints that should be shown
+      @each $bp in $breakpoints {
+        $width: mq-get-breakpoint-width($bp);
+
+        @include mq($bp) {
+          content: '#{$bp} ≥ #{$width} (#{mq-px2em($width)})';
+        }
+      }
+    }
+  }
+}

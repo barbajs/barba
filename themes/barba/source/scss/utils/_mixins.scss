@@ -1,0 +1,290 @@
+/// Mixin to customize scrollbars
+/// Beware, this does not work in all browsers
+/// @author Hugo Giraudel
+/// @param {Length} $size - Horizontal height and vertical width
+/// @param {Color} $foreground-color - color
+/// @param {Color} $background-color [mix($foreground-color, white, 50%)] - color
+/// @example scss - Scrollbar styling
+///   @include scrollbars(.5em, slategray);
+@mixin scrollbars($size: 6px, $foreground-color: $black, $background-color: $white) {
+  // sass-lint:disable-block no-vendor-prefixes
+  // For Google Chrome
+  &::-webkit-scrollbar {
+    position: absolute;
+    width: $size;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $foreground-color; // sass-lint:disable-line no-misspelled-properties
+    scrollbar-track-color: $background-color; // sass-lint:disable-line no-misspelled-properties
+  }
+}
+
+// Scalable Text:
+// This mixin allows smooth text scaling in responsive design.
+// See the `$scalable-text-map` in `_variables.scss` for more informations.
+// @param {String} key - The key from the `$scalable-text-map`
+//
+// @example scss
+// h1 {
+//  @include scalable-text('h1');
+// }
+@mixin scalable-text($key) {
+  $map: map-get($scalable-text-map, $key);
+
+  $min: map-get($map, 'min');
+  $max: map-get($map, 'max');
+
+  $font-min-size: nth($min, 1);
+  $font-max-size: nth($max, 1);
+
+  $font-min-break: valid-breakpoint(nth($min, 2));
+  $font-max-break: valid-breakpoint(nth($max, 2));
+
+  font-size: calc(#{$font-min-size} + (#{strip-unit($font-max-size)} - #{strip-unit($font-min-size)}) * ((100vw - #{$font-min-break}) / (#{strip-unit($font-max-break)} - #{strip-unit($font-min-break)}))); // sass-lint:disable-line max-line-length
+
+  @include mq($until: $font-min-break) {
+    font-size: $font-min-size;
+  }
+  @include mq($from: $font-max-break) {
+    font-size: $font-max-size;
+  }
+}
+
+@mixin center-x {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin center-y {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin center-xy {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin get-all-space {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+
+  > * {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+@mixin image-fit($fit: cover, $position: null) {
+  @include get-all-space;
+
+  object-fit: $fit;
+
+  @if $position {
+    font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+    object-position: $position;
+  } @else {
+    font-family: 'object-fit: #{$fit}';
+  }
+}
+
+@mixin owl($margin: false) {
+  > :first-child {
+    margin-top: 0;
+
+    @if $margin {
+      margin-bottom: $margin;
+    }
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  > * + * {
+    // margin-top: 0;
+
+    @if $margin {
+      margin-bottom: $margin;
+    }
+  }
+}
+
+// Beam
+@function get-base($str) {
+  @return str-slice($str, 0, str-index($str, '--')-1);
+}
+
+@function get-rest($str) {
+  @return str-slice($str, str-index($str, '--')+2);
+}
+
+@function has-modifiers($str) {
+  @return str-index($str, '--');
+}
+
+@function get-modifiers($str, $modifiers: ()) {
+  @if has-modifiers($str) {
+    $modifiers: append($modifiers, get-base($str));
+    $modifiers: get-modifiers(get-rest($str), $modifiers);
+  } @else {
+    $modifiers: append($modifiers, $str);
+  }
+  @return $modifiers;
+}
+
+@function parse($str) {
+  $parts: ();
+
+  @if has-modifiers($str) {
+    $parts: (
+      'base': get-base($str),
+      'modifiers': get-modifiers(get-rest($str))
+    );
+  } @else {
+    $parts: (
+      'base': $str,
+    );
+  }
+
+  @return $parts;
+}
+
+@mixin beam($str, $states: null) {
+  $parts: parse($str);
+  $base: map-get($parts, 'base');
+  $selector: '';
+
+  @if map-has-key($parts, 'modifiers') {
+    $selector: '[class*="' + $base + '--"]';
+
+    @each $modifier in map-get($parts, 'modifiers') {
+      $selector: $selector + '[class*="--' + $modifier + '"]';
+    }
+  } @else {
+    $selector: '.' + $base + ',[class*="' + $base + '--"]';
+  }
+
+  @if $states {
+    @each $state in $states {
+      $selector: $selector + $state;
+    }
+  }
+
+  @at-root {
+    #{$selector} {
+      @content;
+      // content: #{$selector};
+    }
+  }
+}
+// Beam [end]
+
+@mixin triangle-hover($color, $duration: .3s, $ease: ease-out) {
+  position: relative;
+  overflow: hidden;
+
+  > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    padding-top: 100%;
+    transform: translateY(0%);
+    transition: transform $duration $ease, top $duration $ease, margin $duration $ease;
+    will-change: transform, top, margin;
+  }
+
+  &::before {
+    background: linear-gradient(45deg, $color 0%, $color 50%, transparent 50.000001%, transparent 100%);
+  }
+
+  &::after {
+    height: calc(100% + 1px);
+    margin-top: calc(100% - 1px);
+    padding-top: 0;
+    background-color: $color;
+  }
+
+  &:hover::before,
+  &:hover::after {
+    top: 0;
+  }
+
+  &:hover::before {
+    transform: translateY(-100%);
+  }
+
+  &:hover::after {
+    margin-top: calc(0% - 1px);
+  }
+}
+
+@mixin default-margin {
+  margin-top: $spacing * 2.5;
+
+  @include mq(m) {
+    margin-top: $spacing * 3;
+  }
+
+  @include mq(l) {
+    margin-top: $spacing * 5;
+  }
+}
+
+@mixin default-border {
+  border-top: 1px solid $c-gray-light;
+  padding-top: $spacing * 2.5;
+
+  @include mq(m) {
+    border-top: 1px solid $c-gray-light;
+    padding-top: $spacing * 3;
+  }
+
+  @include mq(l) {
+    border-top: 1px solid $c-gray-light;
+    padding-top: $spacing * 5;
+  }
+}

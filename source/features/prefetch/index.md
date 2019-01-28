@@ -1,3 +1,3 @@
 <div class="feature">
-  <h1>Small size</h1>
+  <h1>Prefetch</h1>
 </div>

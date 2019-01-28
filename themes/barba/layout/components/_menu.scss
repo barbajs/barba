@@ -1,0 +1,25 @@
+.menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100vh;
+  background-color: rgba(#ccc, .9);
+  padding: 40px;
+}
+
+.menu__pages__list {
+  @extend %list-nostyle;
+}
+
+.menu__pages__item__title,
+.menu__pages__item__link {
+  @extend %text-nodecoration;
+  font-size: 2rem;
+  color: #333;
+}
+
+.menu-subpages__list {
+  @extend %list-nostyle;
+  padding-left: $spacing / 2;
+}

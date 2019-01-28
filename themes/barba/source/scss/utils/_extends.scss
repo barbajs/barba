@@ -1,0 +1,145 @@
+/*
+ * Helpers
+ */
+
+%user-noselect {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/*
+ * Clearfix: contain floats
+ * http://cssmojo.com/latest_new_clearfix_so_far/
+ */
+%cf {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+/*
+ * Hide visually and from screen readers:
+ * http://juicystudio.com/article/screen-readers-display-none.php
+ */
+%hidden {
+  display: none !important; // sass-lint:disable-line no-important
+  visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+%visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+}
+
+
+/**
+ * Typo
+ */
+%fw-light {
+  font-weight: 300;
+}
+
+%fw-normal {
+  font-weight: 400;
+}
+
+%fw-medium {
+  font-weight: 500;
+}
+
+%fw-semi {
+  font-weight: 600;
+}
+
+%fw-bold {
+  font-weight: 700;
+}
+
+%fw-ultra {
+  font-weight: 800;
+}
+
+%fw-black {
+  font-weight: 900;
+}
+
+%fs-italic {
+  font-style: italic;
+}
+
+%fs-normal {
+  font-style: normal;
+}
+
+%text-left {
+  text-align: left;
+}
+
+%text-center {
+  text-align: center;
+}
+
+%text-right {
+  text-align: right;
+}
+
+%text-justify {
+  text-align: justify;
+}
+
+%text-uppercase {
+  text-transform: uppercase;
+}
+
+%text-lowercase {
+  text-transform: lowercase;
+}
+
+%text-notransform {
+  text-transform: none;
+}
+
+%text-nodecoration {
+  text-decoration: none;
+}
+
+%list-nostyle {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+%letter-spaced {
+  letter-spacing: .15em;
+}
+
+/*
+ * Colors
+ */
+%color-white {
+  color: $white;
+}
+
+%color-black {
+  color: $black;
+}
+
+%color-dark {
+  color: $c-dark;
+}
+
+%color-light {
+  color: $c-light;
+}

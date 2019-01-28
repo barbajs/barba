@@ -1,0 +1,132 @@
+// sass-lint:disable no-important
+/*html*/.lock-scroll {
+  &,
+  body {
+    overflow-x: hidden;
+  }
+}
+
+// Miscellaneous useful HTML classes
+.h-pull-left {
+  float: left !important;
+}
+
+.h-pull-right {
+  float: right !important;
+}
+
+.h-text-left {
+  text-align: left !important;
+}
+
+.h-text-right {
+  text-align: right !important;
+}
+
+.h-text-center {
+  text-align: center !important;
+}
+
+.h-text-justify {
+  text-align: justify !important;
+}
+
+.h-text-uppercase {
+  text-transform: uppercase;
+}
+
+.h-text-notransform {
+  text-transform: none;
+}
+
+.h-text-nodecoration {
+  text-decoration: none;
+}
+
+/*
+ * Hide visually and from screen readers:
+ * http://juicystudio.com/article/screen-readers-display-none.php
+ */
+.h-hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+.h-visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+
+  /*
+   * Extends the .visuallyhidden class to allow the element
+   * to be focusable when navigated to via the keyboard:
+   * https://www.drupal.org/node/897638
+   */
+  &.is-focusable {
+    &:active,
+    &:focus {
+      position: static;
+      overflow: visible;
+      width: auto;
+      height: auto;
+      margin: 0;
+      clip: auto;
+    }
+  }
+}
+
+/*
+ * Clearfix: contain floats
+ * http://cssmojo.com/latest_new_clearfix_so_far/
+ */
+.h-clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+.h-inline-block {
+  display: inline-block !important;
+}
+
+.h-table {
+  display: table !important;
+}
+
+.h-cell {
+  display: table-cell !important;
+}
+
+.h-va-middle {
+  vertical-align: middle !important;
+}
+
+/**
+ * Text hyphenation
+ *
+ * Break strings when their length exceeds the width of their container
+ * and hyphenate words at the end of lines using the `hyphens` property.
+ * Browser support for hyphenation: http://caniuse.com/#search=hyphenation
+ */
+.h-text-hyphenate {
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/**
+ * Prevent line breaks
+ */
+.h-nobr {
+  white-space: nowrap;
+}

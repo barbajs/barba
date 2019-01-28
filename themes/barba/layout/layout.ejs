@@ -1,53 +1,28 @@
 <!doctype html>
 <html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <script src="/js/main.js"></script>
+
+    <link rel="stylesheet"
+          href="/scss/main.css"
+          type="text/css" media="all">
+
+  </head>
   <body>
-    <!-- {{ render_spritesheet() }} -->
     <div class="site">
       <main class="site-main" role="main">
         <div class="site-content">
 
-          <header class="site-header header"
-                  role="banner">
-            <div class="header-inner">
-              <nav class="header__nav nav">
-                <ul class="nav__list">
-                  <li class="nav__item">
-                    <a class="nav__item__link"
-                       href="/">
-                      Home
-                    </a>
-                  </li>
-                  <li class="nav__item">
-                    <a class="nav__item__link"
-                       href="/about">
-                      About
-                    </a>
-                  </li>
-                  <li class="nav__item">
-                    <a class="nav__item__link"
-                       href="/features/small-size">
-                      Small size
-                    </a>
-                  </li>
-                  <li class="nav__item">
-                    <a class="nav__item__link"
-                       href="/showcase">
-                      Showcase
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </header>
+          <%- partial('components/header') %>
 
-          <%- body %>
+          <div class="site-content-inner">
+            <%- body %>
+          </div>
 
-          <footer class="site-footer footer">
-            <div class="footer-inner">
-              footer
-            </div>
-          </footer>
-          
+          <%- partial('components/footer') %>
+
         </div><!-- end .site-content -->
 
       </main><!-- end .site-main -->

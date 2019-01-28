@@ -1,0 +1,116 @@
+/**
+ * Dev, based on $env (from gulp)
+ */
+$env: 'dev' !default;
+
+
+/**
+ * Colors
+ * for the naming use http://name-of-color.com/
+ * from darker to lighter ?
+ */
+
+// Global colors
+$black: rgb(0, 0, 0);
+$gray-darkest: rgb(32, 32, 32);
+$gray-darker: rgb(64, 64, 64);
+$gray-dark: rgb(96, 96, 96);
+$gray-medium: rgb(128, 128, 128);
+$gray-light: rgb(160, 160, 160);
+$gray-lighter: rgb(192, 192, 192);
+$gray-lightest: rgb(224, 224, 224);
+$white: rgb(255, 255, 255);
+$transparent: transparent;
+
+// Dev colors
+$c-dev-bg: #3e4b55;
+$c-dev-error: #d90b0b;
+$c-dev-warning: #f50;
+$c-dev-info: #829deb;
+
+// Name colors
+$c-dove-gray: #666;
+$c-woodsmoke: #101012;
+
+// Project colors
+$c-blue-medium: #003dd6;
+$c-blue-dark: #00237b;
+$c-purple-medium: #9105eb;
+$c-purple-dark: #6400b4;
+$c-turquoise-medium: #00e4e1;
+$c-turquoise-dark: #0098b7;
+$c-gray-lighter: #fafafa;
+$c-gray-light: #cecece;
+$c-gray-medium: #979797;
+$c-gray-dark: #5d5d5d;
+$c-gray-darker: #07070c;
+
+// Bodymovin colors
+$c-shape-purple: $c-purple-medium;
+$c-shape-white: $white;
+$c-shape-blue: $c-blue-medium;
+$c-shape-turquoise: $c-turquoise-medium;
+
+// Semantic/project colors
+$c-main: $c-blue-medium;
+$c-dark: $black;
+$c-light: $white;
+
+// Z Layers
+$z-layers: (
+  lowest: 0,
+  lower: 10,
+  low: 20,
+  high: 30,
+  higher: 40,
+  highest: 50,
+  infinite: 999,
+);
+
+/**
+ * Typography
+ */
+
+$base-font-size: 18px !default;
+
+$ff-default: 'Sofia', sans-serif;
+
+$font-sizes: (
+  h1: 3.6rem,
+  h2: 2.8rem,
+  h3: 2.4rem,
+  h4: 1.4rem
+);
+
+// The `scalable-text-map` contains options for our `scalable-text` mixin.
+// For each entry, we define a `min` map and a `max` map.
+// In this example this means:
+// - For a screen < 400px, the `h1` will be 24px.
+// - For a screen > 800px, the `h1` will be 36px.
+// - For any screen size in between, the `h1` will scale between 24px and 36px.
+$scalable-text-map: (
+  h1: (
+    min: (24px, 'small'),
+    max: (36px, 'large')
+  ),
+  p: (
+    min: (13px, 'small'),
+    max: (18px, 'large')
+  )
+);
+
+
+/*
+ * Layout & spacing
+ */
+
+$spacing: 20px;
+$wrapper-max-width: 1440px;
+$wrapper-redux-max-width: 860px;
+
+
+/**
+ * RWD
+ */
+$mq-responsive: true;
+$mq-static-breakpoint: 'large';
