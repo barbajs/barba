@@ -74,14 +74,15 @@ barba.init(<options>);
 
 ### `barba.init(<options>)`
 
-| Option      | Type    | Default          | Description                                                    |
-| ----------- | ------- | ---------------- | -------------------------------------------------------------- |
-| transitions | Array   | []               | Array of `<transition>` ([see below](#transitionobject))       |
-| views       | Array   | []               | Array of `<view>` ([see below](#viewobject))                   |
-| debug       | Boolean | false            | Log extra informations                                         |
-| schema      | Object  | `attributSchema` | Data attributes ([see schema.js](packages/core/src/schema.js)) |
-| useCache    | Boolean | true             | Cache your pages                                               |
-| usePrefetch | Boolean | true             | Prefetch your pages                                            |
+| Option      | Type     | Default          | Description                                                    |
+| ----------- | -------- | ---------------- | -------------------------------------------------------------- |
+| transitions | Array    | []               | Array of `<transition>` ([see below](#transitionobject))       |
+| views       | Array    | []               | Array of `<view>` ([see below](#viewobject))                   |
+| debug       | Boolean  | false            | Log extra informations                                         |
+| schema      | Object   | `attributSchema` | Data attributes ([see schema.js](packages/core/src/schema.js)) |
+| useCache    | Boolean  | true             | Cache your pages                                               |
+| usePrefetch | Boolean  | true             | Prefetch your pages                                            |
+| prevent     | Function | (optional)       | Add prevent test                                               |
 
 ### `<transition>` object
 
@@ -180,6 +181,78 @@ const transition = {
 
 When set to `true`, __leave__ and __enter__ will "play together".
 This involves waiting until the next page is available (fetch or cache).
+
+### `<view>` object
+
+Views allow you to have some logic related to the content of a namespace.
+You can see it as "lifecycle" into Barba. It is a good place to init or destroy things…
+They use a subset of transition hooks and receive the same [`data` object](#dataargument).
+
+Hooks available are:
+
+- `beforeLeave`
+- `afterLeave`
+- `beforeEnter`
+- `afterEnter`
+
+### debug
+
+`console.info` about transition used.
+
+### schema
+
+Allows you to override data attributes.
+
+### useCache
+
+Allows Barba to cache your pages.
+
+### usePrefetch
+
+Allows Barba to prefetch your pages (on `mouseover` or `touchstart`).
+
+### prevent
+
+Allows you to add a custom "prevent" test.
+If your function returns `true`, Barba will not be actionated.
+
+| Argument | Property | Description     |
+| -------- | -------- | --------------- |
+| Object   | el       | clicked element |
+|          | event    | triggered event |
+|          | href     | next page href  |
+
+---
+
+## `data-barba`
+
+Everything related to `data-barba` attributes is defined via [`attributeSchema`](packages/core/src/schema.js).
+It can be overidden with `barba.init({ schema })`.
+
+### Prefix
+
+Default is `data-barba`.
+
+Usage :
+
+- with values: `data-barba="wrapper"`
+- with properties: `data-barba-prevent`
+
+### Values
+
+| Name      | Description       |
+| --------- | ----------------- |
+| wrapper   | set the wrapper   |
+| container | set the container |
+
+### Properties
+
+| Name      | Values         | Description                               | Example                       |
+| --------- | -------------- | ----------------------------------------- | ----------------------------- |
+| namespace | * (custom)     | set a namespace for transitions and views | `data-barba-namespace="home"` |
+| prevent   | self (default) | prevent a link of using barba             | `data-barba-prevent`          |
+|           |                |                                           | `data-barba-prevent="self"`   |
+|           | all            | prevent all children links                | `data-barba-prevent="all"`    |
 
 ---
 
