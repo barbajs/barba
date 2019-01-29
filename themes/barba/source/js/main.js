@@ -3,6 +3,9 @@ console.log('themes/barba/source/js/main.js');
 import { Application, autoLoad } from 'kapla';
 import { qs } from './utils/dom';
 
+import barba from '@barba/core';
+import defaultTransition from './transitions/default';
+
 import Menu from './../../layout/components/_Menu';
 
 // Manual loading
@@ -56,6 +59,12 @@ class BarbaWebsite {
 
     // Avoid 'blank page' on JS error
     try {
+      barba.init({
+        transitions: [
+          defaultTransition,
+        ],
+      });
+
       // Kapla
       const context = require.context('./../../layout/components', true, /\.js$/);
       const app = Application.start(qs('.site'));

@@ -12,8 +12,10 @@
   </head>
   <body>
     <div class="site">
-      <main class="site-main" role="main">
-        <div class="site-content">
+      <main class="site-main" role="main" data-barba="wrapper">
+        <div class="site-content"
+             data-barba="container"
+             data-namespace="<%- page.namespace %>">
 
           <%- partial('components/header') %>
 

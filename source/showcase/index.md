@@ -1,5 +1,8 @@
 ---
 title: Showcase 
+namespace: showcase 
 ---
 
-<h1>Showcase page</h1>
+<div class="feature">
+  <h1>Showcase</h1>
+</div>
