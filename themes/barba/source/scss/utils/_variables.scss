@@ -33,23 +33,11 @@ $c-dove-gray: #666;
 $c-woodsmoke: #101012;
 
 // Project colors
-$c-blue-medium: #003dd6;
-$c-blue-dark: #00237b;
-$c-purple-medium: #9105eb;
-$c-purple-dark: #6400b4;
-$c-turquoise-medium: #00e4e1;
-$c-turquoise-dark: #0098b7;
-$c-gray-lighter: #fafafa;
-$c-gray-light: #cecece;
-$c-gray-medium: #979797;
-$c-gray-dark: #5d5d5d;
-$c-gray-darker: #07070c;
-
-// Bodymovin colors
-$c-shape-purple: $c-purple-medium;
-$c-shape-white: $white;
-$c-shape-blue: $c-blue-medium;
-$c-shape-turquoise: $c-turquoise-medium;
+$c-blue-light: #5a82f1;
+$c-blue-medium: #2e5bdc;
+$c-green-medium: #04bf0c;
+$c-gray-medium: #858585;
+$c-gray-darker: #0c0c0c;
 
 // Semantic/project colors
 $c-main: $c-blue-medium;
@@ -73,7 +61,8 @@ $z-layers: (
 
 $base-font-size: 18px !default;
 
-$ff-default: 'Sofia', sans-serif;
+$ff-default: 'Rubik', sans-serif;
+$ff-alt: 'Space Mono', sans-serif;
 
 $font-sizes: (
   h1: 3.6rem,
@@ -105,9 +94,6 @@ $scalable-text-map: (
  */
 
 $spacing: 20px;
-$wrapper-max-width: 1440px;
-$wrapper-redux-max-width: 860px;
-
 
 /**
  * RWD

@@ -4,8 +4,9 @@
   right: 0;
   width: 400px;
   height: 100vh;
-  background-color: rgba(#ccc, .9);
+  background-color: $white; 
   padding: 40px;
+  font-family: $ff-alt;
 }
 
 .menu__pages__list {
@@ -13,32 +14,46 @@
 }
 
 .menu__pages__item {
-  &.is-active {
-    @extend %fw-bold;
+  & + & {
+    margin-top: $spacing;
   }
 }
 
 .menu__pages__item__title,
 .menu__pages__item__link {
   @extend %text-nodecoration;
-  font-size: 2rem;
-  color: #333;
+  font-size: 4rem;
+  line-height: 1.2em;
+  color: $c-blue-medium;
+
+  .menu__pages__item.is-active & {
+    color: $black;
+  }
 }
 
 .menu-subpages__list {
   @extend %list-nostyle;
-  padding-left: $spacing / 2;
+  padding-left: $spacing;
+}
+
+.menu__pages__item__subpages {
+  margin-top: $spacing * .75;
 }
 
 .menu-subpages__item {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
+  line-height: 1.2em;
 
-  &.is-active {
-    @extend %fw-bold;
+  & + & {
+    margin-top: $spacing * .75;
   }
 }
 
 .menu-subpages__item__link {
   @extend %text-nodecoration;
-  color: black;
+  color: $c-gray-medium;
+
+  .menu-subpages__item.is-active & {
+    color: $c-green-medium;
+  }
 }

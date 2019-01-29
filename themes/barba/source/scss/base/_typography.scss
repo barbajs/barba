@@ -1,17 +1,39 @@
 // Import fonts
 
 /* sass-lint:disable max-line-length no-duplicate-properties */
-// @font-face {
-//   font-family: 'Sofia';
-//   src: url('./../fonts/sofia-light.eot'); /* IE9 Compat Modes */
-//   src: url('./../fonts/sofia-light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-//   url('./../fonts/sofia-light.woff2') format('woff2'), /* Modern Browsers */
-//   url('./../fonts/sofia-light.woff') format('woff'), /* Modern Browsers */
-//   url('./../fonts/sofia-light.ttf') format('truetype'), /* Safari, Android, iOS */
-//   url('./../fonts/sofia-light.svg') format('svg'); /* Legacy iOS */
-//   font-style: normal;
-//   font-weight: 300;
-// }
+@font-face {
+  font-family: 'Rubik';
+  src: url('./../fonts/rubik-regular.eot'); /* IE9 Compat Modes */
+  src: url('./../fonts/rubik-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('./../fonts/rubik-regular.woff2') format('woff2'), /* Modern Browsers */
+  url('./../fonts/rubik-regular.woff') format('woff'), /* Modern Browsers */
+  url('./../fonts/rubik-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('./../fonts/rubik-regular.svg') format('svg'); /* Legacy iOS */
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Rubik';
+  src: url('./../fonts/rubik-bold.eot'); /* IE9 Compat Modes */
+  src: url('./../fonts/rubik-bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('./../fonts/rubik-bold.woff2') format('woff2'), /* Modern Browsers */
+  url('./../fonts/rubik-bold.woff') format('woff'), /* Modern Browsers */
+  url('./../fonts/rubik-bold.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('./../fonts/rubik-bold.svg') format('svg'); /* Legacy iOS */
+  font-style: normal;
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Space Mono';
+  src: url('./../fonts/spacemono-regular.eot'); /* IE9 Compat Modes */
+  src: url('./../fonts/spacemono-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('./../fonts/spacemono-regular.woff2') format('woff2'), /* Modern Browsers */
+  url('./../fonts/spacemono-regular.woff') format('woff'), /* Modern Browsers */
+  url('./../fonts/spacemono-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('./../fonts/spacemono-regular.svg') format('svg'); /* Legacy iOS */
+  font-style: normal;
+  font-weight: 400;
+}
 // @font-face {
 //   font-family: 'Sofia';
 //   src: url('./../fonts/sofia-light-italic.eot'); /* IE9 Compat Modes */
