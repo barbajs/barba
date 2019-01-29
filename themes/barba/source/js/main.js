@@ -6,11 +6,6 @@ import { qs } from './utils/dom';
 import barba from '@barba/core';
 import defaultTransition from './transitions/default';
 
-import Menu from './../../layout/components/_Menu';
-
-// Manual loading
-// import MyComponent from 'kapla/MyComponent';
-
 // Events
 import {
   appear,
@@ -81,11 +76,6 @@ class BarbaWebsite {
       // 2. Register components
       // Auto loading
       app.load(autoLoad(context));
-      // Manual loading
-      app.register('menu', Menu);
-
-      // Legacy component
-      // this.example = new Example();
     } catch (err) {
       console.error(err);
     }
