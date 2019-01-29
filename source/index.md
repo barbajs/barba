@@ -1,6 +1,7 @@
 ---
 title: Home 
 namespace: home 
+layout: homepage
 ---
 
 <div class="feature">

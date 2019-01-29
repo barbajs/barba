@@ -1,0 +1,62 @@
+.name {
+  svg {
+    overflow: visible;
+  }
+  
+  svg.gray {
+    .base {
+      stroke: #E3E3E3;
+    }
+  }
+  
+  svg.holed {
+    .hover {
+      // a {
+      //   opacity: 1!important;
+      // }
+      
+      rect,
+      circle,
+      path {
+        fill: #fff;
+      }
+    }
+  }
+
+  
+  .base {
+    .js__rect {
+      opacity: 0;
+    }
+    
+    .js__rect__alternate {
+      display: none;
+    }
+  }
+  
+  .js.front {
+    .js__rect_alternate {
+      display: block;
+    } 
+  }
+  
+  .hover a {
+    opacity: 0;
+    //display: none;
+  }
+}
+
+.name__list {
+  position: relative;
+  width: 100%;
+  
+  li {
+    display: block;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+  }
+}
