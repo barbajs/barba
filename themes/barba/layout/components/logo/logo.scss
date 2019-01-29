@@ -1,14 +1,14 @@
-.name {
+.logo {
   svg {
     overflow: visible;
   }
-  
+
   svg.gray {
     .base {
       stroke: #E3E3E3;
     }
   }
-  
+
   svg.holed {
     .hover {
       // a {
@@ -23,7 +23,6 @@
     }
   }
 
-  
   .base {
     .js__rect {
       opacity: 0;
@@ -46,17 +45,3 @@
   }
 }
 
-.name__list {
-  position: relative;
-  width: 100%;
-  
-  li {
-    display: block;
-    text-align: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    opacity: 0;
-  }
-}
