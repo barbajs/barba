@@ -12,6 +12,12 @@
   @extend %list-nostyle;
 }
 
+.menu__pages__item {
+  &.is-active {
+    @extend %fw-bold;
+  }
+}
+
 .menu__pages__item__title,
 .menu__pages__item__link {
   @extend %text-nodecoration;
@@ -22,4 +28,17 @@
 .menu-subpages__list {
   @extend %list-nostyle;
   padding-left: $spacing / 2;
+}
+
+.menu-subpages__item {
+  font-size: 1.2rem;
+
+  &.is-active {
+    @extend %fw-bold;
+  }
+}
+
+.menu-subpages__item__link {
+  @extend %text-nodecoration;
+  color: black;
 }
