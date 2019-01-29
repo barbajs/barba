@@ -25,6 +25,7 @@
     "hexo-browsersync": "^0.3.0",
     "hexo-renderer-scss": "^1.2.0",
     "hexo-renderer-webpack-2-advanced": "^0.5.0",
-    "kapla": "^2.0.1"
+    "kapla": "^2.0.1",
+    "verge": "^1.10.2"
   }
 }
