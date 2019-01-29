@@ -2,7 +2,7 @@
 
 - [x][m] Router : allow leading slash ?
 - [x][m] Reload current page
-- [ ][m] Prevent `xlink:href` on link enter (eg: SVG)
+- [x][m] Prevent `xlink:href` on link enter (eg: SVG)
 - [ ][s] No transitions ? weird behavior…
 - [ ][w] BS, how to fix it (definitely)
 
