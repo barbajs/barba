@@ -1,5 +1,5 @@
 <div class="intro" data-component="intro">
-  <%- partial('components/logo/logo') %>
+  <%- partial('components/logo/logo.ejs') %>
 
   <ul class="intro__list">
     <li style="color: #38D1F1">Dependency Free</li>
@@ -10,8 +10,10 @@
     <li style="color: #2E5BDC">Change log</li>
   </ul>
 
-  <h2>Create badass fluid and smooth transitions between your website’s pages.</h2>
+  <h1>Create badass fluid and smooth transitions between your website’s pages.</h1>
 
-  <button>GET STARTED</button>
-  <button>DOWNLOAD</button>
+  <div class="intro__buttons">
+    <a href="#" class="button">Get started</button>
+    <a href="#" class="button button--fill">Download .zip</button>
+  </div>
 </div>

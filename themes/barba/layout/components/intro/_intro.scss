@@ -1,14 +1,44 @@
+.intro {
+  @include get-all-space;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  padding: 4rem;
+  text-align: center;
+}
+
+.intro .logo {
+  max-width: 57rem;
+}
+
+.intro h1 {
+  font-family: 'Space Mono', monospace;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  max-width: 65rem;
+  margin: 0;
+  margin-bottom: 2rem;
+
+  @include mq(s) {
+    font-size: 2.5rem;
+    width: 80%;
+  }
+}
+
 .intro__list {
   position: relative;
   width: 100%;
   
   li {
     display: block;
-    text-align: center;
-    position: absolute;
-    top: 0;
     left: 0;
-    width: 100%;
     opacity: 0;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    text-align: center;
   }
 }

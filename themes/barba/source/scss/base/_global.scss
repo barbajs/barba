@@ -22,3 +22,11 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+a,
+a:hover,
+a:active,
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}

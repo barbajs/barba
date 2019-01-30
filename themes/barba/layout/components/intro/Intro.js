@@ -262,7 +262,7 @@ export default class extends Component {
       }
     }
     
-    hover();
-    animate();
+    // hover();
+    // animate();
   }
 }

@@ -1,0 +1,33 @@
+.button {
+  display: inline-block;
+  border: .2rem solid $c-blue-light;
+  border-radius: .4rem;
+  padding: 1rem 3.8rem;
+  font-family: 'Space Mono';
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  color: $c-blue-light;
+}
+
+.button--fill {
+  background: $c-blue-light;
+  color: $white;
+}
+
+.intro__buttons {
+  display: flex;
+  flex-direction: column;
+
+  @include mq(m) {
+    flex-direction: row;
+
+    .button + .button {
+      margin-left: 2rem;
+    }
+  }
+
+  .button {
+    margin-top: 1rem;
+  }
+}

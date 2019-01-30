@@ -10,19 +10,27 @@ body.prevent-scroll {
   min-height: 100vh;
 }
 
-.site-content-inner {
-  @include owl;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #eee;
-  flex-grow: 1;
-  padding: $spacing * 2;
-
-  h1 {
-    text-align: center;
-    font-size: 9.6rem;
-    line-height: 1.2em;
-  }
+.menu {
+  display: none;
 }
+
+.footer {
+  display: none;
+}
+
+// .site-content-inner {
+//   @include owl;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   background-color: #eee;
+//   flex-grow: 1;
+//   padding: $spacing * 2;
+
+//   h1 {
+//     text-align: center;
+//     font-size: 9.6rem;
+//     line-height: 1.2em;
+//   }
+// }
