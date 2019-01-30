@@ -2,11 +2,29 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 400px;
+  width: 500px;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   background-color: $white; 
-  padding: 40px;
+  padding: $spacing * 2.5;
   font-family: $ff-alt;
+
+  > div {
+    width: 100%;
+  }
+}
+
+.menu__header {
+  border: 1px solid red;
+  height: 50px;
+}
+
+.menu__pages {
+  border: 1px solid gold;
+  margin-top: $spacing * 4;
+  flex-grow: 1;
 }
 
 .menu__pages__list {
@@ -56,4 +74,63 @@
   .menu-subpages__item.is-active & {
     color: $c-green-medium;
   }
+}
+
+.menu__footer {
+  margin-top: $spacing * 4;
+}
+
+.menu__footer__download {
+  @extend %text-uppercase;
+  @extend %fw-bold;
+  width: 100%;
+  font-size: 1.5rem;
+  padding: $spacing / 2;
+  border: 0;
+  border-radius: 5px;
+  outline: 0;
+  background: $c-blue-light;
+  color: $white;
+  letter-spacing: .15em;
+}
+
+.menu__footer__extra {
+  margin-top: $spacing * 2.5;
+}
+
+.menu-extra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-extra__twitter {
+  @extend %text-nodecoration;
+  height: 14px;
+  margin-right: $spacing * 2;
+  color: $black;
+  display: flex;
+  align-items: center;
+}
+
+.menu-extra__twitter__icon {
+  display: block;
+  width: 16px;
+  height: 13px;
+  fill: $black;
+  margin-right: $spacing / 2;
+}
+
+.menu-extra__twitter__label {
+  font-size: 1.1rem;
+  letter-spacing: .15em;
+  white-space: nowrap;
+}
+
+.menu-extra__credits {
+  @extend %text-nodecoration;
+  @extend %text-uppercase; 
+  color: $black;
+  font-size: 1.1rem;
+  letter-spacing: .1em;
 }
