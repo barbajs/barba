@@ -14,7 +14,8 @@
     transition: stroke .4s, fill .4s;
   }
 
-  svg.gray {
+  svg.gray,
+  svg.fillgray {
     .base {
       stroke: #E3E3E3;
     }

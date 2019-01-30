@@ -4,7 +4,11 @@ import { Application, autoLoad } from 'kapla';
 import { qs } from './utils/dom';
 
 import barba from '@barba/core';
+import router from '@barba/router';
+
 import defaultTransition from './transitions/default';
+import homeToFeature from './transitions/homeToFeature';
+import routes from './transitions/routes';
 import Home from './views/Home';
 
 // Events
@@ -55,9 +59,15 @@ class BarbaWebsite {
 
     // Avoid 'blank page' on JS error
     try {
+
+      barba.use(router, {
+        routes
+      });
+
       barba.init({
         transitions: [
           defaultTransition,
+          homeToFeature,
         ],
         views: [
           Home,
