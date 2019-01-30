@@ -1,6 +1,6 @@
 {
   "name": "@barba/core",
-  "version": "2.0.0",
+  "version": "2.0.1-next.66+1463979",
   "description": "Barba is a ...",
   "publishConfig": {
     "access": "public"
@@ -49,5 +49,6 @@
   "dependencies": {
     "@babel/runtime": "^7.2.0",
     "run-async": "^2.3.0"
-  }
+  },
+  "gitHead": "1463979c96852bdaf5bce1a6d78cda811cbe8613"
 }

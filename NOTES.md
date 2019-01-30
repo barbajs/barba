@@ -3,6 +3,7 @@
 ## Prerelease `publish`
 
 ```sh
+npm run build
 lerna publish --canary --preid next
 ```
 
