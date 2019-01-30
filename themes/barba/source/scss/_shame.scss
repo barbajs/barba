@@ -14,23 +14,17 @@ body.prevent-scroll {
   display: none;
 }
 
+.site-content-inner {
+  @include owl;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #eee;
+  flex-grow: 1;
+  padding: $spacing * 2.5;
+}
+
 .footer {
   display: none;
 }
-
-// .site-content-inner {
-//   @include owl;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   background-color: #eee;
-//   flex-grow: 1;
-//   padding: $spacing * 2;
-
-//   h1 {
-//     text-align: center;
-//     font-size: 9.6rem;
-//     line-height: 1.2em;
-//   }
-// }

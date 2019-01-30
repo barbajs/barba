@@ -1,5 +1,6 @@
 .menu {
   position: absolute;
+  overflow-y: scroll;
   top: 0;
   right: 0;
   width: 500px;
@@ -17,12 +18,38 @@
 }
 
 .menu__header {
-  border: 1px solid red;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu__header__github {
+  @extend %text-nodecoration;
+}
+
+.menu__header__github,
+.menu__header__github__icon {
+  display: block;
+  width: 50px;
   height: 50px;
 }
 
+.menu__header__github {
+  .circle {
+    fill: $c-gray-dark;
+    transition: fill .2s ease-out;
+  }
+
+  &:hover .circle {
+    fill: $c-blue-medium;
+  }
+
+  .shape {
+    fill: $white;
+  }
+}
+
 .menu__pages {
-  border: 1px solid gold;
   margin-top: $spacing * 4;
   flex-grow: 1;
 }
@@ -43,7 +70,9 @@
   font-size: 4rem;
   line-height: 1.2em;
   color: $c-blue-medium;
+  transition: color .2s ease-out;
 
+  .menu__pages__item:hover &,
   .menu__pages__item.is-active & {
     color: $black;
   }
@@ -69,8 +98,27 @@
 
 .menu-subpages__item__link {
   @extend %text-nodecoration;
-  color: $c-gray-medium;
+  display: flex;
+  align-items: center;
+}
 
+.menu-subpages__item__link__line {
+  width: 0;
+  height: 2px;
+  background-color: $c-green-medium;
+  margin-right: $spacing / 2;
+  transition: width .2s ease-out;
+
+  .menu-subpages__item.is-active & {
+    width: 30px;
+  }
+}
+
+.menu-subpages__item__link__label {
+  color: $c-gray-medium;
+  transition: color .2s ease-out;
+
+  .menu-subpages__item:hover &,
   .menu-subpages__item.is-active & {
     color: $c-green-medium;
   }
@@ -92,6 +140,11 @@
   background: $c-blue-light;
   color: $white;
   letter-spacing: .15em;
+  transition: background .2s ease-out;
+
+  &:hover {
+    background: $c-blue-medium;
+  }
 }
 
 .menu__footer__extra {
