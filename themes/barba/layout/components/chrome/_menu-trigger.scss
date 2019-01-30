@@ -1,0 +1,41 @@
+.menu-trigger {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: 50px;
+  height: 50px;
+  background-color: rgba($c-blue-medium, .2);
+  border-radius: 50%;
+  z-index: 999;
+  cursor: pointer;
+}
+
+.menu-trigger__github {
+  @extend %text-nodecoration;
+  position: absolute;
+  top: 50px;
+  right: 110px;
+  z-index: 999;
+}
+
+.menu-trigger__github,
+.menu-trigger__github__icon {
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+
+.menu-trigger__github {
+  .circle {
+    fill: $c-gray-dark;
+    transition: fill .2s ease-out;
+  }
+
+  &:hover .circle {
+    fill: $c-blue-medium;
+  }
+
+  .shape {
+    fill: $white;
+  }
+}

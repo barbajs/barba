@@ -10,10 +10,6 @@ body.prevent-scroll {
   min-height: 100vh;
 }
 
-.menu {
-  display: none;
-}
-
 .site-content-inner {
   @include owl;
   display: flex;
@@ -23,8 +19,4 @@ body.prevent-scroll {
   background-color: #eee;
   flex-grow: 1;
   padding: $spacing * 2.5;
-}
-
-.footer {
-  display: none;
 }

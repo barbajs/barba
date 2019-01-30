@@ -1,5 +1,10 @@
 [class*='footer--'],
 .footer {
-  background-color: black;
-  color: white;
+  position: absolute;
+  z-index: 99;
+  bottom: 50px;
+  left: 50px;
+  color: $black;
+  font-size: 1.1rem;
+  letter-spacing: .15em;
 }

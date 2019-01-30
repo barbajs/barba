@@ -1,56 +1,48 @@
 .menu {
   position: absolute;
+  z-index: 99;
   overflow-y: scroll;
   top: 0;
   right: 0;
   width: 500px;
   height: 100vh;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: flex-start;
-  background-color: $white; 
-  padding: $spacing * 2.5;
+  padding: $spacing * 9 $spacing * 2.5 $spacing * 2.5;
   font-family: $ff-alt;
+  user-select: none;
+
+  &.is-open {
+    display: flex;
+  }
 
   > div {
     width: 100%;
   }
 }
 
-.menu__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.menu__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba($c-blue-lightest, .9);
 }
 
-.menu__header__github {
-  @extend %text-nodecoration;
-}
-
-.menu__header__github,
-.menu__header__github__icon {
-  display: block;
-  width: 50px;
-  height: 50px;
-}
-
-.menu__header__github {
-  .circle {
-    fill: $c-gray-dark;
-    transition: fill .2s ease-out;
-  }
-
-  &:hover .circle {
-    fill: $c-blue-medium;
-  }
-
-  .shape {
-    fill: $white;
-  }
+.menu__panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $white;
+  // box-shadow: 10px 10px 10px 10px #D3DEFC;
 }
 
 .menu__pages {
-  margin-top: $spacing * 4;
+  position: relative;
   flex-grow: 1;
 }
 
@@ -125,6 +117,7 @@
 }
 
 .menu__footer {
+  position: relative;
   margin-top: $spacing * 4;
 }
 

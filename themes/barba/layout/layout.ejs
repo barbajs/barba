@@ -12,14 +12,15 @@
   </head>
   <body>
     <div class="site">
-      <main class="site-main" role="main" data-barba="wrapper">
+      <main class="site-main" role="main">
         <div class="site-content <%- page.namespace %>"
-             data-barba="container"
-             data-barba-namespace="<%- page.namespace %>">
+             data-barba="wrapper">
 
           <%- partial('components/chrome/header') %>
 
-          <div class="site-content-inner">
+          <div class="site-content-inner"
+               data-barba="container"
+               data-barba-namespace="<%- page.namespace %>">
             <%- body %>
           </div>
 
