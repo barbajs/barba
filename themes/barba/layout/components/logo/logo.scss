@@ -1,3 +1,5 @@
+
+
 .logo {
   font-size: 0;
   width: 100%;
@@ -7,9 +9,18 @@
     width: 100%;
   }
 
+  .base,
+  .js__letter {
+    transition: stroke .4s, fill .4s;
+  }
+
   svg.gray {
     .base {
       stroke: #E3E3E3;
+    }
+
+    .js__letter {
+      fill: #E3E3E3;
     }
   }
 
@@ -47,5 +58,54 @@
     opacity: 0;
     //display: none;
   }
+
+  .big > g {
+    opacity: 0;
+  }
 }
 
+
+.featured {
+  svg {
+    .base {
+      stroke: #E3E3E3;
+    }
+
+    .js__letter {
+      fill: #E3E3E3;
+    }
+  }
+}
+
+
+.featured--dep {
+  // .hover a {
+  //   opacity: 1;
+  // }
+
+  .hover {
+    rect,
+    circle,
+    path {
+      fill: #fff;
+    }
+  }
+
+  .hover .b1 {
+    opacity: 1;
+  }
+
+  .big1 {
+    opacity: 1!important;
+
+    rect {
+      transform: scale(21) rotate(30deg) translate(3vw, 0vh);
+      transform-origin: 0 70%;
+    }
+
+    circle {
+      transform: scale(21) rotate(30deg) translate(-1vw, 0vh);
+      transform-origin: 0 0%;
+    }
+  }
+}

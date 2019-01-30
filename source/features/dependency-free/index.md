@@ -1,8 +1,5 @@
 ---
 title: Dependency Free 
 namespace: dependency-free
+layout: features/depfree
 ---
-
-<div class="feature">
-  <h1>Dependency Free</h1>
-</div>

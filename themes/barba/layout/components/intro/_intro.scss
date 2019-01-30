@@ -31,7 +31,14 @@
 .intro__list {
   position: relative;
   width: 100%;
+  margin: 3rem 0;
+  padding: 0;
   
+  li:first-child {
+    position: relative;
+    //opacity: 1;
+  }
+
   li {
     display: block;
     left: 0;
@@ -40,5 +47,16 @@
     width: 100%;
     top: 0;
     text-align: center;
+    font-family: 'Space Mono', monospace;
+    font-weight: 400;
+    font-size: 2.2rem;
+
+    @include mq(s) {
+      font-size: 3rem;
+    }
+
+    @include mq(m) {
+      font-size: 4rem;
+    }
   }
 }

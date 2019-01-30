@@ -7,12 +7,12 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .1rem;
-  color: $c-blue-light;
+  color: $c-blue-light!important;
 }
 
 .button--fill {
   background: $c-blue-light;
-  color: $white;
+  color: $white!important;
 }
 
 .intro__buttons {

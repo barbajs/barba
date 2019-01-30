@@ -5,6 +5,7 @@ import { qs } from './utils/dom';
 
 import barba from '@barba/core';
 import defaultTransition from './transitions/default';
+import Home from './views/Home';
 
 // Events
 import {
@@ -58,6 +59,9 @@ class BarbaWebsite {
         transitions: [
           defaultTransition,
         ],
+        views: [
+          Home,
+        ]
       });
 
       // Kapla

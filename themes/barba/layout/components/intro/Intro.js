@@ -1,8 +1,19 @@
 import { Component } from 'kapla';
 import anime from 'animejs';
+import { $on, qsa, qs } from '../../../source/js/utils/dom';
 
 export default class extends Component {
   load() {
+    this.$logoSvg = qs('svg', this.$el);
+    this.$logoLinks = [...qsa('.hover a', this.$el)];
+    this.$names = [...qsa('.name__list', this.$el)];
+
+    this.onEnterLogo = this.onEnterLogo.bind(this);
+    this.onLeaveLogo = this.onLeaveLogo.bind(this);
+
+    $on(this.$logoSvg, 'mouseenter', this.onEnterLogo);
+    $on(this.$logoSvg, 'mouseleave', this.onLeaveLogo);
+
     function animate() {
       const tl = anime.timeline({
         loop: false,
@@ -264,5 +275,18 @@ export default class extends Component {
     
     // hover();
     // animate();
+  }
+
+  destroy() {
+    $on(this.$logoSvg, 'mouseenter', this.onEnterLogo);
+    $on(this.$logoSvg, 'mouseleave', this.onLeaveLogo);
+  }
+
+  onEnterLogo() {
+    this.$logoSvg.classList.add('gray');
+  }
+
+  onLeaveLogo() {
+    this.$logoSvg.classList.remove('gray');
   }
 }
