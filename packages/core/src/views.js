@@ -36,71 +36,32 @@ export default {
       }, {});
     }
 
-    barba.hooks.beforeLeave(this._onBeforeLeave, this);
-    barba.hooks.afterLeave(this._onAfterLeave, this);
-    barba.hooks.beforeEnter(this._onBeforeEnter, this);
-    barba.hooks.afterEnter(this._onAfterEnter, this);
+    barba.hooks.beforeAppear(this._getHook('beforeAppear'), this);
+    barba.hooks.afterAppear(this._getHook('afterAppear'), this);
+    barba.hooks.beforeLeave(this._getHook('beforeLeave'), this);
+    barba.hooks.afterLeave(this._getHook('afterLeave'), this);
+    barba.hooks.beforeEnter(this._getHook('beforeEnter'), this);
+    barba.hooks.afterEnter(this._getHook('afterEnter'), this);
 
     return this;
   },
 
   /**
-   * Before leave
+   * Create the hook method
+   * Get view based on namespace
+   * Execute callback with transition data
    *
-   * @param {object} data transition data
-   * @returns {undefined}
+   * @param {string} name view method name
+   * @returns {function} callback
    * @private
    */
-  _onBeforeLeave(data) {
-    const view = this._byNamespace[data.current.namespace];
+  _getHook(name) {
+    return data => {
+      const view = this._byNamespace[data.current.namespace];
 
-    if (view) {
-      view.beforeLeave && view.beforeLeave(data);
-    }
-  },
-
-  /**
-   * After leave
-   *
-   * @param {object} data transition data
-   * @returns {undefined}
-   * @private
-   */
-  _onAfterLeave(data) {
-    const view = this._byNamespace[data.current.namespace];
-
-    if (view) {
-      view.afterLeave && view.afterLeave(data);
-    }
-  },
-
-  /**
-   * Before enter
-   *
-   * @param {object} data transition data
-   * @returns {undefined}
-   * @private
-   */
-  _onBeforeEnter(data) {
-    const view = this._byNamespace[data.next.namespace];
-
-    if (view) {
-      view.beforeEnter && view.beforeEnter(data);
-    }
-  },
-
-  /**
-   * After enter
-   *
-   * @param {object} data transition data
-   * @returns {undefined}
-   * @private
-   */
-  _onAfterEnter(data) {
-    const view = this._byNamespace[data.next.namespace];
-
-    if (view) {
-      view.afterEnter && view.afterEnter(data);
-    }
+      if (view) {
+        view[name] && view[name](data);
+      }
+    };
   },
 };
