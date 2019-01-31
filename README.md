@@ -48,7 +48,7 @@ It helps reducing the delay between your pages, minimizing browser HTTP requests
   - are plain JS objects
   - are declared via the `barba.init({ views })`
   - use a subset of animation "hooks":
-    - `beforeLeave`, `afterLeave`, `beforeEnter`, `afterEnter`
+    - `beforeAppear`, `afterAppear`, `beforeLeave`, `afterLeave`, `beforeEnter`, `afterEnter`
     - receive the same [`data` argument](#dataargument)
 - Sync mode will start `leave` and `enter` transitions concurrently
 
@@ -89,6 +89,12 @@ barba.init(<options>);
 #### Hooks
 
 > All hooks are methods and receive the same `data` object ([see below](#dataargument))
+
+| order | name         | required | async | description                        |
+| ----- | ------------ | -------- | ----- | ---------------------------------- |
+| 1     | beforeAppear |          |       | before __appear__ transition       |
+| 2     | __appear__   |          | __x__ | current page __appear__ transition |
+| 3     | afterAppear  |          |       | before __appear__ transition       |
 
 | order | name        | required | async | description                                               |
 | ----- | ----------- | -------- | ----- | --------------------------------------------------------- |
@@ -190,6 +196,8 @@ They use a subset of transition hooks and receive the same [`data` object](#data
 
 Hooks available are:
 
+- `beforeAppear`
+- `afterAppear`
 - `beforeLeave`
 - `afterLeave`
 - `beforeEnter`

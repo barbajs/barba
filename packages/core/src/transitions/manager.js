@@ -163,6 +163,7 @@ export default {
   // Allows to catch errors for specific step
   // with the right cancel method
   async doAction(name, t, data, extra) {
+    /* istanbul ignore next */
     try {
       return await this[name](t, data, extra);
     } catch (error) {
@@ -212,13 +213,14 @@ export default {
     t.afterLeave && t.afterLeave(data);
   },
 
-  doLeaveCanceled(t, data) {
-    hooks.do('leaveCanceled', data);
-    // CSS: remove leave
-    // CSS: remove leave-to
-    // CSS: remove leave-active
-    t.leaveCanceled && t.leaveCanceled(data);
-  },
+  // DEV
+  // doLeaveCanceled(t, data) {
+  //   hooks.do('leaveCanceled', data);
+  //   // CSS: remove leave
+  //   // CSS: remove leave-to
+  //   // CSS: remove leave-active
+  //   t.leaveCanceled && t.leaveCanceled(data);
+  // },
 
   // Enter methods
   async doBeforeEnter(t, data, page) {
@@ -253,13 +255,14 @@ export default {
     t.afterEnter && t.afterEnter(data);
   },
 
-  doEnterCanceled(t, data) {
-    hooks.do('enterCanceled', data);
-    // CSS: remove enter
-    // CSS: remove enter-to
-    // CSS: remove enter-active
-    t.enterCanceled && t.enterCanceled(data);
-  },
+  // DEV
+  // doEnterCanceled(t, data) {
+  //   hooks.do('enterCanceled', data);
+  //   // CSS: remove enter
+  //   // CSS: remove enter-to
+  //   // CSS: remove enter-active
+  //   t.enterCanceled && t.enterCanceled(data);
+  // },
 
   // Add / remove containers
   addNext(data, wrapper) {
