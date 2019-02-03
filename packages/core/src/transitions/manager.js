@@ -44,12 +44,19 @@ export default {
 
     this.running = true;
 
+    // CSS: add appear
+    // CSS: add appear-active
     hooks.do('beforeAppear', data, t);
+    // CSS: remove appear
+    // CSS: add appear-to
+
     t.beforeAppear && t.beforeAppear(data);
     hooks.do('appear', data, t);
 
     await runAsync(t.appear)(data)
       .then(() => {
+        // CSS: remove appear-active
+        // CSS: remove appear-to
         hooks.do('afterAppear', data, t);
         t.afterAppear && t.afterAppear(data);
       })
@@ -201,6 +208,8 @@ export default {
   },
 
   doLeave(t, data) {
+    // CSS: remove leave
+    // CSS: add leave-to
     hooks.do('leave', data, t);
 
     return runAsync(t.leave)(data).then(leaveResult => leaveResult);
@@ -242,8 +251,8 @@ export default {
 
   doEnter(t, data, leaveResult) {
     // CSS: remove enter
-    hooks.do('enter', data, t);
     // CSS: add enter-to
+    hooks.do('enter', data, t);
 
     return runAsync(t.enter)(data, leaveResult);
   },

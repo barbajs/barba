@@ -36,7 +36,6 @@ const nextHtml = `<html>
 </html>`;
 
 // Data
-
 let data;
 
 beforeEach(() => {

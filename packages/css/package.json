@@ -1,0 +1,42 @@
+{
+  "name": "@barba/css",
+  "version": "2.0.1-next.66+1463979",
+  "description": "Barba is a ...",
+  "publishConfig": {
+    "access": "public"
+  },
+  "browser": "dist/barba-css.min.js",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "files": [
+    "dist",
+    "lib",
+    "esm"
+  ],
+  "keywords": [
+    "barba",
+    "css"
+  ],
+  "homepage": "https://github.com/barbajs/barba-next#readme",
+  "bugs": {
+    "url": "https://github.com/barbajs/barba-next/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/barbajs/barba-next.git"
+  },
+  "scripts": {
+    "build": "npm-run-all build:commonjs build:umd build:umd:min build:esm",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
+    "build:esm": "cpx 'src/**/*.{mjs,js,json}' esm",
+    "build:esm:watch": "cpx 'src/**/*.{mjs,js,json}' esm -w",
+    "build:umd": "cross-env BABEL_ENV=umd NODE_ENV=development webpack --progress --profile",
+    "build:umd:min": "cross-env BABEL_ENV=umd NODE_ENV=production webpack --progress --profile",
+    "clear": "rimraf dist esm lib",
+    "lint": "eslint src/**",
+    "precommit": "lint-staged",
+    "test": "eslint src/** && jest --coverage",
+    "watch": "jest --colors --watch"
+  }
+}
