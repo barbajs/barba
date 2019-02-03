@@ -90,3 +90,11 @@ it('calls appear', () => {
   barba.init();
   expect(barba.appear).toHaveBeenCalledTimes(1);
 });
+
+it('gets wrapper', () => {
+  document.body.appendChild(wrapper);
+  wrapper.appendChild(container);
+
+  barba.init();
+  expect(barba.wrapper).toBe(wrapper);
+});

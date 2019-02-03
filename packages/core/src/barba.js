@@ -169,6 +169,10 @@ export default {
     this.appear();
   },
 
+  get wrapper() {
+    return this._wrapper;
+  },
+
   // DEV
   // destroy() {
   //   this.hooks = hooks.destroy();
