@@ -23,18 +23,19 @@ export default {
    * @returns {views} this instance
    */
   init(barba, views) {
-    /* istanbul ignore else */
-    if (views) {
-      // TODO: add check
-      // for valid views? criteria? (namespace property, string ?)
-      // or duplicate
-      this._byNamespace = views.reduce((acc, view) => {
-        acc[view.namespace] = view;
-        delete acc[view.namespace].namespace;
-
-        return acc;
-      }, {});
+    if (views.length === 0) {
+      return this;
     }
+
+    // TODO: add check
+    // for valid views? criteria? (namespace property, string ?)
+    // or duplicate
+    this._byNamespace = views.reduce((acc, view) => {
+      acc[view.namespace] = view;
+      delete acc[view.namespace].namespace;
+
+      return acc;
+    }, {});
 
     barba.hooks.beforeAppear(this._getHook('beforeAppear'), this);
     barba.hooks.afterAppear(this._getHook('afterAppear'), this);
