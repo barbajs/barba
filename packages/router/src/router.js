@@ -73,9 +73,6 @@ export const router = {
 
     // Add property to "pageSchema" (current, next)
     barba.pageSchema.route = undefined;
-    // Register hooks
-    barba.hooks.go(this._resolveRoutes, this);
-    barba.hooks.refresh(this._resolveRoutes, this);
   },
 
   /**
@@ -93,6 +90,9 @@ export const router = {
         type: 'strings',
       },
     });
+    // Register hooks
+    this.barba.hooks.go(this._resolveRoutes, this);
+    this.barba.hooks.refresh(this._resolveRoutes, this);
   },
 
   /**
