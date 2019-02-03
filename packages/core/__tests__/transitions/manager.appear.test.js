@@ -49,12 +49,14 @@ it('calls methods', async () => {
 it('calls hooks', async () => {
   expect.assertions(4);
 
-  await manager.doAppear({ transition: { appear() {} }, data });
+  const t = { appear() {} };
+
+  await manager.doAppear({ transition: t, data });
 
   expect(hooks.do).toHaveBeenCalledTimes(3);
-  expect(hooks.do).toHaveBeenNthCalledWith(1, 'beforeAppear', data);
-  expect(hooks.do).toHaveBeenNthCalledWith(2, 'appear', data);
-  expect(hooks.do).toHaveBeenNthCalledWith(3, 'afterAppear', data);
+  expect(hooks.do).toHaveBeenNthCalledWith(1, 'beforeAppear', data, t);
+  expect(hooks.do).toHaveBeenNthCalledWith(2, 'appear', data, t);
+  expect(hooks.do).toHaveBeenNthCalledWith(3, 'afterAppear', data, t);
 });
 
 it('catches error', async () => {
@@ -63,15 +65,16 @@ it('catches error', async () => {
   const appearError = () => {
     throw new Error('test');
   };
+  const t = { appear: appearError, appearCanceled };
 
   try {
     await manager.doAppear({
-      transition: { appear: appearError, appearCanceled },
+      transition: t,
       data,
     });
   } catch (e) {
     expect(e).toEqual(new Error('Transition error'));
-    expect(hooks.do).toHaveBeenLastCalledWith('appearCanceled', data);
+    expect(hooks.do).toHaveBeenLastCalledWith('appearCanceled', data, t);
     expect(appearCanceled).toHaveBeenCalledTimes(1);
   }
 });

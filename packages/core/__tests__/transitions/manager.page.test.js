@@ -71,18 +71,20 @@ for (let i = 0; i < 2; i++) {
   it('calls methods', async () => {
     expect.assertions(20);
 
+    const t = {
+      sync,
+      before,
+      beforeLeave,
+      leave,
+      afterLeave,
+      beforeEnter,
+      enter,
+      afterEnter,
+      after,
+    };
+
     await manager.doPage({
-      transition: {
-        sync,
-        before,
-        beforeLeave,
-        leave,
-        afterLeave,
-        beforeEnter,
-        enter,
-        afterEnter,
-        after,
-      },
+      transition: t,
       data,
       page,
       wrapper,
@@ -124,55 +126,59 @@ for (let i = 0; i < 2; i++) {
 it('calls hooks (sync: false)', async () => {
   expect.assertions(11);
 
+  const t = {
+    sync: false,
+    leave,
+    enter,
+  };
+
   await manager.doPage({
-    transition: {
-      sync: false,
-      leave,
-      enter,
-    },
+    transition: t,
     data,
     page,
     wrapper,
   });
 
   expect(hooks.do).toHaveBeenCalledTimes(10);
-  expect(hooks.do).toHaveBeenNthCalledWith(1, 'before', data);
-  expect(hooks.do).toHaveBeenNthCalledWith(2, 'beforeLeave', data);
-  expect(hooks.do).toHaveBeenNthCalledWith(3, 'leave', data);
-  expect(hooks.do).toHaveBeenNthCalledWith(4, 'afterLeave', data);
+  expect(hooks.do).toHaveBeenNthCalledWith(1, 'before', data, t);
+  expect(hooks.do).toHaveBeenNthCalledWith(2, 'beforeLeave', data, t);
+  expect(hooks.do).toHaveBeenNthCalledWith(3, 'leave', data, t);
+  expect(hooks.do).toHaveBeenNthCalledWith(4, 'afterLeave', data, t);
   expect(hooks.do).toHaveBeenNthCalledWith(5, 'currentRemoved', data);
-  expect(hooks.do).toHaveBeenNthCalledWith(6, 'beforeEnter', data);
+  expect(hooks.do).toHaveBeenNthCalledWith(6, 'beforeEnter', data, t);
   expect(hooks.do).toHaveBeenNthCalledWith(7, 'nextAdded', data);
-  expect(hooks.do).toHaveBeenNthCalledWith(8, 'enter', data);
-  expect(hooks.do).toHaveBeenNthCalledWith(9, 'afterEnter', data);
-  expect(hooks.do).toHaveBeenNthCalledWith(10, 'after', data);
+  expect(hooks.do).toHaveBeenNthCalledWith(8, 'enter', data, t);
+  expect(hooks.do).toHaveBeenNthCalledWith(9, 'afterEnter', data, t);
+  expect(hooks.do).toHaveBeenNthCalledWith(10, 'after', data, t);
 });
 
 it('calls hooks (sync: true)', async () => {
   expect.assertions(11);
 
+  const t = {
+    sync: true,
+    leave,
+    enter,
+  };
+
   await manager.doPage({
-    transition: {
-      sync: true,
-      leave,
-      enter,
-    },
+    transition: t,
     data,
     page,
     wrapper,
   });
 
   expect(hooks.do).toHaveBeenCalledTimes(10);
-  expect(hooks.do).toHaveBeenNthCalledWith(1, 'before', data);
-  expect(hooks.do).toHaveBeenNthCalledWith(2, 'beforeLeave', data);
-  expect(hooks.do).toHaveBeenNthCalledWith(3, 'beforeEnter', data);
+  expect(hooks.do).toHaveBeenNthCalledWith(1, 'before', data, t);
+  expect(hooks.do).toHaveBeenNthCalledWith(2, 'beforeLeave', data, t);
+  expect(hooks.do).toHaveBeenNthCalledWith(3, 'beforeEnter', data, t);
   expect(hooks.do).toHaveBeenNthCalledWith(4, 'nextAdded', data);
-  expect(hooks.do).toHaveBeenNthCalledWith(5, 'leave', data);
-  expect(hooks.do).toHaveBeenNthCalledWith(6, 'enter', data);
-  expect(hooks.do).toHaveBeenNthCalledWith(7, 'afterLeave', data);
+  expect(hooks.do).toHaveBeenNthCalledWith(5, 'leave', data, t);
+  expect(hooks.do).toHaveBeenNthCalledWith(6, 'enter', data, t);
+  expect(hooks.do).toHaveBeenNthCalledWith(7, 'afterLeave', data, t);
   expect(hooks.do).toHaveBeenNthCalledWith(8, 'currentRemoved', data);
-  expect(hooks.do).toHaveBeenNthCalledWith(9, 'afterEnter', data);
-  expect(hooks.do).toHaveBeenNthCalledWith(10, 'after', data);
+  expect(hooks.do).toHaveBeenNthCalledWith(9, 'afterEnter', data, t);
+  expect(hooks.do).toHaveBeenNthCalledWith(10, 'after', data, t);
 });
 
 it('catches error (leave, sync: false)', async () => {

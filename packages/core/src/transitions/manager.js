@@ -44,17 +44,17 @@ export default {
 
     this.running = true;
 
-    hooks.do('beforeAppear', data);
+    hooks.do('beforeAppear', data, t);
     t.beforeAppear && t.beforeAppear(data);
-    hooks.do('appear', data);
+    hooks.do('appear', data, t);
 
     await runAsync(t.appear)(data)
       .then(() => {
-        hooks.do('afterAppear', data);
+        hooks.do('afterAppear', data, t);
         t.afterAppear && t.afterAppear(data);
       })
       .catch(error => {
-        hooks.do('appearCanceled', data);
+        hooks.do('appearCanceled', data, t);
         t.appearCanceled && t.appearCanceled(data);
         // TODO: remove console
         console.error(error);
@@ -183,31 +183,31 @@ export default {
 
   // Global methods
   doBefore(t, data) {
-    hooks.do('before', data);
+    hooks.do('before', data, t);
     t.before && t.before(data);
   },
 
   doAfter(t, data) {
-    hooks.do('after', data);
+    hooks.do('after', data, t);
     t.after && t.after(data);
   },
 
   // Leave methods
   doBeforeLeave(t, data) {
-    hooks.do('beforeLeave', data);
+    hooks.do('beforeLeave', data, t);
     // CSS: add leave
     // CSS: add leave-active
     t.beforeLeave && t.beforeLeave(data);
   },
 
   doLeave(t, data) {
-    hooks.do('leave', data);
+    hooks.do('leave', data, t);
 
     return runAsync(t.leave)(data).then(leaveResult => leaveResult);
   },
 
   doAfterLeave(t, data) {
-    hooks.do('afterLeave', data);
+    hooks.do('afterLeave', data, t);
     // CSS: remove leave-to
     // CSS: remove leave-active
     t.afterLeave && t.afterLeave(data);
@@ -215,7 +215,7 @@ export default {
 
   // DEV
   // doLeaveCanceled(t, data) {
-  //   hooks.do('leaveCanceled', data);
+  //   hooks.do('leaveCanceled', data, t);
   //   // CSS: remove leave
   //   // CSS: remove leave-to
   //   // CSS: remove leave-active
@@ -234,7 +234,7 @@ export default {
       });
     }
 
-    hooks.do('beforeEnter', data);
+    hooks.do('beforeEnter', data, t);
     // CSS: add enter
     // CSS: add enter-active
     t.beforeEnter && t.beforeEnter(data);
@@ -242,14 +242,14 @@ export default {
 
   doEnter(t, data, leaveResult) {
     // CSS: remove enter
-    hooks.do('enter', data);
+    hooks.do('enter', data, t);
     // CSS: add enter-to
 
     return runAsync(t.enter)(data, leaveResult);
   },
 
   doAfterEnter(t, data) {
-    hooks.do('afterEnter', data);
+    hooks.do('afterEnter', data, t);
     // CSS: remove enter-to
     // CSS: remove enter-active
     t.afterEnter && t.afterEnter(data);
@@ -257,7 +257,7 @@ export default {
 
   // DEV
   // doEnterCanceled(t, data) {
-  //   hooks.do('enterCanceled', data);
+  //   hooks.do('enterCanceled', data, t);
   //   // CSS: remove enter
   //   // CSS: remove enter-to
   //   // CSS: remove enter-active
