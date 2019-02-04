@@ -1,6 +1,6 @@
 describe('page', () => {
   it('Page is visible', () => {
-    cy.visit('/__e2e__/web/index.html');
+    cy.visit('http://localhost:8111/e2e/web');
     expect(true).to.equal(true);
   });
 });

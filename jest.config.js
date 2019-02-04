@@ -2,6 +2,7 @@ module.exports = {
   collectCoverageFrom: [
     'packages/**/src/**/*.{js,jsx}',
     '!packages/core/src/(polyfills|schema|utils).js',
+    '!packages/prefetch/src/polyfills.js',
   ],
   coverageThreshold: {
     global: {

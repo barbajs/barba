@@ -8,7 +8,7 @@ import hooks from './hooks';
 import prevent from './prevent';
 import request from './request';
 import viewsManager from './views';
-import { getHref, getUrl } from './utils';
+import * as utils from './utils';
 
 import './polyfills';
 
@@ -42,6 +42,38 @@ export default {
    * @type {manager}
    */
   manager,
+
+  /**
+   * Prevent checker
+   *
+   * @memberof @barba/core
+   * @type {prevent}
+   */
+  prevent,
+
+  /**
+   * Cache
+   *
+   * @memberof @barba/core
+   * @type {cache}
+   */
+  cache,
+
+  /**
+   * Request (fetch) manager
+   *
+   * @memberof @barba/core
+   * @type {request}
+   */
+  request,
+
+  /**
+   * Utils
+   *
+   * @memberof @barba/core
+   * @type {object}
+   */
+  utils,
 
   /**
    * Hooks
@@ -125,14 +157,14 @@ export default {
     // Init dom with data-attributes schema
     dom.init({ attributeSchema: schema });
     // Init prevent with data-attributes schema
-    prevent.init({ attributeSchema: schema });
+    this.prevent.init({ attributeSchema: schema });
     // Add prevent custom
     if (preventCustom !== null) {
       if (typeof preventCustom !== 'function') {
         throw new Error('Prevent should be a function');
       }
 
-      prevent.add('preventCustom', preventCustom);
+      this.prevent.add('preventCustom', preventCustom);
     }
 
     // Get wrapper
@@ -160,7 +192,7 @@ export default {
     }
 
     // Add to cache
-    cache.set(this._current.url, Promise.resolve(this._current.html));
+    this.cache.set(this._current.url, Promise.resolve(this._current.html));
 
     // Bindings
     /* istanbul ignore else */
@@ -212,36 +244,36 @@ export default {
   _onLinkEnter(e) {
     let el = e.target;
 
-    while (el && !getHref(el)) {
+    while (el && !this.utils.getHref(el)) {
       el = el.parentNode;
     }
 
     // Check prevent
     // if (!el || prevent._tests.hasAttr({ el })) {
     // TODO: all prevent tests before fetching/caching?
-    if (!el || prevent.check(el, e, el.href)) {
+    if (!el || this.prevent.check(el, e, el.href)) {
       return;
     }
 
-    const url = getHref(el);
+    const url = this.utils.getHref(el);
 
     // Already in cache
-    if (cache.has(url)) {
+    if (this.cache.has(url)) {
       return;
     }
 
-    cache.set(url, request(url));
+    this.cache.set(url, this.request(url));
   },
 
   _onLinkClick(e) {
     let el = e.target;
 
-    while (el && !getHref(el)) {
+    while (el && !this.utils.getHref(el)) {
       el = el.parentNode;
     }
 
     // Check prevent
-    if (!el || prevent.check(el, e, el.href)) {
+    if (!el || this.prevent.check(el, e, el.href)) {
       return;
     }
 
@@ -249,18 +281,18 @@ export default {
     e.preventDefault();
 
     // Check prevent sameURL
-    if (!el || prevent.sameUrl(el.href)) {
+    if (!el || this.prevent.sameUrl(el.href)) {
       // TODO: do nothing or force reload?
       this.force(el.href);
 
       return;
     }
 
-    this.go(getHref(el), el);
+    this.go(this.utils.getHref(el), el);
   },
 
   _onStateChange() {
-    const url = getUrl();
+    const url = this.utils.getUrl();
 
     this.go(url, 'popstate');
   },
@@ -298,9 +330,11 @@ export default {
     let page;
 
     if (this._useCache) {
-      page = cache.has(url) ? cache.get(url) : cache.set(url, request(url));
+      page = this.cache.has(url)
+        ? this.cache.get(url)
+        : this.cache.set(url, this.request(url));
     } else {
-      page = request(url);
+      page = this.request(url);
     }
 
     // Need to wait before getting the right transition
@@ -369,7 +403,7 @@ export default {
     this._next = { ...this.pageSchema };
 
     this._current.namespace = dom.getNamespace();
-    this._current.url = getUrl();
+    this._current.url = this.utils.getUrl();
     this._current.container = dom.getContainer();
     this._current.html = dom.getHtml();
 

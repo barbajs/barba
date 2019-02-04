@@ -25,7 +25,9 @@ It helps reducing the delay between your pages, minimizing browser HTTP requests
 - Sync mode
 - Plugin system
   - `@barba/router`: use of routes for _transition resolution_
-  - `@barba/css`: automatic addition of CSS classes _(coming soon)_
+  - `@barba/css`: automatic addition of CSS classes
+  - `@barba/head`: update your `<head>` _(coming soon)_
+  - `@barba/preload`: automatic pages preload based on viewport_(coming soon)_
   - `@barba/transition`: ready-to-use basic transitions pack (fade, slide, …) _(coming soon)_
 
 ## Main changes (TL;DR)

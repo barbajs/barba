@@ -1,4 +1,3 @@
 {
-  "integrationFolder": "./__e2e__/tests",
-  "baseUrl": "http://localhost:8111"
+  "baseUrl": "http://localhost:8111/cypress/web/"
 }
