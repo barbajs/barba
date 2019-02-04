@@ -16,21 +16,24 @@ document.body.appendChild(container);
 it('has defaults', () => {
   expect(css.version).toBe(version);
   expect(css._prefix).toBe('barba');
-  expect(css._root).toBeUndefined();
+  expect(css._promises).toEqual({});
 });
 
-it('has default root', () => {
-  barba._plugins = [];
+it('registers hooks', () => {
   barba.use(css);
   barba.init();
-  expect(css._root).toBe(barba._wrapper);
+
+  expect(barba.hooks._registered.before).toHaveLength(1);
+  expect(barba.hooks._registered.beforeAppear).toHaveLength(2);
+  expect(barba.hooks._registered.afterAppear).toHaveLength(1);
+  expect(barba.hooks._registered.beforeLeave).toHaveLength(1);
+  expect(barba.hooks._registered.afterLeave).toHaveLength(1);
+  expect(barba.hooks._registered.beforeEnter).toHaveLength(1);
+  expect(barba.hooks._registered.afterEnter).toHaveLength(1);
 });
 
-it('has custom root', () => {
-  barba._plugins = [];
-  barba.use(css, {
-    root: document.body,
-  });
-  barba.init();
-  expect(css._root).toBe(document.body);
+it('overrides transitions', () => {
+  expect(barba.manager.appear).toBe(css._appear);
+  expect(barba.manager.leave).toBe(css._leave);
+  expect(barba.manager.enter).toBe(css._enter);
 });

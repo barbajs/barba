@@ -53,7 +53,7 @@ export default {
     t.beforeAppear && t.beforeAppear(data);
     hooks.do('appear', data, t);
 
-    await runAsync(t.appear)(data)
+    await this.appear(t, data)
       .then(() => {
         // CSS: remove appear-active
         // CSS: remove appear-to
@@ -69,6 +69,10 @@ export default {
       });
 
     this.running = false;
+  },
+
+  appear(t, data) {
+    return runAsync(t.appear)(data);
   },
 
   /**
@@ -116,46 +120,46 @@ export default {
       // const afterEnter = t.afterEnter ? t.afterEnter : () => Promise.resolve();
       // const after = t.after ? t.after : () => Promise.resolve();
 
-      this.doBefore(t, data);
+      this.before(t, data);
 
       if (sync) {
         // Before actions
-        this.doBeforeLeave(t, data);
-        await this.doBeforeEnter(t, data, page);
+        this.beforeLeave(t, data);
+        await this.beforeEnter(t, data, page);
 
         this.addNext(data, wrapper);
 
         // Actions
-        await Promise.all([this.doLeave(t, data), this.doEnter(t, data)]);
+        await Promise.all([this.leave(t, data), this.doEnter(t, data)]);
 
         // After actions
-        this.doAfterLeave(t, data);
+        this.afterLeave(t, data);
         this.removeCurrent(data);
-        this.doAfterEnter(t, data);
+        this.afterEnter(t, data);
       } else {
         let leaveResult = false;
 
         // Leave
-        this.doBeforeLeave(t, data);
-        leaveResult = await this.doLeave(t, data);
-        this.doAfterLeave(t, data);
+        this.beforeLeave(t, data);
+        leaveResult = await this.leave(t, data);
+        this.afterLeave(t, data);
         this.removeCurrent(data);
 
         // Enter
         /* istanbul ignore else */
         if (leaveResult !== false) {
-          await this.doBeforeEnter(t, data, page);
+          await this.beforeEnter(t, data, page);
           this.addNext(data, wrapper);
           await this.doEnter(t, data, leaveResult);
-          this.doAfterEnter(t, data, leaveResult);
+          this.afterEnter(t, data, leaveResult);
         }
       }
 
-      this.doAfter(t, data);
+      this.after(t, data);
     } catch (error) {
       // TODO: use cases for cancellation
-      // this.doLeaveCanceled(t, data);
-      // this.doEnterCanceled(t, data);
+      // this.leaveCanceled(t, data);
+      // this.enterCanceled(t, data);
 
       // TODO: remove console
       console.error(error);
@@ -169,17 +173,17 @@ export default {
   // Execute animation steps
   // Allows to catch errors for specific step
   // with the right cancel method
-  async doAction(name, t, data, extra) {
+  async action(name, t, data, extra) {
     /* istanbul ignore next */
     try {
       return await this[name](t, data, extra);
     } catch (error) {
       // TODO: use cases for cancellation
       // if (/leave/i.test(name)) {
-      //   this.doLeaveCanceled(t, data);
+      //   this.leaveCanceled(t, data);
       // }
       // if (/enter/i.test(name)) {
-      //   this.doEnterCanceled(t, data);
+      //   this.enterCanceled(t, data);
       // }
 
       // TODO: remove console
@@ -189,25 +193,25 @@ export default {
   },
 
   // Global methods
-  doBefore(t, data) {
+  before(t, data) {
     hooks.do('before', data, t);
     t.before && t.before(data);
   },
 
-  doAfter(t, data) {
+  after(t, data) {
     hooks.do('after', data, t);
     t.after && t.after(data);
   },
 
   // Leave methods
-  doBeforeLeave(t, data) {
+  beforeLeave(t, data) {
     hooks.do('beforeLeave', data, t);
     // CSS: add leave
     // CSS: add leave-active
     t.beforeLeave && t.beforeLeave(data);
   },
 
-  doLeave(t, data) {
+  leave(t, data) {
     // CSS: remove leave
     // CSS: add leave-to
     hooks.do('leave', data, t);
@@ -215,7 +219,7 @@ export default {
     return runAsync(t.leave)(data).then(leaveResult => leaveResult);
   },
 
-  doAfterLeave(t, data) {
+  afterLeave(t, data) {
     hooks.do('afterLeave', data, t);
     // CSS: remove leave-to
     // CSS: remove leave-active
@@ -223,7 +227,7 @@ export default {
   },
 
   // DEV
-  // doLeaveCanceled(t, data) {
+  // leaveCanceled(t, data) {
   //   hooks.do('leaveCanceled', data, t);
   //   // CSS: remove leave
   //   // CSS: remove leave-to
@@ -232,7 +236,7 @@ export default {
   // },
 
   // Enter methods
-  async doBeforeEnter(t, data, page) {
+  async beforeEnter(t, data, page) {
     if (!data.next.html) {
       await page.then(html => {
         const nextDocument = dom.toDocument(html);
@@ -257,7 +261,7 @@ export default {
     return runAsync(t.enter)(data, leaveResult);
   },
 
-  doAfterEnter(t, data) {
+  afterEnter(t, data) {
     hooks.do('afterEnter', data, t);
     // CSS: remove enter-to
     // CSS: remove enter-active
@@ -265,7 +269,7 @@ export default {
   },
 
   // DEV
-  // doEnterCanceled(t, data) {
+  // enterCanceled(t, data) {
   //   hooks.do('enterCanceled', data, t);
   //   // CSS: remove enter
   //   // CSS: remove enter-to

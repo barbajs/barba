@@ -296,6 +296,49 @@ barba.init(<options>);
 
 ---
 
+## @barba/css
+
+Barba CSS adds/remove CSS classes during transitions.
+By default, it uses `.barba-xxx[-xxx]` but if you add a `name` property to your transition, it uses `.my-transition-xxx[-xxx]` CSS classes.
+
+It is mainly inspired by [Vue.js transitions](https://vuejs.org/v2/guide/transitions.html#Transition-Classes).
+
+CSS classes:
+
+- `appear`
+  - `.barba-appear`: __starting state__ for `appear`. Added when appear transition is triggered, removed one frame after.
+  - `.barba-appear-active`: __active state__ for `appear`. Applied during the entire appearing phase. Added when appear transition is triggered, removed when transition/animation finishes.
+    This class can be used to define the duration, delay and easing curve.
+  - `.barba-appear-to`: __ending state__ for `appear`. Added one frame after transition is triggered (at the same time `barba-appear` is removed), removed when transition/animation finishes.
+- `leave`
+  - `.barba-leave`: __starting state__ for `leave`. Added when leave transition is triggered, removed one frame after.
+  - `.barba-leave-active`: __active state__ for `leave`. Applied during the entire leaving phase. Added when leave transition is triggered, removed when transition/animation finishes.
+    This class can be used to define the duration, delay and easing curve.
+  - `.barba-leave-to`: __ending state__ for `leave`. Added one frame after transition is triggered (at the same time `barba-leave` is removed), removed when transition/animation finishes.
+- `enter`
+  - `.barba-enter`: __starting state__ for `enter`. Added when enter transition is triggered, removed one frame after next container is inserted.
+  - `.barba-enter-active`: __active state__ for `enter`. Applied during the entire leaving phase. Added after next container is inserted, removed when transition/animation finishes.
+    This class can be used to define the duration, delay and easing curve.
+  - `.barba-enter-to`: __ending state__ for `enter`. Added one frame after next container is inserted (at the same time `barba-enter` is removed), removed when transition/animation finishes.
+
+```js
+import barba from '@barba/core';
+import css from '@barba/css';
+
+barba.use(css);
+barba.init({ transitions: [{
+  appear() {}, // Optional
+  enter() {},
+  leave() {},
+  name: 'my-transition',
+}]});
+```
+
+> You have to declare the main hooks even if they are not used.
+> Other synchronous hooks, can be used…
+
+---
+
 ## Examples
 
 ### `leave` / `enter`

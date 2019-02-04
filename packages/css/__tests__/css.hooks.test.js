@@ -4,104 +4,62 @@ import css from '../src';
 
 // Dom
 const wrapper = document.createElement('div');
-const container = document.createElement('div');
+const current = document.createElement('div');
+const next = current.cloneNode();
 
 wrapper.dataset.barba = 'wrapper';
-container.dataset.barba = 'container';
+current.dataset.barba = 'container';
 
 document.body.appendChild(wrapper);
-document.body.appendChild(container);
+document.body.appendChild(current);
 
-// Transitions
-const name = 'my-name';
-const unnamed = {
+const t = {
   appear() {},
   leave() {},
   enter() {},
 };
-const named = {
-  ...unnamed,
-  name,
+const data = {
+  current: { container: current },
+  next: { container: next },
 };
 
 barba.use(css);
-barba.init({
-  transitions: [named, unnamed],
+barba.init();
+
+css._start = jest.fn();
+css._next = jest.fn();
+css._end = jest.fn();
+
+it('do appear hooks', () => {
+  barba.hooks.do('beforeAppear', data, t);
+  barba.hooks.do('afterAppear', data, t);
+
+  expect(css._start).toHaveBeenCalledWith(current, 'appear');
+  expect(css._end).toHaveBeenCalledWith(current, 'appear');
 });
 
-/**
- * Check CSS classes
- *
- * @param {string} [name='barba'] default or named transition
- * @returns {Promise} end of hooks chain
- */
-async function checkHooks(name = 'barba') {
-  expect(wrapper.classList.contains(`${name}-appear`)).toBeTruthy();
-  expect(wrapper.classList.contains(`${name}-appear-active`)).toBeTruthy();
-  await new Promise(resolve => {
-    window.requestAnimationFrame(() => {
-      expect(wrapper.classList.contains(`${name}-appear-to`)).toBeTruthy();
-      expect(wrapper.classList.contains(`${name}-appear`)).toBeFalsy();
-      resolve();
-    });
-  });
-  barba.hooks.do('afterAppear');
-  expect(wrapper.classList.contains(`${name}-appear-active`)).toBeFalsy();
-  expect(wrapper.classList.contains(`${name}-appear-to`)).toBeFalsy();
-  // Leave
-  barba.hooks.do('beforeLeave');
-  expect(wrapper.classList.contains(`${name}-leave`)).toBeTruthy();
-  expect(wrapper.classList.contains(`${name}-leave-active`)).toBeTruthy();
-  barba.hooks.do('leave');
-  await new Promise(resolve => {
-    window.requestAnimationFrame(() => {
-      expect(wrapper.classList.contains(`${name}-leave-to`)).toBeTruthy();
-      expect(wrapper.classList.contains(`${name}-leave`)).toBeFalsy();
-      resolve();
-    });
-  });
-  barba.hooks.do('afterLeave');
-  expect(wrapper.classList.contains(`${name}-leave-to`)).toBeFalsy();
-  expect(wrapper.classList.contains(`${name}-leave-active`)).toBeFalsy();
-  // Enter
-  barba.hooks.do('beforeEnter');
-  expect(wrapper.classList.contains(`${name}-enter`)).toBeTruthy();
-  expect(wrapper.classList.contains(`${name}-enter-active`)).toBeTruthy();
-  barba.hooks.do('enter');
-  await new Promise(resolve => {
-    window.requestAnimationFrame(() => {
-      expect(wrapper.classList.contains(`${name}-enter-to`)).toBeTruthy();
-      expect(wrapper.classList.contains(`${name}-enter`)).toBeFalsy();
-      resolve();
-    });
-  });
-  barba.hooks.do('afterEnter');
-  expect(wrapper.classList.contains(`${name}-enter-to`)).toBeFalsy();
-  expect(wrapper.classList.contains(`${name}-enter-active`)).toBeFalsy();
-}
+it('do leave hooks', () => {
+  barba.hooks.do('beforeLeave', data, t);
+  barba.hooks.do('afterLeave', data, t);
 
-it('prefixes with transition name', () => {
-  barba.hooks.do('before', {}, named);
-  expect(css._prefix).toBe(name);
-  css._prefix = null;
-  barba.hooks.do('beforeAppear', {}, named);
-  expect(css._prefix).toBe(name);
+  expect(css._start).toHaveBeenCalledWith(current, 'leave');
+  expect(css._end).toHaveBeenCalledWith(current, 'leave');
 });
 
-it('prefixes with default ', () => {
-  barba.hooks.do('before', {}, unnamed);
-  expect(css._prefix).toBe('barba');
-  css._prefix = null;
-  barba.hooks.do('beforeAppear', {}, unnamed);
-  expect(css._prefix).toBe('barba');
+it('do enter hooks', () => {
+  barba.hooks.do('beforeEnter', data, t);
+  barba.hooks.do('afterEnter', data, t);
+
+  expect(css._start).toHaveBeenCalledWith(next, 'enter');
+  expect(css._end).toHaveBeenCalledWith(next, 'enter');
 });
 
-it('adds and removes default CSS classes', async () => {
-  barba.hooks.do('beforeAppear', {}, unnamed);
-  await checkHooks();
-});
+it('override transitions', () => {
+  barba.manager.appear(data);
+  barba.manager.leave(data);
+  barba.manager.enter(data);
 
-it('adds and removes named CSS classes', async () => {
-  barba.hooks.do('beforeAppear', {}, named);
-  await checkHooks(name);
+  expect(css._next).toHaveBeenNthCalledWith(1, current, 'appear');
+  expect(css._next).toHaveBeenNthCalledWith(2, current, 'leave');
+  expect(css._next).toHaveBeenNthCalledWith(3, next, 'enter');
 });

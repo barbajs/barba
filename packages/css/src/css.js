@@ -24,6 +24,8 @@ export const css = {
    */
   _prefix: 'barba',
 
+  _promises: {},
+
   /**
    * Plugin installation
    *
@@ -31,11 +33,11 @@ export const css = {
    * @param {barba} barba barba instance
    * @returns {undefined}
    */
-  install(barba, { root = undefined } = {}) {
+  install(barba) {
     this.barba = barba;
-    // TODO: rename _wrapper to wrapper
-    // TODO: check valid root (HTMLElement, outside container)
-    this._root = root;
+    this._appear = this._appear.bind(this);
+    this._leave = this._leave.bind(this);
+    this._enter = this._enter.bind(this);
   },
 
   /**
@@ -45,23 +47,22 @@ export const css = {
    * @returns {undefined}
    */
   init() {
-    if (!this._root) {
-      this._root = this.barba.wrapper;
-    }
-
-    // Register hooks
+    // Register hooks to get prefix
     this.barba.hooks.before(this._getPrefix, this);
     this.barba.hooks.beforeAppear(this._getPrefix, this);
 
+    // Register hook for CSS classes
     this.barba.hooks.beforeAppear(this._beforeAppear, this);
     this.barba.hooks.afterAppear(this._afterAppear, this);
-
     this.barba.hooks.beforeLeave(this._beforeLeave, this);
-    this.barba.hooks.leave(this._leave, this);
     this.barba.hooks.afterLeave(this._afterLeave, this);
     this.barba.hooks.beforeEnter(this._beforeEnter, this);
-    this.barba.hooks.enter(this._enter, this);
     this.barba.hooks.afterEnter(this._afterEnter, this);
+
+    // Override main transitions
+    this.barba.manager.appear = this._appear;
+    this.barba.manager.leave = this._leave;
+    this.barba.manager.enter = this._enter;
   },
 
   /**
@@ -71,64 +72,83 @@ export const css = {
    * @returns {undefined}
    */
   // DEV
-  // destroy() {
-  //   this._routeNames = [];
-  //   this._routesByName = {};
-  // },
+  // destroy() {},
 
   _getPrefix(data, t) {
     this._prefix = t.name || 'barba';
   },
 
-  _beforeAppear() {
-    this._root.classList.add(`${this._prefix}-appear`);
-    this._root.classList.add(`${this._prefix}-appear-active`);
-    // Wait for 1 frame / repaint
-    window.requestAnimationFrame(() => {
-      this._root.classList.remove(`${this._prefix}-appear`);
-      this._root.classList.add(`${this._prefix}-appear-to`);
+  // States
+  _start(container, kind) {
+    this._add(container, kind); // CSS: add kind
+    this._add(container, `${kind}-active`); // CSS: add kind-active
+  },
+
+  _next(container, kind) {
+    return new Promise(resolve => {
+      this._promises[kind] = resolve;
+      container.addEventListener('transitionend', resolve, false);
+
+      // Wait for 1 frame / repaint
+      window.requestAnimationFrame(() => {
+        this._remove(container, kind); // CSS: remove kind
+        this._add(container, `${kind}-to`); // CSS: add kind-to
+      });
     });
   },
 
-  _afterAppear() {
-    this._root.classList.remove(`${this._prefix}-appear-active`);
-    this._root.classList.remove(`${this._prefix}-appear-to`);
+  _end(container, kind) {
+    this._remove(container, `${kind}-active`); // CSS: remove kind-active
+    this._remove(container, `${kind}-to`); // CSS: remove kind-to
+    container.removeEventListener('transitionend', this._promises[kind]);
   },
 
-  _beforeLeave() {
-    this._root.classList.add(`${this._prefix}-leave`);
-    this._root.classList.add(`${this._prefix}-leave-active`);
+  // Add/remove CSS classes
+  _add(el, step) {
+    el.classList.add(`${this._prefix}-${step}`);
   },
 
-  _leave() {
-    // Wait for 1 frame / repaint
-    window.requestAnimationFrame(() => {
-      this._root.classList.remove(`${this._prefix}-leave`);
-      this._root.classList.add(`${this._prefix}-leave-to`);
-    });
+  _remove(el, step) {
+    el.classList.remove(`${this._prefix}-${step}`);
   },
 
-  _afterLeave() {
-    this._root.classList.remove(`${this._prefix}-leave-to`);
-    this._root.classList.remove(`${this._prefix}-leave-active`);
+  // Appear
+  _beforeAppear(data) {
+    this._start(data.current.container, 'appear');
   },
 
-  _beforeEnter() {
-    this._root.classList.add(`${this._prefix}-enter`);
-    this._root.classList.add(`${this._prefix}-enter-active`);
+  _appear(data) {
+    return this._next(data.current.container, 'appear');
   },
 
-  _enter() {
-    // Wait for 1 frame / repaint
-    window.requestAnimationFrame(() => {
-      this._root.classList.remove(`${this._prefix}-enter`);
-      this._root.classList.add(`${this._prefix}-enter-to`);
-    });
+  _afterAppear(data) {
+    this._end(data.current.container, 'appear');
   },
 
-  _afterEnter() {
-    this._root.classList.remove(`${this._prefix}-enter-to`);
-    this._root.classList.remove(`${this._prefix}-enter-active`);
+  // Leave
+  _beforeLeave(data) {
+    this._start(data.current.container, 'leave');
+  },
+
+  _leave(data) {
+    return this._next(data.current.container, 'leave');
+  },
+
+  _afterLeave(data) {
+    this._end(data.current.container, 'leave');
+  },
+
+  // Enter
+  _beforeEnter(data) {
+    this._start(data.next.container, 'enter');
+  },
+
+  _enter(data) {
+    return this._next(data.next.container, 'enter');
+  },
+
+  _afterEnter(data) {
+    this._end(data.next.container, 'enter');
   },
 };
 
