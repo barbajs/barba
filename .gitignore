@@ -156,6 +156,7 @@ $RECYCLE.BIN/
 
 ### Custom ###
 
+.tmp
 esm
 lib
 dist

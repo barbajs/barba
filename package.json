@@ -59,6 +59,10 @@
     "ls": "lerna ls",
     "prerelease": "npm run build",
     "release": "lerna publish",
+    "size": "npm-run-all size:core size:router size:css --silent",
+    "size:core": "webpack --entry ./packages/core/src/index.js --output ./.tmp/core.js --config webpack.size.js --display=errors-only && echo '📦 core' && gzip-size ./.tmp/core.js",
+    "size:router": "webpack --entry ./packages/router/src/index.js --output ./.tmp/router.js --config webpack.size.js --display=errors-only && echo '🚦 router' && gzip-size ./.tmp/router.js",
+    "size:css": "webpack --entry ./packages/css/src/index.js --output ./.tmp/css.js --config webpack.size.js --display=errors-only && echo '💄 css' && gzip-size ./.tmp/css.js",
     "test": "eslint packages/**/src/** && yarn jest --coverage",
     "watch": "yarn jest --watch --verbose false"
   },
