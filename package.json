@@ -67,10 +67,10 @@
     "size:prefetch": "webpack --entry ./packages/prefetch/src/index.js --output ./.tmp/prefetch.js --config webpack.size.js --display=errors-only && echo '🚀 prefetch' && gzip-size ./.tmp/prefetch.js",
     "test": "npm-run-all lint build unit e2e",
     "unit": "yarn jest --coverage",
-    "e2e": "cy:run",
+    "e2e": "start-server-and-test cy:server :8111 cy:run",
     "e2e:dev": "start-server-and-test cy:server :8111 cy:dev",
     "cy:server": "http-server . -p 8111",
-    "cy:run": "lerna run e2e",
+    "cy:run": "cypress run --browser chrome",
     "cy:dev": "cypress open",
     "watch": "yarn jest --watch --verbose false"
   },

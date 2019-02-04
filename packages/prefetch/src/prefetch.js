@@ -47,8 +47,6 @@ export const prefetch = {
         }
       });
     });
-    /* istanbul ignore next */
-    this._observe = this._observe.bind(this);
   },
 
   /**
@@ -72,8 +70,8 @@ export const prefetch = {
   // DEV
   // destroy() {},
 
-  /* istanbul ignore next */
   _observe(timeout) {
+    /* istanbul ignore next */
     window.requestIdleCallback(
       () => {
         // If not, find all links and use IntersectionObserver.
