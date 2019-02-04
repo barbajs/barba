@@ -26,8 +26,8 @@ It helps reducing the delay between your pages, minimizing browser HTTP requests
 - Plugin system
   - `@barba/router`: use of routes for _transition resolution_
   - `@barba/css`: automatic addition of CSS classes
+  - `@barba/prefetch`: automatic pages prefetching (and caching), based on viewport
   - `@barba/head`: update your `<head>` _(coming soon)_
-  - `@barba/preload`: automatic pages preload based on viewport_(coming soon)_
   - `@barba/transition`: ready-to-use basic transitions pack (fade, slide, …) _(coming soon)_
 
 ## Main changes (TL;DR)
@@ -338,6 +338,23 @@ barba.init({ transitions: [{
 
 > You have to declare the main hooks even if they are not used.
 > Other synchronous hooks, can be used…
+
+---
+
+## @barba/prefetch (wip)
+
+Barba Prefetch automatically fetch and cache your pages.
+
+It is mainly inspired by [quicklink](https://github.com/GoogleChromeLabs/quicklink).
+Based on Intersection Observer (depending on your browser support, you may need a polyfill), it processes all eligible links that enter the viewport.
+
+```js
+import barba from '@barba/core';
+import css from '@barba/prefetch';
+
+barba.use(prefetch);
+barba.init();
+```
 
 ---
 
