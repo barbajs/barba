@@ -36,6 +36,14 @@ export default {
   store,
 
   /**
+   * Transitions manager
+   *
+   * @memberof @barba/core
+   * @type {manager}
+   */
+  manager,
+
+  /**
    * Hooks
    *
    * @memberof @barba/core
@@ -264,7 +272,7 @@ export default {
         const data = this._getData();
         const transition = this.store.get(data, true);
 
-        await manager.doAppear({ transition, data });
+        await this.manager.doAppear({ transition, data });
       } catch (error) {
         // TODO: handle errors
         // console.error(error);
@@ -275,7 +283,7 @@ export default {
 
   async go(url, trigger = 'barba') {
     // If animation running, force reload
-    if (manager.running) {
+    if (this.manager.running) {
       this.force(url);
 
       return;
@@ -321,7 +329,7 @@ export default {
     try {
       const transition = this.store.get(data);
 
-      await manager.doPage({
+      await this.manager.doPage({
         transition,
         data,
         page,
