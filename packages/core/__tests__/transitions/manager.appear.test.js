@@ -13,13 +13,16 @@ hooks.do = jest.fn();
 const data = 'data';
 
 it('needs transition', async () => {
+  console.warn = jest.fn();
   expect.assertions(1);
 
-  try {
-    await manager.doAppear({});
-  } catch (e) {
-    expect(e).toEqual(new Error('No transition found'));
-  }
+  await manager.doAppear({
+    transition: undefined,
+    data,
+  });
+  expect(console.warn).toHaveBeenCalledWith(
+    '[@barba/core] No transition found'
+  );
 });
 
 it('calls methods', async () => {

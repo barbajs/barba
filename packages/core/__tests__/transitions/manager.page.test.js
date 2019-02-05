@@ -54,13 +54,18 @@ beforeEach(() => {
 const page = Promise.resolve(nextHtml);
 
 it('needs transition', async () => {
+  console.warn = jest.fn();
   expect.assertions(1);
 
-  try {
-    await manager.doPage({});
-  } catch (e) {
-    expect(e).toEqual(new Error('No transition found'));
-  }
+  await manager.doPage({
+    transition: undefined,
+    data,
+    page,
+    wrapper,
+  });
+  expect(console.warn).toHaveBeenCalledWith(
+    '[@barba/core] No transition found'
+  );
 });
 
 for (let i = 0; i < 2; i++) {

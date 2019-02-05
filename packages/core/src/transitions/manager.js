@@ -65,7 +65,11 @@ export default {
   },
 
   appear(t, data) {
-    return runAsync(t.appear)(data);
+    if (t.appear) {
+      return runAsync(t.appear)(data);
+    }
+
+    return Promise.resolve();
   },
 
   /**
