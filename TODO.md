@@ -5,6 +5,7 @@
 - [x][m] Prevent `xlink:href` on link enter (eg: SVG)
 - [ ][s] No transitions ? weird behavior…
 - [ ][w] BS, how to fix it (definitely)
+- [ ][m] (npm)ignore .DS_Store files
 
 ---
 

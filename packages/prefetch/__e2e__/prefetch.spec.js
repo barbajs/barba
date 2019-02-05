@@ -1,8 +1,6 @@
-const root = 'prefetch/__web__/';
-
 describe('page', () => {
   it('Page is visible', () => {
-    cy.visit(`${root}index.html`);
+    cy.visit('/');
     expect(true).to.equal(true);
   });
 });
