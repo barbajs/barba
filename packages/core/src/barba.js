@@ -307,7 +307,7 @@ export default {
         await this.manager.doAppear({ transition, data });
       } catch (error) {
         // TODO: handle errors
-        // console.error(error);
+        // console.error('[@barba/core]', error);
         throw new Error(error);
       }
     }
@@ -370,12 +370,13 @@ export default {
         wrapper: this._wrapper,
       });
 
+      this._updateTitle(data);
       this._refreshPages();
     } catch (error) {
       // TODO: !!! infinite loop on transition error???
       history.cancel();
       // TODO: handle errors
-      // console.error(error);
+      // console.error('[@barba/core]', error);
       throw new Error(error);
     }
   },
@@ -411,5 +412,12 @@ export default {
     // Can be used to resolve "route"…
     // TODO: naming…
     hooks.do('refresh', this._getData());
+  },
+
+  _updateTitle(data) {
+    const { html } = data.next;
+    const { title } = dom.toDocument(html);
+
+    document.title = title;
   },
 };

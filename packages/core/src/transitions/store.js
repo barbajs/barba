@@ -197,7 +197,7 @@ export default {
     if (this._debug) {
       // Debug info to known criteria applied for matching transition
       // TODO: error/warn/info handler
-      console.info('DEBUG', matching.get(active));
+      console.debug('[@barba/core]', matching.get(active));
     }
 
     return active;

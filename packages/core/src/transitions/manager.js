@@ -37,7 +37,7 @@ export default {
    */
   async doAppear({ transition, data }) {
     if (!transition) {
-      console.warn('[barba] No transition found');
+      console.warn('[@barba/core] No transition found');
     }
 
     const t = transition || {};
@@ -57,7 +57,7 @@ export default {
         hooks.do('appearCanceled', data, t);
         t.appearCanceled && t.appearCanceled(data);
         // TODO: remove console
-        console.error(error);
+        console.error('[@barba/core]', error);
         throw new Error('Transition error');
       });
 
@@ -85,7 +85,7 @@ export default {
    */
   async doPage({ transition, data, page, wrapper }) {
     if (!transition) {
-      console.warn('[barba] No transition found');
+      console.warn('[@barba/core] No transition found');
     }
 
     const t = transition || {};
@@ -147,7 +147,7 @@ export default {
       // this.enterCanceled(t, data);
 
       // TODO: remove console
-      console.error(error);
+      console.error('[@barba/core]', error);
       throw new Error('Transition error');
     }
 
@@ -172,7 +172,7 @@ export default {
       // }
 
       // TODO: remove console
-      console.error(error);
+      console.error('[@barba/core]', error);
       throw new Error('Transition error');
     }
   },

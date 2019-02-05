@@ -62,7 +62,7 @@ export const router = {
       this._routeNames.push(name);
 
       if (this._routesByName[name]) {
-        console.warn(`Duplicated route name [${name}]`);
+        console.warn(`[@barba/router] Duplicated route name (${name})`);
       } else {
         this._routesByName[name] = {
           path,

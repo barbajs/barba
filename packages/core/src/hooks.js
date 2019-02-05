@@ -113,9 +113,12 @@ export default {
    * @returns {undefined}
    */
   help() {
-    console.info(`Available hooks: ${this._available}`);
+    console.info(`[@barba/core] Available hooks: ${this._available}`);
     console.info(
-      `Registered hooks: ${map(this._registered, (hooks, name) => name)}`
+      `[@barba/core] Registered hooks: ${map(
+        this._registered,
+        (hooks, name) => name
+      )}`
     );
   },
 };
