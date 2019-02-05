@@ -37,26 +37,19 @@ export default {
    */
   async doAppear({ transition, data }) {
     if (!transition) {
-      throw new Error('No transition found');
+      console.warn('[barba] No transition found');
     }
 
-    const t = transition;
+    const t = transition || {};
 
     this.running = true;
 
-    // CSS: add appear
-    // CSS: add appear-active
     hooks.do('beforeAppear', data, t);
-    // CSS: remove appear
-    // CSS: add appear-to
-
     t.beforeAppear && t.beforeAppear(data);
-    hooks.do('appear', data, t);
 
+    hooks.do('appear', data, t);
     await this.appear(t, data)
       .then(() => {
-        // CSS: remove appear-active
-        // CSS: remove appear-to
         hooks.do('afterAppear', data, t);
         t.afterAppear && t.afterAppear(data);
       })
@@ -92,10 +85,10 @@ export default {
    */
   async doPage({ transition, data, page, wrapper }) {
     if (!transition) {
-      throw new Error('No transition found');
+      console.warn('[barba] No transition found');
     }
 
-    const t = transition;
+    const t = transition || {};
     const sync = t.sync === true || false;
 
     this.running = true;
@@ -112,14 +105,6 @@ export default {
         });
       }
 
-      // TODO: Question? Create empty promises for missing optional hooks
-      // const before = t.before ? t.before : () => Promise.resolve();
-      // const beforeLeave = t.beforeLeave ? t.beforeLeave : () => Promise.resolve();
-      // const afterLeave = t.afterLeave ? t.afterLeave : () => Promise.resolve();
-      // const beforeEnter = t.beforeEnter ? t.beforeEnter : () => Promise.resolve();
-      // const afterEnter = t.afterEnter ? t.afterEnter : () => Promise.resolve();
-      // const after = t.after ? t.after : () => Promise.resolve();
-
       this.before(t, data);
 
       if (sync) {
@@ -130,7 +115,7 @@ export default {
         this.addNext(data, wrapper);
 
         // Actions
-        await Promise.all([this.leave(t, data), this.doEnter(t, data)]);
+        await Promise.all([this.leave(t, data), this.enter(t, data)]);
 
         // After actions
         this.afterLeave(t, data);
@@ -150,7 +135,7 @@ export default {
         if (leaveResult !== false) {
           await this.beforeEnter(t, data, page);
           this.addNext(data, wrapper);
-          await this.doEnter(t, data, leaveResult);
+          await this.enter(t, data, leaveResult);
           this.afterEnter(t, data, leaveResult);
         }
       }
@@ -206,32 +191,27 @@ export default {
   // Leave methods
   beforeLeave(t, data) {
     hooks.do('beforeLeave', data, t);
-    // CSS: add leave
-    // CSS: add leave-active
     t.beforeLeave && t.beforeLeave(data);
   },
 
   leave(t, data) {
-    // CSS: remove leave
-    // CSS: add leave-to
     hooks.do('leave', data, t);
 
-    return runAsync(t.leave)(data).then(leaveResult => leaveResult);
+    if (t.leave) {
+      return runAsync(t.leave)(data).then(leaveResult => leaveResult);
+    }
+
+    return Promise.resolve();
   },
 
   afterLeave(t, data) {
     hooks.do('afterLeave', data, t);
-    // CSS: remove leave-to
-    // CSS: remove leave-active
     t.afterLeave && t.afterLeave(data);
   },
 
   // DEV
   // leaveCanceled(t, data) {
   //   hooks.do('leaveCanceled', data, t);
-  //   // CSS: remove leave
-  //   // CSS: remove leave-to
-  //   // CSS: remove leave-active
   //   t.leaveCanceled && t.leaveCanceled(data);
   // },
 
@@ -248,32 +228,27 @@ export default {
     }
 
     hooks.do('beforeEnter', data, t);
-    // CSS: add enter
-    // CSS: add enter-active
     t.beforeEnter && t.beforeEnter(data);
   },
 
-  doEnter(t, data, leaveResult) {
-    // CSS: remove enter
-    // CSS: add enter-to
+  enter(t, data, leaveResult) {
     hooks.do('enter', data, t);
 
-    return runAsync(t.enter)(data, leaveResult);
+    if (t.enter) {
+      return runAsync(t.enter)(data, leaveResult);
+    }
+
+    return Promise.resolve();
   },
 
   afterEnter(t, data) {
     hooks.do('afterEnter', data, t);
-    // CSS: remove enter-to
-    // CSS: remove enter-active
     t.afterEnter && t.afterEnter(data);
   },
 
   // DEV
   // enterCanceled(t, data) {
   //   hooks.do('enterCanceled', data, t);
-  //   // CSS: remove enter
-  //   // CSS: remove enter-to
-  //   // CSS: remove enter-active
   //   t.enterCanceled && t.enterCanceled(data);
   // },
 
