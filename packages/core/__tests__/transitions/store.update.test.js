@@ -12,14 +12,14 @@ it('update all', () => {
   store.add('transition', {});
   expect(store._all).toHaveLength(nb + 1);
   expect(store._appear).toHaveLength(0);
-  expect(store._page).toHaveLength(0);
+  expect(store._page).toHaveLength(nb + 1);
 });
 
 it('update appear', () => {
   store.add('transition', { appear() {} });
   expect(store._all).toHaveLength(nb + 1);
   expect(store._appear).toHaveLength(nb + 1);
-  expect(store._page).toHaveLength(0);
+  expect(store._page).toHaveLength(nb + 1);
 });
 
 it('update page', () => {

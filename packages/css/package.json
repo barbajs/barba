@@ -38,5 +38,8 @@
     "precommit": "lint-staged",
     "test": "eslint src/** && jest --coverage",
     "watch": "jest --colors --watch"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.2.0"
   }
 }

@@ -18,6 +18,10 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
+          options: {
+            // Used for `async`/`await`
+            plugins: ['@babel/plugin-transform-runtime'],
+          },
         },
       },
     ],

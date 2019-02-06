@@ -225,7 +225,9 @@ export default {
 
         return t;
       });
-    this._page = this._all.filter(t => t.enter || t.leave);
+    // TODO: leave/enter mandastory?
+    // this._page = this._all.filter(t => t.enter || t.leave);
+    this._page = this._all.slice(0);
     this._appear = this._all.filter(t => t.appear);
     // If some "to" property, except if based on "route"
     // TODO: how to manage "t.to.route" from @barba/router ???

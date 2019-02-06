@@ -80,26 +80,28 @@ export const css = {
 
   // States
   _start(container, kind) {
-    this._add(container, kind); // CSS: add kind
     this._add(container, `${kind}-active`); // CSS: add kind-active
+    this._add(container, kind); // CSS: add kind
   },
 
-  _next(container, kind) {
-    return new Promise(resolve => {
+  async _next(container, kind) {
+    await this._nextTick();
+
+    return new Promise(async resolve => {
       this._promises[kind] = resolve;
+
       container.addEventListener('transitionend', resolve, false);
 
-      // Wait for 1 frame / repaint
-      window.requestAnimationFrame(() => {
-        this._remove(container, kind); // CSS: remove kind
-        this._add(container, `${kind}-to`); // CSS: add kind-to
-      });
+      await this._nextTick();
+
+      this._remove(container, kind); // CSS: remove kind
+      this._add(container, `${kind}-to`); // CSS: add kind-to
     });
   },
 
   _end(container, kind) {
-    this._remove(container, `${kind}-active`); // CSS: remove kind-active
     this._remove(container, `${kind}-to`); // CSS: remove kind-to
+    this._remove(container, `${kind}-active`); // CSS: remove kind-active
     container.removeEventListener('transitionend', this._promises[kind]);
   },
 
@@ -117,7 +119,7 @@ export const css = {
     this._start(data.current.container, 'appear');
   },
 
-  _appear(data) {
+  _appear(t, data) {
     return this._next(data.current.container, 'appear');
   },
 
@@ -130,7 +132,7 @@ export const css = {
     this._start(data.current.container, 'leave');
   },
 
-  _leave(data) {
+  _leave(t, data) {
     return this._next(data.current.container, 'leave');
   },
 
@@ -143,12 +145,18 @@ export const css = {
     this._start(data.next.container, 'enter');
   },
 
-  _enter(data) {
+  _enter(t, data) {
     return this._next(data.next.container, 'enter');
   },
 
   _afterEnter(data) {
     this._end(data.next.container, 'enter');
+  },
+
+  _nextTick() {
+    return new Promise(resolve => {
+      window.requestAnimationFrame(resolve);
+    });
   },
 };
 
