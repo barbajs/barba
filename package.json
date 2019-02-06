@@ -50,6 +50,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
+    "build:watch": "lerna run build:watch",
     "clean": "lerna clean",
     "clear": "lerna run clear",
     "commit": "npx git-cz || exit 0",
@@ -73,7 +74,7 @@
     "cy:server": "http-server . -p 8111",
     "cy:run": "cypress run --browser chrome",
     "cy:dev": "cypress open",
-    "watch": "yarn jest --watch --verbose false"
+    "watch": "npm-run-all -p build:watch unit:watch"
   },
   "husky": {
     "hooks": {
