@@ -50,7 +50,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
-    "build:watch": "lerna run build:watch",
+    "build:watch": "lerna run build:watch --parallel",
     "clean": "lerna clean",
     "clear": "lerna run clear",
     "commit": "npx git-cz || exit 0",
@@ -72,7 +72,7 @@
     "e2e": "start-server-and-test cy:server :8111 cy:run",
     "e2e:dev": "start-server-and-test cy:server :8111 cy:dev",
     "cy:server": "http-server . -p 8111",
-    "cy:run": "cypress run --browser chrome",
+    "cy:run": "cypress run --browser chrome --record --key 6f43f378-ecdc-4502-9635-b6f5c205429e",
     "cy:dev": "cypress open",
     "watch": "npm-run-all -p build:watch unit:watch"
   },

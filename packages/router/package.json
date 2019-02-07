@@ -28,7 +28,7 @@
   },
   "scripts": {
     "build": "npm-run-all build:commonjs build:umd build:umd:min build:esm",
-    "build:watch": "npm-run-all build:commonjs build:umd:watch build:umd:min build:esm:watch",
+    "build:watch": "npm-run-all -l -p build:umd:watch build:esm:watch",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build:esm": "cpx 'src/**/*.{mjs,js,json}' esm",
     "build:esm:watch": "cpx 'src/**/*.{mjs,js,json}' esm -w",
