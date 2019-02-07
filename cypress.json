@@ -6,5 +6,6 @@
   "pluginsFile": "./cypress/plugins/index.js",
   "screenshotsFolder": "./cypress/screenshots",
   "supportFile": "./cypress/support/index.js",
-  "videosFolder": "./cypress/videos"
+  "videosFolder": "./cypress/videos",
+  "projectId": "ngfcig"
 }
