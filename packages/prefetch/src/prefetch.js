@@ -82,7 +82,7 @@ export const prefetch = {
           // Add some [data-barba-preload="true/false"] ?
           if (
             !this.barba.cache.has(url) &&
-            !this.prevent.check(el, {}, el.href)
+            !this.barba.prevent.check(el, {}, el.href)
           ) {
             this._observer.observe(el);
             toPrefetch.add(url);
