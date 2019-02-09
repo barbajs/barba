@@ -1,7 +1,7 @@
 import { version } from '../package.json';
 import { attributeSchema, pageSchema } from './schema';
 import { manager, store } from './transitions';
-import Logger from './Logger';
+import LoggerClass from './Logger';
 import cache from './cache';
 import dom from './dom';
 import history from './history';
@@ -35,7 +35,7 @@ export default {
    * @memberof @barba/core
    * @type {Logger}
    */
-  logger: new Logger('@barba/core'),
+  Logger: LoggerClass,
 
   /**
    * Transitions manager
@@ -172,12 +172,13 @@ export default {
     debug = false,
     log: logLevel = 'off',
   } = {}) {
-    Logger.level = debug === true ? 'debug' : logLevel;
+    LoggerClass.level = debug === true ? 'debug' : logLevel;
+    this.logger = new this.Logger('@barba/core');
 
     this._requestError = requestError;
     this._timeout = timeout;
-    this._useCache = useCache;
-    this._usePrefetch = usePrefetch;
+    this.useCache = useCache;
+    this.usePrefetch = usePrefetch;
 
     // Init dom with data-attributes schema
     dom.init({ attributeSchema: schema });
@@ -222,7 +223,7 @@ export default {
 
     // Bindings
     /* istanbul ignore else */
-    if (this._useCache && this._usePrefetch) {
+    if (this.useCache && this.usePrefetch) {
       this._onLinkEnter = this._onLinkEnter.bind(this);
       this._onLinkClick = this._onLinkClick.bind(this);
     }
@@ -249,7 +250,7 @@ export default {
 
   _bind() {
     /* istanbul ignore else */
-    if (this._useCache && this._usePrefetch) {
+    if (this.useCache && this.usePrefetch) {
       document.addEventListener('mouseover', this._onLinkEnter);
       document.addEventListener('touchstart', this._onLinkEnter);
     }
@@ -259,7 +260,7 @@ export default {
 
   // DEV
   // _unbind() {
-  //   if (this._useCache && this._usePrefetch) {
+  //   if (this.useCache && this.usePrefetch) {
   //     document.removeEventListener('mouseover', this._onLinkEnter);
   //     document.removeEventListener('touchstart', this._onLinkEnter);
   //   }
@@ -374,7 +375,7 @@ export default {
 
     let page;
 
-    if (this._useCache) {
+    if (this.useCache) {
       /* eslint-disable indent */
       page = this.cache.has(url)
         ? this.cache.get(url)

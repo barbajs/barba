@@ -5,6 +5,32 @@ global.window.clearTimeout = jest.fn();
 const requestError = jest.fn();
 const url = 'url';
 
+afterEach(() => {
+  delete global.navigator.connection;
+});
+
+it('throws bad connection error', async () => {
+  const error = new Error('Bad connection or reduced data usage mode');
+
+  global.navigator.connection = {
+    effectiveType: '2g',
+    saveData: false,
+  };
+
+  await expect(request(url, 2e3, requestError)).rejects.toEqual(error);
+});
+
+it('throws reduced data error', async () => {
+  const error = new Error('Bad connection or reduced data usage mode');
+
+  global.navigator.connection = {
+    effectiveType: '3g',
+    saveData: true,
+  };
+
+  await expect(request(url, 2e3, requestError)).rejects.toEqual(error);
+});
+
 it('throws fetch error', async () => {
   const error = new Error('Fetch error');
 

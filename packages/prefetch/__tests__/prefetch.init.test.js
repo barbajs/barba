@@ -35,3 +35,21 @@ it('init', () => {
 it('registers hooks', () => {
   expect(barba.hooks._registered.after).toHaveLength(1);
 });
+
+it('warns with cache/prefetch disabled', () => {
+  prefetch._logger.warn = jest.fn();
+  barba.use(prefetch);
+  barba.init({
+    useCache: false,
+    usePrefetch: true,
+  });
+
+  expect(prefetch._logger.warn).toHaveBeenCalled();
+
+  barba.init({
+    useCache: true,
+    usePrefetch: false,
+  });
+
+  expect(prefetch._logger.warn).toHaveBeenCalled();
+});

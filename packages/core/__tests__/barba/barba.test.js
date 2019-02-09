@@ -12,7 +12,7 @@ import { version } from '../../package.json';
 
 it('has defaults', () => {
   expect(barba.version).toBe(version);
-  expect(barba.logger).toBeInstanceOf(Logger);
+  expect(barba.Logger).toBe(Logger);
   expect(barba.manager).toBe(manager);
   expect(barba.store).toBe(store);
   expect(barba.cache).toBe(cache);

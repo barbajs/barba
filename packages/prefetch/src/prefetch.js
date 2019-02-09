@@ -31,6 +31,26 @@ export const prefetch = {
     this.barba = barba;
     this._root = root;
     this._timeout = timeout;
+    this._logger = new this.barba.Logger('@barba/prefetch');
+  },
+
+  /**
+   * Plugin initialisation
+   *
+   * @memberof @barba/prefetch
+   * @returns {undefined}
+   */
+  init() {
+    if (!this.barba.usePrefetch) {
+      this._logger.warn('barba.usePrefetch is disabled');
+
+      return;
+    }
+    if (!this.barba.useCache) {
+      this._logger.warn('barba.useCache is disabled');
+
+      return;
+    }
 
     /**
      * Init intersection observer
@@ -62,15 +82,6 @@ export const prefetch = {
         }
       });
     });
-  },
-
-  /**
-   * Plugin initialisation
-   *
-   * @memberof @barba/prefetch
-   * @returns {undefined}
-   */
-  init() {
     this._observe(this._timeout);
     // Register hooks
     this.barba.hooks.after(this._observe, this);

@@ -105,7 +105,7 @@ it('do go [waiting]', async () => {
 });
 
 it('do go [no use cache]', () => {
-  barba._useCache = false;
+  barba.useCache = false;
 
   manager.doPage = jest.fn();
   history.add = jest.fn();

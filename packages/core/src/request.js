@@ -37,10 +37,28 @@ function timeout(url, ms, request, requestError) {
  * Fetch content
  *
  * @param {string} url url to fetch
- * @returns {string} text content
+ * @returns {Promise} text content or error
  * @private
  */
 async function request(url) {
+  const conn = navigator.connection;
+
+  /* istanbul ignore else */
+  if (conn) {
+    // Don't prefetch if the user is on 2G or if Save-Data is enabled...
+    // http://wicg.github.io/netinfo/#effectivetype-attribute
+    // http://wicg.github.io/netinfo/#savedata-attribute
+    /* istanbul ignore else */
+    if (
+      (conn.effectiveType && conn.effectiveType.match(/2g/)) ||
+      conn.saveData
+    ) {
+      return Promise.reject(
+        new Error('Bad connection or reduced data usage mode')
+      );
+    }
+  }
+
   const headers = new Headers({
     'x-barba': 'yes',
   });
