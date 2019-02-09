@@ -1,27 +1,33 @@
-const requestTimeout = 5000;
+const requestTimeout = 2e3;
 
 /**
  * Timeout wrapper
  *
+ * @param {string} url url fetched
  * @param {number} ms milliseconds
- * @param {promise} promise async function
+ * @param {promise} request request async function
+ * @param {function} requestError request error callback
  * @returns {promise} async function resolution
  * @private
  */
-function timeout(ms, promise) {
+function timeout(url, ms, request, requestError) {
   return new Promise((resolve, reject) => {
     const timeoutId = window.setTimeout(() => {
-      reject(new Error('Timeout error'));
+      const error = new Error('Timeout error');
+
+      requestError(url, error);
+      reject(error);
     }, ms);
 
-    promise.then(
+    request.then(
       res => {
         window.clearTimeout(timeoutId);
         resolve(res);
       },
-      err => {
+      error => {
         window.clearTimeout(timeoutId);
-        reject(err);
+        requestError(url, error);
+        reject(error);
       }
     );
   });
@@ -40,21 +46,22 @@ async function request(url) {
   });
 
   try {
-    const res = await fetch(url, {
+    const result = await fetch(url, {
       method: 'GET',
       headers,
       cache: 'default',
     });
 
-    if (res.status >= 200 && res.status < 300) {
+    if (result.status >= 200 && result.status < 300) {
       // DEV: should return DOM directly ?
-      return await res.text();
+      return await result.text();
     }
 
-    throw new Error(res.statusText || res.status);
+    throw new Error(result.statusText || result.status);
   } catch (error) {
     throw error;
   }
 }
 
-export default url => timeout(requestTimeout, request(url));
+export default (url, ttl = requestTimeout, requestError) =>
+  timeout(url, ttl, request(url), requestError);

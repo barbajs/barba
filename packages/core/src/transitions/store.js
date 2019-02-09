@@ -1,4 +1,5 @@
 import { addPriority } from './utils';
+import Logger from '../Logger';
 
 /**
  * Store and sort transitions
@@ -7,6 +8,15 @@ import { addPriority } from './utils';
  * @type {object}
  */
 export default {
+  /**
+   * Logger
+   *
+   * @memberof @barba/core
+   * @type {Logger}
+   * @private
+   */
+  _logger: new Logger('@barba/core'),
+
   /**
    * Rules for prioritazing transitions
    *
@@ -51,15 +61,6 @@ export default {
    * @private
    */
   _page: [],
-
-  /**
-   * Debug mode, log matchong criteria for active transition
-   *
-   * @memberof @barba/core/transitions/store
-   * @type {boolean}
-   * @private
-   */
-  _debug: false,
 
   /**
    * To know if we should wait for next container before getting transition
@@ -191,14 +192,8 @@ export default {
 
       return valid;
     });
-    // DEV transitions are now correctly sorted
-    // .sort(byDirections);
 
-    if (this._debug) {
-      // Debug info to known criteria applied for matching transition
-      // TODO: error/warn/info handler
-      console.debug('[@barba/core]', matching.get(active));
-    }
+    this._logger.info(matching.get(active));
 
     return active;
   },
@@ -225,8 +220,6 @@ export default {
 
         return t;
       });
-    // TODO: leave/enter mandastory?
-    // this._page = this._all.filter(t => t.enter || t.leave);
     this._page = this._all.slice(0);
     this._appear = this._all.filter(t => t.appear);
     // If some "to" property, except if based on "route"

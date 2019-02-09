@@ -1,4 +1,5 @@
 import { map } from './utils';
+import Logger from './Logger';
 
 /**
  * Manage the hooks
@@ -7,6 +8,15 @@ import { map } from './utils';
  * @type {object}
  */
 export default {
+  /**
+   * Logger
+   *
+   * @memberof @barba/core
+   * @type {Logger}
+   * @private
+   */
+  _logger: new Logger('@barba/core'),
+
   /**
    * List of available hooks
    *
@@ -113,8 +123,8 @@ export default {
    * @returns {undefined}
    */
   help() {
-    console.info(`[@barba/core] Available hooks: ${this._available}`);
-    console.info(
+    this._logger.info(`[@barba/core] Available hooks: ${this._available}`);
+    this._logger.info(
       `[@barba/core] Registered hooks: ${map(
         this._registered,
         (hooks, name) => name

@@ -3,11 +3,11 @@ import { store } from '../../src/transitions';
 store.init([], true);
 
 it('has debug info', () => {
-  console.debug = jest.fn();
+  store._logger.info = jest.fn();
   store.get({
     current: true,
     next: true,
   });
 
-  expect(console.debug).toHaveBeenCalledTimes(1);
+  expect(store._logger.info).toHaveBeenCalledTimes(1);
 });

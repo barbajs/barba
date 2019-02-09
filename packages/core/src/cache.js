@@ -40,6 +40,17 @@ export default {
   },
 
   /**
+   * Delete value from cache
+   *
+   * @memberof @barba/core/cache
+   * @param {string} key key
+   * @returns {boolean} delete result status
+   */
+  delete(key) {
+    return delete this._data[key];
+  },
+
+  /**
    * Check if value exists into cache
    *
    * @memberof @barba/core/cache

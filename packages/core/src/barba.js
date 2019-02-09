@@ -1,6 +1,7 @@
 import { version } from '../package.json';
 import { attributeSchema, pageSchema } from './schema';
 import { manager, store } from './transitions';
+import Logger from './Logger';
 import cache from './cache';
 import dom from './dom';
 import history from './history';
@@ -11,6 +12,7 @@ import viewsManager from './views';
 import * as utils from './utils';
 
 import './polyfills';
+import './defs';
 
 /**
  * Barba core
@@ -28,12 +30,12 @@ export default {
   version,
 
   /**
-   * Transitions store
+   * Logger
    *
    * @memberof @barba/core
-   * @type {store}
+   * @type {Logger}
    */
-  store,
+  logger: new Logger('@barba/core'),
 
   /**
    * Transitions manager
@@ -44,12 +46,12 @@ export default {
   manager,
 
   /**
-   * Prevent checker
+   * Transitions store
    *
    * @memberof @barba/core
-   * @type {prevent}
+   * @type {store}
    */
-  prevent,
+  store,
 
   /**
    * Cache
@@ -58,6 +60,22 @@ export default {
    * @type {cache}
    */
   cache,
+
+  /**
+   * Hooks
+   *
+   * @memberof @barba/core
+   * @type {hooks}
+   */
+  hooks: hooks.init(),
+
+  /**
+   * Prevent checker
+   *
+   * @memberof @barba/core
+   * @type {prevent}
+   */
+  prevent,
 
   /**
    * Request (fetch) manager
@@ -76,19 +94,12 @@ export default {
   utils,
 
   /**
-   * Hooks
-   *
-   * @memberof @barba/core
-   * @type {hooks}
-   */
-  hooks: hooks.init(),
-
-  /**
    * Page object structure
    *
    * @memberof @barba/core
-   * @type {import('./defs.js').pageSchema}
+   * @type {object}
    */
+  // @type {import('./defs.js').pageSchema}
   pageSchema,
 
   /**
@@ -103,8 +114,9 @@ export default {
   /**
    * Use plugin
    *
+   * @memberof @barba/core
    * @param {plugin} plugin - Plugin
-   * @param  {...any} args - Other arguments
+   * @param {...any} args - Other arguments
    * @returns {this} - Current instance
    */
   use(plugin, ...args) {
@@ -129,28 +141,41 @@ export default {
   },
 
   /* eslint-disable */
+  // @param {import('./defs.js').transition[]} options.transitions - Transition array
+  // @param {import('./defs.js').attributeSchema=} options.schema - Schema
+  /* eslint-enable */
   /**
    * Init barba
    *
    * @memberof @barba/core
-   * @param {Object} options - Options
-   * @param {boolean} [options.debug=false] - Debug
-   * @param {import('./defs.js').transition[]} options.transitions - Transition array
-   * @param {import('./defs.js').attributeSchema=} options.schema - Schema
-   * @param {boolean} [options.useCache=true] - Cache
-   * @param {boolean} [options.usePrefetch=true] - Prefetch
+   * @param {object} options - Options
+   * @param {transition[]} [options.transitions=[]] - Transitions array
+   * @param {view[]} [options.views=[]] - Views array
+   * @param {object} [options.schema=attributeSchema] - Schema
+   * @param {function} [options.requestError=undefined] - Request error callback
+   * @param {number} [options.timeout=5000] - Request timeout
+   * @param {boolean} [options.useCache=true] - Enable cache
+   * @param {boolean} [options.usePrefetch=true] - Enable prefetch
+   * @param {boolean} [options.debug=false] - Debug mode
+   * @param {string} [options.log='off'] - Log level
    * @returns {undefined}
    */
-  /* eslint-enable */
   init({
-    debug = false,
     transitions = [],
     views = [],
     schema = attributeSchema,
     prevent: preventCustom = null,
+    timeout = 2e3,
+    requestError = undefined,
     useCache = true,
     usePrefetch = true,
+    debug = false,
+    log: logLevel = 'off',
   } = {}) {
+    Logger.level = debug === true ? 'debug' : logLevel;
+
+    this._requestError = requestError;
+    this._timeout = timeout;
     this._useCache = useCache;
     this._usePrefetch = usePrefetch;
 
@@ -161,7 +186,7 @@ export default {
     // Add prevent custom
     if (preventCustom !== null) {
       if (typeof preventCustom !== 'function') {
-        throw new Error('Prevent should be a function');
+        throw new Error('[@barba/core] Prevent should be a function');
       }
 
       this.prevent.add('preventCustom', preventCustom);
@@ -170,14 +195,14 @@ export default {
     // Get wrapper
     this._wrapper = dom.getWrapper();
     if (!this._wrapper) {
-      throw new Error('No Barba wrapper found');
+      throw new Error('[@barba/core] No Barba wrapper found');
     }
 
     // A11y
     this._wrapper.setAttribute('aria-live', 'polite');
 
     // Store
-    this.store = store.init(transitions, debug);
+    this.store = store.init(transitions);
     // Views manager
     viewsManager.init(this, views);
 
@@ -188,9 +213,10 @@ export default {
     history.add(this._current.url, this._current.namespace);
 
     if (!this._current.container) {
-      throw new Error('No Barba container found');
+      throw new Error('[@barba/core] No Barba container found');
     }
 
+    // TODO: check network connectivity / reduced data usage mode?
     // Add to cache
     this.cache.set(this._current.url, Promise.resolve(this._current.html));
 
@@ -249,8 +275,6 @@ export default {
     }
 
     // Check prevent
-    // if (!el || prevent._tests.hasAttr({ el })) {
-    // TODO: all prevent tests before fetching/caching?
     if (!el || this.prevent.check(el, e, el.href)) {
       return;
     }
@@ -262,7 +286,14 @@ export default {
       return;
     }
 
-    this.cache.set(url, this.request(url));
+    this.cache.set(
+      url,
+      this.request(
+        url,
+        this._timeout,
+        this._onRequestError.bind(this, 'enter')
+      ).catch(error => this.logger.error(error))
+    );
   },
 
   _onLinkClick(e) {
@@ -282,7 +313,7 @@ export default {
 
     // Check prevent sameURL
     if (!el || this.prevent.sameUrl(el.href)) {
-      // TODO: do nothing or force reload?
+      // Same URL -> force reload
       this.force(el.href);
 
       return;
@@ -297,6 +328,25 @@ export default {
     this.go(url, 'popstate');
   },
 
+  _onRequestError(action, ...args) {
+    const [url, error] = args;
+
+    this.cache.delete(url);
+
+    // Custom requestError returning false will return here;
+    if (
+      this._requestError &&
+      this._requestError(action, url, error) === false
+    ) {
+      return;
+    }
+
+    // Force page change
+    if (action === 'click') {
+      this.force(url);
+    }
+  },
+
   async appear() {
     // Check if appear transition
     if (this.store.hasAppear) {
@@ -306,9 +356,7 @@ export default {
 
         await this.manager.doAppear({ transition, data });
       } catch (error) {
-        // TODO: handle errors
-        // console.error('[@barba/core]', error);
-        throw new Error(error);
+        this.logger.error(error);
       }
     }
   },
@@ -324,17 +372,27 @@ export default {
     this._next.url = url;
     this._trigger = trigger;
 
-    // TODO: question? can be used for "back/reverse" transition (naming?)
-    // bof: which use case. do not play well with go/back/go…
-    // const back = history.previous() && url === history.previous().url;
     let page;
 
     if (this._useCache) {
+      /* eslint-disable indent */
       page = this.cache.has(url)
         ? this.cache.get(url)
-        : this.cache.set(url, this.request(url));
+        : this.cache.set(
+            url,
+            this.request(
+              url,
+              this._timeout,
+              this._onRequestError.bind(this, 'click')
+            )
+          );
+      /* eslint-enable indent */
     } else {
-      page = this.request(url);
+      page = this.request(
+        url,
+        this._timeout,
+        this._onRequestError.bind(this, 'click')
+      );
     }
 
     // Need to wait before getting the right transition
@@ -375,9 +433,7 @@ export default {
     } catch (error) {
       // TODO: !!! infinite loop on transition error???
       history.cancel();
-      // TODO: handle errors
-      // console.error('[@barba/core]', error);
-      throw new Error(error);
+      this.logger.error(error);
     }
   },
 

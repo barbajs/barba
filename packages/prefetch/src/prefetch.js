@@ -1,5 +1,5 @@
 import { version } from '../package.json';
-import './polyfills';
+import { requestIdleCallback } from './polyfills';
 
 const toPrefetch = new Set();
 
@@ -23,13 +23,21 @@ export const prefetch = {
    *
    * @memberof @barba/prefetch
    * @param {barba} barba barba instance
-   * @param {HTMLElement} [root = document.body] routes
+   * @param {HTMLElement} [root = document.body] root element
+   * @param {number} [timeout = 2e3] timeout before observing
    * @returns {undefined}
    */
   install(barba, { root = document.body, timeout = 2e3 } = {}) {
     this.barba = barba;
     this._root = root;
     this._timeout = timeout;
+
+    /**
+     * Init intersection observer
+     * when intersecting, it will check if URL should be prefetched
+     * then unobserve the element
+     * and, if no cache data, fetch the page
+     */
     /* istanbul ignore next */
     this._observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -41,7 +49,14 @@ export const prefetch = {
             this._observer.unobserve(el);
             // Prefetch and cache
             if (!this.barba.cache.has(url)) {
-              this.barba.cache.set(url, this.barba.request(url));
+              this.barba.cache.set(
+                url,
+                this.barba.request(
+                  url,
+                  this.barba._timeout,
+                  this._onRequestError.bind(this, 'prefetch')
+                )
+              );
             }
           }
         }
@@ -72,7 +87,7 @@ export const prefetch = {
 
   _observe(timeout) {
     /* istanbul ignore next */
-    window.requestIdleCallback(
+    requestIdleCallback(
       () => {
         // If not, find all links and use IntersectionObserver.
         this._root.querySelectorAll('a').forEach(el => {

@@ -1,71 +1,68 @@
 import request from '../src/request';
 
 global.Headers = class {};
+global.window.clearTimeout = jest.fn();
+const requestError = jest.fn();
+const url = 'url';
 
-// DEV
-// it('pass', () => {
-//   expect(true).toBeTruthy();
-// });
+it('throws fetch error', async () => {
+  const error = new Error('Fetch error');
 
-// it('example', async () => {
-//   async function check() {
-//     throw new Error('fetch error');
-//   }
-
-//   await expect(check()).rejects.toEqual(new Error('fetch error'));
-// });
-
-it('throw fetch error', async () => {
-  global.window.clearTimeout = jest.fn();
   global.fetch = jest.fn().mockImplementation(() => {
-    throw new Error('Fetch error');
+    throw error;
   });
 
-  await expect(request()).rejects.toEqual(new Error('Fetch error'));
+  await expect(request(url, 5e3, requestError)).rejects.toEqual(error);
   expect(global.window.clearTimeout).toHaveBeenCalledTimes(1);
+  expect(requestError).toHaveBeenCalledWith(url, error);
 });
 
-it('throw result error with "status"', async () => {
-  global.window.clearTimeout = jest.fn();
+it('throws result error with "status"', async () => {
+  const error = new Error(404);
+
   global.fetch = jest.fn().mockImplementation(() => ({
     status: 404,
   }));
 
-  await expect(request()).rejects.toEqual(new Error(404));
+  await expect(request(url, 2e3, requestError)).rejects.toEqual(error);
   expect(global.window.clearTimeout).toHaveBeenCalledTimes(1);
+  expect(requestError).toHaveBeenCalledWith(url, error);
 });
 
-it('throw result error with "statusText"', async () => {
-  global.window.clearTimeout = jest.fn();
+it('throws result error with "statusText"', async () => {
+  const error = new Error('Not found');
+
   window.fetch = jest.fn().mockImplementation(() => ({
     status: 404,
     statusText: 'Not found',
   }));
 
-  await expect(request()).rejects.toEqual(new Error('Not found'));
+  await expect(request(url, 2e3, requestError)).rejects.toEqual(error);
   expect(global.window.clearTimeout).toHaveBeenCalledTimes(1);
+  expect(requestError).toHaveBeenCalledWith(url, error);
 });
 
 it(
-  'throw timeout error',
+  'throws timeout error',
   async () => {
-    global.window.clearTimeout = jest.fn();
+    const error = new Error('Timeout error');
+
     window.fetch = jest.fn().mockImplementation(
       () =>
         new Promise(resolve => {
           setTimeout(() => {
             resolve();
-          }, 8000);
+          }, 200);
         })
     );
 
-    await expect(request()).rejects.toEqual(new Error('Timeout error'));
+    await expect(request(url, 1, requestError)).rejects.toEqual(error);
+    expect(requestError).toHaveBeenCalledWith(url, error);
   },
-  10000
+  1000
 );
 
 it('fetch text content', async () => {
-  global.window.clearTimeout = jest.fn();
   window.fetch = jest.fn().mockImplementation(() => ({
     status: 200,
     text: () => Promise.resolve('content'),
@@ -73,4 +70,5 @@ it('fetch text content', async () => {
 
   await expect(request()).resolves.toBe('content');
   expect(global.window.clearTimeout).toHaveBeenCalledTimes(1);
+  expect(requestError).not.toHaveBeenCalled();
 });

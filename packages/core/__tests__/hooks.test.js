@@ -94,14 +94,11 @@ it('do with context', () => {
 });
 
 it('print help', () => {
-  global.console = {
-    ...global.console,
-    info: jest.fn(),
-  };
+  hooks._logger.info = jest.fn();
 
   hooks.init();
   hooks[hookName]();
   hooks.help();
 
-  expect(global.console.info).toHaveBeenCalledTimes(2);
+  expect(hooks._logger.info).toHaveBeenCalledTimes(2);
 });

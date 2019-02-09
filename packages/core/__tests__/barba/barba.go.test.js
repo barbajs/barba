@@ -134,26 +134,24 @@ it('force when manager running', () => {
   manager.running = false;
 });
 
-it('catch error', async () => {
-  console.error = jest.fn();
+it('catches error', async () => {
+  expect.assertions(3);
+  barba.logger.error = jest.fn();
+  barba.manager._logger.error = jest.fn();
   history.cancel = jest.fn();
   spyPage.mockRestore();
+  const errorLeave = new Error('Leave error');
+  const errorTransition = new Error('Transition error');
 
   store.add('transition', {
     leave() {
-      throw new Error('test');
+      throw errorLeave;
     },
   });
 
-  let message;
+  await barba.go('http://localhost');
 
-  try {
-    await barba.go('http://localhost');
-  } catch (error) {
-    ({ message } = error);
-  }
-
-  expect(console.error).toHaveBeenCalledTimes(1);
+  expect(barba.manager._logger.error).toHaveBeenCalledWith(errorLeave);
+  expect(barba.logger.error).toHaveBeenCalledWith(errorTransition);
   expect(history.cancel).toHaveBeenCalledTimes(1);
-  expect(message).toBe('Error: Transition error');
 });

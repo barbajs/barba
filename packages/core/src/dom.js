@@ -57,7 +57,6 @@ export default {
    * @returns {string} stringified html
    * @memberof @barba/core/dom
    */
-  // TODO: useless/unused?
   // getDocument(el = document.documentElement) {
   //   return this.toString(el);
   // },

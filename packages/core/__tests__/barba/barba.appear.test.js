@@ -19,23 +19,21 @@ it('do appear', () => {
   spyAppear.mockRestore();
 });
 
-it('catch error', async () => {
-  console.error = jest.fn();
+it('catches error', async () => {
+  expect.assertions(2);
+  barba.logger.error = jest.fn();
+  barba.manager._logger.error = jest.fn();
+  const errorAppear = new Error('Appear error');
+  const errorTransition = new Error('Transition error');
 
   store.add('transition', {
     appear() {
-      throw new Error('test');
+      throw errorAppear;
     },
   });
 
-  let message;
+  await barba.appear();
 
-  try {
-    await barba.appear();
-  } catch (error) {
-    ({ message } = error);
-  }
-
-  expect(console.error).toHaveBeenCalledTimes(1);
-  expect(message).toBe('Error: Transition error');
+  expect(barba.manager._logger.error).toHaveBeenCalledWith(errorAppear);
+  expect(barba.logger.error).toHaveBeenCalledWith(errorTransition);
 });

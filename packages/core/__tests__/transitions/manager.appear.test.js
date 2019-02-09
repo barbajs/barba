@@ -13,16 +13,14 @@ hooks.do = jest.fn();
 const data = 'data';
 
 it('needs transition', async () => {
-  console.warn = jest.fn();
   expect.assertions(1);
+  manager._logger.warn = jest.fn();
 
   await manager.doAppear({
     transition: undefined,
     data,
   });
-  expect(console.warn).toHaveBeenCalledWith(
-    '[@barba/core] No transition found'
-  );
+  expect(manager._logger.warn).toHaveBeenCalledWith('No transition found');
 });
 
 it('calls methods', async () => {
@@ -64,9 +62,10 @@ it('calls hooks', async () => {
 
 it('catches error', async () => {
   expect.assertions(3);
+  manager._logger.error = jest.fn();
 
   const appearError = () => {
-    throw new Error('test');
+    throw new Error('Test');
   };
   const t = { appear: appearError, appearCanceled };
 

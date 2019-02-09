@@ -1,12 +1,7 @@
 import runAsync from 'run-async';
 import dom from '../dom';
 import hooks from '../hooks';
-
-// TODO: define events to trigger
-// TODO: define hook params (all vs specific -current or next-)
-// TODO: error handling
-// TODO: "resolve" with data? pass through all the "pipeline"? (at least between leave/enter?)
-// TODO: returns ?
+import Logger from '../Logger';
 
 /**
  * Manage the transitions
@@ -15,6 +10,15 @@ import hooks from '../hooks';
  * @type {object}
  */
 export default {
+  /**
+   * Logger
+   *
+   * @memberof @barba/core
+   * @type {Logger}
+   * @private
+   */
+  _logger: new Logger('@barba/core'),
+
   /**
    * Animation running status
    *
@@ -37,7 +41,7 @@ export default {
    */
   async doAppear({ transition, data }) {
     if (!transition) {
-      console.warn('[@barba/core] No transition found');
+      this._logger.warn('No transition found');
     }
 
     const t = transition || {};
@@ -56,8 +60,7 @@ export default {
       .catch(error => {
         hooks.do('appearCanceled', data, t);
         t.appearCanceled && t.appearCanceled(data);
-        // TODO: remove console
-        console.error('[@barba/core]', error);
+        this._logger.error(error);
         throw new Error('Transition error');
       });
 
@@ -89,7 +92,7 @@ export default {
    */
   async doPage({ transition, data, page, wrapper }) {
     if (!transition) {
-      console.warn('[@barba/core] No transition found');
+      this._logger.warn('No transition found');
     }
 
     const t = transition || {};
@@ -100,13 +103,7 @@ export default {
     try {
       // Check sync mode, wait for next content
       if (sync) {
-        await page.then(html => {
-          const nextDocument = dom.toDocument(html);
-
-          data.next.namespace = dom.getNamespace(nextDocument);
-          data.next.container = dom.getContainer(nextDocument);
-          data.next.html = dom.getHtml(nextDocument);
-        });
+        await this._waitForPage(page, data);
       }
 
       this.before(t, data);
@@ -114,7 +111,7 @@ export default {
       if (sync) {
         // Before actions
         this.beforeLeave(t, data);
-        await this.beforeEnter(t, data, page);
+        this.beforeEnter(t, data, page);
 
         this.addNext(data, wrapper);
 
@@ -130,14 +127,28 @@ export default {
 
         // Leave
         this.beforeLeave(t, data);
-        leaveResult = await this.leave(t, data);
+        // TODO: wait for all: leave AND page
+        leaveResult = await Promise.all([
+          this.leave(t, data),
+          this._waitForPage(page, data),
+        ])
+          .then(values => values[0])
+          .catch(error => {
+            throw error;
+          });
+
+        // DEV
+        // leaveResult = await this.leave(t, data);
+
         this.afterLeave(t, data);
+        // TODO: check here "valid" page result
+        // before going further
         this.removeCurrent(data);
 
         // Enter
         /* istanbul ignore else */
         if (leaveResult !== false) {
-          await this.beforeEnter(t, data, page);
+          this.beforeEnter(t, data, page);
           this.addNext(data, wrapper);
           await this.enter(t, data, leaveResult);
           this.afterEnter(t, data, leaveResult);
@@ -150,36 +161,50 @@ export default {
       // this.leaveCanceled(t, data);
       // this.enterCanceled(t, data);
 
-      // TODO: remove console
-      console.error('[@barba/core]', error);
+      this._logger.error(error);
       throw new Error('Transition error');
     }
 
     this.running = false;
   },
 
+  // Wait
+  _waitForPage(page, data) {
+    if (data.next.html) {
+      return Promise.resolve();
+    }
+
+    return page.then(html => {
+      const nextDocument = dom.toDocument(html);
+
+      data.next.namespace = dom.getNamespace(nextDocument);
+      data.next.container = dom.getContainer(nextDocument);
+      data.next.html = dom.getHtml(nextDocument);
+    });
+  },
+
   // QUESTION: granular error catching?
   // Execute animation steps
   // Allows to catch errors for specific step
   // with the right cancel method
-  async action(name, t, data, extra) {
-    /* istanbul ignore next */
-    try {
-      return await this[name](t, data, extra);
-    } catch (error) {
-      // TODO: use cases for cancellation
-      // if (/leave/i.test(name)) {
-      //   this.leaveCanceled(t, data);
-      // }
-      // if (/enter/i.test(name)) {
-      //   this.enterCanceled(t, data);
-      // }
+  // async action(name, t, data, extra) {
+  //   /* istanbul ignore next */
+  //   try {
+  //     return await this[name](t, data, extra);
+  //   } catch (error) {
+  //     // TODO: use cases for cancellation
+  //     // if (/leave/i.test(name)) {
+  //     //   this.leaveCanceled(t, data);
+  //     // }
+  //     // if (/enter/i.test(name)) {
+  //     //   this.enterCanceled(t, data);
+  //     // }
 
-      // TODO: remove console
-      console.error('[@barba/core]', error);
-      throw new Error('Transition error');
-    }
-  },
+  //     // TODO: remove console
+  //     console.error('[@barba/core]', error);
+  //     throw new Error('Transition error');
+  //   }
+  // },
 
   // Global methods
   before(t, data) {
@@ -220,17 +245,7 @@ export default {
   // },
 
   // Enter methods
-  async beforeEnter(t, data, page) {
-    if (!data.next.html) {
-      await page.then(html => {
-        const nextDocument = dom.toDocument(html);
-
-        data.next.namespace = dom.getNamespace(nextDocument);
-        data.next.container = dom.getContainer(nextDocument);
-        data.next.html = dom.getHtml(nextDocument);
-      });
-    }
-
+  beforeEnter(t, data) {
     hooks.do('beforeEnter', data, t);
     t.beforeEnter && t.beforeEnter(data);
   },
