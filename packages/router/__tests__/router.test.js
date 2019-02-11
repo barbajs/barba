@@ -12,6 +12,10 @@ document.body.appendChild(container);
 
 const routes = [
   {
+    name: 'home',
+    path: '(/|/index.html)',
+  },
+  {
     name: 'foo',
     path: '/foo/:bar',
   },
@@ -28,7 +32,7 @@ it('has routes', () => {
     routes,
   });
 
-  expect(router._routeNames).toEqual(['foo']);
+  expect(router._routeNames).toEqual(['home', 'foo']);
   expect(router._routesByName.foo).toEqual({
     path: '/foo/:bar',
     regex: /^\/foo\/([^/]+?)(?:\/)?$/i,
@@ -51,7 +55,7 @@ it('has duplicate routes', () => {
     routes,
   });
 
-  expect(console.warn).toHaveBeenCalledTimes(1);
+  expect(console.warn).toHaveBeenCalledTimes(2);
 });
 
 it('resolves url', () => {
@@ -66,7 +70,19 @@ it('resolves unknown url', () => {
   expect(result).toBeNull();
 });
 
-it('resolves data urls', () => {
+it('resolves data urls (home)', () => {
+  const data = {
+    current: { url: 'http://localhost/' },
+    next: { url: 'http://localhost/' },
+  };
+
+  router._resolveRoutes(data);
+
+  expect(data.current.route).toBe('home');
+  expect(data.next.route).toBe('home');
+});
+
+it('resolves data urls (foo)', () => {
   const data = {
     current: { url: 'http://localhost/foo/current' },
     next: { url: 'http://localhost/foo/next' },
