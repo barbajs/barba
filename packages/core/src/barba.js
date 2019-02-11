@@ -180,9 +180,8 @@ export default {
     this.useCache = useCache;
     this.usePrefetch = usePrefetch;
 
-    // Init dom with data-attributes schema
+    // 1. Init modules with data-attributes schema
     dom.init({ attributeSchema: schema });
-    // Init prevent with data-attributes schema
     this.prevent.init({ attributeSchema: schema });
     // Add prevent custom
     if (preventCustom !== null) {
@@ -193,46 +192,40 @@ export default {
       this.prevent.add('preventCustom', preventCustom);
     }
 
-    // Get wrapper
+    // 2. Wrapper
     this._wrapper = dom.getWrapper();
     if (!this._wrapper) {
       throw new Error('[@barba/core] No Barba wrapper found');
     }
+    this._wrapper.setAttribute('aria-live', 'polite'); // A11y
 
-    // A11y
-    this._wrapper.setAttribute('aria-live', 'polite');
-
-    // Store
-    this.store = store.init(transitions);
-    // Views manager
-    viewsManager.init(this, views);
-
-    // Init pages
+    // 3. Init pages (get "current" data)
     this._initPages();
-
-    // Set/update history
-    history.add(this._current.url, this._current.namespace);
-
     if (!this._current.container) {
       throw new Error('[@barba/core] No Barba container found');
     }
 
-    // TODO: check network connectivity / reduced data usage mode?
-    // Add to cache
-    this.cache.set(this._current.url, Promise.resolve(this._current.html));
+    // 4. Init other modules
+    this.store = store.init(transitions);
+    viewsManager.init(this, views);
 
-    // Bindings
-    /* istanbul ignore else */
-    if (this.useCache && this.usePrefetch) {
-      this._onLinkEnter = this._onLinkEnter.bind(this);
-      this._onLinkClick = this._onLinkClick.bind(this);
-    }
+    // 5. Use "current" data
+    // Set/update history
+    history.add(this._current.url, this._current.namespace);
+    // Add to cache
+    this.useCache &&
+      this.cache.set(this._current.url, Promise.resolve(this._current.html));
+
+    // 6. Bindings
+    this._onLinkEnter = this._onLinkEnter.bind(this);
+    this._onLinkClick = this._onLinkClick.bind(this);
     this._onStateChange = this._onStateChange.bind(this);
     this._bind();
 
-    // Init plugins
+    // 7. Init plugins
     this._plugins.forEach(plugin => plugin.init());
 
+    // 8. Finally, do appear…
     this.appear();
   },
 
@@ -250,23 +243,13 @@ export default {
 
   _bind() {
     /* istanbul ignore else */
-    if (this.useCache && this.usePrefetch) {
+    if (this.usePrefetch) {
       document.addEventListener('mouseover', this._onLinkEnter);
       document.addEventListener('touchstart', this._onLinkEnter);
     }
     document.addEventListener('click', this._onLinkClick);
     window.addEventListener('popstate', this._onStateChange);
   },
-
-  // DEV
-  // _unbind() {
-  //   if (this.useCache && this.usePrefetch) {
-  //     document.removeEventListener('mouseover', this._onLinkEnter);
-  //     document.removeEventListener('touchstart', this._onLinkEnter);
-  //   }
-  //   document.removeEventListener('click', this._onLinkClick);
-  //   window.removeEventListener('popstate', this._onStateChange);
-  // },
 
   _onLinkEnter(e) {
     let el = e.target;
@@ -330,14 +313,14 @@ export default {
   },
 
   _onRequestError(action, ...args) {
-    const [url, error] = args;
+    const [url, response] = args;
 
     this.cache.delete(url);
 
     // Custom requestError returning false will return here;
     if (
       this._requestError &&
-      this._requestError(action, url, error) === false
+      this._requestError(action, url, response) === false
     ) {
       return;
     }

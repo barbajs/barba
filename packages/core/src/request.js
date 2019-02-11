@@ -24,10 +24,10 @@ function timeout(url, ms, request, requestError) {
         window.clearTimeout(timeoutId);
         resolve(res);
       },
-      error => {
+      errorOrResponse => {
         window.clearTimeout(timeoutId);
-        requestError(url, error);
-        reject(error);
+        requestError(url, errorOrResponse);
+        reject(errorOrResponse);
       }
     );
   });
@@ -64,18 +64,18 @@ async function request(url) {
   });
 
   try {
-    const result = await fetch(url, {
+    const response = await fetch(url, {
       method: 'GET',
       headers,
       cache: 'default',
     });
 
-    if (result.status >= 200 && result.status < 300) {
+    if (response.status >= 200 && response.status < 300) {
       // DEV: should return DOM directly ?
-      return await result.text();
+      return await response.text();
     }
 
-    throw new Error(result.statusText || result.status);
+    throw response;
   } catch (error) {
     throw error;
   }
