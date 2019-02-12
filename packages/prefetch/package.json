@@ -1,6 +1,6 @@
 {
   "name": "@barba/prefetch",
-  "version": "2.0.1-next.66+1463979",
+  "version": "2.0.1-next.97+33c213b",
   "description": "Barba is a ...",
   "publishConfig": {
     "access": "public"
@@ -41,5 +41,6 @@
     "test": "eslint src/** && jest --coverage",
     "watch": "jest --colors --watch",
     "e2e": "cypress run --browser chrome --group=prefetch"
-  }
+  },
+  "gitHead": "33c213bc36a0996f6333185dfc695fcd0d37c9d9"
 }

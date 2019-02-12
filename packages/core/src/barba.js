@@ -167,6 +167,9 @@ export default {
     prevent: preventCustom = null,
     timeout = 2e3,
     requestError = undefined,
+    // TODO: refactor options + behaviour
+    // cacheIgnore
+    // prefetchIgnore (merged or overridden with @barba/prefetch)
     useCache = true,
     usePrefetch = true,
     debug = false,
@@ -275,7 +278,7 @@ export default {
       this.request(
         url,
         this._timeout,
-        this._onRequestError.bind(this, 'enter')
+        this._onRequestError.bind(this, el, 'enter')
       ).catch(error => this.logger.error(error))
     );
   },
@@ -312,7 +315,7 @@ export default {
     this.go(url, 'popstate');
   },
 
-  _onRequestError(action, ...args) {
+  _onRequestError(trigger, action, ...args) {
     const [url, response] = args;
 
     this.cache.delete(url);
@@ -320,7 +323,7 @@ export default {
     // Custom requestError returning false will return here;
     if (
       this._requestError &&
-      this._requestError(action, url, response) === false
+      this._requestError(trigger, action, url, response) === false
     ) {
       return;
     }
@@ -367,7 +370,7 @@ export default {
             this.request(
               url,
               this._timeout,
-              this._onRequestError.bind(this, 'click')
+              this._onRequestError.bind(this, trigger, 'click')
             )
           );
       /* eslint-enable indent */
@@ -375,7 +378,7 @@ export default {
       page = this.request(
         url,
         this._timeout,
-        this._onRequestError.bind(this, 'click')
+        this._onRequestError.bind(this, trigger, 'click')
       );
     }
 

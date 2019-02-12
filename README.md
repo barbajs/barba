@@ -76,15 +76,16 @@ barba.init(<options>);
 
 ### `barba.init(<options>)`
 
-| Option      | Type     | Default          | Description                                                    |
-| ----------- | -------- | ---------------- | -------------------------------------------------------------- |
-| transitions | Array    | []               | Array of `<transition>` ([see below](#transitionobject))       |
-| views       | Array    | []               | Array of `<view>` ([see below](#viewobject))                   |
-| debug       | Boolean  | false            | Log extra informations                                         |
-| schema      | Object   | `attributSchema` | Data attributes ([see schema.js](packages/core/src/schema.js)) |
-| useCache    | Boolean  | true             | Cache your pages                                               |
-| usePrefetch | Boolean  | true             | Prefetch your pages                                            |
-| prevent     | Function | (optional)       | Add prevent test                                               |
+| Option       | Type     | Default          | Description                                                    |
+| ------------ | -------- | ---------------- | -------------------------------------------------------------- |
+| transitions  | Array    | []               | Array of `<transition>` ([see below](#transitionobject))       |
+| views        | Array    | []               | Array of `<view>` ([see below](#viewobject))                   |
+| debug        | Boolean  | false            | Log extra informations                                         |
+| schema       | Object   | `attributSchema` | Data attributes ([see schema.js](packages/core/src/schema.js)) |
+| useCache     | Boolean  | true             | Cache your pages                                               |
+| usePrefetch  | Boolean  | true             | Prefetch your pages                                            |
+| prevent      | Function | (optional)       | Add prevent test                                               |
+| requestError | Function | (optional)       | Request error callback                                         |
 
 ### `<transition>` object
 
@@ -231,6 +232,18 @@ If your function returns `true`, Barba will not be actionated.
 | Object   | el       | clicked element |
 |          | event    | triggered event |
 |          | href     | next page href  |
+
+### requestError
+
+Allows you to catch request errors.
+If your function returns `false`, wrong link will not be "force" triggered.
+
+| Argument | Type                  | Description                                                               |
+| -------- | --------------------- | ------------------------------------------------------------------------- |
+| trigger  | HTMLElement \| string | clicked/hovered element or 'barba' or 'popstate' (see `data.trigger`)     |
+| action   | string                | 'enter', 'click' (or 'prefetch' with @barba/prefetch)                     |
+| url      | string                | requested URL                                                             |
+| response | object                | Fetch error (with `message`) or response (with `status`, `statusText`, …) |
 
 ---
 
