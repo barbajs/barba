@@ -22,9 +22,9 @@ const routes = [
 ];
 
 it('has defaults', () => {
-  expect(router._routeNames).toHaveLength(0);
+  expect(router._routeNames.size).toBe(0);
   router.install(barba);
-  expect(router._routeNames).toHaveLength(0);
+  expect(router._routeNames.size).toBe(0);
 });
 
 it('has routes', () => {
@@ -32,10 +32,21 @@ it('has routes', () => {
     routes,
   });
 
-  expect(router._routeNames).toEqual(['home', 'foo']);
+  expect([...router._routeNames]).toEqual(['home', 'foo']);
   expect(router._routesByName.foo).toEqual({
     path: '/foo/:bar',
     regex: /^\/foo\/([^/]+?)(?:\/)?$/i,
+    keys: [
+      {
+        delimiter: '/',
+        name: 'bar',
+        optional: false,
+        partial: false,
+        pattern: '[^\\/]+?',
+        prefix: '/',
+        repeat: false,
+      },
+    ],
   });
 });
 
@@ -59,13 +70,14 @@ it('has duplicate routes', () => {
 });
 
 it('resolves url', () => {
-  const result = router._resolve('http://localhost/foo/someting');
+  const result = router._resolve('http://localhost/foo/something');
 
-  expect(result).toBe('foo');
+  expect(result.name).toBe('foo');
+  expect(result.params.bar).toBe('something');
 });
 
 it('resolves unknown url', () => {
-  const result = router._resolve('http://localhost/bar/someting');
+  const result = router._resolve('http://localhost/bar/something');
 
   expect(result).toBeNull();
 });
@@ -78,8 +90,8 @@ it('resolves data urls (home)', () => {
 
   router._resolveRoutes(data);
 
-  expect(data.current.route).toBe('home');
-  expect(data.next.route).toBe('home');
+  expect(data.current.route.name).toBe('home');
+  expect(data.next.route.name).toBe('home');
 });
 
 it('resolves data urls (foo)', () => {
@@ -90,8 +102,8 @@ it('resolves data urls (foo)', () => {
 
   router._resolveRoutes(data);
 
-  expect(data.current.route).toBe('foo');
-  expect(data.next.route).toBe('foo');
+  expect(data.current.route.name).toBe('foo');
+  expect(data.next.route.name).toBe('foo');
 });
 
 it('resolves unknown data urls', () => {

@@ -7,20 +7,20 @@
  */
 export function parsePath(p) {
   let path = p;
-  let hash = '';
-  let query = '';
+  let hash = undefined;
+  let query = {};
 
   const hashIndex = path.indexOf('#');
 
   if (hashIndex >= 0) {
-    hash = path.slice(hashIndex);
+    hash = path.slice(hashIndex + 1);
     path = path.slice(0, hashIndex);
   }
 
   const queryIndex = path.indexOf('?');
 
   if (queryIndex >= 0) {
-    query = path.slice(queryIndex + 1);
+    query = parseQuery(path.slice(queryIndex + 1));
     path = path.slice(0, queryIndex);
   }
 
@@ -29,6 +29,24 @@ export function parsePath(p) {
     query,
     hash,
   };
+}
+
+/**
+ * Parse a query string
+ *
+ * @export
+ * @param {string} str query string to parse
+ * @returns {Array} of key/value
+ * @private
+ */
+export function parseQuery(str) {
+  return str.split('&').reduce((acc, el) => {
+    const [key, value] = el.split('=');
+
+    acc[key] = value;
+
+    return acc;
+  }, {});
 }
 
 /**

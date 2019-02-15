@@ -43,25 +43,13 @@ it('throws fetch error', async () => {
   expect(requestError).toHaveBeenCalledWith(url, error);
 });
 
-it('throws result error with "status"', async () => {
-  const error = new Error(404);
-
-  global.fetch = jest.fn().mockImplementation(() => ({
-    status: 404,
-  }));
-
-  await expect(request(url, 2e3, requestError)).rejects.toEqual(error);
-  expect(global.window.clearTimeout).toHaveBeenCalledTimes(1);
-  expect(requestError).toHaveBeenCalledWith(url, error);
-});
-
-it('throws result error with "statusText"', async () => {
-  const error = new Error('Not found');
-
-  window.fetch = jest.fn().mockImplementation(() => ({
+it('throws result error with 404', async () => {
+  const error = {
     status: 404,
     statusText: 'Not found',
-  }));
+  };
+
+  window.fetch = jest.fn().mockImplementation(() => error);
 
   await expect(request(url, 2e3, requestError)).rejects.toEqual(error);
   expect(global.window.clearTimeout).toHaveBeenCalledTimes(1);
