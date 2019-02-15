@@ -255,14 +255,9 @@ export default {
   },
 
   _onLinkEnter(e) {
-    let el = e.target;
+    const el = this._getLinkElement(e);
 
-    while (el && !this.utils.getHref(el)) {
-      el = el.parentNode;
-    }
-
-    // Check prevent
-    if (!el || this.prevent.check(el, e, el.href)) {
+    if (!el) {
       return;
     }
 
@@ -284,14 +279,9 @@ export default {
   },
 
   _onLinkClick(e) {
-    let el = e.target;
+    const el = this._getLinkElement(e);
 
-    while (el && !this.utils.getHref(el)) {
-      el = el.parentNode;
-    }
-
-    // Check prevent
-    if (!el || this.prevent.check(el, e, el.href)) {
+    if (!el) {
       return;
     }
 
@@ -299,7 +289,7 @@ export default {
     e.preventDefault();
 
     // Check prevent sameURL
-    if (!el || this.prevent.sameUrl(el.href)) {
+    if (this.prevent.sameUrl(el.href)) {
       // Same URL -> force reload
       this.force(el.href);
 
@@ -332,6 +322,21 @@ export default {
     if (action === 'click') {
       this.force(url);
     }
+  },
+
+  _getLinkElement(e) {
+    let el = e.target;
+
+    while (el && !this.utils.getHref(el)) {
+      el = el.parentNode;
+    }
+
+    // Check prevent
+    if (!el || this.prevent.check(el, e, el.href)) {
+      return false;
+    }
+
+    return el;
   },
 
   async appear() {
@@ -384,13 +389,7 @@ export default {
 
     // Need to wait before getting the right transition
     if (this.store.wait) {
-      await page.then(html => {
-        const nextDocument = dom.toDocument(html);
-
-        this._next.namespace = dom.getNamespace(nextDocument);
-        this._next.container = dom.getContainer(nextDocument);
-        this._next.html = dom.getHtml(nextDocument);
-      });
+      await utils.getPage(page, this._next);
     }
 
     if (trigger === 'popstate') {

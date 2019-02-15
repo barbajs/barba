@@ -1,3 +1,5 @@
+import dom from './dom';
+
 export const getHref = el =>
   el.getAttribute && el.getAttribute('href') ? el.href : undefined;
 export const getUrl = () => window.location.href;
@@ -17,6 +19,20 @@ export const getPort = p => {
   }
 
   return 80;
+};
+
+export const getPage = (page, next) => {
+  if (next.html) {
+    return Promise.resolve();
+  }
+
+  return page.then(html => {
+    const nextDocument = dom.toDocument(html);
+
+    next.namespace = dom.getNamespace(nextDocument);
+    next.container = dom.getContainer(nextDocument);
+    next.html = dom.getHtml(nextDocument);
+  });
 };
 
 /**

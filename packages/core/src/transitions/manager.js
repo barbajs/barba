@@ -1,7 +1,7 @@
 import runAsync from 'run-async';
-import dom from '../dom';
 import hooks from '../hooks';
 import Logger from '../Logger';
+import * as utils from '../utils';
 
 /**
  * Manage the transitions
@@ -39,7 +39,7 @@ export default {
    * @param {object} data.trigger transition trigger
    * @returns {promise} transition end
    */
-  async doAppear({ transition, data }) {
+  async doAppear({ data, transition }) {
     if (!transition) {
       this._logger.warn('No transition found');
     }
@@ -47,32 +47,23 @@ export default {
     const t = transition || {};
 
     this.running = true;
-
-    hooks.do('beforeAppear', data, t);
-    t.beforeAppear && t.beforeAppear(data);
-
+    // Before
+    this._doSyncHook('beforeAppear', data, t);
+    // Appear
     hooks.do('appear', data, t);
-    await this.appear(t, data)
+    await this.appear(data, t)
       .then(() => {
-        hooks.do('afterAppear', data, t);
-        t.afterAppear && t.afterAppear(data);
+        // After
+        this._doSyncHook('afterAppear', data, t);
       })
       .catch(error => {
-        hooks.do('appearCanceled', data, t);
-        t.appearCanceled && t.appearCanceled(data);
+        // Canceled
+        this._doSyncHook('appearCanceled', data, t);
         this._logger.error(error);
         throw new Error('Transition error');
       });
 
     this.running = false;
-  },
-
-  appear(t, data) {
-    if (t.appear) {
-      return runAsync(t.appear)(data);
-    }
-
-    return Promise.resolve();
   },
 
   /**
@@ -103,63 +94,60 @@ export default {
     try {
       // Check sync mode, wait for next content
       if (sync) {
-        await this._waitForPage(page, data);
+        await utils.getPage(page, data.next);
       }
 
-      this.before(t, data);
+      this._doSyncHook('before', data, t);
 
       if (sync) {
         // Before actions
-        this.beforeLeave(t, data);
-        this.beforeEnter(t, data, page);
+        this._doSyncHook('beforeLeave', data, t);
+        this._doSyncHook('beforeEnter', data, t);
 
-        this.addNext(data, wrapper);
+        this._addNext(data, wrapper);
 
         // Actions
-        await Promise.all([this.leave(t, data), this.enter(t, data)]);
+        await Promise.all([this.leave(data, t), this.enter(data, t)]);
 
         // After actions
-        this.afterLeave(t, data);
-        this.removeCurrent(data);
-        this.afterEnter(t, data);
+        this._doSyncHook('afterLeave', data, t);
+        this._removeCurrent(data);
+        this._doSyncHook('afterEnter', data, t);
       } else {
         let leaveResult = false;
 
         // Leave
-        this.beforeLeave(t, data);
-        // TODO: wait for all: leave AND page
+        this._doSyncHook('beforeLeave', data, t);
+
         leaveResult = await Promise.all([
-          this.leave(t, data),
-          this._waitForPage(page, data),
+          this.leave(data, t),
+          utils.getPage(page, data.next),
         ])
           .then(values => values[0])
           .catch(error => {
             throw error;
           });
 
-        // DEV
-        // leaveResult = await this.leave(t, data);
+        this._doSyncHook('afterLeave', data, t);
 
-        this.afterLeave(t, data);
         // TODO: check here "valid" page result
         // before going further
-        this.removeCurrent(data);
+        this._removeCurrent(data);
 
         // Enter
         /* istanbul ignore else */
         if (leaveResult !== false) {
-          this.beforeEnter(t, data, page);
-          this.addNext(data, wrapper);
-          await this.enter(t, data, leaveResult);
-          this.afterEnter(t, data, leaveResult);
+          this._doSyncHook('beforeEnter', data, t);
+          this._addNext(data, wrapper);
+          await this.enter(data, t, leaveResult);
+          this._doSyncHook('afterEnter', data, t);
         }
       }
 
-      this.after(t, data);
+      this._doSyncHook('after', data, t);
     } catch (error) {
       // TODO: use cases for cancellation
-      // this.leaveCanceled(t, data);
-      // this.enterCanceled(t, data);
+      this._doSyncHook('leaveCanceled', data, t);
 
       this._logger.error(error);
       throw new Error('Transition error');
@@ -168,36 +156,21 @@ export default {
     this.running = false;
   },
 
-  // Wait
-  _waitForPage(page, data) {
-    if (data.next.html) {
-      return Promise.resolve();
-    }
-
-    return page.then(html => {
-      const nextDocument = dom.toDocument(html);
-
-      data.next.namespace = dom.getNamespace(nextDocument);
-      data.next.container = dom.getContainer(nextDocument);
-      data.next.html = dom.getHtml(nextDocument);
-    });
-  },
-
   // QUESTION: granular error catching?
   // Execute animation steps
   // Allows to catch errors for specific step
   // with the right cancel method
-  // async action(name, t, data, extra) {
+  // async action(name, data, t, extra) {
   //   /* istanbul ignore next */
   //   try {
-  //     return await this[name](t, data, extra);
+  //     return await this[name](data, t, extra);
   //   } catch (error) {
   //     // TODO: use cases for cancellation
   //     // if (/leave/i.test(name)) {
-  //     //   this.leaveCanceled(t, data);
+  //     //   this.leaveCanceled(data, t);
   //     // }
   //     // if (/enter/i.test(name)) {
-  //     //   this.enterCanceled(t, data);
+  //     //   this.enterCanceled(data, t);
   //     // }
 
   //     // TODO: remove console
@@ -206,24 +179,15 @@ export default {
   //   }
   // },
 
-  // Global methods
-  before(t, data) {
-    hooks.do('before', data, t);
-    t.before && t.before(data);
+  appear(data, t) {
+    if (t.appear) {
+      return runAsync(t.appear)(data);
+    }
+
+    return Promise.resolve();
   },
 
-  after(t, data) {
-    hooks.do('after', data, t);
-    t.after && t.after(data);
-  },
-
-  // Leave methods
-  beforeLeave(t, data) {
-    hooks.do('beforeLeave', data, t);
-    t.beforeLeave && t.beforeLeave(data);
-  },
-
-  leave(t, data) {
+  leave(data, t) {
     hooks.do('leave', data, t);
 
     if (t.leave) {
@@ -233,24 +197,7 @@ export default {
     return Promise.resolve();
   },
 
-  afterLeave(t, data) {
-    hooks.do('afterLeave', data, t);
-    t.afterLeave && t.afterLeave(data);
-  },
-
-  // DEV
-  // leaveCanceled(t, data) {
-  //   hooks.do('leaveCanceled', data, t);
-  //   t.leaveCanceled && t.leaveCanceled(data);
-  // },
-
-  // Enter methods
-  beforeEnter(t, data) {
-    hooks.do('beforeEnter', data, t);
-    t.beforeEnter && t.beforeEnter(data);
-  },
-
-  enter(t, data, leaveResult) {
+  enter(data, t, leaveResult) {
     hooks.do('enter', data, t);
 
     if (t.enter) {
@@ -260,24 +207,18 @@ export default {
     return Promise.resolve();
   },
 
-  afterEnter(t, data) {
-    hooks.do('afterEnter', data, t);
-    t.afterEnter && t.afterEnter(data);
+  _doSyncHook(hook, data, t) {
+    hooks.do(hook, data, t);
+    t[hook] && t[hook](data);
   },
 
-  // DEV
-  // enterCanceled(t, data) {
-  //   hooks.do('enterCanceled', data, t);
-  //   t.enterCanceled && t.enterCanceled(data);
-  // },
-
   // Add / remove containers
-  addNext(data, wrapper) {
+  _addNext(data, wrapper) {
     wrapper.appendChild(data.next.container);
     hooks.do('nextAdded', data);
   },
 
-  removeCurrent(data) {
+  _removeCurrent(data) {
     data.current.container.remove();
     hooks.do('currentRemoved', data);
   },
