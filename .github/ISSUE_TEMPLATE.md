@@ -18,7 +18,7 @@ Briefly describe the issue you are experiencing (or the feature you want to see 
 
 Tell us what you were trying to do and what happened instead.
 
-Remember, this is _not_ a place to ask questions. For that, get your invite to [https://barbajs.slack.com](https://join.slack.com/t/barbajs/shared_invite/enQtNTI4OTgzNDc0OTYzLTNjMjIyMzI5NWNkNmI5MzNjYTJjNWJjMThiYjIzNjY3Y2IyZTQyNzEyMTEzZWMxMDM5ZTY1ZmJjMDg5MDY1ODE)!
+Remember, this is _not_ a place to ask questions. For that, get your invite to [https://barbajs.slack.com](https://join.slack.com/t/barbajs/shared_invite/enQtNTU3NTAyMjkxMzAyLTI1NDIxZDZmMGJjMDlmNzFkODZmMmVmN2U2ODg2Y2M3MzczMDdjZTk5ODQwNWZkYWVlMDM5NGZiODJmMWVhODk)!
 
 ## Description
 
