@@ -1,7 +1,7 @@
 <p align="center"><a href="http://barbajs.org" target="_blank"><img width="300" src="http://barbajs.org/images/logo.svg"></a></p>
 
 <p align="center">
-<a href="https://join.slack.com/t/barbajs/shared_invite/enQtNTI4OTgzNDc0OTYzLTNjMjIyMzI5NWNkNmI5MzNjYTJjNWJjMThiYjIzNjY3Y2IyZTQyNzEyMTEzZWMxMDM5ZTY1ZmJjMDg5MDY1ODE"><img src="https://img.shields.io/badge/slack-channel-purple.svg?style=flat-square&logo=slack" /></a>
+<a href="https://join.slack.com/t/barbajs/shared_invite/enQtNTU3NTAyMjkxMzAyLTI1NDIxZDZmMGJjMDlmNzFkODZmMmVmN2U2ODg2Y2M3MzczMDdjZTk5ODQwNWZkYWVlMDM5NGZiODJmMWVhODk"><img src="https://img.shields.io/badge/slack-channel-purple.svg?style=flat-square&logo=slack" /></a>
 <a href='https://travis-ci.org/luruke/barba.js'><img src='https://travis-ci.org/luruke/barba.js.svg?branch=master' alt='Build Status' /></a>
 <a href='https://coveralls.io/github/luruke/barba.js?branch=master'><img src='https://coveralls.io/repos/github/luruke/barba.js/badge.svg?branch=master' alt='Coverage Status' /></a>
 </p>
@@ -41,7 +41,7 @@ Here is a walkthrough of what happens when the user clicks a link:
 6.  The [transition](http://barbajs.org/transition.html) instance will take care to hide the old container and show the new one.
 7.  As soon the transition is finished, the old container is removed from the DOM.
 
-> Please note, on server side, your pages will need to be served normally.   
+> Please note, on server side, your pages will need to be served normally.
 > Barba.js works as enhancement for your website, everything should work normally without Javascript.
 
 In order to have a better understanding on how Barba.js works I suggest you to read this [article](https://www.smashingmagazine.com/2016/07/improving-user-flow-through-page-transitions/) I wrote for Smashing Magazine.
@@ -65,16 +65,16 @@ Using this technique will bring numerous benefits:
 
 ## Installation
 
-**barba.js** supports AMD, CommonJS and Browser global (using UMD).   
-You can install it using npm:   
+**barba.js** supports AMD, CommonJS and Browser global (using UMD).
+You can install it using npm:
 ```
 npm install barba.js --save-dev
 ```
-or just including the script in your page:   
+or just including the script in your page:
 ```html
 <script src="barba.min.js" type="text/javascript"></script>
 ```
-or you can use [cdnjs](https://cdnjs.com/libraries/barba.js):   
+or you can use [cdnjs](https://cdnjs.com/libraries/barba.js):
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js" type="text/javascript"></script>
 ```
@@ -99,9 +99,9 @@ Barba.Pjax.start();
 ```
 ## Contribute
 
-Barba.js is created in the spare time by [Luigi De Rosa](https://twitter.com/luruke) and released under MIT licence.  
-Any help on the project is more than welcomed.  
-For any problem/question do not hesitate to open an issue.  
+Barba.js is created in the spare time by [Luigi De Rosa](https://twitter.com/luruke) and released under MIT licence.
+Any help on the project is more than welcomed.
+For any problem/question do not hesitate to open an issue.
 
 ## Other
 
