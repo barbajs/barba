@@ -1,6 +1,7 @@
 import { version } from '../package.json';
 import { requestIdleCallback } from './polyfills';
 
+// TODO: use array
 const toPrefetch = new Set();
 
 /**
@@ -96,8 +97,8 @@ export const prefetch = {
   // DEV
   // destroy() {},
 
+  /* istanbul ignore next */
   _observe(timeout) {
-    /* istanbul ignore next */
     requestIdleCallback(
       () => {
         // If not, find all links and use IntersectionObserver.

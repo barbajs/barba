@@ -13,6 +13,7 @@ module.exports = {
     },
   },
   resetMocks: true,
+  setupFiles: ['<rootDir>/jest.init.js'],
   testMatch: ['**/__tests__/**/*.test.js'],
   transformIgnorePatterns: ['<rootDir>.*(node_modules)(?!.*@barba.*).*$'],
   verbose: true,

@@ -159,6 +159,7 @@ export default {
     const transitions = appear ? this._appear : this._page;
 
     // All matching transition infos
+    // TODO replace by object?
     const matching = new Map();
 
     // Active = first of valid transitions

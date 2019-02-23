@@ -1,6 +1,6 @@
 console.info('🚀 Barba e2e');
 
-const { barba, 'barba-css': css } = window;
+const { barba, barbaCss: css } = window;
 
 barba.use(css);
 barba.init({

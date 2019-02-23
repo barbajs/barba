@@ -23,13 +23,15 @@ it('registers hooks', () => {
   barba.use(css);
   barba.init();
 
-  expect(barba.hooks._registered.before).toHaveLength(1);
-  expect(barba.hooks._registered.beforeAppear).toHaveLength(2);
-  expect(barba.hooks._registered.afterAppear).toHaveLength(1);
-  expect(barba.hooks._registered.beforeLeave).toHaveLength(1);
-  expect(barba.hooks._registered.afterLeave).toHaveLength(1);
-  expect(barba.hooks._registered.beforeEnter).toHaveLength(1);
-  expect(barba.hooks._registered.afterEnter).toHaveLength(1);
+  console.info('MANGLE', barba.hooks);
+
+  expect(barba.hooks.registered.before).toHaveLength(1);
+  expect(barba.hooks.registered.beforeAppear).toHaveLength(2);
+  expect(barba.hooks.registered.afterAppear).toHaveLength(1);
+  expect(barba.hooks.registered.beforeLeave).toHaveLength(1);
+  expect(barba.hooks.registered.afterLeave).toHaveLength(1);
+  expect(barba.hooks.registered.beforeEnter).toHaveLength(1);
+  expect(barba.hooks.registered.afterEnter).toHaveLength(1);
 });
 
 it('overrides transitions', () => {

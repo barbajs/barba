@@ -54,9 +54,8 @@ export default {
    *
    * @memberof @barba/core/hooks
    * @type {object}
-   * @private
    */
-  _registered: {},
+  registered: {},
 
   /**
    * Init available hooks
@@ -75,8 +74,8 @@ export default {
       }
 
       this[hook] = (fn, ctx = null) => {
-        this._registered[hook] = this._registered[hook] || [];
-        this._registered[hook].push({
+        this.registered[hook] = this.registered[hook] || [];
+        this.registered[hook].push({
           fn,
           ctx,
         });
@@ -93,7 +92,7 @@ export default {
    * @returns {hooks} this instance
    */
   destroy() {
-    this._registered = {};
+    this.registered = {};
 
     return this;
   },
@@ -107,11 +106,11 @@ export default {
    * @returns {undefined}
    */
   do(hook, ...args) {
-    if (hook in this._registered === false) {
+    if (hook in this.registered === false) {
       return;
     }
 
-    this._registered[hook].forEach(hook => {
+    this.registered[hook].forEach(hook => {
       hook.fn.apply(hook.ctx, args);
     });
   },
@@ -126,7 +125,7 @@ export default {
     this._logger.info(`[@barba/core] Available hooks: ${this._available}`);
     this._logger.info(
       `[@barba/core] Registered hooks: ${map(
-        this._registered,
+        this.registered,
         (hooks, name) => name
       )}`
     );

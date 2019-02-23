@@ -119,7 +119,7 @@ export const css = {
     this._start(data.current.container, 'appear');
   },
 
-  _appear(t, data) {
+  _appear(data) {
     return this._next(data.current.container, 'appear');
   },
 
@@ -132,7 +132,7 @@ export const css = {
     this._start(data.current.container, 'leave');
   },
 
-  _leave(t, data) {
+  _leave(data) {
     return this._next(data.current.container, 'leave');
   },
 
@@ -145,7 +145,7 @@ export const css = {
     this._start(data.next.container, 'enter');
   },
 
-  _enter(t, data) {
+  _enter(data) {
     return this._next(data.next.container, 'enter');
   },
 

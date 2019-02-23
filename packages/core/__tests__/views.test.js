@@ -34,19 +34,19 @@ it('init views', () => {
 it('register hooks', () => {
   // No views, no hooks
   views.init(barba, []);
-  expect(barba.hooks._registered.beforeAppear).toBeUndefined();
-  expect(barba.hooks._registered.afterAppear).toBeUndefined();
-  expect(barba.hooks._registered.beforeLeave).toBeUndefined();
-  expect(barba.hooks._registered.afterLeave).toBeUndefined();
-  expect(barba.hooks._registered.beforeEnter).toBeUndefined();
-  expect(barba.hooks._registered.afterEnter).toBeUndefined();
+  expect(barba.hooks.registered.beforeAppear).toBeUndefined();
+  expect(barba.hooks.registered.afterAppear).toBeUndefined();
+  expect(barba.hooks.registered.beforeLeave).toBeUndefined();
+  expect(barba.hooks.registered.afterLeave).toBeUndefined();
+  expect(barba.hooks.registered.beforeEnter).toBeUndefined();
+  expect(barba.hooks.registered.afterEnter).toBeUndefined();
   views.init(barba, [{ namespace: 'baz' }]);
-  expect(barba.hooks._registered.beforeAppear).toHaveLength(1);
-  expect(barba.hooks._registered.afterAppear).toHaveLength(1);
-  expect(barba.hooks._registered.beforeLeave).toHaveLength(1);
-  expect(barba.hooks._registered.afterLeave).toHaveLength(1);
-  expect(barba.hooks._registered.beforeEnter).toHaveLength(1);
-  expect(barba.hooks._registered.afterEnter).toHaveLength(1);
+  expect(barba.hooks.registered.beforeAppear).toHaveLength(1);
+  expect(barba.hooks.registered.afterAppear).toHaveLength(1);
+  expect(barba.hooks.registered.beforeLeave).toHaveLength(1);
+  expect(barba.hooks.registered.afterLeave).toHaveLength(1);
+  expect(barba.hooks.registered.beforeEnter).toHaveLength(1);
+  expect(barba.hooks.registered.afterEnter).toHaveLength(1);
 });
 
 it('do existing hooks for existing namespace', () => {

@@ -5,7 +5,11 @@ module.exports = function config(api) {
   const plugins = [];
 
   return {
-    presets,
+    env: {
+      test: {
+        presets,
+      },
+    },
     plugins,
     babelrcRoots: [
       // Keep the root as a root

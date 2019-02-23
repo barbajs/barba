@@ -5,17 +5,25 @@
   "publishConfig": {
     "access": "public"
   },
-  "browser": "dist/barba-router.min.js",
-  "main": "lib/index.js",
-  "module": "esm/index.js",
+  "main": "dist/barba-router.js",
+  "umd:main": "dist/barba-router.umd.js",
+  "browser": "dist/barba-router.umd.js",
+  "unpkg": "dist/barba-router.umd.js",
+  "module": "dist/barba-router.mjs",
+  "source": "src/index.js",
+  "mangle": {
+    "regex": "^_"
+  },
   "files": [
-    "dist",
-    "lib",
-    "esm"
+    "dist"
   ],
   "keywords": [
-    "barba",
-    "router"
+    "page",
+    "transition",
+    "animation",
+    "css",
+    "router",
+    "prefetch"
   ],
   "homepage": "https://github.com/barbajs/barba-next#readme",
   "bugs": {
@@ -27,22 +35,15 @@
     "url": "git+ssh://git@github.com/barbajs/barba-next.git"
   },
   "scripts": {
-    "build": "npm-run-all build:commonjs build:umd build:umd:min build:esm",
-    "build:watch": "npm-run-all -l -p build:umd:watch build:esm:watch",
-    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
-    "build:esm": "cpx 'src/**/*.{mjs,js,json}' esm",
-    "build:esm:watch": "cpx 'src/**/*.{mjs,js,json}' esm -w",
-    "build:umd": "cross-env BABEL_ENV=umd NODE_ENV=development webpack --progress --profile",
-    "build:umd:watch": "cross-env BABEL_ENV=umd NODE_ENV=development webpack --progress --profile --watch",
-    "build:umd:min": "cross-env BABEL_ENV=umd NODE_ENV=production webpack --progress --profile",
-    "clear": "rimraf dist esm lib",
+    "build": "microbundle --name barbaRouter --external none",
+    "build:watch": "microbundle watch --name barbaRouter --external none",
+    "clear": "rimraf dist",
     "lint": "eslint src/**",
     "precommit": "lint-staged",
-    "test": "eslint src/** && jest --coverage",
-    "watch": "jest --colors --watch"
+    "size": "echo '🚦 router' && gzip-size ./dist/barba-router.umd.js"
   },
   "dependencies": {
-    "path-to-regexp": "^2.4.0"
+    "path-to-regexp": "^3.0.0"
   },
   "gitHead": "33c213bc36a0996f6333185dfc695fcd0d37c9d9"
 }

@@ -1,9 +1,10 @@
 ### Custom ###
+/__e2e__
 /__mocks__
 /__tests__
-/coverage
-/src
-/report.html
+/__web__
+/jest.config.js
+/mangle.json
 /*.md
 !/README.md
 !/CHANGELOG.md

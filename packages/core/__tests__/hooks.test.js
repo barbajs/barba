@@ -16,7 +16,7 @@ it('init hooks', () => {
   hooks.init();
 
   expect(hooks[hookName]).toBeDefined();
-  expect(hooks._registered).not.toHaveProperty(hookName);
+  expect(hooks.registered).not.toHaveProperty(hookName);
 });
 
 it('register hooks', () => {
@@ -28,15 +28,15 @@ it('register hooks', () => {
 
   hooks[hookName](fn, ctx);
 
-  expect(hooks._registered).toHaveProperty(hookName);
-  expect(hooks._registered[hookName]).toHaveLength(1);
-  expect(hooks._registered[hookName][0].fn).toBe(fn);
-  expect(hooks._registered[hookName][0].ctx).toBe(ctx);
+  expect(hooks.registered).toHaveProperty(hookName);
+  expect(hooks.registered[hookName]).toHaveLength(1);
+  expect(hooks.registered[hookName][0].fn).toBe(fn);
+  expect(hooks.registered[hookName][0].ctx).toBe(ctx);
 
   hooks[hookName](fn2);
 
-  expect(hooks._registered[hookName][1].fn).toBe(fn2);
-  expect(hooks._registered[hookName][1].ctx).toBeNull();
+  expect(hooks.registered[hookName][1].fn).toBe(fn2);
+  expect(hooks.registered[hookName][1].ctx).toBeNull();
 });
 
 it('do nothing when no hooks', () => {

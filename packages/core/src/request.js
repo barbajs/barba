@@ -72,7 +72,7 @@ async function request(url) {
 
     if (response.status >= 200 && response.status < 300) {
       // DEV: should return DOM directly ?
-      return await response.text();
+      return response.text();
     }
 
     throw response;

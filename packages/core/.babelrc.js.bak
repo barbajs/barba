@@ -1,4 +1,0 @@
-console.info('.babelrc.js:core');
-module.exports = {
-  presets: ['@babel/preset-env'],
-};

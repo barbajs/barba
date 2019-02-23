@@ -22,9 +22,9 @@ const routes = [
 ];
 
 it('has defaults', () => {
-  expect(router._routeNames.size).toBe(0);
+  expect(router._routeNames).toHaveLength(0);
   router.install(barba);
-  expect(router._routeNames.size).toBe(0);
+  expect(router._routeNames).toHaveLength(0);
 });
 
 it('has routes', () => {
@@ -41,7 +41,6 @@ it('has routes', () => {
         delimiter: '/',
         name: 'bar',
         optional: false,
-        partial: false,
         pattern: '[^\\/]+?',
         prefix: '/',
         repeat: false,

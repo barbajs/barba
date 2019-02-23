@@ -33,7 +33,7 @@ it('init', () => {
 });
 
 it('registers hooks', () => {
-  expect(barba.hooks._registered.after).toHaveLength(1);
+  expect(barba.hooks.registered.after).toHaveLength(1);
 });
 
 it('warns with cache/prefetch disabled', () => {

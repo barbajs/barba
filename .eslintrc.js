@@ -103,7 +103,6 @@ module.exports = {
     ],
     'new-cap': 2,
     'new-parens': 2,
-    'newline-after-var': 2,
     'newline-before-return': 2,
     'newline-per-chained-call': 2,
     'no-alert': 2,
@@ -209,6 +208,15 @@ module.exports = {
     'operator-assignment': 2,
     'operator-linebreak': 2,
     'padded-blocks': [2, 'never'],
+    'padding-line-between-statements': [
+      2,
+      { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
+      {
+        blankLine: 'any',
+        prev: ['const', 'let', 'var'],
+        next: ['const', 'let', 'var'],
+      },
+    ],
     'prefer-arrow-callback': 2,
     'prefer-const': 2,
     'prefer-destructuring': 2,

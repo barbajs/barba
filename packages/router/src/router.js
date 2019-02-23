@@ -30,10 +30,10 @@ export const router = {
    * List of route names
    *
    * @memberof @barba/router
-   * @type {Set}
+   * @type {Array}
    * @private
    */
-  _routeNames: new Set(),
+  _routeNames: [],
 
   /**
    * List of routes by name
@@ -60,11 +60,10 @@ export const router = {
       const keys = [];
       const regex = pathToRegexp(path, keys);
 
-      this._routeNames.add(name);
-
-      if (this._routesByName[name]) {
+      if (this._routeNames.indexOf(name) > -1) {
         console.warn(`[@barba/router] Duplicated route name (${name})`);
       } else {
+        this._routeNames.push(name);
         this._routesByName[name] = {
           path,
           regex,
@@ -127,10 +126,9 @@ export const router = {
       url,
       params: {},
     };
-    const routeNames = [...this._routeNames];
 
-    for (let i = 0, l = routeNames.length; i < l; i++) {
-      const name = routeNames[i];
+    for (let i = 0, l = this._routeNames.length; i < l; i++) {
+      const name = this._routeNames[i];
       const { regex, keys } = this._routesByName[name];
       const res = regex.exec(path);
 

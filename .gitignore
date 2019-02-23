@@ -157,10 +157,10 @@ $RECYCLE.BIN/
 ### Custom ###
 
 .tmp
-esm
-lib
 dist
 docs
 cypress
-PERSONAL.md
 report.html
+# Keep microbundle's mangle.json out until it needs to be there?
+mangle.json
+PERSONAL.md
