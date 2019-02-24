@@ -1,0 +1,9 @@
+.barba-appear-active {
+  transition: opacity 2s;
+}
+.barba-appear {
+  opacity: 0;
+}
+.barba-appear-to {
+  opacity: 1;
+}

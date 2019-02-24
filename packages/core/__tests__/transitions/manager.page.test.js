@@ -1,8 +1,7 @@
 /* eslint-disable no-empty-function */
-import { manager } from '../../src/transitions';
-import hooks from '../../src/hooks';
-import dom from '../../src/dom';
-import { attributeSchema } from '../../src/schema';
+import { attributeSchema } from '../../src/schemas';
+import { hooks, transitions } from '../../src/modules';
+import { dom } from '../../src/utils';
 
 dom.init({ attributeSchema });
 
@@ -54,16 +53,16 @@ beforeEach(() => {
 const page = Promise.resolve(nextHtml);
 
 it('needs transition', async () => {
-  manager._logger.warn = jest.fn();
+  transitions._logger.warn = jest.fn();
   expect.assertions(1);
 
-  await manager.doPage({
+  await transitions.doPage({
     transition: undefined,
     data,
     page,
     wrapper,
   });
-  expect(manager._logger.warn).toHaveBeenCalledWith('No transition found');
+  expect(transitions._logger.warn).toHaveBeenCalledWith('No transition found');
 });
 
 for (let i = 0; i < 2; i++) {
@@ -85,7 +84,7 @@ for (let i = 0; i < 2; i++) {
       after,
     };
 
-    await manager.doPage({
+    await transitions.doPage({
       transition: t,
       data,
       page,
@@ -116,7 +115,7 @@ for (let i = 0; i < 2; i++) {
     expect(after).toHaveBeenCalledTimes(1);
     expect(after).toHaveBeenCalledWith(data);
 
-    await manager.doPage({ transition: { leave, enter }, data, wrapper });
+    await transitions.doPage({ transition: { leave, enter }, data, wrapper });
 
     expect(before).toHaveBeenCalledTimes(1);
     expect(leave).toHaveBeenCalledTimes(2);
@@ -134,7 +133,7 @@ it('calls hooks (sync: false)', async () => {
     enter,
   };
 
-  await manager.doPage({
+  await transitions.doPage({
     transition: t,
     data,
     page,
@@ -163,7 +162,7 @@ it('calls hooks (sync: true)', async () => {
     enter,
   };
 
-  await manager.doPage({
+  await transitions.doPage({
     transition: t,
     data,
     page,
@@ -192,7 +191,7 @@ it('catches error (leave, sync: false)', async () => {
   };
 
   try {
-    await manager.doPage({
+    await transitions.doPage({
       transition: { leave: leaveError, leaveCanceled },
       data,
     });
@@ -213,7 +212,7 @@ it('catches error (enter, sync: false)', async () => {
   };
 
   try {
-    await manager.doPage({
+    await transitions.doPage({
       transition: {
         leave() {
           return 'foo';
@@ -242,7 +241,7 @@ it('catches error (leave, sync: true)', async () => {
   };
 
   try {
-    await manager.doPage({
+    await transitions.doPage({
       transition: { sync: true, leave: leaveError, leaveCanceled, enter() {} },
       data,
       page,
@@ -265,7 +264,7 @@ it('catches error (enter, sync: true)', async () => {
   };
 
   try {
-    await manager.doPage({
+    await transitions.doPage({
       transition: { sync: true, leave() {}, enter: enterError, enterCanceled },
       data,
       page,

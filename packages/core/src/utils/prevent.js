@@ -1,4 +1,4 @@
-import { cleanLink, getPort } from './utils';
+import { url } from '../utils';
 
 /**
  * Prevent tests
@@ -62,7 +62,7 @@ const prevent = {
     );
 
     // Check the port
-    this.add('corsPort', ({ el }) => getPort() !== getPort(el.port));
+    this.add('corsPort', ({ el }) => url.getPort() !== url.getPort(el.port));
 
     // Check download attribute
     this.add(
@@ -70,12 +70,6 @@ const prevent = {
       ({ el }) =>
         el.getAttribute && typeof el.getAttribute('download') === 'string'
     );
-
-    // Check same url
-    // this.add(
-    //   'sameUrl',
-    //   ({ href }) => cleanLink(href) === cleanLink(window.location.href)
-    // );
 
     // If contains [data-barba-prevent] or [data-barba-prevent="self"]
     this.add('preventSelf', ({ el }) =>
@@ -120,11 +114,9 @@ const prevent = {
     );
   },
 
-  // TODO: outside of global tests to avoid hard refresh on same URL
-  // Can be discussed
   sameUrl(href) {
-    return cleanLink(href) === cleanLink(window.location.href);
+    return url.getPath(href) === url.getPath(window.location.href);
   },
 };
 
-export default prevent;
+export { prevent };

@@ -1,9 +1,11 @@
-import views from '../src/views';
-import barba from '../src/barba';
+import { hooks, views } from '../src/modules';
+
+beforeEach(() => {
+  hooks.init();
+});
 
 afterEach(() => {
   views._byNamespace = {};
-  barba.hooks.destroy();
 });
 
 const beforeAppear = jest.fn();
@@ -18,7 +20,7 @@ it('has defaults', () => {
 });
 
 it('init views', () => {
-  views.init(barba, [
+  views.init([
     { namespace: 'foo', value: 'overriden' },
     { namespace: 'foo', value: 'ok' },
     { namespace: 'bar', value: 'ok' },
@@ -33,24 +35,24 @@ it('init views', () => {
 
 it('register hooks', () => {
   // No views, no hooks
-  views.init(barba, []);
-  expect(barba.hooks.registered.beforeAppear).toBeUndefined();
-  expect(barba.hooks.registered.afterAppear).toBeUndefined();
-  expect(barba.hooks.registered.beforeLeave).toBeUndefined();
-  expect(barba.hooks.registered.afterLeave).toBeUndefined();
-  expect(barba.hooks.registered.beforeEnter).toBeUndefined();
-  expect(barba.hooks.registered.afterEnter).toBeUndefined();
-  views.init(barba, [{ namespace: 'baz' }]);
-  expect(barba.hooks.registered.beforeAppear).toHaveLength(1);
-  expect(barba.hooks.registered.afterAppear).toHaveLength(1);
-  expect(barba.hooks.registered.beforeLeave).toHaveLength(1);
-  expect(barba.hooks.registered.afterLeave).toHaveLength(1);
-  expect(barba.hooks.registered.beforeEnter).toHaveLength(1);
-  expect(barba.hooks.registered.afterEnter).toHaveLength(1);
+  views.init([]);
+  expect(hooks.registered.beforeAppear).toBeUndefined();
+  expect(hooks.registered.afterAppear).toBeUndefined();
+  expect(hooks.registered.beforeLeave).toBeUndefined();
+  expect(hooks.registered.afterLeave).toBeUndefined();
+  expect(hooks.registered.beforeEnter).toBeUndefined();
+  expect(hooks.registered.afterEnter).toBeUndefined();
+  views.init([{ namespace: 'baz' }]);
+  expect(hooks.registered.beforeAppear).toHaveLength(1);
+  expect(hooks.registered.afterAppear).toHaveLength(1);
+  expect(hooks.registered.beforeLeave).toHaveLength(1);
+  expect(hooks.registered.afterLeave).toHaveLength(1);
+  expect(hooks.registered.beforeEnter).toHaveLength(1);
+  expect(hooks.registered.afterEnter).toHaveLength(1);
 });
 
 it('do existing hooks for existing namespace', () => {
-  views.init(barba, [
+  views.init([
     {
       namespace: 'success',
       beforeAppear,
@@ -67,12 +69,12 @@ it('do existing hooks for existing namespace', () => {
     next: { namespace: 'success' },
   };
 
-  barba.hooks.do('beforeAppear', success);
-  barba.hooks.do('afterAppear', success);
-  barba.hooks.do('beforeLeave', success);
-  barba.hooks.do('afterLeave', success);
-  barba.hooks.do('beforeEnter', success);
-  barba.hooks.do('afterEnter', success);
+  hooks.do('beforeAppear', success);
+  hooks.do('afterAppear', success);
+  hooks.do('beforeLeave', success);
+  hooks.do('afterLeave', success);
+  hooks.do('beforeEnter', success);
+  hooks.do('afterEnter', success);
 
   expect(beforeAppear).toHaveBeenCalledWith(success);
   expect(afterAppear).toHaveBeenCalledWith(success);
@@ -83,19 +85,19 @@ it('do existing hooks for existing namespace', () => {
 });
 
 it('do nothing for missing hooks', () => {
-  views.init(barba, [{ namespace: 'success' }]);
+  views.init([{ namespace: 'success' }]);
 
   const success = {
     current: { namespace: 'success' },
     next: { namespace: 'success' },
   };
 
-  barba.hooks.do('beforeAppear', success);
-  barba.hooks.do('afterAppear', success);
-  barba.hooks.do('beforeLeave', success);
-  barba.hooks.do('afterLeave', success);
-  barba.hooks.do('beforeEnter', success);
-  barba.hooks.do('afterEnter', success);
+  hooks.do('beforeAppear', success);
+  hooks.do('afterAppear', success);
+  hooks.do('beforeLeave', success);
+  hooks.do('afterLeave', success);
+  hooks.do('beforeEnter', success);
+  hooks.do('afterEnter', success);
 
   expect(beforeAppear).not.toHaveBeenCalled();
   expect(afterAppear).not.toHaveBeenCalled();
@@ -106,17 +108,17 @@ it('do nothing for missing hooks', () => {
 });
 
 it('do nothing for missing namespace', () => {
-  views.init(barba, [
+  views.init([
     { namespace: 'success', beforeLeave, afterLeave, beforeEnter, afterEnter },
   ]);
   const fail = { current: { namespace: 'fail' }, next: { namespace: 'fail' } };
 
-  barba.hooks.do('beforeAppear', fail);
-  barba.hooks.do('afterAppear', fail);
-  barba.hooks.do('beforeLeave', fail);
-  barba.hooks.do('afterLeave', fail);
-  barba.hooks.do('beforeEnter', fail);
-  barba.hooks.do('afterEnter', fail);
+  hooks.do('beforeAppear', fail);
+  hooks.do('afterAppear', fail);
+  hooks.do('beforeLeave', fail);
+  hooks.do('afterLeave', fail);
+  hooks.do('beforeEnter', fail);
+  hooks.do('afterEnter', fail);
 
   expect(beforeAppear).not.toHaveBeenCalled();
   expect(afterAppear).not.toHaveBeenCalled();

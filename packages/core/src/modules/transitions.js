@@ -1,7 +1,6 @@
 import runAsync from 'run-async';
-import hooks from '../hooks';
-import Logger from '../Logger';
-import * as utils from '../utils';
+import { hooks } from '../modules';
+import { helpers, Logger } from '../utils';
 
 /**
  * Manage the transitions
@@ -9,7 +8,7 @@ import * as utils from '../utils';
  * @namespace @barba/core/transitions/manager
  * @type {object}
  */
-export default {
+export const transitions = {
   /**
    * Logger
    *
@@ -40,17 +39,14 @@ export default {
    * @returns {promise} transition end
    */
   async doAppear({ data, transition }) {
-    if (!transition) {
-      this._logger.warn('No transition found');
-    }
+    !transition && this._logger.warn('No transition found');
 
     const t = transition || {};
 
     this.running = true;
     // Before
     this._doSyncHook('beforeAppear', data, t);
-    // Appear
-    hooks.do('appear', data, t);
+
     await this.appear(data, t)
       .then(() => {
         // After
@@ -82,9 +78,7 @@ export default {
    * @returns {promise} transition end
    */
   async doPage({ transition, data, page, wrapper }) {
-    if (!transition) {
-      this._logger.warn('No transition found');
-    }
+    !transition && this._logger.warn('No transition found');
 
     const t = transition || {};
     const sync = t.sync === true || false;
@@ -94,7 +88,7 @@ export default {
     try {
       // Check sync mode, wait for next content
       if (sync) {
-        await utils.getPage(page, data.next);
+        await helpers.getPage(page, data.next);
       }
 
       this._doSyncHook('before', data, t);
@@ -121,7 +115,7 @@ export default {
 
         leaveResult = await Promise.all([
           this.leave(data, t),
-          utils.getPage(page, data.next),
+          helpers.getPage(page, data.next),
         ])
           .then(values => values[0])
           .catch(error => {
@@ -180,31 +174,23 @@ export default {
   // },
 
   appear(data, t) {
-    if (t.appear) {
-      return runAsync(t.appear)(data);
-    }
+    hooks.do('appear', data, t);
 
-    return Promise.resolve();
+    return t.appear ? runAsync(t.appear)(data) : Promise.resolve();
   },
 
   leave(data, t) {
     hooks.do('leave', data, t);
 
-    if (t.leave) {
-      return runAsync(t.leave)(data).then(leaveResult => leaveResult);
-    }
-
-    return Promise.resolve();
+    return t.leave
+      ? runAsync(t.leave)(data).then(leaveResult => leaveResult)
+      : Promise.resolve();
   },
 
   enter(data, t, leaveResult) {
     hooks.do('enter', data, t);
 
-    if (t.enter) {
-      return runAsync(t.enter)(data, leaveResult);
-    }
-
-    return Promise.resolve();
+    return t.enter ? runAsync(t.enter)(data, leaveResult) : Promise.resolve();
   },
 
   _doSyncHook(hook, data, t) {

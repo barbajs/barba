@@ -1,5 +1,5 @@
 import barba from '../../src';
-import Logger from '../../src/Logger';
+import { Logger } from '../../src/utils';
 import { init } from 'barba';
 
 init();

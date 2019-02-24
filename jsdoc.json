@@ -1,4 +1,8 @@
 {
+  "markdown": {
+    "hardwrap": true
+  },
+  "plugins": ["plugins/markdown"],
   "opts": {
     "template": "node_modules/jaguarjs-jsdoc"
   },

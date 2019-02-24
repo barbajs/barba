@@ -42,8 +42,5 @@
     "precommit": "lint-staged",
     "size": "echo '🚦 router' && gzip-size ./dist/barba-router.umd.js"
   },
-  "dependencies": {
-    "path-to-regexp": "^3.0.0"
-  },
   "gitHead": "33c213bc36a0996f6333185dfc695fcd0d37c9d9"
 }

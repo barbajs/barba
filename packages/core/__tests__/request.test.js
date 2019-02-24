@@ -1,4 +1,4 @@
-import request from '../src/request';
+import { request } from '../src/utils';
 
 global.Headers = class {};
 global.window.clearTimeout = jest.fn();
@@ -56,25 +56,21 @@ it('throws result error with 404', async () => {
   expect(requestError).toHaveBeenCalledWith(url, error);
 });
 
-it(
-  'throws timeout error',
-  async () => {
-    const error = new Error('Timeout error');
+it('throws timeout error', async () => {
+  const error = new Error('Timeout error');
 
-    window.fetch = jest.fn().mockImplementation(
-      () =>
-        new Promise(resolve => {
-          setTimeout(() => {
-            resolve();
-          }, 200);
-        })
-    );
+  window.fetch = jest.fn().mockImplementation(
+    () =>
+      new Promise(resolve => {
+        setTimeout(() => {
+          resolve();
+        }, 200);
+      })
+  );
 
-    await expect(request(url, 1, requestError)).rejects.toEqual(error);
-    expect(requestError).toHaveBeenCalledWith(url, error);
-  },
-  1000
-);
+  await expect(request(url, 1, requestError)).rejects.toEqual(error);
+  expect(requestError).toHaveBeenCalledWith(url, error);
+}, 1000);
 
 it('fetch text content', async () => {
   window.fetch = jest.fn().mockImplementation(() => ({

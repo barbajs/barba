@@ -1,5 +1,7 @@
 /* eslint-disable no-empty-function */
-import { store } from '../../src/transitions';
+import { store } from '../../src/modules';
+
+store.init();
 
 it('has appear', () => {
   expect(store.hasAppear).toBeFalsy();

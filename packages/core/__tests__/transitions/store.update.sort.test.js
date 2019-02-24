@@ -1,6 +1,6 @@
 /* eslint-disable no-empty-function */
 import shuffle from 'lodash/shuffle';
-import { store } from '../../src/transitions';
+import { store } from '../../src/modules';
 import transitions from 'transitions';
 
 const expected = transitions.map(t => t.name).reverse();
@@ -16,13 +16,10 @@ const r = {
   type: 'strings',
 };
 
+store.init();
 store.add('rule', {
   position: 1,
   value: r,
-});
-
-beforeEach(() => {
-  store.destroy();
 });
 
 times(50)(() => {

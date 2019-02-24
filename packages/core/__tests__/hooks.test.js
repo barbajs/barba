@@ -1,14 +1,10 @@
-import hooks from '../src/hooks';
+import { hooks } from '../src/modules';
 
-const [hookName] = hooks._available;
-
-afterEach(() => {
-  hooks.destroy();
-});
+const [hookName] = hooks.all;
 
 it('has defaults', () => {
-  expect(hooks._available).toBeDefined();
-  expect(hooks._available).toBeDefined();
+  expect(hooks.all).toBeDefined();
+  expect(hooks.all).toBeDefined();
   expect(hooks[hookName]).toBeUndefined();
 });
 
@@ -41,7 +37,7 @@ it('register hooks', () => {
 
 it('do nothing when no hooks', () => {
   const doUnknown = jest.fn(() => hooks.do('unknown'));
-  const doUnregistered = jest.fn(() => hooks.do(hooks._available[1]));
+  const doUnregistered = jest.fn(() => hooks.do(hooks.all[1]));
 
   hooks.init();
 

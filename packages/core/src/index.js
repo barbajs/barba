@@ -1,1 +1,1 @@
-export { default } from './barba';
+export { default } from './core';

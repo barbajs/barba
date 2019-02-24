@@ -1,5 +1,4 @@
-import { addPriority } from './utils';
-import Logger from '../Logger';
+import { Logger } from '../utils';
 
 /**
  * Store and sort transitions
@@ -7,7 +6,7 @@ import Logger from '../Logger';
  * @namespace @barba/core/transitions/store
  * @type {object}
  */
-export default {
+export const store = {
   /**
    * Logger
    *
@@ -36,41 +35,6 @@ export default {
   ],
 
   /**
-   * All transitions
-   *
-   * @memberof @barba/core/transitions/store
-   * @type {array}
-   * @private
-   */
-  _all: [],
-
-  /**
-   * Appear transitions
-   *
-   * @memberof @barba/core/transitions/store
-   * @type {array}
-   * @private
-   */
-  _appear: [],
-
-  /**
-   * Page transitions
-   *
-   * @memberof @barba/core/transitions/store
-   * @type {array}
-   * @private
-   */
-  _page: [],
-
-  /**
-   * To know if we should wait for next container before getting transition
-   *
-   * @memberof @barba/core/transitions/store
-   * @type {boolean}
-   */
-  wait: false,
-
-  /**
    * Check if appear transitions
    *
    * @memberof @barba/core/transitions/store
@@ -88,36 +52,13 @@ export default {
    * @param {boolean} debug debug mode
    * @returns {store} this instance
    */
-  init(transitions, debug) {
-    this._debug = debug;
-
-    if (transitions) {
-      // TODO: add check for valid transitions? criteria? (appear || enter && leave)
-      this._all = this._all.concat(transitions);
-    }
-
-    this._update();
-
-    return this;
-  },
-
-  /**
-   * Destroy store
-   *
-   * @memberof @barba/core/transitions/store
-   * @returns {store} this instance
-   */
-  destroy() {
-    this._active = undefined;
-    this._debug = false;
-    this._all = [];
+  init(transitions = []) {
+    // TODO: add check for valid transitions? criteria? (appear || enter && leave)
+    this._all = transitions;
     this._appear = [];
-    this._page = [];
+    this._active = undefined;
     this.wait = false;
-
     this._update();
-
-    return this;
   },
 
   /**
@@ -156,10 +97,9 @@ export default {
    * @returns {object} active transition
    */
   get(data, appear = false) {
-    const transitions = appear ? this._appear : this._page;
+    const transitions = appear ? this._appear : this._all;
 
     // All matching transition infos
-    // TODO replace by object?
     const matching = new Map();
 
     // Active = first of valid transitions
@@ -213,7 +153,7 @@ export default {
   _update() {
     // Reorder by priorities
     this._all = this._all
-      .map(addPriority(this._rules))
+      .map(t => this._addPriority(t))
       .sort((a, b) => a.priority - b.priority)
       .reverse()
       .map(t => {
@@ -221,7 +161,6 @@ export default {
 
         return t;
       });
-    this._page = this._all.slice(0);
     this._appear = this._all.filter(t => t.appear);
     // If some "to" property, except if based on "route"
     // TODO: how to manage "t.to.route" from @barba/router ???
@@ -298,5 +237,53 @@ export default {
     }
 
     return isValid;
+  },
+
+  /**
+   * Calculate transition priority based on:
+   * - rule "position" (index) give tens, hundreds, thousands, …
+   * - from/to properties give units (0, 1 or 2)
+   *
+   * @param {object} item transition
+   * @param {string} name rule name
+   * @param {number} index rule index
+   * @returns {number} priority
+   * @private
+   */
+  _calculatePriority(item, name, index) {
+    let priority = 0;
+
+    if (
+      item[name] ||
+      (item.from && item.from[name]) ||
+      (item.to && item.to[name])
+    ) {
+      priority += Math.pow(10, index);
+
+      if (item.from && item.from[name]) {
+        priority += 1;
+      }
+      if (item.to && item.to[name]) {
+        priority += 2;
+      }
+    }
+
+    return priority;
+  },
+
+  _addPriority(t) {
+    t.priority = 0;
+    let priority = 0;
+
+    this._rules.forEach((rule, i) => {
+      const { name } = rule;
+      const index = i + 1;
+
+      priority += this._calculatePriority(t, name, index);
+    });
+
+    t.priority = priority;
+
+    return t;
   },
 };

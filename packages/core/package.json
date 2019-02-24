@@ -43,6 +43,7 @@
     "size": "echo '📦 router' && gzip-size ./dist/barba.umd.js"
   },
   "dependencies": {
+    "path-to-regexp": "^3.0.0",
     "run-async": "^2.3.0"
   },
   "gitHead": "33c213bc36a0996f6333185dfc695fcd0d37c9d9"

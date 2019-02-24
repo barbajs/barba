@@ -1,5 +1,5 @@
-import prevent from '../../src/prevent';
-import { attributeSchema } from '../../src/schema';
+import { attributeSchema } from '../../src/schemas';
+import { prevent } from '../../src/utils';
 
 prevent.init({ attributeSchema });
 

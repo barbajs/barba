@@ -55,9 +55,9 @@ it('do enter hooks', () => {
 });
 
 it('override transitions', () => {
-  barba.manager.appear(data);
-  barba.manager.leave(data);
-  barba.manager.enter(data);
+  barba.transitionsManager.appear(data);
+  barba.transitionsManager.leave(data);
+  barba.transitionsManager.enter(data);
 
   expect(css._next).toHaveBeenNthCalledWith(1, current, 'appear');
   expect(css._next).toHaveBeenNthCalledWith(2, current, 'leave');

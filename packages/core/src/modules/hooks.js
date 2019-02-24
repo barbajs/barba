@@ -1,5 +1,4 @@
-import { map } from './utils';
-import Logger from './Logger';
+import { Logger } from '../utils';
 
 /**
  * Manage the hooks
@@ -7,7 +6,7 @@ import Logger from './Logger';
  * @namespace @barba/core/hooks
  * @type {object}
  */
-export default {
+export const hooks = {
   /**
    * Logger
    *
@@ -18,13 +17,12 @@ export default {
   _logger: new Logger('@barba/core'),
 
   /**
-   * List of available hooks
+   * List of all hooks
    *
    * @memberof @barba/core/hooks
    * @type {array}
-   * @private
    */
-  _available: [
+  all: [
     'go',
     'refresh',
     // Containers
@@ -50,15 +48,7 @@ export default {
   ],
 
   /**
-   * List of registered hooks by name
-   *
-   * @memberof @barba/core/hooks
-   * @type {object}
-   */
-  registered: {},
-
-  /**
-   * Init available hooks
+   * Init all hooks
    *
    * A hook is a function that receive:
    * - function to execute
@@ -68,31 +58,18 @@ export default {
    * @returns {hooks} this instance
    */
   init() {
-    this._available.forEach(hook => {
-      if (this[hook]) {
-        return;
-      }
-
-      this[hook] = (fn, ctx = null) => {
-        this.registered[hook] = this.registered[hook] || [];
-        this.registered[hook].push({
-          fn,
-          ctx,
-        });
-      };
-    });
-
-    return this;
-  },
-
-  /**
-   * Clean registered hooks
-   *
-   * @memberof @barba/core/hooks
-   * @returns {hooks} this instance
-   */
-  destroy() {
     this.registered = {};
+    this.all.forEach(hook => {
+      if (!this[hook]) {
+        this[hook] = (fn, ctx = null) => {
+          this.registered[hook] = this.registered[hook] || [];
+          this.registered[hook].push({
+            fn,
+            ctx,
+          });
+        };
+      }
+    });
 
     return this;
   },
@@ -106,13 +83,11 @@ export default {
    * @returns {undefined}
    */
   do(hook, ...args) {
-    if (hook in this.registered === false) {
-      return;
+    if (hook in this.registered) {
+      this.registered[hook].forEach(hook => {
+        hook.fn.apply(hook.ctx, args);
+      });
     }
-
-    this.registered[hook].forEach(hook => {
-      hook.fn.apply(hook.ctx, args);
-    });
   },
 
   /**
@@ -122,12 +97,9 @@ export default {
    * @returns {undefined}
    */
   help() {
-    this._logger.info(`[@barba/core] Available hooks: ${this._available}`);
+    this._logger.info(`[@barba/core] Available hooks: ${this.all}`);
     this._logger.info(
-      `[@barba/core] Registered hooks: ${map(
-        this.registered,
-        (hooks, name) => name
-      )}`
+      `[@barba/core] Registered hooks: ${Object.keys(this.registered)}`
     );
   },
 };

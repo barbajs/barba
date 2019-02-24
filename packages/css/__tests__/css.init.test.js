@@ -23,8 +23,6 @@ it('registers hooks', () => {
   barba.use(css);
   barba.init();
 
-  console.info('MANGLE', barba.hooks);
-
   expect(barba.hooks.registered.before).toHaveLength(1);
   expect(barba.hooks.registered.beforeAppear).toHaveLength(2);
   expect(barba.hooks.registered.afterAppear).toHaveLength(1);
@@ -35,7 +33,7 @@ it('registers hooks', () => {
 });
 
 it('overrides transitions', () => {
-  expect(barba.manager.appear).toBe(css._appear);
-  expect(barba.manager.leave).toBe(css._leave);
-  expect(barba.manager.enter).toBe(css._enter);
+  expect(barba.transitionsManager.appear).toBe(css._appear);
+  expect(barba.transitionsManager.leave).toBe(css._leave);
+  expect(barba.transitionsManager.enter).toBe(css._enter);
 });

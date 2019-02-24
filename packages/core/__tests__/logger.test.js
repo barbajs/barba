@@ -1,4 +1,4 @@
-import Logger from '../src/Logger';
+import { Logger } from '../src/utils';
 
 let logger;
 let loggerSource;

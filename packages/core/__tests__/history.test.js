@@ -1,4 +1,4 @@
-import history from '../src/history';
+import { history } from '../src/modules';
 
 const first = {
   url: 'url1',

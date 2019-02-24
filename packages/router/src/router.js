@@ -1,6 +1,4 @@
-import pathToRegexp from 'path-to-regexp';
 import { version } from '../package.json';
-import { cleanUrl, parsePath } from './utils';
 
 /**
  * Barba router
@@ -16,15 +14,6 @@ export const router = {
    * @type {string}
    */
   version,
-
-  /**
-   * Origin for cleaning URLs
-   *
-   * @memberof @barba/router
-   * @type {string}
-   * @private
-   */
-  _origin: window.location.origin,
 
   /**
    * List of route names
@@ -58,7 +47,7 @@ export const router = {
     routes.forEach(route => {
       const { name, path } = route;
       const keys = [];
-      const regex = pathToRegexp(path, keys);
+      const regex = this.barba.url.pathToRegexp(path, keys);
 
       if (this._routeNames.indexOf(name) > -1) {
         console.warn(`[@barba/router] Duplicated route name (${name})`);
@@ -117,13 +106,8 @@ export const router = {
    * @private
    */
   _resolve(url) {
-    const fullPath = cleanUrl(url, this._origin);
-    const { path, query, hash } = parsePath(fullPath);
+    const { path } = this.barba.url.parse(url);
     const output = {
-      hash,
-      path,
-      query,
-      url,
       params: {},
     };
 
@@ -159,8 +143,10 @@ export const router = {
   _resolveRoutes(data) {
     const { current, next } = data;
 
-    current.route = current.url ? this._resolve(current.url) : undefined;
-    next.route = next.url ? this._resolve(next.url) : undefined;
+    current.route = current.url.href
+      ? this._resolve(current.url.href)
+      : undefined;
+    next.route = next.url.href ? this._resolve(next.url.href) : undefined;
   },
 };
 

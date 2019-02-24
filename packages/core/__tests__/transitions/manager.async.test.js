@@ -1,5 +1,5 @@
 /* eslint-disable no-empty-function */
-import { manager } from '../../src/transitions';
+import { hooks, transitions } from '../../src/modules';
 
 // Mocks
 const enter = jest.fn();
@@ -27,12 +27,16 @@ const payload = 'payload';
  * @returns {undefined}
  */
 async function doPage(leave) {
-  await manager.doPage({
+  await transitions.doPage({
     transition: { leave, enter },
     data,
     wrapper,
   });
 }
+
+beforeEach(() => {
+  hooks.init();
+});
 
 it('returns with "promise"', async () => {
   expect.assertions(1);

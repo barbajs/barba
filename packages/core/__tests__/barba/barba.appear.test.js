@@ -1,16 +1,16 @@
 /* eslint-disable no-empty-function */
 import barba from '../../src';
-import { manager, store } from '../../src/transitions';
+import { store, transitions } from '../../src/modules';
 import { init } from 'barba';
 
 init();
 
-afterEach(() => {
-  store.destroy();
+beforeEach(() => {
+  store.init();
 });
 
 it('do appear', () => {
-  const spyAppear = jest.spyOn(manager, 'doAppear');
+  const spyAppear = jest.spyOn(transitions, 'doAppear');
 
   store.add('transition', { appear() {} });
   barba.appear();
@@ -22,7 +22,7 @@ it('do appear', () => {
 it('catches error', async () => {
   expect.assertions(2);
   barba.logger.error = jest.fn();
-  barba.manager._logger.error = jest.fn();
+  barba.transitionsManager._logger.error = jest.fn();
   const errorAppear = new Error('Appear error');
   const errorTransition = new Error('Transition error');
 
@@ -34,6 +34,8 @@ it('catches error', async () => {
 
   await barba.appear();
 
-  expect(barba.manager._logger.error).toHaveBeenCalledWith(errorAppear);
+  expect(barba.transitionsManager._logger.error).toHaveBeenCalledWith(
+    errorAppear
+  );
   expect(barba.logger.error).toHaveBeenCalledWith(errorTransition);
 });

@@ -1,5 +1,5 @@
 /* eslint-disable no-empty-function */
-import { store } from '../../src/transitions';
+import { store } from '../../src/modules';
 
 it('resets defaults', () => {
   store.init([{ appear() {} }, { enter() {} }, { to: {} }], true);
@@ -7,7 +7,5 @@ it('resets defaults', () => {
 
   expect(store._all).toHaveLength(0);
   expect(store._appear).toHaveLength(0);
-  expect(store._page).toHaveLength(0);
-  expect(store._debug).toBeFalsy();
   expect(store.wait).toBeFalsy();
 });

@@ -1,11 +1,9 @@
 /* eslint-disable no-empty-function */
 import barba from '../../src';
-import cache from '../../src/cache';
-import dom from '../../src/dom';
-import history from '../../src/history';
-import hooks from '../../src/hooks';
-import { attributeSchema } from '../../src/schema';
-import { manager, store } from '../../src/transitions';
+import { attributeSchema } from '../../src/schemas';
+import { cache, history, hooks, store, transitions } from '../../src/modules';
+import { dom } from '../../src/utils';
+
 import { init } from 'barba';
 
 // Needed for "request" module
@@ -29,6 +27,7 @@ let spyCacheSet;
 let spyPage;
 
 beforeEach(() => {
+  store.init();
   global.fetch = jest.fn().mockImplementation(() => ({
     status: 200,
     text: () =>
@@ -43,10 +42,9 @@ beforeEach(() => {
   spyCacheHas = jest.spyOn(cache, 'has');
   spyCacheGet = jest.spyOn(cache, 'get');
   spyCacheSet = jest.spyOn(cache, 'set');
-  spyPage = jest.spyOn(manager, 'doPage');
+  spyPage = jest.spyOn(transitions, 'doPage');
 });
 afterEach(() => {
-  store.destroy();
   spyCacheHas.mockRestore();
   spyCacheGet.mockRestore();
   spyCacheSet.mockRestore();
@@ -54,7 +52,7 @@ afterEach(() => {
 });
 
 it('do go', () => {
-  manager.doPage = jest.fn();
+  transitions.doPage = jest.fn();
   history.go = jest.fn();
   hooks.do = jest.fn();
 
@@ -64,15 +62,15 @@ it('do go', () => {
   const data = barba._getData();
 
   expect(spyCacheHas).toHaveBeenCalledTimes(1);
-  expect(spyCacheGet).toHaveBeenCalledTimes(0);
   expect(spyCacheSet).toHaveBeenCalledTimes(1);
+  expect(spyCacheGet).toHaveBeenCalledTimes(1);
   expect(history.go).toHaveBeenCalledTimes(1);
   expect(hooks.do).toHaveBeenLastCalledWith('go', data);
-  expect(manager.doPage).toHaveBeenCalledTimes(1);
+  expect(transitions.doPage).toHaveBeenCalledTimes(1);
 });
 
 it('do go [popstate]', () => {
-  manager.doPage = jest.fn();
+  transitions.doPage = jest.fn();
   history.add = jest.fn();
 
   store.add('transition', { leave() {}, enter() {} });
@@ -82,7 +80,7 @@ it('do go [popstate]', () => {
 });
 
 it('do go [has cache]', () => {
-  manager.doPage = jest.fn();
+  transitions.doPage = jest.fn();
   history.add = jest.fn();
 
   store.add('transition', { leave() {}, enter() {} });
@@ -94,7 +92,7 @@ it('do go [has cache]', () => {
 });
 
 it('do go [waiting]', async () => {
-  manager.doPage = jest.fn();
+  transitions.doPage = jest.fn();
   // Avoid updating data.next
   barba._refreshPages = jest.fn();
 
@@ -107,7 +105,7 @@ it('do go [waiting]', async () => {
 it('do go [no use cache]', () => {
   barba.useCache = false;
 
-  manager.doPage = jest.fn();
+  transitions.doPage = jest.fn();
   history.add = jest.fn();
 
   store.add('transition', { leave() {}, enter() {} });
@@ -120,24 +118,24 @@ it('do go [no use cache]', () => {
 
 it('force when manager running', () => {
   barba.force = jest.fn();
-  manager.doPage = jest.fn();
+  transitions.doPage = jest.fn();
   hooks.do = jest.fn();
 
   store.add('transition', { leave() {}, enter() {} });
-  manager.running = true;
+  transitions.running = true;
   barba.go('http://localhost/foo');
 
   expect(barba.force).toHaveBeenCalledTimes(1);
   expect(hooks.do).not.toHaveBeenCalled();
-  expect(manager.doPage).not.toHaveBeenCalled();
+  expect(transitions.doPage).not.toHaveBeenCalled();
 
-  manager.running = false;
+  transitions.running = false;
 });
 
 it('catches error', async () => {
   expect.assertions(3);
   barba.logger.error = jest.fn();
-  barba.manager._logger.error = jest.fn();
+  barba.transitionsManager._logger.error = jest.fn();
   history.cancel = jest.fn();
   spyPage.mockRestore();
   const errorLeave = new Error('Leave error');
@@ -151,7 +149,9 @@ it('catches error', async () => {
 
   await barba.go('http://localhost');
 
-  expect(barba.manager._logger.error).toHaveBeenCalledWith(errorLeave);
+  expect(barba.transitionsManager._logger.error).toHaveBeenCalledWith(
+    errorLeave
+  );
   expect(barba.logger.error).toHaveBeenCalledWith(errorTransition);
   expect(history.cancel).toHaveBeenCalledTimes(1);
 });

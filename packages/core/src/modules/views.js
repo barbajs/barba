@@ -1,10 +1,22 @@
+import { hooks } from '../modules';
+
+/**
+ * Manage the views
+ *
+ * @module core/modules/views
+ */
+/**
+ * @typedef module:core/modules/views.view
+ * @type {object}
+ * @property {Function} [beforeEnter] - The beforeEnter hook
+ */
 /**
  * Manage the views
  *
  * @namespace @barba/core/views
  * @type {object}
  */
-export default {
+export const views = {
   /**
    * Views by namespace
    *
@@ -18,13 +30,12 @@ export default {
    * Init views
    *
    * @memberof @barba/core/views
-   * @param {barba} barba barba instance
    * @param {array} views array of views
-   * @returns {views} this instance
+   * @returns {undefined}
    */
-  init(barba, views) {
+  init(views) {
     if (views.length === 0) {
-      return this;
+      return;
     }
 
     // TODO: add check
@@ -37,14 +48,12 @@ export default {
       return acc;
     }, {});
 
-    barba.hooks.beforeAppear(this._getHook('beforeAppear'), this);
-    barba.hooks.afterAppear(this._getHook('afterAppear'), this);
-    barba.hooks.beforeLeave(this._getHook('beforeLeave'), this);
-    barba.hooks.afterLeave(this._getHook('afterLeave'), this);
-    barba.hooks.beforeEnter(this._getHook('beforeEnter'), this);
-    barba.hooks.afterEnter(this._getHook('afterEnter'), this);
-
-    return this;
+    hooks.beforeAppear(this._getHook('beforeAppear'), this);
+    hooks.afterAppear(this._getHook('afterAppear'), this);
+    hooks.beforeLeave(this._getHook('beforeLeave'), this);
+    hooks.afterLeave(this._getHook('afterLeave'), this);
+    hooks.beforeEnter(this._getHook('beforeEnter'), this);
+    hooks.afterEnter(this._getHook('afterEnter'), this);
   },
 
   /**

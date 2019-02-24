@@ -1,4 +1,4 @@
-import { store } from '../../src/transitions';
+import { store } from '../../src/modules';
 
 let match = {};
 

@@ -60,9 +60,9 @@ export const css = {
     this.barba.hooks.afterEnter(this._afterEnter, this);
 
     // Override main transitions
-    this.barba.manager.appear = this._appear;
-    this.barba.manager.leave = this._leave;
-    this.barba.manager.enter = this._enter;
+    this.barba.transitionsManager.appear = this._appear;
+    this.barba.transitionsManager.leave = this._leave;
+    this.barba.transitionsManager.enter = this._enter;
   },
 
   /**

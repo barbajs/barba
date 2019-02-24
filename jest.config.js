@@ -1,8 +1,9 @@
 module.exports = {
   collectCoverageFrom: [
     'packages/**/src/**/*.{js,jsx}',
-    '!packages/core/src/(polyfills|schema|utils).js',
-    '!packages/prefetch/src/polyfills.js',
+    '!packages/**/src/**/index.js',
+    '!packages/**/src/polyfills/**.js',
+    '!packages/core/src/utils/helpers.js',
   ],
   coverageThreshold: {
     global: {
@@ -14,6 +15,7 @@ module.exports = {
   },
   resetMocks: true,
   setupFiles: ['<rootDir>/jest.init.js'],
+  testEnvironment: 'jest-environment-jsdom-global',
   testMatch: ['**/__tests__/**/*.test.js'],
   transformIgnorePatterns: ['<rootDir>.*(node_modules)(?!.*@barba.*).*$'],
   verbose: true,

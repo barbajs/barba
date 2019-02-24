@@ -1,5 +1,5 @@
-import dom from '../src/dom';
-import { attributeSchema } from '../src/schema';
+import { attributeSchema } from '../src/schemas';
+import { dom } from '../src/utils';
 
 // Init
 const attr = attributeSchema;

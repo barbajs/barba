@@ -40,7 +40,7 @@ function timeout(url, ms, request, requestError) {
  * @returns {Promise} text content or error
  * @private
  */
-async function request(url) {
+async function fetcher(url) {
   const conn = navigator.connection;
 
   /* istanbul ignore else */
@@ -81,5 +81,5 @@ async function request(url) {
   }
 }
 
-export default (url, ttl = requestTimeout, requestError) =>
-  timeout(url, ttl, request(url), requestError);
+export const request = (url, ttl = requestTimeout, requestError) =>
+  timeout(url, ttl, fetcher(url), requestError);

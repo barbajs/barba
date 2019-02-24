@@ -30,7 +30,7 @@ const LogLevel = {
 
 let _level = LogLevel.off;
 
-export default class Logger {
+export class Logger {
   /**
    * Creates an instance of Logger
    * @param {string} source Log namespace

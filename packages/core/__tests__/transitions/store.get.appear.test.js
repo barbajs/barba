@@ -1,5 +1,5 @@
 /* eslint-disable no-empty-function */
-import { store } from '../../src/transitions';
+import { store } from '../../src/modules';
 
 const tAppear = { appear() {} };
 const tAppearNs = { appear() {}, namespace: true };

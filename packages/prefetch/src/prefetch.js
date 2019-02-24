@@ -1,7 +1,6 @@
 import { version } from '../package.json';
 import { requestIdleCallback } from './polyfills';
 
-// TODO: use array
 const toPrefetch = new Set();
 
 /**
@@ -64,7 +63,7 @@ export const prefetch = {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const el = entry.target;
-          const url = this.barba.utils.getHref(el);
+          const url = this.barba.dom.getUrl(el);
 
           if (toPrefetch.has(url)) {
             this._observer.unobserve(el);
@@ -103,7 +102,7 @@ export const prefetch = {
       () => {
         // If not, find all links and use IntersectionObserver.
         this._root.querySelectorAll('a').forEach(el => {
-          const url = this.barba.utils.getHref(el);
+          const url = this.barba.dom.getUrl(el);
 
           // Add some [data-barba="preload"] or
           // Add some [data-barba-preload="true/false"] ?

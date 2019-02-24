@@ -1,15 +1,16 @@
 /**
  * DOM manipulations
  *
- * @namespace @barba/core/dom
- * @type {object}
+ * @namespace @barba/core/utils/dom
+ * @type {Object}
  */
-export default {
+export const dom = {
   /**
    * Init
    *
-   * @param {object} { attributeSchema } options
-   * @returns {undefined}
+   * @param {object} options options
+   * @param {module:core/schemas/attribute.attributeSchema} options.attributeSchema attributeSchema
+   * @returns {void}
    * @memberof @barba/core/dom
    */
   init({ attributeSchema }) {
@@ -20,7 +21,7 @@ export default {
   /**
    * Convert DOM to string
    *
-   * @param {HTMLDocument|HTMLElement} dom DOM stuff
+   * @param {HTMLElement} dom DOM stuff
    * @returns {string} stringified result
    * @memberof @barba/core/dom
    */
@@ -42,12 +43,12 @@ export default {
   /**
    * Get html content
    *
-   * @param {HTMLElement} [el=document] element
+   * @param {HTMLDocument} [doc=document] element
    * @returns {string} stringified html
    * @memberof @barba/core/dom
    */
-  getHtml(el = document) {
-    return this.toString(el.documentElement);
+  getHtml(doc = document) {
+    return this.toString(doc.documentElement);
   },
 
   /**
@@ -64,8 +65,8 @@ export default {
   /**
    * Get [data-barba="wrapper"]
    *
-   * @param {HTMLElement} [scope=document] element
-   * @returns {HTMLElement|null} wrapper
+   * @param {HTMLElement|HTMLDocument} [scope=document] element
+   * @returns {Element|null} wrapper
    * @memberof @barba/core/dom
    */
   getWrapper(scope = document) {
@@ -75,7 +76,7 @@ export default {
   /**
    * Get [data-barba="container"]
    *
-   * @param {HTMLElement} [scope=document] element
+   * @param {HTMLElement|HTMLDocument} [scope=document] element
    * @returns {HTMLElement|null} container
    * @memberof @barba/core/dom
    */
@@ -88,7 +89,7 @@ export default {
   /**
    * Get [data-barba-namespace]
    *
-   * @param {HTMLElement} [scope=document] element
+   * @param {HTMLElement|Document} [scope=document] element
    * @returns {string|null} namespace
    * @memberof @barba/core/dom
    */
@@ -101,4 +102,14 @@ export default {
       ? ns.getAttribute(`${this.attr.prefix}-${this.attr.namespace}`)
       : null;
   },
+
+  /**
+   * Get URL from href value
+   *
+   * @param {HTMLLinkElement} el element
+   * @returns {string|undefined} href value
+   * @memberof @barba/core/dom
+   */
+  getUrl: el =>
+    el.getAttribute && el.getAttribute('href') ? el.href : undefined,
 };

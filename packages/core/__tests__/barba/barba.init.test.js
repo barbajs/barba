@@ -1,7 +1,6 @@
 import barba from '../../src';
-import cache from '../../src/cache';
-import history from '../../src/history';
-import prevent from '../../src/prevent';
+import { cache, history } from '../../src/modules';
+import { prevent } from '../../src/utils';
 
 const wrapper = document.createElement('div');
 const container = document.createElement('div');
@@ -69,7 +68,12 @@ it('has current page content', () => {
   barba.init();
   expect(barba._current).toBeDefined();
   expect(barba._current.namespace).toBe(namespace);
-  expect(barba._current.url).toBe('http://localhost/');
+  expect(barba._current.url).toEqual({
+    href: 'http://localhost/',
+    path: '/',
+    hash: undefined,
+    query: {},
+  });
   expect(barba._current.container).toBe(container);
   expect(barba._current.html).toMatch(/^<html>.+<\/html>$/);
 });

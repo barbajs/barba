@@ -4,7 +4,7 @@
  * @namespace @barba/core/history
  * @type {object}
  */
-export default {
+export const history = {
   /**
    * Keep track of the status in historic order
    *
@@ -47,10 +47,7 @@ export default {
   go(url, namespace = undefined) {
     this.add(url, namespace);
 
-    /* istanbul ignore else  */
-    if (window.history) {
-      window.history.pushState(null, '', url);
-    }
+    window.history && window.history.pushState(null, '', url);
   },
 
   /**
@@ -64,10 +61,7 @@ export default {
   cancel() {
     this.remove();
 
-    /* istanbul ignore else  */
-    if (window.history) {
-      window.history.back();
-    }
+    window.history && window.history.back();
   },
 
   /**
@@ -77,9 +71,7 @@ export default {
    * @return {Object} current status
    */
   current() {
-    const history = this._history;
-
-    return history[history.length - 1];
+    return this._history[this._history.length - 1];
   },
 
   /**
@@ -89,12 +81,8 @@ export default {
    * @return {Object} previous status
    */
   previous() {
-    const history = this._history;
-
-    if (history.length < 2) {
-      return null;
-    }
-
-    return history[history.length - 2];
+    return this._history.length < 2
+      ? null
+      : this._history[this._history.length - 2];
   },
 };

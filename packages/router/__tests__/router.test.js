@@ -83,8 +83,8 @@ it('resolves unknown url', () => {
 
 it('resolves data urls (home)', () => {
   const data = {
-    current: { url: 'http://localhost/' },
-    next: { url: 'http://localhost/' },
+    current: { url: { href: 'http://localhost/' } },
+    next: { url: { href: 'http://localhost/' } },
   };
 
   router._resolveRoutes(data);
@@ -95,8 +95,8 @@ it('resolves data urls (home)', () => {
 
 it('resolves data urls (foo)', () => {
   const data = {
-    current: { url: 'http://localhost/foo/current' },
-    next: { url: 'http://localhost/foo/next' },
+    current: { url: { href: 'http://localhost/foo/current' } },
+    next: { url: { href: 'http://localhost/foo/next' } },
   };
 
   router._resolveRoutes(data);
@@ -107,8 +107,8 @@ it('resolves data urls (foo)', () => {
 
 it('resolves unknown data urls', () => {
   const data = {
-    current: {},
-    next: {},
+    current: { url: {} },
+    next: { url: {} },
   };
 
   router._resolveRoutes(data);

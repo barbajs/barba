@@ -1,6 +1,5 @@
 /* eslint-disable no-empty-function */
-import { manager } from '../../src/transitions';
-import hooks from '../../src/hooks';
+import { hooks, transitions } from '../../src/modules';
 
 // Mocks
 const beforeAppear = jest.fn();
@@ -14,19 +13,19 @@ const data = 'data';
 
 it('needs transition', async () => {
   expect.assertions(1);
-  manager._logger.warn = jest.fn();
+  transitions._logger.warn = jest.fn();
 
-  await manager.doAppear({
+  await transitions.doAppear({
     transition: undefined,
     data,
   });
-  expect(manager._logger.warn).toHaveBeenCalledWith('No transition found');
+  expect(transitions._logger.warn).toHaveBeenCalledWith('No transition found');
 });
 
 it('calls methods', async () => {
   expect.assertions(9);
 
-  await manager.doAppear({
+  await transitions.doAppear({
     transition: { beforeAppear, appear, afterAppear },
     data,
   });
@@ -40,7 +39,7 @@ it('calls methods', async () => {
   expect(afterAppear).toHaveBeenCalledTimes(1);
   expect(afterAppear).toHaveBeenCalledWith(data);
 
-  await manager.doAppear({ transition: { appear } });
+  await transitions.doAppear({ transition: { appear } });
 
   expect(beforeAppear).toHaveBeenCalledTimes(1);
   expect(appear).toHaveBeenCalledTimes(2);
@@ -52,7 +51,7 @@ it('calls hooks', async () => {
 
   const t = { appear() {} };
 
-  await manager.doAppear({ transition: t, data });
+  await transitions.doAppear({ transition: t, data });
 
   expect(hooks.do).toHaveBeenCalledTimes(3);
   expect(hooks.do).toHaveBeenNthCalledWith(1, 'beforeAppear', data, t);
@@ -62,7 +61,7 @@ it('calls hooks', async () => {
 
 it('catches error', async () => {
   expect.assertions(3);
-  manager._logger.error = jest.fn();
+  transitions._logger.error = jest.fn();
 
   const appearError = () => {
     throw new Error('Test');
@@ -70,7 +69,7 @@ it('catches error', async () => {
   const t = { appear: appearError, appearCanceled };
 
   try {
-    await manager.doAppear({
+    await transitions.doAppear({
       transition: t,
       data,
     });

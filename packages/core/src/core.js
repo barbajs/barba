@@ -1,24 +1,24 @@
 import { version } from '../package.json';
-import { attributeSchema, pageSchema } from './schema';
-import { manager, store } from './transitions';
-import LoggerClass from './Logger';
-import cache from './cache';
-import dom from './dom';
-import history from './history';
-import hooks from './hooks';
-import prevent from './prevent';
-import request from './request';
-import viewsManager from './views';
-import * as utils from './utils';
+import { attributeSchema, pageSchema } from './schemas';
+import {
+  cache,
+  history,
+  hooks,
+  store,
+  transitions as transitionsManager,
+  views as viewsManager,
+} from './modules';
+import { dom, request, helpers, prevent, url, Logger } from './utils';
 
-import './polyfills';
-import './defs';
+// DEV
+// import './polyfills';
+// import './definitions';
 
 /**
  * Barba core
  *
  * @namespace @barba/core
- * @type {object}
+ * @type {Object}
  */
 export default {
   /**
@@ -30,31 +30,15 @@ export default {
   version,
 
   /**
-   * Logger
+   * Page schema (object structure)
    *
    * @memberof @barba/core
-   * @type {Logger}
+   * @type {module:core/schemas/page.pageSchema}
    */
-  Logger: LoggerClass,
+  pageSchema,
 
   /**
-   * Transitions manager
-   *
-   * @memberof @barba/core
-   * @type {manager}
-   */
-  manager,
-
-  /**
-   * Transitions store
-   *
-   * @memberof @barba/core
-   * @type {store}
-   */
-  store,
-
-  /**
-   * Cache
+   * Cache module
    *
    * @memberof @barba/core
    * @type {cache}
@@ -62,7 +46,15 @@ export default {
   cache,
 
   /**
-   * Hooks
+   * History module
+   *
+   * @memberof @barba/core
+   * @type {history}
+   */
+  history,
+
+  /**
+   * Hooks module
    *
    * @memberof @barba/core
    * @type {hooks}
@@ -70,7 +62,39 @@ export default {
   hooks: hooks.init(),
 
   /**
-   * Prevent checker
+   * Store module
+   *
+   * @memberof @barba/core
+   * @type {store}
+   */
+  store,
+
+  /**
+   * Transitions manager
+   *
+   * @memberof @barba/core
+   * @type {transitions}
+   */
+  transitionsManager,
+
+  /**
+   * Views manager
+   *
+   * @memberof @barba/core
+   * @type {views}
+   */
+  viewsManager,
+
+  /**
+   * Dom (utils)
+   *
+   * @memberof @barba/core
+   * @type {dom}
+   */
+  dom,
+
+  /**
+   * Prevent (utils)
    *
    * @memberof @barba/core
    * @type {prevent}
@@ -78,7 +102,7 @@ export default {
   prevent,
 
   /**
-   * Request (fetch) manager
+   * Request (utils)
    *
    * @memberof @barba/core
    * @type {request}
@@ -86,21 +110,28 @@ export default {
   request,
 
   /**
-   * Utils
+   * Helpers (utils)
    *
    * @memberof @barba/core
    * @type {object}
    */
-  utils,
+  helpers,
 
   /**
-   * Page object structure
+   * URL (utils)
    *
    * @memberof @barba/core
    * @type {object}
    */
-  // @type {import('./defs.js').pageSchema}
-  pageSchema,
+  url,
+
+  /**
+   * Logger (utils)
+   *
+   * @memberof @barba/core
+   * @type {Logger}
+   */
+  Logger,
 
   /**
    * Plugins list
@@ -150,15 +181,15 @@ export default {
    * @memberof @barba/core
    * @param {object} options - Options
    * @param {transition[]} [options.transitions=[]] - Transitions array
-   * @param {view[]} [options.views=[]] - Views array
-   * @param {object} [options.schema=attributeSchema] - Schema
+   * @param {module:core/modules/views.view[]} [options.views=[]] - Views array
+   * @param {module:core/schemas/attribute.attributeSchema} [options.schema=attributeSchema] - Schema
    * @param {function} [options.requestError=undefined] - Request error callback
    * @param {number} [options.timeout=5000] - Request timeout
    * @param {boolean} [options.useCache=true] - Enable cache
    * @param {boolean} [options.usePrefetch=true] - Enable prefetch
    * @param {boolean} [options.debug=false] - Debug mode
    * @param {string} [options.log='off'] - Log level
-   * @returns {undefined}
+   * @returns {void}
    */
   init({
     transitions = [],
@@ -175,16 +206,18 @@ export default {
     debug = false,
     log: logLevel = 'off',
   } = {}) {
-    LoggerClass.level = debug === true ? 'debug' : logLevel;
+    // Create core logger
+    Logger.level = debug === true ? 'debug' : logLevel;
     this.logger = new this.Logger('@barba/core');
 
+    // Save options
     this._requestError = requestError;
     this._timeout = timeout;
     this.useCache = useCache;
     this.usePrefetch = usePrefetch;
 
-    // 1. Init modules with data-attributes schema
-    dom.init({ attributeSchema: schema });
+    // 1. Init modules/utils with data-attributes schema
+    this.dom.init({ attributeSchema: schema });
     this.prevent.init({ attributeSchema: schema });
     // Add prevent custom
     if (preventCustom !== null) {
@@ -196,28 +229,31 @@ export default {
     }
 
     // 2. Wrapper
-    this._wrapper = dom.getWrapper();
+    this._wrapper = this.dom.getWrapper();
     if (!this._wrapper) {
       throw new Error('[@barba/core] No Barba wrapper found');
     }
     this._wrapper.setAttribute('aria-live', 'polite'); // A11y
 
     // 3. Init pages (get "current" data)
-    this._initPages();
+    this._refreshPages();
     if (!this._current.container) {
       throw new Error('[@barba/core] No Barba container found');
     }
 
     // 4. Init other modules
-    this.store = store.init(transitions);
-    viewsManager.init(this, views);
+    this.store.init(transitions);
+    this.viewsManager.init(views);
 
     // 5. Use "current" data
     // Set/update history
-    history.add(this._current.url, this._current.namespace);
+    history.add(this._current.url.href, this._current.namespace);
     // Add to cache
     this.useCache &&
-      this.cache.set(this._current.url, Promise.resolve(this._current.html));
+      this.cache.set(
+        this._current.url.href,
+        Promise.resolve(this._current.html)
+      );
 
     // 6. Bindings
     this._onLinkEnter = this._onLinkEnter.bind(this);
@@ -261,7 +297,7 @@ export default {
       return;
     }
 
-    const url = this.utils.getHref(el);
+    const url = this.dom.getUrl(el);
 
     // Already in cache
     if (this.cache.has(url)) {
@@ -296,13 +332,13 @@ export default {
       return;
     }
 
-    this.go(this.utils.getHref(el), el);
+    this.go(this.dom.getUrl(el), el);
   },
 
   _onStateChange() {
-    const url = this.utils.getUrl();
+    const href = this.url.getHref();
 
-    this.go(url, 'popstate');
+    this.go(href, 'popstate');
   },
 
   _onRequestError(trigger, action, ...args) {
@@ -327,7 +363,7 @@ export default {
   _getLinkElement(e) {
     let el = e.target;
 
-    while (el && !this.utils.getHref(el)) {
+    while (el && !this.dom.getUrl(el)) {
       el = el.parentNode;
     }
 
@@ -346,7 +382,7 @@ export default {
         const data = this._getData();
         const transition = this.store.get(data, true);
 
-        await this.manager.doAppear({ transition, data });
+        await this.transitionsManager.doAppear({ transition, data });
       } catch (error) {
         this.logger.error(error);
       }
@@ -355,13 +391,16 @@ export default {
 
   async go(url, trigger = 'barba') {
     // If animation running, force reload
-    if (this.manager.running) {
+    if (this.transitionsManager.running) {
       this.force(url);
 
       return;
     }
 
-    this._next.url = url;
+    this._next.url = {
+      href: url,
+      ...this.url.parse(url),
+    };
     this._trigger = trigger;
 
     let page;
@@ -370,14 +409,16 @@ export default {
       /* eslint-disable indent */
       page = this.cache.has(url)
         ? this.cache.get(url)
-        : this.cache.set(
-            url,
-            this.request(
+        : this.cache
+            .set(
               url,
-              this._timeout,
-              this._onRequestError.bind(this, trigger, 'click')
+              this.request(
+                url,
+                this._timeout,
+                this._onRequestError.bind(this, trigger, 'click')
+              )
             )
-          );
+            .get(url);
       /* eslint-enable indent */
     } else {
       page = this.request(
@@ -389,7 +430,7 @@ export default {
 
     // Need to wait before getting the right transition
     if (this.store.wait) {
-      await utils.getPage(page, this._next);
+      await helpers.getPage(page, this._next);
     }
 
     if (trigger === 'popstate') {
@@ -407,7 +448,7 @@ export default {
     try {
       const transition = this.store.get(data);
 
-      await this.manager.doPage({
+      await this.transitionsManager.doPage({
         transition,
         data,
         page,
@@ -437,18 +478,19 @@ export default {
     };
   },
 
-  _initPages() {
-    this._refreshPages();
-  },
-
   _refreshPages() {
     this._current = { ...this.pageSchema };
     this._next = { ...this.pageSchema };
 
-    this._current.namespace = dom.getNamespace();
-    this._current.url = this.utils.getUrl();
-    this._current.container = dom.getContainer();
-    this._current.html = dom.getHtml();
+    const href = this.url.getHref();
+
+    this._current.namespace = this.dom.getNamespace();
+    this._current.url = {
+      href,
+      ...this.url.parse(href),
+    };
+    this._current.container = this.dom.getContainer();
+    this._current.html = this.dom.getHtml();
 
     // Hook: reset current/next pages
     // Can be used to resolve "route"…
@@ -458,7 +500,7 @@ export default {
 
   _updateTitle(data) {
     const { html } = data.next;
-    const { title } = dom.toDocument(html);
+    const { title } = this.dom.toDocument(html);
 
     document.title = title;
   },
