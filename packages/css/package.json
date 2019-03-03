@@ -35,7 +35,7 @@
     "url": "git+ssh://git@github.com/barbajs/barba-next.git"
   },
   "scripts": {
-    "build": "microbundle --name barbaCss",
+    "buildddd": "microbundle --name barbaCss",
     "build:watch": "microbundle watch --name barbaCss",
     "clear": "rimraf dist",
     "lint": "eslint src/**",

@@ -35,7 +35,7 @@
     "url": "git+ssh://git@github.com/barbajs/barba-next.git"
   },
   "scripts": {
-    "build": "microbundle --name barbaRouter --external none",
+    "buildddd": "microbundle --name barbaRouter --external none",
     "build:watch": "microbundle watch --name barbaRouter --external none",
     "clear": "rimraf dist",
     "lint": "eslint src/**",

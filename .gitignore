@@ -161,6 +161,7 @@ dist
 docs
 cypress
 report.html
+.rts2*
 # Keep microbundle's mangle.json out until it needs to be there?
 mangle.json
 PERSONAL.md

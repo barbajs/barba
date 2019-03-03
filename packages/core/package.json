@@ -10,7 +10,8 @@
   "browser": "dist/barba.umd.js",
   "unpkg": "dist/barba.umd.js",
   "module": "dist/barba.mjs",
-  "source": "src/index.js",
+  "source": "src/index.ts",
+  "types": "dist/core/src/index.d.ts",
   "mangle": {
     "regex": "^_"
   },
@@ -40,6 +41,7 @@
     "clear": "rimraf dist",
     "lint": "eslint src/**",
     "precommit": "lint-staged",
+    "report": "source-map-explorer --html ./dist/barba.umd.js > report.html",
     "size": "echo '📦 router' && gzip-size ./dist/barba.umd.js"
   },
   "dependencies": {

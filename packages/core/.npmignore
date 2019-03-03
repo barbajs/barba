@@ -6,5 +6,6 @@
 /jest.config.js
 /mangle.json
 /*.md
+/.rts2*
 !/README.md
 !/CHANGELOG.md

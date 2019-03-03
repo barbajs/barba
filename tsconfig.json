@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    // "baseUrl": ".", // This must be specified if "paths" is.
+    // "paths": {
+    //   "typings": ["typings"] // This mapping is relative to "baseUrl"
+    // },
+    "resolveJsonModule": true,
+    "strict": true,
+    "strictNullChecks": false,
+    "esModuleInterop": true,
+    "target": "es5"
+  }
+}
