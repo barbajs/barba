@@ -1,77 +1,57 @@
 /**
+ * @barba/core/modules/cache
+ * <br><br>
+ * ## Cache for storing URL / HTML.
+ *
  * @module core/modules/cache
+ * @preferred
  */
-import { Cache } from '../defs/modules';
 
-/**
- * Cache for storing URL / HTML
- */
-export const cache: Cache = new Map();
-// DEV
-// export const cache = {
-//   /**
-//    * Cache object
-//    *
-//    * @memberof @barba/core/cache
-//    * @type {object}
-//    * @private
-//    */
-//   _data: {},
+/***/
 
-//   /**
-//    * Set value to cache
-//    *
-//    * @memberof @barba/core/cache
-//    * @param {string} key key
-//    * @param {*} val value
-//    * @returns {*} value
-//    */
-//   set(key, val) {
-//     this._data[key] = val;
+// Definitions
+import { IgnoreOption } from '../defs';
+// Modules
+import { Ignore } from './ignore';
+// Types
+type Request = Promise<string | void>;
 
-//     return val;
-//   },
+export class Cache extends Ignore {
+  private _state: Map<string, Request> = new Map();
 
-//   /**
-//    * Get value from cache
-//    *
-//    * @memberof @barba/core/cache
-//    * @param {string} key key
-//    * @returns {*} value
-//    */
-//   get(key) {
-//     return this._data[key];
-//   },
+  constructor(ignore: IgnoreOption) {
+    super(ignore);
+  }
 
-//   /**
-//    * Delete value from cache
-//    *
-//    * @memberof @barba/core/cache
-//    * @param {string} key key
-//    * @returns {boolean} delete result status
-//    */
-//   delete(key) {
-//     return delete this._data[key];
-//   },
+  /**
+   * Set value to cache
+   */
+  set(url: string, req: Request) {
+    if (!this.checkUrl(url)) {
+      this._state.set(url, req);
+    }
 
-//   /**
-//    * Check if value exists into cache
-//    *
-//    * @memberof @barba/core/cache
-//    * @param {string} key key
-//    * @returns {boolean} check result
-//    */
-//   has(key) {
-//     return key in this._data;
-//   },
+    return req;
+  }
 
-//   /**
-//    * Reset cache
-//    *
-//    * @memberof @barba/core/cache
-//    * @returns {undefined}
-//    */
-//   reset() {
-//     this._data = {};
-//   },
-// };
+  /**
+   * Get value from cache
+   */
+  get(url: string) {
+    return this._state.get(url);
+  }
+
+  /**
+   * Check if value exists into cache
+   */
+  has(url: string) {
+    return this._state.has(url);
+  }
+
+  /**
+   * Delete value from cache
+   */
+  delete(url: string) {
+    return this._state.delete(url);
+  }
+}

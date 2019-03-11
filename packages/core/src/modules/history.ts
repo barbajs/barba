@@ -1,29 +1,45 @@
 /**
+ * @barba/core/modules/history
+ * <br><br>
+ * ## History manager.
+ *
+ * - Keep track of the navigation history
+ *
  * @module core/modules/history
+ * @preferred
  */
-import { History, HistoryItem } from '../defs/modules';
 
-const _state: HistoryItem[] = [];
+/***/
 
 /**
- * ### Keep track of the navigation history.
+ * History item.
  *
- * Save URL and the associated page namespace (`url`/`ns`).
+ * @property namespace
+ * @property URL
  */
-const history: History = {
+export type HistoryItem = {
+  /** namespace */
+  ns: string | undefined;
+  /** URL */
+  url: string;
+};
+
+export class History {
+  private _state: HistoryItem[] = [];
+
   /**
    * Add a new state.
    */
   add(url: string, ns: string): void {
-    _state.push({ url, ns } as HistoryItem);
-  },
+    this._state.push({ url, ns } as HistoryItem);
+  }
 
   /**
    * Remove last state.
    */
   remove(): void {
-    _state.pop();
-  },
+    this._state.pop();
+  }
 
   /**
    * Add new state then update browser history.
@@ -32,7 +48,7 @@ const history: History = {
     this.add(url, ns);
 
     window.history && window.history.pushState(null, '', url);
-  },
+  }
 
   /**
    * Remove last state then go back.
@@ -41,21 +57,19 @@ const history: History = {
     this.remove();
 
     window.history && window.history.back();
-  },
+  }
 
   /**
    * Get the current state.
    */
-  current(): HistoryItem {
-    return _state[_state.length - 1];
-  },
+  get current(): HistoryItem {
+    return this._state[this._state.length - 1];
+  }
 
   /**
    * Get the previous state.
    */
-  previous(): HistoryItem | null {
-    return _state.length < 2 ? null : _state[_state.length - 2];
-  },
-};
-
-export { history };
+  get previous(): HistoryItem | null {
+    return this._state.length < 2 ? null : this._state[this._state.length - 2];
+  }
+}

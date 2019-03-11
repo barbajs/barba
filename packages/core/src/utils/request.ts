@@ -1,15 +1,30 @@
 /**
+ * @barba/core/utils/request
+ * <br><br>
+ * ## Fetch pages for transitions.
+ *
+ * - Includes timeout
+ * - Uses Fetch API
+ * - Handles errors
+ *
  * @module core/utils/request
+ * @preferred
  */
-import { Request, RequestTimeout, RequestFetcher } from '../defs/utils';
-import { RequestError } from '../defs/shared';
-// ---
+
+/***/
+
+// Definitions
+import { RequestError } from '../defs';
 
 /**
- * Timeout wrapper
- *
+ * Timeout wrapper.
  */
-const timeout: RequestTimeout = (url, ms, request, requestError) => {
+function timeout(
+  url: string,
+  ms: number,
+  request: Promise<string>,
+  requestError: RequestError
+): Promise<string> {
   return new Promise((resolve, reject) => {
     const timeoutId = window.setTimeout(() => {
       const error = new Error('Timeout error');
@@ -18,24 +33,31 @@ const timeout: RequestTimeout = (url, ms, request, requestError) => {
       reject(error);
     }, ms);
 
-    request.then(
-      response => {
-        window.clearTimeout(timeoutId);
-        resolve(response);
-      },
-      errorOrResponse => {
-        window.clearTimeout(timeoutId);
-        requestError(url, errorOrResponse);
-        reject(errorOrResponse);
-      }
-    );
+    request
+      .then(
+        response => {
+          window.clearTimeout(timeoutId);
+          resolve(response);
+        },
+        errorOrResponse => {
+          window.clearTimeout(timeoutId);
+          requestError(url, errorOrResponse);
+          reject(errorOrResponse);
+        }
+      )
+      .catch(
+        /* istanbul ignore next */ error => {
+          /* istanbul ignore next */
+          reject(error);
+        }
+      );
   });
-};
+}
 
 /**
- * Fetch content
+ * Fetch the page and returns the text content.
  */
-const fetcher: RequestFetcher = async url => {
+async function fetcher(url: string): Promise<string> {
   const headers = new Headers({
     'x-barba': 'yes',
   });
@@ -48,7 +70,6 @@ const fetcher: RequestFetcher = async url => {
     });
 
     if (response.status >= 200 && response.status < 300) {
-      // DEV: should return DOM directly ?
       return response.text();
     }
 
@@ -56,9 +77,17 @@ const fetcher: RequestFetcher = async url => {
   } catch (error) {
     throw error;
   }
-};
+}
 
-const request: Request = (url, ttl = 2e3, requestError) =>
-  timeout(url, ttl, fetcher(url), requestError as RequestError);
+/**
+ * Init a page request.
+ */
+function request(
+  url: string,
+  ttl: number = 2e3,
+  requestError: RequestError | boolean
+): Promise<string> {
+  return timeout(url, ttl, fetcher(url), requestError as RequestError);
+}
 
 export { request };

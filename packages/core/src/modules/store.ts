@@ -1,73 +1,96 @@
 /**
+ * @barba/core/modules/store
+ * <br><br>
+ * ## Transitions store.
+ *
+ * - Resolve transition
+ * - Manage rules
+ *
  * @module core/modules/store
+ * @preferred
  */
-import { Store } from '../defs/modules';
-import { Rule, Rules, TransitionBase, TransitionAppear } from '../defs/shared';
-// ---
-import { Logger } from '../utils';
 
-const _logger: Logger = new Logger('@barba/core');
-const _rules: Rule[] = [
-  {
-    name: 'namespace',
-    type: 'strings',
-  },
-  {
-    name: 'custom',
-    type: 'function',
-  },
-];
-let _all: TransitionBase[] = [];
-let _appear: TransitionAppear[] = [];
+/***/
 
-/**
- * Store and sort transitions
- */
-const store: Store = {
-  wait: false,
+// Definitions
+import {
+  Rule,
+  RuleName,
+  Rules,
+  TransitionPage,
+  TransitionAppear,
+  TransitionData,
+} from '../defs';
+// Modules
+import { Logger } from './Logger';
+
+export class Store {
+  public logger: Logger = new Logger('@barba/core');
+  /**
+   * All registered transitions.
+   */
+  public all: TransitionPage[] = [];
+  /**
+   * "Appear only" registered transitions.
+   */
+  public appear: TransitionAppear[] = [];
+  /**
+   * Rules for transition resolution.
+   *
+   * Defaults:
+   *
+   * - namespace
+   * - custom
+   */
+  private _rules: Rule[] = [
+    {
+      name: 'namespace',
+      type: 'strings',
+    },
+    {
+      name: 'custom',
+      type: 'function',
+    },
+  ];
 
   /**
-   * Check if appear transitions
+   * Init store.
    */
-  get hasAppear() {
-    return _appear.length > 0;
-  },
-
-  /**
-   * Init store
-   */
-  init(transitions = []) {
+  constructor(transitions: TransitionPage[] = []) {
     if (transitions) {
       // TODO: add check for valid transitions? criteria? (appear || enter && leave)
-      _all = _all.concat(transitions);
+      this.all = this.all.concat(transitions);
     }
     this._update();
-  },
+  }
 
   /**
-   * Add rule or transition
+   * Add rule or transition.
    */
-  add(type, data) {
+  add(type: 'rule' | 'transition', data: any): void {
     switch (type) {
       case 'rule':
         // TODO: check for valid rule
-        _rules.splice(data.position || 0, 0, data.value);
+        this._rules.splice(data.position || 0, 0, data.value);
         break;
       case 'transition':
       default:
         // TODO: check for valid transition
-        _all.push(data);
+        this.all.push(data);
         break;
     }
 
     this._update();
-  },
+  }
 
   /**
-   * Get active/matching transition
+   * Resolve transition.
    */
-  get(data, appear = false) {
-    const transitions = appear ? _appear : _all;
+  resolve(
+    data: TransitionData,
+    appear: boolean = false
+  ): TransitionAppear | TransitionPage {
+    const transitions = appear ? this.appear : this.all;
 
     // All matching transition infos
     const matching = new Map();
@@ -79,7 +102,7 @@ const store: Store = {
       const match = {};
 
       // Check rules
-      _rules.reverse().forEach(rule => {
+      this._rules.reverse().forEach(rule => {
         if (valid) {
           valid = this._check(t, rule, data, match);
           // From/to check, only for page transitions
@@ -104,21 +127,21 @@ const store: Store = {
       return valid;
     });
 
-    _logger.info(matching.get(active));
+    this.logger.info(matching.get(active));
 
     return active;
-  },
+  }
 
   /**
-   * Update store
+   * ### Update store.
    *
-   * Reorder transition by priorities
-   * Get wait transitions
-   * Get appear transitions
+   * - Reorder transition by priorities
+   * - Get wait indicator
+   * - Get appear transitions
    */
-  _update() {
+  private _update(): void {
     // Reorder by priorities
-    _all = _all
+    this.all = this.all
       .map(t => this._addPriority(t))
       .sort((a, b) => a.priority - b.priority)
       .reverse()
@@ -127,15 +150,13 @@ const store: Store = {
 
         return t;
       });
-    _appear = _all.filter(t => t.appear) as TransitionAppear[];
-    // If some "to" property, except if based on "route"
-    // TODO: how to manage "t.to.route" from @barba/router ???
-    this.wait = _all.some(t => t.to && !t.to.route);
-  },
+    this.appear = this.all.filter(t => t.appear) as TransitionAppear[];
+  }
 
   /**
-   * Check if transition apply,
-   * based on rule, page data and optional direction
+   * ### Check if transition apply.
+   *
+   * Based on rule, page data and optional direction:
    *
    * 1. transition has no rule "property":
    *    - always returns true
@@ -143,7 +164,13 @@ const store: Store = {
    *     - "strings" should be present on both side (transition + page) and match
    *     - "function" should return true
    */
-  _check(transition, rule, data, match, direction) {
+  private _check(
+    transition: TransitionPage,
+    rule: Rule,
+    data: TransitionData,
+    match: any,
+    direction?: 'from' | 'to'
+  ): boolean {
     let isValid = true;
     let hasMatch = false;
     const t = transition;
@@ -195,14 +222,21 @@ const store: Store = {
     }
 
     return isValid;
-  },
+  }
 
   /**
-   * Calculate transition priority based on:
+   * ### Calculate transition priority.
+   *
+   * Based on:
+   *
    * - rule "position" (index) give tens, hundreds, thousands, …
    * - from/to properties give units (0, 1 or 2)
    */
-  _calculatePriority(t, ruleName, ruleIndex) {
+  private _calculatePriority(
+    t: TransitionPage,
+    ruleName: RuleName,
+    ruleIndex: number
+  ): number {
     let priority = 0;
 
     if (
@@ -221,13 +255,13 @@ const store: Store = {
     }
 
     return priority;
-  },
+  }
 
-  _addPriority(t) {
+  private _addPriority(t: TransitionPage): TransitionPage {
     t.priority = 0;
     let priority = 0;
 
-    _rules.forEach((rule, i) => {
+    this._rules.forEach((rule, i) => {
       const { name } = rule;
       const index = i + 1;
 
@@ -237,7 +271,5 @@ const store: Store = {
     t.priority = priority;
 
     return t;
-  },
-};
-
-export { store };
+  }
+}

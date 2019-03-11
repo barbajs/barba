@@ -1,9 +1,10 @@
 /**
  * @module prefetch
  */
-import { BarbaPlugin } from '@barba/core/src/defs/shared';
-import { Core } from '@barba/core/src/defs/core';
-import { Logger } from '@barba/core/src/utils/Logger';
+
+import { BarbaPlugin } from '@barba/core/src/defs';
+import { Core } from '@barba/core/src/core';
+import { Logger } from '@barba/core/src/modules/Logger';
 
 import { version } from '../package.json';
 import { requestIdleCallback } from './polyfills';
@@ -17,70 +18,49 @@ type PrefetchOptions = {
   timeout?: number;
 };
 
-interface Prefetch<T> extends BarbaPlugin<T> {
-  version: string;
-  install(barba: Core, options: T): void;
-  init(): void;
-  // _observe(timeout: number): void;
-}
+// interface Prefetch<T> extends BarbaPlugin<T> {
+//   name: string;
+//   version: string;
+//   install(barba: Core, options: T): void;
+//   init(): void;
+//   // observe(timeout: number): void;
+// }
 
-let _barba: Core;
-let _logger: Logger;
-let _observer: IntersectionObserver;
-let _root: HTMLElement | HTMLDocument;
-let _timeout: number;
-const _toPrefetch: Set<string> = new Set();
+class Prefetch implements BarbaPlugin<PrefetchOptions> {
+  public name = '@barba/prefetch';
+  public version = version;
+  public barba: Core;
+  public logger: Logger;
 
-function _observe(timeout: number): void {
-  requestIdleCallback(
-    () => {
-      // If not, find all links and use IntersectionObserver.
-      _root.querySelectorAll('a').forEach(el => {
-        const link = (el as unknown) as HTMLLinkElement;
-        const url = _barba.dom.getUrl(link);
-
-        // Add some [data-barba="preload"] or
-        // Add some [data-barba-preload="true/false"] ?
-        if (
-          !_barba.cache.has(url) &&
-          !_barba.prevent.check(link, {} as Event, link.href)
-        ) {
-          _observer.observe(el);
-          _toPrefetch.add(url);
-        }
-      });
-    },
-    { timeout }
-  );
-}
-
-const prefetch: Prefetch<PrefetchOptions> = {
-  version,
+  public observer: IntersectionObserver;
+  public root: HTMLElement | HTMLDocument;
+  public timeout: number;
+  public toPrefetch: Set<string> = new Set();
 
   /**
    * Plugin installation
    */
   install(
-    barba,
+    barba: Core,
     { root = document.body, timeout = 2e3 }: PrefetchOptions = {}
   ) {
-    _barba = barba;
-    _logger = new barba.Logger('@barba/prefetch');
-    _root = root;
-    _timeout = timeout;
-  },
+    this.barba = barba;
+    this.logger = new barba.Logger(this.name);
+    this.root = root;
+    this.timeout = timeout;
+  }
 
   /**
    * Plugin initialisation
    */
   init() {
-    if (!_barba.usePrefetch) {
-      _logger.warn('barba.usePrefetch is disabled');
+    if (this.barba.prefetchIgnore) {
+      this.logger.warn('barba.prefetchIgnore is enabled');
 
       return;
     }
-    if (!_barba.useCache) {
-      _logger.warn('barba.useCache is disabled');
+    if (this.barba.cacheIgnore) {
+      this.logger.warn('barba.cacheIgnore is enabled');
 
       return;
     }
@@ -92,22 +72,22 @@ const prefetch: Prefetch<PrefetchOptions> = {
      * and, if no cache data, fetch the page
      */
     /* istanbul ignore next */
-    _observer = new IntersectionObserver(entries => {
+    this.observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const link = entry.target as HTMLLinkElement;
-          const url = _barba.dom.getUrl(link);
+          const url = this.barba.dom.getUrl(link);
 
-          if (_toPrefetch.has(url)) {
-            _observer.unobserve(link);
+          if (this.toPrefetch.has(url)) {
+            this.observer.unobserve(link);
             // Prefetch and cache
-            if (!_barba.cache.has(url)) {
-              _barba.cache.set(
+            if (!this.barba.cache.has(url)) {
+              this.barba.cache.set(
                 url,
-                _barba.request(
+                this.barba.request(
                   url,
-                  _barba.timeout,
-                  _barba.onRequestError.bind(this, 'prefetch')
+                  this.barba.timeout,
+                  this.barba.onRequestError.bind(this, 'prefetch')
                 )
               );
             }
@@ -115,39 +95,37 @@ const prefetch: Prefetch<PrefetchOptions> = {
         }
       });
     });
-    _observe(_timeout);
+    this.observe();
     // Register hooks
-    _barba.hooks.after(_observe);
-  },
+    this.barba.hooks.after(this.observe, this);
+  }
 
-  /**
-   * Observers initialisation
-   *
-   * @ignore
-   */
   /* istanbul ignore next */
-  // _observe(timeout: number): void {
-  //   requestIdleCallback(
-  //     () => {
-  //       // If not, find all links and use IntersectionObserver.
-  //       _root.querySelectorAll('a').forEach(el => {
-  //         const link = (el as unknown) as HTMLLinkElement;
-  //         const url = _barba.dom.getUrl(link);
+  observe(): void {
+    const timeout = this.timeout;
 
-  //         // Add some [data-barba="preload"] or
-  //         // Add some [data-barba-preload="true/false"] ?
-  //         if (
-  //           !_barba.cache.has(url) &&
-  //           !_barba.prevent.check(link, {} as Event, link.href)
-  //         ) {
-  //           _observer.observe(el);
-  //           _toPrefetch.add(url);
-  //         }
-  //       });
-  //     },
-  //     { timeout }
-  //   );
-  // },
-};
+    requestIdleCallback(
+      () => {
+        // If not, find all links and use IntersectionObserver.
+        this.root.querySelectorAll('a').forEach(el => {
+          const link = (el as unknown) as HTMLLinkElement;
+          const url = this.barba.dom.getUrl(link);
+
+          if (
+            !this.barba.cache.has(url) &&
+            !this.barba.prevent.checkUrl(url) &&
+            !this.barba.prevent.checkLink(link, {} as Event, link.href)
+          ) {
+            this.observer.observe(el);
+            this.toPrefetch.add(url);
+          }
+        });
+      },
+      { timeout }
+    );
+  }
+}
+
+const prefetch = new Prefetch();
 
 export default prefetch;

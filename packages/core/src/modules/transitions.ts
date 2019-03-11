@@ -1,188 +1,313 @@
 /**
+ * @barba/core/modules/transitions
+ * <br><br>
+ * ## Transitions manager.
+ *
+ * - Handle hooks and transition lifecycle
+ *
  * @module core/modules/transitions
+ * @preferred
  */
-import { Transitions } from '../defs/modules';
-// ---
+
+/***/
+
+// Definitions
+import {
+  TransitionData,
+  TransitionPage,
+  TransitionAppear,
+  HooksTransition,
+  HooksTransitionMap,
+  Wrapper,
+} from '../defs';
+// Third-party
 import runAsync from 'run-async';
-import { hooks } from '.';
-import { helpers, Logger } from '../utils';
+// Hooks
+import { hooks } from '../hooks';
+// Modules
+import { Logger } from './Logger';
+import { Store } from './store';
+// Utils
+import { helpers } from '../utils';
 
-const _logger: Logger = new Logger('@barba/core');
+export class Transitions {
+  public logger: Logger = new Logger('@barba/core');
+  public store: Store;
 
-/**
- * ### Manage the transitions
- */
-const transitions: Transitions = {
+  constructor(transitions: TransitionPage[] = []) {
+    this.store = new Store(transitions);
+  }
+
+  private _running: boolean = false;
+
   /**
-   * Animation running status
+   * Get resolved transition
+   */
+  get(
+    data: TransitionData,
+    appear: boolean = false
+  ): TransitionAppear | TransitionPage {
+    return this.store.resolve(data, appear);
+  }
+
+  /**
+   * Animation running status.
+   */
+  get isRunning(): boolean {
+    return this._running;
+  }
+
+  /**
+   * Check for registered appear transition(s).
+   */
+  get hasAppear(): boolean {
+    return this.store.appear.length > 0;
+  }
+
+  /**
+   * ### Wait indicator.
    *
-   * @memberof @barba/core/transitions/manager
-   * @type {boolean}
+   * Tells Barba to get next page data<br>
+   * before starting the resolution<br>
+   * because some registered transitions need<br>
+   * next page data to be resolved (eg: `sync: true`, `to: { namespace }`, …)
    */
-  running: false,
+  get shouldWait(): boolean {
+    return this.store.all.some(t => (t.to && !t.to.route) || t.sync);
+  }
 
   /**
-   * Do "appear" transition
+   * ### Do "appear" transition.
+   *
+   * Hooks: see [[HooksAppear]].
    */
-  async doAppear({ data, transition }) {
-    !transition && _logger.warn('No transition found');
+  async doAppear({
+    data,
+    transition,
+  }: {
+    data: TransitionData;
+    transition: TransitionAppear;
+  }) {
+    if (!transition) {
+      this.logger.warn('No transition found');
 
-    const t = transition || {};
+      return;
+    }
 
-    this.running = true;
-    // Before
-    this._doSyncHook('beforeAppear', data, t);
+    this._running = true;
+    const t = transition;
 
-    await this.appear(data, t)
-      .then(() => {
-        // After
-        this._doSyncHook('afterAppear', data, t);
-      })
-      .catch(error => {
-        // Canceled
-        this._doSyncHook('appearCanceled', data, t);
-        _logger.error(error);
-        throw new Error('Transition error');
-      });
+    try {
+      await this._doAsyncHook('beforeAppear', data, t);
+      await this._appear(data, t);
+      await this._doAsyncHook('afterAppear', data, t);
+    } catch (error) {
+      this.logger.error(error);
+      await this._doAsyncHook('appearCanceled', data, t);
+      // TODO: should I throw or should I log…
+      throw new Error('Transition error [appear]');
+    }
 
-    this.running = false;
-  },
+    this._running = false;
+  }
 
   /**
-   * Do "page" transition
+   * ### Do "page" transition.
+   *
+   * Hooks: see [[HooksPage]].
+   *
+   * `sync: false` (default) order:
+   *
+   * 1. before
+   * 2. beforeLeave
+   * 3. leave
+   * 4. afterLeave
+   * 5. beforeEnter
+   * 6. enter
+   * 7. afterEnter
+   * 8. after
+   *
+   * `sync: true` order:
+   *
+   * 1. before
+   * 2. beforeLeave
+   * 3. beforeEnter
+   * 4. leave & enter
+   * 5. afterLeave
+   * 6. afterEnter
+   * 7. after
    */
-  async doPage({ data, transition, page, wrapper }) {
-    !transition && _logger.warn('No transition found');
+  async doPage({
+    data,
+    transition,
+    page,
+    wrapper,
+  }: {
+    data: TransitionData;
+    transition: TransitionPage;
+    page: Promise<string | void>;
+    wrapper: Wrapper;
+  }) {
+    !transition && this.logger.warn('No transition found');
 
     const t = transition || {};
     const sync = t.sync === true || false;
 
-    this.running = true;
+    this._running = true;
 
     try {
       // Check sync mode, wait for next content
       if (sync) {
-        await helpers.getPage(page, data.next);
+        await helpers.updateNext(page, data.next);
       }
 
-      this._doSyncHook('before', data, t);
+      await this._doAsyncHook('before', data, t);
 
       if (sync) {
-        // Before actions
-        this._doSyncHook('beforeLeave', data, t);
-        this._doSyncHook('beforeEnter', data, t);
+        try {
+          // Before actions
+          await this._doAsyncHook('beforeLeave', data, t);
+          await this._doAsyncHook('beforeEnter', data, t);
 
-        this._addNext(data, wrapper);
+          this._addNext(data, wrapper);
 
-        // Actions
-        await Promise.all([this.leave(data, t), this.enter(data, t)]);
+          // Actions
+          await Promise.all([this._leave(data, t), this._enter(data, t)]);
 
-        // After actions
-        this._doSyncHook('afterLeave', data, t);
-        this._removeCurrent(data);
-        this._doSyncHook('afterEnter', data, t);
+          // After actions
+          await this._doAsyncHook('afterLeave', data, t);
+          this._removeCurrent(data);
+          await this._doAsyncHook('afterEnter', data, t);
+        } catch (error) {
+          await this._doAsyncHook('leaveCanceled', data, t);
+          await this._doAsyncHook('enterCanceled', data, t);
+          throw new Error('Transition error [page][sync]');
+        }
       } else {
         let leaveResult: any = false;
 
-        // Leave
-        this._doSyncHook('beforeLeave', data, t);
+        try {
+          // Leave
+          await this._doAsyncHook('beforeLeave', data, t);
 
-        leaveResult = await Promise.all([
-          this.leave(data, t),
-          helpers.getPage(page, data.next),
-        ])
-          .then(values => values[0])
-          .catch(error => {
-            throw error;
-          });
+          leaveResult = await Promise.all([
+            this._leave(data, t),
+            helpers.updateNext(page, data.next),
+          ]).then(values => values[0]);
+          // .catch(error => {
+          //   throw error;
+          // });
 
-        this._doSyncHook('afterLeave', data, t);
+          await this._doAsyncHook('afterLeave', data, t);
 
-        // TODO: check here "valid" page result
-        // before going further
-        this._removeCurrent(data);
+          // TODO: check here "valid" page result
+          // before going further
+          this._removeCurrent(data);
+        } catch (error) {
+          await this._doAsyncHook('leaveCanceled', data, t);
+          throw new Error('Transition error [page][leave]');
+        }
 
-        // Enter
-        /* istanbul ignore else */
-        if (leaveResult !== false) {
-          this._doSyncHook('beforeEnter', data, t);
-          this._addNext(data, wrapper);
-          await this.enter(data, t, leaveResult);
-          this._doSyncHook('afterEnter', data, t);
+        try {
+          // Enter
+          /* istanbul ignore else */
+          if (leaveResult !== false) {
+            await this._doAsyncHook('beforeEnter', data, t);
+            this._addNext(data, wrapper);
+            await this._enter(data, t, leaveResult);
+            await this._doAsyncHook('afterEnter', data, t);
+          }
+        } catch (error) {
+          await this._doAsyncHook('leaveCanceled', data, t);
+          await this._doAsyncHook('enterCanceled', data, t);
+          throw new Error('Transition error [page][enter]');
         }
       }
 
-      this._doSyncHook('after', data, t);
+      this._doAsyncHook('after', data, t);
     } catch (error) {
       // TODO: use cases for cancellation
-      this._doSyncHook('leaveCanceled', data, t);
+      this.logger.error(error);
+      await this._doAsyncHook('leaveCanceled', data, t);
+      await this._doAsyncHook('enterCanceled', data, t);
 
-      _logger.error(error);
-      throw new Error('Transition error');
+      // TODO: should I throw or should I log…
+      // throw error;
     }
 
-    this.running = false;
-  },
+    this._running = false;
+  }
 
-  // QUESTION: granular error catching?
-  // Execute animation steps
-  // Allows to catch errors for specific step
-  // with the right cancel method
-  // async action(name, data, t, extra) {
-  //   /* istanbul ignore next */
-  //   try {
-  //     return await this[name](data, t, extra);
-  //   } catch (error) {
-  //     // TODO: use cases for cancellation
-  //     // if (/leave/i.test(name)) {
-  //     //   this.leaveCanceled(data, t);
-  //     // }
-  //     // if (/enter/i.test(name)) {
-  //     //   this.enterCanceled(data, t);
-  //     // }
-
-  //     // TODO: remove console
-  //     console.error('[@barba/core]', error);
-  //     throw new Error('Transition error');
-  //   }
-  // },
-
-  appear(data, t) {
+  /**
+   * Appear hook + async "appear" transition.
+   */
+  private _appear(data: TransitionData, t: TransitionAppear): Promise<void> {
     hooks.do('appear', data, t);
 
     return t.appear ? runAsync(t.appear)(data) : Promise.resolve();
-  },
+  }
 
-  leave(data, t) {
+  /**
+   * Leave hook + async "leave" transition.
+   */
+  private _leave(data: TransitionData, t: TransitionPage): Promise<any> {
     hooks.do('leave', data, t);
 
-    return t.leave
-      ? // ? runAsync(t.leave)(data).then(leaveResult => leaveResult)
-        runAsync(t.leave)(data)
-      : Promise.resolve();
-  },
+    return t.leave ? runAsync(t.leave)(data) : Promise.resolve();
+  }
 
-  enter(data, t, leaveResult) {
+  /**
+   * Enter hook + async "enter" transition.
+   */
+  private _enter(
+    data: TransitionData,
+    t: TransitionPage,
+    leaveResult?: any
+  ): Promise<void> {
     hooks.do('enter', data, t);
 
     return t.enter ? runAsync(t.enter)(data, leaveResult) : Promise.resolve();
-  },
+  }
 
-  _doSyncHook(hook, data, t) {
+  /**
+   * Do hooks + async transition methods.
+   */
+  private _doAsyncHook(
+    hook: HooksTransition,
+    data: TransitionData,
+    t: HooksTransitionMap
+  ): Promise<void> {
     hooks.do(hook, data, t);
-    t[hook] && t[hook](data);
-  },
 
-  // Add / remove containers
-  _addNext(data, wrapper) {
+    return t[hook] ? runAsync(t[hook])(data) : Promise.resolve();
+  }
+
+  /**
+   * Do hooks + sync transition methods.
+   */
+  // DEV: all transition hooks can be asynchronous…
+  // private _doSyncHook(
+  //   hook: HooksTransition,
+  //   data: TransitionData,
+  //   t: HooksTransitionMap
+  // ): void {
+  //   hooks.do(hook, data, t);
+  //   t[hook] && t[hook](data);
+  // }
+
+  /**
+   * Add next container.
+   */
+  private _addNext(data: TransitionData, wrapper: Wrapper): void {
     wrapper.appendChild(data.next.container);
     hooks.do('nextAdded', data);
-  },
+  }
 
-  _removeCurrent(data) {
+  /**
+   * Remove current container.
+   */
+  private _removeCurrent(data: TransitionData): void {
     data.current.container.remove();
     hooks.do('currentRemoved', data);
-  },
-};
-
-export { transitions };
+  }
+}

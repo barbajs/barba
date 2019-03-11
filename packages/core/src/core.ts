@@ -1,111 +1,137 @@
 /**
- * This comment will be used to document the "thing2" module.
- * Not working, @see https://github.com/christopherthielen/typedoc-plugin-external-module-name/issues/300
- *
- * @module core
- */
-
-import { Core } from './defs/core';
-import { SchemaPage } from './defs/schemas';
-import {
-  BarbaOptions,
-  BarbaPlugin,
-  Trigger,
-  Wrapper,
-  RequestCustomError,
-} from './defs/shared';
-// ---
-import { version } from '../package.json';
-import { schemaPage } from './schemas';
-import {
-  cache,
-  history,
-  hooks,
-  store,
-  transitions as transitionsManager,
-  views as viewsManager,
-} from './modules';
-import { dom, request, helpers, prevent, url, Logger } from './utils';
-
-/** @ignore */ let _current: SchemaPage;
-/** @ignore */ let _next: SchemaPage;
-/** @ignore */ let _trigger: Trigger;
-/** @ignore */ let _requestCustomError: RequestCustomError;
-/** @ignore */ let _wrapper: Wrapper;
-/** @ignore */ const _plugins: BarbaPlugin<any>[] = [];
-/** @ignore */ const _logger: Logger = new Logger('@barba/core');
-
-/**
- * Barba core object.
+ * @barba/core
+ * <br><br>
+ * ## Barba core object
  *
  * Main methods:
  *
  * - `.init()` for initialization with options
  * - `.use()` for plugins
+ *
+ * @module core
  */
-const core: Core = {
-  /**
-   * barba/core version.
-   */
-  version,
 
-  /**
-   * Logger.
-   */
-  Logger,
+/***/
 
-  /**
-   * Inital values.
-   */
+import { version } from '../package.json';
+// Definitions
+import {
+  BarbaOptions,
+  BarbaPlugin,
+  IgnoreOption,
+  LinkEvent,
+  TransitionData,
+  TransitionAppear,
+  TransitionPage,
+  Trigger,
+  Wrapper,
+  RequestCustomError,
+  RequestErrorOrResponse,
+  SchemaPage,
+} from './defs';
+// Schemas
+import { schemaPage } from './schemas/page';
+// Hooks
+import { hooks } from './hooks';
+// Modules
+import { Cache } from './modules/cache';
+import { History } from './modules/History';
+import { Logger } from './modules/Logger';
+import { Prevent } from './modules/Prevent';
+import { Transitions } from './modules/Transitions';
+import { Views } from './modules/Views';
+// Utils
+import { dom, helpers, request, url } from './utils';
 
-  // Public from options
-  /** @ignore */ timeout: 2e3,
-  /** @ignore */ useCache: true,
-  /** @ignore */ usePrefetch: true,
-  // Schemas.
-  /** @ignore */ schemaPage, // Page schema.
-  // Modules.
-  cache,
-  history,
-  hooks: hooks.init(),
-  store,
-  transitionsManager,
-  viewsManager,
-  // Utils.
-  dom,
-  helpers,
-  prevent,
-  request,
-  url,
+export class Core {
+  private _data: TransitionData;
+  private _requestCustomError: RequestCustomError;
+  private _wrapper: Wrapper;
+  /**
+   * Version.
+   */
+  public version: string = version;
+  /**
+   * Schemas.
+   */
+  public schemaPage: SchemaPage = schemaPage;
+  /**
+   * Logger class, allows plugins to create Logger.
+   */
+  public Logger: typeof Logger = Logger;
+  /**
+   * Barba logger.
+   */
+  public logger: Logger = new Logger('@barba/core');
+  /**
+   * Plugins.
+   */
+  public plugins: BarbaPlugin<any>[] = [];
+  /**
+   * Options
+   */
+  public timeout: number;
+  public cacheIgnore: IgnoreOption;
+  public prefetchIgnore: IgnoreOption;
+  /**
+   * Hooks
+   */
+  public hooks = hooks;
+  /**
+   * Modules.
+   */
+  public history: History;
+  public cache: Cache;
+  public prevent: Prevent;
+  public transitions: Transitions;
+  public views: Views;
+  /**
+   * Utils.
+   */
+  public dom = dom;
+  public helpers = helpers;
+  public request = request;
+  public url = url;
 
   /**
    * ### Init plugin with options.
    *
    * See [[BarbaPlugin]] for more details.
    */
-  use(plugin, options) {
-    const installedPlugins = _plugins;
+  use<T>(plugin: BarbaPlugin<T>, options?: T): void {
+    const installedPlugins = this.plugins;
 
     // Plugin installation
     if (installedPlugins.indexOf(plugin) > -1) {
-      return this;
+      this.logger.warn(`Plugin [${plugin.name}] already installed.`);
+
+      return;
     }
 
-    if (typeof plugin.install === 'function') {
-      plugin.install(this, options);
-    } else {
-      return false;
+    if (typeof plugin.install !== 'function') {
+      this.logger.warn(`Plugin [${plugin.name}] has no "install" method.`);
+
+      return;
     }
 
+    plugin.install(this, options);
     installedPlugins.push(plugin);
-
-    return this;
-  },
+  }
 
   /**
    * ### Init barba with options.
    *
    * See [[BarbaOptions]] for more details.
+   *
+   * Default values are:
+   *
+   * - transitions: `[]`
+   * - views: `[]`
+   * - timeout: `2e3`
+   * - cacheIgnore: `false`
+   * - prefetchIgnore: `false`
+   * - debug: `false`
+   * - logLevel: `'debug'`
    */
   init(
     /** @ignore */ {
@@ -114,23 +140,43 @@ const core: Core = {
       prevent: preventCustom = null,
       timeout = 2e3,
       requestError = undefined,
-      // TODO: refactor options + behaviour
-      // cacheIgnore
-      // prefetchIgnore (merged or overridden with @barba/prefetch)
-      useCache = true,
-      usePrefetch = true,
+      cacheIgnore = false,
+      prefetchIgnore = false,
       debug = false,
-      logLevel = 'debug',
+      logLevel = 'off',
     }: BarbaOptions = {}
   ) {
     // 0. Set logger level
     Logger.setLevel(debug === true ? 'debug' : logLevel);
 
     // 1. Manage options
-    _requestCustomError = requestError;
+    this._requestCustomError = requestError;
     this.timeout = timeout;
-    this.useCache = useCache;
-    this.usePrefetch = usePrefetch;
+    this.cacheIgnore = cacheIgnore;
+    this.prefetchIgnore = prefetchIgnore;
+
+    // 2. Get and check wrapper
+    this._wrapper = this.dom.getWrapper();
+    if (!this._wrapper) {
+      throw new Error('[@barba/core] No Barba wrapper found');
+    }
+    this._wrapper.setAttribute('aria-live', 'polite'); // A11y
+
+    // 3. Init pages (get "current" data)
+    this._resetData();
+
+    const { current } = this.data;
+
+    if (!current.container) {
+      throw new Error('[@barba/core] No Barba container found');
+    }
+
+    // 4. Init other modules
+    this.history = new History();
+    this.cache = new Cache(cacheIgnore);
+    this.prevent = new Prevent(prefetchIgnore);
+    this.transitions = new Transitions(transitions);
+    this.views = new Views(views);
 
     // Add prevent custom
     if (preventCustom !== null) {
@@ -141,58 +187,52 @@ const core: Core = {
       this.prevent.add('preventCustom', preventCustom);
     }
 
-    // 2. Get and check wrapper
-    _wrapper = this.dom.getWrapper();
-    if (!_wrapper) {
-      throw new Error('[@barba/core] No Barba wrapper found');
-    }
-    _wrapper.setAttribute('aria-live', 'polite'); // A11y
-
-    // 3. Init pages (get "current" data)
-    this._refreshPages();
-    if (!_current.container) {
-      throw new Error('[@barba/core] No Barba container found');
-    }
-
-    // 4. Init other modules
-    this.store.init(transitions);
-    this.viewsManager.init(views);
-
     // 5. Use "current" data
     // Set/update history
-    this.history.add(_current.url.href, _current.namespace);
+    this.history.add(current.url.href, current.namespace);
     // Add to cache
-    this.useCache &&
-      this.cache.set(_current.url.href, Promise.resolve(_current.html));
+    this.cache.set(current.url.href, Promise.resolve(current.html));
 
     // 6. Bind context
-    this.onRequestError = this.onRequestError.bind(this);
+    // this.onRequestError = this.onRequestError.bind(this);
     this._onLinkEnter = this._onLinkEnter.bind(this);
     this._onLinkClick = this._onLinkClick.bind(this);
     this._onStateChange = this._onStateChange.bind(this);
     this._bind();
 
     // 7. Init plugins
-    _plugins.forEach(plugin => plugin.init());
+    this.plugins.forEach(plugin => plugin.init());
 
     // 8. Finally, do appear…
     this.appear();
-  },
+  }
+
+  destroy(): void {
+    this._resetData();
+    this._unbind();
+    this.hooks.clear();
+    this.plugins = [];
+  }
+
+  get data(): TransitionData {
+    return this._data;
+  }
+
+  get wrapper(): HTMLElement {
+    return this._wrapper;
+  }
 
   /**
    * ### Force a page change without Barba transition.
    *
    * Check for a "href" attribute.
    * Then check if eligible for Barba.
-   *
-   * @private
-   * @ignore
    */
-  force(url) {
+  force(href: string): void {
     // DEV
     // Can be used waiting animation cancellation management…
-    window.location.assign(url);
-  },
+    window.location.assign(href);
+  }
 
   /**
    * ### Start an "appear" transition.
@@ -200,144 +240,125 @@ const core: Core = {
    * If some registered "appear" transition,
    * get the "resolved" transition from the store and start it.
    */
-  async appear() {
+  async appear(): Promise<void> {
     // Check if appear transition
-    if (this.store.hasAppear) {
+    if (this.transitions.hasAppear) {
       try {
-        const data = this._getData();
-        const transition = this.store.get(data, true);
+        const data = this._data;
+        const transition = this.transitions.get(data, true) as TransitionAppear;
 
-        await this.transitionsManager.doAppear({ transition, data });
+        await this.transitions.doAppear({ transition, data });
       } catch (error) {
-        _logger.error(error);
+        this.logger.error(error);
       }
     }
-  },
+  }
 
   /**
    * ### Start a "page" transition.
    *
    * 1. If no running transition, updates data with full URL properties and trigger.
-   * 2. Get page form cache or init request.
+   * 2. Get page from cache or init request.
    * 3. Wait if some transitions need "next" data (`sync: true`, `to: …`).
    * 4. Manage the history, depending on trigger.
    * 5. Get "data" and trigger "go" hook.
    * 6. Get the "resolved" transition from the store and start it.
-   * 7. Update title and refresh data (current, next = undefined)
+   * 7. Update title and reset data (current, next = undefined)
    */
-  async go(url, trigger = 'barba') {
+  async go(url: string, trigger: Trigger = 'barba'): Promise<void> {
     // If animation running, force reload
-    if (this.transitionsManager.running) {
+    if (this.transitions.isRunning) {
       this.force(url);
 
       return;
     }
 
-    _next.url = {
+    this.data.next.url = {
       href: url,
       ...this.url.parse(url),
     };
-    _trigger = trigger;
+    this.data.trigger = trigger;
 
-    let page;
-
-    if (this.useCache) {
-      /* eslint-disable indent */
-      page = this.cache.has(url)
-        ? this.cache.get(url)
-        : this.cache
-            .set(
-              url,
-              this.request(
-                url,
-                this.timeout,
-                this.onRequestError.bind(this, trigger, 'click')
-              )
-            )
-            .get(url);
-      /* eslint-enable indent */
-    } else {
-      page = this.request(
-        url,
-        this.timeout,
-        this.onRequestError.bind(this, trigger, 'click')
-      );
-    }
+    const request = this.request(
+      url,
+      this.timeout,
+      this._onRequestError.bind(this, trigger, 'click')
+    );
+    const page = this.cache.has(url)
+      ? this.cache.get(url)
+      : this.cache.set(url, request);
 
     // Need to wait before getting the right transition
-    if (this.store.wait) {
-      await helpers.getPage(page, _next);
+    if (this.transitions.shouldWait) {
+      await helpers.updateNext(page, this.data.next);
     }
 
     // If triggered from an history change (back, forward),
     // simply add the new state without
     if (trigger === 'popstate') {
-      history.add(url, _next.namespace);
+      this.history.add(url, this.data.next.namespace);
     } else {
-      history.push(url, _next.namespace);
+      this.history.push(url, this.data.next.namespace);
     }
 
-    const data = this._getData();
+    const data = this._data;
 
     // Hook: between trigger and transition
     // Can be used to resolve "route"…
     hooks.do('go', data);
 
     try {
-      const transition = this.store.get(data);
+      const transition = this.transitions.get(data) as TransitionPage;
 
-      await this.transitionsManager.doPage({
+      await this.transitions.doPage({
         transition,
         data,
         page,
-        wrapper: _wrapper,
+        wrapper: this._wrapper,
       });
 
       this._updateTitle(data);
-      this._refreshPages();
+      this._resetData();
     } catch (error) {
       // TODO: !!! infinite loop on transition error???
-      history.cancel();
-      _logger.error(error);
+      this.history.cancel();
+      this.logger.error(error);
     }
-  },
-
-  /**
-   * Get Barba wrapper
-   *
-   * @private
-   * @ignore
-   */
-  get wrapper() {
-    return _wrapper;
-  },
+  }
 
   /**
    * Bind event listeners.
-   *
-   * @private
-   * @ignore
    */
-  _bind() {
+  private _bind(): void {
     /* istanbul ignore else */
-    if (this.usePrefetch) {
+    if (this.prefetchIgnore !== true) {
       document.addEventListener('mouseover', this._onLinkEnter);
       document.addEventListener('touchstart', this._onLinkEnter);
     }
     document.addEventListener('click', this._onLinkClick);
     window.addEventListener('popstate', this._onStateChange);
-  },
+  }
+
+  /**
+   * Bind event listeners.
+   */
+  private _unbind(): void {
+    /* istanbul ignore else */
+    if (this.prefetchIgnore !== true) {
+      document.removeEventListener('mouseover', this._onLinkEnter);
+      document.removeEventListener('touchstart', this._onLinkEnter);
+    }
+    document.removeEventListener('click', this._onLinkClick);
+    window.removeEventListener('popstate', this._onStateChange);
+  }
 
   /**
    * When a element is entered.
    *
    * Get valid link element.
    * Cache URL if needed.
-   *
-   * @private
-   * @ignore
    */
-  _onLinkEnter(e) {
+  private _onLinkEnter(e: LinkEvent): void {
     const link = this._getLinkElement(e);
 
     if (!link) {
@@ -346,6 +367,10 @@ const core: Core = {
 
     const url = this.dom.getUrl(link);
 
+    if (this.prevent.checkUrl(url)) {
+      return;
+    }
+
     // Already in cache
     if (this.cache.has(url)) {
       return;
@@ -353,11 +378,13 @@ const core: Core = {
 
     this.cache.set(
       url,
-      this.request(url, this.timeout, this.onRequestError(link, 'enter')).catch(
-        error => _logger.error(error)
-      )
+      this.request(
+        url,
+        this.timeout,
+        this._onRequestError.bind(this, link, 'enter')
+      ).catch((error: RequestErrorOrResponse) => this.logger.error(error))
     );
-  },
+  }
 
   /**
    * When an element is clicked.
@@ -365,11 +392,8 @@ const core: Core = {
    * Get valid link element.
    * Prevent same URL.
    * Go for a Barba transition.
-   *
-   * @private
-   * @ignore
    */
-  _onLinkClick(e) {
+  private _onLinkClick(e: LinkEvent): void {
     const link = this._getLinkElement(e);
 
     if (!link) {
@@ -388,40 +412,38 @@ const core: Core = {
     }
 
     this.go(this.dom.getUrl(link), link);
-  },
+  }
 
   /**
    * When History state changes.
    *
    * Get "href" from URL
    * Go for a Barba transition.
-   *
-   * @private
-   * @ignore
    */
-  _onStateChange() {
+  private _onStateChange(): void {
     const href = this.url.getHref();
 
     this.go(href, 'popstate');
-  },
+  }
 
   /**
    * When a request error occurs.
    *
    * Allow the user to manage request error. (E.g: 404)
-   *
-   * @private
-   * @ignore
    */
-  onRequestError(trigger, action, ...args) {
-    const [url, response] = args;
+  private _onRequestError(
+    trigger: Trigger,
+    action: string,
+    ...args: any
+  ): boolean {
+    const [url, response]: [string, RequestErrorOrResponse] = args;
 
     this.cache.delete(url);
 
     // Custom requestError returning false will return here.
     if (
-      _requestCustomError &&
-      _requestCustomError(trigger, action, url, response) === false
+      this._requestCustomError &&
+      this._requestCustomError(trigger, action, url, response) === false
     ) {
       return false;
     }
@@ -431,18 +453,15 @@ const core: Core = {
       this.force(url);
     }
     return false;
-  },
+  }
 
   /**
    * Get a valid link ancestor.
    *
    * Check for a "href" attribute.
    * Then check if eligible for Barba.
-   *
-   * @private
-   * @ignore
    */
-  _getLinkElement(e) {
+  private _getLinkElement(e: LinkEvent): HTMLLinkElement {
     let el = e.target as HTMLLinkElement;
 
     while (el && !this.dom.getUrl(el)) {
@@ -450,69 +469,50 @@ const core: Core = {
     }
 
     // Check prevent
-    if (!el || this.prevent.check(el, e, el.href)) {
+    if (!el || this.prevent.checkLink(el, e, el.href)) {
       return;
     }
 
     return el;
-  },
+  }
 
   /**
-   * Get pages data.
-   *
-   * Returns accurate information about current, next and trigger.
-   *
-   * @private
-   * @ignore
-   */
-  _getData() {
-    return {
-      current: _current,
-      next: _next,
-      trigger: _trigger,
-    };
-  },
-
-  /**
-   * Refresh pages data.
+   * Reset pages data.
    *
    * Set "current" and unset "next".
-   *
-   * @private
-   * @ignore
    */
-  _refreshPages() {
-    _current = { ...this.schemaPage };
-    _next = { ...this.schemaPage };
-
+  private _resetData() {
     const href = this.url.getHref();
-
-    _current.namespace = this.dom.getNamespace();
-    _current.url = {
-      href,
-      ...this.url.parse(href),
+    const current = {
+      namespace: this.dom.getNamespace(),
+      url: {
+        href,
+        ...this.url.parse(href),
+      },
+      container: this.dom.getContainer(),
+      html: this.dom.getHtml(),
     };
-    _current.container = this.dom.getContainer();
-    _current.html = this.dom.getHtml();
 
-    // Hook: reset current/next pages
-    // Can be used to resolve "route"…
-    // TODO: naming…
-    hooks.do('refresh', this._getData());
-  },
+    this._data = {
+      current,
+      next: { ...this.schemaPage },
+      trigger: undefined,
+    };
+
+    hooks.do('reset', this.data);
+  }
 
   /**
    * Update document title.
-   *
-   * @private
-   * @ignore
    */
-  _updateTitle(data) {
+  private _updateTitle(data: TransitionData): void {
     const { html } = data.next;
     const { title } = this.dom.toDocument(html);
 
     document.title = title;
-  },
-};
+  }
+}
+
+const core = new Core();
 
 export default core;

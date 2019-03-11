@@ -1,0 +1,69 @@
+/**
+ * @module typings/core
+ */
+
+// Definitions
+import {
+  BarbaOptions,
+  BarbaPlugin,
+  IgnoreOption,
+  LinkEvent,
+  SchemaPage,
+  TransitionData,
+  // RequestErrorBinded,
+  Trigger,
+  Wrapper,
+} from '.';
+// Hooks
+import { Hooks } from '../hooks';
+// Modules
+import { Cache } from '../modules/Cache';
+import { History } from '../modules/History';
+import { Prevent } from '../modules/Prevent';
+import { Store } from '../modules/Store';
+import { Transitions } from '../modules/Transitions';
+import { Views } from '../modules/Views';
+import { Logger } from '../modules/Logger';
+// Utils
+import { Dom } from '../utils';
+
+interface Core {
+  // Properties
+  version: string;
+  schemaPage: SchemaPage;
+  cache: Cache;
+  history: History;
+  hooks: Hooks;
+  store: Store;
+  transitionsManager: Transitions;
+  viewsManager: Views;
+  dom: Dom;
+  prevent: Prevent;
+  request: any;
+  helpers: any;
+  url: any;
+  Logger: typeof Logger;
+  // Main methods
+  use<T>(plugin: BarbaPlugin<T>, options?: T): void;
+  init(options: BarbaOptions): void;
+  // Public methods
+  appear(): void;
+  go(url: string, el: Trigger): void;
+  force(href: string): void;
+  // Options
+  timeout: number;
+  cacheIgnore: IgnoreOption;
+  prefetchIgnore: IgnoreOption;
+  // onRequestError: RequestErrorBinded;
+  // Getters
+  wrapper: Wrapper;
+  // Private methods
+  _refreshPages(): void;
+  _onLinkEnter(e: LinkEvent): void;
+  _onLinkClick(e: LinkEvent): void;
+  _onStateChange(): void;
+  _bind(): void;
+  _getLinkElement(e: LinkEvent): HTMLLinkElement;
+  _getData(): TransitionData;
+  _updateTitle(data: TransitionData): void;
+}

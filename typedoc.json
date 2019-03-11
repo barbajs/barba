@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "node"
+  },
+  "typedocOptions": {
+    "exclude": "**/index.ts",
+    "excludeExternals": true,
+    "ignoreCompilerErrors": true,
+    "name": "What a beautiful lib",
+    "readme": "README.md",
+    "out": "typedoc/dist",
+    "theme": "typedoc/theme"
+  }
+}

@@ -1,75 +1,93 @@
 /**
+ * @barba/core/utils/dom
+ * <br><br>
+ * ## Dom utils
+ *
+ * - Access DOM contents
+ * - DOM vs string conversions
+ *
  * @module core/utils/dom
+ * @preferred
  */
-import { SchemaAttribute } from '../defs/schemas';
-import { Dom } from '../defs/utils';
-// ---
-import { schemaAttribute } from '../schemas';
 
-const _attr: SchemaAttribute = schemaAttribute;
-const _parser: DOMParser = new DOMParser();
+/***/
 
-/**
- * DOM manipulations
- */
-const dom: Dom = {
+// Definitions
+import { SchemaAttribute, Scope, Wrapper } from '../defs';
+// Schemas
+import { schemaAttribute } from '../schemas/attribute';
+
+export class Dom {
+  private _attr: SchemaAttribute = schemaAttribute;
+  private _parser: DOMParser = new DOMParser();
+
   /**
-   * Convert DOM to string
+   * Convert HTMLDocument to string.
    */
-  toString(dom) {
+  toString(dom: HTMLElement): string {
     return dom.outerHTML;
-  },
+  }
 
   /**
-   * Parse HTML string to HTMLDocument
+   * Parse HTML string to HTMLDocument.
    */
-  toDocument(htmlString) {
-    return _parser.parseFromString(htmlString, 'text/html');
-  },
+  toDocument(htmlString: string): HTMLDocument {
+    return this._parser.parseFromString(htmlString, 'text/html');
+  }
 
   /**
-   * Get html content
+   * Get HTML content.
    */
-  getHtml(doc = document) {
+  getHtml(doc: HTMLDocument = document): string {
     return this.toString(doc.documentElement);
-  },
+  }
 
   /**
-   * Get full document content
+   * Get full document content.
    */
   // getDocument(el = document.documentElement) {
   //   return this.toStr(el);
   // },
 
   /**
-   * Get [data-barba="wrapper"]
+   * Get `[data-barba="wrapper"]`.
    */
-  getWrapper(scope = document) {
-    return scope.querySelector(`[${_attr.prefix}="${_attr.wrapper}"]`);
-  },
+  getWrapper(scope: Scope = document): Wrapper {
+    return scope.querySelector(
+      `[${this._attr.prefix}="${this._attr.wrapper}"]`
+    );
+  }
 
   /**
-   * Get [data-barba="container"]
+   * Get `[data-barba="container"]`.
    */
-  getContainer(scope = document) {
-    return scope.querySelector(`[${_attr.prefix}="${_attr.container}"]`);
-  },
+  getContainer(scope: Scope = document): HTMLElement | null {
+    return scope.querySelector(
+      `[${this._attr.prefix}="${this._attr.container}"]`
+    );
+  }
 
   /**
-   * Get [data-barba-namespace]
+   * Get `[data-barba-namespace]`.
    */
-  getNamespace(scope = document) {
-    const ns = scope.querySelector(`[${_attr.prefix}-${_attr.namespace}]`);
+  getNamespace(scope: Scope = document): string | null {
+    const ns = scope.querySelector(
+      `[${this._attr.prefix}-${this._attr.namespace}]`
+    );
 
-    return ns ? ns.getAttribute(`${_attr.prefix}-${_attr.namespace}`) : null;
-  },
+    return ns
+      ? ns.getAttribute(`${this._attr.prefix}-${this._attr.namespace}`)
+      : null;
+  }
 
   /**
-   * Get URL from href value
+   * Get URL from `href` value.
    */
-  getUrl(el) {
+  getUrl(el: HTMLLinkElement): string | null {
     return el.getAttribute && el.getAttribute('href') ? el.href : null;
-  },
-};
+  }
+}
+
+const dom = new Dom();
 
 export { dom };

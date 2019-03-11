@@ -1,9 +1,10 @@
 module.exports = {
   collectCoverageFrom: [
-    'packages/**/src/**/*.{js,jsx}',
-    '!packages/**/src/**/index.js',
-    '!packages/**/src/polyfills/**.js',
-    '!packages/core/src/utils/helpers.js',
+    'packages/**/src/**/*.ts',
+    '!packages/**/src/**/*.d.ts',
+    '!packages/**/src/**/index.ts',
+    '!packages/**/src/polyfills/**.ts',
+    '!packages/core/src/utils/helpers.ts',
   ],
   coverageThreshold: {
     global: {
@@ -13,10 +14,11 @@ module.exports = {
       lines: 100,
     },
   },
+  preset: 'ts-jest',
   resetMocks: true,
-  setupFiles: ['<rootDir>/jest.init.js'],
+  // setupFiles: ['<rootDir>/jest.init.ts'],
   testEnvironment: 'jest-environment-jsdom-global',
-  testMatch: ['**/__tests__/**/*.test.js'],
+  testMatch: ['**/__tests__/**/*.test.ts'],
   transformIgnorePatterns: ['<rootDir>.*(node_modules)(?!.*@barba.*).*$'],
   verbose: true,
   watchPlugins: ['jest-watch-lerna-packages'],

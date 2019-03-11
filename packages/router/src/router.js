@@ -47,7 +47,7 @@ export const router = {
     routes.forEach(route => {
       const { name, path } = route;
       const keys = [];
-      const regex = this.barba.url.pathToRegexp(path, keys);
+      const regex = this.barba.helpers.pathToRegexp(path, keys);
 
       if (this._routeNames.indexOf(name) > -1) {
         console.warn(`[@barba/router] Duplicated route name (${name})`);
@@ -82,7 +82,7 @@ export const router = {
     });
     // Register hooks
     this.barba.hooks.go(this._resolveRoutes, this);
-    this.barba.hooks.refresh(this._resolveRoutes, this);
+    this.barba.hooks.reset(this._resolveRoutes, this);
   },
 
   /**
@@ -131,7 +131,7 @@ export const router = {
   },
 
   /**
-   * Hooks: do, refresh
+   * Hooks: do, reset
    *
    * @memberof @barba/router
    * @param {object} data transition data
