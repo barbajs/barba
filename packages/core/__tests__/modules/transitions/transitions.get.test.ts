@@ -1,6 +1,5 @@
-/* eslint-disable no-empty-function */
+import { ISchemaPage, ITransitionData } from '../../../src/defs';
 import { Transitions } from '../../../src/modules/Transitions';
-import { TransitionData, SchemaPage } from '../../../src/defs';
 
 const appear = {
   appear: () => Promise.resolve(),
@@ -10,9 +9,9 @@ const enter = {
 };
 const transitions = new Transitions([appear, enter]);
 
-const data: TransitionData = {
-  current: {} as SchemaPage,
-  next: {} as SchemaPage,
+const data: ITransitionData = {
+  current: {} as ISchemaPage,
+  next: {} as ISchemaPage,
   trigger: 'barba',
 };
 

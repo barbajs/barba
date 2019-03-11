@@ -1,9 +1,9 @@
-import { TransitionPage } from '../src/defs';
+import { ITransitionPage } from '../src/defs';
 
 const namespace = 'n';
 const route = 'r';
 const custom = () => true;
-const unamed: TransitionPage[] = [
+const unamed: ITransitionPage[] = [
   /* 0000 */ {}, // Nothing
   /* 0010 */ { namespace }, // Namespace
   /* 0011 */ { from: { namespace } },
@@ -37,7 +37,7 @@ const unamed: TransitionPage[] = [
     to: { custom, route, namespace },
   },
 ];
-const named: TransitionPage[] = unamed.map((t, i) => {
+const named: ITransitionPage[] = unamed.map((t, i) => {
   t.name = i.toString();
 
   return t;

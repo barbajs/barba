@@ -1,8 +1,8 @@
-/* eslint-disable no-empty-function */
+/* tslint:disable:no-empty */
+import { ISchemaPage, ITransitionData } from '../../../src/defs';
 import { hooks } from '../../../src/hooks';
-import { Transitions } from '../../../src/modules/Transitions';
 import { Logger } from '../../../src/modules/Logger';
-import { TransitionData, SchemaPage } from '../../../src/defs';
+import { Transitions } from '../../../src/modules/Transitions';
 
 // Silence is gold… :)
 Logger.setLevel('off');
@@ -38,18 +38,18 @@ const nextHtml = `<html>
 </html>`;
 
 // Data
-let data: TransitionData;
+let data: ITransitionData;
 
 beforeEach(() => {
   data = {
     current: {
       container: currentContainer,
       html: undefined,
-    } as SchemaPage,
+    } as ISchemaPage,
     next: {
       container: nextContainer,
       html: undefined,
-    } as SchemaPage,
+    } as ISchemaPage,
     trigger: 'barba',
   };
 });
@@ -61,9 +61,9 @@ it('needs transition', async () => {
   expect.assertions(1);
 
   await transitions.doPage({
-    transition: undefined,
     data,
     page,
+    transition: undefined,
     wrapper,
   });
   expect(transitions.logger.warn).toHaveBeenCalledWith('No transition found');
@@ -73,9 +73,9 @@ it('leaves falsy', async () => {
   expect.assertions(1);
 
   await transitions.doPage({
-    transition: { leave: () => Promise.resolve(false) },
     data,
     page,
+    transition: { leave: () => Promise.resolve(false) },
     wrapper,
   });
   expect(beforeEnter).not.toHaveBeenCalled();
@@ -84,26 +84,25 @@ it('leaves falsy', async () => {
 for (let i = 0; i < 2; i++) {
   const sync = i === 0;
 
-  // eslint-disable-next-line no-loop-func
   it('calls methods', async () => {
     expect.assertions(20);
 
     const t = {
-      sync,
-      before,
-      beforeLeave,
-      leave,
-      afterLeave,
-      beforeEnter,
-      enter,
-      afterEnter,
       after,
+      afterEnter,
+      afterLeave,
+      before,
+      beforeEnter,
+      beforeLeave,
+      enter,
+      leave,
+      sync,
     };
 
     await transitions.doPage({
-      transition: t,
       data,
       page,
+      transition: t,
       wrapper,
     });
 
@@ -133,8 +132,8 @@ for (let i = 0; i < 2; i++) {
 
     await transitions.doPage({
       data,
-      transition: { leave, enter },
       page: Promise.resolve(),
+      transition: { leave, enter },
       wrapper,
     });
 
@@ -149,15 +148,15 @@ it('calls hooks (sync: false)', async () => {
   expect.assertions(11);
 
   const t = {
-    sync: false,
-    leave,
     enter,
+    leave,
+    sync: false,
   };
 
   await transitions.doPage({
-    transition: t,
     data,
     page,
+    transition: t,
     wrapper,
   });
 
@@ -178,15 +177,15 @@ it('calls hooks (sync: true)', async () => {
   expect.assertions(11);
 
   const t = {
-    sync: true,
-    leave,
     enter,
+    leave,
+    sync: true,
   };
 
   await transitions.doPage({
-    transition: t,
     data,
     page,
+    transition: t,
     wrapper,
   });
 
@@ -210,18 +209,19 @@ it('catches error (leave, sync: false)', async () => {
   const leaveError = () => {
     throw new Error('test');
   };
+  const t = { leave: leaveError, leaveCanceled };
 
   try {
     await transitions.doPage({
       data,
-      transition: { leave: leaveError, leaveCanceled },
       page,
+      transition: t,
       wrapper,
     });
   } catch (e) {
     expect(e).toEqual(new Error('Transition error'));
     // DEV
-    expect(hooks.do).toHaveBeenLastCalledWith('leaveCanceled', data);
+    expect(hooks.do).toHaveBeenLastCalledWith('leaveCanceled', data, t);
     expect(leaveCanceled).toHaveBeenCalledTimes(1);
   }
 });
@@ -233,24 +233,25 @@ it('catches error (enter, sync: false)', async () => {
   const enterError = () => {
     throw new Error('test');
   };
+  const t = {
+    leave() {
+      return Promise.resolve('foo');
+    },
+    enter: enterError,
+    enterCanceled,
+  };
 
   try {
     await transitions.doPage({
-      transition: {
-        leave() {
-          return Promise.resolve('foo');
-        },
-        enter: enterError,
-        enterCanceled,
-      },
       data,
       page,
+      transition: t,
       wrapper,
     });
   } catch (e) {
     expect(e).toEqual(new Error('Transition error'));
     // DEV
-    expect(hooks.do).toHaveBeenLastCalledWith('enterCanceled', data);
+    expect(hooks.do).toHaveBeenLastCalledWith('enterCanceled', data, t);
     expect(enterCanceled).toHaveBeenCalledTimes(1);
   }
 });
@@ -262,18 +263,19 @@ it('catches error (leave, sync: true)', async () => {
   const leaveError = () => {
     throw new Error('test');
   };
+  const t = { sync: true, leave: leaveError, leaveCanceled, enter() {} };
 
   try {
     await transitions.doPage({
-      transition: { sync: true, leave: leaveError, leaveCanceled, enter() {} },
       data,
       page,
+      transition: t,
       wrapper,
     });
   } catch (e) {
     expect(e).toEqual(new Error('Transition error'));
     // DEV
-    expect(hooks.do).toHaveBeenLastCalledWith('leaveCanceled', data);
+    expect(hooks.do).toHaveBeenLastCalledWith('enterCanceled', data, t);
     expect(leaveCanceled).toHaveBeenCalledTimes(1);
   }
 });
@@ -285,18 +287,19 @@ it('catches error (enter, sync: true)', async () => {
   const enterError = () => {
     throw new Error('test');
   };
+  const t = { sync: true, leave() {}, enter: enterError, enterCanceled };
 
   try {
     await transitions.doPage({
-      transition: { sync: true, leave() {}, enter: enterError, enterCanceled },
       data,
       page,
+      transition: t,
       wrapper,
     });
   } catch (e) {
     expect(e).toEqual(new Error('Transition error'));
     // DEV
-    expect(hooks.do).toHaveBeenLastCalledWith('enterCanceled', data);
+    expect(hooks.do).toHaveBeenLastCalledWith('enterCanceled', data, t);
     expect(enterCanceled).toHaveBeenCalledTimes(1);
   }
 });

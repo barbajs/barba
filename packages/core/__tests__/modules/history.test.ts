@@ -3,12 +3,12 @@ import { History } from '../../src/modules/History';
 const history = new History();
 
 const first = {
-  url: 'url1',
   ns: 'ns1',
+  url: 'url1',
 };
 const second = {
-  url: 'url2',
   ns: 'ns2',
+  url: 'url2',
 };
 
 it('has no history ', () => {

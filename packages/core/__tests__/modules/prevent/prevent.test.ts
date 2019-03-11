@@ -1,5 +1,4 @@
 import { Prevent } from '../../../src/modules/Prevent';
-import { PreventCheck, PreventCheckData } from '../../../src/defs';
 
 const prevent = new Prevent(false);
 

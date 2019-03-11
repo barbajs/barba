@@ -1,3 +1,4 @@
+/* tslint:disable:no-string-literal */
 import { schemaAttribute } from '../../src/schemas/attribute';
 import { dom } from '../../src/utils';
 

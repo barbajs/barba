@@ -1,3 +1,4 @@
+/* tslint:disable:no-string-literal */
 import { Logger, LogLevels } from '../../src/modules/Logger';
 
 let logger: Logger;

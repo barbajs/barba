@@ -10,15 +10,15 @@
 /***/
 
 // Definitions
-import { SchemaAttribute } from '../defs';
+import { ISchemaAttribute } from '../defs';
 
 /**
- * See [[SchemaAttribute]]
+ * See [[ISchemaAttribute]]
  */
-export const schemaAttribute: SchemaAttribute = {
-  prefix: 'data-barba',
-  wrapper: 'wrapper',
+export const schemaAttribute: ISchemaAttribute = {
   container: 'container',
-  prevent: 'prevent',
   namespace: 'namespace',
+  prefix: 'data-barba',
+  prevent: 'prevent',
+  wrapper: 'wrapper',
 };

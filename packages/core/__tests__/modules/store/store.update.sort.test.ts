@@ -1,6 +1,5 @@
-/* eslint-disable no-empty-function */
-import transitions from '../../../__mocks__/transitions';
 import shuffle from 'lodash/shuffle';
+import transitions from '../../../__mocks__/transitions';
 import { Store } from '../../../src/modules/Store';
 
 let store: Store;

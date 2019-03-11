@@ -1,4 +1,4 @@
-/* eslint-disable no-empty-function */
+/* tslint:disable:no-empty */
 import { Store } from '../../../src/modules/Store';
 
 let store: Store;

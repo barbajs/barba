@@ -1,5 +1,5 @@
+import { IPreventCheckData, PreventCheck } from '../../../src/defs';
 import { Prevent } from '../../../src/modules/Prevent';
-import { PreventCheck, PreventCheckData } from '../../../src/defs';
 
 const prevent = new Prevent(false);
 let check: PreventCheck;
@@ -13,7 +13,7 @@ beforeEach(() => {
 it('pass', () => {
   el.href = 'http://localhost';
 
-  check({ el } as PreventCheckData);
+  check({ el } as IPreventCheckData);
 
   expect(check).toHaveReturnedWith(false);
 });
@@ -21,7 +21,7 @@ it('pass', () => {
 it('prevent with different port', () => {
   el.href = 'https://localhost:8888';
 
-  check({ el } as PreventCheckData);
+  check({ el } as IPreventCheckData);
 
   expect(check).toHaveReturnedWith(true);
 });

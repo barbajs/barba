@@ -14,13 +14,14 @@
 
 // Definitions
 import {
-  Rule,
+  IRule,
+  IRules,
+  ITransitionAppear,
+  ITransitionData,
+  ITransitionPage,
   RuleName,
-  Rules,
-  TransitionPage,
-  TransitionAppear,
-  TransitionData,
 } from '../defs';
+
 // Modules
 import { Logger } from './Logger';
 
@@ -29,11 +30,11 @@ export class Store {
   /**
    * All registered transitions.
    */
-  public all: TransitionPage[] = [];
+  public all: ITransitionPage[] = [];
   /**
    * "Appear only" registered transitions.
    */
-  public appear: TransitionAppear[] = [];
+  public appear: ITransitionAppear[] = [];
   /**
    * Rules for transition resolution.
    *
@@ -42,7 +43,7 @@ export class Store {
    * - namespace
    * - custom
    */
-  private _rules: Rule[] = [
+  private _rules: IRule[] = [
     {
       name: 'namespace',
       type: 'strings',
@@ -56,7 +57,7 @@ export class Store {
   /**
    * Init store.
    */
-  constructor(transitions: TransitionPage[] = []) {
+  constructor(transitions: ITransitionPage[] = []) {
     if (transitions) {
       // TODO: add check for valid transitions? criteria? (appear || enter && leave)
       this.all = this.all.concat(transitions);
@@ -67,7 +68,7 @@ export class Store {
   /**
    * Add rule or transition.
    */
-  add(type: 'rule' | 'transition', data: any): void {
+  public add(type: 'rule' | 'transition', data: any): void {
     switch (type) {
       case 'rule':
         // TODO: check for valid rule
@@ -86,10 +87,10 @@ export class Store {
   /**
    * Resolve transition.
    */
-  resolve(
-    data: TransitionData,
+  public resolve(
+    data: ITransitionData,
     appear: boolean = false
-  ): TransitionAppear | TransitionPage {
+  ): ITransitionAppear | ITransitionPage {
     const transitions = appear ? this.appear : this.all;
 
     // All matching transition infos
@@ -150,7 +151,7 @@ export class Store {
 
         return t;
       });
-    this.appear = this.all.filter(t => t.appear) as TransitionAppear[];
+    this.appear = this.all.filter(t => t.appear) as ITransitionAppear[];
   }
 
   /**
@@ -165,9 +166,9 @@ export class Store {
    *     - "function" should return true
    */
   private _check(
-    transition: TransitionPage,
-    rule: Rule,
-    data: TransitionData,
+    transition: ITransitionPage,
+    rule: IRule,
+    data: ITransitionData,
     match: any,
     direction?: 'from' | 'to'
   ): boolean {
@@ -175,8 +176,9 @@ export class Store {
     let hasMatch = false;
     const t = transition;
     const { name, type } = rule;
-    const strRule = name as Rules['strings'];
-    const fnName = name as Rules['function'];
+    const strRule = name as IRules['strings'];
+    const objRule = name as IRules['object'];
+    const fnName = name as IRules['function'];
     const base = direction ? t[direction] : t; // = t || t.from || t.to
     const page = direction === 'to' ? data.next : data.current; // = current || next
     const exist = direction ? base && base[name] : base[name];
@@ -197,6 +199,27 @@ export class Store {
           }
           // If transition prop is different from current, not valid
           if (names.indexOf(page[strRule]) === -1) {
+            isValid = false;
+          }
+          break;
+        }
+
+        case 'object': {
+          // Array support
+          const names: string[] = Array.isArray(base[objRule])
+            ? (base[objRule] as string[])
+            : [base[objRule] as string];
+
+          // For matching, prop should be present on both sides and match
+          if (
+            page[objRule] &&
+            page[objRule].name &&
+            names.indexOf(page[objRule].name) !== -1
+          ) {
+            hasMatch = true;
+          }
+          // If transition prop is different from current, not valid
+          if (names.indexOf(page[objRule].name) === -1) {
             isValid = false;
           }
           break;
@@ -233,7 +256,7 @@ export class Store {
    * - from/to properties give units (0, 1 or 2)
    */
   private _calculatePriority(
-    t: TransitionPage,
+    t: ITransitionPage,
     ruleName: RuleName,
     ruleIndex: number
   ): number {
@@ -257,7 +280,7 @@ export class Store {
     return priority;
   }
 
-  private _addPriority(t: TransitionPage): TransitionPage {
+  private _addPriority(t: ITransitionPage): ITransitionPage {
     t.priority = 0;
     let priority = 0;
 

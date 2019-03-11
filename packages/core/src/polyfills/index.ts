@@ -1,7 +1,7 @@
 // Move to browser support / polyfill
 // if (!Element.prototype.closest) {
 //   Element.prototype.closest = function closest(s) {
-//     let el = this; // eslint-disable-line consistent-this
+//     let el = this;
 
 //     do {
 //       if (el.matches(s)) {

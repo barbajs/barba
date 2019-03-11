@@ -1,13 +1,12 @@
-/* eslint-disable no-empty-function */
+import { ITransitionAppear, ITransitionData } from '../../../src/defs';
 import { Store } from '../../../src/modules/Store';
-import { TransitionData, TransitionAppear } from '../../../src/defs';
 
-const tAppear: TransitionAppear = { appear: () => Promise.resolve() };
-const tAppearNs: TransitionAppear = {
+const tAppear: ITransitionAppear = { appear: () => Promise.resolve() };
+const tAppearNs: ITransitionAppear = {
   appear: () => Promise.resolve(),
   namespace: 'ns',
 };
-const tAppearCustom: TransitionAppear = {
+const tAppearCustom: ITransitionAppear = {
   appear: () => Promise.resolve(),
   custom({ current }) {
     return current.namespace === 'custom';
@@ -20,7 +19,7 @@ it('get "appear" transition', () => {
   const result = store.resolve(
     ({
       current: { namespace: 'none' },
-    } as unknown) as TransitionData,
+    } as unknown) as ITransitionData,
     true
   );
 
@@ -31,7 +30,7 @@ it('get "appear/ns" transition', () => {
   const result = store.resolve(
     ({
       current: { namespace: 'ns' },
-    } as unknown) as TransitionData,
+    } as unknown) as ITransitionData,
     true
   );
 
@@ -42,7 +41,7 @@ it('get "appear/custom" transition', () => {
   const result = store.resolve(
     ({
       current: { namespace: 'custom' },
-    } as unknown) as TransitionData,
+    } as unknown) as ITransitionData,
     true
   );
 

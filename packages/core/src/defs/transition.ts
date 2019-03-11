@@ -3,44 +3,44 @@
  */
 
 // Definitions
-import { SchemaPage, Trigger } from '.';
+import { ISchemaPage, Trigger } from '.';
 
 // Data
-export type TransitionData = {
-  current: SchemaPage;
-  next: SchemaPage;
+export interface ITransitionData {
+  current: ISchemaPage;
+  next: ISchemaPage;
   trigger: Trigger;
-};
+}
 
-export interface TransitionRules {
-  custom?(data: TransitionData): boolean;
-  route?: string | string[];
+export interface ITransitionRules {
   namespace?: string | string[];
+  route?: string | string[];
+  custom?(data: ITransitionData): boolean;
 }
 
 // Transitions
-export interface TransitionPage extends TransitionRules {
+export interface ITransitionPage extends ITransitionRules {
   name?: string;
-  from?: TransitionRules;
-  to?: TransitionRules;
+  from?: ITransitionRules;
+  to?: ITransitionRules;
   sync?: boolean;
   priority?: number;
   async?: () => (data?: any) => void;
-  beforeAppear?(data: TransitionData): void;
-  appear?(data: TransitionData): Promise<void> | void;
-  afterAppear?(data: TransitionData): void;
-  before?(data: TransitionData): void;
-  beforeLeave?(data: TransitionData): void;
-  leave?(data: TransitionData): Promise<any> | void;
-  afterLeave?(data: TransitionData): void;
-  beforeEnter?(data: TransitionData): void;
-  enter?(data: TransitionData): Promise<void> | void;
-  afterEnter?(data: TransitionData): void;
-  after?(data: TransitionData): void;
-  leaveCanceled?(data: TransitionData): void;
-  enterCanceled?(data: TransitionData): void;
+  beforeAppear?(data: ITransitionData): void;
+  appear?(data: ITransitionData): Promise<void> | void;
+  afterAppear?(data: ITransitionData): void;
+  before?(data: ITransitionData): void;
+  beforeLeave?(data: ITransitionData): void;
+  leave?(data: ITransitionData): Promise<any> | void;
+  afterLeave?(data: ITransitionData): void;
+  beforeEnter?(data: ITransitionData): void;
+  enter?(data: ITransitionData): Promise<void> | void;
+  afterEnter?(data: ITransitionData): void;
+  after?(data: ITransitionData): void;
+  leaveCanceled?(data: ITransitionData): void;
+  enterCanceled?(data: ITransitionData): void;
 }
 
-export interface TransitionAppear extends TransitionPage {
-  appear(data: TransitionData): Promise<void>;
+export interface ITransitionAppear extends ITransitionPage {
+  appear(data: ITransitionData): Promise<void>;
 }

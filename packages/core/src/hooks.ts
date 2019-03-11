@@ -22,10 +22,10 @@ import { HooksAll } from './defs';
 // Modules
 import { Logger } from './modules/Logger';
 // Types
-type HookData = {
-  fn: Function;
+interface IHookData {
   ctx: any;
-};
+  fn: () => void;
+}
 
 export class Hooks {
   /**
@@ -68,25 +68,25 @@ export class Hooks {
    * - Unique hook name
    * - Associated data set(s) (callback + context)
    */
-  public registered: Map<HooksAll, Set<HookData>> = new Map();
+  public registered: Map<HooksAll, Set<IHookData>> = new Map();
 
   constructor() {
     this.init();
   }
 
-  init() {
+  public init() {
     this.registered.clear();
     this.all.forEach(hook => {
       if (!this[hook]) {
-        this[hook] = (fn: Function, ctx: any = null) => {
+        this[hook] = (fn: () => void, ctx: any = null) => {
           if (!this.registered.has(hook)) {
             this.registered.set(hook, new Set());
           }
           const set = this.registered.get(hook);
 
           set.add({
-            fn,
             ctx,
+            fn,
           });
         };
       }
@@ -98,15 +98,15 @@ export class Hooks {
    *
    * Trigger registered hooks.
    */
-  do(hook: HooksAll, ...args: any) {
-    if (this.registered.has(hook)) {
-      this.registered.get(hook).forEach(hook => {
+  public do(name: HooksAll, ...args: any) {
+    if (this.registered.has(name)) {
+      this.registered.get(name).forEach(hook => {
         hook.fn.apply(hook.ctx, args);
       });
     }
   }
 
-  clear(): void {
+  public clear(): void {
     this.all.forEach(hook => {
       delete this[hook];
     });
@@ -117,7 +117,7 @@ export class Hooks {
   /**
    * Help, print available and registered hooks.
    */
-  help() {
+  public help() {
     this.logger.info(`[@barba/core] Available hooks: ${this.all}`);
     this.logger.info(
       `[@barba/core] Registered hooks: ${Object.keys(this.registered)}`

@@ -1,5 +1,5 @@
-import { hooks } from '../../src/hooks';
 import { HooksAll } from '../../src/defs';
+import { hooks } from '../../src/hooks';
 
 const [hookName] = hooks.all;
 
@@ -74,15 +74,15 @@ it('do with arguments', () => {
 });
 
 it('do with context', () => {
-  type Ctx = {
+  interface ICtx {
     prop: string;
     fn(): string;
-  };
-  const ctx: Ctx = {
-    prop: 'foo',
-    fn: jest.fn(function(this: Ctx) {
+  }
+  const ctx: ICtx = {
+    fn: jest.fn(function(this: ICtx) {
       return this.prop;
     }),
+    prop: 'foo',
   };
 
   hooks.init();

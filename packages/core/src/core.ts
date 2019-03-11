@@ -16,21 +16,20 @@
 import { version } from '../package.json';
 // Definitions
 import {
-  BarbaOptions,
-  BarbaPlugin,
+  IBarbaOptions,
+  IBarbaPlugin,
   IgnoreOption,
+  ISchemaPage,
+  ITransitionAppear,
+  ITransitionData,
+  ITransitionPage,
   LinkEvent,
-  TransitionData,
-  TransitionAppear,
-  TransitionPage,
-  Trigger,
-  Wrapper,
   RequestCustomError,
   RequestErrorOrResponse,
-  SchemaPage,
+  SchemaAttributeValues,
+  Trigger,
+  Wrapper,
 } from './defs';
-// Schemas
-import { schemaPage } from './schemas/page';
 // Hooks
 import { hooks } from './hooks';
 // Modules
@@ -40,13 +39,13 @@ import { Logger } from './modules/Logger';
 import { Prevent } from './modules/Prevent';
 import { Transitions } from './modules/Transitions';
 import { Views } from './modules/Views';
+// Schemas
+import { schemaAttribute } from './schemas/attribute';
+import { schemaPage } from './schemas/page';
 // Utils
 import { dom, helpers, request, url } from './utils';
 
 export class Core {
-  private _data: TransitionData;
-  private _requestCustomError: RequestCustomError;
-  private _wrapper: Wrapper;
   /**
    * Version.
    */
@@ -54,7 +53,7 @@ export class Core {
   /**
    * Schemas.
    */
-  public schemaPage: SchemaPage = schemaPage;
+  public schemaPage: ISchemaPage = schemaPage;
   /**
    * Logger class, allows plugins to create Logger.
    */
@@ -66,7 +65,7 @@ export class Core {
   /**
    * Plugins.
    */
-  public plugins: BarbaPlugin<any>[] = [];
+  public plugins: Array<IBarbaPlugin<any>> = [];
   /**
    * Options
    */
@@ -93,12 +92,16 @@ export class Core {
   public request = request;
   public url = url;
 
+  private _data: ITransitionData;
+  private _requestCustomError: RequestCustomError;
+  private _wrapper: Wrapper;
+
   /**
    * ### Init plugin with options.
    *
-   * See [[BarbaPlugin]] for more details.
+   * See [[IBarbaPlugin]] for more details.
    */
-  use<T>(plugin: BarbaPlugin<T>, options?: T): void {
+  public use<T>(plugin: IBarbaPlugin<T>, options?: T): void {
     const installedPlugins = this.plugins;
 
     // Plugin installation
@@ -121,7 +124,7 @@ export class Core {
   /**
    * ### Init barba with options.
    *
-   * See [[BarbaOptions]] for more details.
+   * See [[IBarbaOptions]] for more details.
    *
    * Default values are:
    *
@@ -130,26 +133,35 @@ export class Core {
    * - timeout: `2e3`
    * - cacheIgnore: `false`
    * - prefetchIgnore: `false`
+   * - schema: [[SchemaAttribute]]
    * - debug: `false`
    * - logLevel: `'debug'`
    */
-  init(
+  public init(
     /** @ignore */ {
       transitions = [],
       views = [],
       prevent: preventCustom = null,
       timeout = 2e3,
-      requestError = undefined,
+      requestError,
       cacheIgnore = false,
       prefetchIgnore = false,
+      schema = schemaAttribute,
       debug = false,
       logLevel = 'off',
-    }: BarbaOptions = {}
+    }: IBarbaOptions = {}
   ) {
     // 0. Set logger level
     Logger.setLevel(debug === true ? 'debug' : logLevel);
 
     // 1. Manage options
+    Object.keys(schema).forEach(k => {
+      const attr = k as SchemaAttributeValues;
+
+      if (schemaAttribute[attr]) {
+        schemaAttribute[attr] = schema[attr];
+      }
+    });
     this._requestCustomError = requestError;
     this.timeout = timeout;
     this.cacheIgnore = cacheIgnore;
@@ -207,14 +219,14 @@ export class Core {
     this.appear();
   }
 
-  destroy(): void {
+  public destroy(): void {
     this._resetData();
     this._unbind();
     this.hooks.clear();
     this.plugins = [];
   }
 
-  get data(): TransitionData {
+  get data(): ITransitionData {
     return this._data;
   }
 
@@ -228,7 +240,7 @@ export class Core {
    * Check for a "href" attribute.
    * Then check if eligible for Barba.
    */
-  force(href: string): void {
+  public force(href: string): void {
     // DEV
     // Can be used waiting animation cancellation management…
     window.location.assign(href);
@@ -240,12 +252,15 @@ export class Core {
    * If some registered "appear" transition,
    * get the "resolved" transition from the store and start it.
    */
-  async appear(): Promise<void> {
+  public async appear(): Promise<void> {
     // Check if appear transition
     if (this.transitions.hasAppear) {
       try {
         const data = this._data;
-        const transition = this.transitions.get(data, true) as TransitionAppear;
+        const transition = this.transitions.get(
+          data,
+          true
+        ) as ITransitionAppear;
 
         await this.transitions.doAppear({ transition, data });
       } catch (error) {
@@ -265,28 +280,28 @@ export class Core {
    * 6. Get the "resolved" transition from the store and start it.
    * 7. Update title and reset data (current, next = undefined)
    */
-  async go(url: string, trigger: Trigger = 'barba'): Promise<void> {
+  public async go(href: string, trigger: Trigger = 'barba'): Promise<void> {
     // If animation running, force reload
     if (this.transitions.isRunning) {
-      this.force(url);
+      this.force(href);
 
       return;
     }
 
     this.data.next.url = {
-      href: url,
-      ...this.url.parse(url),
+      href,
+      ...this.url.parse(href),
     };
     this.data.trigger = trigger;
 
-    const request = this.request(
-      url,
+    const req = this.request(
+      href,
       this.timeout,
       this._onRequestError.bind(this, trigger, 'click')
     );
-    const page = this.cache.has(url)
-      ? this.cache.get(url)
-      : this.cache.set(url, request);
+    const page = this.cache.has(href)
+      ? this.cache.get(href)
+      : this.cache.set(href, req);
 
     // Need to wait before getting the right transition
     if (this.transitions.shouldWait) {
@@ -296,9 +311,9 @@ export class Core {
     // If triggered from an history change (back, forward),
     // simply add the new state without
     if (trigger === 'popstate') {
-      this.history.add(url, this.data.next.namespace);
+      this.history.add(href, this.data.next.namespace);
     } else {
-      this.history.push(url, this.data.next.namespace);
+      this.history.push(href, this.data.next.namespace);
     }
 
     const data = this._data;
@@ -308,12 +323,12 @@ export class Core {
     hooks.do('go', data);
 
     try {
-      const transition = this.transitions.get(data) as TransitionPage;
+      const transition = this.transitions.get(data) as ITransitionPage;
 
       await this.transitions.doPage({
-        transition,
         data,
         page,
+        transition,
         wrapper: this._wrapper,
       });
 
@@ -365,21 +380,21 @@ export class Core {
       return;
     }
 
-    const url = this.dom.getUrl(link);
+    const href = this.dom.getUrl(link);
 
-    if (this.prevent.checkUrl(url)) {
+    if (this.prevent.checkUrl(href)) {
       return;
     }
 
     // Already in cache
-    if (this.cache.has(url)) {
+    if (this.cache.has(href)) {
       return;
     }
 
     this.cache.set(
-      url,
+      href,
       this.request(
-        url,
+        href,
         this.timeout,
         this._onRequestError.bind(this, link, 'enter')
       ).catch((error: RequestErrorOrResponse) => this.logger.error(error))
@@ -436,21 +451,21 @@ export class Core {
     action: string,
     ...args: any
   ): boolean {
-    const [url, response]: [string, RequestErrorOrResponse] = args;
+    const [href, response]: [string, RequestErrorOrResponse] = args;
 
-    this.cache.delete(url);
+    this.cache.delete(href);
 
     // Custom requestError returning false will return here.
     if (
       this._requestCustomError &&
-      this._requestCustomError(trigger, action, url, response) === false
+      this._requestCustomError(trigger, action, href, response) === false
     ) {
       return false;
     }
 
     // Force page change
     if (action === 'click') {
-      this.force(url);
+      this.force(href);
     }
     return false;
   }
@@ -484,13 +499,13 @@ export class Core {
   private _resetData() {
     const href = this.url.getHref();
     const current = {
+      container: this.dom.getContainer(),
+      html: this.dom.getHtml(),
       namespace: this.dom.getNamespace(),
       url: {
         href,
         ...this.url.parse(href),
       },
-      container: this.dom.getContainer(),
-      html: this.dom.getHtml(),
     };
 
     this._data = {
@@ -505,7 +520,7 @@ export class Core {
   /**
    * Update document title.
    */
-  private _updateTitle(data: TransitionData): void {
+  private _updateTitle(data: ITransitionData): void {
     const { html } = data.next;
     const { title } = this.dom.toDocument(html);
 

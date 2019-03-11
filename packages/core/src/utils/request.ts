@@ -22,7 +22,7 @@ import { RequestError } from '../defs';
 function timeout(
   url: string,
   ms: number,
-  request: Promise<string>,
+  req: Promise<string>,
   requestError: RequestError
 ): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -33,7 +33,7 @@ function timeout(
       reject(error);
     }, ms);
 
-    request
+    req
       .then(
         response => {
           window.clearTimeout(timeoutId);
@@ -64,9 +64,9 @@ async function fetcher(url: string): Promise<string> {
 
   try {
     const response = await self.fetch(url, {
-      method: 'GET',
-      headers,
       cache: 'default',
+      headers,
+      method: 'GET',
     });
 
     if (response.status >= 200 && response.status < 300) {

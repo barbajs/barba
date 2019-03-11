@@ -12,13 +12,13 @@
 /***/
 
 // Definitions
-import { SchemaAttribute, PreventCheck, IgnoreOption } from '../defs';
+import { IgnoreOption, ISchemaAttribute, PreventCheck } from '../defs';
 // Schemas
 import { schemaAttribute } from '../schemas/attribute';
-// Modules
-import { Ignore } from './ignore';
 // Utils
 import { url } from '../utils';
+// Modules
+import { Ignore } from './ignore';
 
 /**
  * Make sure the browser supports `history.pushState`.
@@ -91,16 +91,16 @@ const sameUrl: PreventCheck = ({ href }) =>
   url.getPath(href) === url.getPath(window.location.href);
 
 export class Prevent extends Ignore {
-  private _attr: SchemaAttribute = schemaAttribute;
-  public tests: Map<string, PreventCheck> = new Map();
   public suite: string[] = [];
+  public tests: Map<string, PreventCheck> = new Map();
+  private _attr: ISchemaAttribute = schemaAttribute;
 
   constructor(ignore: IgnoreOption) {
     super(ignore);
     this.init();
   }
 
-  init(): void {
+  public init(): void {
     // Add defaults
     this.add('pushState', pushState);
     this.add('exists', exists);
@@ -116,7 +116,7 @@ export class Prevent extends Ignore {
     this.add('sameUrl', sameUrl, false);
   }
 
-  add(name: string, check: PreventCheck, suite: boolean = true): void {
+  public add(name: string, check: PreventCheck, suite: boolean = true): void {
     this.tests.set(name, check);
     suite && this.suite.push(name);
   }
@@ -124,7 +124,12 @@ export class Prevent extends Ignore {
   /**
    * Run individual test
    */
-  run(name: string, el: HTMLLinkElement, event: Event, href: string): boolean {
+  public run(
+    name: string,
+    el: HTMLLinkElement,
+    event: Event,
+    href: string
+  ): boolean {
     return this.tests.get(name)({
       el,
       event,
@@ -135,7 +140,7 @@ export class Prevent extends Ignore {
   /**
    * Run test suite
    */
-  checkLink(el: HTMLLinkElement, event: Event, href: string): boolean {
+  public checkLink(el: HTMLLinkElement, event: Event, href: string): boolean {
     return this.suite.some(name => this.run(name, el, event, href));
   }
 }

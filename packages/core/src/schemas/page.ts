@@ -3,19 +3,19 @@
  */
 
 // Definitions
-import { SchemaPage } from '../defs';
+import { ISchemaPage } from '../defs';
 
 /**
- * See [[SchemaPage]]
+ * See [[ISchemaPage]]
  */
-export const schemaPage: SchemaPage = {
+export const schemaPage: ISchemaPage = {
   container: undefined,
   html: undefined,
   namespace: undefined,
   url: {
+    hash: undefined,
     href: undefined,
     path: undefined,
-    hash: undefined,
     query: {},
   },
 };

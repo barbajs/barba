@@ -39,7 +39,7 @@
     "build": "microbundle --name barba --external none",
     "build:watch": "microbundle watch --name barba --external none",
     "clear": "rimraf dist",
-    "lint": "eslint src/**",
+    "lint": "tslint src/**",
     "precommit": "lint-staged",
     "report": "source-map-explorer --html ./dist/barba.umd.js > report.html",
     "size": "echo '📦 router' && gzip-size ./dist/barba.umd.js"

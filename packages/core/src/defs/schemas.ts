@@ -2,7 +2,15 @@
  * @module typings/core
  */
 
-import { UrlFull } from '.';
+import { IRouteResolved } from '@barba/router/src/defs/router';
+import { IUrlFull } from '.';
+
+export type SchemaAttributeValues =
+  | 'prefix'
+  | 'wrapper'
+  | 'container'
+  | 'prevent'
+  | 'namespace';
 
 /**
  * ### Define HTML `data-attribute` used by Barba.
@@ -13,13 +21,13 @@ import { UrlFull } from '.';
  * @param prevent data-prefix-__prevent__
  * @param namespace data-prefix-__namespace__
  */
-export type SchemaAttribute = {
-  prefix: string;
-  wrapper: string;
-  container: string;
-  prevent: string;
-  namespace: string;
-};
+export interface ISchemaAttribute {
+  prefix?: string;
+  wrapper?: string;
+  container?: string;
+  prevent?: string;
+  namespace?: string;
+}
 
 /**
  * ### Define "page" data structure.
@@ -34,10 +42,10 @@ export type SchemaAttribute = {
  * @param route Route name (with `@barba/router`)
  */
 
-export type SchemaPage = {
+export interface ISchemaPage {
   container: HTMLElement | undefined;
   html: string | undefined;
   namespace: string | undefined;
-  url: UrlFull;
-  route?: string;
-};
+  url: IUrlFull;
+  route?: IRouteResolved;
+}

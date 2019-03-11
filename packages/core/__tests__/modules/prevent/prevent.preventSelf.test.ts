@@ -1,5 +1,5 @@
+import { IPreventCheckData, PreventCheck } from '../../../src/defs';
 import { Prevent } from '../../../src/modules/Prevent';
-import { PreventCheck, PreventCheckData } from '../../../src/defs';
 
 const prevent = new Prevent(false);
 let check: PreventCheck;
@@ -11,7 +11,7 @@ beforeEach(() => {
 });
 
 it('pass', () => {
-  check({ el } as PreventCheckData);
+  check({ el } as IPreventCheckData);
 
   expect(check).toHaveReturnedWith(false);
 });
@@ -19,7 +19,7 @@ it('pass', () => {
 it('prevent with data-barba-prevent', () => {
   el.dataset.barbaPrevent = '';
 
-  check({ el } as PreventCheckData);
+  check({ el } as IPreventCheckData);
 
   expect(check).toHaveReturnedWith(true);
 });
@@ -27,7 +27,7 @@ it('prevent with data-barba-prevent', () => {
 it('prevent with data-barba-prevent="self"', () => {
   el.dataset.barbaPrevent = 'self';
 
-  check({ el } as PreventCheckData);
+  check({ el } as IPreventCheckData);
 
   expect(check).toHaveReturnedWith(true);
 });

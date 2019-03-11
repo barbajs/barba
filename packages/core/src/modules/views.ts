@@ -10,11 +10,11 @@
 /***/
 
 // Definitions
-import { HooksView, HookViewData, View } from '../defs';
+import { HooksView, IHookViewData, IView } from '../defs';
 // Hooks
 import { hooks } from '../hooks';
 // Types
-type Hook = (data: HookViewData) => void;
+type Hook = (data: IHookViewData) => void;
 
 export class Views {
   /**
@@ -31,12 +31,12 @@ export class Views {
   /**
    * Registered views by namespace.
    */
-  public byNamespace: Map<string, View> = new Map();
+  public byNamespace: Map<string, IView> = new Map();
 
   /**
    * Init views.
    */
-  constructor(views: View[]) {
+  constructor(views: IView[]) {
     if (views.length === 0) {
       return;
     }

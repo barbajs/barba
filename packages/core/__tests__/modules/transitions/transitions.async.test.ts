@@ -1,7 +1,6 @@
-/* eslint-disable no-empty-function */
+import { ISchemaPage, ITransitionData } from '../../../src/defs';
 import { hooks } from '../../../src/hooks';
 import { Transitions } from '../../../src/modules/Transitions';
-import { TransitionData, SchemaPage } from '../../../src/defs';
 
 const transitions = new Transitions();
 // Mocks
@@ -13,13 +12,13 @@ const wrapper = div.cloneNode() as HTMLElement;
 const currentContainer = div.cloneNode() as HTMLElement;
 const nextContainer = div.cloneNode() as HTMLElement;
 // Data
-const data: TransitionData = {
+const data: ITransitionData = {
   current: {
     container: currentContainer,
-  } as SchemaPage,
+  } as ISchemaPage,
   next: {
     container: nextContainer,
-  } as SchemaPage,
+  } as ISchemaPage,
   trigger: 'barba',
 };
 const payload = 'payload';
@@ -30,8 +29,8 @@ const payload = 'payload';
 async function doPage(leave: any) {
   await transitions.doPage({
     data,
-    transition: { leave, enter },
     page: Promise.resolve(),
+    transition: { leave, enter },
     wrapper,
   });
 }

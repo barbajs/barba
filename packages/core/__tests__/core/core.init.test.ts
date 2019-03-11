@@ -1,3 +1,4 @@
+/* tslint:disable:no-string-literal */
 import barba from '../../src';
 import { PreventCheck } from '../../src/defs';
 
@@ -36,11 +37,11 @@ it('needs barba container', () => {
 });
 
 it('needs valid prevent custom', () => {
-  const init = function init() {
+  const start = () => {
     barba.init({ prevent: ('bad' as unknown) as PreventCheck });
   };
 
-  expect(init).toThrow('Prevent should be a function');
+  expect(start).toThrow('Prevent should be a function');
   barba.prevent.add = jest.fn();
   expect(barba.prevent.add).not.toHaveBeenCalled();
 });
@@ -61,9 +62,9 @@ it('has current page content', () => {
   expect(barba.data.current).toBeDefined();
   expect(barba.data.current.namespace).toBe(namespace);
   expect(barba.data.current.url).toEqual({
+    hash: undefined,
     href: 'http://localhost/',
     path: '/',
-    hash: undefined,
     query: {},
   });
   expect(barba.data.current.container).toBe(container);
@@ -87,5 +88,32 @@ it('calls appear', () => {
 
 it('gets wrapper', () => {
   barba.init();
+  expect(barba.wrapper).toBe(wrapper);
+});
+
+it('has other options', () => {
+  wrapper.dataset.highway = 'main';
+  container.dataset.highway = 'container';
+
+  barba.init({
+    requestError() {
+      return false;
+    },
+    schema: { prefix: 'data-highway', wrapper: 'main' },
+    timeout: 0,
+    transitions: [],
+    views: [],
+  });
+
+  const requestError = () =>
+    barba['_requestCustomError'](
+      'barba',
+      'click',
+      'foo.html',
+      new Error('test')
+    );
+
+  expect(barba.timeout).toBe(0);
+  expect(requestError()).toBeFalsy();
   expect(barba.wrapper).toBe(wrapper);
 });

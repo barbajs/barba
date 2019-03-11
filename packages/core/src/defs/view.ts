@@ -3,15 +3,15 @@
  */
 
 // Definitions
-import { HookViewData } from '.';
+import { IHookViewData } from '.';
 
-export type View = {
+export interface IView {
   namespace: string;
   name?: string;
-  beforeAppear?(data: HookViewData): void;
-  afterAppear?(data: HookViewData): void;
-  beforeLeave?(data: HookViewData): void;
-  afterLeave?(data: HookViewData): void;
-  beforeEnter?(data: HookViewData): void;
-  afterEnter?(data: HookViewData): void;
-};
+  beforeAppear?(data: IHookViewData): void;
+  afterAppear?(data: IHookViewData): void;
+  beforeLeave?(data: IHookViewData): void;
+  afterLeave?(data: IHookViewData): void;
+  beforeEnter?(data: IHookViewData): void;
+  afterEnter?(data: IHookViewData): void;
+}

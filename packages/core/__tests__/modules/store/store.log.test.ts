@@ -1,5 +1,5 @@
-import { Store } from '../../../src/modules/Store';
 import { Logger } from '../../../src/modules/Logger';
+import { Store } from '../../../src/modules/Store';
 import { schemaPage } from '../../../src/schemas/page';
 
 it('has debug info', () => {

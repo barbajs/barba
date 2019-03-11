@@ -1,8 +1,9 @@
-import barba from '../../src';
+import { init } from '../../__mocks__/barba';
 import { version } from '../../package.json';
-import { schemaPage } from '../../src/schemas/page';
+import barba from '../../src';
 import { hooks } from '../../src/hooks';
 import { Logger } from '../../src/modules/Logger';
+import { schemaPage } from '../../src/schemas/page';
 import { dom, helpers, request, url } from '../../src/utils';
 
 it('has defaults', () => {

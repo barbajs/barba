@@ -11,7 +11,7 @@
 /***/
 
 // Deifnitions
-import { UrlBase, GenericObject } from '../defs';
+import { IGenericObject, IUrlBase } from '../defs';
 
 /**
  * Get location href.
@@ -49,7 +49,7 @@ export const getPath = (url: string): string => parse(url).path;
 /**
  * Get query object from URL.
  */
-// export const getQuery = (url: string): GenericObject => parse(url).query;
+// export const getQuery = (url: string): IGenericObject => parse(url).query;
 
 /**
  * Get hash from URL.
@@ -59,9 +59,9 @@ export const getPath = (url: string): string => parse(url).path;
 /**
  * Parse URL for path, query and hash.
  */
-export const parse = (url: string): UrlBase => {
+export const parse = (url: string): IUrlBase => {
   let path = clean(url);
-  let hash = undefined;
+  let hash;
   let query = {};
 
   const hashIndex = path.indexOf('#');
@@ -79,9 +79,9 @@ export const parse = (url: string): UrlBase => {
   }
 
   return {
+    hash,
     path,
     query,
-    hash,
   };
 };
 
@@ -89,7 +89,7 @@ export const parse = (url: string): UrlBase => {
  * Parse a query string to object.
  */
 export const parseQuery = (str: string) =>
-  str.split('&').reduce((acc: GenericObject, el: string) => {
+  str.split('&').reduce((acc: IGenericObject, el: string) => {
     const [key, value] = el.split('=');
 
     acc[key] = value;

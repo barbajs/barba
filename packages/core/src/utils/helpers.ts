@@ -11,10 +11,10 @@
 
 /***/
 
-// Definitions
-import { SchemaPage } from '../defs/schemas';
 // Third-party
 import ptr from 'path-to-regexp';
+// Definitions
+import { ISchemaPage } from '../defs/schemas';
 // Utils
 import { dom } from './dom';
 
@@ -23,7 +23,7 @@ import { dom } from './dom';
  */
 export const updateNext = async (
   page: Promise<string | void>,
-  next: SchemaPage
+  next: ISchemaPage
 ): Promise<void> => {
   if (!next.html) {
     const html = await page;

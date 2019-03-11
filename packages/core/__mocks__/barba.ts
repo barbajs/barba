@@ -1,10 +1,10 @@
 import barba from '../src';
-import { TransitionPage } from '../src/defs';
+import { ITransitionPage } from '../src/defs';
 
 /**
  * Init barba with basic DOM for testing
  */
-export function init(transitions: TransitionPage[] = []): any {
+export function init(transitions: ITransitionPage[] = []): any {
   const wrapper = document.createElement('div');
   const container = document.createElement('div');
   const link = document.createElement('a');

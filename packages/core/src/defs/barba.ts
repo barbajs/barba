@@ -5,22 +5,22 @@
 // Definitions
 import {
   IgnoreOption,
+  ISchemaAttribute,
+  ITransitionPage,
+  IView,
   PreventCheck,
   RequestCustomError,
-  SchemaAttribute,
-  TransitionPage,
-  View,
 } from '.';
 // Core
 import { Core } from '../core';
 // Modules
 import { LogLevels } from '../modules/Logger';
 
-export type BarbaOptions = {
+export interface IBarbaOptions {
   /** Array of transitions. */
-  transitions?: TransitionPage[];
+  transitions?: ITransitionPage[];
   /** Array of views. */
-  views?: View[];
+  views?: IView[];
   /** Custom prevent check. */
   prevent?: PreventCheck | null;
   /** Request timeout. */
@@ -31,13 +31,15 @@ export type BarbaOptions = {
   cacheIgnore?: IgnoreOption;
   /** Disable prefetch or ignore routes. */
   prefetchIgnore?: IgnoreOption;
+  /** Custom [data-attribute]. */
+  schema?: ISchemaAttribute;
   /** Enable debug mode. */
   debug?: boolean;
   /** Log level. */
   logLevel?: keyof typeof LogLevels;
-};
+}
 
-export interface BarbaPlugin<T> {
+export interface IBarbaPlugin<T> {
   /** Plugin version */
   version: string;
   /** Plugin name */

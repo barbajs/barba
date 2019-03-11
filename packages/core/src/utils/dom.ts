@@ -13,32 +13,32 @@
 /***/
 
 // Definitions
-import { SchemaAttribute, Scope, Wrapper } from '../defs';
+import { ISchemaAttribute, Scope, Wrapper } from '../defs';
 // Schemas
 import { schemaAttribute } from '../schemas/attribute';
 
 export class Dom {
-  private _attr: SchemaAttribute = schemaAttribute;
+  private _attr: ISchemaAttribute = schemaAttribute;
   private _parser: DOMParser = new DOMParser();
 
   /**
    * Convert HTMLDocument to string.
    */
-  toString(dom: HTMLElement): string {
-    return dom.outerHTML;
+  public toString(el: HTMLElement): string {
+    return el.outerHTML;
   }
 
   /**
    * Parse HTML string to HTMLDocument.
    */
-  toDocument(htmlString: string): HTMLDocument {
+  public toDocument(htmlString: string): HTMLDocument {
     return this._parser.parseFromString(htmlString, 'text/html');
   }
 
   /**
    * Get HTML content.
    */
-  getHtml(doc: HTMLDocument = document): string {
+  public getHtml(doc: HTMLDocument = document): string {
     return this.toString(doc.documentElement);
   }
 
@@ -52,7 +52,7 @@ export class Dom {
   /**
    * Get `[data-barba="wrapper"]`.
    */
-  getWrapper(scope: Scope = document): Wrapper {
+  public getWrapper(scope: Scope = document): Wrapper {
     return scope.querySelector(
       `[${this._attr.prefix}="${this._attr.wrapper}"]`
     );
@@ -61,7 +61,7 @@ export class Dom {
   /**
    * Get `[data-barba="container"]`.
    */
-  getContainer(scope: Scope = document): HTMLElement | null {
+  public getContainer(scope: Scope = document): HTMLElement | null {
     return scope.querySelector(
       `[${this._attr.prefix}="${this._attr.container}"]`
     );
@@ -70,7 +70,7 @@ export class Dom {
   /**
    * Get `[data-barba-namespace]`.
    */
-  getNamespace(scope: Scope = document): string | null {
+  public getNamespace(scope: Scope = document): string | null {
     const ns = scope.querySelector(
       `[${this._attr.prefix}-${this._attr.namespace}]`
     );
@@ -83,7 +83,7 @@ export class Dom {
   /**
    * Get URL from `href` value.
    */
-  getUrl(el: HTMLLinkElement): string | null {
+  public getUrl(el: HTMLLinkElement): string | null {
     return el.getAttribute && el.getAttribute('href') ? el.href : null;
   }
 }

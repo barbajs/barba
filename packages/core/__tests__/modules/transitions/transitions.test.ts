@@ -1,13 +1,13 @@
-/* eslint-disable no-empty-function */
 import { Transitions } from '../../../src/modules/Transitions';
 
 let transitions: Transitions;
 
 it('has defaults', () => {
-  transitions = new Transitions([]);
+  transitions = new Transitions();
   expect(transitions.hasAppear).toBeFalsy();
   expect(transitions.shouldWait).toBeFalsy();
   expect(transitions.isRunning).toBeFalsy();
+  expect(transitions.store).toBeDefined();
 });
 
 it('has appear', () => {

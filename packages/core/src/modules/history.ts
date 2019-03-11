@@ -17,34 +17,34 @@
  * @property namespace
  * @property URL
  */
-export type HistoryItem = {
+interface IHistoryItem {
   /** namespace */
   ns: string | undefined;
   /** URL */
   url: string;
-};
+}
 
 export class History {
-  private _state: HistoryItem[] = [];
+  private _state: IHistoryItem[] = [];
 
   /**
    * Add a new state.
    */
-  add(url: string, ns: string): void {
-    this._state.push({ url, ns } as HistoryItem);
+  public add(url: string, ns: string): void {
+    this._state.push({ url, ns } as IHistoryItem);
   }
 
   /**
    * Remove last state.
    */
-  remove(): void {
+  public remove(): void {
     this._state.pop();
   }
 
   /**
    * Add new state then update browser history.
    */
-  push(url: string, ns: string): void {
+  public push(url: string, ns: string): void {
     this.add(url, ns);
 
     window.history && window.history.pushState(null, '', url);
@@ -53,7 +53,7 @@ export class History {
   /**
    * Remove last state then go back.
    */
-  cancel(): void {
+  public cancel(): void {
     this.remove();
 
     window.history && window.history.back();
@@ -62,14 +62,14 @@ export class History {
   /**
    * Get the current state.
    */
-  get current(): HistoryItem {
+  get current(): IHistoryItem {
     return this._state[this._state.length - 1];
   }
 
   /**
    * Get the previous state.
    */
-  get previous(): HistoryItem | null {
+  get previous(): IHistoryItem | null {
     return this._state.length < 2 ? null : this._state[this._state.length - 2];
   }
 }

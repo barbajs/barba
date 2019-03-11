@@ -1,5 +1,5 @@
-import { Views } from '../../src/modules/Views';
 import { hooks } from '../../src/hooks';
+import { Views } from '../../src/modules/Views';
 
 let views: Views;
 
@@ -31,12 +31,12 @@ it('init views', () => {
     { namespace: 'bar', name: 'ok' },
   ]);
   expect(views.byNamespace.get('foo')).toEqual({
-    namespace: 'foo',
     name: 'ok',
+    namespace: 'foo',
   });
   expect(views.byNamespace.get('bar')).toEqual({
-    namespace: 'bar',
     name: 'ok',
+    namespace: 'bar',
   });
 });
 
@@ -59,6 +59,7 @@ it('register hooks', () => {
   expect(hooks.registered.get('afterEnter').size).toBe(1);
 });
 
+/* tslint:disable:object-literal-sort-keys */
 it('do existing hooks for existing namespace', () => {
   views = new Views([
     {
@@ -71,6 +72,7 @@ it('do existing hooks for existing namespace', () => {
       afterEnter,
     },
   ]);
+  /* tslint:enable:object-literal-sort-keys */
 
   const success = {
     current: { namespace: 'success' },

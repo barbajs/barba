@@ -3,13 +3,13 @@
  */
 
 // Definitions
-import { GenericObject } from '.';
+import { IGenericObject } from '.';
 
-export interface UrlBase {
+export interface IUrlBase {
   path: string | undefined;
   hash: string | undefined;
-  query: GenericObject;
+  query: IGenericObject;
 }
-export interface UrlFull extends UrlBase {
+export interface IUrlFull extends IUrlBase {
   href: string | undefined;
 }

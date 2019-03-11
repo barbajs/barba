@@ -1,5 +1,5 @@
+import { IPreventCheckData, PreventCheck } from '../../../src/defs';
 import { Prevent } from '../../../src/modules/Prevent';
-import { PreventCheck, PreventCheckData } from '../../../src/defs';
 
 const prevent = new Prevent(false);
 let check: PreventCheck;
@@ -9,13 +9,13 @@ beforeEach(() => {
 });
 
 it('pass', () => {
-  check({ href: 'somewhere' } as PreventCheckData);
+  check({ href: 'somewhere' } as IPreventCheckData);
 
   expect(check).toHaveReturnedWith(false);
 });
 
 it('prevent with same url', () => {
-  check({ href: window.location.href } as PreventCheckData);
+  check({ href: window.location.href } as IPreventCheckData);
 
   expect(check).toHaveReturnedWith(true);
 });

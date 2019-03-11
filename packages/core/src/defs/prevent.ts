@@ -9,11 +9,11 @@
  * - `event`: the associated event
  * - `href`: the href to use for fetching
  */
-export type PreventCheckData = {
+export interface IPreventCheckData {
   el: HTMLLinkElement;
   event: Event;
   href: string;
-};
+}
 
 /**
  * Prevent check.
@@ -21,4 +21,4 @@ export type PreventCheckData = {
  * - Receives check data.
  * - If it returns `true`, Barba will prevent the action.
  */
-export type PreventCheck = (data: PreventCheckData) => boolean;
+export type PreventCheck = (data: IPreventCheckData) => boolean;

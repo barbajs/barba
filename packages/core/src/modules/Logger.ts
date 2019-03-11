@@ -35,6 +35,22 @@ let _level: number = LogLevels.off;
 
 export class Logger {
   /**
+   * Get global log level.
+   */
+  public static getLevel(): number {
+    return _level;
+  }
+
+  /**
+   * Set global log level.
+   */
+  public static setLevel(name: keyof typeof LogLevels): number {
+    _level = LogLevels[name];
+
+    return _level;
+  }
+
+  /**
    * Log "prefix".
    */
   private _source: string;
@@ -47,59 +63,41 @@ export class Logger {
   }
 
   /**
-   * Get global log level.
-   */
-  static getLevel(): number {
-    return _level;
-  }
-
-  /**
-   * Set global log level.
-   */
-  static setLevel(name: keyof typeof LogLevels): number {
-    _level = LogLevels[name];
-
-    return _level;
-  }
-
-  /**
    * Error log.
    */
-  error(...objects: any[]): void {
+  public error(...objects: any[]): void {
     this._log(console.error, LogLevels.error, objects);
   }
 
   /**
    * Warn log.
    */
-  warn(...objects: any[]): void {
+  public warn(...objects: any[]): void {
     this._log(console.warn, LogLevels.warning, objects);
   }
 
   /**
    * Info log.
    */
-  info(...objects: any[]): void {
+  public info(...objects: any[]): void {
     this._log(console.info, LogLevels.info, objects);
   }
 
   /**
    * Debug log.
    */
-  debug(...objects: any[]): void {
+  public debug(...objects: any[]): void {
     this._log(console.log, LogLevels.debug, objects);
   }
 
   /**
    * Internal logger.
    */
-  private _log(fn: Function, level: number, objects: any[]): void {
+  private _log(fn: () => void, level: number, objects: any[]): void {
     if (level <= Logger.getLevel()) {
-      // const log = this._source
-      //   ? [`[${this._source}] `].concat(objects)
-      //   : objects;
+      fn.apply(console, ([`[${this._source}] `].concat(objects) as unknown) as [
 
-      fn.apply(console, [`[${this._source}] `].concat(objects));
+      ]);
     }
   }
 }

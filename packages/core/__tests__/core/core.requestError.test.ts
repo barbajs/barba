@@ -1,4 +1,4 @@
-/* eslint-disable no-empty-function */
+/* tslint:disable:no-string-literal */
 import { init } from '../../__mocks__/barba';
 import barba from '../../src';
 

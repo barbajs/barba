@@ -1,4 +1,4 @@
-/* eslint-disable no-empty-function */
+/* tslint:disable:no-empty */
 import { init } from '../../__mocks__/barba';
 import barba from '../../src';
 
@@ -26,6 +26,7 @@ it('catches error', async () => {
   const errorTransition = new Error('Transition error [appear]');
 
   barba.init({
+    logLevel: 'error',
     transitions: [
       {
         appear() {
@@ -33,7 +34,6 @@ it('catches error', async () => {
         },
       },
     ],
-    logLevel: 'error',
   });
   barba.logger.error = jest.fn();
   barba.transitions.logger.error = jest.fn();

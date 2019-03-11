@@ -1,18 +1,19 @@
-/* eslint-disable no-empty-function */
+/* tslint:disable:no-empty */
 import { init } from '../../__mocks__/barba';
 import barba from '../../src';
+import { IBarbaOptions, IBarbaPlugin } from '../../src/defs';
 
 init();
 
 const plugin = {
-  version: 'alpha',
   name: 'p1',
+  version: 'alpha',
   install() {},
   init() {},
 };
 const plugin2 = {
-  version: 'beta',
   name: 'p2',
+  version: 'beta',
   install() {},
   init() {},
 };
@@ -57,4 +58,11 @@ it('init plugin', () => {
   barba.init();
 
   expect(plugin.init).toHaveBeenCalledTimes(1);
+});
+
+it('warns invalid plugin', () => {
+  barba.logger.warn = jest.fn();
+  barba.use({} as IBarbaPlugin<IBarbaOptions>);
+
+  expect(barba.logger.warn).toHaveBeenCalledTimes(1);
 });

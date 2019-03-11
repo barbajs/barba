@@ -2,6 +2,6 @@
  * @module typings/core
  */
 
-export type GenericObject = {
+export interface IGenericObject {
   [key: string]: string;
-};
+}

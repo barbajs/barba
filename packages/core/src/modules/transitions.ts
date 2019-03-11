@@ -11,42 +11,41 @@
 
 /***/
 
-// Definitions
-import {
-  TransitionData,
-  TransitionPage,
-  TransitionAppear,
-  HooksTransition,
-  HooksTransitionMap,
-  Wrapper,
-} from '../defs';
 // Third-party
 import runAsync from 'run-async';
+// Definitions
+import {
+  HooksTransition,
+  HooksTransitionMap,
+  ITransitionAppear,
+  ITransitionData,
+  ITransitionPage,
+  Wrapper,
+} from '../defs';
 // Hooks
 import { hooks } from '../hooks';
+// Utils
+import { helpers } from '../utils';
 // Modules
 import { Logger } from './Logger';
 import { Store } from './store';
-// Utils
-import { helpers } from '../utils';
 
 export class Transitions {
   public logger: Logger = new Logger('@barba/core');
   public store: Store;
+  private _running: boolean = false;
 
-  constructor(transitions: TransitionPage[] = []) {
+  constructor(transitions: ITransitionPage[] = []) {
     this.store = new Store(transitions);
   }
-
-  private _running: boolean = false;
 
   /**
    * Get resolved transition
    */
-  get(
-    data: TransitionData,
+  public get(
+    data: ITransitionData,
     appear: boolean = false
-  ): TransitionAppear | TransitionPage {
+  ): ITransitionAppear | ITransitionPage {
     return this.store.resolve(data, appear);
   }
 
@@ -81,12 +80,12 @@ export class Transitions {
    *
    * Hooks: see [[HooksAppear]].
    */
-  async doAppear({
+  public async doAppear({
     data,
     transition,
   }: {
-    data: TransitionData;
-    transition: TransitionAppear;
+    data: ITransitionData;
+    transition: ITransitionAppear;
   }) {
     if (!transition) {
       this.logger.warn('No transition found');
@@ -137,14 +136,14 @@ export class Transitions {
    * 6. afterEnter
    * 7. after
    */
-  async doPage({
+  public async doPage({
     data,
     transition,
     page,
     wrapper,
   }: {
-    data: TransitionData;
-    transition: TransitionPage;
+    data: ITransitionData;
+    transition: ITransitionPage;
     page: Promise<string | void>;
     wrapper: Wrapper;
   }) {
@@ -228,11 +227,9 @@ export class Transitions {
     } catch (error) {
       // TODO: use cases for cancellation
       this.logger.error(error);
-      await this._doAsyncHook('leaveCanceled', data, t);
-      await this._doAsyncHook('enterCanceled', data, t);
 
       // TODO: should I throw or should I log…
-      // throw error;
+      throw new Error('Transition error');
     }
 
     this._running = false;
@@ -241,7 +238,7 @@ export class Transitions {
   /**
    * Appear hook + async "appear" transition.
    */
-  private _appear(data: TransitionData, t: TransitionAppear): Promise<void> {
+  private _appear(data: ITransitionData, t: ITransitionAppear): Promise<void> {
     hooks.do('appear', data, t);
 
     return t.appear ? runAsync(t.appear)(data) : Promise.resolve();
@@ -250,7 +247,7 @@ export class Transitions {
   /**
    * Leave hook + async "leave" transition.
    */
-  private _leave(data: TransitionData, t: TransitionPage): Promise<any> {
+  private _leave(data: ITransitionData, t: ITransitionPage): Promise<any> {
     hooks.do('leave', data, t);
 
     return t.leave ? runAsync(t.leave)(data) : Promise.resolve();
@@ -260,8 +257,8 @@ export class Transitions {
    * Enter hook + async "enter" transition.
    */
   private _enter(
-    data: TransitionData,
-    t: TransitionPage,
+    data: ITransitionData,
+    t: ITransitionPage,
     leaveResult?: any
   ): Promise<void> {
     hooks.do('enter', data, t);
@@ -274,7 +271,7 @@ export class Transitions {
    */
   private _doAsyncHook(
     hook: HooksTransition,
-    data: TransitionData,
+    data: ITransitionData,
     t: HooksTransitionMap
   ): Promise<void> {
     hooks.do(hook, data, t);
@@ -288,7 +285,7 @@ export class Transitions {
   // DEV: all transition hooks can be asynchronous…
   // private _doSyncHook(
   //   hook: HooksTransition,
-  //   data: TransitionData,
+  //   data: ITransitionData,
   //   t: HooksTransitionMap
   // ): void {
   //   hooks.do(hook, data, t);
@@ -298,7 +295,7 @@ export class Transitions {
   /**
    * Add next container.
    */
-  private _addNext(data: TransitionData, wrapper: Wrapper): void {
+  private _addNext(data: ITransitionData, wrapper: Wrapper): void {
     wrapper.appendChild(data.next.container);
     hooks.do('nextAdded', data);
   }
@@ -306,7 +303,7 @@ export class Transitions {
   /**
    * Remove current container.
    */
-  private _removeCurrent(data: TransitionData): void {
+  private _removeCurrent(data: ITransitionData): void {
     data.current.container.remove();
     hooks.do('currentRemoved', data);
   }

@@ -1,12 +1,11 @@
-/* eslint-disable no-empty-function */
-import { hooks } from '../../../src/hooks';
-import { Transitions } from '../../../src/modules/Transitions';
-import { Logger } from '../../../src/modules/Logger';
 import {
-  TransitionAppear,
-  TransitionData,
-  SchemaPage,
+  ISchemaPage,
+  ITransitionAppear,
+  ITransitionData,
 } from '../../../src/defs';
+import { hooks } from '../../../src/hooks';
+import { Logger } from '../../../src/modules/Logger';
+import { Transitions } from '../../../src/modules/Transitions';
 
 // Silence is gold… :)
 Logger.setLevel('off');
@@ -21,12 +20,12 @@ const appearCanceled = jest.fn();
 hooks.do = jest.fn();
 
 // Data
-let data: TransitionData;
+let data: ITransitionData;
 
 beforeEach(() => {
   data = {
-    current: {} as SchemaPage,
-    next: {} as SchemaPage,
+    current: {} as ISchemaPage,
+    next: {} as ISchemaPage,
     trigger: 'barba',
   };
 });
@@ -36,8 +35,8 @@ it('needs transition', async () => {
   transitions.logger.warn = jest.fn();
 
   await transitions.doAppear({
-    transition: undefined,
     data,
+    transition: undefined,
   });
   expect(transitions.logger.warn).toHaveBeenCalledWith('No transition found');
 });
@@ -46,8 +45,8 @@ it('does not need appear', async () => {
   expect.assertions(1);
 
   await transitions.doAppear({
-    transition: {} as TransitionAppear,
     data,
+    transition: {} as ITransitionAppear,
   });
   expect(hooks.do).toHaveBeenNthCalledWith(2, 'appear', data, {});
 });
@@ -100,8 +99,8 @@ it('catches error', async () => {
 
   try {
     await transitions.doAppear({
-      transition: t,
       data,
+      transition: t,
     });
   } catch (e) {
     expect(e).toEqual(new Error('Transition error [appear]'));
