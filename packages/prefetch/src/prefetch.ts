@@ -1,32 +1,25 @@
 /**
+ * @barba/prefetch
+ * <br><br>
+ * ## Barba prefetch.
+ *
  * @module prefetch
+ * @preferred
  */
 
-import { BarbaPlugin } from '@barba/core/src/defs';
+import { IPrefetchOptions } from './defs/prefetch';
+
+/***/
+
+// Definitions
 import { Core } from '@barba/core/src/core';
+import { IBarbaPlugin } from '@barba/core/src/defs';
 import { Logger } from '@barba/core/src/modules/Logger';
 
 import { version } from '../package.json';
 import { requestIdleCallback } from './polyfills';
-/**
- * Barba prefetch.
- * @preferred
- */
 
-type PrefetchOptions = {
-  root?: HTMLElement | HTMLDocument;
-  timeout?: number;
-};
-
-// interface Prefetch<T> extends BarbaPlugin<T> {
-//   name: string;
-//   version: string;
-//   install(barba: Core, options: T): void;
-//   init(): void;
-//   // observe(timeout: number): void;
-// }
-
-class Prefetch implements BarbaPlugin<PrefetchOptions> {
+class Prefetch implements IBarbaPlugin<IPrefetchOptions> {
   public name = '@barba/prefetch';
   public version = version;
   public barba: Core;
@@ -38,11 +31,11 @@ class Prefetch implements BarbaPlugin<PrefetchOptions> {
   public toPrefetch: Set<string> = new Set();
 
   /**
-   * Plugin installation
+   * Plugin installation.
    */
-  install(
+  public install(
     barba: Core,
-    { root = document.body, timeout = 2e3 }: PrefetchOptions = {}
+    { root = document.body, timeout = 2e3 }: IPrefetchOptions = {}
   ) {
     this.barba = barba;
     this.logger = new barba.Logger(this.name);
@@ -51,9 +44,9 @@ class Prefetch implements BarbaPlugin<PrefetchOptions> {
   }
 
   /**
-   * Plugin initialisation
+   * Plugin initialisation.
    */
-  init() {
+  public init() {
     if (this.barba.prefetchIgnore) {
       this.logger.warn('barba.prefetchIgnore is enabled');
 
@@ -87,7 +80,7 @@ class Prefetch implements BarbaPlugin<PrefetchOptions> {
                 this.barba.request(
                   url,
                   this.barba.timeout,
-                  this.barba.onRequestError.bind(this, 'prefetch')
+                  this.barba['_onRequestError'].bind(this, 'prefetch') // tslint:disable-line:no-string-literal
                 )
               );
             }
@@ -101,7 +94,7 @@ class Prefetch implements BarbaPlugin<PrefetchOptions> {
   }
 
   /* istanbul ignore next */
-  observe(): void {
+  public observe(): void {
     const timeout = this.timeout;
 
     requestIdleCallback(

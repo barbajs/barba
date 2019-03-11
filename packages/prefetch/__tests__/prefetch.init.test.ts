@@ -1,7 +1,7 @@
-/* eslint-disable no-empty-function, class-methods-use-this */
+/* tslint:disable:no-empty */
 import barba from '@barba/core/src';
-import prefetch from '../src';
 import { version } from '../package.json';
+import prefetch from '../src';
 
 const wrapper = document.createElement('div');
 const container = document.createElement('div');
@@ -14,8 +14,8 @@ document.body.appendChild(container);
 
 // https://stackoverflow.com/questions/40743131/how-to-prevent-property-does-not-exist-on-type-global-with-jsdom-and-t
 (global as any).IntersectionObserver = class {
-  observe() {}
-  unobserve() {}
+  public observe() {}
+  public unobserve() {}
 };
 (global as any).window.requestIdleCallback = jest.fn();
 
@@ -56,8 +56,8 @@ it('warns with cache/prefetch disabled', () => {
   barba.use(prefetch);
   barba.init({
     cacheIgnore: false,
-    prefetchIgnore: true,
     debug: true,
+    prefetchIgnore: true,
   });
 
   expect(global.console.warn).toHaveBeenCalledWith(
@@ -67,8 +67,8 @@ it('warns with cache/prefetch disabled', () => {
 
   barba.init({
     cacheIgnore: true,
-    prefetchIgnore: false,
     debug: true,
+    prefetchIgnore: false,
   });
 
   expect(global.console.warn).toHaveBeenCalledWith(
