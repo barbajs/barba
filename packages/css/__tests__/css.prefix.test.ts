@@ -1,5 +1,5 @@
-/* eslint-disable no-empty-function */
-import barba from '@barba/core';
+/* tslint:disable:no-empty */
+import barba from '@barba/core/src';
 import css from '../src';
 
 // Dom
@@ -32,18 +32,18 @@ barba.init({
 
 it('prefixes with transition name', () => {
   barba.hooks.do('before', data, named);
-  expect(css._prefix).toBe(name);
-  css._prefix = null;
+  expect(css.prefix).toBe(name);
+  css.prefix = null;
   barba.hooks.do('beforeAppear', data, named);
-  expect(css._prefix).toBe(name);
+  expect(css.prefix).toBe(name);
 });
 
 it('prefixes with default ', () => {
   barba.hooks.do('before', data, unnamed);
-  expect(css._prefix).toBe('barba');
-  css._prefix = null;
+  expect(css.prefix).toBe('barba');
+  css.prefix = null;
   barba.hooks.do('beforeAppear', data, unnamed);
-  expect(css._prefix).toBe('barba');
+  expect(css.prefix).toBe('barba');
 });
 
 // DEV

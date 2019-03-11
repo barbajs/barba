@@ -10,7 +10,8 @@
   "browser": "dist/barba-css.umd.js",
   "unpkg": "dist/barba-css.umd.js",
   "module": "dist/barba-css.mjs",
-  "source": "src/index.js",
+  "source": "src/index.ts",
+  "types": "dist/css/src/index.d.ts",
   "mangle": {
     "regex": "^_"
   },
@@ -35,10 +36,10 @@
     "url": "git+ssh://git@github.com/barbajs/barba-next.git"
   },
   "scripts": {
-    "buildddd": "microbundle --name barbaCss",
+    "build": "microbundle --name barbaCss",
     "build:watch": "microbundle watch --name barbaCss",
     "clear": "rimraf dist",
-    "lint": "eslint src/**",
+    "lint": "tslint src/**",
     "precommit": "lint-staged",
     "size": "echo '💄 css' && gzip-size ./dist/barba-css.umd.js"
   },
