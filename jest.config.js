@@ -16,7 +16,6 @@ module.exports = {
   },
   preset: 'ts-jest',
   resetMocks: true,
-  // setupFiles: ['<rootDir>/jest.init.ts'],
   testEnvironment: 'jest-environment-jsdom-global',
   testMatch: ['**/__tests__/**/*.test.ts'],
   transformIgnorePatterns: ['<rootDir>.*(node_modules)(?!.*@barba.*).*$'],

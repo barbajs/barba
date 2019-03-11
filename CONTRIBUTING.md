@@ -2,10 +2,11 @@
 
 This project uses:
 
+- [TypeScript](http://www.typescriptlang.org/)
 - [Lerna scopes](https://lernajs.io/)
 - [Commitizen](http://commitizen.github.io/cz-cli/)
 - [EditorConfig](https://editorconfig.org/)
-- [ESLint](https://eslint.org/)
+- [TSLint](https://palantir.github.io/tslint/)
 - [Prettier](https://prettier.io/)
 - [markdownlint](https://github.com/DavidAnson/markdownlint)
 
@@ -15,8 +16,7 @@ This project uses:
 
 - `git clone git@github.com:barbajs/barba-next.git`
 - `cd barba-next`
-- `yarn install`
-- `lerna bootstrap`
+- `yarn run install`
 
 ## Testing
 

@@ -1,5 +1,5 @@
 linters:
-  'src/**/*.js':
+  'src/**/*.ts':
     - prettier --write
     - npm run lint
     - git add

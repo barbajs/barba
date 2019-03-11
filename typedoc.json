@@ -2,15 +2,16 @@
   "extends": "./tsconfig",
   "compilerOptions": {
     "module": "esnext",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "skipLibCheck": true
   },
   "typedocOptions": {
     "exclude": "**/index.ts",
     "excludeExternals": true,
     "ignoreCompilerErrors": true,
-    "name": "What a beautiful lib",
+    "name": "BARBA.JS",
     "readme": "README.md",
-    "out": "typedoc/dist",
-    "theme": "typedoc/theme"
+    "out": "docs/v2/api",
+    "theme": "docs/v2/theme"
   }
 }

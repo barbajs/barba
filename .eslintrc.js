@@ -5,11 +5,10 @@ module.exports = {
     es6: true,
     node: true,
     'cypress/globals': true,
-    'jest/globals': true,
   },
   extends: ['eslint:recommended', 'plugin:cypress/recommended'],
   parser: 'babel-eslint',
-  plugins: ['cypress', 'jest'],
+  plugins: ['cypress'],
   rules: {
     'accessor-pairs': 2,
     'array-callback-return': 2,

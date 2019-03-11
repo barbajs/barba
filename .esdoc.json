@@ -1,6 +1,0 @@
-{
-  "source": "./packages/core/src",
-  "includes": ["Logger\\.js$"],
-  "destination": "./esdocs",
-  "plugins": [{ "name": "esdoc-standard-plugin" }]
-}
