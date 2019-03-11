@@ -1,4 +1,7 @@
-import barba from '@barba/core';
+import barba from '@barba/core/src';
+// Definitions
+import { ITransitionData } from '@barba/core/src/defs';
+import { version } from '../package.json';
 import router from '../src';
 
 const wrapper = document.createElement('div');
@@ -22,9 +25,11 @@ const routes = [
 ];
 
 it('has defaults', () => {
-  expect(router._routeNames).toHaveLength(0);
+  expect(router.name).toBe('@barba/router');
+  expect(router.version).toBe(version);
+  expect(router.routeNames).toHaveLength(0);
   router.install(barba);
-  expect(router._routeNames).toHaveLength(0);
+  expect(router.routeNames).toHaveLength(0);
 });
 
 it('has routes', () => {
@@ -32,10 +37,8 @@ it('has routes', () => {
     routes,
   });
 
-  expect([...router._routeNames]).toEqual(['home', 'foo']);
-  expect(router._routesByName.foo).toEqual({
-    path: '/foo/:bar',
-    regex: /^\/foo\/([^/]+?)(?:\/)?$/i,
+  expect([...router.routeNames]).toEqual(['home', 'foo']);
+  expect(router.routesByName.foo).toEqual({
     keys: [
       {
         delimiter: '/',
@@ -46,16 +49,18 @@ it('has routes', () => {
         repeat: false,
       },
     ],
+    path: '/foo/:bar',
+    regex: /^\/foo\/([^/]+?)(?:\/)?$/i,
   });
 });
 
 it('add rule', () => {
   barba.init();
-  barba.store.add = jest.fn();
+  barba.transitions.store.add = jest.fn();
 
   router.init();
 
-  expect(barba.store.add).toHaveBeenCalledTimes(1);
+  expect(barba.transitions.store.add).toHaveBeenCalledTimes(1);
 });
 
 it('has duplicate routes', () => {
@@ -69,14 +74,14 @@ it('has duplicate routes', () => {
 });
 
 it('resolves url', () => {
-  const result = router._resolve('http://localhost/foo/something');
+  const result = router.resolveUrl('http://localhost/foo/something');
 
   expect(result.name).toBe('foo');
   expect(result.params.bar).toBe('something');
 });
 
 it('resolves unknown url', () => {
-  const result = router._resolve('http://localhost/bar/something');
+  const result = router.resolveUrl('http://localhost/bar/something');
 
   expect(result).toBeNull();
 });
@@ -85,9 +90,9 @@ it('resolves data urls (home)', () => {
   const data = {
     current: { url: { href: 'http://localhost/' } },
     next: { url: { href: 'http://localhost/' } },
-  };
+  } as ITransitionData;
 
-  router._resolveRoutes(data);
+  router.resolveRoutes(data);
 
   expect(data.current.route.name).toBe('home');
   expect(data.next.route.name).toBe('home');
@@ -97,9 +102,9 @@ it('resolves data urls (foo)', () => {
   const data = {
     current: { url: { href: 'http://localhost/foo/current' } },
     next: { url: { href: 'http://localhost/foo/next' } },
-  };
+  } as ITransitionData;
 
-  router._resolveRoutes(data);
+  router.resolveRoutes(data);
 
   expect(data.current.route.name).toBe('foo');
   expect(data.next.route.name).toBe('foo');
@@ -109,9 +114,9 @@ it('resolves unknown data urls', () => {
   const data = {
     current: { url: {} },
     next: { url: {} },
-  };
+  } as ITransitionData;
 
-  router._resolveRoutes(data);
+  router.resolveRoutes(data);
 
   expect(data.current.route).toBeUndefined();
   expect(data.next.route).toBeUndefined();

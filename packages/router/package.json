@@ -10,7 +10,7 @@
   "browser": "dist/barba-router.umd.js",
   "unpkg": "dist/barba-router.umd.js",
   "module": "dist/barba-router.mjs",
-  "source": "src/index.js",
+  "source": "src/index.ts",
   "mangle": {
     "regex": "^_"
   },
@@ -35,10 +35,10 @@
     "url": "git+ssh://git@github.com/barbajs/barba-next.git"
   },
   "scripts": {
-    "buildddd": "microbundle --name barbaRouter --external none",
+    "build": "microbundle --name barbaRouter --external none",
     "build:watch": "microbundle watch --name barbaRouter --external none",
     "clear": "rimraf dist",
-    "lint": "eslint src/**",
+    "lint": "tslint src/**",
     "precommit": "lint-staged",
     "size": "echo '🚦 router' && gzip-size ./dist/barba-router.umd.js"
   },
