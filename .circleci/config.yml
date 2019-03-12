@@ -52,6 +52,30 @@ jobs:
       - run:
           name: Test
           command: yarn run unit
+  # docs-build:
+  #   <<: *defaults
+  #   steps:
+  #     - run:
+  #         name: Build docs
+  #         command: yarn run doc
+  #     - persist_to_workspace:
+  #         root: docs/v2/api
+  #         paths: .
+  # docs-deploy:
+  #   <<: *defaults
+  #   steps:
+  #     - checkout
+  #     - attach_workspace:
+  #         at: docs/v2/api
+  #     - run:
+  #         name: Install and configure dependencies
+  #         command: |
+  #           npm install -g --silent gh-pages@2.0.1
+  #           git config user.email "ci-build@barba.dev"
+  #           git config user.name "ci-build"
+  #     - run:
+  #         name: Deploy docs to gh-pages branch
+  #         command: gh-pages --dist docs/v2/api --dest docs/v2/api
 
 workflows:
   version: 2

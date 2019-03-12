@@ -59,6 +59,7 @@
     "size": "lerna run size",
     "test": "npm-run-all lint build unit e2e",
     "unit": "yarn jest --coverage",
+    "unit:ci": "yarn jest --coverage --maxWorkers=2",
     "unit:watch": "yarn jest --watch --verbose false",
     "e2e": "start-server-and-test cy:server :8111 cy:run",
     "e2e:dev": "start-server-and-test cy:server :8111 cy:dev",
