@@ -31,6 +31,7 @@ jobs:
           name: Bootstrap Lerna monorepo
           command: yarn run bootstrap
   test:
+    working_directory: ~/barba-next
     docker:
       - image: circleci/node:8.15.1-browsers
     steps:
