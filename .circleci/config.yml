@@ -9,8 +9,10 @@ jobs:
       - checkout
       - restore_cache:
           name: Restore Yarn Package Cache
-          keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
+          keys: yarn-packages-{{ checksum "yarn.lock" }}
+      - restore_cache:
+          name: Restore Node modules
+          keys: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Install dependencies
           command: yarn install --frozen-lockfile
@@ -19,6 +21,10 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
       - run:
           name: Bootstrap Lerna monorepo
           command: yarn run bootstrap
@@ -36,6 +42,34 @@ jobs:
       - run:
           name: Test
           command: yarn run unit
+
+  # docs-build:
+  #   docker:
+  #     - image: circleci/node:8.15.1-browsers
+  #   steps:
+  #     - checkout
+  #     - run:
+  #         name: Build docs
+  #         command: yarn run doc
+  #     - persist_to_workspace:
+  #         root: docs/v2/api
+  #         paths: html
+  # docs-deploy:
+  #   docker:
+  #     - image: node:8.10.0
+  #   steps:
+  #     - checkout
+  #     - attach_workspace:
+  #         at: docs/_build
+  #     - run:
+  #         name: Install and configure dependencies
+  #         command: |
+  #           npm install -g --silent gh-pages@2.0.1
+  #           git config user.email "ci-build@klukas.net"
+  #           git config user.name "ci-build"
+  #     - run:
+  #         name: Deploy docs to gh-pages branch
+  #         command: gh-pages --dist docs/_build/html
 
 workflows:
   version: 2
