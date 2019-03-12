@@ -56,8 +56,6 @@ branches:
 
 `circle.yml`
 
-```yml
-dependencies:
-  post:
-    - npm run bootstrap
-```
+- https://circleci.com/blog/deploying-documentation-to-github-pages-with-continuous-integration/
+- https://circleci.com/blog/publishing-npm-packages-using-circleci-2-0/
+- https://circleci.com/blog/continuous-package-publishing-part-ii-automated-npm-publishing-with-circleci-and-packagecloud/
