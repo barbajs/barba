@@ -21,7 +21,7 @@ jobs:
             - ~/.cache/yarn
       - run:
           name: Bootstrap Lerna monorepo
-          command: yarn oun bootstrap
+          command: yarn run bootstrap
   test:
     docker:
       - image: circleci/node:8.15.1-browsers
