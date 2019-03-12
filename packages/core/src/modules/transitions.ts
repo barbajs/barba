@@ -28,7 +28,7 @@ import { hooks } from '../hooks';
 import { helpers } from '../utils';
 // Modules
 import { Logger } from './Logger';
-import { Store } from './store';
+import { Store } from './Store';
 
 export class Transitions {
   public logger: Logger = new Logger('@barba/core');

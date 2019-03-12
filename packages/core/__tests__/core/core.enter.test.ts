@@ -1,6 +1,5 @@
 import { init } from '../../__mocks__/barba';
 import barba from '../../src';
-import { Cache } from '../../src/modules/Cache';
 
 const { link, span, mouseover } = init();
 

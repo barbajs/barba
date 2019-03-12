@@ -33,7 +33,7 @@ import {
 // Hooks
 import { hooks } from './hooks';
 // Modules
-import { Cache } from './modules/cache';
+import { Cache } from './modules/Cache';
 import { History } from './modules/History';
 import { Logger } from './modules/Logger';
 import { Prevent } from './modules/Prevent';

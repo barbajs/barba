@@ -12,13 +12,13 @@
 /***/
 
 // Definitions
-import { IgnoreOption, ISchemaAttribute, PreventCheck } from '../defs';
+import { IgnoreOption, PreventCheck } from '../defs';
 // Schemas
 import { schemaAttribute } from '../schemas/attribute';
 // Utils
 import { url } from '../utils';
 // Modules
-import { Ignore } from './ignore';
+import { Ignore } from './Ignore';
 
 /**
  * Make sure the browser supports `history.pushState`.
@@ -93,7 +93,6 @@ const sameUrl: PreventCheck = ({ href }) =>
 export class Prevent extends Ignore {
   public suite: string[] = [];
   public tests: Map<string, PreventCheck> = new Map();
-  private _attr: ISchemaAttribute = schemaAttribute;
 
   constructor(ignore: IgnoreOption) {
     super(ignore);

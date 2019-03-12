@@ -12,7 +12,7 @@
 // Definitions
 import { IgnoreOption } from '../defs';
 // Modules
-import { Ignore } from './ignore';
+import { Ignore } from './Ignore';
 // Types
 type Request = Promise<string | void>;
 
@@ -26,7 +26,7 @@ export class Cache extends Ignore {
   /**
    * Set value to cache
    */
-  set(url: string, req: Request) {
+  public set(url: string, req: Request) {
     if (!this.checkUrl(url)) {
       this._state.set(url, req);
     }
@@ -37,21 +37,21 @@ export class Cache extends Ignore {
   /**
    * Get value from cache
    */
-  get(url: string) {
+  public get(url: string) {
     return this._state.get(url);
   }
 
   /**
    * Check if value exists into cache
    */
-  has(url: string) {
+  public has(url: string) {
     return this._state.has(url);
   }
 
   /**
    * Delete value from cache
    */
-  delete(url: string) {
+  public delete(url: string) {
     return this._state.delete(url);
   }
 }

@@ -5,7 +5,7 @@ import { Store } from '../../../src/modules/Store';
 let store: Store;
 
 const expected = transitions.map(t => t.name).reverse();
-const times = (x: number) => (f: Function) => {
+const times = (x: number) => (f: () => void) => {
   if (x > 0) {
     f();
     times(x - 1)(f);
