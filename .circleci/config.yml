@@ -1,10 +1,13 @@
 version: 2
 
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:8.15.1-browsers
+
 jobs:
   build:
-    working_directory: ~/barba-next
-    docker:
-      - image: circleci/node:8.15.1-browsers
+    <<: *defaults
     steps:
       - checkout
       - restore_cache:
@@ -30,11 +33,16 @@ jobs:
       - run:
           name: Bootstrap Lerna monorepo
           command: yarn run bootstrap
+      - persist_to_workspace:
+          root: ~/barba-next
+          paths:
+            - node_modules
   test:
-    working_directory: ~/barba-next
-    docker:
-      - image: circleci/node:8.15.1-browsers
+    <<: *defaults
     steps:
+      - checkout
+      - attach_workspace:
+          at: ~/barba-next
       - run:
           name: Lint
           command: yarn run lint
