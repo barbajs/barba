@@ -51,7 +51,7 @@ jobs:
           command: yarn run build
       - run:
           name: Test
-          command: yarn run unit
+          command: yarn run unit:ci
   # docs-build:
   #   <<: *defaults
   #   steps:
