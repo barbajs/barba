@@ -34,7 +34,7 @@ jobs:
           name: Bootstrap Lerna monorepo
           command: yarn run bootstrap
       - persist_to_workspace:
-          root: ~/barba-next
+          root: ~/repo
           paths:
             - node_modules
   test:
@@ -42,7 +42,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: ~/barba-next
+          at: ~/repo
       - run:
           name: Lint
           command: yarn run lint
