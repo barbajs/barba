@@ -77,7 +77,7 @@ jobs:
       - run:
           name: Install and configure dependencies
           command: |
-            npm install -g gh-pages@2.0.1
+            npm install gh-pages@2.0.1
             git config user.email $GH_EMAIL
             git config user.name $GH_NAME
       - add_ssh_keys:
@@ -85,7 +85,7 @@ jobs:
             - '2c:bd:91:1f:35:54:de:94:22:77:fc:3e:68:f9:6b:2f'
       - run:
           name: Deploy docs to gh-pages branch
-          command: gh-pages --dist docs/v2 --dest docs/v2
+          command: ./node_modules/.bin/gh-pages --dist docs/v2 --dest docs/v2
 
 workflows:
   version: 2
