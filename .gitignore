@@ -167,4 +167,5 @@ $RECYCLE.BIN/
 
 ### Custom ###
 
-docs/v2
+/docs/v2
+!/docs/v2/.gitkeep
