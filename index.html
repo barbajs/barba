@@ -1,19 +1,91 @@
----
-# Front matter comment to ensure Jekyll properly reads file.
----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Barba.js - coming soon</title>
+    <meta
+      name="description"
+      content="Create badass, fluid and smooth transition between your website's pages."
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Space+Mono"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #fff;
+        color: #2e5bdc;
+        font-family: 'Space Mono', monospace;
+        padding: 0;
+        margin: 0;
+      }
 
-{% include header.html %}
-{% include nav.html %}
+      .button {
+        display: inline-block;
+        /* background: #5A82F1; */
+        color: #FFFFFF;
+        /* color: #fff!important; */
+        text-decoration: none;
+        padding: 5px 13px;
+        border-radius: 3px;
+        font-size: 15px;
+        margin: 5px 0;
+        background: #5A82F1;
+        text-transform: uppercase;
+      }
 
-<div id="barba-wrapper">
-  <div class="barba-container homepage">
-    <h1>Create badass, fluid and smooth transition between your website's pages.</h1>
+      .button.white {
+        border: 2px solid #5A82F1;
+        background: #FFF;
+        color: #5A82F1;
+      }
 
-    <p><i>barba.js</i> is a small <i>(4.4kb minified and gzipped)</i>, flexible and dependency free library that helps you creating fluid and smooth transitions between your website's pages.</p>
-    <p>It helps reducing the delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.</p>
+      .button + .button {
+        margin-left: 5px;
+      }
 
-    <iframe src="https://ghbtns.com/github-btn.html?user=luruke&amp;repo=barba.js&amp;type=star&amp;count=true" frameborder="0" scrolling="0" width="95px" height="20px"></iframe>
-  </div>
-</div>
+      .button:hover {
+        opacity: .8;
+      }
 
-{% include footer.html %}
+      .stars {
+        margin: 10px 0 20px 0;
+      }
+
+      .actions {
+        font-size: 0;
+        display: flex;
+        flex-wrap: wrap;
+        /* margin: 10px 0; */
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="assets/images/logo.svg" alt="Barba.js" width="300" height="80" />
+
+    <div class="stars">
+      <a class="github-button" href="https://github.com/barbajs/barba" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star barbajs/barba on GitHub">Star</a>
+    </div>
+
+    <div class="actions">
+      <a href="https://barba.js.org/docs/v2/user/" class="button">v2 user guide</a>
+      <a href="https://barba.js.org/docs/v2/api/" class="button">v2 API documentation</a>
+    </div>
+
+    <div class="actions">
+      <a href="https://barba.js.org/v1/" class="button white">Website v1</a>
+    </div>
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </body>
+</html>
