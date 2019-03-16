@@ -82,7 +82,7 @@ jobs:
           name: Install and configure dependencies
           command: |
             npm install gh-pages@2.0.1
-      #       git config user.email $GH_EMAIL
+            git config user.email $GH_EMAIL
       #       git config user.name $GH_NAME
       # - add_ssh_keys:
       #     fingerprints:
