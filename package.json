@@ -2,7 +2,7 @@
   "name": "barba.js",
   "version": "1.0.0",
   "description": "Barba.js it's a small, flexible and dependency free library that helps you creating fluid and smooth transition between your website's pages.",
-  "homepage": "http://barbajs.org",
+  "homepage": "http://barba.js.org/v1",
   "keywords": [
     "pjax",
     "transitions",

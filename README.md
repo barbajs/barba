@@ -1,4 +1,4 @@
-<p align="center"><a href="http://barbajs.org" target="_blank"><img width="300" src="http://barbajs.org/images/logo.svg"></a></p>
+<p align="center"><a href="http://barba.js.org/v1" target="_blank"><img width="300" src="http://barba.js.org/v1/images/logo.svg"></a></p>
 
 <p align="center">
 <a href="https://join.slack.com/t/barbajs/shared_invite/enQtNTU3NTAyMjkxMzAyLTI1NDIxZDZmMGJjMDlmNzFkODZmMmVmN2U2ODg2Y2M3MzczMDdjZTk5ODQwNWZkYWVlMDM5NGZiODJmMWVhODk"><img src="https://img.shields.io/badge/slack-channel-purple.svg?style=flat-square&logo=slack" /></a>
@@ -6,7 +6,7 @@
 <a href='https://coveralls.io/github/luruke/barba.js?branch=master'><img src='https://coveralls.io/repos/github/luruke/barba.js/badge.svg?branch=master' alt='Coverage Status' /></a>
 </p>
 
-# [v2 is coming soon!](http://barbajs.cominsoon.io/)
+> This version is deprecated, [look at v2](https://github.com/barbajs/barba).
 
 ---
 
@@ -15,15 +15,17 @@
 It helps reducing the delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.
 
 ---
-## Websites using Barba.js
-<a href="https://www.stanleystella.com" target="_blank"><img src="http://barbajs.org/images/1.gif" width="288"></a>
-<a href="http://www.poigneedemainvirile.com" target="_blank"><img src="http://barbajs.org/images/2.gif" width="288"></a>
-<a href="http://www.budidiokojinedostaje.hr" target="_blank"><img src="http://barbajs.org/images/3.gif" width="288"></a>
-<a href="http://magacom.fr" target="_blank"><img src="http://barbajs.org/images/4.gif" width="288"></a>
-<a href="http://adrenalinmedia.com.au" target="_blank"><img src="http://barbajs.org/images/5.gif" width="288"></a>
-<a href="http://www.ruggeri.io" target="_blank"><img src="http://barbajs.org/images/6.gif" width="288"></a>
 
-[View demos](http://barbajs.org/demos.html)
+## Websites using Barba.js
+
+<a href="https://www.stanleystella.com" target="_blank"><img src="http://barba.js.org/v1/images/1.gif" width="288"></a>
+<a href="http://www.poigneedemainvirile.com" target="_blank"><img src="http://barba.js.org/v1/images/2.gif" width="288"></a>
+<a href="http://www.budidiokojinedostaje.hr" target="_blank"><img src="http://barba.js.org/v1/images/3.gif" width="288"></a>
+<a href="http://magacom.fr" target="_blank"><img src="http://barba.js.org/v1/images/4.gif" width="288"></a>
+<a href="http://adrenalinmedia.com.au" target="_blank"><img src="http://barba.js.org/v1/images/5.gif" width="288"></a>
+<a href="http://www.ruggeri.io" target="_blank"><img src="http://barba.js.org/v1/images/6.gif" width="288"></a>
+
+[View demos](http://barba.js.org/v1/demos.html)
 
 ## How it works
 
@@ -36,9 +38,9 @@ Here is a walkthrough of what happens when the user clicks a link:
 1.  Check if the link is valid and eligible for *PJAX*, if yes, prevent the normal browser behavior.
 2.  Change the URL using [Push State API](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState).
 3.  Start fetching the new page via `XMLHttpRequest`.
-4.  Create a **new** [transition](http://barbajs.org/transition.html) instance.
+4.  Create a **new** [transition](http://barba.js.org/v1/transition.html) instance.
 5.  As soon the new page is loaded, barba.js parses the new HTML (taking `.barba-container`) and puts the new content on the DOM inside `#barba-wrapper`.
-6.  The [transition](http://barbajs.org/transition.html) instance will take care to hide the old container and show the new one.
+6.  The [transition](http://barba.js.org/v1/transition.html) instance will take care to hide the old container and show the new one.
 7.  As soon the transition is finished, the old container is removed from the DOM.
 
 > Please note, on server side, your pages will need to be served normally.
@@ -52,16 +54,16 @@ Using this technique will bring numerous benefits:
 
 *   Possibility to create nice transition between pages enhancing the user's experience.
 *   Reduce HTTP requests. (why reload the css/js at each page change?)
-*   Possibility to speed up the navigation using [prefetch](http://barbajs.org/prefetch.html) and [cache](http://barbajs.org/cache.html).
+*   Possibility to speed up the navigation using [prefetch](http://barba.js.org/v1/prefetch.html) and [cache](http://barba.js.org/v1/cache.html).
 
 ## Features
 
-- [Pjax](http://barbajs.org/how-it-works.html)
-- [Transitions](http://barbajs.org/transition.html)
-- [Views](http://barbajs.org/views.html)
-- [Events](http://barbajs.org/events.html)
-- [Cache](http://barbajs.org/cache.html)
-- [Prefetch](http://barbajs.org/prefetch.html)
+- [Pjax](http://barba.js.org/v1/how-it-works.html)
+- [Transitions](http://barba.js.org/v1/transition.html)
+- [Views](http://barba.js.org/v1/views.html)
+- [Events](http://barba.js.org/v1/events.html)
+- [Cache](http://barba.js.org/v1/cache.html)
+- [Prefetch](http://barba.js.org/v1/prefetch.html)
 
 ## Installation
 
@@ -105,4 +107,4 @@ For any problem/question do not hesitate to open an issue.
 
 ## Other
 
-For any other information, please visit the [website](http://barbajs.org)
+For any other information, please visit the [website](http://barba.js.org/v1)
