@@ -1,12 +1,11 @@
 /**
- * @barba/css
+ * @barba/router
  * <br><br>
- * ## Barba CSS.
+ * ## Barba Router.
  *
- * - Add CSS classes
- * - Manage CSS transitions
+ * - Add `route` to Barba transitions resolution
  *
- * @module css
+ * @module router
  * @preferred
  */
 

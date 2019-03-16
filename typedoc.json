@@ -9,7 +9,7 @@
     "exclude": "**/index.ts",
     "excludeExternals": true,
     "ignoreCompilerErrors": true,
-    "name": "BARBA.JS",
+    "name": "barba.js",
     "readme": "README.md",
     "out": "docs/v2/api",
     "theme": "docs/v2/theme"
