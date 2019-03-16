@@ -114,6 +114,6 @@ workflows:
       - docs-deploy:
           requires:
             - docs-build
-          filters:
-            branches:
-              only: master
+          # filters:
+          #   branches:
+          #     only: master
