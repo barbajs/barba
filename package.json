@@ -50,7 +50,7 @@
     "clear": "lerna run clear",
     "commit": "npx git-cz || exit 0",
     "commit-retry": "npx git-cz --retry || exit 0",
-    "doc": "typedoc packages/**/src --tsconfig typedoc.json --sourcefile-url-prefix 'https://github.com/barbajs/barba-next/tree/master/packages/'",
+    "doc": "typedoc packages/**/src --tsconfig typedoc.json --sourcefile-url-prefix 'https://github.com/barbajs/barba/tree/master/packages/'",
     "lint": "tslint packages/**/src/**",
     "ls": "lerna ls",
     "prerelease": "npm run build",

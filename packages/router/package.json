@@ -25,14 +25,14 @@
     "router",
     "prefetch"
   ],
-  "homepage": "https://github.com/barbajs/barba-next#readme",
+  "homepage": "https://github.com/barbajs/barba#readme",
   "bugs": {
-    "url": "https://github.com/barbajs/barba-next/issues"
+    "url": "https://github.com/barbajs/barba/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/barbajs/barba-next.git"
+    "url": "git+ssh://git@github.com/barbajs/barba.git"
   },
   "scripts": {
     "build": "microbundle --name barbaRouter --external none",

@@ -14,8 +14,8 @@ This project uses:
 
 ## Install
 
-- `git clone git@github.com:barbajs/barba-next.git`
-- `cd barba-next`
+- `git clone git@github.com:barbajs/barba.git`
+- `cd barba`
 - `yarn run install`
 
 ## Testing
