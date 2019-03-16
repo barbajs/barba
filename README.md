@@ -1,4 +1,4 @@
-# barba.js v2
+# barba.js <small>[v2]</small>
 
 ![stability-wip](https://img.shields.io/badge/stability-work_in_progress-lightgrey.svg?style=flat-square)
 [![Coverage Status](https://img.shields.io/coveralls/github/epicagency/barba/master.svg?style=flat-square)](https://travis-ci.com/epicagency/barba)
@@ -13,8 +13,10 @@
 
 It helps reducing the delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.
 
-> This is pre-release version. Do not use in production!<br>
+> This is beta version, use it at your own risks! 😱<br>
 > Thanks in advance for reporting bugs. #sharethelove 😊
+>
+> [Looking for v1?](https://barba.js.org/v1)
 
 ## What's new?
 
@@ -58,7 +60,7 @@ It helps reducing the delay between your pages, minimizing browser HTTP requests
 - [Core](docs/v2/user/core.md)
 - [Router](docs/v2/user/router.md)
 - [Prefetch](docs/v2/user/prefetch.md)
-- [CSS](docs/v2/user/css.md)
+- [Css](docs/v2/user/css.md)
 - Transition _(coming soon)_
 - Head _(coming soon)_
 
