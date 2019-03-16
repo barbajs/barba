@@ -2,6 +2,7 @@
 
 ![stability-wip](https://img.shields.io/badge/stability-work_in_progress-lightgrey.svg?style=flat-square)
 [![Coverage Status](https://img.shields.io/coveralls/github/epicagency/barba/master.svg?style=flat-square)](https://travis-ci.com/epicagency/barba)
+[![CircleCI](https://circleci.com/gh/barbajs/barba/tree/master.svg?style=svg)](https://circleci.com/gh/barbajs/barba/tree/master)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=flat-square)](https://conventionalcommits.org)
 [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](https://github.com/barbajs/barba/blob/master/LICENSE)
