@@ -4,9 +4,10 @@ defaults: &defaults
   working_directory: ~/repo
   docker:
     - image: circleci/node:8.15.1-browsers
-  branches:
-    only:
-      - master
+  # Not working: Job \"build\" has filters configured in the job definition. These filters are incompatible with workflows.
+  # branches:
+  #   only:
+  #     - master
 
 jobs:
   build:
@@ -95,16 +96,24 @@ workflows:
   build_and_test:
     jobs:
       - build
+          filters:
+            branches:
+              only: master
       - test:
           requires:
             - build
-          # Alternative to jobs `branches`
-          # filters:
-          #   branches:
-          #     only: master
+          filters:
+            branches:
+              only: master
       - docs-build:
           requires:
             - test
+          filters:
+            branches:
+              only: master
       - docs-deploy:
           requires:
             - docs-build
+          filters:
+            branches:
+              only: master
