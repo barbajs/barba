@@ -4,6 +4,9 @@ defaults: &defaults
   working_directory: ~/repo
   docker:
     - image: circleci/node:8.15.1-browsers
+  branches:
+    only:
+      - master
 
 jobs:
   build:
@@ -95,6 +98,7 @@ workflows:
       - test:
           requires:
             - build
+          # Alternative to jobs `branches`
           # filters:
           #   branches:
           #     only: master
@@ -104,6 +108,3 @@ workflows:
       - docs-deploy:
           requires:
             - docs-build
-          # filters:
-          #   branches:
-          #     only: master
