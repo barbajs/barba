@@ -1,0 +1,110 @@
+version: 2
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:8.15.1-browsers
+  branches:
+    only:
+      - master
+
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - restore_cache:
+          name: Restore Node modules
+          keys:
+            - dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Bootstrap Lerna monorepo
+          command: yarn run bootstrap
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - node_modules
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Lint
+          command: yarn run lint
+      - run:
+          name: Bundle
+          command: yarn run build
+      - run:
+          name: Test
+          command: yarn run unit:ci
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - node_modules
+  docs-build:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Build docs
+          command: yarn run doc
+      - persist_to_workspace:
+          root: ~/repo
+          paths: docs/v2
+  docs-deploy:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Install and configure dependencies
+          command: |
+            npm install gh-pages@2.0.1
+            git config user.email $GH_EMAIL
+            git config user.name $GH_NAME
+      - add_ssh_keys:
+          fingerprints:
+            - '2c:bd:91:1f:35:54:de:94:22:77:fc:3e:68:f9:6b:2f'
+      - run:
+          name: Deploy docs to gh-pages branch
+          command: ./node_modules/.bin/gh-pages --dist docs/v2 --dest docs/v2
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+          # Alternative to jobs `branches`
+          # filters:
+          #   branches:
+          #     only: master
+      - docs-build:
+          requires:
+            - test
+      - docs-deploy:
+          requires:
+            - docs-build

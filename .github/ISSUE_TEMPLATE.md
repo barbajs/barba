@@ -3,6 +3,7 @@
 ## Prerequisites
 
 - We realize there may be a lot of data requested here. We ask only that you do your best to provide as much information as possible so we can better help you.
+- Read the [contributing guidelines](https://github.com/barbajs/barba-next/blob/master/CONTRIBUTING.md).
 - Support questions are better asked in one of the following locations:
   - [Our chat](https://barbajs.slack.com)
   - [Stack Overflow](https://stackoverflow.com/questions/tagged/barbajs)
@@ -54,5 +55,9 @@ Tell us how to reproduce this issue. Please provide a working demo, you can use 
 
 ## Environment
 
-- Barba version that exhibits the issue: v1
+- Barba version that exhibits the issue:
+- Build used:
+  - [ ] module (esm/)
+  - [ ] browser (dist/)
+  - [ ] main (lib/)
 - Browser OS/version used:

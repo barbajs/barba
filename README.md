@@ -1,108 +1,78 @@
-<p align="center"><a href="http://barbajs.org" target="_blank"><img width="300" src="http://barbajs.org/images/logo.svg"></a></p>
+# barba.js v2
 
-<p align="center">
-<a href="https://join.slack.com/t/barbajs/shared_invite/enQtNTU3NTAyMjkxMzAyLTI1NDIxZDZmMGJjMDlmNzFkODZmMmVmN2U2ODg2Y2M3MzczMDdjZTk5ODQwNWZkYWVlMDM5NGZiODJmMWVhODk"><img src="https://img.shields.io/badge/slack-channel-purple.svg?style=flat-square&logo=slack" /></a>
-<a href='https://travis-ci.org/luruke/barba.js'><img src='https://travis-ci.org/luruke/barba.js.svg?branch=master' alt='Build Status' /></a>
-<a href='https://coveralls.io/github/luruke/barba.js?branch=master'><img src='https://coveralls.io/repos/github/luruke/barba.js/badge.svg?branch=master' alt='Coverage Status' /></a>
-</p>
+![stability-wip](https://img.shields.io/badge/stability-work_in_progress-lightgrey.svg?style=flat-square)
+[![Coverage Status](https://img.shields.io/coveralls/github/epicagency/barba/master.svg?style=flat-square)](https://travis-ci.com/epicagency/barba)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=flat-square)](https://conventionalcommits.org)
+[![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](https://github.com/barbajs/barba-next/blob/master/LICENSE)
+[![Slack channel](https://img.shields.io/badge/slack-channel-purple.svg?style=flat-square&logo=slack)](https://barbajs.slack.com)
 
-# [v2 is coming soon!](http://barbajs.cominsoon.io/)
-
----
-
-*barba.js* is a small *(4kb minified and gzipped)*, flexible and dependency free library that helps you creating fluid and smooth transitions between your website's pages.
+> [Invite link to slack channel](https://join.slack.com/t/barbajs/shared_invite/enQtNTU3NTAyMjkxMzAyLTI1NDIxZDZmMGJjMDlmNzFkODZmMmVmN2U2ODg2Y2M3MzczMDdjZTk5ODQwNWZkYWVlMDM5NGZiODJmMWVhODk)
+>
+> **Barba** is a small (8kb minified and gzipped) and easy-to-use library that helps you creating fluid and smooth transitions between your website's pages.
 
 It helps reducing the delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.
 
----
-## Websites using Barba.js
-<a href="https://www.stanleystella.com" target="_blank"><img src="http://barbajs.org/images/1.gif" width="288"></a>
-<a href="http://www.poigneedemainvirile.com" target="_blank"><img src="http://barbajs.org/images/2.gif" width="288"></a>
-<a href="http://www.budidiokojinedostaje.hr" target="_blank"><img src="http://barbajs.org/images/3.gif" width="288"></a>
-<a href="http://magacom.fr" target="_blank"><img src="http://barbajs.org/images/4.gif" width="288"></a>
-<a href="http://adrenalinmedia.com.au" target="_blank"><img src="http://barbajs.org/images/5.gif" width="288"></a>
-<a href="http://www.ruggeri.io" target="_blank"><img src="http://barbajs.org/images/6.gif" width="288"></a>
+> This is pre-release version. Do not use in production!<br>
+> Thanks in advance for reporting bugs. #sharethelove 😊
 
-[View demos](http://barbajs.org/demos.html)
+## What's new?
 
-## How it works
+- Simplified API
+- Hook sytem for `transitions` and `views`
+- _Transition resolution_: declare your transitions and let Barba pick the right one
+- Use of `data-barba` attributes
+- Sync mode
+- Plugin system
+  - `@barba/router`: use of routes for _transition resolution_
+  - `@barba/css`: automatic addition of CSS classes
+  - `@barba/prefetch`: automatic pages prefetching (and caching), based on viewport
+  - `@barba/head`: update your `<head>` _(coming soon)_
+  - `@barba/transition`: ready-to-use basic transitions pack (fade, slide, …) _(coming soon)_
 
-Barba.js uses *PJAX* (aka push state ajax) to enhance the user's experience.
+## Main changes (TL;DR)
 
-This technique consist in preventing the normal link behavior, changing manually the browser url, and injecting manually the new content in the page. In this way there will be no browser *"hard refresh"*.
+- Barba [container](docs/v2/user/core.md#container) and [wrapper](docs/v2/user/core.md#wrapper) now use `data-barba` attribute
+- Same for [namespace](docs/v2/user/core.md#namespace) via `data-barba-namespace`
+- 2 main methods: `barba.init()` and `barba.use()` (for plugins)
+- [Transitions](docs/v2/user/core.md#transition-object):
+  - are plain JS objects
+  - are declared via the `barba.init({ transitions })`
+  - use "[hooks](docs/v2/user/core.md#hooks)" corresponding to animation steps
+    - hooks can be synchronous or asynchronous (via `this.async()` or promise based)
+    - all hooks receive same [`data` argument](docs/v2/user/core.md#data-argument)
+  - use "[rules](docs/v2/user/core.md#rules)" to select which transition to use
+    - default rules are `namespace` and `custom`
+    - `@barba/router` adds `route` rule
+    - they can be combined within `from` and `to` properties
+- [Views](docs/v2/user/core.md#view-object):
+  - are plain JS objects
+  - are declared via the `barba.init({ views })`
+  - use a subset of animation "hooks":
+    - `beforeAppear`, `afterAppear`, `beforeLeave`, `afterLeave`, `beforeEnter`, `afterEnter`
+    - receive the same [`data` argument](docs/v2/user/core.md#data-argument)
+- [Sync mode](docs/v2/user/core.md#sync-mode) will start `leave` and `enter` transitions concurrently
 
-Here is a walkthrough of what happens when the user clicks a link:
+## Documentation
 
-1.  Check if the link is valid and eligible for *PJAX*, if yes, prevent the normal browser behavior.
-2.  Change the URL using [Push State API](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState).
-3.  Start fetching the new page via `XMLHttpRequest`.
-4.  Create a **new** [transition](http://barbajs.org/transition.html) instance.
-5.  As soon the new page is loaded, barba.js parses the new HTML (taking `.barba-container`) and puts the new content on the DOM inside `#barba-wrapper`.
-6.  The [transition](http://barbajs.org/transition.html) instance will take care to hide the old container and show the new one.
-7.  As soon the transition is finished, the old container is removed from the DOM.
+- [Core](docs/v2/user/core.md)
+- [Router](docs/v2/user/router.md)
+- [Prefetch](docs/v2/user/prefetch.md)
+- [CSS](docs/v2/user/css.md)
+- Transition _(coming soon)_
+- Head _(coming soon)_
 
-> Please note, on server side, your pages will need to be served normally.
-> Barba.js works as enhancement for your website, everything should work normally without Javascript.
+## How to contribute
 
-In order to have a better understanding on how Barba.js works I suggest you to read this [article](https://www.smashingmagazine.com/2016/07/improving-user-flow-through-page-transitions/) I wrote for Smashing Magazine.
+If you want to report a bug or if you just want to request for a new feature/improvement, please **follow [those instructions](CONTRIBUTING.md) before**.
 
-## Why?
+Thanks for taking time to contribute to Barba :tada: :+1:
 
-Using this technique will bring numerous benefits:
+## Next steps
 
-*   Possibility to create nice transition between pages enhancing the user's experience.
-*   Reduce HTTP requests. (why reload the css/js at each page change?)
-*   Possibility to speed up the navigation using [prefetch](http://barbajs.org/prefetch.html) and [cache](http://barbajs.org/cache.html).
-
-## Features
-
-- [Pjax](http://barbajs.org/how-it-works.html)
-- [Transitions](http://barbajs.org/transition.html)
-- [Views](http://barbajs.org/views.html)
-- [Events](http://barbajs.org/events.html)
-- [Cache](http://barbajs.org/cache.html)
-- [Prefetch](http://barbajs.org/prefetch.html)
-
-## Installation
-
-**barba.js** supports AMD, CommonJS and Browser global (using UMD).
-You can install it using npm:
-```
-npm install barba.js --save-dev
-```
-or just including the script in your page:
-```html
-<script src="barba.min.js" type="text/javascript"></script>
-```
-or you can use [cdnjs](https://cdnjs.com/libraries/barba.js):
-```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js" type="text/javascript"></script>
-```
-
-barba.js needs to know a little bit about your DOM structure. By default uses this markup structure in your pages:
-
-```html
-<div id="barba-wrapper">
-  <div class="barba-container">
-    ...Put here the content you wish to change between pages...
-  </div>
-</div>
-```
-
-> Please note, all the selector (#barba-wrapper, .barba-container) are easily editable, see the API section.
-
-After you've included barba.js in your project it's time to initialize it
-
-```javascript
-// Please note, the DOM should be ready
-Barba.Pjax.start();
-```
-## Contribute
-
-Barba.js is created in the spare time by [Luigi De Rosa](https://twitter.com/luruke) and released under MIT licence.
-Any help on the project is more than welcomed.
-For any problem/question do not hesitate to open an issue.
-
-## Other
-
-For any other information, please visit the [website](http://barbajs.org)
+- [ ] Testing, debugging, fixing, testing…
+- [ ] e2e testing suite
+- [ ] CI setup (PR, publish, …)
+- [ ] Write manual documentation
+- [ ] Generate code documentation
+- [ ] New website

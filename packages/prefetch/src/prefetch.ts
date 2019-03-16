@@ -1,0 +1,124 @@
+/**
+ * @barba/prefetch
+ * <br><br>
+ * ## Barba prefetch.
+ *
+ * @module prefetch
+ * @preferred
+ */
+
+import { IPrefetchOptions } from './defs/prefetch';
+
+/***/
+
+// Definitions
+import { Core } from '@barba/core/src/core';
+import { IBarbaPlugin } from '@barba/core/src/defs';
+import { Logger } from '@barba/core/src/modules/Logger';
+
+import { version } from '../package.json';
+import { requestIdleCallback } from './polyfills';
+
+class Prefetch implements IBarbaPlugin<IPrefetchOptions> {
+  public name = '@barba/prefetch';
+  public version = version;
+  public barba: Core;
+  public logger: Logger;
+
+  public observer: IntersectionObserver;
+  public root: HTMLElement | HTMLDocument;
+  public timeout: number;
+  public toPrefetch: Set<string> = new Set();
+
+  /**
+   * Plugin installation.
+   */
+  public install(
+    barba: Core,
+    { root = document.body, timeout = 2e3 }: IPrefetchOptions = {}
+  ) {
+    this.barba = barba;
+    this.logger = new barba.Logger(this.name);
+    this.root = root;
+    this.timeout = timeout;
+  }
+
+  /**
+   * Plugin initialisation.
+   */
+  public init() {
+    if (this.barba.prefetchIgnore) {
+      this.logger.warn('barba.prefetchIgnore is enabled');
+
+      return;
+    }
+    if (this.barba.cacheIgnore) {
+      this.logger.warn('barba.cacheIgnore is enabled');
+
+      return;
+    }
+
+    /**
+     * Init intersection observer
+     * when intersecting, it will check if URL should be prefetched
+     * then unobserve the element
+     * and, if no cache data, fetch the page
+     */
+    /* istanbul ignore next */
+    this.observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const link = entry.target as HTMLLinkElement;
+          const url = this.barba.dom.getUrl(link);
+
+          if (this.toPrefetch.has(url)) {
+            this.observer.unobserve(link);
+            // Prefetch and cache
+            if (!this.barba.cache.has(url)) {
+              this.barba.cache.set(
+                url,
+                this.barba.request(
+                  url,
+                  this.barba.timeout,
+                  this.barba['_onRequestError'].bind(this, 'prefetch') // tslint:disable-line:no-string-literal
+                )
+              );
+            }
+          }
+        }
+      });
+    });
+    this.observe();
+    // Register hooks
+    this.barba.hooks.after(this.observe, this);
+  }
+
+  /* istanbul ignore next */
+  public observe(): void {
+    const timeout = this.timeout;
+
+    requestIdleCallback(
+      () => {
+        // If not, find all links and use IntersectionObserver.
+        this.root.querySelectorAll('a').forEach(el => {
+          const link = (el as unknown) as HTMLLinkElement;
+          const url = this.barba.dom.getUrl(link);
+
+          if (
+            !this.barba.cache.has(url) &&
+            !this.barba.prevent.checkUrl(url) &&
+            !this.barba.prevent.checkLink(link, {} as Event, link.href)
+          ) {
+            this.observer.observe(el);
+            this.toPrefetch.add(url);
+          }
+        });
+      },
+      { timeout }
+    );
+  }
+}
+
+const prefetch = new Prefetch();
+
+export default prefetch;

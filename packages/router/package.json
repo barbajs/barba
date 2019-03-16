@@ -1,0 +1,46 @@
+{
+  "name": "@barba/router",
+  "version": "2.0.1-next.97+33c213b",
+  "description": "Barba is a ...",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/barba-router.js",
+  "umd:main": "dist/barba-router.umd.js",
+  "browser": "dist/barba-router.umd.js",
+  "unpkg": "dist/barba-router.umd.js",
+  "module": "dist/barba-router.mjs",
+  "source": "src/index.ts",
+  "mangle": {
+    "regex": "^_"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "page",
+    "transition",
+    "animation",
+    "css",
+    "router",
+    "prefetch"
+  ],
+  "homepage": "https://github.com/barbajs/barba-next#readme",
+  "bugs": {
+    "url": "https://github.com/barbajs/barba-next/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/barbajs/barba-next.git"
+  },
+  "scripts": {
+    "build": "microbundle --name barbaRouter --external none",
+    "build:watch": "microbundle watch --name barbaRouter --external none",
+    "clear": "rimraf dist",
+    "lint": "tslint src/**",
+    "precommit": "lint-staged",
+    "size": "echo '🚦 router' && gzip-size ./dist/barba-router.umd.js"
+  },
+  "gitHead": "33c213bc36a0996f6333185dfc695fcd0d37c9d9"
+}

@@ -1,0 +1,12 @@
+[data-barba='container'] {
+  opacity: 1;
+}
+
+.named-enter-active,
+.named-leave-active {
+  transition: opacity 2s;
+}
+.named-enter,
+.named-leave-to {
+  opacity: 0;
+}
