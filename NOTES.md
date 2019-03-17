@@ -4,7 +4,11 @@
 
 ```sh
 npm run build
-lerna publish --canary --preid next
+lerna publish --canary --preid next --dist-tag next
+lerna publish --preid next # only with --canary ? https://github.com/lerna/lerna/tree/master/commands/publish#--preid
+lerna publish --dist-tag next
+lerna publish --github-release --force-publish=*
+lerna publish --github-release
 ```
 
 ## Test `publish` with [verdaccio](https://www.npmjs.com/package/verdaccio)
@@ -33,3 +37,9 @@ lerna publish --registry http://localhost:4873 --canary --preid next
 > - [ ] views
 >   - [x] core ✅ / beforeEnter, beforeLeave, afterEnter, afterLeave
 >   - [ ] doit fonctionner avec IE <= 11 ???
+
+---
+
+## Showcase
+
+- https://leap-in.com/
