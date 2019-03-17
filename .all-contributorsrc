@@ -89,6 +89,16 @@
       "contributions": [
         "question"
       ]
+    },
+    {
+      "login": "Wouter125",
+      "name": "Wouter",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/6507123?v=4",
+      "profile": "https://www.thisisnota.studio",
+      "contributions": [
+        "bug",
+        "question"
+      ]
     }
   ],
   "contributorsPerLine": 1
