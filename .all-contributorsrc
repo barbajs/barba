@@ -494,6 +494,15 @@
       "contributions": [
         "question"
       ]
+    },
+    {
+      "login": "Djules",
+      "name": "Julien Vasseur",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/196644?v=4",
+      "profile": "http://djul.es",
+      "contributions": [
+        "question"
+      ]
     }
   ],
   "contributorsPerLine": 1
