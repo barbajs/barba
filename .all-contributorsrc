@@ -301,6 +301,16 @@
       "contributions": [
         "question"
       ]
+    },
+    {
+      "login": "watzing",
+      "name": "Dylan Reeves",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1294637?v=4",
+      "profile": "http://www.dylanreeves.com",
+      "contributions": [
+        "question",
+        "example"
+      ]
     }
   ],
   "contributorsPerLine": 1
