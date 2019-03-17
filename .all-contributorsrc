@@ -457,6 +457,16 @@
       "contributions": [
         "question"
       ]
+    },
+    {
+      "login": "JumpLink",
+      "name": "Pascal Garber",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1073989?v=4",
+      "profile": "https://www.jumplink.eu",
+      "contributions": [
+        "question",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 1
