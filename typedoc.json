@@ -10,8 +10,8 @@
     "excludeExternals": true,
     "ignoreCompilerErrors": true,
     "name": "barba.js",
-    "readme": "docs/v2/user/index.md",
-    "out": "docs/v2/api",
-    "theme": "docs/v2/theme"
+    "readme": "documentation/user/index.md",
+    "out": "documentation/api",
+    "theme": "documentation/theme"
   }
 }

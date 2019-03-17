@@ -163,5 +163,5 @@ report.html
 .rts2*
 # Keep microbundle's mangle.json out until it needs to be there?
 mangle.json
-/docs/v2/api
+/documentation/api
 /PERSONAL.md
