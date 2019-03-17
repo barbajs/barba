@@ -392,6 +392,16 @@
       "contributions": [
         "question"
       ]
+    },
+    {
+      "login": "kekkorider",
+      "name": "Francesco Michelini",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5191941?v=4",
+      "profile": "http://www.francescomichelini.com/",
+      "contributions": [
+        "question",
+        "example"
+      ]
     }
   ],
   "contributorsPerLine": 1
