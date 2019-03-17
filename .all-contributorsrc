@@ -264,6 +264,16 @@
       "contributions": [
         "example"
       ]
+    },
+    {
+      "login": "StudioZAAK",
+      "name": "ZAAK",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/12050808?v=4",
+      "profile": "http://www.zaak.ch",
+      "contributions": [
+        "example",
+        "question"
+      ]
     }
   ],
   "contributorsPerLine": 1
