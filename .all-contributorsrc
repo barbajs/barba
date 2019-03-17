@@ -138,6 +138,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "dlwebdev",
+      "name": "Daniel Weber",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/668910?v=4",
+      "profile": "http://www.thedanielweber.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 1
