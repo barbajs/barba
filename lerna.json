@@ -4,6 +4,9 @@
       "conventionalCommits": true,
       "message": "chore(release): publish",
       "npmClient": "npm"
+    },
+    "version": {
+      "allowBranch": "master"
     }
   },
   "npmClient": "yarn",
