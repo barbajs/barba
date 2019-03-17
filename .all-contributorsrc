@@ -292,6 +292,15 @@
       "contributions": [
         "question"
       ]
+    },
+    {
+      "login": "shanewmurphy",
+      "name": "Shane Murphy",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/3694619?v=4",
+      "profile": "http://www.shanemurphy.me",
+      "contributions": [
+        "question"
+      ]
     }
   ],
   "contributorsPerLine": 1
