@@ -56,6 +56,9 @@ jobs:
       - run:
           name: Test
           command: yarn run unit:ci
+      - run:
+          name: Coverage
+          command: yarn run coverage
       - store_artifacts:
           path: coverage
       - persist_to_workspace:
