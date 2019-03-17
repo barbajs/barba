@@ -255,6 +255,15 @@
       "contributions": [
         "question"
       ]
+    },
+    {
+      "login": "jd4Aligator",
+      "name": "Jörg",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/32126746?v=4",
+      "profile": "http://www.aligator-kom.de",
+      "contributions": [
+        "example"
+      ]
     }
   ],
   "contributorsPerLine": 1
