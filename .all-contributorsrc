@@ -110,6 +110,16 @@
         "question",
         "test"
       ]
+    },
+    {
+      "login": "theredstapler",
+      "name": "Red Stapler",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/16864380?v=4",
+      "profile": "https://www.youtube.com/c/redstapler_channel",
+      "contributions": [
+        "tutorial",
+        "video"
+      ]
     }
   ],
   "contributorsPerLine": 1
