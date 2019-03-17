@@ -1,3 +1,8 @@
+---
+layout: default
+title: User guide
+---
+
 # barba.js <small>[v2]</small>
 
 ![stability-beta](https://img.shields.io/badge/stability-beta-lightgrey.svg?style=flat-square)
