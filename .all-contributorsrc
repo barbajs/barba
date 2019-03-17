@@ -402,6 +402,15 @@
         "question",
         "example"
       ]
+    },
+    {
+      "login": "FistMeNaruto",
+      "name": "Domantas Petrauskas",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/13431677?v=4",
+      "profile": "https://github.com/FistMeNaruto",
+      "contributions": [
+        "question"
+      ]
     }
   ],
   "contributorsPerLine": 1
