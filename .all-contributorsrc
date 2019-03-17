@@ -53,6 +53,15 @@
         "question",
         "test"
       ]
+    },
+    {
+      "login": "markog85",
+      "name": "Marco Grimaldi",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/858150?v=4",
+      "profile": "http://www.thenerodesign.com",
+      "contributions": [
+        "design"
+      ]
     }
   ],
   "contributorsPerLine": 1
