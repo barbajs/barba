@@ -485,6 +485,15 @@
       "contributions": [
         "question"
       ]
+    },
+    {
+      "login": "mbsimonovic",
+      "name": "Milan Simonovic",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/888008?v=4",
+      "profile": "http://www.imls.uzh.ch/research/vonmering/people/milan-simonovic.html",
+      "contributions": [
+        "question"
+      ]
     }
   ],
   "contributorsPerLine": 1
