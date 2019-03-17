@@ -411,6 +411,15 @@
       "contributions": [
         "question"
       ]
+    },
+    {
+      "login": "kjbrum",
+      "name": "Kyle Brumm",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1709677?v=4",
+      "profile": "http://kylebrumm.com",
+      "contributions": [
+        "question"
+      ]
     }
   ],
   "contributorsPerLine": 1
