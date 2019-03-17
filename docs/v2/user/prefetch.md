@@ -1,3 +1,8 @@
+---
+layout: default
+title: '@barba/prefetch'
+---
+
 # @barba/prefetch
 
 Barba prefetch **automatically fetch and cache** your pages.

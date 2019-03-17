@@ -1,3 +1,8 @@
+---
+layout: default
+title: '@barba/css'
+---
+
 # @barba/css
 
 Barba CSS is a **style helper** that manage you CSS class during transitions.

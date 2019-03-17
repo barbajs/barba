@@ -1,3 +1,8 @@
+---
+layout: default
+title: '@barba/core'
+---
+
 # @barba/core
 
 Barba core manages your **page transitions** with ease.

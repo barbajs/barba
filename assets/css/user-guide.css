@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding-right: 1rem;
+  background: #2d5bdc;
+  font-family: 'Space Mono', monospace;
+}
+
+.header__logo {
+  display: block;
+  width: 4rem;
+}
+
+.header__title {
+  color: #fff;
+}
+
+.header__nav {
+  margin-left: auto;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav a {
+  padding: 1rem;
+  color: #fff !important;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+.nav a.is-active {
+  opacity: .5;
+  pointer-events: none;
+}
+
+.main {
+  margin: 2rem;
+}

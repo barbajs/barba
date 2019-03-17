@@ -2,14 +2,30 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>barba.js - {{ page.title }}</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>barba.js - {{ page.title }}</title>
+    <meta
+      name="description"
+      content="Create badass, fluid and smooth transition between your website's pages."
+    >
+    <link
+      href="https://fonts.googleapis.com/css?family=Space+Mono"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="/assets/css/user-guide.css">
     <link rel="stylesheet" href="/assets/css/github-markdown.css">
     <link rel="stylesheet" href="/assets/css/highlight.css">
   </head>
   <body>
-    <h1>Hello world!</h1>
-    <main class="markdown-body">
+    <header class="header">
+      <a href="https://barba.js.org">
+        <img src="/assets/images/avatar-white.svg" alt="barba.js" class="header__logo">
+      </a>
+      <div class="header__title">User guide</div>
+      {% include nav.html %}
+    </header>
+    <main class="main markdown-body">
       {{ content }}
     </main>
   </body>

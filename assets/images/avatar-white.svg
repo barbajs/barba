@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256px" height="256px" viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53 (72520) - https://sketchapp.com -->
+    <title>SVG/avatar-white</title>
+    <desc>Created with Sketch.</desc>
+    <g id="avatar-white" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle-Copy" fill="#2E5BDC" fill-rule="nonzero" x="0" y="0" width="256" height="256"></rect>
+        <g id="B" transform="translate(80.000000, 50.000000)" fill="#FFFFFF">
+            <path d="M0,155 L0,2.84217094e-14 L49.0601408,2.84217094e-14 L49.0601408,58.1281646 C75.5876541,58.4280417 97,80.00198 97,106.558625 C97,133.311625 75.28558,155 48.5,155 L0,155 Z M6,130 L6,149 L25,149 C16.9916645,144.561496 10.3859689,137.959821 6,130 Z M6,84 C13.3383612,70.29749 26.9874399,60.5655251 43,58.809315 L43,6 L6,6 L6,84 Z M48.5,64 C25.0651136,64 6,83.0631818 6,106.496136 C6,129.932955 25.0651136,149 48.5,149 C71.9348864,149 91,129.932955 91,106.496136 C91,83.0631818 71.9348864,64 48.5,64 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

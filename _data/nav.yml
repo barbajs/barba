@@ -1,0 +1,10 @@
+- name: home
+  link: /docs/v2/user/index.html
+- name: core
+  link: /docs/v2/user/core.html
+- name: router
+  link: /docs/v2/user/router.html
+- name: prefetch
+  link: /docs/v2/user/prefetch.html
+- name: css
+  link: /docs/v2/user/css.html

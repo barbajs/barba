@@ -1,3 +1,8 @@
+---
+layout: default
+title: '@barba/router'
+---
+
 # @barba/router
 
 Barba router allows you to use **custom routes** for page transitions.
