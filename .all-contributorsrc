@@ -438,6 +438,16 @@
       "contributions": [
         "question"
       ]
+    },
+    {
+      "login": "bramcordie",
+      "name": "Bram Cordie",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1107185?v=4",
+      "profile": "http://bierdb.be",
+      "contributions": [
+        "question",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 1
