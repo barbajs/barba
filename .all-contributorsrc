@@ -274,6 +274,15 @@
         "example",
         "question"
       ]
+    },
+    {
+      "login": "leapincorp",
+      "name": "Masahiro Tonomura",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/42055102?v=4",
+      "profile": "https://leap-in.com",
+      "contributions": [
+        "example"
+      ]
     }
   ],
   "contributorsPerLine": 1
