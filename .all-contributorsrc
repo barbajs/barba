@@ -311,6 +311,15 @@
         "question",
         "example"
       ]
+    },
+    {
+      "login": "quentinneyraud",
+      "name": "Quentin Neyraud",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/9378568?v=4",
+      "profile": "http://www.quentinneyraud.fr",
+      "contributions": [
+        "question"
+      ]
     }
   ],
   "contributorsPerLine": 1
