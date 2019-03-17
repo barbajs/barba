@@ -61,7 +61,8 @@ export class Views {
    */
   private _createHook(name: HooksView): Hook {
     return data => {
-      const view = this.byNamespace.get(data.current.namespace);
+      const { namespace } = name.match(/enter/i) ? data.next : data.current;
+      const view = this.byNamespace.get(namespace);
 
       if (view) {
         view[name] && view[name](data);
