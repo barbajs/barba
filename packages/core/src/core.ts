@@ -39,6 +39,8 @@ import { Logger } from './modules/Logger';
 import { Prevent } from './modules/Prevent';
 import { Transitions } from './modules/Transitions';
 import { Views } from './modules/Views';
+// Polyfills
+import './polyfills';
 // Schemas
 import { schemaAttribute } from './schemas/attribute';
 import { schemaPage } from './schemas/page';

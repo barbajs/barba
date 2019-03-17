@@ -15,8 +15,8 @@
 // Definitions
 import { IgnoreOption } from '../defs';
 // Utils
-import { parse } from '../utils/url';
 import { pathToRegexp } from '../utils/helpers';
+import { parse } from '../utils/url';
 
 export class Ignore {
   private _ignoreAll: boolean;
@@ -32,7 +32,7 @@ export class Ignore {
     }
   }
 
-  checkUrl(url: string): boolean {
+  public checkUrl(url: string): boolean {
     if (typeof this._ignoreAll === 'boolean') {
       return this._ignoreAll;
     }

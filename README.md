@@ -58,12 +58,8 @@ It helps reducing the delay between your pages, minimizing browser HTTP requests
 
 ## Documentation
 
-- [Core](docs/v2/user/core.md)
-- [Router](docs/v2/user/router.md)
-- [Prefetch](docs/v2/user/prefetch.md)
-- [Css](docs/v2/user/css.md)
-- Transition _(coming soon)_
-- Head _(coming soon)_
+- [User guide](https://barba.js.org/docs/v2/user/)
+- [API documentation](https://barba.js.org/docs/v2/api/)
 
 ## How to contribute
 
