@@ -127,7 +127,7 @@ barba.init({
     namespace: <span class="hljs-string">'home'</span>,
     <span class="hljs-comment">// Apply only when transitioning to `[data-barba-namespace="products | contact"]`.</span>
     to: {
-      <span class="hljs-attr">namespace</span>: [<span class="hljs-string">'products'</span>, <span class="hljs-string">'contact'</span>],]
+      <span class="hljs-attr">namespace</span>: [<span class="hljs-string">'products'</span>, <span class="hljs-string">'contact'</span>],
     },
     <span class="hljs-comment">// Apply only if clicked link contains `.cta`.</span>
     custom: <span class="hljs-function">(<span class="hljs-params">{current, next, trigger}</span>) =&gt;</span> trigger.classList &amp;&amp; trigger.classList.contains(<span class="hljs-string">'cta'</span>),
