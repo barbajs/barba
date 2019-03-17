@@ -283,6 +283,15 @@
       "contributions": [
         "example"
       ]
+    },
+    {
+      "login": "CassiusHR",
+      "name": "CassiusHR",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/24419585?v=4",
+      "profile": "https://github.com/CassiusHR",
+      "contributions": [
+        "question"
+      ]
     }
   ],
   "contributorsPerLine": 1
