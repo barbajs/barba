@@ -1,6 +1,6 @@
 {
   "name": "@barba/core",
-  "version": "2.0.1-next.97+33c213b",
+  "version": "2.1.0",
   "description": "Barba is a ...",
   "publishConfig": {
     "access": "public"
