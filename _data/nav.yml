@@ -8,3 +8,5 @@
   link: /docs/v2/user/prefetch.html
 - name: css
   link: /docs/v2/user/css.html
+- name: API
+  link: /docs/v2/api/index.html
