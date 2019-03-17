@@ -25,6 +25,22 @@
         "review",
         "infra"
       ]
+    },
+    {
+      "login": "thierrymichel",
+      "name": "Thierry Michel",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/806883?v=4",
+      "profile": "http://thierrymichel.net",
+      "contributions": [
+        "ideas",
+        "code",
+        "doc",
+        "question",
+        "bug",
+        "test",
+        "review",
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 1
