@@ -448,6 +448,15 @@
         "question",
         "ideas"
       ]
+    },
+    {
+      "login": "metalmini",
+      "name": "Michael Schouman",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/510652?v=4",
+      "profile": "http://portfolio.schouman.info",
+      "contributions": [
+        "question"
+      ]
     }
   ],
   "contributorsPerLine": 1
