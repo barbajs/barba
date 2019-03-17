@@ -65,93 +65,105 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<h1 id="barba-js-small-v2-small-">barba.js <small>[v2]</small></h1>
-				<p><img src="https://img.shields.io/badge/stability-work_in_progress-lightgrey.svg?style=flat-square" alt="stability-wip">
-					<a href="https://travis-ci.com/epicagency/barba"><img src="https://img.shields.io/coveralls/github/epicagency/barba/master.svg?style=flat-square" alt="Coverage Status"></a>
-					<a href="https://circleci.com/gh/barbajs/barba/tree/master"><img src="https://circleci.com/gh/barbajs/barba/tree/master.svg?style=svg" alt="CircleCI"></a>
+				<p><img src="https://img.shields.io/badge/stability-beta-lightgrey.svg?style=flat-square" alt="stability-beta">
+					<a href="https://circleci.com/gh/barbajs/barba/tree/master"><img src="https://img.shields.io/circleci/project/github/barbajs/barba/master.svg?style=flat-square" alt="CircleCI"></a>
+					<a href="https://coveralls.io/github/barbajs/barba?branch=master"><img src="https://img.shields.io/coveralls/github/barbajs/barba/master.svg?style=flat-square" alt="Coverage Status"></a>
 					<a href="http://commitizen.github.io/cz-cli/"><img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square" alt="Commitizen friendly"></a>
 					<a href="https://conventionalcommits.org"><img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=flat-square" alt="Conventional Commits"></a>
 					<a href="https://github.com/barbajs/barba/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat-square" alt="License"></a>
 				<a href="https://barbajs.slack.com"><img src="https://img.shields.io/badge/slack-channel-purple.svg?style=flat-square&logo=slack" alt="Slack channel"></a></p>
-				<blockquote>
-					<p><a href="https://join.slack.com/t/barbajs/shared_invite/enQtNTU3NTAyMjkxMzAyLTI1NDIxZDZmMGJjMDlmNzFkODZmMmVmN2U2ODg2Y2M3MzczMDdjZTk5ODQwNWZkYWVlMDM5NGZiODJmMWVhODk">Invite link to slack channel</a></p>
-					<p><strong>Barba</strong> is a small (8kb minified and gzipped) and easy-to-use library that helps you creating fluid and smooth transitions between your website&#39;s pages.</p>
-				</blockquote>
+				<p><strong>Barba.js</strong> is a small (8kb minified and gzipped) and easy-to-use library that helps you creating fluid and smooth transitions between your website&#39;s pages.</p>
 				<p>It helps reducing the delay between your pages, minimizing browser HTTP requests and enhancing your user&#39;s web experience.</p>
+				<h2 id="useful-links">Useful links</h2>
+				<ul>
+					<li><a href="https://barba.js.org/docs/v2/user/">User guide</a><ul>
+							<li><a href="https://barba.js.org/docs/v2/user/core.html">@barba/core</a></li>
+							<li><a href="https://barba.js.org/docs/v2/user/router.html">@barba/router</a></li>
+							<li><a href="https://barba.js.org/docs/v2/user/prefetch.html">@barba/prefetch</a></li>
+							<li><a href="https://barba.js.org/docs/v2/user/css.html">@barba/css</a></li>
+							<li>@barba/transitions <em>(coming soon)</em></li>
+							<li>@barba/head <em>(coming soon)</em></li>
+						</ul>
+					</li>
+					<li><a href="https://barba.js.org/docs/v2/api/">API documentation</a></li>
+					<li><a href="https://github.com/barbajs/barba">Github repo</a></li>
+					<li><a href="https://barbajs.slack.com">Slack channel</a></li>
+				</ul>
+				<h2 id="install">Install</h2>
+				<p>Using npm:</p>
+				<pre><code class="language-sh">npm install --save-dev @barba/core</code></pre>
+				<p>or using yarn:</p>
+				<pre><code class="language-sh">yarn add @barba/core --dev</code></pre>
+				<p>or using a CDN:</p>
+				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://unpkg.com/@barba/core@next"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+				<h2 id="getting-started">Getting started</h2>
 				<blockquote>
-					<p>This is beta version, use it at your own risks! 😱<br>
-					Thanks in advance for reporting bugs. #sharethelove 😊</p>
-					<p><a href="https://barba.js.org/v1">Looking for v1?</a></p>
+					<p>See <a href="https://barba.js.org/docs/v2/user/core.html">@barba/core</a> for more details…</p>
 				</blockquote>
-				<h2 id="what-s-new-">What&#39;s new?</h2>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> barba <span class="hljs-keyword">from</span> <span class="hljs-string">'@barba/core'</span>; <span class="hljs-comment">// Or nothing if loaded via the browser</span>
+
+<span class="hljs-comment">// Basic default transition, with no rules and minimal hooks…</span>
+barba.init({
+  <span class="hljs-attr">transitions</span>: [
+    leave({ current, next, trigger }) {
+      <span class="hljs-comment">// Do something with `current.container` for your leave transition</span>
+      <span class="hljs-comment">// then return a promise or use `this.async()`</span>
+    },
+    enter({ current, next, trigger }) {
+      <span class="hljs-comment">// Do something with `next.container` for your enter transition</span>
+      <span class="hljs-comment">// then return a promise or use `this.async()`</span>
+    }
+  ],
+});
+
+<span class="hljs-comment">// Dummy example to illustrate rules and hooks…</span>
+barba.init({
+  <span class="hljs-attr">transitions</span>: [
+    name: <span class="hljs-string">'dummy transitions'</span>,
+    <span class="hljs-comment">// Apply only when leaving `[data-barba-namespace="home"]`.</span>
+    namespace: <span class="hljs-string">'home'</span>,
+    <span class="hljs-comment">// Apply only when transitioning to `[data-barba-namespace="products | contact"]`.</span>
+    to: {
+      <span class="hljs-attr">namespace</span>: [<span class="hljs-string">'products'</span>, <span class="hljs-string">'contact'</span>],]
+    },
+    <span class="hljs-comment">// Apply only if clicked link contains `.cta`.</span>
+    custom: <span class="hljs-function">(<span class="hljs-params">{current, next, trigger}</span>) =&gt;</span> trigger.classList &amp;&amp; trigger.classList.contains(<span class="hljs-string">'cta'</span>),
+    <span class="hljs-comment">// Do leave and enter concurrently.</span>
+    sync: <span class="hljs-literal">true</span>,
+    <span class="hljs-comment">// Available hooks…</span>
+    beforeAppear() {},
+    appear() {},
+    afterAppear() {},
+    beforeLeave() {},
+    leave() {},
+    afterLeave() {},
+    beforeEnter() {},
+    enter() {},
+    afterEnter() {},
+  ],
+});</code></pre>
+				<h2 id="browser-support">Browser support</h2>
+				<p>Barba.js can be viewed as a <a href="https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/">progressive enhancement</a>.
+				Main &quot;modern features&quot; used are:</p>
 				<ul>
-					<li>Simplified API</li>
-					<li>Hook sytem for <code>transitions</code> and <code>views</code></li>
-					<li><em>Transition resolution</em>: declare your transitions and let Barba pick the right one</li>
-					<li>Use of <code>data-barba</code> attributes</li>
-					<li>Sync mode</li>
-					<li>Plugin system<ul>
-							<li><code>@barba/router</code>: use of routes for <em>transition resolution</em></li>
-							<li><code>@barba/css</code>: automatic addition of CSS classes</li>
-							<li><code>@barba/prefetch</code>: automatic pages prefetching (and caching), based on viewport</li>
-							<li><code>@barba/head</code>: update your <code>&lt;head&gt;</code> <em>(coming soon)</em></li>
-							<li><code>@barba/transition</code>: ready-to-use basic transitions pack (fade, slide, …) <em>(coming soon)</em></li>
-						</ul>
-					</li>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></li>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a></li>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">Set()</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map()</a></li>
 				</ul>
-				<h2 id="main-changes-tl-dr-">Main changes (TL;DR)</h2>
+				<blockquote>
+					<p><code>@barba/prefetch</code> also uses <a href="https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API">IntersectionObserver</a></p>
+				</blockquote>
+				<p>Cross-browser support is as follows:</p>
 				<ul>
-					<li>Barba <a href="docs/v2/user/core.md#container">container</a> and <a href="docs/v2/user/core.md#wrapper">wrapper</a> now use <code>data-barba</code> attribute</li>
-					<li>Same for <a href="docs/v2/user/core.md#namespace">namespace</a> via <code>data-barba-namespace</code></li>
-					<li>2 main methods: <code>barba.init()</code> and <code>barba.use()</code> (for plugins)</li>
-					<li><a href="docs/v2/user/core.md#transition-object">Transitions</a>:<ul>
-							<li>are plain JS objects</li>
-							<li>are declared via the <code>barba.init({ transitions })</code></li>
-							<li>use &quot;<a href="docs/v2/user/core.md#hooks">hooks</a>&quot; corresponding to animation steps<ul>
-									<li>hooks can be synchronous or asynchronous (via <code>this.async()</code> or promise based)</li>
-									<li>all hooks receive same <a href="docs/v2/user/core.md#data-argument"><code>data</code> argument</a></li>
-								</ul>
-							</li>
-							<li>use &quot;<a href="docs/v2/user/core.md#rules">rules</a>&quot; to select which transition to use<ul>
-									<li>default rules are <code>namespace</code> and <code>custom</code></li>
-									<li><code>@barba/router</code> adds <code>route</code> rule</li>
-									<li>they can be combined within <code>from</code> and <code>to</code> properties</li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-					<li><a href="docs/v2/user/core.md#view-object">Views</a>:<ul>
-							<li>are plain JS objects</li>
-							<li>are declared via the <code>barba.init({ views })</code></li>
-							<li>use a subset of animation &quot;hooks&quot;:<ul>
-									<li><code>beforeAppear</code>, <code>afterAppear</code>, <code>beforeLeave</code>, <code>afterLeave</code>, <code>beforeEnter</code>, <code>afterEnter</code></li>
-									<li>receive the same <a href="docs/v2/user/core.md#data-argument"><code>data</code> argument</a></li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-					<li><a href="docs/v2/user/core.md#sync-mode">Sync mode</a> will start <code>leave</code> and <code>enter</code> transitions concurrently</li>
+					<li>without polyfills: modern browsers (Chrome, Firefox, Edge, Safari, Opera)</li>
+					<li>with polyfills for abovementioned: + IE10</li>
 				</ul>
-				<h2 id="documentation">Documentation</h2>
-				<ul>
-					<li><a href="docs/v2/user/core.md">Core</a></li>
-					<li><a href="docs/v2/user/router.md">Router</a></li>
-					<li><a href="docs/v2/user/prefetch.md">Prefetch</a></li>
-					<li><a href="docs/v2/user/css.md">Css</a></li>
-					<li>Transition <em>(coming soon)</em></li>
-					<li>Head <em>(coming soon)</em></li>
-				</ul>
-				<h2 id="how-to-contribute">How to contribute</h2>
-				<p>If you want to report a bug or if you just want to request for a new feature/improvement, please <strong>follow <a href="CONTRIBUTING.md">those instructions</a> before</strong>.</p>
-				<p>Thanks for taking time to contribute to Barba :tada: :+1:</p>
-				<h2 id="next-steps">Next steps</h2>
-				<ul>
-					<li><input disabled="" type="checkbox"> Testing, debugging, fixing, testing…</li>
-					<li><input disabled="" type="checkbox"> e2e testing suite</li>
-					<li><input disabled="" type="checkbox"> CI setup (PR, publish, …)</li>
-					<li><input disabled="" type="checkbox"> Write manual documentation</li>
-					<li><input disabled="" type="checkbox"> Generate code documentation</li>
-					<li><input disabled="" type="checkbox"> New website</li>
-				</ul>
+				<p>You can use <a href="https://polyfill.io/v3/">polyfill.io</a>:</p>
+				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>
+  <span class="hljs-attr">crossorigin</span>=<span class="hljs-string">"anonymous"</span>
+  <span class="hljs-attr">src</span>=<span class="hljs-string">"https://polyfill.io/v3/polyfill.min.js?features=Map-polyfill%2CSet-polyfill%2CPromise-polyfill%2Cfetch-polyfill%2CIntersectionObserver-polyfill"</span>
+&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+				<p>or implement your own solution (<a href="https://github.com/stefanpenner/es6-promise">es6-promise</a>, <a href="https://github.com/github/fetch">fetch</a> and <a href="https://github.com/zloirock/core-js">Core.js</a> or <a href="https://github.com/paulmillr/es6-shim/blob/master/README.md">es6-shim</a>, …).</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
