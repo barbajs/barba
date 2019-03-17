@@ -79,7 +79,7 @@ barba.init({
     namespace: 'home',
     // Apply only when transitioning to `[data-barba-namespace="products | contact"]`.
     to: {
-      namespace: ['products', 'contact'],]
+      namespace: ['products', 'contact'],
     },
     // Apply only if clicked link contains `.cta`.
     custom: ({current, next, trigger}) => trigger.classList && trigger.classList.contains('cta'),
