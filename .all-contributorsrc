@@ -1,0 +1,12 @@
+{
+  "projectName": "barba",
+  "projectOwner": "barbajs",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": ["README.md"],
+  "imageSize": 100,
+  "commit": false,
+  "commitTemplate": "docs(root): :busts_in_silhouette: <%= (newContributor ? 'add' : 'update') %> @<%= username %> as a contributor",
+  "contributors": [],
+  "contributorsPerLine": 1
+}
