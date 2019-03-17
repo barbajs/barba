@@ -512,6 +512,15 @@
       "contributions": [
         "question"
       ]
+    },
+    {
+      "login": "terion-name",
+      "name": "Terion",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1060205?v=4",
+      "profile": "http://terion.name",
+      "contributions": [
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 1
