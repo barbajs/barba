@@ -6,7 +6,7 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=flat-square)](https://conventionalcommits.org)
 [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](https://github.com/barbajs/barba/blob/master/LICENSE)
-[![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 [![Slack channel](https://img.shields.io/badge/slack-channel-purple.svg?style=flat-square&logo=slack)](https://barbajs.slack.com)
 
 > [Invite link to slack channel](https://join.slack.com/t/barbajs/shared_invite/enQtNTU3NTAyMjkxMzAyLTI1NDIxZDZmMGJjMDlmNzFkODZmMmVmN2U2ODg2Y2M3MzczMDdjZTk5ODQwNWZkYWVlMDM5NGZiODJmMWVhODk)
@@ -72,6 +72,8 @@ Thanks for taking time to contribute to Barba :tada: :+1:
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
+<ul style="display: flex; flex-wrap: wrap; margin: 0; padding: 0; list-style: none;"><li style="flex-basis: 120px; margin: 0; padding: 10px; text-align: center;"><a href="http://luruke.com"><img src="https://avatars0.githubusercontent.com/u/61326?v=4" width="100px;" alt="Luigi De Rosa"/><br /><sup><b>Luigi De Rosa</b></sup></a><br /><a href="#ideas-luruke" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/barbajs/barba/commits?author=luruke" title="Code">💻</a> <a href="https://github.com/barbajs/barba/commits?author=luruke" title="Documentation">📖</a> <a href="#question-luruke" title="Answering Questions">💬</a> <a href="https://github.com/barbajs/barba/issues?q=author%3Aluruke" title="Bug reports">🐛</a> <a href="https://github.com/barbajs/barba/commits?author=luruke" title="Tests">⚠️</a> <a href="#review-luruke" title="Reviewed Pull Requests">👀</a> <a href="#infra-luruke" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></li></ul>
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## Next steps

@@ -3,10 +3,29 @@
   "projectOwner": "barbajs",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "files": ["README.md"],
+  "files": [
+    "README.md"
+  ],
   "imageSize": 100,
-  "commit": false,
+  "commit": true,
   "commitTemplate": "docs(root): :busts_in_silhouette: <%= (newContributor ? 'add' : 'update') %> @<%= username %> as a contributor",
-  "contributors": [],
+  "contributors": [
+    {
+      "login": "luruke",
+      "name": "Luigi De Rosa",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/61326?v=4",
+      "profile": "http://luruke.com",
+      "contributions": [
+        "ideas",
+        "code",
+        "doc",
+        "question",
+        "bug",
+        "test",
+        "review",
+        "infra"
+      ]
+    }
+  ],
   "contributorsPerLine": 1
 }
