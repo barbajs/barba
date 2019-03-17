@@ -467,6 +467,15 @@
         "question",
         "ideas"
       ]
+    },
+    {
+      "login": "bfred-it",
+      "name": "Federico Brigante",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1402241?v=4",
+      "profile": "https://twitter.com/bfred_it",
+      "contributions": [
+        "question"
+      ]
     }
   ],
   "contributorsPerLine": 1
