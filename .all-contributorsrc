@@ -99,6 +99,17 @@
         "bug",
         "question"
       ]
+    },
+    {
+      "login": "mikehwagz",
+      "name": "Mike Wagz",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/12376535?v=4",
+      "profile": "https://selfaware.studio",
+      "contributions": [
+        "ideas",
+        "question",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 1
