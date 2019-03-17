@@ -129,6 +129,15 @@
       "contributions": [
         "question"
       ]
+    },
+    {
+      "login": "anhskohbo",
+      "name": "Nguyen Van Anh",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1529454?v=4",
+      "profile": "http://anhskohbo.github.io/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 1
