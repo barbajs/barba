@@ -539,6 +539,15 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "tipsy",
+      "name": "David",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1521451?v=4",
+      "profile": "https://davidaase.com",
+      "contributions": [
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 1
