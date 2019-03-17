@@ -41,6 +41,18 @@
         "review",
         "infra"
       ]
+    },
+    {
+      "login": "xavierfoucrier",
+      "name": "Xavier Foucrier",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/2471223?v=4",
+      "profile": "https://www.xavierfoucrier.fr",
+      "contributions": [
+        "ideas",
+        "doc",
+        "question",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 1
