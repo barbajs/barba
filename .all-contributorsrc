@@ -374,6 +374,15 @@
       "contributions": [
         "question"
       ]
+    },
+    {
+      "login": "magicspon",
+      "name": "Dave Stockley",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3268717?v=4",
+      "profile": "https://www.spon.io",
+      "contributions": [
+        "question"
+      ]
     }
   ],
   "contributorsPerLine": 1
