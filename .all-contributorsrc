@@ -120,6 +120,15 @@
         "tutorial",
         "video"
       ]
+    },
+    {
+      "login": "19h47",
+      "name": "Jérémy Levron",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/11242861?v=4",
+      "profile": "http://www.19h47.fr",
+      "contributions": [
+        "question"
+      ]
     }
   ],
   "contributorsPerLine": 1
