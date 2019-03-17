@@ -16,7 +16,7 @@ This project uses:
 
 - `git clone git@github.com:barbajs/barba.git`
 - `cd barba`
-- `yarn run install`
+- `yarn install` or `npm install`
 
 ## Testing
 
@@ -29,7 +29,7 @@ For watching mode, run `yarn run watch` or `npm run watch`.
 
 ## Comitting
 
-Run `npm run commit` or install `commitizen` globally and run `cz`.
+Run `yarn run commit` (or `npm run commit`) or install `commitizen` globally and run `cz`.
 
 This project follows:
 
