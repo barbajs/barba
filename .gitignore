@@ -158,10 +158,11 @@ $RECYCLE.BIN/
 
 .tmp
 dist
-cypress
 report.html
 .rts2*
 # Keep microbundle's mangle.json out until it needs to be there?
 mangle.json
+/cypress/screenshots
+/cypress/videos
 /documentation/api
 /PERSONAL.md
