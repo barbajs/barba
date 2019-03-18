@@ -59,6 +59,7 @@ function timeout(
  */
 async function fetcher(url: string): Promise<string> {
   const headers = new Headers({
+    Accept: 'text/html,application/xhtml+xml,application/xml', // tslint:disable-line:object-literal-key-quotes
     'x-barba': 'yes',
   });
 
