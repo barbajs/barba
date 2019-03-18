@@ -296,14 +296,16 @@ export class Core {
     };
     this.data.trigger = trigger;
 
-    const req = this.request(
-      href,
-      this.timeout,
-      this._onRequestError.bind(this, trigger, 'click')
-    );
     const page = this.cache.has(href)
       ? this.cache.get(href)
-      : this.cache.set(href, req);
+      : this.cache.set(
+          href,
+          this.request(
+            href,
+            this.timeout,
+            this._onRequestError.bind(this, trigger, 'click')
+          )
+        );
 
     // Need to wait before getting the right transition
     if (this.transitions.shouldWait) {
