@@ -36,30 +36,30 @@ It helps reducing the delay between your pages, minimizing browser HTTP requests
 
 ## Main changes (TL;DR)
 
-- Barba [container](docs/v2/user/core.md#container) and [wrapper](docs/v2/user/core.md#wrapper) now use `data-barba` attribute
-- Same for [namespace](docs/v2/user/core.md#namespace) via `data-barba-namespace`
+- Barba [container](https://barba.js.org/docs/v2/user/core.html#container) and [wrapper](https://barba.js.org/docs/v2/user/core.html#wrapper) now use `data-barba` attribute
+- Same for [namespace](https://barba.js.org/docs/v2/user/core.html#namespace) via `data-barba-namespace`
 - 2 main methods: `barba.init()` and `barba.use()` (for plugins)
-- [Transitions](docs/v2/user/core.md#transition-object):
+- [Transitions](https://barba.js.org/docs/v2/user/core.html#transition-object):
   - are plain JS objects
   - are declared via the `barba.init({ transitions })`
-  - use "[hooks](docs/v2/user/core.md#hooks)" corresponding to animation steps
+  - use "[hooks](https://barba.js.org/docs/v2/user/core.html#hooks)" corresponding to animation steps
     - hooks can be synchronous or asynchronous (via `this.async()` or promise based)
-    - all hooks receive same [`data` argument](docs/v2/user/core.md#data-argument)
-  - use "[rules](docs/v2/user/core.md#rules)" to select which transition to use
+    - all hooks receive same [`data` argument](https://barba.js.org/docs/v2/user/core.html#data-argument)
+  - use "[rules](https://barba.js.org/docs/v2/user/core.html#rules)" to select which transition to use
     - default rules are `namespace` and `custom`
     - `@barba/router` adds `route` rule
     - they can be combined within `from` and `to` properties
-- [Views](docs/v2/user/core.md#view-object):
+- [Views](https://barba.js.org/docs/v2/user/core.html#view-object):
   - are plain JS objects
   - are declared via the `barba.init({ views })`
   - use a subset of animation "hooks":
     - `beforeAppear`, `afterAppear`, `beforeLeave`, `afterLeave`, `beforeEnter`, `afterEnter`
-    - receive the same [`data` argument](docs/v2/user/core.md#data-argument)
-- [Sync mode](docs/v2/user/core.md#sync-mode) will start `leave` and `enter` transitions concurrently
+    - receive the same [`data` argument](https://barba.js.org/docs/v2/user/core.html#data-argument)
+- [Sync mode](https://barba.js.org/docs/v2/user/core.html#sync-mode) will start `leave` and `enter` transitions concurrently
 
 ## Documentation
 
-- [User guide](https://barba.js.org/docs/v2/user/)
+- [User guide](https://barba.js.org/https://barba.js.org/docs/v2/user/)
 - [API documentation](https://barba.js.org/docs/v2/api/)
 
 ## How to contribute
