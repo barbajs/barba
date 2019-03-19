@@ -59,7 +59,7 @@ import barba from '@barba/core'; // Or nothing if loaded via the browser
 
 // Basic default transition, with no rules and minimal hooks…
 barba.init({
-  transitions: [
+  transitions: [{
     leave({ current, next, trigger }) {
       // Do something with `current.container` for your leave transition
       // then return a promise or use `this.async()`
@@ -68,12 +68,12 @@ barba.init({
       // Do something with `next.container` for your enter transition
       // then return a promise or use `this.async()`
     }
-  ],
+  }],
 });
 
 // Dummy example to illustrate rules and hooks…
 barba.init({
-  transitions: [
+  transitions: [{
     name: 'dummy transitions',
     // Apply only when leaving `[data-barba-namespace="home"]`.
     namespace: 'home',
@@ -95,7 +95,7 @@ barba.init({
     beforeEnter() {},
     enter() {},
     afterEnter() {},
-  ],
+  }],
 });
 ```
 

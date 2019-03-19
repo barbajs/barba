@@ -107,7 +107,7 @@
 
 <span class="hljs-comment">// Basic default transition, with no rules and minimal hooks…</span>
 barba.init({
-  <span class="hljs-attr">transitions</span>: [
+  <span class="hljs-attr">transitions</span>: [{
     leave({ current, next, trigger }) {
       <span class="hljs-comment">// Do something with `current.container` for your leave transition</span>
       <span class="hljs-comment">// then return a promise or use `this.async()`</span>
@@ -116,13 +116,13 @@ barba.init({
       <span class="hljs-comment">// Do something with `next.container` for your enter transition</span>
       <span class="hljs-comment">// then return a promise or use `this.async()`</span>
     }
-  ],
+  }],
 });
 
 <span class="hljs-comment">// Dummy example to illustrate rules and hooks…</span>
 barba.init({
-  <span class="hljs-attr">transitions</span>: [
-    name: <span class="hljs-string">'dummy transitions'</span>,
+  <span class="hljs-attr">transitions</span>: [{
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'dummy transitions'</span>,
     <span class="hljs-comment">// Apply only when leaving `[data-barba-namespace="home"]`.</span>
     namespace: <span class="hljs-string">'home'</span>,
     <span class="hljs-comment">// Apply only when transitioning to `[data-barba-namespace="products | contact"]`.</span>
@@ -143,7 +143,7 @@ barba.init({
     beforeEnter() {},
     enter() {},
     afterEnter() {},
-  ],
+  }],
 });</code></pre>
 				<h2 id="browser-support">Browser support</h2>
 				<p>Barba.js can be viewed as a <a href="https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/">progressive enhancement</a>.
