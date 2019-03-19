@@ -59,7 +59,7 @@ It helps reducing the delay between your pages, minimizing browser HTTP requests
 
 ## Documentation
 
-- [User guide](https://barba.js.org/https://barba.js.org/docs/v2/user/)
+- [User guide](https://barba.js.org/docs/v2/user/)
 - [API documentation](https://barba.js.org/docs/v2/api/)
 
 ## How to contribute
