@@ -38,17 +38,17 @@ The namespace allow you to define **a unique name for each pages**. Barba mainly
 
 ### `barba.init(<options>)`
 
-| Option                              | Type                          | Default                                                              | Description                                   |
-| ----------------------------------- | ----------------------------- | -------------------------------------------------------------------- | --------------------------------------------- |
-| `transitions`                       | Array                         | []                                                                   | Array of [`<Transition>`](#transition-object) |
-| `views`                             | Array                         | []                                                                   | Array of [`<View>`](#view-object)             |
-| [`debug`](#debug)                   | Boolean                       | false                                                                | Set logLevel to 'debug'                       |
-| [`logLevel`](#loglevel)             | string                        | 'off'                                                                | Log level                                     |
-| [`schema`](#schema)                 | Object                        | [`schemaAttribute`](../../../packages/core/src/schemas/attribute.ts) | Data attributes                               |
-| [`cacheIgnore`](#cacheignore)       | Boolean \| string \| string[] | false                                                                | Cache strategy                                |
-| [`prefetchIgnore`](#prefetchignore) | Boolean \| string \| string[] | true                                                                 | Prefetch strategy                             |
-| [`prevent`](#prevent)               | Function                      | (optional)                                                           | Custom prevent test                           |
-| [`requestError`](#requesterror)     | Function                      | (optional)                                                           | Custom request error callback                 |
+| Option                              | Type                          | Default           | Description                                   |
+| ----------------------------------- | ----------------------------- | ----------------- | --------------------------------------------- |
+| `transitions`                       | Array                         | []                | Array of [`<Transition>`](#transition-object) |
+| `views`                             | Array                         | []                | Array of [`<View>`](#view-object)             |
+| [`debug`](#debug)                   | Boolean                       | false             | Set logLevel to 'debug'                       |
+| [`logLevel`](#loglevel)             | string                        | 'off'             | Log level                                     |
+| [`schema`](#schema)                 | Object                        | `schemaAttribute` | Data attributes                               |
+| [`cacheIgnore`](#cacheignore)       | Boolean \| string \| string[] | false             | Cache strategy                                |
+| [`prefetchIgnore`](#prefetchignore) | Boolean \| string \| string[] | true              | Prefetch strategy                             |
+| [`prevent`](#prevent)               | Function                      | (optional)        | Custom prevent test                           |
+| [`requestError`](#requesterror)     | Function                      | (optional)        | Custom request error callback                 |
 
 #### `<transition>` object
 
@@ -390,7 +390,7 @@ barba.init({
 
 #### schema
 
-Allows you to override data attributes. See default [`schemaAttribute`](../../../packages/core/src/schemas/attribute.ts).
+Allows you to override data attributes. See default [`schemaAttribute`](https://github.com/barbajs/barba/blob/master/packages/core/src/schemas/attribute.ts).
 
 Example:
 
