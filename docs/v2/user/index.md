@@ -13,9 +13,14 @@ title: User guide
 [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](https://github.com/barbajs/barba/blob/master/LICENSE)
 [![Slack channel](https://img.shields.io/badge/slack-channel-purple.svg?style=flat-square&logo=slack)](https://barbajs.slack.com)
 
-**Barba.js** is a small (8kb minified and gzipped) and easy-to-use library that helps you creating fluid and smooth transitions between your website's pages.
+**Barba.js** is a small (7kb minified and compressed) and easy-to-use library that helps you creating fluid and smooth transitions between your website's pages.
 
 It helps reducing the delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.
+
+> Notice: This guide assumes intermediate level knowledge of HTML, CSS, and JavaScript.
+> It is worth mentioning that all the code examples use ES6+ syntax.<br>
+> If you are not comfortable with, we encourage you to grasp the basics then come back.<br>
+> In case of emergency, check this ["legacy" code example](legacy.md).
 
 ## Useful links
 
@@ -59,43 +64,48 @@ import barba from '@barba/core'; // Or nothing if loaded via the browser
 
 // Basic default transition, with no rules and minimal hooks…
 barba.init({
-  transitions: [{
-    leave({ current, next, trigger }) {
-      // Do something with `current.container` for your leave transition
-      // then return a promise or use `this.async()`
+  transitions: [
+    {
+      leave({ current, next, trigger }) {
+        // Do something with `current.container` for your leave transition
+        // then return a promise or use `this.async()`
+      },
+      enter({ current, next, trigger }) {
+        // Do something with `next.container` for your enter transition
+        // then return a promise or use `this.async()`
+      },
     },
-    enter({ current, next, trigger }) {
-      // Do something with `next.container` for your enter transition
-      // then return a promise or use `this.async()`
-    }
-  }],
+  ],
 });
 
 // Dummy example to illustrate rules and hooks…
 barba.init({
-  transitions: [{
-    name: 'dummy transitions',
-    // Apply only when leaving `[data-barba-namespace="home"]`.
-    namespace: 'home',
-    // Apply only when transitioning to `[data-barba-namespace="products | contact"]`.
-    to: {
-      namespace: ['products', 'contact'],
+  transitions: [
+    {
+      name: 'dummy transitions',
+      // Apply only when leaving `[data-barba-namespace="home"]`.
+      namespace: 'home',
+      // Apply only when transitioning to `[data-barba-namespace="products | contact"]`.
+      to: {
+        namespace: ['products', 'contact'],
+      },
+      // Apply only if clicked link contains `.cta`.
+      custom: ({ current, next, trigger }) =>
+        trigger.classList && trigger.classList.contains('cta'),
+      // Do leave and enter concurrently.
+      sync: true,
+      // Available hooks…
+      beforeAppear() {},
+      appear() {},
+      afterAppear() {},
+      beforeLeave() {},
+      leave() {},
+      afterLeave() {},
+      beforeEnter() {},
+      enter() {},
+      afterEnter() {},
     },
-    // Apply only if clicked link contains `.cta`.
-    custom: ({current, next, trigger}) => trigger.classList && trigger.classList.contains('cta'),
-    // Do leave and enter concurrently.
-    sync: true,
-    // Available hooks…
-    beforeAppear() {},
-    appear() {},
-    afterAppear() {},
-    beforeLeave() {},
-    leave() {},
-    afterLeave() {},
-    beforeEnter() {},
-    enter() {},
-    afterEnter() {},
-  }],
+  ],
 });
 ```
 
