@@ -17,6 +17,11 @@ title: User guide
 
 It helps reducing the delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.
 
+> Notice: This guide assumes intermediate level knowledge of HTML, CSS, and JavaScript.
+> It is worth mentioning that all the code examples use ES6+ syntax.<br>
+> If you are not comfortable with, we encourage you to grasp the basics then come back.<br>
+> In case of emergency, check this ["legacy" code example](legacy.md).
+
 ## Useful links
 
 - [User guide](https://barba.js.org/docs/v2/user/)
