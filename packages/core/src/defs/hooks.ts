@@ -4,6 +4,7 @@
 import { ISchemaPage, Trigger } from '.';
 
 export type HooksBarba =
+  | 'ready'
   | 'page'
   | 'reset'
   | 'currentAdded'

@@ -58,7 +58,7 @@ it('do page', async () => {
     trigger: 'barba',
   };
 
-  await barba.page('http://localhost/foo', 'barba');
+  await barba.page('http://localhost/foo', 'barba', false);
 
   expect(spyCacheHas).toHaveBeenCalledTimes(1);
   expect(spyCacheSet).toHaveBeenCalledTimes(1);
@@ -75,7 +75,7 @@ it('do page [popstate]', async () => {
   barba.history.add = jest.fn();
 
   barba.transitions.store.add('transition', { leave() {}, enter() {} });
-  await barba.page('http://localhost/foo', 'popstate');
+  await barba.page('http://localhost/foo', 'popstate', false);
 
   expect(barba.history.add).toHaveBeenCalledTimes(1);
 });
@@ -88,7 +88,7 @@ it('do page [has cache]', async () => {
   // to avoid prevent "sameURL"
   barba.transitions.store.add('transition', { name: 'self' });
   barba.transitions.store.add('transition', { leave() {}, enter() {} });
-  await barba.page('http://localhost/', 'barba');
+  await barba.page('http://localhost/', 'barba', false);
 
   expect(spyCacheHas).toHaveBeenCalledTimes(1);
   expect(spyCacheGet).toHaveBeenCalledTimes(1);
@@ -104,7 +104,7 @@ it('do page [waiting]', async () => {
     enter() {},
     to: { namespace: 'ns' },
   });
-  await barba.page('http://localhost', 'barba');
+  await barba.page('http://localhost/foo', 'barba', false);
 
   expect(barba.data.next.html).toMatch(checkDoc);
 });
@@ -115,7 +115,7 @@ it('force when manager running', async () => {
 
   barba.transitions.store.add('transition', { leave() {}, enter() {} });
   barba.transitions['_running'] = true;
-  await barba.page('http://localhost/foo', 'barba');
+  await barba.page('http://localhost/foo', 'barba', false);
 
   expect(barba.force).toHaveBeenCalledTimes(1);
   expect(hooks.do).not.toHaveBeenCalled();
@@ -139,7 +139,7 @@ it('catches error', async () => {
     },
   });
 
-  await barba.page('http://localhost', 'barba');
+  await barba.page('http://localhost', 'barba', false);
 
   expect(barba.transitions.logger.error).toHaveBeenCalledWith(errorLeave);
   expect(barba.logger.error).toHaveBeenCalledWith(errorTransition);

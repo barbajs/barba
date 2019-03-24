@@ -177,7 +177,7 @@ export class Core {
     this._wrapper.setAttribute('aria-live', 'polite'); // A11y
 
     // 3. Init pages (get "current" data)
-    this._resetData();
+    this._initData();
 
     const { current } = this.data;
 
@@ -217,7 +217,10 @@ export class Core {
     // 7. Init plugins
     this.plugins.forEach(plugin => plugin.init());
 
-    // 8. Finally, do appear…
+    // 8. Barba ready
+    this.hooks.do('ready', this.data);
+
+    // 9. Finally, do appear…
     this.appear();
   }
 
@@ -364,7 +367,7 @@ export class Core {
 
     // Hook: between trigger and transition
     // Can be used to resolve "route"…
-    hooks.do('page', data);
+    this.hooks.do('page', data);
 
     try {
       const transition = this.transitions.get(data, {
@@ -529,6 +532,18 @@ export class Core {
   }
 
   /**
+   * Init pages data.
+   *
+   * Set "next.namespace" same as "current" for first load.
+   * Because, we need to trigger `view.beforeEnter` with the current namespace.
+   */
+  private _initData() {
+    this._resetData();
+
+    this.data.next.namespace = this.data.current.namespace;
+  }
+
+  /**
    * Reset pages data.
    *
    * Set "current" and unset "next".
@@ -551,7 +566,7 @@ export class Core {
       trigger: undefined,
     };
 
-    hooks.do('reset', this.data);
+    this.hooks.do('reset', this.data);
   }
 
   /**

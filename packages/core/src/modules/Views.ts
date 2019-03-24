@@ -51,6 +51,8 @@ export class Views {
     this.names.forEach(name => {
       hooks[name](this._createHook(name), this);
     });
+
+    hooks.ready(this._createHook('beforeEnter'), this);
   }
 
   /**
@@ -64,7 +66,9 @@ export class Views {
       const { namespace } = name.match(/enter/i) ? data.next : data.current;
       const view = this.byNamespace.get(namespace);
 
-      if (view && data.trigger !== 'self') {
+      // TODO: manage self…
+      // if (view && data.trigger !== 'self') {
+      if (view) {
         view[name] && view[name](data);
       }
     };
