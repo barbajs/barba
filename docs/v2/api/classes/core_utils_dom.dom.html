@@ -92,9 +92,9 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_utils_dom.dom.html#getcontainer" class="tsd-kind-icon">get<wbr>Container</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_utils_dom.dom.html#gethref" class="tsd-kind-icon">get<wbr>Href</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_utils_dom.dom.html#gethtml" class="tsd-kind-icon">get<wbr>Html</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_utils_dom.dom.html#getnamespace" class="tsd-kind-icon">get<wbr>Namespace</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_utils_dom.dom.html#geturl" class="tsd-kind-icon">get<wbr>Url</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_utils_dom.dom.html#getwrapper" class="tsd-kind-icon">get<wbr>Wrapper</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_utils_dom.dom.html#todocument" class="tsd-kind-icon">to<wbr>Document</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_utils_dom.dom.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
@@ -160,6 +160,37 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="gethref" class="tsd-anchor"></a>
+					<h3>get<wbr>Href</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Href<span class="tsd-signature-symbol">(</span>el<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLLinkElement</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L86">core/src/utils/dom.ts:86</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get URL from <code>href</code> value.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>el: <span class="tsd-signature-type">HTMLLinkElement</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">null</span>
+							</h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="gethtml" class="tsd-anchor"></a>
 					<h3>get<wbr>Html</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -209,37 +240,6 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> scope: <a href="../modules/typings_core.html#scope" class="tsd-signature-type">Scope</a><span class="tsd-signature-symbol"> =&nbsp;document</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span>
-								<span class="tsd-signature-symbol"> | </span>
-								<span class="tsd-signature-type">null</span>
-							</h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="geturl" class="tsd-anchor"></a>
-					<h3>get<wbr>Url</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Url<span class="tsd-signature-symbol">(</span>el<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLLinkElement</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L86">core/src/utils/dom.ts:86</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Get URL from <code>href</code> value.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>el: <span class="tsd-signature-type">HTMLLinkElement</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span>
@@ -429,13 +429,13 @@
 								<a href="core_utils_dom.dom.html#getcontainer" class="tsd-kind-icon">get<wbr>Container</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="core_utils_dom.dom.html#gethref" class="tsd-kind-icon">get<wbr>Href</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="core_utils_dom.dom.html#gethtml" class="tsd-kind-icon">get<wbr>Html</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="core_utils_dom.dom.html#getnamespace" class="tsd-kind-icon">get<wbr>Namespace</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="core_utils_dom.dom.html#geturl" class="tsd-kind-icon">get<wbr>Url</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="core_utils_dom.dom.html#getwrapper" class="tsd-kind-icon">get<wbr>Wrapper</a>

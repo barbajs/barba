@@ -119,6 +119,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="core.core-1.html#_bind" class="tsd-kind-icon">_bind</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="core.core-1.html#_getlinkelement" class="tsd-kind-icon">_get<wbr>Link<wbr>Element</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="core.core-1.html#_initdata" class="tsd-kind-icon">_init<wbr>Data</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="core.core-1.html#_onlinkclick" class="tsd-kind-icon">_on<wbr>Link<wbr>Click</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="core.core-1.html#_onlinkenter" class="tsd-kind-icon">_on<wbr>Link<wbr>Enter</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="core.core-1.html#_onrequesterror" class="tsd-kind-icon">_on<wbr>Request<wbr>Error</a></li>
@@ -131,6 +132,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core.core-1.html#force" class="tsd-kind-icon">force</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core.core-1.html#go" class="tsd-kind-icon">go</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core.core-1.html#init" class="tsd-kind-icon">init</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core.core-1.html#page" class="tsd-kind-icon">page</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="core.core-1.html#use" class="tsd-kind-icon">use</a></li>
 							</ul>
 						</section>
@@ -407,7 +409,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L231">core/src/core.ts:231</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L234">core/src/core.ts:234</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/typings_core.itransitiondata.html" class="tsd-signature-type">ITransitionData</a></h4>
@@ -424,7 +426,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L235">core/src/core.ts:235</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L238">core/src/core.ts:238</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">HTMLElement</span></h4>
@@ -444,7 +446,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L351">core/src/core.ts:351</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L397">core/src/core.ts:397</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -466,7 +468,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L483">core/src/core.ts:483</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L519">core/src/core.ts:519</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -487,6 +489,30 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="_initdata" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _init<wbr>Data</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">_init<wbr>Data<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L540">core/src/core.ts:540</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Init pages data.</p>
+								</div>
+								<p>Set &quot;next.namespace&quot; same as &quot;current&quot; for first load.
+								Because, we need to trigger <code>view.beforeEnter</code> with the current namespace.</p>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
 					<a name="_onlinkclick" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _on<wbr>Link<wbr>Click</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
@@ -496,7 +522,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L415">core/src/core.ts:415</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L461">core/src/core.ts:461</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -527,7 +553,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L380">core/src/core.ts:380</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L426">core/src/core.ts:426</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -557,7 +583,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L453">core/src/core.ts:453</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L489">core/src/core.ts:489</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -586,13 +612,13 @@
 					<a name="_onstatechange" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _on<wbr>State<wbr>Change</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">_on<wbr>State<wbr>Change<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">_on<wbr>State<wbr>Change<span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">PopStateEvent</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L442">core/src/core.ts:442</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L478">core/src/core.ts:478</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -602,6 +628,12 @@
 								<p>Get &quot;href&quot; from URL
 								Go for a Barba transition.</p>
 							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>e: <span class="tsd-signature-type">PopStateEvent</span></h5>
+								</li>
+							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -616,7 +648,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L503">core/src/core.ts:503</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L551">core/src/core.ts:551</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -639,7 +671,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L364">core/src/core.ts:364</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L410">core/src/core.ts:410</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -661,7 +693,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L527">core/src/core.ts:527</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L575">core/src/core.ts:575</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -689,7 +721,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L257">core/src/core.ts:257</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L295">core/src/core.ts:295</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -713,7 +745,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L224">core/src/core.ts:224</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L227">core/src/core.ts:227</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -737,8 +769,6 @@
 								<div class="lead">
 									<h3 id="force-a-page-change-without-barba-transition-">Force a page change without Barba transition.</h3>
 								</div>
-								<p>Check for a &quot;href&quot; attribute.
-								Then check if eligible for Barba.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -754,28 +784,29 @@
 					<a name="go" class="tsd-anchor"></a>
 					<h3>go</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">go<span class="tsd-signature-symbol">(</span>href<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, trigger<span class="tsd-signature-symbol">?: </span><a href="../modules/typings_core.html#trigger" class="tsd-signature-type">Trigger</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">go<span class="tsd-signature-symbol">(</span>href<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, trigger<span class="tsd-signature-symbol">?: </span><a href="../modules/typings_core.html#trigger" class="tsd-signature-type">Trigger</a>, e<span class="tsd-signature-symbol">?: </span><a href="../modules/typings_core.html#linkevent" class="tsd-signature-type">LinkEvent</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">PopStateEvent</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L285">core/src/core.ts:285</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L262">core/src/core.ts:262</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<h3 id="start-a-page-transition-">Start a &quot;page&quot; transition.</h3>
+									<h3 id="go-for-a-barba-transition-">Go for a Barba transition.</h3>
 								</div>
-								<ol>
-									<li>If no running transition, updates data with full URL properties and trigger.</li>
-									<li>Get page from cache or init request.</li>
-									<li>Wait if some transitions need &quot;next&quot; data (<code>sync: true</code>, <code>to: …</code>).</li>
-									<li>Manage the history, depending on trigger.</li>
-									<li>Get &quot;data&quot; and trigger &quot;go&quot; hook.</li>
-									<li>Get the &quot;resolved&quot; transition from the store and start it.</li>
-									<li>Update title and reset data (current, next = undefined)</li>
-								</ol>
+								<p>Manage &quot;self page&quot; href:</p>
+								<ul>
+									<li>if same url and no self transition, keep default behavior<ul>
+											<li>link: reload the page</li>
+											<li>anchor: scroll to</li>
+										</ul>
+									</li>
+									<li>if same url with self transition, use it</li>
+									<li>then start a page transition.</li>
+								</ul>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -784,6 +815,9 @@
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> trigger: <a href="../modules/typings_core.html#trigger" class="tsd-signature-type">Trigger</a><span class="tsd-signature-symbol"> =&nbsp;&quot;barba&quot;</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> e: <a href="../modules/typings_core.html#linkevent" class="tsd-signature-type">LinkEvent</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">PopStateEvent</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -827,6 +861,52 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="page" class="tsd-anchor"></a>
+					<h3>page</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">page<span class="tsd-signature-symbol">(</span>href<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, trigger<span class="tsd-signature-symbol">: </span><a href="../modules/typings_core.html#trigger" class="tsd-signature-type">Trigger</a>, self<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L324">core/src/core.ts:324</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<h3 id="start-a-page-transition-">Start a &quot;page&quot; transition.</h3>
+								</div>
+								<ol>
+									<li>If no running transition, updates data with full URL properties and trigger.</li>
+									<li>Get page from cache or init request.</li>
+									<li>Wait if some transitions need &quot;next&quot; data (<code>sync: true</code>, <code>to: …</code>).</li>
+									<li>Manage the history, depending on trigger.</li>
+									<li>Get &quot;data&quot; and trigger &quot;go&quot; hook.</li>
+									<li>Get the &quot;resolved&quot; transition from the store and start it.</li>
+									<li>Update title and reset data (current, next = undefined).</li>
+								</ol>
+								<blockquote>
+									<p>If &quot;self&quot;, use the &quot;self&quot; transition</p>
+								</blockquote>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>href: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>trigger: <a href="../modules/typings_core.html#trigger" class="tsd-signature-type">Trigger</a></h5>
+								</li>
+								<li>
+									<h5>self: <span class="tsd-signature-type">boolean</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1030,6 +1110,9 @@
 								<a href="core.core-1.html#_getlinkelement" class="tsd-kind-icon">_get<wbr>Link<wbr>Element</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="core.core-1.html#_initdata" class="tsd-kind-icon">_init<wbr>Data</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="core.core-1.html#_onlinkclick" class="tsd-kind-icon">_on<wbr>Link<wbr>Click</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
@@ -1064,6 +1147,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="core.core-1.html#init" class="tsd-kind-icon">init</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="core.core-1.html#page" class="tsd-kind-icon">page</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
 								<a href="core.core-1.html#use" class="tsd-kind-icon">use</a>
