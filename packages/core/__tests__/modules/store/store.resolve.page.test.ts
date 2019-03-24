@@ -11,8 +11,9 @@ const tNsFromTo = {
   from: { namespace: 'nsFrom' },
   to: { namespace: 'nsTo' },
 };
+const tSelf = { name: 'self' };
 
-const store = new Store([t, tNs, tNsFrom, tNsTo, tNsFromTo]);
+const store = new Store([t, tNs, tNsFrom, tNsTo, tNsFromTo, tSelf]);
 
 it('get "page" transition', () => {
   const result = store.resolve(({
@@ -57,4 +58,16 @@ it('get "page/fromTo" transition', () => {
   } as unknown) as ITransitionData);
 
   expect(result).toBe(tNsFromTo);
+});
+
+it('get "self" transition', () => {
+  const result = store.resolve(
+    ({
+      current: { namespace: 'nsFrom' },
+      next: { namespace: 'nsTo' },
+    } as unknown) as ITransitionData,
+    { self: true }
+  );
+
+  expect(result).toBe(tSelf);
 });

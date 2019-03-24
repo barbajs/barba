@@ -19,6 +19,7 @@ import {
   HooksTransitionMap,
   ITransitionAppear,
   ITransitionData,
+  ITransitionFilters,
   ITransitionPage,
   Wrapper,
 } from '../defs';
@@ -41,12 +42,14 @@ export class Transitions {
 
   /**
    * Get resolved transition
+   *
+   * - based on data
    */
   public get(
     data: ITransitionData,
-    appear: boolean = false
+    filters?: ITransitionFilters
   ): ITransitionAppear | ITransitionPage {
-    return this.store.resolve(data, appear);
+    return this.store.resolve(data, filters);
   }
 
   /**
@@ -61,6 +64,13 @@ export class Transitions {
    */
   get hasAppear(): boolean {
     return this.store.appear.length > 0;
+  }
+
+  /**
+   * Check for registered self transition.
+   */
+  get hasSelf(): boolean {
+    return this.store.all.some(t => t.name === 'self');
   }
 
   /**
@@ -184,7 +194,6 @@ export class Transitions {
         }
       } else {
         let leaveResult: any = false;
-
         try {
           // Leave
           await this._doAsyncHook('beforeLeave', data, t);

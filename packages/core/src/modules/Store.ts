@@ -18,6 +18,7 @@ import {
   IRules,
   ITransitionAppear,
   ITransitionData,
+  ITransitionFilters,
   ITransitionPage,
   RuleName,
 } from '../defs';
@@ -89,9 +90,17 @@ export class Store {
    */
   public resolve(
     data: ITransitionData,
-    appear: boolean = false
+    filters: ITransitionFilters = {}
   ): ITransitionAppear | ITransitionPage {
-    const transitions = appear ? this.appear : this.all;
+    // Filter on "appear"
+    let transitions = filters.appear ? this.appear : this.all;
+
+    // Filter on "self"
+    if (filters.self) {
+      transitions = transitions.filter(t => t.name && t.name === 'self');
+    } else {
+      transitions = transitions.filter(t => !t.name || t.name !== 'self');
+    }
 
     // All matching transition infos
     const matching = new Map();
@@ -102,12 +111,16 @@ export class Store {
       let valid = true;
       const match = {};
 
+      if (filters.self && t.name === 'self') {
+        return true;
+      }
+
       // Check rules
       this._rules.reverse().forEach(rule => {
         if (valid) {
           valid = this._check(t, rule, data, match);
           // From/to check, only for page transitions
-          if (!appear) {
+          if (!filters.appear) {
             if (t.from && t.to) {
               valid =
                 this._check(t, rule, data, match, 'from') &&

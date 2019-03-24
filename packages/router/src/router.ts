@@ -71,7 +71,7 @@ class Router implements IBarbaPlugin<IRouterOptions> {
       },
     });
     // Register hooks
-    this.barba.hooks.go(this.resolveRoutes, this);
+    this.barba.hooks.page(this.resolveRoutes, this);
     this.barba.hooks.reset(this.resolveRoutes, this);
   }
 

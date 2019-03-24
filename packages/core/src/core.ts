@@ -238,14 +238,49 @@ export class Core {
 
   /**
    * ### Force a page change without Barba transition.
-   *
-   * Check for a "href" attribute.
-   * Then check if eligible for Barba.
    */
   public force(href: string): void {
     // DEV
     // Can be used waiting animation cancellation management…
     window.location.assign(href);
+  }
+
+  /**
+   * ### Go for a Barba transition.
+   *
+   * Manage "self page" href:
+   *
+   * - if same url and no self transition, keep default behavior
+   *   - link: reload the page
+   *   - anchor: scroll to
+   * - if same url with self transition, use it
+   * - then start a page transition.
+   */
+  public go(
+    href: string,
+    trigger: Trigger = 'barba',
+    e?: LinkEvent | PopStateEvent
+  ): Promise<void> {
+    let self = false;
+
+    // Check prevent sameURL
+    if (this.prevent.run('sameUrl', null, null, href)) {
+      // TODO: Same URL:
+      // - add special "self" hook ?
+      // this.force(link.href);
+      self = true;
+
+      if (!this.transitions.hasSelf) {
+        return;
+      }
+    }
+
+    if (e) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+
+    return this.page(href, trigger, self);
   }
 
   /**
@@ -259,10 +294,9 @@ export class Core {
     if (this.transitions.hasAppear) {
       try {
         const data = this._data;
-        const transition = this.transitions.get(
-          data,
-          true
-        ) as ITransitionAppear;
+        const transition = this.transitions.get(data, {
+          appear: true,
+        }) as ITransitionAppear;
 
         await this.transitions.doAppear({ transition, data });
       } catch (error) {
@@ -280,9 +314,15 @@ export class Core {
    * 4. Manage the history, depending on trigger.
    * 5. Get "data" and trigger "go" hook.
    * 6. Get the "resolved" transition from the store and start it.
-   * 7. Update title and reset data (current, next = undefined)
+   * 7. Update title and reset data (current, next = undefined).
+   *
+   * > If "self", use the "self" transition
    */
-  public async go(href: string, trigger: Trigger = 'barba'): Promise<void> {
+  public async page(
+    href: string,
+    trigger: Trigger,
+    self: boolean
+  ): Promise<void> {
     // If animation running, force reload
     if (this.transitions.isRunning) {
       this.force(href);
@@ -320,14 +360,17 @@ export class Core {
       this.history.push(href, this.data.next.namespace);
     }
 
-    const data = this._data;
+    const data = this.data;
 
     // Hook: between trigger and transition
     // Can be used to resolve "route"…
-    hooks.do('go', data);
+    hooks.do('page', data);
 
     try {
-      const transition = this.transitions.get(data) as ITransitionPage;
+      const transition = this.transitions.get(data, {
+        appear: false,
+        self,
+      }) as ITransitionPage;
 
       await this.transitions.doPage({
         data,
@@ -384,7 +427,7 @@ export class Core {
       return;
     }
 
-    const href = this.dom.getUrl(link);
+    const href = this.dom.getHref(link);
 
     if (this.prevent.checkUrl(href)) {
       return;
@@ -413,24 +456,14 @@ export class Core {
    * Go for a Barba transition.
    */
   private _onLinkClick(e: LinkEvent): void {
+    // This use `prevent.checkLink` under the hood to get eligible link.
     const link = this._getLinkElement(e);
 
     if (!link) {
       return;
     }
 
-    e.stopPropagation();
-    e.preventDefault();
-
-    // Check prevent sameURL
-    if (this.prevent.run('sameUrl', link, e, link.href)) {
-      // Same URL -> force reload
-      this.force(link.href);
-
-      return;
-    }
-
-    this.go(this.dom.getUrl(link), link);
+    this.go(this.dom.getHref(link), link, e);
   }
 
   /**
@@ -439,10 +472,10 @@ export class Core {
    * Get "href" from URL
    * Go for a Barba transition.
    */
-  private _onStateChange(): void {
+  private _onStateChange(e: PopStateEvent): void {
     const href = this.url.getHref();
 
-    this.go(href, 'popstate');
+    this.go(href, 'popstate', e);
   }
 
   /**
@@ -483,7 +516,7 @@ export class Core {
   private _getLinkElement(e: LinkEvent): HTMLLinkElement {
     let el = e.target as HTMLLinkElement;
 
-    while (el && !this.dom.getUrl(el)) {
+    while (el && !this.dom.getHref(el)) {
       el = (el as HTMLElement).parentNode as HTMLLinkElement;
     }
 

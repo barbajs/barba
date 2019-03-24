@@ -69,7 +69,7 @@ class Prefetch implements IBarbaPlugin<IPrefetchOptions> {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const link = entry.target as HTMLLinkElement;
-          const url = this.barba.dom.getUrl(link);
+          const url = this.barba.dom.getHref(link);
 
           if (this.toPrefetch.has(url)) {
             this.observer.unobserve(link);
@@ -102,7 +102,7 @@ class Prefetch implements IBarbaPlugin<IPrefetchOptions> {
         // If not, find all links and use IntersectionObserver.
         this.root.querySelectorAll('a').forEach(el => {
           const link = (el as unknown) as HTMLLinkElement;
-          const url = this.barba.dom.getUrl(link);
+          const url = this.barba.dom.getHref(link);
 
           if (
             !this.barba.cache.has(url) &&

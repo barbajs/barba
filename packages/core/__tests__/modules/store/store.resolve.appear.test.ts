@@ -20,7 +20,7 @@ it('get "appear" transition', () => {
     ({
       current: { namespace: 'none' },
     } as unknown) as ITransitionData,
-    true
+    { appear: true }
   );
 
   expect(result).toBe(tAppear);
@@ -31,7 +31,7 @@ it('get "appear/ns" transition', () => {
     ({
       current: { namespace: 'ns' },
     } as unknown) as ITransitionData,
-    true
+    { appear: true }
   );
 
   expect(result).toBe(tAppearNs);
@@ -42,7 +42,7 @@ it('get "appear/custom" transition', () => {
     ({
       current: { namespace: 'custom' },
     } as unknown) as ITransitionData,
-    true
+    { appear: true }
   );
 
   expect(result).toBe(tAppearCustom);

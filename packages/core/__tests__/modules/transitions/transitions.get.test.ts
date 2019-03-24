@@ -20,5 +20,5 @@ it('gets page transition', () => {
 });
 
 it('gets appear transition', () => {
-  expect(transitions.get(data, true)).toBe(appear);
+  expect(transitions.get(data, { appear: true })).toBe(appear);
 });

@@ -41,7 +41,7 @@ export class Hooks {
    */
   // TODO: get hooks from defs (DRY)?
   public all: HooksAll[] = [
-    'go',
+    'page',
     'reset',
     'currentAdded',
     'currentRemoved',

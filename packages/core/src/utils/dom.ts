@@ -83,7 +83,7 @@ export class Dom {
   /**
    * Get URL from `href` value.
    */
-  public getUrl(el: HTMLLinkElement): string | null {
+  public getHref(el: HTMLLinkElement): string | null {
     return el.getAttribute && el.getAttribute('href') ? el.href : null;
   }
 }

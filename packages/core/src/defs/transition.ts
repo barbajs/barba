@@ -12,6 +12,13 @@ export interface ITransitionData {
   trigger: Trigger;
 }
 
+// Filter
+export interface ITransitionFilters {
+  appear?: boolean;
+  self?: boolean;
+}
+
+// Rules
 export interface ITransitionRules {
   namespace?: string | string[];
   route?: string | string[];

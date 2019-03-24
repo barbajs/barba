@@ -64,7 +64,7 @@ export class Views {
       const { namespace } = name.match(/enter/i) ? data.next : data.current;
       const view = this.byNamespace.get(namespace);
 
-      if (view) {
+      if (view && data.trigger !== 'self') {
         view[name] && view[name](data);
       }
     };
