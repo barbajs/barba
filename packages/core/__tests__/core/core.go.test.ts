@@ -49,11 +49,24 @@ it('prevent same url with no self transition', async () => {
   expect(barba.page).not.toHaveBeenCalled();
 });
 
-it('use self transition on same url', async () => {
+it('use self transition on same url [barba]', async () => {
   barba.page = jest.fn();
   barba.transitions.store.add('transition', { name: 'self' });
 
   await barba.go('http://localhost/');
 
   expect(barba.page).toHaveBeenCalledWith('http://localhost/', 'barba', true);
+});
+
+it('use self transition on same url [popstate]', async () => {
+  barba.page = jest.fn();
+  barba.transitions.store.add('transition', { name: 'self' });
+
+  await barba.go('http://localhost/', 'popstate');
+
+  expect(barba.page).toHaveBeenCalledWith(
+    'http://localhost/',
+    'popstate',
+    true
+  );
 });

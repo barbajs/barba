@@ -266,16 +266,17 @@ export class Core {
   ): Promise<void> {
     let self = false;
 
-    // Check prevent sameURL
-    if (this.prevent.run('sameUrl', null, null, href)) {
-      // TODO: Same URL:
-      // - add special "self" hook ?
-      // this.force(link.href);
-      self = true;
+    // Check prevent sameURL against current history
+    if (trigger === 'popstate') {
+      self =
+        this.history &&
+        this.url.getPath(this.history.current.url) === this.url.getPath(href);
+    } else {
+      self = this.prevent.run('sameUrl', null, null, href);
+    }
 
-      if (!this.transitions.hasSelf) {
-        return;
-      }
+    if (self && !this.transitions.hasSelf) {
+      return;
     }
 
     if (e) {
@@ -475,10 +476,8 @@ export class Core {
    * Get "href" from URL
    * Go for a Barba transition.
    */
-  private _onStateChange(e: PopStateEvent): void {
-    const href = this.url.getHref();
-
-    this.go(href, 'popstate', e);
+  private _onStateChange(): void {
+    this.go(this.url.getHref(), 'popstate');
   }
 
   /**
