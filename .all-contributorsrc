@@ -597,6 +597,15 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "dwightjack",
+      "name": "Marco Solazzi",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/104721?v=4",
+      "profile": "http://marco.solazzi.me/",
+      "contributions": [
+        "bug"
+      ]
     }
   ]
 }
