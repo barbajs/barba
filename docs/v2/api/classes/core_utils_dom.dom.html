@@ -97,6 +97,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_utils_dom.dom.html#getnamespace" class="tsd-kind-icon">get<wbr>Namespace</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_utils_dom.dom.html#getwrapper" class="tsd-kind-icon">get<wbr>Wrapper</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_utils_dom.dom.html#todocument" class="tsd-kind-icon">to<wbr>Document</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_utils_dom.dom.html#toelement" class="tsd-kind-icon">to<wbr>Element</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_utils_dom.dom.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
 							</ul>
 						</section>
@@ -138,7 +139,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L64">core/src/utils/dom.ts:64</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L79">core/src/utils/dom.ts:79</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -169,7 +170,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L86">core/src/utils/dom.ts:86</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L101">core/src/utils/dom.ts:101</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -200,7 +201,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L41">core/src/utils/dom.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L56">core/src/utils/dom.ts:56</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -228,7 +229,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L73">core/src/utils/dom.ts:73</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L88">core/src/utils/dom.ts:88</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -259,7 +260,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L55">core/src/utils/dom.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L70">core/src/utils/dom.ts:70</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -287,7 +288,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L34">core/src/utils/dom.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L36">core/src/utils/dom.ts:36</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -302,6 +303,36 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">HTMLDocument</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="toelement" class="tsd-anchor"></a>
+					<h3>to<wbr>Element</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">to<wbr>Element<span class="tsd-signature-symbol">(</span>htmlString<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLDivElement</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L46">core/src/utils/dom.ts:46</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Parse HTML string to DIVElement.</p>
+								</div>
+								<p>DOMParser.parseFromString fails with img[srcset] on iOS.
+								see <a href="https://github.com/barbajs/barba/issues/362">https://github.com/barbajs/barba/issues/362</a></p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>htmlString: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">HTMLDivElement</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -442,6 +473,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="core_utils_dom.dom.html#todocument" class="tsd-kind-icon">to<wbr>Document</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="core_utils_dom.dom.html#toelement" class="tsd-kind-icon">to<wbr>Element</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="core_utils_dom.dom.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
