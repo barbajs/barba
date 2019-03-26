@@ -77,11 +77,15 @@ class Prefetch implements IBarbaPlugin<IPrefetchOptions> {
             if (!this.barba.cache.has(url)) {
               this.barba.cache.set(
                 url,
-                this.barba.request(
-                  url,
-                  this.barba.timeout,
-                  this.barba['_onRequestError'].bind(this, 'prefetch') // tslint:disable-line:no-string-literal
-                )
+                this.barba
+                  .request(
+                    url,
+                    this.barba.timeout,
+                    this.barba['onRequestError'].bind(this.barba, 'prefetch') // tslint:disable-line:no-string-literal
+                  )
+                  .catch(error => {
+                    this.logger.error(error);
+                  })
               );
             }
           }
