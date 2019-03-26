@@ -28,12 +28,10 @@ lerna publish --registry http://localhost:4873 --canary --preid next
 > - [⛔️] Build module/nomodule? BOFFFFFF
 > - [ ] Browser support
 >   - [ ] doit fonctionner avec IE <= 11? 10?
->   - [ ] Integrate with Cypress
+>   - [x] Integrate with Cypress
 
 ---
 
 ## Showcase
 
-> check old issues…
-
-- https://leap-in.com/
+> check old issues + slack channel
