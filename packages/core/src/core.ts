@@ -347,7 +347,7 @@ export class Core {
           this.request(
             href,
             this.timeout,
-            this._onRequestError.bind(this, trigger, 'click')
+            this.onRequestError.bind(this, trigger, 'click')
           )
         );
 
@@ -390,6 +390,34 @@ export class Core {
       this.history.cancel();
       this.logger.error(error);
     }
+  }
+
+  /**
+   * When a request error occurs.
+   *
+   * Allow the user to manage request error. (E.g: 404)
+   */
+  public onRequestError(
+    trigger: Trigger,
+    action: string,
+    ...args: any
+  ): boolean {
+    const [href, response]: [string, RequestErrorOrResponse] = args;
+    this.cache.delete(href);
+
+    // Custom requestError returning false will return here.
+    if (
+      this._requestCustomError &&
+      this._requestCustomError(trigger, action, href, response) === false
+    ) {
+      return false;
+    }
+
+    // Force page change
+    if (action === 'click') {
+      this.force(href);
+    }
+    return false;
   }
 
   /**
@@ -447,7 +475,7 @@ export class Core {
       this.request(
         href,
         this.timeout,
-        this._onRequestError.bind(this, link, 'enter')
+        this.onRequestError.bind(this, link, 'enter')
       ).catch((error: RequestErrorOrResponse) => this.logger.error(error))
     );
   }
@@ -478,35 +506,6 @@ export class Core {
    */
   private _onStateChange(): void {
     this.go(this.url.getHref(), 'popstate');
-  }
-
-  /**
-   * When a request error occurs.
-   *
-   * Allow the user to manage request error. (E.g: 404)
-   */
-  private _onRequestError(
-    trigger: Trigger,
-    action: string,
-    ...args: any
-  ): boolean {
-    const [href, response]: [string, RequestErrorOrResponse] = args;
-
-    this.cache.delete(href);
-
-    // Custom requestError returning false will return here.
-    if (
-      this._requestCustomError &&
-      this._requestCustomError(trigger, action, href, response) === false
-    ) {
-      return false;
-    }
-
-    // Force page change
-    if (action === 'click') {
-      this.force(href);
-    }
-    return false;
   }
 
   /**
