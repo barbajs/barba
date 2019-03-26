@@ -28,6 +28,9 @@ beforeEach(() => {
     status: 200,
     text: () =>
       Promise.resolve(`<html>
+    <head>
+      <title>New page</title>
+    </head>
     <body>
       <div data-barba="wrapper">
         <div data-barba="container" data-barba-namespace="${namespace}"></div>
@@ -68,6 +71,7 @@ it('do page', async () => {
   expect(hooks.do).toHaveBeenNthCalledWith(3, 'beforeLeave', data, t);
   expect(hooks.do).toHaveBeenNthCalledWith(7, 'beforeEnter', data, t);
   expect(barba.transitions.doPage).toHaveBeenCalledTimes(1);
+  expect(document.title).toBe('New page');
 });
 
 it('do page [popstate]', async () => {

@@ -29,11 +29,16 @@ export const updateNext = async (
     const html = await page;
 
     if (html) {
-      const nextDocument = dom.toDocument(html);
+      // see: https://github.com/barbajs/barba/issues/362
+      // const nextDocument = dom.toDocument(html);
+      const nextDocument = dom.toElement(html);
 
       next.namespace = dom.getNamespace(nextDocument);
       next.container = dom.getContainer(nextDocument);
-      next.html = dom.getHtml(nextDocument);
+      // see https://github.com/barbajs/barba/issues/362
+      // next.html = dom.getHtml(nextDocument);
+      // next.html = nextDocument.innerHTML;
+      next.html = html;
     }
   }
 };

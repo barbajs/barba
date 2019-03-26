@@ -35,8 +35,13 @@ it('stringifies DOM', () => {
   expect(typeof dom.toString(container)).toBe('string');
 });
 
-it('parses string to Doc', () => {
-  expect(dom.toDocument('<div></div>') instanceof HTMLDocument).toBeTruthy();
+// see https://github.com/barbajs/barba/issues/362
+// it('parses string to Doc', () => {
+//   expect(dom.toDocument('<div></div>') instanceof HTMLDocument).toBeTruthy();
+// });
+
+it('parses string to Element', () => {
+  expect(dom.toElement('<div></div>') instanceof HTMLDivElement).toBeTruthy();
 });
 
 it('get html', () => {

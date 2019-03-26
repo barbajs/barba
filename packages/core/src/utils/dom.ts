@@ -31,8 +31,23 @@ export class Dom {
   /**
    * Parse HTML string to HTMLDocument.
    */
+  // see https://github.com/barbajs/barba/issues/362
+  // Seems that using DOMParser.parseFromString causes this issue.
   public toDocument(htmlString: string): HTMLDocument {
     return this._parser.parseFromString(htmlString, 'text/html');
+  }
+
+  /**
+   * Parse HTML string to DIVElement.
+   *
+   * DOMParser.parseFromString fails with img[srcset] on iOS.
+   * see https://github.com/barbajs/barba/issues/362
+   */
+  public toElement(htmlString: string): HTMLDivElement {
+    const div = document.createElement('div');
+
+    div.innerHTML = htmlString;
+    return div;
   }
 
   /**
