@@ -166,19 +166,18 @@ export class Transitions {
 
       if (sync) {
         try {
+          this._addNext(data, wrapper);
           // Before actions
           await this._doAsyncHook('beforeLeave', data, t);
           await this._doAsyncHook('beforeEnter', data, t);
-
-          this._addNext(data, wrapper);
 
           // Actions
           await Promise.all([this._leave(data, t), this._enter(data, t)]);
 
           // After actions
           await this._doAsyncHook('afterLeave', data, t);
-          this._removeCurrent(data);
           await this._doAsyncHook('afterEnter', data, t);
+          this._removeCurrent(data);
         } catch (error) {
           await this._doAsyncHook('leaveCanceled', data, t);
           await this._doAsyncHook('enterCanceled', data, t);
