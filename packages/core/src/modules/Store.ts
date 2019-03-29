@@ -141,7 +141,25 @@ export class Store {
       return valid;
     });
 
-    this.logger.info(matching.get(active));
+    const activeMatch = matching.get(active);
+    const transitionType = [];
+    if (filters.appear) {
+      transitionType.push('appear');
+    } else {
+      transitionType.push('page');
+    }
+    if (filters.self) {
+      transitionType.push('self');
+    }
+
+    if (activeMatch) {
+      this.logger.info(
+        `Transition found [${transitionType.join(',')}]`,
+        activeMatch
+      );
+    } else {
+      this.logger.info(`No transition found [${transitionType.join(',')}]`);
+    }
 
     return active;
   }

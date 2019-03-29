@@ -12,8 +12,18 @@ const tAppearCustom: ITransitionAppear = {
     return current.namespace === 'custom';
   },
 };
-
 const store = new Store([tAppear, tAppearNs, tAppearCustom]);
+
+it('has no transition', async () => {
+  const emptyStore = new Store();
+
+  emptyStore.logger.info = jest.fn();
+  emptyStore.resolve(({} as unknown) as ITransitionData, { appear: true });
+
+  expect(emptyStore.logger.info).toHaveBeenCalledWith(
+    'No transition found [appear]'
+  );
+});
 
 it('get "appear" transition', () => {
   const result = store.resolve(

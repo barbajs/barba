@@ -97,14 +97,8 @@ export class Transitions {
     data: ITransitionData;
     transition: ITransitionAppear;
   }) {
-    if (!transition) {
-      this.logger.warn('No transition found');
-
-      return;
-    }
-
+    const t = transition || {};
     this._running = true;
-    const t = transition;
 
     try {
       await this._doAsyncHook('beforeAppear', data, t);
@@ -157,8 +151,6 @@ export class Transitions {
     page: Promise<string | void>;
     wrapper: Wrapper;
   }) {
-    !transition && this.logger.warn('No transition found');
-
     const t = transition || {};
     const sync = t.sync === true || false;
 

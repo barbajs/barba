@@ -56,19 +56,6 @@ beforeEach(() => {
 
 const page = Promise.resolve(nextHtml);
 
-it('needs transition', async () => {
-  transitions.logger.warn = jest.fn();
-  expect.assertions(1);
-
-  await transitions.doPage({
-    data,
-    page,
-    transition: undefined,
-    wrapper,
-  });
-  expect(transitions.logger.warn).toHaveBeenCalledWith('No transition found');
-});
-
 it('leaves falsy', async () => {
   expect.assertions(1);
 

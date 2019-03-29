@@ -30,23 +30,12 @@ beforeEach(() => {
   };
 });
 
-it('needs transition', async () => {
-  expect.assertions(1);
-  transitions.logger.warn = jest.fn();
-
-  await transitions.doAppear({
-    data,
-    transition: undefined,
-  });
-  expect(transitions.logger.warn).toHaveBeenCalledWith('No transition found');
-});
-
 it('does not need appear', async () => {
   expect.assertions(1);
 
   await transitions.doAppear({
     data,
-    transition: {} as ITransitionAppear,
+    transition: undefined as ITransitionAppear,
   });
   expect(hooks.do).toHaveBeenNthCalledWith(2, 'appear', data, {});
 });

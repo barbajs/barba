@@ -177,7 +177,7 @@ export class Core {
     this._wrapper.setAttribute('aria-live', 'polite'); // A11y
 
     // 3. Init pages (get "current" data)
-    this._initData();
+    this._resetData();
 
     const { current } = this.data;
 
@@ -218,10 +218,17 @@ export class Core {
     this.plugins.forEach(plugin => plugin.init());
 
     // 8. Barba ready
-    this.hooks.do('ready', this.data);
+    // Set next + trigger for appear and `beforeEnter` view on page load.
+    const readyData = this.data;
+
+    readyData.trigger = 'barba';
+    readyData.next = readyData.current;
+    this.hooks.do('ready', readyData);
 
     // 9. Finally, do appear…
     this.appear();
+    // Clean data for first barba transition…
+    this._resetData();
   }
 
   public destroy(): void {
@@ -527,18 +534,6 @@ export class Core {
     }
 
     return el;
-  }
-
-  /**
-   * Init pages data.
-   *
-   * Set "next.namespace" same as "current" for first load.
-   * Because, we need to trigger `view.beforeEnter` with the current namespace.
-   */
-  private _initData() {
-    this._resetData();
-
-    this.data.next.namespace = this.data.current.namespace;
   }
 
   /**

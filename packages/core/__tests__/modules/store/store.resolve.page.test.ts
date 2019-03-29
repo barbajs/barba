@@ -15,6 +15,17 @@ const tSelf = { name: 'self' };
 
 const store = new Store([t, tNs, tNsFrom, tNsTo, tNsFromTo, tSelf]);
 
+it('has no transition', async () => {
+  const emptyStore = new Store();
+
+  emptyStore.logger.info = jest.fn();
+  emptyStore.resolve(({} as unknown) as ITransitionData);
+
+  expect(emptyStore.logger.info).toHaveBeenCalledWith(
+    'No transition found [page]'
+  );
+});
+
 it('get "page" transition', () => {
   const result = store.resolve(({
     current: true,

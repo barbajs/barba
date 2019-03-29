@@ -48,6 +48,7 @@ function timeout(
       .catch(
         /* istanbul ignore next */ error => {
           /* istanbul ignore next */
+          window.clearTimeout(timeoutId);
           reject(error);
         }
       );

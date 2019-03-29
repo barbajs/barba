@@ -49,5 +49,5 @@ export interface ITransitionPage extends ITransitionRules {
 }
 
 export interface ITransitionAppear extends ITransitionPage {
-  appear(data: ITransitionData): Promise<void>;
+  appear?(data: ITransitionData): Promise<void>;
 }
