@@ -1,4 +1,5 @@
 /* tslint:disable:no-empty no-string-literal */
+import xhrMock from 'xhr-mock';
 import { init } from '../../__mocks__/barba';
 import barba from '../../src';
 import { hooks } from '../../src/hooks';
@@ -7,13 +8,15 @@ import { schemaAttribute } from '../../src/schemas/attribute';
 // Needed for "request" module
 (global as any).Headers = class {};
 
-const namespace = 'test';
+const namespace = 'next';
 const checkDoc = new RegExp(
   `^<html>[\\s\\S]+body[\\s\\S]+${schemaAttribute.wrapper}[\\s\\S]+${
     schemaAttribute.container
   }[\\s\\S]+${namespace}[\\s\\S]+</html>$`
 );
 const t = { leave() {}, enter() {} };
+const sameUrl = 'http://localhost/';
+const nextUrl = 'http://localhost/foo';
 
 init();
 
@@ -24,10 +27,21 @@ let spyPage: jest.SpyInstance;
 
 beforeEach(() => {
   barba.init();
-  self.fetch = jest.fn().mockImplementation(() => ({
-    status: 200,
-    text: () =>
-      Promise.resolve(`<html>
+  xhrMock.setup();
+  xhrMock.get(sameUrl, (req, res) =>
+    res.status(200).body(`<html>
+    <head>
+      <title>Current page</title>
+    </head>
+    <body>
+      <div data-barba="wrapper">
+        <div data-barba="container" data-barba-namespace="current"></div>
+      </div>
+    </body>
+  </html>`)
+  );
+  xhrMock.get(nextUrl, (req, res) =>
+    res.status(200).body(`<html>
     <head>
       <title>New page</title>
     </head>
@@ -36,8 +50,22 @@ beforeEach(() => {
         <div data-barba="container" data-barba-namespace="${namespace}"></div>
       </div>
     </body>
-  </html>`),
-  }));
+  </html>`)
+  );
+  // self.fetch = jest.fn().mockImplementation(() => ({
+  //   status: 200,
+  //   text: () =>
+  //     Promise.resolve(`<html>
+  //   <head>
+  //     <title>New page</title>
+  //   </head>
+  //   <body>
+  //     <div data-barba="wrapper">
+  //       <div data-barba="container" data-barba-namespace="${namespace}"></div>
+  //     </div>
+  //   </body>
+  // </html>`),
+  // }));
   spyCacheHas = jest.spyOn(barba.cache, 'has');
   spyCacheGet = jest.spyOn(barba.cache, 'get');
   spyCacheSet = jest.spyOn(barba.cache, 'set');
@@ -48,6 +76,7 @@ afterEach(() => {
   spyCacheGet.mockRestore();
   spyCacheSet.mockRestore();
   spyPage.mockRestore();
+  xhrMock.teardown();
   barba.destroy();
 });
 
@@ -61,7 +90,7 @@ it('do page', async () => {
     trigger: 'barba',
   };
 
-  await barba.page('http://localhost/foo', 'barba', false);
+  await barba.page(nextUrl, 'barba', false);
 
   expect(spyCacheHas).toHaveBeenCalledTimes(1);
   expect(spyCacheSet).toHaveBeenCalledTimes(1);
@@ -79,7 +108,7 @@ it('do page [popstate]', async () => {
   barba.history.add = jest.fn();
 
   barba.transitions.store.add('transition', { leave() {}, enter() {} });
-  await barba.page('http://localhost/foo', 'popstate', false);
+  await barba.page(nextUrl, 'popstate', false);
 
   expect(barba.history.add).toHaveBeenCalledTimes(1);
 });
@@ -92,7 +121,7 @@ it('do page [has cache]', async () => {
   // to avoid prevent "sameURL"
   barba.transitions.store.add('transition', { name: 'self' });
   barba.transitions.store.add('transition', { leave() {}, enter() {} });
-  await barba.page('http://localhost/', 'barba', false);
+  await barba.page(sameUrl, 'barba', false);
 
   expect(spyCacheHas).toHaveBeenCalledTimes(1);
   expect(spyCacheGet).toHaveBeenCalledTimes(1);
@@ -108,7 +137,7 @@ it('do page [waiting]', async () => {
     enter() {},
     to: { namespace: 'ns' },
   });
-  await barba.page('http://localhost/foo', 'barba', false);
+  await barba.page(nextUrl, 'barba', false);
 
   expect(barba.data.next.html).toMatch(checkDoc);
 });
@@ -119,7 +148,7 @@ it('force when manager running', async () => {
 
   barba.transitions.store.add('transition', { leave() {}, enter() {} });
   barba.transitions['_running'] = true;
-  await barba.page('http://localhost/foo', 'barba', false);
+  await barba.page(nextUrl, 'barba', false);
 
   expect(barba.force).toHaveBeenCalledTimes(1);
   expect(hooks.do).not.toHaveBeenCalled();
@@ -143,7 +172,7 @@ it('catches error', async () => {
     },
   });
 
-  await barba.page('http://localhost', 'barba', false);
+  await barba.page(nextUrl, 'barba', false);
 
   expect(barba.transitions.logger.error).toHaveBeenCalledWith(errorLeave);
   expect(barba.logger.error).toHaveBeenCalledWith(errorTransition);

@@ -9,7 +9,7 @@ export function init(transitions: ITransitionPage[] = []): any {
   const container = document.createElement('div');
   const link = document.createElement('a');
   const span = document.createElement('span');
-  const namespace = 'ns';
+  const namespace = 'current';
   const mouseover = document.createEvent('HTMLEvents');
   const click = document.createEvent('HTMLEvents');
 
@@ -17,6 +17,7 @@ export function init(transitions: ITransitionPage[] = []): any {
   container.dataset.barba = 'container';
   container.dataset.barbaNamespace = namespace;
 
+  document.title = 'Current page';
   document.body.appendChild(wrapper);
   wrapper.appendChild(container);
   container.appendChild(link);

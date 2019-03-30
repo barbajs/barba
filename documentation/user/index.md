@@ -115,7 +115,6 @@ Barba.js can be viewed as a [progressive enhancement](https://www.smashingmagazi
 Main "modern features" used are:
 
 - [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
-- [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 - [Set()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) and [Map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
 
 > `@barba/prefetch` also uses [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
@@ -130,8 +129,8 @@ You can use [polyfill.io](https://polyfill.io/v3/):
 ```html
 <script
   crossorigin="anonymous"
-  src="https://polyfill.io/v3/polyfill.min.js?features=Map-polyfill%2CSet-polyfill%2CPromise-polyfill%2Cfetch-polyfill%2CIntersectionObserver-polyfill"
+  src="https://polyfill.io/v3/polyfill.min.js?features=Map-polyfill%2CSet-polyfill%2CPromise-polyfill%2CIntersectionObserver-polyfill"
 ></script>
 ```
 
-or implement your own solution ([es6-promise](https://github.com/stefanpenner/es6-promise), [fetch](https://github.com/github/fetch) and [Core.js](https://github.com/zloirock/core-js) or [es6-shim](https://github.com/paulmillr/es6-shim/blob/master/README.md), …).
+or implement your own solution ([es6-promise](https://github.com/stefanpenner/es6-promise) and [Core.js](https://github.com/zloirock/core-js) or [es6-shim](https://github.com/paulmillr/es6-shim/blob/master/README.md), …).
