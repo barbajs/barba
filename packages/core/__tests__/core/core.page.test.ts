@@ -52,20 +52,7 @@ beforeEach(() => {
     </body>
   </html>`)
   );
-  // self.fetch = jest.fn().mockImplementation(() => ({
-  //   status: 200,
-  //   text: () =>
-  //     Promise.resolve(`<html>
-  //   <head>
-  //     <title>New page</title>
-  //   </head>
-  //   <body>
-  //     <div data-barba="wrapper">
-  //       <div data-barba="container" data-barba-namespace="${namespace}"></div>
-  //     </div>
-  //   </body>
-  // </html>`),
-  // }));
+
   spyCacheHas = jest.spyOn(barba.cache, 'has');
   spyCacheGet = jest.spyOn(barba.cache, 'get');
   spyCacheSet = jest.spyOn(barba.cache, 'set');
@@ -114,7 +101,6 @@ it('do page [popstate]', async () => {
 });
 
 it('do page [has cache]', async () => {
-  // barba.transitions.doPage = jest.fn();
   barba.history.add = jest.fn();
 
   // NOTE: as we use "same URL" (localhost), we need a "self" transition
