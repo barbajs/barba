@@ -208,7 +208,6 @@ export class Core {
     this.cache.set(current.url.href, Promise.resolve(current.html));
 
     // 6. Bind context
-    // this.onRequestError = this.onRequestError.bind(this);
     this._onLinkEnter = this._onLinkEnter.bind(this);
     this._onLinkClick = this._onLinkClick.bind(this);
     this._onStateChange = this._onStateChange.bind(this);
@@ -483,7 +482,9 @@ export class Core {
         href,
         this.timeout,
         this.onRequestError.bind(this, link, 'enter')
-      ).catch((error: RequestErrorOrResponse) => this.logger.error(error))
+      ).catch((error: RequestErrorOrResponse) => {
+        this.logger.error(error);
+      })
     );
   }
 

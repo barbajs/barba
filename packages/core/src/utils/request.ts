@@ -17,79 +17,52 @@
 import { RequestError } from '../defs';
 
 /**
- * Timeout wrapper.
- */
-function timeout(
-  url: string,
-  ms: number,
-  req: Promise<string>,
-  requestError: RequestError
-): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const timeoutId = window.setTimeout(() => {
-      const error = new Error('Timeout error');
-
-      requestError(url, error);
-      reject(error);
-    }, ms);
-
-    req
-      .then(
-        response => {
-          window.clearTimeout(timeoutId);
-          resolve(response);
-        },
-        errorOrResponse => {
-          window.clearTimeout(timeoutId);
-          requestError(url, errorOrResponse);
-          reject(errorOrResponse);
-        }
-      )
-      .catch(
-        /* istanbul ignore next */ error => {
-          /* istanbul ignore next */
-          window.clearTimeout(timeoutId);
-          reject(error);
-        }
-      );
-  });
-}
-
-/**
- * Fetch the page and returns the text content.
- */
-async function fetcher(url: string): Promise<string> {
-  const headers = new Headers({
-    Accept: 'text/html,application/xhtml+xml,application/xml', // tslint:disable-line:object-literal-key-quotes
-    'x-barba': 'yes',
-  });
-
-  try {
-    const response = await self.fetch(url, {
-      cache: 'default',
-      headers,
-      method: 'GET',
-    });
-
-    if (response.status >= 200 && response.status < 300) {
-      return response.text();
-    }
-
-    throw response;
-  } catch (error) {
-    throw error;
-  }
-}
-
-/**
  * Init a page request.
+ * Fetch the page and returns a promise with the text content.
  */
 function request(
   url: string,
   ttl: number = 2e3,
-  requestError: RequestError | boolean
+  requestError: RequestError
 ): Promise<string> {
-  return timeout(url, ttl, fetcher(url), requestError as RequestError);
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+
+    xhr.timeout = ttl;
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          resolve(xhr.responseText);
+        } else if (xhr.status) {
+          // HTTP code is not 200, reject with response.
+          const res = {
+            status: xhr.status,
+            statusText: xhr.statusText,
+          };
+          requestError(url, res);
+          reject(res);
+        }
+      }
+    };
+    xhr.ontimeout = () => {
+      const err = new Error(`Timeout error [${ttl}]`);
+      requestError(url, err);
+      reject(err);
+    };
+    xhr.onerror = () => {
+      const err = new Error(`Fetch error`);
+      requestError(url, err);
+      reject(err);
+    };
+
+    xhr.open('GET', url);
+    xhr.setRequestHeader(
+      'Accept',
+      'text/html,application/xhtml+xml,application/xml'
+    );
+    xhr.setRequestHeader('x-barba', 'yes');
+    xhr.send();
+  });
 }
 
 export { request };

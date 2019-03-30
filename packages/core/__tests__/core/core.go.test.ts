@@ -7,7 +7,7 @@ import { schemaAttribute } from '../../src/schemas/attribute';
 // Needed for "request" module
 (global as any).Headers = class {};
 
-const namespace = 'test';
+const namespace = 'next';
 
 init();
 

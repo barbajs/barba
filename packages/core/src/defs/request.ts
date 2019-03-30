@@ -18,6 +18,10 @@ export type RequestCustomError = (
   trigger: Trigger,
   action: string,
   url: string,
-  response: Response | Error
+  response: RequestErrorOrResponse
 ) => boolean;
-export type RequestErrorOrResponse = Error | Response;
+export interface IXhrResponse {
+  status: number;
+  statusText: string;
+}
+export type RequestErrorOrResponse = Error | IXhrResponse;
