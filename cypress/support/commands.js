@@ -32,3 +32,24 @@ Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
 
   originalFn(root + url, options);
 });
+
+Cypress.Commands.add('prepare', (url, title) => {
+  // Go to home
+  cy.visit(url);
+  // Check elements
+  cy.get('[data-test=title]')
+    .as('h1') // Alias to @h1
+    .should('contain', title);
+  cy.get('[data-test=container]').as('current');
+});
+
+Cypress.Commands.add('end', (url, title) => {
+  // 1. URL has changed
+  cy.url().should('include', url);
+  // 2. H1 has changed
+  cy.get('@h1').should('contain', title);
+  // 3. Page title has changed
+  cy.title().should('contain', title);
+  // 4. Current container has been removed
+  cy.get('@current').should('not.exist');
+});
