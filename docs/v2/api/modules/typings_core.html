@@ -90,6 +90,7 @@
 								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/typings_core.iurlbase.html" class="tsd-kind-icon">IUrl<wbr>Base</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/typings_core.iurlfull.html" class="tsd-kind-icon">IUrl<wbr>Full</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/typings_core.iview.html" class="tsd-kind-icon">IView</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/typings_core.ixhrresponse.html" class="tsd-kind-icon">IXhr<wbr>Response</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -296,7 +297,7 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-siganture">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>trigger<span class="tsd-signature-symbol">: </span><a href="typings_core.html#trigger" class="tsd-signature-type">Trigger</a>, action<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, response<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Error</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>trigger<span class="tsd-signature-symbol">: </span><a href="typings_core.html#trigger" class="tsd-signature-type">Trigger</a>, action<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, response<span class="tsd-signature-symbol">: </span><a href="typings_core.html#requesterrororresponse" class="tsd-signature-type">RequestErrorOrResponse</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
@@ -312,7 +313,7 @@
 												<h5>url: <span class="tsd-signature-type">string</span></h5>
 											</li>
 											<li>
-												<h5>response: <span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Error</span></h5>
+												<h5>response: <a href="typings_core.html#requesterrororresponse" class="tsd-signature-type">RequestErrorOrResponse</a></h5>
 											</li>
 										</ul>
 										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -359,10 +360,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
 					<a name="requesterrororresponse" class="tsd-anchor"></a>
 					<h3>Request<wbr>Error<wbr>OrResponse</h3>
-					<div class="tsd-signature tsd-kind-icon">Request<wbr>Error<wbr>OrResponse<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Error</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Response</span></div>
+					<div class="tsd-signature tsd-kind-icon">Request<wbr>Error<wbr>OrResponse<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Error</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/typings_core.ixhrresponse.html" class="tsd-signature-type">IXhrResponse</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/request.ts#L23">core/src/defs/request.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/request.ts#L27">core/src/defs/request.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -559,6 +560,9 @@
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/typings_core.iview.html" class="tsd-kind-icon">IView</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/typings_core.ixhrresponse.html" class="tsd-kind-icon">IXhr<wbr>Response</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
 						<a href="typings_core.html#hooksafter" class="tsd-kind-icon">Hooks<wbr>After</a>
