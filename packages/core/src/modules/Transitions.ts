@@ -102,7 +102,7 @@ export class Transitions {
 
     try {
       await this._doAsyncHook('beforeAppear', data, t);
-      await this._appear(data, t);
+      await this.appear(data, t);
       await this._doAsyncHook('afterAppear', data, t);
     } catch (error) {
       this.logger.error(error);
@@ -172,7 +172,7 @@ export class Transitions {
           await this._doAsyncHook('beforeEnter', data, t);
 
           // Actions
-          await Promise.all([this._leave(data, t), this._enter(data, t)]);
+          await Promise.all([this.leave(data, t), this.enter(data, t)]);
 
           // After actions
           await this._doAsyncHook('afterLeave', data, t);
@@ -189,8 +189,10 @@ export class Transitions {
           // Leave
           await this._doAsyncHook('beforeLeave', data, t);
 
+          this.logger.debug('T:LEAVE', this.leave);
+
           leaveResult = await Promise.all([
-            this._leave(data, t),
+            this.leave(data, t),
             helpers.updateNext(page, data.next),
           ]).then(values => values[0]);
           // .catch(error => {
@@ -213,7 +215,7 @@ export class Transitions {
           if (leaveResult !== false) {
             await this._doAsyncHook('beforeEnter', data, t);
             this._addNext(data, wrapper);
-            await this._enter(data, t, leaveResult);
+            await this.enter(data, t, leaveResult);
             await this._doAsyncHook('afterEnter', data, t);
           }
         } catch (error) {
@@ -238,7 +240,7 @@ export class Transitions {
   /**
    * Appear hook + async "appear" transition.
    */
-  private _appear(data: ITransitionData, t: ITransitionAppear): Promise<void> {
+  public appear(data: ITransitionData, t: ITransitionAppear): Promise<void> {
     hooks.do('appear', data, t);
 
     return t.appear ? runAsync(t.appear)(data) : Promise.resolve();
@@ -247,8 +249,10 @@ export class Transitions {
   /**
    * Leave hook + async "leave" transition.
    */
-  private _leave(data: ITransitionData, t: ITransitionPage): Promise<any> {
+  public leave(data: ITransitionData, t: ITransitionPage): Promise<any> {
     hooks.do('leave', data, t);
+
+    this.logger.debug('T:LEAVE');
 
     return t.leave ? runAsync(t.leave)(data) : Promise.resolve();
   }
@@ -256,12 +260,14 @@ export class Transitions {
   /**
    * Enter hook + async "enter" transition.
    */
-  private _enter(
+  public enter(
     data: ITransitionData,
     t: ITransitionPage,
     leaveResult?: any
   ): Promise<void> {
     hooks.do('enter', data, t);
+
+    this.logger.debug('T:ENTER');
 
     return t.enter ? runAsync(t.enter)(data, leaveResult) : Promise.resolve();
   }
