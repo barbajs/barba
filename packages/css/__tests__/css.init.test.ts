@@ -33,7 +33,7 @@ it('registers hooks', () => {
 });
 
 it('overrides transitions', () => {
-  expect(barba.transitions['_appear']).toBe(css['_appear']);
-  expect(barba.transitions['_leave']).toBe(css['_leave']);
-  expect(barba.transitions['_enter']).toBe(css['_enter']);
+  expect(barba.transitions['appear']).toBe(css['_appear']);
+  expect(barba.transitions['leave']).toBe(css['_leave']);
+  expect(barba.transitions['enter']).toBe(css['_enter']);
 });

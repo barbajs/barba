@@ -1,9 +1,12 @@
-.barba-appear-active {
-  transition: opacity 2s;
+[data-barba='container'] {
+  opacity: 1;
 }
+
 .barba-appear {
   opacity: 0;
 }
+
 .barba-appear-to {
+  transition: opacity 5s;
   opacity: 1;
 }

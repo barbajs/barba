@@ -27,7 +27,7 @@ import { ICssCallbacks } from './defs/css';
 import { version } from '../package.json';
 
 class Css implements IBarbaPlugin<{}> {
-  public name = '@barba/prefetch';
+  public name = '@barba/css';
   public version = version;
   public barba: Core;
   public logger: Logger;
@@ -64,10 +64,19 @@ class Css implements IBarbaPlugin<{}> {
 
     // Override main transitions
     /* tslint:disable:no-string-literal */
-    this.barba.transitions['_appear'] = this._appear;
-    this.barba.transitions['_leave'] = this._leave;
-    this.barba.transitions['_enter'] = this._enter;
+    this.barba.transitions.appear = this._appear;
+    this.barba.transitions.leave = this._leave;
+    this.barba.transitions.enter = this._enter;
     /* tslint:enable:no-string-literal */
+
+    // Add empty default transition
+    /* istanbul ignore next */
+    this.barba.transitions.store.add('transition', {
+      name: 'barba',
+      appear() {}, // tslint:disable-line:no-empty
+      leave() {}, // tslint:disable-line:no-empty
+      enter() {}, // tslint:disable-line:no-empty
+    });
   }
 
   /**
@@ -130,6 +139,7 @@ class Css implements IBarbaPlugin<{}> {
    * `beforeAppear` hook.
    */
   private _beforeAppear(data: ITransitionData): void {
+    this.logger.debug('CSS:BEFORE_APPEAR');
     this.start(data.current.container, 'appear');
   }
 
@@ -137,6 +147,7 @@ class Css implements IBarbaPlugin<{}> {
    * `appear` hook.
    */
   private _appear(data: ITransitionData): Promise<any> {
+    this.logger.debug('CSS:APPEAR');
     return this.next(data.current.container, 'appear');
   }
 
@@ -144,6 +155,8 @@ class Css implements IBarbaPlugin<{}> {
    * `afterAppear` hook.
    */
   private _afterAppear(data: ITransitionData): void {
+    this.logger.debug('CSS:AFTER_APPEAR');
+
     this.end(data.current.container, 'appear');
   }
 
