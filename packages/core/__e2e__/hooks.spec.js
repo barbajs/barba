@@ -20,14 +20,14 @@ const hooksSync = [
 ];
 
 beforeEach(() => {
-  cy.prepare('/index.html', 'home');
+  cy.prepare('/index.html', 'home', 'home');
   cy.get('[data-test="hooks-list"]')
     .as('hooks') // Alias to @hooks
     .find('li')
     .should('have.length', 0);
 });
 afterEach(() => {
-  cy.end('/page.html', 'page');
+  cy.final('/page.html', 'page', 'page');
 });
 
 describe('Hooks', () => {
