@@ -113,17 +113,17 @@ barba.init({
   transitions: [{
 
     // basic style
-    leave: (data) => {
+    leave(data) {
       // create your stunning leave animation here
     },
 
     // async/await style
-    async leave: (data) => {
+    async leave(data) {
       await asyncAnimation(data.current.container);
     },
 
     // `this.async()` style
-    leave: (data) => {
+    leave(data) {
       const done = this.async();
 
       callbackAnimation(data.current.container, {
@@ -133,14 +133,14 @@ barba.init({
       });
     },
 
-    // using a promise
+    // using a promise, returned with arrow function
     leave: (data) => asyncAnimation(data.current.container),
 
     // es6 syntax: `{ current } = data.current`
     leave: ({ current }) => asyncAnimation(current.container);,
 
     // using a promise
-    leave: (data) => {
+    leave(data) => {
       return new Promise(resolve => {
         callbackAnimation(data.current.container, {
           onComplete: () => {
@@ -210,15 +210,15 @@ import barba from '@barba/core';
 barba.init({
   transitions: [{
     name: 'svg-circle',
-    leave: (data) => {
+    leave(data) {
 
       // retrieves the current page url
-      let from = data.current.url;
+      const from = data.current.url;
     },
-    enter: ({ next }) => {
+    enter({ next }) {
 
       // retrieves the next page url (short syntax)
-      let to = next.url;
+      const to = next.url;
     }
   }]
 });
