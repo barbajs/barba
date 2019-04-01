@@ -39,10 +39,10 @@ Example:
 
 ```js
 import barba from '@barba/core';
-import css from '@barba/css';
+import barbaCss from '@barba/css';
 
 // tells barba to use the css module
-barba.use(css);
+barba.use(barbaCss);
 
 barba.init({
   transitions: [

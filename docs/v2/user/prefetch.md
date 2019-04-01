@@ -21,10 +21,10 @@ Example:
 
 ```js
 import barba from '@barba/core';
-import prefetch from '@barba/prefetch';
+import barbaPrefetch from '@barba/prefetch';
 
 // tells barba to use the prefetch module
-barba.use(prefetch);
+barba.use(barbaPrefetch);
 
 barba.init();
 ```
