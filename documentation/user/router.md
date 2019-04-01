@@ -33,7 +33,7 @@ Example:
 
 ```js
 import barba from '@barba/core';
-import router from '@barba/router';
+import barbaRouter from '@barba/router';
 
 // defines your routes
 const routes = [{
@@ -45,7 +45,7 @@ const routes = [{
 }];
 
 // tells barba to use the router with your custom routes
-barba.use(router, {
+barba.use(barbaRouter, {
   routes,
 });
 
