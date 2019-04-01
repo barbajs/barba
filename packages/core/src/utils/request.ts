@@ -28,7 +28,6 @@ function request(
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
 
-    xhr.timeout = ttl;
     xhr.onreadystatechange = () => {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
@@ -56,6 +55,7 @@ function request(
     };
 
     xhr.open('GET', url);
+    xhr.timeout = ttl;
     xhr.setRequestHeader(
       'Accept',
       'text/html,application/xhtml+xml,application/xml'
