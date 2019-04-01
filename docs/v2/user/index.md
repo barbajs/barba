@@ -116,6 +116,7 @@ Main "modern features" used are:
 
 - [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 - [Set()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) and [Map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
+- [Array.prototype.find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
 
 > `@barba/prefetch` also uses [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
 
@@ -129,7 +130,7 @@ You can use [polyfill.io](https://polyfill.io/v3/):
 ```html
 <script
   crossorigin="anonymous"
-  src="https://polyfill.io/v3/polyfill.min.js?features=Map-polyfill%2CSet-polyfill%2CPromise-polyfill%2CIntersectionObserver-polyfill"
+  src="https://polyfill.io/v3/polyfill.min.js?features=default%2CArray.prototype.find%2CIntersectionObserver"
 ></script>
 ```
 
