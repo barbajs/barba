@@ -10,14 +10,12 @@
 /***/
 
 // Definitions
-import { IgnoreOption } from '../defs';
+import { CacheAction, CacheRequest, ICacheData, IgnoreOption } from '../defs';
 // Modules
 import { Ignore } from './Ignore';
-// Types
-type Request = Promise<string | void>;
 
 export class Cache extends Ignore {
-  private _state: Map<string, Request> = new Map();
+  private _state: Map<string, ICacheData> = new Map();
 
   constructor(ignore: IgnoreOption) {
     super(ignore);
@@ -26,32 +24,69 @@ export class Cache extends Ignore {
   /**
    * Set value to cache
    */
-  public set(url: string, req: Request) {
-    if (!this.checkUrl(url)) {
-      this._state.set(url, req);
+  public set(
+    href: string,
+    request: CacheRequest,
+    action: CacheAction
+  ): ICacheData {
+    if (!this.checkUrl(href)) {
+      this._state.set(href, {
+        action,
+        request,
+      });
     }
 
-    return req;
+    return {
+      action,
+      request,
+    };
   }
 
   /**
-   * Get value from cache
+   * Get data from cache
    */
-  public get(url: string) {
-    return this._state.get(url);
+  public get(href: string): ICacheData {
+    return this._state.get(href);
+  }
+
+  /**
+   * Get request from cache
+   */
+  public getRequest(href: string): CacheRequest {
+    return this._state.get(href).request;
+  }
+
+  /**
+   * Get action from cache
+   */
+  public getAction(href: string): CacheAction {
+    return this._state.get(href).action;
   }
 
   /**
    * Check if value exists into cache
    */
-  public has(url: string) {
-    return this._state.has(url);
+  public has(href: string): boolean {
+    return this._state.has(href);
   }
 
   /**
    * Delete value from cache
    */
-  public delete(url: string) {
-    return this._state.delete(url);
+  public delete(href: string): boolean {
+    return this._state.delete(href);
+  }
+
+  /**
+   * Update cache value
+   */
+  public update(href: string, data: ICacheData): ICacheData {
+    const state = {
+      ...this._state.get(href),
+      ...data,
+    };
+    this._state.set(href, state);
+
+    return state;
   }
 }

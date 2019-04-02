@@ -205,7 +205,7 @@ export class Core {
     // Set/update history
     this.history.add(current.url.href, current.namespace);
     // Add to cache
-    this.cache.set(current.url.href, Promise.resolve(current.html));
+    this.cache.set(current.url.href, Promise.resolve(current.html), 'init');
 
     // 6. Bind context
     this._onLinkEnter = this._onLinkEnter.bind(this);
@@ -347,15 +347,16 @@ export class Core {
     this.data.trigger = trigger;
 
     const page = this.cache.has(href)
-      ? this.cache.get(href)
+      ? this.cache.update(href, { action: 'click' }).request
       : this.cache.set(
           href,
           this.request(
             href,
             this.timeout,
-            this.onRequestError.bind(this, trigger, 'click')
-          )
-        );
+            this.onRequestError.bind(this, trigger)
+          ),
+          'click'
+        ).request;
 
     // Need to wait before getting the right transition
     if (this.transitions.shouldWait) {
@@ -392,8 +393,7 @@ export class Core {
       this._updateTitle(data);
       this._resetData();
     } catch (error) {
-      // TODO: !!! infinite loop on transition error???
-      this.history.cancel();
+      // Something went wrong (rejected promise, error, 404, 505, other…)
       this.logger.error(error);
     }
   }
@@ -403,12 +403,9 @@ export class Core {
    *
    * Allow the user to manage request error. (E.g: 404)
    */
-  public onRequestError(
-    trigger: Trigger,
-    action: string,
-    ...args: any
-  ): boolean {
+  public onRequestError(trigger: Trigger, ...args: any): boolean {
     const [href, response]: [string, RequestErrorOrResponse] = args;
+    const action = this.cache.getAction(href);
     this.cache.delete(href);
 
     // Custom requestError returning false will return here.
@@ -481,10 +478,11 @@ export class Core {
       this.request(
         href,
         this.timeout,
-        this.onRequestError.bind(this, link, 'enter')
+        this.onRequestError.bind(this, link)
       ).catch((error: RequestErrorOrResponse) => {
         this.logger.error(error);
-      })
+      }),
+      'enter'
     );
   }
 

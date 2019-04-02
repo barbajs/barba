@@ -69,24 +69,27 @@ class Prefetch implements IBarbaPlugin<IPrefetchOptions> {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const link = entry.target as HTMLLinkElement;
-          const url = this.barba.dom.getHref(link);
+          const href = this.barba.dom.getHref(link);
 
-          if (this.toPrefetch.has(url)) {
+          if (this.toPrefetch.has(href)) {
             this.observer.unobserve(link);
             // Prefetch and cache
-            if (!this.barba.cache.has(url)) {
+            if (!this.barba.cache.has(href)) {
               this.barba.cache.set(
-                url,
+                href,
                 this.barba
                   .request(
-                    url,
+                    href,
                     this.barba.timeout,
-                    this.barba['onRequestError'].bind(this.barba, 'prefetch') // tslint:disable-line:no-string-literal
+                    this.barba['onRequestError'].bind(this.barba, 'barba') // tslint:disable-line:no-string-literal
                   )
                   .catch(error => {
                     this.logger.error(error);
-                  })
+                  }),
+                'prefetch'
               );
+            } else {
+              this.barba.cache.update(href, { action: 'prefetch' });
             }
           }
         }
@@ -106,15 +109,15 @@ class Prefetch implements IBarbaPlugin<IPrefetchOptions> {
         // If not, find all links and use IntersectionObserver.
         this.root.querySelectorAll('a').forEach(el => {
           const link = (el as unknown) as HTMLLinkElement;
-          const url = this.barba.dom.getHref(link);
+          const href = this.barba.dom.getHref(link);
 
           if (
-            !this.barba.cache.has(url) &&
-            !this.barba.prevent.checkUrl(url) &&
+            !this.barba.cache.has(href) &&
+            !this.barba.prevent.checkUrl(href) &&
             !this.barba.prevent.checkLink(link, {} as Event, link.href)
           ) {
             this.observer.observe(el);
-            this.toPrefetch.add(url);
+            this.toPrefetch.add(href);
           }
         });
       },

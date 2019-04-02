@@ -156,6 +156,8 @@ export class Transitions {
 
     this._running = true;
 
+    this.logger.debug('DO_PAGE', page);
+
     try {
       // Check sync mode, wait for next content
       if (sync) {

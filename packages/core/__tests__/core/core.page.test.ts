@@ -23,6 +23,8 @@ init();
 let spyCacheHas: jest.SpyInstance;
 let spyCacheGet: jest.SpyInstance;
 let spyCacheSet: jest.SpyInstance;
+let spyCacheUpdate: jest.SpyInstance;
+let spyCacheGetAction: jest.SpyInstance;
 let spyPage: jest.SpyInstance;
 
 beforeEach(() => {
@@ -56,12 +58,16 @@ beforeEach(() => {
   spyCacheHas = jest.spyOn(barba.cache, 'has');
   spyCacheGet = jest.spyOn(barba.cache, 'get');
   spyCacheSet = jest.spyOn(barba.cache, 'set');
+  spyCacheUpdate = jest.spyOn(barba.cache, 'update');
+  spyCacheGetAction = jest.spyOn(barba.cache, 'getAction');
   spyPage = jest.spyOn(barba.transitions, 'doPage');
 });
 afterEach(() => {
   spyCacheHas.mockRestore();
   spyCacheGet.mockRestore();
   spyCacheSet.mockRestore();
+  spyCacheUpdate.mockRestore();
+  spyCacheGetAction.mockRestore();
   spyPage.mockRestore();
   xhrMock.teardown();
   barba.destroy();
@@ -110,7 +116,7 @@ it('do page [has cache]', async () => {
   await barba.page(sameUrl, 'barba', false);
 
   expect(spyCacheHas).toHaveBeenCalledTimes(1);
-  expect(spyCacheGet).toHaveBeenCalledTimes(1);
+  expect(spyCacheUpdate).toHaveBeenCalledTimes(1);
   expect(spyCacheSet).toHaveBeenCalledTimes(0);
 });
 
@@ -144,7 +150,7 @@ it('force when manager running', async () => {
 });
 
 it('catches error', async () => {
-  expect.assertions(3);
+  expect.assertions(2);
   barba.logger.error = jest.fn();
   barba.transitions.logger.error = jest.fn();
   barba.history.cancel = jest.fn();
@@ -162,5 +168,5 @@ it('catches error', async () => {
 
   expect(barba.transitions.logger.error).toHaveBeenCalledWith(errorLeave);
   expect(barba.logger.error).toHaveBeenCalledWith(errorTransition);
-  expect(barba.history.cancel).toHaveBeenCalledTimes(1);
+  // expect(spyCacheGetAction).toHaveBeenCalledTimes(1);
 });
