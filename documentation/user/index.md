@@ -40,13 +40,13 @@ It helps reducing the delay between your pages, minimizing browser HTTP requests
 Using npm:
 
 ```sh
-npm install --save-dev @barba/core
+npm install --save-dev @barba/core@next
 ```
 
 or using yarn:
 
 ```sh
-yarn add @barba/core --dev
+yarn add @barba/core@next --dev
 ```
 
 or using a CDN:

@@ -78,24 +78,24 @@ All hooks are **methods** and receive the same [`data`](#data-argument) object.
 
 | Order | Name           | Description                        |
 | ----- | -------------- | ---------------------------------- |
-| 1     | `beforeAppear` | Before __appear__ transition       |
-| 2     | `appear`       | Current page __appear__ transition |
-| 3     | `afterAppear`  | Before __appear__ transition       |
+| 1     | `beforeAppear` | Before **appear** transition       |
+| 2     | `appear`       | Current page **appear** transition |
+| 3     | `afterAppear`  | Before **appear** transition       |
 
 | Order | Name          | Description                                               |
 | ----- | ------------- | --------------------------------------------------------- |
 | 1     | `before`      | Before everything                                         |
-| 2     | `beforeLeave` | Before __leave__ transition                               |
-| 3     | `leave`       | Current page __leave__ transition                         |
-| 4     | `afterLeave`  | After removing __current container__                      |
-| 5     | `beforeEnter` | Before __enter__ transition and adding __next container__ |
-| 6     | `enter`       | Next page __enter__ transition                            |
-| 7     | `afterEnter`  | After removing __next container__                         |
+| 2     | `beforeLeave` | Before **leave** transition                               |
+| 3     | `leave`       | Current page **leave** transition                         |
+| 4     | `afterLeave`  | After removing **current container**                      |
+| 5     | `beforeEnter` | Before **enter** transition and adding **next container** |
+| 6     | `enter`       | Next page **enter** transition                            |
+| 7     | `afterEnter`  | After **enter** transition                                |
 | 8     | `after`       | After everything                                          |
 
 > "Hooks can be run either synchronously or asynchronously using the common `this.async()` style ([see run-async](https://github.com/sboudrias/run-async#readme)) or returning a promise.
 >
-> If you use [`sync: true`](#sync-mode), as __leave__ and __enter__ will be concurrent, order will differ: all before\*, then enter/leave, then all after\*.
+> If you use [`sync: true`](#sync-mode), as **leave** and **enter** will be concurrent, order will differ: all before\*, then enter/leave, then all after\*.
 >
 > Note that you can define **global hooks** using `barba.hooks` and apply it to all your transitions.
 
@@ -208,19 +208,19 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  transitions: [{
-    name: 'svg-circle',
-    leave(data) {
-
-      // retrieves the current page url
-      const from = data.current.url;
+  transitions: [
+    {
+      name: 'svg-circle',
+      leave(data) {
+        // retrieves the current page url
+        const from = data.current.url;
+      },
+      enter({ next }) {
+        // retrieves the next page url (short syntax)
+        const to = next.url;
+      },
     },
-    enter({ next }) {
-
-      // retrieves the next page url (short syntax)
-      const to = next.url;
-    }
-  }]
+  ],
 });
 ```
 
@@ -295,8 +295,8 @@ The _transition resolution_ follows this order:
 2. `from` and/or `to` priority
 3. Declaration order
 
-> The common/default behaviour is to start __leave__ as soon as possible.
-> __enter__ will be called when __leave__ ends _AND_ next page is "available" (fetched or cached).
+> The common/default behaviour is to start **leave** as soon as possible.
+> **enter** will be called when **leave** ends _AND_ next page is "available" (fetched or cached).
 > If you use some `to` logic, Barba can not predict and select the right transition until the next page is available.
 > This also applies when using `sync: true`.
 > But this does not apply if `to` is used with `route` property because "next route" is known when the click occurs…
@@ -316,15 +316,17 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  transitions: [{
-    sync: true,
-    leave() {
-      // transition that will play concurrently to `enter`
+  transitions: [
+    {
+      sync: true,
+      leave() {
+        // transition that will play concurrently to `enter`
+      },
+      enter() {
+        // transition that will play concurrently to `leave`
+      },
     },
-    enter() {
-      // transition that will play concurrently to `leave`
-    }
-  }]
+  ],
 });
 ```
 
@@ -349,17 +351,20 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  views: [{
-    namespace: 'index',
-    beforeLeave(data) {
-      // do something before leaving the current `index` namespace
-    }
-  }, {
-    namespace: 'contact',
-    beforeEnter(data) {
-      // do something before entering the `contact` namespace
-    }
-  }]
+  views: [
+    {
+      namespace: 'index',
+      beforeLeave(data) {
+        // do something before leaving the current `index` namespace
+      },
+    },
+    {
+      namespace: 'contact',
+      beforeEnter(data) {
+        // do something before entering the `contact` namespace
+      },
+    },
+  ],
 });
 ```
 
@@ -374,7 +379,7 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  debug: true
+  debug: true,
 });
 ```
 
@@ -398,11 +403,10 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-
   // overrides defaults and create a custom prefix for wrapper, containers, etc.
   schema: {
-    prefix: 'data-custom'
-  }
+    prefix: 'data-custom',
+  },
 });
 ```
 
@@ -430,7 +434,7 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  cacheIgnore: ['/contact/', '/:category/post?']
+  cacheIgnore: ['/contact/', '/:category/post?'],
 });
 ```
 
@@ -450,7 +454,7 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  prefetchIgnore: false
+  prefetchIgnore: false,
 });
 ```
 
@@ -471,10 +475,9 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-
   // defines a custom function that will prevent Barba
   // from working on link that contains a `prevent` CSS class
-  prevent: ({ el }) => el.classList && el.classList.contains('prevent')
+  prevent: ({ el }) => el.classList && el.classList.contains('prevent'),
 });
 ```
 
@@ -502,7 +505,6 @@ import barba from '@barba/core';
 
 barba.init({
   requestError: (trigger, action, url, response) => {
-
     // go to a custom 404 page if the user click on a link that return a 404 response status
     if (action === 'click' && response.status && response.status === 404) {
       barba.go('/404');
@@ -511,7 +513,7 @@ barba.init({
     // prevents Barba from redirecting the user to the requested URL
     // this is equivalent to e.preventDefault()
     return false;
-  }
+  },
 });
 ```
 
