@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@barba/core": "next",
+    "@barba/css": "next",
+    "@barba/prefetch": "next",
     "@barba/router": "next",
     "animejs": "^3.0.1",
     "gsap": "^2.0.2",
