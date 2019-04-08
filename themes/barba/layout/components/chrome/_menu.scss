@@ -1,12 +1,11 @@
 .menu {
   position: absolute;
   z-index: 99;
-  overflow-y: scroll;
   top: 0;
   right: 0;
   width: 500px;
   height: 100vh;
-  display: none;
+  // display: none;
   flex-direction: column;
   align-items: flex-start;
   padding: $spacing * 9 $spacing * 2.5 $spacing * 2.5;
@@ -29,16 +28,36 @@
   width: 100%;
   height: 100vh;
   background-color: rgba($c-blue-lightest, .9);
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity .4s ease-in-out;
+
+  .is-open & {
+    opacity: 1;
+    pointer-events: initial;
+  }
 }
 
 .menu__panel {
   position: absolute;
   top: 0;
   left: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  padding: 180px 50px 50px;
   background-color: $white;
-  // box-shadow: 10px 10px 10px 10px #D3DEFC;
+  box-shadow: 10px 10px 10px 10px #D3DEFC;
+
+  transform: translateX(100%);
+  transition: transform .4s ease-out;
+
+  .is-open & {
+    transform: translateX(0);
+  }
 }
 
 .menu__pages {
@@ -175,7 +194,7 @@
 
 .menu-extra__credits {
   @extend %text-nodecoration;
-  @extend %text-uppercase; 
+  @extend %text-uppercase;
   color: $black;
   font-size: 1.1rem;
   letter-spacing: .1em;

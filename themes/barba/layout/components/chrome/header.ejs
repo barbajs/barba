@@ -1,8 +1,6 @@
-<header class="site-header header"
-        role="banner">
+<header class="site-header header" role="banner" data-component="header">
   <div class="header__infos">
-    <a class="header__infos__logo button--fill--rounded"
-      href="/">
+    <a class="header__infos__logo button--fill--rounded" href="/">
       <span class="h-visually-hidden">Go to home</span>
       <%- partial('components/common/icon', {
         icon: 'barba-b',
@@ -12,16 +10,17 @@
     </a>
     <span class="header__infos__version">v2.x</span>
   </div>
-  <a class="button--fill--black--rounded"
-     href="#">
-     <%- partial('components/common/icon', {
-       icon: 'social-github',
-       hidden: true,
-       viewbox: '0 0 32 32',
-    }) %>
-  </a>
+  <div class="header__external-links">
+    <a class="button--fill--black--rounded header__external-links__github" href="#">
+      <%- partial('components/common/icon', {
+        icon: 'social-github',
+        hidden: true,
+        viewbox: '0 0 32 32',
+      }) %>
+    </a>
 
-  <%- partial('components/chrome/menu-trigger') %>
+    <%- partial('components/chrome/menu-trigger') %>
+  </div>
   <nav class="header__nav nav">
     <%- partial('components/chrome/menu') %>
   </nav>

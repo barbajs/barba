@@ -1,5 +1,8 @@
 .header,
 [class*='header--'] {
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
   padding: $spacing;
 
   @include mq(m) {
@@ -21,4 +24,21 @@
 
   color: $c-main;
   font-size: 1.1rem;
+}
+
+.header__external-links {
+  z-index: 1000;
+  display: flex;
+}
+
+.header__external-links__github {
+  .is-open & {
+    transform: translateX(-300px);
+  }
+}
+
+.header__nav {
+  position: absolute;
+  top: 0;
+  right: 0;
 }

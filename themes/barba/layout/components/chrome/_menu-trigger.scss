@@ -1,13 +1,17 @@
 .menu-trigger {
-  position: absolute;
-  top: 50px;
-  right: 50px;
+  position: relative;
+  overflow: hidden;
   width: 50px;
   height: 50px;
+  margin-left: 1rem;
   background-color: rgba($c-blue-medium, .2);
   border-radius: 50%;
   z-index: 999;
   cursor: pointer;
+
+  &.is-open {
+    border: 0.3rem solid $c-blue-medium;
+  }
 }
 
 .menu-trigger__github {
@@ -37,5 +41,45 @@
 
   .shape {
     fill: $white;
+  }
+}
+
+.menu-trigger__bar {
+  position: absolute;
+  left: 50%;
+  display: block;
+  overflow: hidden;
+  width: 45%;
+  height: 0.3rem;
+  background: $c-blue-medium;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+  transition: top 0.4s, transform 0.4s, opacity 0.4s ease-in-out;
+
+  &:nth-child(1) {
+    top: 35%;
+
+    .is-open & {
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+  }
+
+  &:nth-child(2) {
+    top: 50%;
+
+    .is-open & {
+      opacity: 0;
+      transform: translate(200%, -50%);
+    }
+  }
+
+  &:nth-child(3) {
+    top: 64%;
+
+    .is-open & {
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
   }
 }

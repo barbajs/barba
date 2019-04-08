@@ -10,12 +10,24 @@
   letter-spacing: 0.1rem;
   fill: $c-blue-light;
   border-radius: 0.4rem;
+
+  transition: background-color 0.4s, color 0.4s, border-color 0.4s, transform 0.4s ease-in-out;
+
+  &:hover {
+    background: $c-blue-light;
+    color: $white;
+  }
 }
 
 [class*='button--'][class*='--fill'] {
   background: $c-blue-light;
   color: $white;
   fill: $white;
+
+  &:hover {
+    border-color: $c-blue-medium;
+    background: $c-blue-medium;
+  }
 }
 
 [class*='button--'][class*='--fill'][class*='--black'] {
