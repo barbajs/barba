@@ -2,11 +2,12 @@ import { Component } from 'kapla';
 
 export default class extends Component {
   load() {
-    console.log('Menu:load');
-
     const subscriber = this.subscribe('menu-trigger');
-    subscriber.on('Menu:open', this.open);
-    subscriber.on('Menu:close', this.close);
+
+    subscriber.on('menu:open', this.open);
+    subscriber.on('menu:close', this.close);
+
+    this.delegateClick = 'a';
   }
 
   open() {
@@ -16,4 +17,6 @@ export default class extends Component {
   close() {
     this.$el.classList.remove('is-open');
   }
+
+  onClick() {}
 }

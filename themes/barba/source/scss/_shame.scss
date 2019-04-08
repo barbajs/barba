@@ -20,3 +20,20 @@ body.prevent-scroll {
   flex-grow: 1;
   padding: $spacing * 2.5;
 }
+
+.intro__buttons {
+  display: flex;
+  flex-direction: column;
+
+  @include mq(m) {
+    flex-direction: row;
+
+    .button + .button {
+      margin-left: 2rem;
+    }
+  }
+
+  .button {
+    margin-top: 1rem;
+  }
+}

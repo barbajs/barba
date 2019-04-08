@@ -1,27 +1,22 @@
 {
-  "name": "hexo-site",
+  "name": "barba.js",
   "version": "0.0.0",
   "private": true,
   "hexo": {
     "version": "3.8.0"
   },
   "scripts": {
-    "build": "hexo generate",
+    "build": "npm run svg && hexo generate",
     "clean": "hexo clean",
-    "start": "hexo server"
+    "start": "npm run svg && hexo server",
+    "svg": "svg-sprite --config svg-sprite.config.json themes/barba/source/svg/./**/*.svg"
   },
   "dependencies": {
-    "@barba/core": "^2.0.1-next.56",
+    "@barba/core": "next",
+    "@barba/router": "next",
+    "animejs": "^3.0.1",
     "gsap": "^2.0.2",
     "hexo": "^3.7.0",
-    "hexo-generator-archive": "^0.1.5",
-    "hexo-generator-category": "^0.1.3",
-    "hexo-generator-index": "^0.2.1",
-    "hexo-generator-tag": "^0.2.0",
-    "hexo-renderer-ejs": "^0.3.1",
-    "hexo-renderer-stylus": "^0.3.3",
-    "hexo-renderer-marked": "^0.3.2",
-    "hexo-server": "^0.3.1",
     "kapla": "^2.0.1",
     "verge": "^1.10.2"
   },
@@ -29,12 +24,21 @@
     "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.3.0",
     "@babel/preset-env": "^7.3.1",
-    "@barba/router": "^2.0.1-next.56",
-    "animejs": "^3.0.1",
+    "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
-    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^5.15.3",
     "hexo-browsersync": "^0.3.0",
+    "hexo-generator-archive": "^0.1.5",
+    "hexo-generator-category": "^0.1.3",
+    "hexo-generator-index": "^0.2.1",
+    "hexo-generator-tag": "^0.2.0",
+    "hexo-renderer-ejs": "^0.3.1",
+    "hexo-renderer-marked": "^0.3.2",
     "hexo-renderer-scss": "^1.2.0",
-    "hexo-renderer-webpack-2-advanced": "^0.5.0"
+    "hexo-renderer-webpack-2-advanced": "^0.5.0",
+    "hexo-server": "^0.3.1",
+    "npm-run-all": "^4.1.5",
+    "sass-lint": "^1.12.1",
+    "svg-sprite": "^1.5.0"
   }
 }

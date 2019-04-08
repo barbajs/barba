@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: barba.js
 subtitle:
 description:
 keywords:
-author: John Doe
-language:
+author: Barba team
+language: en
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://barba.js.org
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:

@@ -1,0 +1,27 @@
+{
+  "log": "info",
+  "mode": {
+    "symbol": {
+      "dest": "themes/barba/layout",
+      "sprite": "svg/sprite.ejs"
+    }
+  },
+  "shape": {
+    "transform": [
+      {
+        "svgo": {
+          "plugins": [
+            {
+              "removeAttrs": {
+                "attrs": ["fill", "stroke"]
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "id": {
+      "separator": "-"
+    }
+  }
+}

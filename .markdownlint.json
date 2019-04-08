@@ -1,0 +1,15 @@
+{
+  "default": true,
+  "fenced-code-language": false,
+  "first-line-h1": false,
+  "line-length": false,
+  "no-inline-html": false,
+  "no-trailing-punctuation": {
+    "punctuation": ",;:"
+  },
+  "ol-prefix": {
+    "style": "ordered"
+  },
+  "ul-indent": { "indent": 2 },
+  "ul-style": false
+}

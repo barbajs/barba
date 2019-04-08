@@ -2,7 +2,7 @@
 html {
   &.js {
     opacity: 0;
-    transition: opacity .2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
 
     &.wf-active,
     &.wf-inactive,
@@ -27,6 +27,6 @@ a,
 a:hover,
 a:active,
 a:visited {
+  color: $c-main;
   text-decoration: none;
-  color: inherit;
 }

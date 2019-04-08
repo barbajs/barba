@@ -5,10 +5,10 @@ export default class extends Component {
     e.preventDefault();
 
     if (this.isOpen()) {
-      this.emit('Menu:close');
+      this.emit('menu:close');
       this.$el.classList.remove('is-open');
     } else {
-      this.emit('Menu:open');
+      this.emit('menu:open');
       this.$el.classList.add('is-open');
     }
   }

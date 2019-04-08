@@ -3,7 +3,6 @@
  */
 $env: 'dev' !default;
 
-
 /**
  * Colors
  * for the naming use http://name-of-color.com/
@@ -70,7 +69,7 @@ $font-sizes: (
   h1: 3.6rem,
   h2: 2.8rem,
   h3: 2.4rem,
-  h4: 1.4rem
+  h4: 1.4rem,
 );
 
 // The `scalable-text-map` contains options for our `scalable-text` mixin.
@@ -81,21 +80,35 @@ $font-sizes: (
 // - For any screen size in between, the `h1` will scale between 24px and 36px.
 $scalable-text-map: (
   h1: (
-    min: (24px, 'small'),
-    max: (36px, 'large')
+    min: (
+      24px,
+      'small',
+    ),
+    max: (
+      36px,
+      'large',
+    ),
   ),
   p: (
-    min: (13px, 'small'),
-    max: (18px, 'large')
-  )
+    min: (
+      13px,
+      'small',
+    ),
+    max: (
+      18px,
+      'large',
+    ),
+  ),
 );
-
 
 /*
  * Layout & spacing
  */
 
 $spacing: 20px;
+$icon-size: 3.2rem;
+$btn-rounded-size: 5rem;
+$btn-border-size: 0.2rem;
 
 /**
  * RWD

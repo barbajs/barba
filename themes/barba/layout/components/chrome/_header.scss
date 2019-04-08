@@ -1,9 +1,24 @@
-// .header__nav {
-//   padding: 50px 50px 0;
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   display: flex;
-//   flex-direction: row-reverse;
-// }
+.header,
+[class*='header--'] {
+  padding: $spacing;
+
+  @include mq(m) {
+    padding: $spacing * 2;
+  }
+}
+
+.header__infos {
+  display: flex;
+  align-items: center;
+}
+
+.header__infos__logo {
+  margin-right: $spacing * 0.5;
+}
+
+.header__infos__version {
+  @extend %ff-alt;
+
+  color: $c-main;
+  font-size: 1.1rem;
+}

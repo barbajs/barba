@@ -1,44 +1,27 @@
-console.log('themes/barba/source/js/main.js');
-
-import { Application, autoLoad } from 'kapla';
-import { qs } from './utils/dom';
-
 import barba from '@barba/core';
-import router from '@barba/router';
-
-import defaultTransition from './transitions/default';
-import homeToFeature from './transitions/homeToFeature';
-import routes from './transitions/routes';
-import Home from './views/Home';
-
-// Events
-import {
-  appear,
-  raf,
-  resize,
-  scroll,
-} from './events';
+import { Application, autoLoad } from 'kapla';
 
 // DEV
-const customEvents = [
-  ['somethingCustom', null, false],
-];
+// import router from '@barba/router';
+
+// import defaultTransition from './transitions/default';
+// import homeToFeature from './transitions/homeToFeature';
+// import routes from './transitions/routes';
+// import Home from './views/Home';
+
+// Events
+import { appear, raf, resize, scroll } from './events';
 
 /*
- * BarbaWebsite Class
+ * App Class
  */
-class BarbaWebsite {
+class App {
   static start() {
-    return new BarbaWebsite();
+    return new App();
   }
 
   constructor() {
-    console.log('BarbaWebsite:constructor');
-    Promise
-      .all([
-        BarbaWebsite.domReady(),
-      ])
-      .then(this.init.bind(this));
+    Promise.all([App.domReady()]).then(this.init.bind(this));
   }
 
   static domReady() {
@@ -53,35 +36,38 @@ class BarbaWebsite {
 
   // eslint-disable-next-line class-methods-use-this
   init() {
-    console.info('BarbaWebsite:init');
     // Init polyfills
     // polyfills.init();
 
     // Avoid 'blank page' on JS error
     try {
+      // DEV
+      // barba.use(router, {
+      //   routes
+      // });
 
-      barba.use(router, {
-        routes
-      });
-
+      // barba.init({
+      //   transitions: [
+      //     defaultTransition,
+      //     homeToFeature,
+      //   ],
+      //   views: [
+      //     Home,
+      //   ]
+      // });
       barba.init({
-        transitions: [
-          defaultTransition,
-          homeToFeature,
-        ],
-        views: [
-          Home,
-        ]
+        debug: true,
       });
 
       // Kapla
-      const context = require.context('./../../layout/components', true, /\.js$/);
-      const app = Application.start(qs('.site'));
+      const context = require.context(
+        './../../layout/components',
+        true,
+        /\.js$/
+      );
+      const app = Application.start();
 
       // 1. Register events
-      customEvents.forEach(events => {
-        app.use(...events);
-      });
       app.use('appear', appear);
       app.use('raf', raf);
       app.use('resize', resize);
@@ -94,9 +80,8 @@ class BarbaWebsite {
       console.error(err);
     }
 
-    BarbaWebsite.showPage();
+    App.showPage();
   }
 }
 
-BarbaWebsite.start();
-
+App.start();

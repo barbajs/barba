@@ -1,35 +1,25 @@
 <!doctype html>
 <html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-
-    <script src="/js/main.js"></script>
-
-    <link rel="stylesheet"
-          href="/scss/main.css"
-          type="text/css" media="all">
-
-  </head>
-  <body>
-    <div class="site">
-      <main class="site-main" role="main">
-        <div class="site-content <%- page.namespace %>"
-             data-barba="wrapper">
-
-          <%- partial('components/chrome/header') %>
-
-          <div class="site-content-inner"
-               data-barba="container"
-               data-barba-namespace="<%- page.namespace %>">
-            <%- body %>
-          </div>
-
-          <%- partial('components/chrome/footer') %>
-
-        </div><!-- end .site-content -->
-
-      </main><!-- end .site-main -->
-    </div><!-- end .site -->
-
-  </body>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet"
+        href="/scss/main.css"
+        type="text/css" media="all">
+  <script src="/js/main.js"></script>
+</head>
+<body>
+  <%- partial('svg/sprite') %>
+  <%- partial('components/chrome/header') %>
+  <main class="site-main" role="main">
+    <div class="site-content <%- page.namespace %>"
+          data-barba="wrapper">
+      <div class="site-content-inner"
+            data-barba="container"
+            data-barba-namespace="<%- page.namespace %>">
+        <%- body %>
+      </div>
+    </div><!-- end .site-content -->
+  </main><!-- end .site-main -->
+  <%- partial('components/chrome/footer') %>
+</body>
 </html>

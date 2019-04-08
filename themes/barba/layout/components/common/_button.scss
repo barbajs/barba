@@ -1,0 +1,31 @@
+.button,
+[class*='button--'] {
+  display: block;
+  border: $btn-border-size solid $c-blue-light;
+  padding: 1rem 3.8rem;
+  color: $c-blue-light;
+  font-family: 'Space Mono';
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  fill: $c-blue-light;
+  border-radius: 0.4rem;
+}
+
+[class*='button--'][class*='--fill'] {
+  background: $c-blue-light;
+  color: $white;
+  fill: $white;
+}
+
+[class*='button--'][class*='--fill'][class*='--black'] {
+  border-color: transparent;
+  background: $c-dark;
+}
+
+[class*='button--'][class*='--rounded'] {
+  width: $btn-rounded-size;
+  height: $btn-rounded-size;
+  padding: (($btn-rounded-size - $icon-size) / 2) - $btn-border-size;
+  border-radius: 50%;
+}

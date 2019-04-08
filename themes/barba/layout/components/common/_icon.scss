@@ -1,0 +1,12 @@
+.icon,
+[class*='icon--'] {
+  width: $icon-size;
+  height: $icon-size;
+  fill: inherit;
+}
+
+[class*='icon--'][class*='--barba'] {
+  fill: transparent;
+  stroke: $c-light;
+  stroke-width: 0.1rem;
+}
