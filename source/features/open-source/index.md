@@ -1,8 +1,5 @@
 ---
-title: Open Source 
-namespace: open-source 
+title: Open Source
+namespace: open-source
+layout: features/opensource
 ---
-
-<div class="feature">
-  <h1>Open Source</h1>
-</div>

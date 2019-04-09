@@ -1,8 +1,5 @@
 ---
-title: Change Log 
+title: Change Log
 namespace: change-log
+layout: features/changelog
 ---
-
-<div class="feature">
-  <h1>Change Log</h1>
-</div>

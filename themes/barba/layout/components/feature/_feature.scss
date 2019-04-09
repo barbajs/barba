@@ -10,7 +10,44 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 700px;
   height: 100%;
+  margin: 0 auto;
+
+  h1 {
+    font-family: 'Space Mono';
+    font-size: 5rem;
+    font-weight: 400;
+
+    [data-barba-namespace='dependency-free'] & {
+      color: $c-menu-dependency-free;
+    }
+
+    [data-barba-namespace='small-size'] & {
+      color: $c-menu-small-size;
+    }
+
+    [data-barba-namespace='open-source'] & {
+      color: $c-menu-open-source;
+    }
+
+    [data-barba-namespace='views-namespace-logic'] & {
+      color: $c-menu-views-namespace-logic;
+    }
+
+    [data-barba-namespace='prefetch'] & {
+      color: $c-menu-prefetch;
+    }
+
+    [data-barba-namespace='change-log'] & {
+      color: $c-menu-change-log;
+    }
+  }
+
+  p {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+  }
 }
 
 .feature .logo {

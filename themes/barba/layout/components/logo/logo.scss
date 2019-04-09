@@ -76,13 +76,6 @@
       fill: #E3E3E3;
     }
   }
-}
-
-
-.featured--dep {
-  // .hover a {
-  //   opacity: 1;
-  // }
 
   .hover {
     rect,
@@ -92,12 +85,16 @@
     }
   }
 
+}
+
+
+.featured--dep {
   .hover .b1 {
     opacity: 1;
   }
 
   .big1 {
-    opacity: 1!important;
+    opacity: 1 !important;
 
     rect {
       transform: scale(21) rotate(30deg) translate(3vw, 0vh);
@@ -110,3 +107,89 @@
     }
   }
 }
+
+.featured--small {
+  .hover .a2 {
+    opacity: 1;
+  }
+
+  .big2 {
+    opacity: 1 !important;
+
+    rect {
+      transform: scale(21) rotate(30deg) translate(3vw, 0vh);
+      transform-origin: 0 70%;
+    }
+
+    circle {
+      transform: scale(21) rotate(30deg) translate(-1vw, 0vh);
+      transform-origin: 0 0%;
+    }
+  }
+}
+
+.featured--open {
+  .hover .r3 {
+    opacity: 1;
+  }
+
+  .big3 {
+    opacity: 1 !important;
+
+    rect {
+      transform: scale(21) rotate(30deg) translate(3vw, 0vh);
+      transform-origin: 0 70%;
+    }
+
+    circle {
+      transform: scale(21) rotate(30deg) translate(-1vw, 0vh);
+      transform-origin: 0 0%;
+    }
+  }
+}
+
+.featured--views {
+  .hover .b4 {
+    opacity: 1;
+  }
+
+  .big4 {
+    opacity: 1 !important;
+
+    rect {
+      transform: scale(21) rotate(30deg) translate(3vw, 0vh);
+      transform-origin: 0 70%;
+    }
+
+    circle {
+      transform: scale(21) rotate(30deg) translate(-1vw, 0vh);
+      transform-origin: 0 0%;
+    }
+  }
+}
+
+.featured--prefetch {
+  .hover .a5 {
+    opacity: 1;
+  }
+
+  .big5 {
+    opacity: 1 !important;
+
+    rect {
+      transform: scale(21) rotate(30deg) translate(3vw, 0vh);
+      transform-origin: 0 70%;
+    }
+
+    circle {
+      transform: scale(21) rotate(30deg) translate(-1vw, 0vh);
+      transform-origin: 0 0%;
+    }
+  }
+}
+
+.featured--change {
+  
+}
+
+

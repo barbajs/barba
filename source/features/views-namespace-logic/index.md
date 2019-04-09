@@ -1,8 +1,5 @@
 ---
-title: Views/Namespace Logic 
-namespace: views-namespace-logic 
+title: Views/Namespace Logic
+namespace: views-namespace-logic
+layout: features/viewsnamespacelogic
 ---
-
-<div class="feature">
-  <h1>Views/Namespace <br>Logic</h1>
-</div>

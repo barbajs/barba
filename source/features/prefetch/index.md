@@ -1,8 +1,5 @@
 ---
 title: Prefetch
-namespace: prefetch 
+namespace: prefetch
+layout: features/prefetch
 ---
-
-<div class="feature">
-  <h1>Prefetch</h1>
-</div>

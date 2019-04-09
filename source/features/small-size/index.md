@@ -1,8 +1,5 @@
 ---
 title: Small Size
-namespace: small-size 
+namespace: small-size
+layout: features/smallsize
 ---
-
-<div class="feature">
-  <h1>Small size</h1>
-</div>
