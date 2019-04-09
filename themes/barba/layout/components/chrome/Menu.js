@@ -8,6 +8,9 @@ export default class extends Component {
     subscriber.on('menu:close', this.close);
 
     this.delegateClick = 'a';
+    document.querySelector('.menu__overlay').addEventListener('click', () => {
+      this.onOverlayClick();
+    });
   }
 
   open() {
@@ -18,5 +21,12 @@ export default class extends Component {
     this.$el.classList.remove('is-open');
   }
 
-  onClick() { }
+  onOverlayClick() {
+    this.emit('overlay:close');
+    this.close();
+  }
+
+  onClick() {
+
+  }
 }

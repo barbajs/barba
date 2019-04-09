@@ -116,12 +116,35 @@
 .menu-subpages__item__link__line {
   width: 0;
   height: 2px;
-  background-color: $c-green-medium;
   margin-right: $spacing / 2;
   transition: width .2s ease-out;
 
   .menu-subpages__item.is-active & {
     width: 30px;
+  }
+
+  .dependency-free & {
+    background-color: $c-menu-dependency-free;
+  }
+
+  .small-size & {
+    background-color: $c-menu-small-size;
+  }
+  
+  .open-source & {
+    background-color: $c-menu-open-source;
+  }
+
+  .views-namespace-logic & {
+    background-color: $c-menu-views-namespace-logic;
+  }
+
+  .prefetch & {
+    background-color: $c-menu-prefetch;
+  }
+  
+  .change-log & {
+    background-color: $c-menu-change-log;
   }
 }
 
@@ -129,9 +152,34 @@
   color: $c-gray-medium;
   transition: color .2s ease-out;
 
-  .menu-subpages__item:hover &,
-  .menu-subpages__item.is-active & {
-    color: $c-green-medium;
+  .menu-subpages__item:hover.dependency-free &,
+  .menu-subpages__item.dependency-free.is-active & {
+    color: $c-menu-dependency-free;
+  }
+
+  .menu-subpages__item:hover.small-size &,
+  .menu-subpages__item.small-size.is-active & {
+    color: $c-menu-small-size;
+  }
+
+  .menu-subpages__item:hover.open-source &,
+  .menu-subpages__item.open-source.is-active & {
+    color: $c-menu-open-source;
+  }
+
+  .menu-subpages__item:hover.views-namespace-logic &,
+  .menu-subpages__item.views-namespace-logic.is-active & {
+    color: $c-menu-views-namespace-logic;
+  }
+
+  .menu-subpages__item:hover.prefetch &,
+  .menu-subpages__item.prefetch.is-active & {
+    color: $c-menu-prefetch;
+  }
+
+  .menu-subpages__item:hover.change-log &,
+  .menu-subpages__item.change-log.is-active & {
+    color: $c-menu-change-log;
   }
 }
 

@@ -6,5 +6,9 @@ export default [
   {
     path: '/features/:type',
     name: 'feature'
-  }
+  },
+  {
+    path: '/:page',
+    name: 'page',
+  },
 ];

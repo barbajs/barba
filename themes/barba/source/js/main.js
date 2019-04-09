@@ -2,11 +2,18 @@ import barba from '@barba/core';
 import { Application, autoLoad } from 'kapla';
 
 // DEV
-// import router from '@barba/router';
+import router from '@barba/router';
 
-// import defaultTransition from './transitions/default';
-// import homeToFeature from './transitions/homeToFeature';
-// import routes from './transitions/routes';
+import routes from './transitions/routes';
+import defaultTransition from './transitions/default';
+import homeToFeature from './transitions/homeToFeature';
+import homeToPage from './transitions/homeToPage';
+import featureToFeature from './transitions/featureToFeature';
+import featureToHome from './transitions/featureToHome';
+import featureToPage from './transitions/featureToPage';
+import pageToPage from './transitions/pageToPage';
+import pageToHome from './transitions/pageToHome';
+import pageToFeature from './transitions/pageToFeature';
 // import Home from './views/Home';
 
 // Events
@@ -42,21 +49,23 @@ class App {
     // Avoid 'blank page' on JS error
     try {
       // DEV
-      // barba.use(router, {
-      //   routes
-      // });
+      barba.use(router, {
+        routes,
+      });
 
-      // barba.init({
-      //   transitions: [
-      //     defaultTransition,
-      //     homeToFeature,
-      //   ],
-      //   views: [
-      //     Home,
-      //   ]
-      // });
       barba.init({
         debug: true,
+        transitions: [
+          defaultTransition,
+          homeToPage,
+          homeToFeature,
+          featureToFeature,
+          featureToHome,
+          featureToPage,
+          pageToPage,
+          pageToHome,
+          pageToFeature,
+        ],
       });
 
       // Kapla

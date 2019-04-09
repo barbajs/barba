@@ -1,16 +1,30 @@
 import { Component } from 'kapla';
 
 export default class extends Component {
+  load() {
+    const subscriber = this.subscribe('menu');
+
+    subscriber.on('overlay:close', this.close);
+  }
+
   onClick(e) {
     e.preventDefault();
 
     if (this.isOpen()) {
-      this.emit('menu:close');
-      this.$el.classList.remove('is-open');
+      this.close();
     } else {
-      this.emit('menu:open');
-      this.$el.classList.add('is-open');
+      this.open();
     }
+  }
+
+  open() {
+    this.$el.classList.add('is-open');
+    this.emit('menu:open');
+  }
+
+  close() {
+    this.$el.classList.remove('is-open');
+    this.emit('menu:close');
   }
 
   isOpen() {

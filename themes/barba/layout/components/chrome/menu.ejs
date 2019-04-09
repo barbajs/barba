@@ -5,26 +5,32 @@
       {
         name: 'Dependency Free',
         url: '/features/dependency-free',
+        modifier: 'dependency-free',
       },
       {
         name: 'Small size',
         url: '/features/small-size',
+        modifier: 'small-size',
       },
       {
         name: 'Open Source',
         url: '/features/open-source',
+        modifier: 'open-source',
       },
       {
         name: 'Views/Namespace Logic',
         url: '/features/views-namespace-logic',
+        modifier: 'views-namespace-logic',
       },
       {
         name: 'Prefetch',
         url: '/features/prefetch',
+        modifier: 'prefetch',
       },
       {
         name: 'Change Log',
         url: '/features/change-log',
+        modifier: 'change-log',
       },
     ],
   },
@@ -80,9 +86,9 @@
               <% page.subpages.forEach(function(page) { %>
 
               <!-- Subpage -->
-              <li class="menu-subpages__item <%- is_current(page.url) ? 'is-active' : '' %>">
+              <li class="menu-subpages__item <%- page.modifier %> <%- is_current(page.url) ? 'is-active' : '' %>">
                 <a class="menu-subpages__item__link" href="<%- page.url %>">
-                  <div class="menu-subpages__item__link__line"></div>
+                  <div class="menu-subpages__item__link__line" style="background: <%- page.color %>"></div>
                   <span class="menu-subpages__item__link__label">
                     <%- page.name %>
                   </span>

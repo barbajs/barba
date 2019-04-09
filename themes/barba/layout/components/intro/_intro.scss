@@ -14,13 +14,13 @@
 }
 
 .intro h1 {
-  font-family: 'Space Mono', monospace;
-  font-weight: 400;
-  font-size: 1.6rem;
-  line-height: 1.2;
   max-width: 65rem;
   margin: 0;
   margin-bottom: 2rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.2;
 
   @include mq(s) {
     font-size: 2.5rem;

@@ -35,6 +35,27 @@
   background: $c-dark;
 }
 
+[class*='button--'][class*='--github'] {
+  color: $c-dark;
+  font-size: 11px;
+  font-weight: 300;
+
+  span {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: 160%;
+    margin-left: 1rem;
+    opacity: 0;
+    transform: translateY(-50%);
+    transition: opacity .4s ease-in-out;
+
+    .is-open & {
+      opacity: 1;
+    }
+  }
+}
+
 [class*='button--'][class*='--rounded'] {
   width: $btn-rounded-size;
   height: $btn-rounded-size;
