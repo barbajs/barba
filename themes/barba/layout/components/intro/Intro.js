@@ -211,7 +211,7 @@ export default class extends Component {
     function hover() {
       const $a = document.querySelectorAll('.hover a');
       const $base = document.querySelector('.base');
-      const $names = [...document.querySelectorAll('.name__list li')];
+      const $names = [...document.querySelectorAll('.intro__list li')];
 
       [...$a].forEach((link, index) => {
         link.addEventListener('mouseenter', () => onMouseEnter(link, index));
