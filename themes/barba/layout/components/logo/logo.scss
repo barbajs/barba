@@ -1,8 +1,8 @@
 
 
 .logo {
-  font-size: 0;
   width: 100%;
+  font-size: 0;
 
   svg {
     overflow: visible;
@@ -30,7 +30,7 @@
       // a {
       //   opacity: 1!important;
       // }
-      
+
       rect,
       circle,
       path {
@@ -43,25 +43,25 @@
     .js__rect {
       opacity: 0;
     }
-    
+
     .js__rect__alternate {
       display: none;
     }
   }
-  
+
   .js.front {
     .js__rect_alternate {
       display: block;
-    } 
+    }
   }
-  
+
   .hover a {
     opacity: 0;
-    //display: none;
   }
 
   .big > g {
     opacity: 0;
+    pointer-events: none;
   }
 }
 

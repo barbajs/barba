@@ -23,8 +23,8 @@
   line-height: 1.2;
 
   @include mq(s) {
-    font-size: 2.5rem;
     width: 80%;
+    font-size: 2.5rem;
   }
 }
 
@@ -33,7 +33,7 @@
   width: 100%;
   margin: 3rem 0;
   padding: 0;
-  
+
   li:first-child {
     position: relative;
     //opacity: 1;

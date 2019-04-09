@@ -11,9 +11,11 @@
   padding: $spacing * 9 $spacing * 2.5 $spacing * 2.5;
   font-family: $ff-alt;
   user-select: none;
+  pointer-events: none;
 
   &.is-open {
     display: flex;
+    pointer-events: initial;
   }
 
   > div {
@@ -130,7 +132,7 @@
   .small-size & {
     background-color: $c-menu-small-size;
   }
-  
+
   .open-source & {
     background-color: $c-menu-open-source;
   }
@@ -142,7 +144,7 @@
   .prefetch & {
     background-color: $c-menu-prefetch;
   }
-  
+
   .change-log & {
     background-color: $c-menu-change-log;
   }
