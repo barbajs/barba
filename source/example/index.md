@@ -1,6 +1,6 @@
 ---
-title: Example 
-namespace: example
+title: Example
+namespace: page
+layout: page
+headline: 'Nullam quis risus eget urna mollis ornare vel eu leo. Cras justo odio, dapibus ac facilisis in, egestas.'
 ---
-
-<h1>Example page</h1>

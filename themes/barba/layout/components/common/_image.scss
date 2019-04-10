@@ -1,0 +1,10 @@
+.partial-image {
+  width: 100%;
+  background-size: cover;
+
+  &::after {
+    content: '';
+    display: block;
+    padding-top: 77.5%;
+  }
+}

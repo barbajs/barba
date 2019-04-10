@@ -1,8 +1,16 @@
 .header,
 [class*='header--'] {
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: 100;
+}
+
+.header__wrapper {
   display: flex;
   justify-content: space-between;
+  overflow: hidden;
+  width: 100vw;
   padding: $spacing;
 
   @include mq(m) {
@@ -32,13 +40,15 @@
 }
 
 .header__external-links__github {
+  position: relative;
+
   .is-open & {
     transform: translateX(-300px);
   }
 }
 
 .header__nav {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
 }

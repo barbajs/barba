@@ -1,26 +1,28 @@
 <header class="site-header header" role="banner" data-component="header">
-  <div class="header__infos">
-    <a class="header__infos__logo button--fill--rounded" href="/">
-      <span class="h-visually-hidden">Go to home</span>
-      <%- partial('components/common/icon', {
-        icon: 'barba-b',
-        hidden: true,
-        viewbox: '0 0 32 32',
-      }) %>
-    </a>
-    <span class="header__infos__version">v2.x</span>
-  </div>
-  <div class="header__external-links">
-    <a class="button--fill--black--rounded--github header__external-links__github" href="#">
-      <%- partial('components/common/icon', {
-        icon: 'social-github',
-        hidden: true,
-        viewbox: '0 0 32 32',
-      }) %>
-      <span>Fork me on <b>Github</b></span>
-    </a>
+  <div class="header__wrapper">
+    <div class="header__infos">
+      <a class="header__infos__logo button--fill--rounded" href="/">
+        <span class="h-visually-hidden">Go to home</span>
+        <%- partial('components/common/icon', {
+          icon: 'barba-b',
+          hidden: true,
+          viewbox: '0 0 32 32',
+        }) %>
+      </a>
+      <span class="header__infos__version">v2.x</span>
+    </div>
+    <div class="header__external-links">
+      <a class="button--fill--black--rounded--github header__external-links__github" href="#">
+        <%- partial('components/common/icon', {
+          icon: 'social-github',
+          hidden: true,
+          viewbox: '0 0 32 32',
+        }) %>
+        <span>Fork me on <b>Github</b></span>
+      </a>
 
-    <%- partial('components/chrome/menu-trigger') %>
+      <%- partial('components/chrome/menu-trigger') %>
+    </div>
   </div>
   <nav class="header__nav nav">
     <%- partial('components/chrome/menu') %>

@@ -4,6 +4,18 @@
 }) %>
 
 <div class="page-wrapper" data-component="about">
-  <h1 class="page__title"><%- page.title %></h1>
-  <p class="page__headline"><%- page.headline %></p>
+  <div class="page-inner">
+    <h1 class="page__title"><%- page.title %></h1>
+    <p class="page__headline"><%- page.headline %></p>
+
+    <% if (page.separator) {%>
+    <div class="page__separator"></div>
+    <% } %>
+  </div>
+
+  <% if (page.grid) { %>
+  <%- partial('components/grid/grid.ejs', {
+    grid: page.grid
+    }) %>
+  <% } %>
 </div>

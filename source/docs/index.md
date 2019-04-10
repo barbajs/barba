@@ -1,6 +1,5 @@
 ---
-title: Docs 
-namespace: docs
+title: Docs
+namespace: page
+layout: page
 ---
-
-<h1>Docs page</h1>

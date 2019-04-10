@@ -1,0 +1,68 @@
+.page-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0;
+  padding: 5rem 0;
+  list-style: none;
+}
+
+.page-grid__item {
+  position: relative;
+  width: 100%;
+  margin-top: 3rem;
+
+  @include mq(m) {
+    width: 31.57%;
+  }
+}
+
+.page-grid__infos {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem .5rem;
+  background: $white;
+
+  p {
+    margin: 0;
+  }
+}
+
+.page-grid__title {
+  color: $c-blue-medium;
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  letter-spacing: 0.347rem;
+}
+
+.page-grid__name {
+  font-family: 'Space Mono';
+  font-size: 1.1rem;
+  line-height: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.212rem;
+  opacity: .3;
+}
+
+.page-grid__link {
+  position: absolute;
+  top: 1.5rem;
+  right: .5rem;
+  display: flex;
+  align-items: center;
+  color: $c-blue-medium;
+  font-family: 'Space Mono';
+  font-size: 1.1rem;
+  line-height: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.212rem;
+
+  .icon--barba {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 1rem;
+    fill: $c-blue-medium;
+  }
+}

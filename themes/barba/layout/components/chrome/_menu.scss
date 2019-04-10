@@ -54,8 +54,18 @@
   background-color: $white;
   box-shadow: 10px 10px 10px 10px #D3DEFC;
 
-  transform: translateX(100%);
+  transform: translateX(110%);
   transition: transform .4s ease-out;
+
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 18rem;
+    background: $white;
+  }
 
   .is-open & {
     transform: translateX(0);
