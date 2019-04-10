@@ -1,0 +1,23 @@
+.big-title {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: .05;
+  pointer-events: none;
+}
+
+.big-title__title {
+  position: absolute;
+  top: -25%;
+  left: 70%;
+  display: block;
+  margin: 0;
+  color: $c-blue-light;
+  font-size: 45rem;
+  font-weight: 400;
+
+  transform-origin: left center;
+  transform: rotate(90deg);
+}

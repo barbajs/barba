@@ -1,5 +1,17 @@
 ---
 title: Change Log
 namespace: change-log
-layout: features/changelog
+layout: features/feature
+modifier: 'change'
+nav: {
+  prevpage: {
+    label: 'Prefetch',
+    slug: '/features/prefetch',
+  },
+  nextpage: {
+    label: 'Dependency Free',
+    slug: '/features/dependency-free',
+  }
+}
+content: 'Nullam id dolor id nibh ultricies vehicula ut id elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.'
 ---

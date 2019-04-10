@@ -1,8 +1,6 @@
 ---
-title: About 
-namespace: about
+title: About
+namespace: page
+layout: page
+headline: 'Nullam quis risus eget urna mollis ornare vel eu leo. Cras justo odio, dapibus ac facilisis in, egestas.'
 ---
-
-<h1>About page</h1>
-
-lorem lorem
