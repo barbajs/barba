@@ -1,5 +1,5 @@
 ---
 title: Docs
-namespace: page
+namespace: page--docs
 layout: page
 ---

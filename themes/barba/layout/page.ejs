@@ -15,7 +15,8 @@
 
   <% if (page.grid) { %>
   <%- partial('components/grid/grid.ejs', {
-    grid: page.grid
+    grid: page.grid,
+    namespace: page.namespace
     }) %>
   <% } %>
 </div>
