@@ -1,6 +1,6 @@
 ---
 title: Credits
-namespace: page--credits
+namespace: page--credits--black
 layout: page
 modifier: --black
 separator: true

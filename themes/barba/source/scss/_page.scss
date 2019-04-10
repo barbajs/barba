@@ -46,6 +46,8 @@
 }
 
 .page__headline {
+  margin: 0;
+  margin-top: 5.4rem;
   font-size: 3.5rem;
   line-height: 4.8rem;
 
@@ -57,5 +59,6 @@
 .page__separator {
   width: 5rem;
   height: .2rem;
+  margin: 5rem 0;
   background: $c-blue-medium;
 }
