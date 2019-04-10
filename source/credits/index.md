@@ -1,8 +1,7 @@
 ---
-title: Credits 
-namespace: credits 
+title: Credits
+namespace: page--black
+layout: page
+modifier: black
+headline: 'Nullam quis risus eget urna mollis ornare vel eu leo. Cras justo odio, dapibus ac facilisis in, egestas.'
 ---
-
-<div class="feature">
-  <h1>Credits</h1>
-</div>

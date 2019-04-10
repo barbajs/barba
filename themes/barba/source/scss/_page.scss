@@ -1,4 +1,5 @@
-.page {
+.page,
+[data-barba-namespace*='page--'] {
   width: 100%;
   height: 100%;
   padding: 0 11.19%;
@@ -8,6 +9,39 @@
   }
 }
 
+[data-barba-namespace*='page--'][data-barba-namespace*='--black'] {
+  &::before {
+    content: '';
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: $c-gray-darker;
+  }
+}
+
 .page-wrapper {
   width: 100%;
+  height: 100%;
+}
+
+.page__title {
+  margin: 0;
+  color: $c-blue-light;
+  font-family: 'Space Mono';
+  font-size: 6.5rem;
+  font-weight: 400;
+  line-height: 6.5rem;
+
+  [data-barba-namespace*='--black'] & {
+    color: $white;
+  }
+}
+
+.page__headline {
+  [data-barba-namespace*='--black'] & {
+    color: $white;
+  }
 }

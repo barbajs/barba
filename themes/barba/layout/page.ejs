@@ -1,8 +1,9 @@
 <%- partial('components/common/big-title.ejs', {
   title: page.title,
+  modifier: page.modifier,
 }) %>
 
 <div class="page-wrapper" data-component="about">
-  <h1 class="page-title"><%- page.title %></h1>
-  <p><%- page.headline %></p>
+  <h1 class="page__title"><%- page.title %></h1>
+  <p class="page__headline"><%- page.headline %></p>
 </div>

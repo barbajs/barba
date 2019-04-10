@@ -1,12 +1,14 @@
-.big-title {
+.big-title,
+[class*='big-title--'] {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  opacity: .05;
+  opacity: .07;
   pointer-events: none;
 }
+
 
 .big-title__title {
   position: absolute;
@@ -20,4 +22,8 @@
 
   transform-origin: left center;
   transform: rotate(90deg);
+
+  [class*='big-title--'][class*='--black'] & {
+    color: $white;
+  }
 }
