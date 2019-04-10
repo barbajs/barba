@@ -1,6 +1,17 @@
 <div class="feature">
   <%- partial('components/logo/logo.ejs', { classes: 'featured featured--prefetch' }) %>
 
+  <%- partial('features/feature-nav.ejs', {
+    prevpage: {
+      label: 'Views / Namespaces Logic',
+      slug: '/features/views-namespaces-logic',
+    },
+    nextpage: {
+      label: 'Change Log',
+      slug: '/features/change-log',
+    }
+  })%>
+
   <div class="feature__content">
     <h1>Prefetch</h1>
     <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris

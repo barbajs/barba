@@ -28,7 +28,6 @@ export default {
 
   enter(data) {
     return new Promise(resolve => {
-
       data.trigger.parentNode.classList.add('is-active');
       resolve();
     });

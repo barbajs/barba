@@ -1,6 +1,17 @@
 <div class="feature">
   <%- partial('components/logo/logo.ejs', { classes: 'featured featured--change' }) %>
 
+  <%- partial('features/feature-nav.ejs', {
+    prevpage: {
+      label: 'Prefetch',
+      slug: '/features/prefetch',
+    },
+    nextpage: {
+      label: 'Dependency Free',
+      slug: '/features/dependency-free',
+    }
+  })%>
+
   <div class="feature__content">
     <h1>Change Log</h1>
     <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris

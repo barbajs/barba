@@ -137,8 +137,8 @@
     background-color: $c-menu-open-source;
   }
 
-  .views-namespace-logic & {
-    background-color: $c-menu-views-namespace-logic;
+  .views-namespaces-logic & {
+    background-color: $c-menu-views-namespaces-logic;
   }
 
   .prefetch & {
@@ -169,9 +169,9 @@
     color: $c-menu-open-source;
   }
 
-  .menu-subpages__item:hover.views-namespace-logic &,
-  .menu-subpages__item.views-namespace-logic.is-active & {
-    color: $c-menu-views-namespace-logic;
+  .menu-subpages__item:hover.views-namespaces-logic &,
+  .menu-subpages__item.views-namespaces-logic.is-active & {
+    color: $c-menu-views-namespaces-logic;
   }
 
   .menu-subpages__item:hover.prefetch &,

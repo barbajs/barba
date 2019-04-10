@@ -1,0 +1,22 @@
+<ul class="feature__nav">
+  <li class="feature__nav__el">
+    <a href="<%- prevpage.slug %>">
+      <%- partial('components/common/icon', {
+          icon: 'barba-arrow-prev',
+          hidden: true,
+          viewbox: '0 0 21 15',
+        }) %>
+      <span><%- prevpage.label %></span>
+    </a>
+  </li>
+  <li class="feature__nav__el">
+    <a href="<%- nextpage.slug %>">
+      <span><%- nextpage.label %></span>
+      <%- partial('components/common/icon', {
+          icon: 'barba-arrow-next',
+          hidden: true,
+          viewbox: '0 0 21 15',
+        }) %>
+    </a>
+  </li>
+</ul>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="15px" viewBox="0 0 21 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Arrow</title>
+    <desc>Created with Sketch.</desc>
+    <g id="01-BarbaSite" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="09-Page-B" transform="translate(-50.000000, -505.000000)" fill="#0C0C0C">
+            <g id="Arrow" transform="translate(60.500000, 512.500000) scale(-1, 1) translate(-60.500000, -512.500000) translate(50.000000, 505.000000)">
+                <path d="M9,13.2426407 L9,-3 L11,-3 L11,13.3847763 L15.7279221,8.65685425 L17.1421356,10.0710678 L11.4852814,15.7279221 L10.0710678,17.1421356 L3,10.0710678 L4.41421356,8.65685425 L9,13.2426407 Z" id="Combined-Shape" transform="translate(10.071068, 7.071068) rotate(-90.000000) translate(-10.071068, -7.071068) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

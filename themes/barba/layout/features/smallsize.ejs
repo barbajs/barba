@@ -1,6 +1,17 @@
 <div class="feature">
   <%- partial('components/logo/logo.ejs', { classes: 'featured featured--small' }) %>
 
+  <%- partial('features/feature-nav.ejs', {
+    prevpage: {
+      label: 'Dependency Free',
+      slug: '/features/dependency-free',
+    },
+    nextpage: {
+      label: 'Open Source',
+      slug: '/features/open-source',
+    }
+  })%>
+
   <div class="feature__content">
     <h1>Small Size</h1>
     <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris
