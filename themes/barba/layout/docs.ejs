@@ -1,0 +1,50 @@
+<section class="docs">
+  <div class="docs__side-nav">
+    <ul class="docs__side-nav__list">
+      <% page.doc.forEach(item => {%>
+        <li>
+          <h1 class="docs__side-nav__title"><%-item.title%></h1>
+          <ul class="docs__side-nav__sublist">
+            <% item.sections.forEach(section => { %>
+              <li>
+                <h2 class="docs__side-nav__subtitle"><%-section.title%></h2>
+              </li>
+            <% }) %>
+          </ul>
+        </li>
+      <%})%>
+    </ul>
+  </div>
+
+  <div class="docs__content">
+    <% page.doc.forEach(item => {%>
+    <div class="docs__content__section">
+      <h1 class="docs__title"><%-item.title%></h1>
+      <% for (i = 0; i < item.sections.length; i += 1) {%>
+        <h2 class="docs__subtitle"><%-item.sections[i].title%></h2>
+        <p class="docs__text"><%-item.sections[i].text%></p>
+        <% if (item.sections[i].list) {%>
+          <ul class="docs__list">
+            <% item.sections[i].list.forEach(item => { %>
+            <li class="docs__list__el">
+              <%- partial('components/common/icon', {
+                icon: 'barba-triangle',
+                hidden: true,
+                viewbox: '0 0 9 9',
+              }) %>
+              <span><%-item%></span>
+            </li>
+            <% }) %>
+          </ul>
+        <% } %>
+        <% if (item.sections[i].image) { %>
+          <img class="docs__image" src="<%-item.sections[i].image.src%>" alt="<%-item.sections[i].image.alt%>">
+        <% } %>
+        <% if (item.sections[i + 1]) {%>
+        <div class="docs__separator"></div>
+        <% } %>
+      <% } %>
+    <% }) %>
+    </div>
+  </div>
+</section>

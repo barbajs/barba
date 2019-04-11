@@ -30,15 +30,20 @@
   }
 
   &--example {
-    display: flex;
     padding: 1rem .5rem;
 
     a {
       display: flex;
       align-items: center;
+      float: left;
       font-family: 'Space Mono';
       font-size: 1.1rem;
       letter-spacing: 0.212rem;
+
+
+      &:last-child {
+        float: right;
+      }
 
       .icon--barba {
         width: 1.5rem;
