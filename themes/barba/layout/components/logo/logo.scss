@@ -87,6 +87,9 @@
 
 }
 
+.big * {
+  transition: transform .4s ease-in-out;
+}
 
 .featured--dep {
   .hover .b1 {
@@ -97,13 +100,19 @@
     opacity: 1 !important;
 
     rect {
-      transform: scale(21) rotate(30deg) translate(3vw, 0vh);
       transform-origin: 0 70%;
+
+      &.to-animate {
+        transform: scale(21) rotate(30deg) translate(3vw, 0vh);
+      }
     }
 
     circle {
-      transform: scale(21) rotate(30deg) translate(-1vw, 0vh);
       transform-origin: 0 0%;
+
+      &.to-animate {
+        transform: scale(21) rotate(30deg) translate(-1vw, 0vh);
+      }
     }
   }
 }
@@ -117,13 +126,19 @@
     opacity: 1 !important;
 
     rect {
-      transform: scale(21) rotate(30deg) translate(3vw, 0vh);
       transform-origin: 0 70%;
+
+      &.to-animate {
+        transform: scale(21) rotate(30deg) translate(3vw, 0vh);
+      }
     }
 
     circle {
-      transform: scale(21) rotate(30deg) translate(-1vw, 0vh);
       transform-origin: 0 0%;
+
+      &.to-animate {
+        transform: scale(21) rotate(30deg) translate(-1vw, 0vh);
+      }
     }
   }
 }
@@ -137,13 +152,19 @@
     opacity: 1 !important;
 
     rect {
-      transform: scale(21) rotate(30deg) translate(3vw, 0vh);
       transform-origin: 0 70%;
+
+      &.to-animate {
+        transform: scale(21) rotate(30deg) translate(3vw, 0vh);
+      }
     }
 
     path {
-      transform: scale(21) rotate(-30deg) translate(-8vw, 8vh);
       transform-origin: 0 0%;
+
+      &.to-animate {
+        transform: scale(21) rotate(-30deg) translate(-8vw, 8vh);
+      }
     }
   }
 }
@@ -157,13 +178,19 @@
     opacity: 1 !important;
 
     rect {
-      transform: scale(21) rotate(30deg) translate(3vw, 0vh);
       transform-origin: 0 70%;
+
+      &.to-animate {
+        transform: scale(21) rotate(30deg) translate(3vw, 0vh);
+      }
     }
 
     circle {
-      transform: scale(21) rotate(30deg) translate(-1vw, 0vh);
       transform-origin: 0 0%;
+
+      &.to-animate {
+        transform: scale(21) rotate(30deg) translate(-1vw, 0vh);
+      }
     }
   }
 }
@@ -177,13 +204,19 @@
     opacity: 1 !important;
 
     rect {
-      transform: scale(21) rotate(30deg) translate(3vw, 0vh);
       transform-origin: 0 70%;
+
+      &.to-animate {
+        transform: scale(21) rotate(30deg) translate(3vw, 0vh);
+      }
     }
 
     circle {
-      transform: scale(21) rotate(30deg) translate(-1vw, 0vh);
       transform-origin: 0 0%;
+
+      &.to-animate {
+        transform: scale(21) rotate(30deg) translate(-1vw, 0vh);
+      }
     }
   }
 }
@@ -197,9 +230,12 @@
   svg {
     .js__letter {
       display: none;
-      transform: scale(18) translate(-10%, 10%) rotate(-30deg);
       fill: $c-blue-medium;
       opacity: .1;
+
+      &.to-animate {
+        transform: scale(18) translate(-10%, 10%) rotate(-30deg);
+      }
 
       @include mq(m) {
         display: block;
