@@ -3,11 +3,11 @@
     <ul class="docs__side-nav__list">
       <% page.doc.forEach(item => {%>
         <li>
-          <h1 class="docs__side-nav__title"><%-item.title%></h1>
+          <a href="#"><h1 class="docs__side-nav__title"><%-item.title%></h1></a>
           <ul class="docs__side-nav__sublist">
             <% item.sections.forEach(section => { %>
               <li>
-                <h2 class="docs__side-nav__subtitle"><%-section.title%></h2>
+                <a href="#"><h2 class="docs__side-nav__subtitle"><%-section.title%></h2>
               </li>
             <% }) %>
           </ul>

@@ -102,6 +102,9 @@
 
   & > li {
     border-bottom: 1px solid rgba($black, .1);
+    a {
+      color: $gray-darker;
+    }
   }
 }
 
