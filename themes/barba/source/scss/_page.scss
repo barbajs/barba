@@ -1,7 +1,9 @@
 [data-barba-namespace*='page'] {
   width: 100%;
+  max-width: 1440px;
   height: 100%;
-  padding: 0;
+  margin: 0 auto;
+  padding: 16rem 4rem 6rem;
 
   @include mq(m) {
     padding: 25rem 11.19% 0;
@@ -27,7 +29,7 @@
 }
 
 .page-inner {
-  @include mq(m) {
+  @include mq(l) {
     padding: 0 5rem;
   }
 }
@@ -36,9 +38,19 @@
   margin: 0;
   color: $c-blue-light;
   font-family: 'Space Mono';
-  font-size: 6.5rem;
+  font-size: 2.8rem;
   font-weight: 400;
-  line-height: 6.5rem;
+  line-height: 3.2rem;
+
+  @include mq(m) {
+    font-size: 3.6rem;
+    line-height: 4.2rem;
+  }
+
+  @include mq(l) {
+    font-size: 6.5rem;
+    line-height: 6.5rem;
+  }
 
   [data-barba-namespace*='--black'] & {
     color: $white;
@@ -47,9 +59,20 @@
 
 .page__headline {
   margin: 0;
-  margin-top: 5.4rem;
-  font-size: 3.5rem;
-  line-height: 4.8rem;
+  margin-top: 2rem;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+
+  @include mq(m) {
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+  }
+
+  @include mq(l) {
+    margin-top: 5.4rem;
+    font-size: 3.5rem;
+    line-height: 4.8rem;
+  }
 
   [data-barba-namespace*='--black'] & {
     color: $white;

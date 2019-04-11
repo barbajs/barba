@@ -1,10 +1,14 @@
 [class*='footer--'],
 .footer {
-  position: fixed;
-  z-index: 99;
-  bottom: 50px;
-  left: 50px;
+  padding: 5rem;
   color: $black;
   font-size: 1.1rem;
   letter-spacing: .15em;
+  
+  @include mq(l) {
+    position: fixed;
+    z-index: 99;
+    bottom: 0;
+    left: 0;
+  }
 }

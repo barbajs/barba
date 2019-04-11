@@ -42,8 +42,8 @@ doc: [
           'Donec ullamcorper nulla non metus auctor fringilla.'
         ],
         image: {
-          src: 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/09/12/11/naturo-monkey-selfie.jpg?w968h681',
-          alt: 'Monkey',
+          src: 'https://media-cdn.tripadvisor.com/media/photo-s/11/49/24/7f/omen-sooty-owl.jpg',
+          alt: 'Owl',
         }
       }
     ]
