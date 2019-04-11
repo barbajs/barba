@@ -141,8 +141,8 @@
       transform-origin: 0 70%;
     }
 
-    circle {
-      transform: scale(21) rotate(30deg) translate(-1vw, 0vh);
+    path {
+      transform: scale(21) rotate(-30deg) translate(-8vw, 8vh);
       transform-origin: 0 0%;
     }
   }
@@ -189,7 +189,23 @@
 }
 
 .featured--change {
-  
+  .hover .c6 {
+    opacity: 1;
+
+  }
+
+  svg {
+    .js__letter {
+      display: none;
+      transform: scale(18) translate(-10%, 10%) rotate(-30deg);
+      fill: $c-blue-medium;
+      opacity: .1;
+
+      @include mq(m) {
+        display: block;
+      }
+    }
+  }
 }
 
 

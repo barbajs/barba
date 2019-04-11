@@ -98,8 +98,8 @@
   h1 {
     font-family: 'Space Mono';
     font-size: 3.2rem;
-    text-align: left;
     font-weight: 400;
+    text-align: left;
 
     [data-barba-namespace='dependency-free'] & {
       color: $c-menu-dependency-free;
