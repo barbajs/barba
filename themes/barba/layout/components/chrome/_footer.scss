@@ -4,7 +4,7 @@
   color: $black;
   font-size: 1.1rem;
   letter-spacing: .15em;
-  
+
   @include mq(l) {
     position: fixed;
     z-index: 99;

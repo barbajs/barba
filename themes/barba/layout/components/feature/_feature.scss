@@ -1,13 +1,18 @@
 .feature {
   @include get-all-space;
-  padding: 4rem;
+  padding: 16rem 4rem 6rem;
+
+  @include mq(m) {
+    padding: 4rem;
+  }
 }
 
 .feature__nav {
   position: fixed;
+  z-index: 10;
   top: 50%;
   left: 0;
-  display: flex;
+  display: none;
   justify-content: space-between;
   align-items: center;
   width: 100vw;
@@ -38,10 +43,13 @@
       position: absolute;
       top: 50%;
       white-space: nowrap;
-      opacity: 0;
       pointer-events: none;
       transition: opacity .3s, transform .3s ease-out;
     }
+  }
+
+  @include mq(m) {
+    display: flex;
   }
 }
 
@@ -53,7 +61,7 @@
 
     span {
       left: 3.1rem;
-      transform: translate3d(-10%, -50%, 0);
+      transform: translateY(-50%);
     }
   }
 
@@ -64,7 +72,7 @@
 
     span {
       right: 3.1rem;
-      transform: translate3d(10%, -50%, 0);
+      transform: translateY(-50%);
     }
   }
 
@@ -82,15 +90,14 @@
   z-index: 10;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   max-width: 700px;
   height: 100%;
   margin: 0 auto;
 
   h1 {
     font-family: 'Space Mono';
-    font-size: 5rem;
+    font-size: 3.2rem;
+    text-align: left;
     font-weight: 400;
 
     [data-barba-namespace='dependency-free'] & {
@@ -116,21 +123,48 @@
     [data-barba-namespace='change-log'] & {
       color: $c-menu-change-log;
     }
+
+    @include mq(m) {
+      font-size: 5rem;
+    }
   }
 
   p {
-    font-size: 1.6rem;
-    line-height: 2.2rem;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+
+    @include mq(m) {
+      font-size: 1.6rem;
+      line-height: 2.2rem;
+    }
+  }
+
+  @include mq(m) {
+    justify-content: center;
+    align-items: center;
   }
 }
 
 .feature .logo {
   @include center-x;
-  top: 4rem;
+  z-index: -1;
+  top: 10rem;
   width: 23.5rem;
 
   .base {
     position: relative;
     z-index: 100;
+  }
+
+  .big {
+    display: none;
+
+    @include mq(m) {
+      display: block;
+    }
+  }
+
+  @include mq(m) {
+    top: 4rem;
   }
 }

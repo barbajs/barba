@@ -1,10 +1,10 @@
 .intro {
   @include get-all-space;
-  align-items: center;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
+  align-items: center;
   padding: 4rem;
   text-align: center;
 }
