@@ -21,6 +21,7 @@ export default {
         item.classList.remove('is-active');
       });
 
+
       resolve();
     });
   },

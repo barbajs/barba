@@ -27,7 +27,12 @@ export default {
 
   enter(data) {
     return new Promise(resolve => {
-      data.trigger.parentNode.classList.add('is-active');
+      // data.trigger.parentNode.classList.add('is-active');
+      const item = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
+      document.querySelector('.' + item).classList.add('is-active');
+
+
+      console.log(window.location.href.substr(window.location.href.lastIndexOf('/') + 1));
       resolve();
     });
   }
