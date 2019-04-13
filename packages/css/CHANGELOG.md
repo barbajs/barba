@@ -9,6 +9,16 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **css:** :loud_sound: print version ([3a222d3](https://github.com/barbajs/barba/commit/3a222d3))
 
+### Reverts
+
+- **root:** :bug: revert failed release ([2b8a1ef](https://github.com/barbajs/barba/commit/2b8a1ef))
+
+## [2.1.3](https://github.com/barbajs/barba/compare/@barba/css@2.1.2...@barba/css@2.1.3) (2019-04-13)
+
+### Bug Fixes
+
+- **css:** :loud_sound: print version ([3a222d3](https://github.com/barbajs/barba/commit/3a222d3))
+
 ## [2.1.2](https://github.com/barbajs/barba/compare/@barba/css@2.1.1...@barba/css@2.1.2) (2019-04-13)
 
 ### Bug Fixes

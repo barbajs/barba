@@ -9,6 +9,16 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **prefetch:** :loud_sound: print version ([a5beae3](https://github.com/barbajs/barba/commit/a5beae3))
 
+### Reverts
+
+- **root:** :bug: revert failed release ([2b8a1ef](https://github.com/barbajs/barba/commit/2b8a1ef))
+
+## [2.1.2](https://github.com/barbajs/barba/compare/@barba/prefetch@2.1.1...@barba/prefetch@2.1.2) (2019-04-13)
+
+### Bug Fixes
+
+- **prefetch:** :loud_sound: print version ([a5beae3](https://github.com/barbajs/barba/commit/a5beae3))
+
 ## [2.1.1](https://github.com/barbajs/barba/compare/@barba/prefetch@2.1.0...@barba/prefetch@2.1.1) (2019-04-13)
 
 ### Bug Fixes
