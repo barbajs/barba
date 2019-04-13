@@ -1,6 +1,6 @@
 {
   "name": "@barba/router",
-  "version": "2.1.2",
+  "version": "2.1.1",
   "description": "Barba is a ...",
   "publishConfig": {
     "access": "public"

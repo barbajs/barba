@@ -1,6 +1,6 @@
 {
   "name": "@barba/css",
-  "version": "2.1.3",
+  "version": "2.1.2",
   "description": "Barba is a ...",
   "publishConfig": {
     "access": "public"
