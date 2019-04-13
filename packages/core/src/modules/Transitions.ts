@@ -156,8 +156,6 @@ export class Transitions {
 
     this._running = true;
 
-    this.logger.debug('DO_PAGE', page);
-
     try {
       // Check sync mode, wait for next content
       if (sync) {
@@ -190,8 +188,6 @@ export class Transitions {
         try {
           // Leave
           await this._doAsyncHook('beforeLeave', data, t);
-
-          this.logger.debug('T:LEAVE', this.leave);
 
           leaveResult = await Promise.all([
             this.leave(data, t),
@@ -254,8 +250,6 @@ export class Transitions {
   public leave(data: ITransitionData, t: ITransitionPage): Promise<any> {
     hooks.do('leave', data, t);
 
-    this.logger.debug('T:LEAVE');
-
     return t.leave ? runAsync(t.leave)(data) : Promise.resolve();
   }
 
@@ -268,8 +262,6 @@ export class Transitions {
     leaveResult?: any
   ): Promise<void> {
     hooks.do('enter', data, t);
-
-    this.logger.debug('T:ENTER');
 
     return t.enter ? runAsync(t.enter)(data, leaveResult) : Promise.resolve();
   }

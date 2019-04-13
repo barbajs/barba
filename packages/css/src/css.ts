@@ -139,7 +139,6 @@ class Css implements IBarbaPlugin<{}> {
    * `beforeAppear` hook.
    */
   private _beforeAppear(data: ITransitionData): void {
-    this.logger.debug('CSS:BEFORE_APPEAR');
     this.start(data.current.container, 'appear');
   }
 
@@ -147,7 +146,6 @@ class Css implements IBarbaPlugin<{}> {
    * `appear` hook.
    */
   private _appear(data: ITransitionData): Promise<any> {
-    this.logger.debug('CSS:APPEAR');
     return this.next(data.current.container, 'appear');
   }
 
@@ -155,8 +153,6 @@ class Css implements IBarbaPlugin<{}> {
    * `afterAppear` hook.
    */
   private _afterAppear(data: ITransitionData): void {
-    this.logger.debug('CSS:AFTER_APPEAR');
-
     this.end(data.current.container, 'appear');
   }
 
