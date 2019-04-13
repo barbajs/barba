@@ -58,7 +58,7 @@
     "doc": "typedoc packages/**/src --tsconfig typedoc.json --sourcefile-url-prefix 'https://github.com/barbajs/barba/tree/master/packages/'",
     "lint": "tslint packages/**/src/**",
     "ls": "lerna ls",
-    "prerelease": "npm run build",
+    "prepublishOnly": "yarn run build",
     "release": "lerna publish",
     "report": "lerna run report",
     "size": "lerna run size",
