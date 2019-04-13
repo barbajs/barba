@@ -153,8 +153,9 @@ export class Core {
       logLevel = 'off',
     }: IBarbaOptions = {}
   ) {
-    // 0. Set logger level
+    // 0. Set logger level and print version
     Logger.setLevel(debug === true ? 'debug' : logLevel);
+    this.logger.print(this.version);
 
     // 1. Manage options
     Object.keys(schema).forEach(k => {

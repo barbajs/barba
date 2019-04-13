@@ -63,6 +63,13 @@ export class Logger {
   }
 
   /**
+   * Permanent, unremovable log.
+   */
+  public print(...objects: any[]): void {
+    this._log(console.info, LogLevels.off, objects);
+  }
+
+  /**
    * Error log.
    */
   public error(...objects: any[]): void {
