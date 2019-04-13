@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.2](https://github.com/barbajs/barba/compare/@barba/core@2.1.1...@barba/core@2.1.2) (2019-04-13)
+
+### Bug Fixes
+
+- **core:** :mute: remove debug logs ([f4ce952](https://github.com/barbajs/barba/commit/f4ce952))
+
 ## [2.1.1](https://github.com/barbajs/barba/compare/@barba/core@2.1.0...@barba/core@2.1.1) (2019-04-13)
 
 ### Bug Fixes
