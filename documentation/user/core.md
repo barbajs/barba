@@ -82,16 +82,16 @@ All hooks are **methods** and receive the same [`data`](#data-argument) object.
 | 2     | `appear`       | Current page **appear** transition |
 | 3     | `afterAppear`  | Before **appear** transition       |
 
-| Order | Name          | Description                                               |
-| ----- | ------------- | --------------------------------------------------------- |
-| 1     | `before`      | Before everything                                         |
-| 2     | `beforeLeave` | Before **leave** transition                               |
-| 3     | `leave`       | Current page **leave** transition                         |
-| 4     | `afterLeave`  | After removing **current container**                      |
-| 5     | `beforeEnter` | Before **enter** transition and adding **next container** |
-| 6     | `enter`       | Next page **enter** transition                            |
-| 7     | `afterEnter`  | After **enter** transition                                |
-| 8     | `after`       | After everything                                          |
+| Order | Name          | Description                                                          |
+| ----- | ------------- | -------------------------------------------------------------------- |
+| 1     | `before`      | Before everything                                                    |
+| 2     | `beforeLeave` | Before **leave** transition                                          |
+| 3     | `leave`       | Current page **leave** transition                                    |
+| 4     | `afterLeave`  | After **leave** transition and before removing **current container** |
+| 5     | `beforeEnter` | Before **enter** transition and after adding **next container**      |
+| 6     | `enter`       | Next page **enter** transition                                       |
+| 7     | `afterEnter`  | After **enter** transition                                           |
+| 8     | `after`       | After everything                                                     |
 
 > "Hooks can be run either synchronously or asynchronously using the common `this.async()` style ([see run-async](https://github.com/sboudrias/run-async#readme)) or returning a promise.
 >

@@ -215,8 +215,8 @@ export class Transitions {
           // Enter
           /* istanbul ignore else */
           if (leaveResult !== false) {
-            await this._doAsyncHook('beforeEnter', data, t);
             this._addNext(data, wrapper);
+            await this._doAsyncHook('beforeEnter', data, t);
             await this.enter(data, t, leaveResult);
             await this._doAsyncHook('afterEnter', data, t);
           }

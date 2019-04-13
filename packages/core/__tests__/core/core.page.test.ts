@@ -91,7 +91,14 @@ it('do page', async () => {
   expect(hooks.do).toHaveBeenNthCalledWith(1, 'page', data);
   expect(hooks.do).toHaveBeenNthCalledWith(2, 'before', data, t);
   expect(hooks.do).toHaveBeenNthCalledWith(3, 'beforeLeave', data, t);
-  expect(hooks.do).toHaveBeenNthCalledWith(7, 'beforeEnter', data, t);
+  expect(hooks.do).toHaveBeenNthCalledWith(4, 'leave', data, t);
+  expect(hooks.do).toHaveBeenNthCalledWith(5, 'afterLeave', data, t);
+  expect(hooks.do).toHaveBeenNthCalledWith(6, 'currentRemoved', data);
+  expect(hooks.do).toHaveBeenNthCalledWith(7, 'nextAdded', data);
+  expect(hooks.do).toHaveBeenNthCalledWith(8, 'beforeEnter', data, t);
+  expect(hooks.do).toHaveBeenNthCalledWith(9, 'enter', data, t);
+  expect(hooks.do).toHaveBeenNthCalledWith(10, 'afterEnter', data, t);
+  expect(hooks.do).toHaveBeenNthCalledWith(11, 'after', data, t);
   expect(barba.transitions.doPage).toHaveBeenCalledTimes(1);
   expect(document.title).toBe('New page');
 });

@@ -153,8 +153,8 @@ it('calls hooks (sync: false)', async () => {
   expect(hooks.do).toHaveBeenNthCalledWith(3, 'leave', data, t);
   expect(hooks.do).toHaveBeenNthCalledWith(4, 'afterLeave', data, t);
   expect(hooks.do).toHaveBeenNthCalledWith(5, 'currentRemoved', data);
-  expect(hooks.do).toHaveBeenNthCalledWith(6, 'beforeEnter', data, t);
-  expect(hooks.do).toHaveBeenNthCalledWith(7, 'nextAdded', data);
+  expect(hooks.do).toHaveBeenNthCalledWith(6, 'nextAdded', data);
+  expect(hooks.do).toHaveBeenNthCalledWith(7, 'beforeEnter', data, t);
   expect(hooks.do).toHaveBeenNthCalledWith(8, 'enter', data, t);
   expect(hooks.do).toHaveBeenNthCalledWith(9, 'afterEnter', data, t);
   expect(hooks.do).toHaveBeenNthCalledWith(10, 'after', data, t);
