@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/barbajs/barba/compare/@barba/core@2.1.0...@barba/core@2.1.1) (2019-04-13)
+
+### Bug Fixes
+
+- **core:** :bug: fix cache not working ([a01e122](https://github.com/barbajs/barba/commit/a01e122))
+- **core:** :bug: fix hook order ([716b062](https://github.com/barbajs/barba/commit/716b062))
+- **core:** :bug: fix hooks order in sync mode true ([b3c92d1](https://github.com/barbajs/barba/commit/b3c92d1))
+- **core:** :bug: fix popstate navigation ([f78ee11](https://github.com/barbajs/barba/commit/f78ee11)), closes [#359](https://github.com/barbajs/barba/issues/359)
+- **core:** :bug: fix sameUrl + anchors ([039f5d9](https://github.com/barbajs/barba/commit/039f5d9)), closes [#359](https://github.com/barbajs/barba/issues/359)
+- **core:** :bug: fix timeout error ([70b7805](https://github.com/barbajs/barba/commit/70b7805)), closes [#373](https://github.com/barbajs/barba/issues/373)
+- **core:** :bug: fix view.beforeEnter on barba ready ([5a09470](https://github.com/barbajs/barba/commit/5a09470)), closes [#360](https://github.com/barbajs/barba/issues/360)
+- **core:** :bug: fix wrong combo namespace / view hooks ([3c775a3](https://github.com/barbajs/barba/commit/3c775a3)), closes [#351](https://github.com/barbajs/barba/issues/351)
+- **core:** :checkered_flag: fix InvalidStateError on IE ([b9eece9](https://github.com/barbajs/barba/commit/b9eece9)), closes [#371](https://github.com/barbajs/barba/issues/371)
+- **core:** :green_apple: fix img[srcset] parsing ([8afe945](https://github.com/barbajs/barba/commit/8afe945)), closes [#362](https://github.com/barbajs/barba/issues/362)
+- **core:** :ok_hand: add Accept header ([94962ef](https://github.com/barbajs/barba/commit/94962ef))
+- **core:** :ok_hand: fix `beforeEnter` view hook ([0d11e44](https://github.com/barbajs/barba/commit/0d11e44))
+- **core:** :ok_hand: make main transition hooks public ([2c0cc28](https://github.com/barbajs/barba/commit/2c0cc28))
+- **core:** :ok_hand: make onRequestError public ([61193ad](https://github.com/barbajs/barba/commit/61193ad))
+
 # 2.1.0 (2019-03-17)
 
 ### Bug Fixes
