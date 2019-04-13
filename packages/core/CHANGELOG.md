@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.3](https://github.com/barbajs/barba/compare/@barba/core@2.1.2...@barba/core@2.1.3) (2019-04-13)
+
+### Bug Fixes
+
+- **core:** :loud_sound: print version ([24dd2ea](https://github.com/barbajs/barba/commit/24dd2ea))
+
 ## [2.1.2](https://github.com/barbajs/barba/compare/@barba/core@2.1.1...@barba/core@2.1.2) (2019-04-13)
 
 ### Bug Fixes

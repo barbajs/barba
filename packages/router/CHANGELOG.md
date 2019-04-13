@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.2](https://github.com/barbajs/barba/compare/@barba/router@2.1.1...@barba/router@2.1.2) (2019-04-13)
+
+### Bug Fixes
+
+- **router:** :loud_sound: print version ([70e9857](https://github.com/barbajs/barba/commit/70e9857))
+
 ## [2.1.1](https://github.com/barbajs/barba/compare/@barba/router@2.1.0...@barba/router@2.1.1) (2019-04-13)
 
 ### Bug Fixes
