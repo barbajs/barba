@@ -37,43 +37,40 @@ it('register hooks', () => {
   expect(v2.ctx).toBe(null);
 });
 
-it('do nothing when no hooks', () => {
+it('do nothing when no hooks', async () => {
   const doUnknown = jest.fn(() => hooks.do(('unknown' as unknown) as HooksAll));
   const doUnregistered = jest.fn(() => hooks.do(hooks.all[1]));
 
-  doUnknown();
-  doUnregistered();
-
-  expect(doUnknown).toHaveReturnedWith(undefined);
-  expect(doUnregistered).toHaveReturnedWith(undefined);
+  expect(doUnknown()).resolves.toBeUndefined();
+  expect(doUnregistered()).resolves.toBeUndefined();
 });
 
-it('do registered hooks', () => {
+it('do registered hooks', async () => {
   const fn = jest.fn();
   const fn2 = jest.fn();
 
   hooks[hookName](fn);
   hooks[hookName](fn2);
 
-  hooks.do(hookName);
+  await hooks.do(hookName);
 
   expect(fn).toHaveBeenCalledTimes(1);
   expect(fn2).toHaveBeenCalledTimes(1);
 });
 
-it('do with arguments', () => {
+it('do with arguments', async () => {
   const expected = 'arg';
   const fn = jest.fn((...args) => args);
 
   hooks.init();
 
   hooks[hookName](fn);
-  hooks.do(hookName, expected);
+  await hooks.do(hookName, expected);
 
   expect(fn).toHaveReturnedWith([expected]);
 });
 
-it('do with context', () => {
+it('do with context', async () => {
   interface ICtx {
     prop: string;
     fn(): string;
@@ -88,7 +85,7 @@ it('do with context', () => {
   hooks.init();
 
   hooks[hookName](ctx.fn, ctx);
-  hooks.do(hookName);
+  await hooks.do(hookName);
 
   expect(ctx.fn).toHaveReturnedWith(ctx.prop);
 });

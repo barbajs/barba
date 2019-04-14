@@ -17,6 +17,8 @@
 
 /***/
 
+// Third-party
+import runAsync from 'run-async';
 // Definitions
 import { HooksAll } from './defs';
 // Modules
@@ -24,7 +26,7 @@ import { Logger } from './modules/Logger';
 // Types
 interface IHookData {
   ctx: any;
-  fn: () => void;
+  fn: () => Promise<void>;
 }
 
 export class Hooks {
@@ -79,7 +81,7 @@ export class Hooks {
     this.registered.clear();
     this.all.forEach(hook => {
       if (!this[hook]) {
-        this[hook] = (fn: () => void, ctx: any = null) => {
+        this[hook] = (fn: () => Promise<void>, ctx: any = null) => {
           if (!this.registered.has(hook)) {
             this.registered.set(hook, new Set());
           }
@@ -99,12 +101,22 @@ export class Hooks {
    *
    * Trigger registered hooks.
    */
-  public do(name: HooksAll, ...args: any) {
+  public do(name: HooksAll, ...args: any): Promise<any> {
     if (this.registered.has(name)) {
+      // Let's a promises chain
+      let chain = Promise.resolve();
+
       this.registered.get(name).forEach(hook => {
-        hook.fn.apply(hook.ctx, args);
+        // If needed, bind the right context
+        const fn = hook.ctx ? hook.fn.bind(hook.ctx) : hook.fn;
+        // Chain async hooks promisified
+        chain = chain.then(() => runAsync(fn)(...args));
       });
+
+      return chain;
     }
+
+    return Promise.resolve();
   }
 
   public clear(): void {
@@ -118,7 +130,7 @@ export class Hooks {
   /**
    * Help, print available and registered hooks.
    */
-  public help() {
+  public help(): void {
     this.logger.info(`[@barba/core] Available hooks: ${this.all}`);
     this.logger.info(
       `[@barba/core] Registered hooks: ${Object.keys(this.registered)}`

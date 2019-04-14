@@ -63,7 +63,7 @@ export class Store {
       // TODO: add check for valid transitions? criteria? (appear || enter && leave)
       this.all = this.all.concat(transitions);
     }
-    this._update();
+    this.update();
   }
 
   /**
@@ -82,7 +82,7 @@ export class Store {
         break;
     }
 
-    this._update();
+    this.update();
   }
 
   /**
@@ -153,9 +153,14 @@ export class Store {
     }
 
     if (activeMatch) {
+      // Log resolved transition
+      const infos: any[] = [active];
+      // Log if matching criteria
+      Object.keys(activeMatch).length > 0 && infos.push(activeMatch);
+
       this.logger.info(
         `Transition found [${transitionType.join(',')}]`,
-        activeMatch
+        ...infos
       );
     } else {
       this.logger.info(`No transition found [${transitionType.join(',')}]`);
@@ -171,7 +176,7 @@ export class Store {
    * - Get wait indicator
    * - Get appear transitions
    */
-  private _update(): void {
+  public update(): void {
     // Reorder by priorities
     this.all = this.all
       .map(t => this._addPriority(t))
@@ -182,7 +187,9 @@ export class Store {
 
         return t;
       });
-    this.appear = this.all.filter(t => t.appear) as ITransitionAppear[];
+    this.appear = this.all.filter(
+      t => t.appear !== undefined
+    ) as ITransitionAppear[];
   }
 
   /**

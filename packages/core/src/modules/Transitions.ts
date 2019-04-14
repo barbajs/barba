@@ -238,8 +238,11 @@ export class Transitions {
   /**
    * Appear hook + async "appear" transition.
    */
-  public appear(data: ITransitionData, t: ITransitionAppear): Promise<void> {
-    hooks.do('appear', data, t);
+  public async appear(
+    data: ITransitionData,
+    t: ITransitionAppear
+  ): Promise<void> {
+    await hooks.do('appear', data, t);
 
     return t.appear ? runAsync(t.appear)(data) : Promise.resolve();
   }
@@ -247,8 +250,8 @@ export class Transitions {
   /**
    * Leave hook + async "leave" transition.
    */
-  public leave(data: ITransitionData, t: ITransitionPage): Promise<any> {
-    hooks.do('leave', data, t);
+  public async leave(data: ITransitionData, t: ITransitionPage): Promise<any> {
+    await hooks.do('leave', data, t);
 
     return t.leave ? runAsync(t.leave)(data) : Promise.resolve();
   }
@@ -256,12 +259,12 @@ export class Transitions {
   /**
    * Enter hook + async "enter" transition.
    */
-  public enter(
+  public async enter(
     data: ITransitionData,
     t: ITransitionPage,
     leaveResult?: any
   ): Promise<void> {
-    hooks.do('enter', data, t);
+    await hooks.do('enter', data, t);
 
     return t.enter ? runAsync(t.enter)(data, leaveResult) : Promise.resolve();
   }
@@ -269,12 +272,13 @@ export class Transitions {
   /**
    * Do hooks + async transition methods.
    */
-  private _doAsyncHook(
+  private async _doAsyncHook(
     hook: HooksTransition,
     data: ITransitionData,
     t: HooksTransitionMap
   ): Promise<void> {
-    hooks.do(hook, data, t);
+    // await this.wait();
+    await hooks.do(hook, data, t);
 
     return t[hook] ? runAsync(t[hook])(data) : Promise.resolve();
   }

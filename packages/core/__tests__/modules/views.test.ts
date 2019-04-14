@@ -60,7 +60,7 @@ it('register hooks', () => {
 });
 
 /* tslint:disable:object-literal-sort-keys */
-it('do existing hooks for existing namespace', () => {
+it('do existing hooks for existing namespace', async () => {
   views = new Views([
     {
       namespace: 'success',
@@ -79,12 +79,12 @@ it('do existing hooks for existing namespace', () => {
     next: { namespace: 'success' },
   };
 
-  hooks.do('beforeAppear', success);
-  hooks.do('afterAppear', success);
-  hooks.do('beforeLeave', success);
-  hooks.do('afterLeave', success);
-  hooks.do('beforeEnter', success);
-  hooks.do('afterEnter', success);
+  await hooks.do('beforeAppear', success);
+  await hooks.do('afterAppear', success);
+  await hooks.do('beforeLeave', success);
+  await hooks.do('afterLeave', success);
+  await hooks.do('beforeEnter', success);
+  await hooks.do('afterEnter', success);
 
   expect(beforeAppear).toHaveBeenCalledWith(success);
   expect(afterAppear).toHaveBeenCalledWith(success);
