@@ -2,6 +2,8 @@
 
 ## Lerna/npm publish
 
+`yarn run release`
+
 ### Beta `publish`
 
 ```sh

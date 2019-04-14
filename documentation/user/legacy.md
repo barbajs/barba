@@ -20,7 +20,7 @@ title: User guide
 <!-- Load some animation library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
 <!-- Load barba.js -->
-<script src="https://unpkg.com/@barba/core@next"></script>
+<script src="https://unpkg.com/@barba/core"></script>
 <!-- Load your scripts -->
 <script src="your-main-script-file.js"></script>
 ```

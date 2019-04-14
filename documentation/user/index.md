@@ -40,19 +40,19 @@ It helps reducing the delay between your pages, minimizing browser HTTP requests
 Using npm:
 
 ```sh
-npm install --save-dev @barba/core@next
+npm install @barba/core
 ```
 
 or using yarn:
 
 ```sh
-yarn add @barba/core@next --dev
+yarn add @barba/core
 ```
 
 or using a CDN:
 
 ```html
-<script src="https://unpkg.com/@barba/core@next"></script>
+<script src="https://unpkg.com/@barba/core"></script>
 ```
 
 ## Getting started
