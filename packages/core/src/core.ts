@@ -425,6 +425,29 @@ export class Core {
   }
 
   /**
+   * Programmatically prefetch
+   */
+  public prefetch(href: string) {
+    // Already in cache
+    /* istanbul ignore next */
+    if (this.cache.has(href)) {
+      return;
+    }
+
+    this.cache.set(
+      href,
+      this.request(
+        href,
+        this.timeout,
+        this.onRequestError.bind(this, 'barba')
+      ).catch((error: RequestErrorOrResponse) => {
+        this.logger.error(error);
+      }),
+      'prefetch'
+    );
+  }
+
+  /**
    * Bind event listeners.
    */
   private _bind(): void {

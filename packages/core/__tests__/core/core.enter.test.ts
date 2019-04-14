@@ -2,7 +2,6 @@ import waitForExpect from 'wait-for-expect';
 import xhrMock from 'xhr-mock';
 import { init } from '../../__mocks__/barba';
 import barba from '../../src';
-import { Logger } from '../../src/modules/Logger';
 
 const { link, span, mouseover } = init();
 
