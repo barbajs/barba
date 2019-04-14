@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/barbajs/barba/compare/@barba/core@2.1.3...@barba/core@2.2.0) (2019-04-14)
+
+### Features
+
+- **core:** :art: allow global hooks to be asynchronous ([be5dccf](https://github.com/barbajs/barba/commit/be5dccf))
+
 ## [2.1.3](https://github.com/barbajs/barba/compare/@barba/core@2.1.2...@barba/core@2.1.3) (2019-04-13)
 
 ### Bug Fixes

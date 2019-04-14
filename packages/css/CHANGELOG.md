@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.4](https://github.com/barbajs/barba/compare/@barba/css@2.1.3...@barba/css@2.1.4) (2019-04-14)
+
+### Bug Fixes
+
+- **css:** :recycle: rewrite CSS plugin ([12ce8ac](https://github.com/barbajs/barba/commit/12ce8ac))
+
 ## [2.1.3](https://github.com/barbajs/barba/compare/@barba/css@2.1.2...@barba/css@2.1.3) (2019-04-13)
 
 ### Bug Fixes
