@@ -171,7 +171,12 @@ class Css implements IBarbaPlugin<{}> {
   /**
    * `appear` hook.
    */
-  private _appear(data: ITransitionData): Promise<any> {
+  private async _appear(
+    data: ITransitionData,
+    t: ITransitionPage
+  ): Promise<any> {
+    await this.barba.hooks.do('appear', data, t);
+
     return this.next(data.current.container, 'appear');
   }
 
@@ -192,7 +197,12 @@ class Css implements IBarbaPlugin<{}> {
   /**
    * `leave` hook.
    */
-  private _leave(data: ITransitionData): Promise<void> {
+  private async _leave(
+    data: ITransitionData,
+    t: ITransitionPage
+  ): Promise<void> {
+    await this.barba.hooks.do('leave', data, t);
+
     return this.next(data.current.container, 'leave');
   }
 
@@ -213,7 +223,12 @@ class Css implements IBarbaPlugin<{}> {
   /**
    * `enter` hook.
    */
-  private _enter(data: ITransitionData): Promise<void> {
+  private async _enter(
+    data: ITransitionData,
+    t: ITransitionPage
+  ): Promise<void> {
+    await this.barba.hooks.do('enter', data, t);
+
     return this.next(data.next.container, 'enter');
   }
 

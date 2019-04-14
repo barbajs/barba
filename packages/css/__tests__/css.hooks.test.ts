@@ -57,10 +57,10 @@ it('do enter hooks', async () => {
   expect(css.end).toHaveBeenCalledWith(next, 'enter');
 });
 
-it('override transitions', () => {
-  barba.transitions.appear(data, t);
-  barba.transitions.leave(data, t);
-  barba.transitions.enter(data, t);
+it('override transitions', async () => {
+  await barba.transitions.appear(data, t);
+  await barba.transitions.leave(data, t);
+  await barba.transitions.enter(data, t);
 
   expect(css.next).toHaveBeenNthCalledWith(1, current, 'appear');
   expect(css.next).toHaveBeenNthCalledWith(2, current, 'leave');
