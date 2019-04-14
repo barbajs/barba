@@ -37,7 +37,9 @@ Cypress.Commands.add('prepare', (url, title, namespace) => {
   // 1. Go to home
   cy.visit(url);
   // 2. Should have wrapper and container
-  cy.get('[data-barba=wrapper]').should('exist');
+  cy.get('[data-barba=wrapper]')
+    .as('wrapper')
+    .should('exist');
   cy.get('[data-barba=container]').should('exist');
   // 3. Titles have correct content
   cy.title().should('contain', title);
@@ -45,7 +47,7 @@ Cypress.Commands.add('prepare', (url, title, namespace) => {
     .as('h1') // Alias to @h1
     .should('contain', title);
   // 4. Aliases current container
-  cy.get('[data-test=current]').as('current');
+  cy.get('[data-test-container=current]').as('current');
   // 4. Check namespace if provided
   if (namespace) {
     cy.get('@current').should('have.attr', 'data-barba-namespace', namespace);
@@ -53,6 +55,8 @@ Cypress.Commands.add('prepare', (url, title, namespace) => {
 });
 
 Cypress.Commands.add('final', (url, title, namespace) => {
+  // 0. Wrapper is tha same
+  cy.get('@wrapper').should('have.attr', 'data-test-wrapper', 'current');
   // 1. URL has changed
   cy.url().should('include', url);
   // 2. H1 has changed
@@ -62,7 +66,7 @@ Cypress.Commands.add('final', (url, title, namespace) => {
   // 4. Current container has been removed
   cy.get('@current').should('not.exist');
   // 5. Next container exists
-  cy.get('[data-test=next]')
+  cy.get('[data-test-container=next]')
     .as('next')
     .should('exist');
   // 6. Check namespace if provided

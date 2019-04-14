@@ -6,7 +6,10 @@
   opacity: 0;
 }
 
-.barba-appear-to {
+.barba-appear-active {
   transition: opacity 5s;
+}
+
+.barba-appear-to {
   opacity: 1;
 }
