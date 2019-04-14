@@ -633,6 +633,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "oguilleux",
+      "name": "Olivier Guilleux",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5804006?v=4",
+      "profile": "https://www.olivier-guilleux.com",
+      "contributions": [
+        "bug"
+      ]
     }
   ]
 }
