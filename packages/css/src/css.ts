@@ -34,6 +34,10 @@ class Css implements IBarbaPlugin<{}> {
 
   public prefix: string = 'barba';
   public callbacks: ICssCallbacks = {};
+  public cb: any;
+
+  // Check if transition property applied
+  private _hasTransition: boolean = false;
 
   /**
    * Plugin installation.
@@ -64,55 +68,68 @@ class Css implements IBarbaPlugin<{}> {
     this.barba.hooks.afterEnter(this._afterEnter, this);
 
     // Override main transitions
-    /* tslint:disable:no-string-literal */
     this.barba.transitions.appear = this._appear;
     this.barba.transitions.leave = this._leave;
     this.barba.transitions.enter = this._enter;
-    /* tslint:enable:no-string-literal */
 
-    // Add empty default transition
+    // Add empty default transition (force prepend)
     /* istanbul ignore next */
-    this.barba.transitions.store.add('transition', {
+    this.barba.transitions.store.all.unshift({
       name: 'barba',
       appear() {}, // tslint:disable-line:no-empty
       leave() {}, // tslint:disable-line:no-empty
       enter() {}, // tslint:disable-line:no-empty
     });
+    this.barba.transitions.store.update();
   }
 
   /**
    * Initial state.
    */
-  public start(container: HTMLElement, kind: string): void {
-    this.add(container, `${kind}-active`); // CSS: add kind-active
+  public async start(container: HTMLElement, kind: string): Promise<void> {
+    // Set initial CSS values
     this.add(container, kind); // CSS: add kind
+    await this._nextTick();
+    // Apply CSS transition
+    this.add(container, `${kind}-active`); // CSS: add kind-active
+    await this._nextTick();
   }
 
   /**
    * Next frame state.
    */
   public async next(container: HTMLElement, kind: string): Promise<any> {
-    await this.nextTick();
+    this._hasTransition = this._checkTransition(container);
 
-    return new Promise(async resolve => {
-      this.callbacks[kind] = resolve;
+    if (this._hasTransition) {
+      // We need to listen the end of the animation
+      return new Promise(async resolve => {
+        this.cb = resolve;
+        this.callbacks[kind] = resolve;
 
-      container.addEventListener('transitionend', resolve, false);
-
-      await this.nextTick();
-
+        container.addEventListener('transitionend', resolve, false);
+        await this._nextTick();
+        this.remove(container, kind); // CSS: remove kind
+        // await this._nextTick();
+        this.add(container, `${kind}-to`); // CSS: add kind-to
+        await this._nextTick();
+      });
+    } else {
       this.remove(container, kind); // CSS: remove kind
+      await this._nextTick();
       this.add(container, `${kind}-to`); // CSS: add kind-to
-    });
+      await this._nextTick();
+    }
   }
 
   /**
    * Final state.
    */
-  public end(container: HTMLElement, kind: string): void {
+  public async end(container: HTMLElement, kind: string): Promise<void> {
     this.remove(container, `${kind}-to`); // CSS: remove kind-to
     this.remove(container, `${kind}-active`); // CSS: remove kind-active
     container.removeEventListener('transitionend', this.callbacks[kind]);
+    this._hasTransition = false;
   }
 
   /**
@@ -137,10 +154,18 @@ class Css implements IBarbaPlugin<{}> {
   }
 
   /**
+   * Check if CSS transition is applied
+   */
+  private _checkTransition(container: HTMLElement) {
+    // DEV: check for CSS animation property?
+    return getComputedStyle(container).transitionDuration !== '0s';
+  }
+
+  /**
    * `beforeAppear` hook.
    */
-  private _beforeAppear(data: ITransitionData): void {
-    this.start(data.current.container, 'appear');
+  private _beforeAppear(data: ITransitionData): Promise<void> {
+    return this.start(data.current.container, 'appear');
   }
 
   /**
@@ -153,56 +178,60 @@ class Css implements IBarbaPlugin<{}> {
   /**
    * `afterAppear` hook.
    */
-  private _afterAppear(data: ITransitionData): void {
-    this.end(data.current.container, 'appear');
+  private _afterAppear(data: ITransitionData): Promise<void> {
+    return this.end(data.current.container, 'appear');
   }
 
   /**
    * `beforeLeave` hook.
    */
-  private _beforeLeave(data: ITransitionData): void {
-    this.start(data.current.container, 'leave');
+  private _beforeLeave(data: ITransitionData): Promise<void> {
+    return this.start(data.current.container, 'leave');
   }
 
   /**
    * `leave` hook.
    */
-  private _leave(data: ITransitionData): Promise<any> {
+  private _leave(data: ITransitionData): Promise<void> {
     return this.next(data.current.container, 'leave');
   }
 
   /**
    * `afterLeave` hook.
    */
-  private _afterLeave(data: ITransitionData): void {
-    this.end(data.current.container, 'leave');
+  private _afterLeave(data: ITransitionData): Promise<void> {
+    return this.end(data.current.container, 'leave');
   }
 
   /**
    * `beforeEnter` hook.
    */
-  private _beforeEnter(data: ITransitionData): void {
-    this.start(data.next.container, 'enter');
+  private _beforeEnter(data: ITransitionData): Promise<void> {
+    return this.start(data.next.container, 'enter');
   }
 
   /**
    * `enter` hook.
    */
-  private _enter(data: ITransitionData): Promise<any> {
+  private _enter(data: ITransitionData): Promise<void> {
     return this.next(data.next.container, 'enter');
   }
 
   /**
    * `afterEnter` hook.
    */
-  private _afterEnter(data: ITransitionData): void {
-    this.end(data.next.container, 'enter');
+  private _afterEnter(data: ITransitionData): Promise<void> {
+    return this.end(data.next.container, 'enter');
   }
 
-  private nextTick(): Promise<number> {
+  private _nextTick(): Promise<number> {
     return new Promise(resolve => {
       window.requestAnimationFrame(resolve);
     });
+    // DEV: same result?
+    // return new Promise(resolve => {
+    //   setTimeout(resolve, 0);
+    // });
   }
 }
 

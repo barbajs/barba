@@ -33,25 +33,25 @@ css.start = jest.fn();
 css.next = jest.fn();
 css.end = jest.fn();
 
-it('do appear hooks', () => {
-  barba.hooks.do('beforeAppear', data, t);
-  barba.hooks.do('afterAppear', data, t);
+it('do appear hooks', async () => {
+  await barba.hooks.do('beforeAppear', data, t);
+  await barba.hooks.do('afterAppear', data, t);
 
   expect(css.start).toHaveBeenCalledWith(current, 'appear');
   expect(css.end).toHaveBeenCalledWith(current, 'appear');
 });
 
-it('do leave hooks', () => {
-  barba.hooks.do('beforeLeave', data, t);
-  barba.hooks.do('afterLeave', data, t);
+it('do leave hooks', async () => {
+  await barba.hooks.do('beforeLeave', data, t);
+  await barba.hooks.do('afterLeave', data, t);
 
   expect(css.start).toHaveBeenCalledWith(current, 'leave');
   expect(css.end).toHaveBeenCalledWith(current, 'leave');
 });
 
-it('do enter hooks', () => {
-  barba.hooks.do('beforeEnter', data, t);
-  barba.hooks.do('afterEnter', data, t);
+it('do enter hooks', async () => {
+  await barba.hooks.do('beforeEnter', data, t);
+  await barba.hooks.do('afterEnter', data, t);
 
   expect(css.start).toHaveBeenCalledWith(next, 'enter');
   expect(css.end).toHaveBeenCalledWith(next, 'enter');

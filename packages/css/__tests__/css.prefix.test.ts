@@ -30,19 +30,19 @@ barba.init({
   transitions: [named, unnamed],
 });
 
-it('prefixes with transition name', () => {
-  barba.hooks.do('before', data, named);
+it('prefixes with transition name', async () => {
+  await barba.hooks.do('before', data, named);
   expect(css.prefix).toBe(name);
   css.prefix = null;
-  barba.hooks.do('beforeAppear', data, named);
+  await barba.hooks.do('beforeAppear', data, named);
   expect(css.prefix).toBe(name);
 });
 
-it('prefixes with default ', () => {
-  barba.hooks.do('before', data, unnamed);
+it('prefixes with default ', async () => {
+  await barba.hooks.do('before', data, unnamed);
   expect(css.prefix).toBe('barba');
   css.prefix = null;
-  barba.hooks.do('beforeAppear', data, unnamed);
+  await barba.hooks.do('beforeAppear', data, unnamed);
   expect(css.prefix).toBe('barba');
 });
 

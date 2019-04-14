@@ -35,36 +35,113 @@ During the transition process, Barba defines custom classes according to the tra
 - `.barba-enter-active`: **active state** for `enter`, applied during the entire leaving phase, then added after next container is inserted and removed when transition/animation finishes. This class can be used to define the duration, delay and easing curve.
 - `.barba-enter-to`: **ending state** for `enter`, added one frame after next container is inserted (at the same time `barba-enter` is removed) and removed when transition/animation finishes.
 
-Example:
+Example with default naming:
 
 ```js
 import barba from '@barba/core';
 import barbaCss from '@barba/css';
 
-// tells barba to use the css module
+// Tell barba to use the css module
 barba.use(barbaCss);
-
-barba.init({
-  transitions: [
-    {
-      name: 'my-transition',
-    },
-  ],
-});
+barba.init();
 ```
 
 Then customize your CSS classes like this:
 
 ```css
-.my-transition-enter {
+/* Active state, define the transition,
+here, same for leave and enter */
+.barba-leave-active
+.barba-enter-active {
+    transition: opacity 450ms ease;
+}
+/* Initial state */
+.barba-leave {
+    opacity: 1;
+}
+.barba-enter {
+    opacity: 0;
+}
+/* Ending state */
+.barba-leave-to {
+    opacity: 0;
+}
+.barba-enter-to {
+    opacity: 1;
+}
+/* This code can be refactored for optimization… */
+```
+
+If you want to play some transition on first load, use `appear` transition:
+
+```css
+/* Appear: active state, define the transition */
+.barba-appear-active {
+    transition: opacity 450ms ease;
+}
+/* Appear: initial state */
+.barba-appear {
+    opacity: 0;
+}
+/* Appear: ending state */
+.barba-appear-to {
+    opacity: 1;
+}
+```
+
+---
+
+If you want different transitions, you can name them and use rules.<br>
+The transition `name` will be used as CSS "prefix".
+
+```js
+import barba from '@barba/core';
+import barbaCss from '@barba/css';
+
+// Tell barba to use the css module
+barba.use(barbaCss);
+barba.init({
+  transitions:[
+    {
+      from: { namespace: 'home' },
+      to: { namespace: 'products' },
+      name: 'slide', /* .slide-… */
+    },
+    {
+      // Default…
+      name: 'fade', /* .fade-… */
+    },
+  ],
+});
+```
+
+```css
+/* Active state, define the transition,
+here, same for leave and enter */
+.fade-leave-active
+.fade-enter-active,
+.slide-leave-active
+.slide-enter-active {
+  transition:
+    opacity 450ms ease,
+    transform 650ms ease-in-out;
+}
+/* Fade states */
+.fade-leave,
+.fade-enter-to {
+  opacity: 1;
+}
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
-
-.my-transition-enter-active {
-  transition: opacity 450ms ease;
+/* Slide states */
+.slide-leave,
+.slide-enter-to {
+  transform: translateX(0);
 }
-
-.my-transition-enter-to {
-  opacity: 1;
+.slide-enter,
+.slide-leave-to {
+  transform: translateX(100%);
 }
 ```
