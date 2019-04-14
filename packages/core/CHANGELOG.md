@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/barbajs/barba/compare/@barba/core@2.2.0...@barba/core@2.3.0) (2019-04-14)
+
+### Features
+
+- **core:** :sparkles: add programmatically prefetch ([7b95ffd](https://github.com/barbajs/barba/commit/7b95ffd))
+
 # [2.2.0](https://github.com/barbajs/barba/compare/@barba/core@2.1.3...@barba/core@2.2.0) (2019-04-14)
 
 ### Features
