@@ -1,30 +1,56 @@
+/* eslint-disable no-mixed-operators */
 const hooksDefault = [
+  'global:beforeAppear',
+  'beforeAppear',
+  'global:appear',
+  'appear',
+  'global:afterAppear',
+  'afterAppear',
+  'global:before',
   'before',
+  'global:beforeLeave',
   'beforeLeave',
+  'global:leave',
   'leave',
+  'global:afterLeave',
   'afterLeave',
+  'global:beforeEnter',
   'beforeEnter',
+  'global:enter',
   'enter',
+  'global:afterEnter',
   'afterEnter',
+  'global:after',
   'after',
 ];
 const hooksSync = [
+  'global:beforeAppear',
+  'beforeAppear',
+  'global:appear',
+  'appear',
+  'global:afterAppear',
+  'afterAppear',
+  'global:before',
   'before',
+  'global:beforeLeave',
   'beforeLeave',
+  'global:beforeEnter',
   'beforeEnter',
+  'global:leave',
+  'global:enter',
   'leave',
   'enter',
+  'global:afterLeave',
   'afterLeave',
+  'global:afterEnter',
   'afterEnter',
+  'global:after',
   'after',
 ];
 
 beforeEach(() => {
   cy.prepare('/index.html', 'home', 'home');
-  cy.get('[data-test="hooks-list"]')
-    .as('hooks') // Alias to @hooks
-    .find('li')
-    .should('have.length', 0);
+  cy.get('[data-test="hooks-list"]').as('hooks'); // Alias to @hooks
 });
 afterEach(() => {
   cy.final('/page.html', 'page', 'page');

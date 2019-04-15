@@ -3,7 +3,7 @@ import { hooks, hooksSync } from './transitions/hooks.js';
 
 const { barba } = window;
 
-console.info(barba);
 barba.init({
+  debug: true,
   transitions: [hooks, hooksSync],
 });
