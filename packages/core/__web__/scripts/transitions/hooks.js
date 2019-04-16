@@ -1,3 +1,4 @@
+/* eslint-disable newline-before-return */
 const { barba } = window;
 const list = document.querySelector('[data-test="hooks-list"]');
 
@@ -14,39 +15,62 @@ function append(str, prefix = '') {
   item.textContent = prefix + str;
   list.appendChild(item);
 }
+
+/**
+ * Promisify hooks
+ *
+ * @returns {Promise} Promise
+ */
+function sleep() {
+  return new Promise(resolve => {
+    setTimeout(resolve, 100);
+  });
+}
+
 export const base = {
   beforeAppear() {
     append('beforeAppear');
+    return sleep();
   },
   appear() {
     append('appear');
+    return sleep();
   },
   afterAppear() {
     append('afterAppear');
+    return sleep();
   },
   before() {
     append('before');
+    return sleep();
   },
   beforeLeave() {
     append('beforeLeave');
+    return sleep();
   },
   leave() {
     append('leave');
+    return sleep();
   },
   afterLeave() {
     append('afterLeave');
+    return sleep();
   },
   beforeEnter() {
     append('beforeEnter');
+    return sleep();
   },
   enter() {
     append('enter');
+    return sleep();
   },
   afterEnter() {
     append('afterEnter');
+    return sleep();
   },
   after() {
     append('after');
+    return sleep();
   },
 };
 

@@ -1,4 +1,4 @@
-/* eslint-disable no-mixed-operators */
+/* eslint-disable no-mixed-operators, cypress/no-unnecessary-waiting */
 const hooksDefault = [
   'global:beforeAppear',
   'beforeAppear',
@@ -58,6 +58,7 @@ afterEach(() => {
 
 describe('Hooks', () => {
   it('have default order', () => {
+    cy.wait(1000); // Wait for appear complete
     // Click link
     cy.get('[data-test="link.hooks"]').click();
 
@@ -69,6 +70,7 @@ describe('Hooks', () => {
     });
   });
   it('have sync order', () => {
+    cy.wait(1000); // Wait for appear complete
     // Click link
     cy.get('[data-test="link.hooks-sync"]').click();
 
