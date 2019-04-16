@@ -5,6 +5,18 @@ import barba from '../../src';
 
 const { link, span, mouseover } = init();
 
+const sameUrl = 'http://localhost/';
+const sameHtml = `<html>
+<head>
+  <title>Current page</title>
+</head>
+<body>
+  <div data-barba="wrapper">
+    <div data-barba="container" data-barba-namespace="current"></div>
+  </div>
+</body>
+</html>`;
+
 // Mocks
 let spyHas: jest.SpyInstance;
 let spySet: jest.SpyInstance;
@@ -31,7 +43,9 @@ it('handle link enter', () => {
 });
 
 it('handle link enter with same url', () => {
-  link.href = 'http://localhost/';
+  barba.cache.set(sameUrl, Promise.resolve(sameHtml), 'init');
+  spySet.mockRestore();
+  link.href = sameUrl;
   span.dispatchEvent(mouseover);
 
   expect(spyHas).toHaveBeenCalledTimes(1);

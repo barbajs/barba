@@ -27,21 +27,21 @@ let spyCacheUpdate: jest.SpyInstance;
 let spyCacheGetAction: jest.SpyInstance;
 let spyPage: jest.SpyInstance;
 
+const sameHtml = `<html>
+<head>
+  <title>Current page</title>
+</head>
+<body>
+  <div data-barba="wrapper">
+    <div data-barba="container" data-barba-namespace="current"></div>
+  </div>
+</body>
+</html>`;
+
 beforeEach(() => {
   barba.init();
   xhrMock.setup();
-  xhrMock.get(sameUrl, (req, res) =>
-    res.status(200).body(`<html>
-    <head>
-      <title>Current page</title>
-    </head>
-    <body>
-      <div data-barba="wrapper">
-        <div data-barba="container" data-barba-namespace="current"></div>
-      </div>
-    </body>
-  </html>`)
-  );
+  xhrMock.get(sameUrl, (req, res) => res.status(200).body(sameHtml));
   xhrMock.get(nextUrl, (req, res) =>
     res.status(200).body(`<html>
     <head>
@@ -115,6 +115,8 @@ it('do page [popstate]', async () => {
 
 it('do page [has cache]', async () => {
   barba.history.add = jest.fn();
+  barba.cache.set(sameUrl, Promise.resolve(sameHtml), 'init');
+  spyCacheSet.mockRestore();
 
   // NOTE: as we use "same URL" (localhost), we need a "self" transition
   // to avoid prevent "sameURL"

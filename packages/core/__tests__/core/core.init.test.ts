@@ -71,13 +71,13 @@ it('has current page content', () => {
   expect(barba.data.current.html).toMatch(/^<html>.+<\/html>$/);
 });
 
-it('updates cache and history', () => {
+it('updates history', () => {
   barba.init();
   expect(barba.history.current).toEqual({
     ns: 'ns',
     url: 'http://localhost/',
   });
-  expect(barba.cache.has('http://localhost/')).toBeTruthy();
+  // expect(barba.cache.has('http://localhost/')).toBeTruthy();
 });
 
 it('calls appear', () => {

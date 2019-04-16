@@ -206,7 +206,8 @@ export class Core {
     // Set/update history
     this.history.add(current.url.href, current.namespace);
     // Add to cache
-    this.cache.set(current.url.href, Promise.resolve(current.html), 'init');
+    // TODO: do not cache renderer HTML, only request results…
+    // this.cache.set(current.url.href, Promise.resolve(current.html), 'init');
 
     // 6. Bind context
     this._onLinkEnter = this._onLinkEnter.bind(this);
