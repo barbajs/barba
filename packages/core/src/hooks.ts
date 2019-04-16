@@ -131,10 +131,10 @@ export class Hooks {
    * Help, print available and registered hooks.
    */
   public help(): void {
-    this.logger.info(`[@barba/core] Available hooks: ${this.all}`);
-    this.logger.info(
-      `[@barba/core] Registered hooks: ${Object.keys(this.registered)}`
-    );
+    this.logger.info(`Available hooks: ${this.all.join(',')}`);
+    const registered: string[] = [];
+    this.registered.forEach((value, key) => registered.push(key));
+    this.logger.info(`Registered hooks: ${registered.join(',')}`);
   }
 }
 
