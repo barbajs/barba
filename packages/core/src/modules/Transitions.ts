@@ -277,7 +277,6 @@ export class Transitions {
     data: ITransitionData,
     t: HooksTransitionMap
   ): Promise<void> {
-    // await this.wait();
     await hooks.do(hook, data, t);
 
     return t[hook] ? runAsync(t[hook])(data) : Promise.resolve();
