@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.2](https://github.com/barbajs/barba/compare/@barba/core@2.3.1...@barba/core@2.3.2) (2019-04-20)
+
+### Bug Fixes
+
+- **core:** :bug: remove current container at the end ([f6fab91](https://github.com/barbajs/barba/commit/f6fab91))
+
 ## [2.3.1](https://github.com/barbajs/barba/compare/@barba/core@2.3.0...@barba/core@2.3.1) (2019-04-16)
 
 ### Bug Fixes
