@@ -177,7 +177,6 @@ export class Transitions {
           // After actions
           await this._doAsyncHook('afterLeave', data, t);
           await this._doAsyncHook('afterEnter', data, t);
-          this._removeCurrent(data);
         } catch (error) {
           await this._doAsyncHook('leaveCanceled', data, t);
           await this._doAsyncHook('enterCanceled', data, t);
@@ -193,15 +192,11 @@ export class Transitions {
             this.leave(data, t),
             helpers.updateNext(page, data.next),
           ]).then(values => values[0]);
-          // .catch(error => {
-          //   throw error;
-          // });
 
           await this._doAsyncHook('afterLeave', data, t);
 
           // TODO: check here "valid" page result
           // before going further
-          this._removeCurrent(data);
         } catch (error) {
           await this._doAsyncHook('leaveCanceled', data, t);
           throw new Error('Transition error [page][leave]');
@@ -224,6 +219,7 @@ export class Transitions {
       }
 
       this._doAsyncHook('after', data, t);
+      this._removeCurrent(data);
     } catch (error) {
       // TODO: use cases for cancellation
       this.logger.error(error);
