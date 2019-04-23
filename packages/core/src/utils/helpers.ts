@@ -39,6 +39,10 @@ export const updateNext = async (
       // next.html = dom.getHtml(nextDocument);
       // next.html = nextDocument.innerHTML;
       next.html = html;
+
+      const { title } = dom.toDocument(html);
+
+      document.title = title;
     }
   }
 };

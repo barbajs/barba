@@ -392,7 +392,6 @@ export class Core {
         wrapper: this._wrapper,
       });
 
-      this._updateTitle(data);
       this._resetData();
     } catch (error) {
       // Something went wrong (rejected promise, error, 404, 505, other…)
@@ -584,16 +583,6 @@ export class Core {
     };
 
     this.hooks.do('reset', this.data);
-  }
-
-  /**
-   * Update document title.
-   */
-  private _updateTitle(data: ITransitionData): void {
-    const { html } = data.next;
-    const { title } = this.dom.toDocument(html);
-
-    document.title = title;
   }
 }
 

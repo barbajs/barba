@@ -13,7 +13,7 @@
 /***/
 
 // Definitions
-import { ISchemaAttribute, Scope, Wrapper } from '../defs';
+import { ISchemaAttribute, ITransitionData, Scope, Wrapper } from '../defs';
 // Schemas
 import { schemaAttribute } from '../schemas/attribute';
 
