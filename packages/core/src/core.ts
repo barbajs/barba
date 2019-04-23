@@ -548,7 +548,7 @@ export class Core {
   private _getLinkElement(e: LinkEvent): HTMLLinkElement {
     let el = e.target as HTMLLinkElement;
 
-    while (el && !this.dom.getHref(el)) {
+    while (el && el.nodeName !== 'A' && !this.dom.getHref(el)) {
       el = (el as HTMLElement).parentNode as HTMLLinkElement;
     }
 
