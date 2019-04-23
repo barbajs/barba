@@ -166,7 +166,7 @@ export class Transitions {
 
       if (sync) {
         try {
-          this._addNext(data, wrapper);
+          this.add(data, wrapper);
           // Before actions
           await this._doAsyncHook('beforeLeave', data, t);
           await this._doAsyncHook('beforeEnter', data, t);
@@ -206,7 +206,7 @@ export class Transitions {
           // Enter
           /* istanbul ignore else */
           if (leaveResult !== false) {
-            this._addNext(data, wrapper);
+            this.add(data, wrapper);
             await this._doAsyncHook('beforeEnter', data, t);
             await this.enter(data, t, leaveResult);
             await this._doAsyncHook('afterEnter', data, t);
@@ -219,7 +219,7 @@ export class Transitions {
       }
 
       this._doAsyncHook('after', data, t);
-      this._removeCurrent(data);
+      this.remove(data);
     } catch (error) {
       // TODO: use cases for cancellation
       this.logger.error(error);
@@ -266,6 +266,24 @@ export class Transitions {
   }
 
   /**
+   * Add next container.
+   */
+  public add(data: ITransitionData, wrapper: Wrapper): void {
+    wrapper.appendChild(data.next.container);
+    hooks.do('nextAdded', data);
+  }
+
+  /**
+   * Remove current container.
+   */
+  public remove(data: ITransitionData): void {
+    if (data.current.container) {
+      data.current.container.remove();
+      hooks.do('currentRemoved', data);
+    }
+  }
+
+  /**
    * Do hooks + async transition methods.
    */
   private async _doAsyncHook(
@@ -290,20 +308,4 @@ export class Transitions {
   //   hooks.do(hook, data, t);
   //   t[hook] && t[hook](data);
   // }
-
-  /**
-   * Add next container.
-   */
-  private _addNext(data: ITransitionData, wrapper: Wrapper): void {
-    wrapper.appendChild(data.next.container);
-    hooks.do('nextAdded', data);
-  }
-
-  /**
-   * Remove current container.
-   */
-  private _removeCurrent(data: ITransitionData): void {
-    data.current.container.remove();
-    hooks.do('currentRemoved', data);
-  }
 }
