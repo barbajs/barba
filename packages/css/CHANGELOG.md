@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.6](https://github.com/barbajs/barba/compare/@barba/css@2.1.5...@barba/css@2.1.6) (2019-04-23)
+
+### Bug Fixes
+
+- **css:** :bug: remove current container after leave ([a06ec61](https://github.com/barbajs/barba/commit/a06ec61))
+
 ## [2.1.5](https://github.com/barbajs/barba/compare/@barba/css@2.1.4...@barba/css@2.1.5) (2019-04-14)
 
 ### Bug Fixes

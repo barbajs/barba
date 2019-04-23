@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.3](https://github.com/barbajs/barba/compare/@barba/core@2.3.2...@barba/core@2.3.3) (2019-04-23)
+
+### Bug Fixes
+
+- **core:** :bug: update title with "next" ([f8c1940](https://github.com/barbajs/barba/commit/f8c1940)), closes [#384](https://github.com/barbajs/barba/issues/384)
+
 ## [2.3.2](https://github.com/barbajs/barba/compare/@barba/core@2.3.1...@barba/core@2.3.2) (2019-04-20)
 
 ### Bug Fixes
