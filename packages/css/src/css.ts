@@ -210,7 +210,12 @@ class Css implements IBarbaPlugin<{}> {
    * `afterLeave` hook.
    */
   private _afterLeave(data: ITransitionData): Promise<void> {
-    return this.end(data.current.container, 'leave');
+    this.end(data.current.container, 'leave');
+    // For CSS transitions, we need to remove current container
+    // directly after the leave transition
+    this.barba.transitions.remove(data);
+
+    return Promise.resolve();
   }
 
   /**
