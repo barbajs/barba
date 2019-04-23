@@ -1,3 +1,7 @@
+/**
+ * @module typings/core
+ */
+
 export interface ICacheData {
   action?: CacheAction;
   request?: CacheRequest;

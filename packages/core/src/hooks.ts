@@ -103,7 +103,7 @@ export class Hooks {
    */
   public do(name: HooksAll, ...args: any): Promise<any> {
     if (this.registered.has(name)) {
-      // Let's a promises chain
+      // Let's start a chain of promises
       let chain = Promise.resolve();
 
       this.registered.get(name).forEach(hook => {
