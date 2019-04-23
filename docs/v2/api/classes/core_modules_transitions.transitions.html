@@ -107,15 +107,15 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="core_modules_transitions.transitions.html#_addnext" class="tsd-kind-icon">_add<wbr>Next</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="core_modules_transitions.transitions.html#_doasynchook" class="tsd-kind-icon">_do<wbr>Async<wbr>Hook</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="core_modules_transitions.transitions.html#_removecurrent" class="tsd-kind-icon">_remove<wbr>Current</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_modules_transitions.transitions.html#add" class="tsd-kind-icon">add</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_modules_transitions.transitions.html#appear" class="tsd-kind-icon">appear</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_modules_transitions.transitions.html#doappear" class="tsd-kind-icon">do<wbr>Appear</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_modules_transitions.transitions.html#dopage" class="tsd-kind-icon">do<wbr>Page</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_modules_transitions.transitions.html#enter" class="tsd-kind-icon">enter</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_modules_transitions.transitions.html#get" class="tsd-kind-icon">get</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_modules_transitions.transitions.html#leave" class="tsd-kind-icon">leave</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_modules_transitions.transitions.html#remove" class="tsd-kind-icon">remove</a></li>
 							</ul>
 						</section>
 					</div>
@@ -278,37 +278,6 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="_addnext" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _add<wbr>Next</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">_add<wbr>Next<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><a href="../interfaces/typings_core.itransitiondata.html" class="tsd-signature-type">ITransitionData</a>, wrapper<span class="tsd-signature-symbol">: </span><a href="../modules/typings_core.html#wrapper" class="tsd-signature-type">Wrapper</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/modules/Transitions.ts#L297">core/src/modules/Transitions.ts:297</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Add next container.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>data: <a href="../interfaces/typings_core.itransitiondata.html" class="tsd-signature-type">ITransitionData</a></h5>
-								</li>
-								<li>
-									<h5>wrapper: <a href="../modules/typings_core.html#wrapper" class="tsd-signature-type">Wrapper</a></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
 					<a name="_doasynchook" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _do<wbr>Async<wbr>Hook</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
@@ -318,7 +287,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/modules/Transitions.ts#L271">core/src/modules/Transitions.ts:271</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/modules/Transitions.ts#L289">core/src/modules/Transitions.ts:289</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -342,28 +311,31 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="_removecurrent" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _remove<wbr>Current</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">_remove<wbr>Current<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><a href="../interfaces/typings_core.itransitiondata.html" class="tsd-signature-type">ITransitionData</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="add" class="tsd-anchor"></a>
+					<h3>add</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><a href="../interfaces/typings_core.itransitiondata.html" class="tsd-signature-type">ITransitionData</a>, wrapper<span class="tsd-signature-symbol">: </span><a href="../modules/typings_core.html#wrapper" class="tsd-signature-type">Wrapper</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/modules/Transitions.ts#L305">core/src/modules/Transitions.ts:305</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/modules/Transitions.ts#L271">core/src/modules/Transitions.ts:271</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Remove current container.</p>
+									<p>Add next container.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>data: <a href="../interfaces/typings_core.itransitiondata.html" class="tsd-signature-type">ITransitionData</a></h5>
+								</li>
+								<li>
+									<h5>wrapper: <a href="../modules/typings_core.html#wrapper" class="tsd-signature-type">Wrapper</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -604,6 +576,34 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="remove" class="tsd-anchor"></a>
+					<h3>remove</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><a href="../interfaces/typings_core.itransitiondata.html" class="tsd-signature-type">ITransitionData</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/modules/Transitions.ts#L279">core/src/modules/Transitions.ts:279</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Remove current container.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>data: <a href="../interfaces/typings_core.itransitiondata.html" class="tsd-signature-type">ITransitionData</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -611,9 +611,6 @@
 				<ul>
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_core_src_defs_cache_.html">"core/src/defs/cache"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/core.html">core</a>
@@ -718,13 +715,10 @@
 								<a href="core_modules_transitions.transitions.html#shouldwait" class="tsd-kind-icon">should<wbr>Wait</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="core_modules_transitions.transitions.html#_addnext" class="tsd-kind-icon">_add<wbr>Next</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="core_modules_transitions.transitions.html#_doasynchook" class="tsd-kind-icon">_do<wbr>Async<wbr>Hook</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="core_modules_transitions.transitions.html#_removecurrent" class="tsd-kind-icon">_remove<wbr>Current</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="core_modules_transitions.transitions.html#add" class="tsd-kind-icon">add</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="core_modules_transitions.transitions.html#appear" class="tsd-kind-icon">appear</a>
@@ -743,6 +737,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="core_modules_transitions.transitions.html#leave" class="tsd-kind-icon">leave</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="core_modules_transitions.transitions.html#remove" class="tsd-kind-icon">remove</a>
 							</li>
 						</ul>
 					</li>

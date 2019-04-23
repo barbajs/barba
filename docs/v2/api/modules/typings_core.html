@@ -75,6 +75,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/typings_core.ibarbaoptions.html" class="tsd-kind-icon">IBarba<wbr>Options</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter"><a href="../interfaces/typings_core.ibarbaplugin.html" class="tsd-kind-icon">IBarba<wbr>Plugin</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/typings_core.icachedata.html" class="tsd-kind-icon">ICache<wbr>Data</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/typings_core.igenericobject.html" class="tsd-kind-icon">IGeneric<wbr>Object</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/typings_core.ihookviewdata.html" class="tsd-kind-icon">IHook<wbr>View<wbr>Data</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/typings_core.ipreventcheckdata.html" class="tsd-kind-icon">IPrevent<wbr>Check<wbr>Data</a></li>
@@ -96,6 +97,8 @@
 						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="typings_core.html#cacheaction" class="tsd-kind-icon">Cache<wbr>Action</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="typings_core.html#cacherequest" class="tsd-kind-icon">Cache<wbr>Request</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="typings_core.html#hooksafter" class="tsd-kind-icon">Hooks<wbr>After</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="typings_core.html#hooksall" class="tsd-kind-icon">Hooks<wbr>All</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="typings_core.html#hooksappear" class="tsd-kind-icon">Hooks<wbr>Appear</a></li>
@@ -124,6 +127,26 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
+					<a name="cacheaction" class="tsd-anchor"></a>
+					<h3>Cache<wbr>Action</h3>
+					<div class="tsd-signature tsd-kind-icon">Cache<wbr>Action<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"init"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"enter"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"click"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"prefetch"</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/cache.ts#L10">core/src/defs/cache.ts:10</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
+					<a name="cacherequest" class="tsd-anchor"></a>
+					<h3>Cache<wbr>Request</h3>
+					<div class="tsd-signature tsd-kind-icon">Cache<wbr>Request<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/cache.ts#L9">core/src/defs/cache.ts:9</a></li>
+						</ul>
+					</aside>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
 					<a name="hooksafter" class="tsd-anchor"></a>
 					<h3>Hooks<wbr>After</h3>
@@ -438,9 +461,6 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_core_src_defs_cache_.html">"core/src/defs/cache"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
 						<a href="core.html">core</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -520,6 +540,9 @@
 						<a href="../interfaces/typings_core.ibarbaplugin.html" class="tsd-kind-icon">IBarba<wbr>Plugin</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/typings_core.icachedata.html" class="tsd-kind-icon">ICache<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/typings_core.igenericobject.html" class="tsd-kind-icon">IGeneric<wbr>Object</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
@@ -566,6 +589,12 @@
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/typings_core.ixhrresponse.html" class="tsd-kind-icon">IXhr<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="typings_core.html#cacheaction" class="tsd-kind-icon">Cache<wbr>Action</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="typings_core.html#cacherequest" class="tsd-kind-icon">Cache<wbr>Request</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
 						<a href="typings_core.html#hooksafter" class="tsd-kind-icon">Hooks<wbr>After</a>
