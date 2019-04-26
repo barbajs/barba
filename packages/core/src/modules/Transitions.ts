@@ -58,6 +58,9 @@ export class Transitions {
   get isRunning(): boolean {
     return this._running;
   }
+  set isRunning(status: boolean) {
+    this._running = status;
+  }
 
   /**
    * Check for registered appear transition(s).
@@ -159,7 +162,7 @@ export class Transitions {
     try {
       // Check sync mode, wait for next content
       if (sync) {
-        await helpers.updateNext(page, data.next);
+        await helpers.update(page, data);
       }
 
       await this._doAsyncHook('before', data, t);
@@ -177,6 +180,7 @@ export class Transitions {
           // After actions
           await this._doAsyncHook('afterLeave', data, t);
           await this._doAsyncHook('afterEnter', data, t);
+          this.remove(data);
         } catch (error) {
           await this._doAsyncHook('leaveCanceled', data, t);
           await this._doAsyncHook('enterCanceled', data, t);
@@ -190,7 +194,7 @@ export class Transitions {
 
           leaveResult = await Promise.all([
             this.leave(data, t),
-            helpers.updateNext(page, data.next),
+            helpers.update(page, data),
           ]).then(values => values[0]);
 
           await this._doAsyncHook('afterLeave', data, t);
@@ -207,6 +211,9 @@ export class Transitions {
           /* istanbul ignore else */
           if (leaveResult !== false) {
             this.add(data, wrapper);
+            // TODO: remove current contaienr
+            // switch option
+            // this.remove(data);
             await this._doAsyncHook('beforeEnter', data, t);
             await this.enter(data, t, leaveResult);
             await this._doAsyncHook('afterEnter', data, t);
@@ -219,6 +226,9 @@ export class Transitions {
       }
 
       this._doAsyncHook('after', data, t);
+
+      // TODO: remove current contaienr
+      // v1 behaviour
       this.remove(data);
     } catch (error) {
       // TODO: use cases for cancellation

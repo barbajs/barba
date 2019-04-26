@@ -1,11 +1,11 @@
 /**
- * @barba/core/modules/history
+ * @barba/core/utils/history
  * <br><br>
  * ## History manager.
  *
  * - Keep track of the navigation history
  *
- * @module core/modules/history
+ * @module core/utils/history
  * @preferred
  */
 
