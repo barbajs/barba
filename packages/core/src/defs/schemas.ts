@@ -47,5 +47,5 @@ export interface ISchemaPage {
   html: string | undefined;
   namespace: string | undefined;
   url: IUrlFull;
-  route?: IRouteResolved;
+  route?: IRouteResolved | null;
 }

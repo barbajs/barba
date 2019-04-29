@@ -1,5 +1,10 @@
 /* tslint:disable:no-string-literal */
-import { IRule, ITransitionData, ITransitionPage } from '../../../src/defs';
+import {
+  IRule,
+  ISchemaPage,
+  ITransitionData,
+  ITransitionPage,
+} from '../../../src/defs';
 import { Store } from '../../../src/modules/Store';
 import { schemaPage } from '../../../src/schemas/page';
 
@@ -160,13 +165,27 @@ it('check array "strings" with "to"', () => {
 });
 
 // "object" type
-
 it('check inexisting "object"', () => {
   const [rule] = store['_rules'].filter(r => r.name === 'route');
   const expected = store['_check'](
     {},
     rule,
     ({ route: 'r' } as unknown) as ITransitionData,
+    match
+  );
+
+  expect(expected).toBeTruthy();
+  expect(match).toMatchObject({});
+});
+
+it('check non matching "object"', () => {
+  const transition = { route: 'r' };
+  const [rule] = store['_rules'].filter(r => r.name === 'route');
+  const data = { current: { route: null } as ISchemaPage };
+  const expected = store['_check'](
+    transition,
+    rule,
+    (data as unknown) as ITransitionData,
     match
   );
 

@@ -249,16 +249,17 @@ export class Store {
             : [base[objRule] as string];
 
           // For matching, prop should be present on both sides and match
-          if (
-            page[objRule] &&
-            page[objRule].name &&
-            names.indexOf(page[objRule].name) !== -1
-          ) {
-            hasMatch = true;
-          }
-          // If transition prop is different from current, not valid
-          if (names.indexOf(page[objRule].name) === -1) {
-            isValid = false;
+          if (page[objRule]) {
+            if (
+              page[objRule].name &&
+              names.indexOf(page[objRule].name) !== -1
+            ) {
+              hasMatch = true;
+            }
+            // If transition prop is different from current, not valid
+            if (names.indexOf(page[objRule].name) === -1) {
+              isValid = false;
+            }
           }
           break;
         }
