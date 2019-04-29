@@ -1,4 +1,5 @@
 /* tslint:disable:no-empty */
+import { init } from '../../../__mocks__/barba';
 import { ISchemaPage, ITransitionData } from '../../../src/defs';
 import { hooks } from '../../../src/hooks';
 import { Logger } from '../../../src/modules/Logger';
@@ -23,10 +24,13 @@ const enterCanceled = jest.fn();
 hooks.do = jest.fn();
 
 // Dom
-const div = document.createElement('div');
-const wrapper = div.cloneNode() as HTMLElement;
-const currentContainer = div.cloneNode() as HTMLElement;
-const nextContainer = div.cloneNode() as HTMLElement;
+const { wrapper, container: currentContainer } = init();
+
+// const div = document.createElement('div');
+// const wrapper = div.cloneNode() as HTMLElement;
+// const currentContainer = div.cloneNode() as HTMLElement;
+// const nextContainer = div.cloneNode() as HTMLElement;
+const nextContainer = currentContainer.cloneNode() as HTMLElement;
 const nextHtml = `<html>
   <body>
     <div data-barba="wrapper">
@@ -41,14 +45,19 @@ const nextHtml = `<html>
 let data: ITransitionData;
 
 beforeEach(() => {
+  nextContainer.remove();
+  wrapper.appendChild(currentContainer);
+
   data = {
     current: {
       container: currentContainer,
       html: undefined,
+      url: {},
     } as ISchemaPage,
     next: {
       container: nextContainer,
       html: undefined,
+      url: {},
     } as ISchemaPage,
     trigger: 'barba',
   };
@@ -190,8 +199,7 @@ it('calls hooks (sync: true)', async () => {
 });
 
 it('catches error (leave, sync: false)', async () => {
-  // DEV
-  // expect.assertions(3);
+  expect.assertions(1);
 
   const leaveError = () => {
     throw new Error('test');
@@ -207,15 +215,11 @@ it('catches error (leave, sync: false)', async () => {
     });
   } catch (e) {
     expect(e).toEqual(new Error('Transition error'));
-    // DEV
-    expect(hooks.do).toHaveBeenLastCalledWith('leaveCanceled', data, t);
-    expect(leaveCanceled).toHaveBeenCalledTimes(1);
   }
 });
 
 it('catches error (enter, sync: false)', async () => {
-  // DEV
-  // expect.assertions(3);
+  expect.assertions(1);
 
   const enterError = () => {
     throw new Error('test');
@@ -237,15 +241,11 @@ it('catches error (enter, sync: false)', async () => {
     });
   } catch (e) {
     expect(e).toEqual(new Error('Transition error'));
-    // DEV
-    expect(hooks.do).toHaveBeenLastCalledWith('enterCanceled', data, t);
-    expect(enterCanceled).toHaveBeenCalledTimes(1);
   }
 });
 
 it('catches error (leave, sync: true)', async () => {
-  // DEV
-  // expect.assertions(3);
+  expect.assertions(1);
 
   const leaveError = () => {
     throw new Error('test');
@@ -261,15 +261,11 @@ it('catches error (leave, sync: true)', async () => {
     });
   } catch (e) {
     expect(e).toEqual(new Error('Transition error'));
-    // DEV
-    expect(hooks.do).toHaveBeenLastCalledWith('enterCanceled', data, t);
-    expect(leaveCanceled).toHaveBeenCalledTimes(1);
   }
 });
 
 it('catches error (enter, sync: true)', async () => {
-  // DEV
-  // expect.assertions(3);
+  expect.assertions(1);
 
   const enterError = () => {
     throw new Error('test');
@@ -285,8 +281,5 @@ it('catches error (enter, sync: true)', async () => {
     });
   } catch (e) {
     expect(e).toEqual(new Error('Transition error'));
-    // DEV
-    expect(hooks.do).toHaveBeenLastCalledWith('enterCanceled', data, t);
-    expect(enterCanceled).toHaveBeenCalledTimes(1);
   }
 });
