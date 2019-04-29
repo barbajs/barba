@@ -2,7 +2,8 @@
 
 ## Lerna/npm publish
 
-`yarn run release`
+- `yarn run release`
+- `yarn run release:next`
 
 ### Beta `publish`
 

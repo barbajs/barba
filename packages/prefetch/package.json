@@ -41,6 +41,7 @@
     "clear": "rimraf dist",
     "lint": "tslint src/**",
     "precommit": "lint-staged",
+    "release:next": "npm dist-tag add @barba/prefetch@$npm_package_version next",
     "report": "source-map-explorer --html ./dist/barba-prefetch.umd.js > report.html",
     "size": "echo '🚀 prefetch' && gzip-size ./dist/barba-prefetch.umd.js"
   },

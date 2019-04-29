@@ -41,6 +41,7 @@
     "clear": "rimraf dist",
     "lint": "tslint src/**",
     "precommit": "lint-staged",
+    "release:next": "npm dist-tag add @barba/css@$npm_package_version next",
     "size": "echo '💄 css' && gzip-size ./dist/barba-css.umd.js"
   },
   "gitHead": "33c213bc36a0996f6333185dfc695fcd0d37c9d9"
