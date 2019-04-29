@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.8](https://github.com/barbajs/barba/compare/@barba/core@2.3.7...@barba/core@2.3.8) (2019-04-29)
+
+### Bug Fixes
+
+- **core:** :bug: fix sameUrl with query params ([fa79a6a](https://github.com/barbajs/barba/commit/fa79a6a)), closes [#389](https://github.com/barbajs/barba/issues/389)
+
 ## [2.3.7](https://github.com/barbajs/barba/compare/@barba/core@2.3.6...@barba/core@2.3.7) (2019-04-29)
 
 ### Bug Fixes
