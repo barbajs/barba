@@ -108,8 +108,10 @@ export class Transitions {
       await this.appear(data, t);
       await this._doAsyncHook('afterAppear', data, t);
     } catch (error) {
+      this._running = false;
       this.logger.error(error);
-      await this._doAsyncHook('appearCanceled', data, t);
+      // TODO: use this hooks on `cancel()`
+      // await this._doAsyncHook('appearCanceled', data, t);
       // TODO: should I throw or should I log…
       throw new Error('Transition error [appear]');
     }
@@ -230,6 +232,7 @@ export class Transitions {
       // Remove current contaienr
       this.remove(data);
     } catch (error) {
+      this._running = false;
       // TODO: use cases for cancellation
       this.logger.error(error);
 

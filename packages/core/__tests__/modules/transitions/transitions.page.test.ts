@@ -199,7 +199,7 @@ it('calls hooks (sync: true)', async () => {
 });
 
 it('catches error (leave, sync: false)', async () => {
-  expect.assertions(1);
+  expect.assertions(2);
 
   const leaveError = () => {
     throw new Error('test');
@@ -215,11 +215,12 @@ it('catches error (leave, sync: false)', async () => {
     });
   } catch (e) {
     expect(e).toEqual(new Error('Transition error'));
+    expect(transitions.isRunning).toBeFalsy();
   }
 });
 
 it('catches error (enter, sync: false)', async () => {
-  expect.assertions(1);
+  expect.assertions(2);
 
   const enterError = () => {
     throw new Error('test');
@@ -241,6 +242,7 @@ it('catches error (enter, sync: false)', async () => {
     });
   } catch (e) {
     expect(e).toEqual(new Error('Transition error'));
+    expect(transitions.isRunning).toBeFalsy();
   }
 });
 

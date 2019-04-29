@@ -78,7 +78,7 @@ it('calls hooks', async () => {
 });
 
 it('catches error', async () => {
-  expect.assertions(3);
+  expect.assertions(2);
   transitions.logger.error = jest.fn();
 
   const appearError = () => {
@@ -93,7 +93,6 @@ it('catches error', async () => {
     });
   } catch (e) {
     expect(e).toEqual(new Error('Transition error [appear]'));
-    expect(hooks.do).toHaveBeenLastCalledWith('appearCanceled', data, t);
-    expect(appearCanceled).toHaveBeenCalledTimes(1);
+    expect(transitions.isRunning).toBeFalsy();
   }
 });
