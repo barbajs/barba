@@ -171,7 +171,7 @@ export class Transitions {
 
       if (sync) {
         try {
-          this.add(data, wrapper);
+          await this.add(data, wrapper);
           // Before actions
           await this._doAsyncHook('beforeLeave', data, t);
           await this._doAsyncHook('beforeEnter', data, t);
@@ -213,7 +213,7 @@ export class Transitions {
           // Enter
           /* istanbul ignore else */
           if (leaveResult !== false) {
-            this.add(data, wrapper);
+            await this.add(data, wrapper);
 
             await this._doAsyncHook('beforeEnter', data, t);
             await this.enter(data, t, leaveResult);
@@ -227,10 +227,10 @@ export class Transitions {
         }
       }
 
-      this._doAsyncHook('after', data, t);
+      await this._doAsyncHook('after', data, t);
 
       // Remove current contaienr
-      this.remove(data);
+      await this.remove(data);
     } catch (error) {
       this._running = false;
       // TODO: use cases for cancellation
@@ -280,19 +280,22 @@ export class Transitions {
   /**
    * Add next container.
    */
-  public add(data: ITransitionData, wrapper: Wrapper): void {
+  public async add(data: ITransitionData, wrapper: Wrapper): Promise<void> {
     wrapper.appendChild(data.next.container);
+    await helpers.nextTick();
     hooks.do('nextAdded', data);
   }
 
   /**
    * Remove current container.
    */
-  public remove(data: ITransitionData): void {
+  public async remove(data: ITransitionData): Promise<void> {
     const { container } = data.current;
 
     if (document.body.contains(container)) {
+      await helpers.nextTick();
       container.parentNode.removeChild(container);
+      await helpers.nextTick();
       hooks.do('currentRemoved', data);
     }
   }

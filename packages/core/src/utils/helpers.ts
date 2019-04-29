@@ -62,6 +62,16 @@ export const update = async (
 };
 
 /**
+ * Next tick
+ */
+export const nextTick = () =>
+  new Promise(resolve => {
+    window.requestAnimationFrame(resolve);
+    // DEV: same result?
+    // setTimeout(resolve, 0);
+  });
+
+/**
  * Turn a route string such as `/user/:name` into a regular expression.
  *
  * Used for:
