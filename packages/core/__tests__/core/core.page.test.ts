@@ -103,15 +103,15 @@ it('do page', async () => {
   expect(document.title).toBe('New page');
 });
 
-it('do page [popstate]', async () => {
-  barba.transitions.doPage = jest.fn();
-  barba.history.add = jest.fn();
+// it('do page [popstate]', async () => {
+//   barba.transitions.doPage = jest.fn();
+//   barba.history.add = jest.fn();
 
-  barba.transitions.store.add('transition', { leave() {}, enter() {} });
-  await barba.page(nextUrl, 'popstate', false);
+//   barba.transitions.store.add('transition', { leave() {}, enter() {} });
+//   await barba.page(nextUrl, 'popstate', false);
 
-  expect(barba.history.add).toHaveBeenCalledTimes(1);
-});
+//   expect(barba.history.add).toHaveBeenCalledTimes(1);
+// });
 
 it('do page [has cache]', async () => {
   barba.history.add = jest.fn();

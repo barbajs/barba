@@ -58,6 +58,9 @@ export class Transitions {
   get isRunning(): boolean {
     return this._running;
   }
+  set isRunning(status: boolean) {
+    this._running = status;
+  }
 
   /**
    * Check for registered appear transition(s).
@@ -105,8 +108,10 @@ export class Transitions {
       await this.appear(data, t);
       await this._doAsyncHook('afterAppear', data, t);
     } catch (error) {
+      this._running = false;
       this.logger.error(error);
-      await this._doAsyncHook('appearCanceled', data, t);
+      // TODO: use this hooks on `cancel()`
+      // await this._doAsyncHook('appearCanceled', data, t);
       // TODO: should I throw or should I log…
       throw new Error('Transition error [appear]');
     }
@@ -159,7 +164,7 @@ export class Transitions {
     try {
       // Check sync mode, wait for next content
       if (sync) {
-        await helpers.updateNext(page, data.next);
+        await helpers.update(page, data);
       }
 
       await this._doAsyncHook('before', data, t);
@@ -178,8 +183,9 @@ export class Transitions {
           await this._doAsyncHook('afterLeave', data, t);
           await this._doAsyncHook('afterEnter', data, t);
         } catch (error) {
-          await this._doAsyncHook('leaveCanceled', data, t);
-          await this._doAsyncHook('enterCanceled', data, t);
+          // TODO: use these hooks on `cancel()`
+          // await this._doAsyncHook('leaveCanceled', data, t);
+          // await this._doAsyncHook('enterCanceled', data, t);
           throw new Error('Transition error [page][sync]');
         }
       } else {
@@ -190,7 +196,7 @@ export class Transitions {
 
           leaveResult = await Promise.all([
             this.leave(data, t),
-            helpers.updateNext(page, data.next),
+            helpers.update(page, data),
           ]).then(values => values[0]);
 
           await this._doAsyncHook('afterLeave', data, t);
@@ -198,7 +204,8 @@ export class Transitions {
           // TODO: check here "valid" page result
           // before going further
         } catch (error) {
-          await this._doAsyncHook('leaveCanceled', data, t);
+          // TODO: use this hooks on `cancel()`
+          // await this._doAsyncHook('leaveCanceled', data, t);
           throw new Error('Transition error [page][leave]');
         }
 
@@ -207,20 +214,25 @@ export class Transitions {
           /* istanbul ignore else */
           if (leaveResult !== false) {
             this.add(data, wrapper);
+
             await this._doAsyncHook('beforeEnter', data, t);
             await this.enter(data, t, leaveResult);
             await this._doAsyncHook('afterEnter', data, t);
           }
         } catch (error) {
-          await this._doAsyncHook('leaveCanceled', data, t);
-          await this._doAsyncHook('enterCanceled', data, t);
+          // TODO: use these hooks on `cancel()`
+          // await this._doAsyncHook('leaveCanceled', data, t);
+          // await this._doAsyncHook('enterCanceled', data, t);
           throw new Error('Transition error [page][enter]');
         }
       }
 
       this._doAsyncHook('after', data, t);
+
+      // Remove current contaienr
       this.remove(data);
     } catch (error) {
+      this._running = false;
       // TODO: use cases for cancellation
       this.logger.error(error);
 
@@ -277,8 +289,10 @@ export class Transitions {
    * Remove current container.
    */
   public remove(data: ITransitionData): void {
-    if (data.current.container) {
-      data.current.container.remove();
+    const { container } = data.current;
+
+    if (document.body.contains(container)) {
+      container.parentNode.removeChild(container);
       hooks.do('currentRemoved', data);
     }
   }
@@ -295,17 +309,4 @@ export class Transitions {
 
     return t[hook] ? runAsync(t[hook])(data) : Promise.resolve();
   }
-
-  /**
-   * Do hooks + sync transition methods.
-   */
-  // DEV: all transition hooks can be asynchronous…
-  // private _doSyncHook(
-  //   hook: HooksTransition,
-  //   data: ITransitionData,
-  //   t: HooksTransitionMap
-  // ): void {
-  //   hooks.do(hook, data, t);
-  //   t[hook] && t[hook](data);
-  // }
 }

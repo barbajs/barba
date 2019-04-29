@@ -1,6 +1,4 @@
-import { History } from '../../src/modules/History';
-
-const history = new History();
+import { history } from '../../src/utils/history';
 
 const first = {
   ns: 'ns1',

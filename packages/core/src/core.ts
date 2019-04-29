@@ -45,7 +45,7 @@ import './polyfills';
 import { schemaAttribute } from './schemas/attribute';
 import { schemaPage } from './schemas/page';
 // Utils
-import { dom, helpers, request, url } from './utils';
+import { dom, helpers, history, request, url } from './utils';
 
 export class Core {
   /**
@@ -81,7 +81,7 @@ export class Core {
   /**
    * Modules.
    */
-  public history: History;
+  // public history: History;
   public cache: Cache;
   public prevent: Prevent;
   public transitions: Transitions;
@@ -91,6 +91,7 @@ export class Core {
    */
   public dom = dom;
   public helpers = helpers;
+  public history = history;
   public request = request;
   public url = url;
 
@@ -187,7 +188,6 @@ export class Core {
     }
 
     // 4. Init other modules
-    this.history = new History();
     this.cache = new Cache(cacheIgnore);
     this.prevent = new Prevent(prefetchIgnore);
     this.transitions = new Transitions(transitions);
@@ -362,15 +362,7 @@ export class Core {
 
     // Need to wait before getting the right transition
     if (this.transitions.shouldWait) {
-      await helpers.updateNext(page, this.data.next);
-    }
-
-    // If triggered from an history change (back, forward),
-    // simply add the new state without
-    if (trigger === 'popstate') {
-      this.history.add(href, this.data.next.namespace);
-    } else {
-      this.history.push(href, this.data.next.namespace);
+      await helpers.update(page, this.data);
     }
 
     const data = this.data;
@@ -405,6 +397,9 @@ export class Core {
    * Allow the user to manage request error. (E.g: 404)
    */
   public onRequestError(trigger: Trigger, ...args: any): boolean {
+    // Cancel transition status
+    this.transitions.isRunning = false;
+
     const [href, response]: [string, RequestErrorOrResponse] = args;
     const action = this.cache.getAction(href);
     this.cache.delete(href);
