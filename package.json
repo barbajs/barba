@@ -59,7 +59,7 @@
     "lint": "tslint packages/**/src/**",
     "ls": "lerna ls",
     "prepublish": "yarn run build",
-    "release": "lerna publish && npm release:next",
+    "release": "lerna publish && npm run release:next",
     "release:next": "lerna run release:next --npm-client=npm",
     "report": "lerna run report",
     "size": "lerna run size",
