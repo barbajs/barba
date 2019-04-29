@@ -73,7 +73,9 @@ it('parse complex query', () => {
 });
 
 it('clean url', () => {
-  const result = url.clean('http://localhost/foo', window.location.origin);
+  // const result = url.clean('http://localhost/foo', window.location.origin);
+  // expect(result).toBe('/foo');
+  const result = url.clean('http://localhost/foo?bar=baz#qux');
 
-  expect(result).toBe('/foo');
+  expect(result).toBe('http://localhost/foo?bar=baz');
 });

@@ -276,7 +276,7 @@ export class Core {
     // Check prevent sameURL against current history
     if (trigger === 'popstate') {
       self =
-        this.history &&
+        this.history.current &&
         this.url.getPath(this.history.current.url) === this.url.getPath(href);
     } else {
       self = this.prevent.run('sameUrl', null, null, href);

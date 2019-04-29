@@ -88,7 +88,9 @@ const preventAll: PreventCheck = ({ el }) =>
  * > Not in the test suite.
  */
 const sameUrl: PreventCheck = ({ href }) =>
-  url.getPath(href) === url.getPath(window.location.href);
+  // DEV
+  // url.getPath(href) === url.getPath(window.location.href);
+  url.clean(href) === url.clean(window.location.href);
 
 export class Prevent extends Ignore {
   public suite: string[] = [];

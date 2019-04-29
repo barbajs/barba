@@ -60,7 +60,8 @@ export const getPath = (url: string): string => parse(url).path;
  * Parse URL for path, query and hash.
  */
 export const parse = (url: string): IUrlBase => {
-  let path = clean(url);
+  // let path = clean(url);
+  let path = url.replace(getOrigin(), '');
   let hash;
   let query = {};
 
@@ -98,7 +99,11 @@ export const parseQuery = (str: string) =>
   }, {});
 
 /**
+ * Clean URL, remove "hash".
+ */
+export const clean = (url: string) => url.replace(/#.*/, '');
+/**
  * Clean URL, remove "origin".
  */
-export const clean = (url: string, origin = getOrigin()) =>
-  url.replace(origin, '');
+// export const clean = (url: string, origin = getOrigin()) =>
+//   url.replace(origin, '');
