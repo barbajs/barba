@@ -89,10 +89,10 @@ class Css implements IBarbaPlugin<{}> {
   public async start(container: HTMLElement, kind: string): Promise<void> {
     // Set initial CSS values
     this.add(container, kind); // CSS: add kind
-    await this._nextTick();
+    await this.barba.helpers.nextTick();
     // Apply CSS transition
     this.add(container, `${kind}-active`); // CSS: add kind-active
-    await this._nextTick();
+    await this.barba.helpers.nextTick();
   }
 
   /**
@@ -108,17 +108,17 @@ class Css implements IBarbaPlugin<{}> {
         this.callbacks[kind] = resolve;
 
         container.addEventListener('transitionend', resolve, false);
-        await this._nextTick();
+        await this.barba.helpers.nextTick();
         this.remove(container, kind); // CSS: remove kind
-        // await this._nextTick();
+        // await this.barba.helpers.nextTick();
         this.add(container, `${kind}-to`); // CSS: add kind-to
-        await this._nextTick();
+        await this.barba.helpers.nextTick();
       });
     } else {
       this.remove(container, kind); // CSS: remove kind
-      await this._nextTick();
+      await this.barba.helpers.nextTick();
       this.add(container, `${kind}-to`); // CSS: add kind-to
-      await this._nextTick();
+      await this.barba.helpers.nextTick();
     }
   }
 
@@ -242,16 +242,6 @@ class Css implements IBarbaPlugin<{}> {
    */
   private _afterEnter(data: ITransitionData): Promise<void> {
     return this.end(data.next.container, 'enter');
-  }
-
-  private _nextTick(): Promise<number> {
-    return new Promise(resolve => {
-      window.requestAnimationFrame(resolve);
-    });
-    // DEV: same result?
-    // return new Promise(resolve => {
-    //   setTimeout(resolve, 0);
-    // });
   }
 }
 

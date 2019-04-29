@@ -1,22 +1,15 @@
 /* tslint:disable:no-string-literal */
+import barba from '@barba/core/src';
 import css from '../src';
 
 // Dom
 const container = document.createElement('div');
 const kind = 'test';
 
-// Utils
-/**
- * Wait for 1 repaint
- */
-function nextTick() {
-  return new Promise(resolve => {
-    window.requestAnimationFrame(resolve);
-  });
-}
-
+css.install(barba);
 css.add = jest.fn();
 css.remove = jest.fn();
+
 container.addEventListener = jest.fn();
 container.removeEventListener = jest.fn();
 
@@ -35,7 +28,7 @@ it('do next', async () => {
   expect(css.callbacks[kind]).toBeDefined();
   expect(container.addEventListener).toHaveBeenCalledTimes(1);
 
-  await nextTick();
+  await barba.helpers.nextTick();
 
   expect(css.remove).toHaveBeenNthCalledWith(1, container, kind);
   expect(css.add).toHaveBeenCalledTimes(1);
