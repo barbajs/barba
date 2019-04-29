@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.5](https://github.com/barbajs/barba/compare/@barba/core@2.3.4...@barba/core@2.3.5) (2019-04-29)
+
+### Bug Fixes
+
+- **core:** :construction: fix history ([36d3393](https://github.com/barbajs/barba/commit/36d3393))
+
 ## [2.3.4](https://github.com/barbajs/barba/compare/@barba/core@2.3.3...@barba/core@2.3.4) (2019-04-29)
 
 ### Bug Fixes
