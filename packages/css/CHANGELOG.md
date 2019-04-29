@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.8](https://github.com/barbajs/barba/compare/@barba/css@2.1.7...@barba/css@2.1.8) (2019-04-29)
+
+**Note:** Version bump only for package @barba/css
+
 ## [2.1.7](https://github.com/barbajs/barba/compare/@barba/css@2.1.6...@barba/css@2.1.7) (2019-04-29)
 
 **Note:** Version bump only for package @barba/css

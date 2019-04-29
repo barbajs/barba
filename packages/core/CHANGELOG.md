@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.7](https://github.com/barbajs/barba/compare/@barba/core@2.3.6...@barba/core@2.3.7) (2019-04-29)
+
+### Bug Fixes
+
+- **core:** :bug: fix glitch on containers add/remove ([374660c](https://github.com/barbajs/barba/commit/374660c))
+
 ## [2.3.6](https://github.com/barbajs/barba/compare/@barba/core@2.3.5...@barba/core@2.3.6) (2019-04-29)
 
 **Note:** Version bump only for package @barba/core
