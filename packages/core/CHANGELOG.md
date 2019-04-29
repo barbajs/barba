@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.4](https://github.com/barbajs/barba/compare/@barba/core@2.3.3...@barba/core@2.3.4) (2019-04-29)
+
+### Bug Fixes
+
+- **core:** :bug: fix object rule with no value ([4014fd8](https://github.com/barbajs/barba/commit/4014fd8))
+
 ## [2.3.3](https://github.com/barbajs/barba/compare/@barba/core@2.3.2...@barba/core@2.3.3) (2019-04-23)
 
 ### Bug Fixes
