@@ -92,7 +92,7 @@
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="core_utils_helpers.html#updatenext" class="tsd-kind-icon">update<wbr>Next</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="core_utils_helpers.html#update" class="tsd-kind-icon">update</a></li>
 							</ul>
 						</section>
 					</div>
@@ -106,7 +106,7 @@
 					<div class="tsd-signature tsd-kind-icon">path<wbr>ToRegexp<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">pathToRegexp</span><span class="tsd-signature-symbol"> =&nbsp;ptr</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/helpers.ts#L60">core/src/utils/helpers.ts:60</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/helpers.ts#L74">core/src/utils/helpers.ts:74</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -129,21 +129,21 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="updatenext" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> update<wbr>Next</h3>
+					<a name="update" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> update</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">update<wbr>Next<span class="tsd-signature-symbol">(</span>page<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span>, next<span class="tsd-signature-symbol">: </span><a href="../interfaces/typings_core.ischemapage.html" class="tsd-signature-type">ISchemaPage</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">update<span class="tsd-signature-symbol">(</span>page<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span>, data<span class="tsd-signature-symbol">: </span><a href="../interfaces/typings_core.itransitiondata.html" class="tsd-signature-type">ITransitionData</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/helpers.ts#L24">core/src/utils/helpers.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/helpers.ts#L26">core/src/utils/helpers.ts:26</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Update <code>data.next</code>.</p>
+									<p>Update <code>data.next</code>, the title and the history</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -152,7 +152,7 @@
 									<h5>page: <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 								<li>
-									<h5>next: <a href="../interfaces/typings_core.ischemapage.html" class="tsd-signature-type">ISchemaPage</a></h5>
+									<h5>data: <a href="../interfaces/typings_core.itransitiondata.html" class="tsd-signature-type">ITransitionData</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -175,9 +175,6 @@
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="core_modules_cache.html">core/modules/cache</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="core_modules_history.html">core/modules/history</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="core_modules_hooks.html">core/modules/hooks</a>
@@ -205,6 +202,9 @@
 					</li>
 					<li class="current tsd-kind-external-module">
 						<a href="core_utils_helpers.html">core/utils/helpers</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="core_utils_history.html">core/utils/history</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="core_utils_request.html">core/utils/request</a>
@@ -244,7 +244,7 @@
 						<a href="core_utils_helpers.html#pathtoregexp" class="tsd-kind-icon">path<wbr>ToRegexp</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="core_utils_helpers.html#updatenext" class="tsd-kind-icon">update<wbr>Next</a>
+						<a href="core_utils_helpers.html#update" class="tsd-kind-icon">update</a>
 					</li>
 				</ul>
 			</nav>
