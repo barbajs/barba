@@ -99,7 +99,7 @@ If you want to play some transition on first load, use `appear`:
 
 ---
 
-If you want different transitions, you can name them and use rules.<br>
+If you want different transitions, you can name them and use rules.  
 The transition `name` will be used as **CSS "prefix"**.
 
 ```js
