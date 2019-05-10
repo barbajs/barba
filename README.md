@@ -16,7 +16,7 @@
 
 It helps reducing the delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.
 
-> This is beta version, use it at your own risks! 😱<br>
+> This is beta version, use it at your own risks! 😱  
 > Thanks in advance for reporting bugs. #sharethelove 😊
 >
 > [Looking for v1?](https://barba.js.org/v1) 👈
