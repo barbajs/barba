@@ -23,8 +23,9 @@ Example:
 import barba from '@barba/core';
 import barbaPrefetch from '@barba/prefetch';
 
-// tells barba to use the prefetch module
+// tell Barba to use the prefetch module
 barba.use(barbaPrefetch);
 
+// init Barba
 barba.init();
 ```
