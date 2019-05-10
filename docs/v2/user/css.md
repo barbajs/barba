@@ -41,105 +41,116 @@ Example with default naming:
 import barba from '@barba/core';
 import barbaCss from '@barba/css';
 
-// Tell barba to use the css module
+// tell Barba to use the css module
 barba.use(barbaCss);
+
+// init Barba
 barba.init();
 ```
 
 Then customize your CSS classes like this:
 
 ```css
-/* Active state, define the transition,
-here, same for leave and enter */
+/* transition active state (same for leave and enter) */
 .barba-leave-active
 .barba-enter-active {
-    transition: opacity 450ms ease;
+  transition: opacity 450ms ease;
 }
-/* Initial state */
+
+/* initial state */
 .barba-leave {
-    opacity: 1;
+  opacity: 1;
 }
+
 .barba-enter {
-    opacity: 0;
+  opacity: 0;
 }
-/* Ending state */
+
+/* ending state */
 .barba-leave-to {
-    opacity: 0;
+  opacity: 0;
 }
+
 .barba-enter-to {
-    opacity: 1;
+  opacity: 1;
 }
-/* This code can be refactored for optimization… */
+
+/* Note that this code can be refactored for optimization */
 ```
 
-If you want to play some transition on first load, use `appear` transition:
+If you want to play some transition on first load, use `appear`:
 
 ```css
-/* Appear: active state, define the transition */
+/* appear: active state, define the transition */
 .barba-appear-active {
-    transition: opacity 450ms ease;
+  transition: opacity 450ms ease;
 }
-/* Appear: initial state */
+
+/* appear: initial state */
 .barba-appear {
-    opacity: 0;
+  opacity: 0;
 }
-/* Appear: ending state */
+
+/* appear: ending state */
 .barba-appear-to {
-    opacity: 1;
+  opacity: 1;
 }
 ```
 
 ---
 
-If you want different transitions, you can name them and use rules.<br>
-The transition `name` will be used as CSS "prefix".
+If you want different transitions, you can name them and use rules.  
+The transition `name` will be used as **CSS "prefix"**.
 
 ```js
 import barba from '@barba/core';
 import barbaCss from '@barba/css';
 
-// Tell barba to use the css module
+// tell Barba to use the css module
 barba.use(barbaCss);
+
+// init Barba
 barba.init({
-  transitions:[
-    {
-      from: { namespace: 'home' },
-      to: { namespace: 'products' },
-      name: 'slide', /* .slide-… */
-    },
-    {
-      // Default…
-      name: 'fade', /* .fade-… */
-    },
-  ],
+  transitions:[{
+
+    // css classes will look like `.fade-xxx-[-xxx]`
+    name: 'fade'
+  }, {
+
+    // css classes will look like `.slide-xxx[-xxx]`
+    name: 'slide',
+    from: { namespace: 'home' },
+    to: { namespace: 'products' },
+  }]
 });
 ```
 
 ```css
-/* Active state, define the transition,
-here, same for leave and enter */
-.fade-leave-active
+/* fade and slide transition active states (same for leave and enter) */
+.fade-leave-active,
 .fade-enter-active,
-.slide-leave-active
+.slide-leave-active,
 .slide-enter-active {
-  transition:
-    opacity 450ms ease,
-    transform 650ms ease-in-out;
+  transition: opacity 450ms ease, transform 650ms ease-in-out;
 }
-/* Fade states */
+
+/* fade transition states */
 .fade-leave,
 .fade-enter-to {
   opacity: 1;
 }
+
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
 }
-/* Slide states */
+
+/* slide transition states */
 .slide-leave,
 .slide-enter-to {
   transform: translateX(0);
 }
+
 .slide-enter,
 .slide-leave-to {
   transform: translateX(100%);

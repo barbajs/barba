@@ -78,10 +78,8 @@
 				<p><strong>Barba.js</strong> is a small (7kb minified and compressed) and easy-to-use library that helps you creating fluid and smooth transitions between your website&#39;s pages.</p>
 				<p>It helps reducing the delay between your pages, minimizing browser HTTP requests and enhancing your user&#39;s web experience.</p>
 				<blockquote>
-					<p>Notice: This guide assumes intermediate level knowledge of HTML, CSS, and JavaScript.
-						It is worth mentioning that all the code examples use ES6+ syntax.<br>
-						If you are not comfortable with, we encourage you to grasp the basics then come back.<br>
-					In case of emergency, check this <a href="legacy.md">&quot;legacy&quot; code example</a>.</p>
+					<p>Notice: this guide assumes intermediate level knowledge of HTML, CSS, and JavaScript. It is worth mentioning that all the code examples use ES6+ syntax. If you are not comfortable with, we encourage you to grasp the basics then come back.</p>
+					<p>In case of emergency, check this <a href="legacy.md">&quot;legacy&quot; code example</a>.</p>
 				</blockquote>
 				<h2 id="useful-links">Useful links</h2>
 				<ul>
@@ -109,56 +107,62 @@
 				<blockquote>
 					<p>See <a href="https://barba.js.org/docs/v2/user/core.html">@barba/core</a> for more details…</p>
 				</blockquote>
-				<pre><code class="language-js"><span class="hljs-keyword">import</span> barba <span class="hljs-keyword">from</span> <span class="hljs-string">'@barba/core'</span>; <span class="hljs-comment">// Or nothing if loaded via the browser</span>
+				<pre><code class="language-js"><span class="hljs-comment">// do not import Barba like this if you load the library through the browser</span>
+<span class="hljs-keyword">import</span> barba <span class="hljs-keyword">from</span> <span class="hljs-string">'@barba/core'</span>;
 
-<span class="hljs-comment">// Basic default transition, with no rules and minimal hooks…</span>
+<span class="hljs-comment">// basic default transition (with no rules and minimal hooks)</span>
 barba.init({
   <span class="hljs-attr">transitions</span>: [
     {
       leave({ current, next, trigger }) {
-        <span class="hljs-comment">// Do something with `current.container` for your leave transition</span>
+        <span class="hljs-comment">// do something with `current.container` for your leave transition</span>
         <span class="hljs-comment">// then return a promise or use `this.async()`</span>
       },
       enter({ current, next, trigger }) {
-        <span class="hljs-comment">// Do something with `next.container` for your enter transition</span>
+        <span class="hljs-comment">// do something with `next.container` for your enter transition</span>
         <span class="hljs-comment">// then return a promise or use `this.async()`</span>
       },
     },
   ],
 });
 
-<span class="hljs-comment">// Dummy example to illustrate rules and hooks…</span>
+<span class="hljs-comment">// dummy example to illustrate rules and hooks</span>
 barba.init({
-  <span class="hljs-attr">transitions</span>: [
-    {
-      <span class="hljs-attr">name</span>: <span class="hljs-string">'dummy transitions'</span>,
-      <span class="hljs-comment">// Apply only when leaving `[data-barba-namespace="home"]`.</span>
-      namespace: <span class="hljs-string">'home'</span>,
-      <span class="hljs-comment">// Apply only when transitioning to `[data-barba-namespace="products | contact"]`.</span>
-      to: {
-        <span class="hljs-attr">namespace</span>: [<span class="hljs-string">'products'</span>, <span class="hljs-string">'contact'</span>],
-      },
-      <span class="hljs-comment">// Apply only if clicked link contains `.cta`.</span>
-      custom: <span class="hljs-function">(<span class="hljs-params">{ current, next, trigger }</span>) =&gt;</span>
-        trigger.classList &amp;&amp; trigger.classList.contains(<span class="hljs-string">'cta'</span>),
-      <span class="hljs-comment">// Do leave and enter concurrently.</span>
-      sync: <span class="hljs-literal">true</span>,
-      <span class="hljs-comment">// Available hooks…</span>
-      beforeAppear() {},
-      appear() {},
-      afterAppear() {},
-      beforeLeave() {},
-      leave() {},
-      afterLeave() {},
-      beforeEnter() {},
-      enter() {},
-      afterEnter() {},
+  <span class="hljs-attr">transitions</span>: [{
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'dummy-transition'</span>,
+
+    <span class="hljs-comment">// apply only when leaving `[data-barba-namespace="home"]`</span>
+    <span class="hljs-keyword">from</span>: <span class="hljs-string">'home'</span>,
+
+    <span class="hljs-comment">// apply only when transitioning to `[data-barba-namespace="products | contact"]`</span>
+    to: {
+      <span class="hljs-attr">namespace</span>: [
+        <span class="hljs-string">'products'</span>,
+        <span class="hljs-string">'contact'</span>
+      ],
     },
-  ],
+
+    <span class="hljs-comment">// apply only if clicked link contains `.cta`</span>
+    custom: <span class="hljs-function">(<span class="hljs-params">{ current, next, trigger }</span>)
+      =&gt;</span> trigger.classList &amp;&amp; trigger.classList.contains(<span class="hljs-string">'cta'</span>),
+
+    <span class="hljs-comment">// do leave and enter concurrently</span>
+    sync: <span class="hljs-literal">true</span>,
+
+    <span class="hljs-comment">// available hooks…</span>
+    beforeAppear() {},
+    appear() {},
+    afterAppear() {},
+    beforeLeave() {},
+    leave() {},
+    afterLeave() {},
+    beforeEnter() {},
+    enter() {},
+    afterEnter() {}
+  }]
 });</code></pre>
 				<h2 id="browser-support">Browser support</h2>
-				<p>Barba.js can be viewed as a <a href="https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/">progressive enhancement</a>.
-				Main &quot;modern features&quot; used are:</p>
+				<p>Barba.js can be viewed as a <a href="https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/">progressive enhancement</a>.<br>Main &quot;modern features&quot; used are:</p>
 				<ul>
 					<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></li>
 					<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">Set()</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map()</a></li>
