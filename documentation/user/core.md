@@ -49,6 +49,7 @@ The namespace allow you to define **a unique name for each pages**. Barba mainly
 | [`prefetchIgnore`](#prefetchignore) | Boolean \| string \| string[] | true              | Prefetch strategy                             |
 | [`prevent`](#prevent)               | Function                      | (optional)        | Custom prevent test                           |
 | [`requestError`](#requesterror)     | Function                      | (optional)        | Custom request error callback                 |
+| [`timeout`](#timeout)               | Integer                       | 2000              | Custom request timeout (ms)                   |
 
 #### `<transition>` object
 
@@ -514,6 +515,21 @@ barba.init({
 ```
 
 > Note that if you use `barba.go()` directive without returning `false`, you will be redirected to the requested URL because Barba uses `barba.force()` to reach the page.
+
+#### timeout
+On slow network or with a high page weight, the server can take time to give a response to the user. In case the page take **more than timeout** to be loaded, it lead Barba to abort the transition and display a *Timeout error [2000]* message.
+
+To prevent this behavior, you can increase the `timeout`:
+
+```js
+import barba from '@barba/core';
+
+barba.init({
+  timeout: 5000
+});
+```
+
+In addition, you can properly catch the error by using the [`requestError`](#requesterror) callback.
 
 ## Partial output
 
