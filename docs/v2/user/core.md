@@ -137,7 +137,7 @@ barba.init({
     leave: (data) => asyncAnimation(data.current.container),
 
     // es6 syntax: `{ current } = data.current`
-    leave: ({ current }) => asyncAnimation(current.container);,
+    leave: ({ current }) => asyncAnimation(current.container),
 
     // using a promise
     leave(data) => {
@@ -148,8 +148,7 @@ barba.init({
           },
         });
       });
-    },
-
+    }
   }]
 });
 ```
@@ -208,19 +207,17 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  transitions: [
-    {
-      name: 'svg-circle',
-      leave(data) {
-        // retrieve the current page url
-        const from = data.current.url;
-      },
-      enter({ next }) {
-        // retrieve the next page url (short syntax)
-        const to = next.url;
-      },
+  transitions: [{
+    name: 'svg-circle',
+    leave(data) {
+      // retrieve the current page url
+      const from = data.current.url;
     },
-  ],
+    enter({ next }) {
+      // retrieve the next page url (short syntax)
+      const to = next.url;
+    }
+  }]
 });
 ```
 
@@ -316,17 +313,15 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  transitions: [
-    {
-      sync: true,
-      leave() {
-        // transition that will play concurrently to `enter`
-      },
-      enter() {
-        // transition that will play concurrently to `leave`
-      },
+  transitions: [{
+    sync: true,
+    leave() {
+      // transition that will play concurrently to `enter`
     },
-  ],
+    enter() {
+      // transition that will play concurrently to `leave`
+    }
+  }]
 });
 ```
 
@@ -351,20 +346,17 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  views: [
-    {
-      namespace: 'index',
-      beforeLeave(data) {
-        // do something before leaving the current `index` namespace
-      },
-    },
-    {
-      namespace: 'contact',
-      beforeEnter(data) {
-        // do something before entering the `contact` namespace
-      },
-    },
-  ],
+  views: [{
+    namespace: 'index',
+    beforeLeave(data) {
+      // do something before leaving the current `index` namespace
+    }
+  }, {
+    namespace: 'contact',
+    beforeEnter(data) {
+      // do something before entering the `contact` namespace
+    }
+  }]
 });
 ```
 
@@ -379,7 +371,7 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  debug: true,
+  debug: true
 });
 ```
 
@@ -405,8 +397,8 @@ import barba from '@barba/core';
 barba.init({
   // override defaults and create a custom prefix for wrapper, containers, etc.
   schema: {
-    prefix: 'data-custom',
-  },
+    prefix: 'data-custom'
+  }
 });
 ```
 
@@ -434,7 +426,10 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  cacheIgnore: ['/contact/', '/:category/post?'],
+  cacheIgnore: [
+    '/contact/',
+    '/:category/post?'
+  ]
 });
 ```
 
@@ -454,7 +449,7 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  prefetchIgnore: false,
+  prefetchIgnore: false
 });
 ```
 
@@ -477,7 +472,7 @@ import barba from '@barba/core';
 barba.init({
   // define a custom function that will prevent Barba
   // from working on links that contains a `prevent` CSS class
-  prevent: ({ el }) => el.classList && el.classList.contains('prevent'),
+  prevent: ({ el }) => el.classList && el.classList.contains('prevent')
 });
 ```
 
@@ -505,6 +500,7 @@ import barba from '@barba/core';
 
 barba.init({
   requestError: (trigger, action, url, response) => {
+
     // go to a custom 404 page if the user click on a link that return a 404 response status
     if (action === 'click' && response.status && response.status === 404) {
       barba.go('/404');
@@ -513,7 +509,7 @@ barba.init({
     // prevent Barba from redirecting the user to the requested URL
     // this is equivalent to e.preventDefault()
     return false;
-  },
+  }
 });
 ```
 
