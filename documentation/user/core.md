@@ -93,7 +93,7 @@ All hooks are **methods** and receive the same [`data`](#data-argument) object.
 | 7     | `afterEnter`  | After **enter** transition                                      |
 | 8     | `after`       | After everything                                                |
 
-> "Hooks can be run either synchronously or asynchronously using the common `this.async()` style ([see run-async](https://github.com/sboudrias/run-async#readme)) or returning a promise.
+> Hooks can be run either synchronously or asynchronously using the common `this.async()` style ([see run-async](https://github.com/sboudrias/run-async#readme)) or returning a promise.
 >
 > If you use [`sync: true`](#sync-mode), as **leave** and **enter** will be concurrent, order will differ: all before\*, then enter/leave, then all after\*.
 >
@@ -104,7 +104,7 @@ Example:
 ```js
 import barba from '@barba/core';
 
-// defines a global hook
+// define a global hook
 barba.hooks.leave((data) => {
   // this hook will be called for each transitions
 });
@@ -212,11 +212,11 @@ barba.init({
     {
       name: 'svg-circle',
       leave(data) {
-        // retrieves the current page url
+        // retrieve the current page url
         const from = data.current.url;
       },
       enter({ next }) {
-        // retrieves the next page url (short syntax)
+        // retrieve the next page url (short syntax)
         const to = next.url;
       },
     },
@@ -255,12 +255,12 @@ barba.init({
     name: 'custom-transition',
     from: {
 
-      // defines a custom rule based on the trigger class
+      // define a custom rule based on the trigger class
       custom: ({ trigger }) => {
         return trigger.classList && trigger.classList.contains('use-custom-transition');
       },
 
-      // defines rule based on multiple route names
+      // define rule based on multiple route names
       route: [
         'index',
         'product'
@@ -268,7 +268,7 @@ barba.init({
     },
     to: {
 
-      // defines rule based on multiple namespaces
+      // define rule based on multiple namespaces
       namespace: [
         'home',
         'item'
@@ -403,7 +403,7 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  // overrides defaults and create a custom prefix for wrapper, containers, etc.
+  // override defaults and create a custom prefix for wrapper, containers, etc.
   schema: {
     prefix: 'data-custom',
   },
@@ -475,8 +475,8 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  // defines a custom function that will prevent Barba
-  // from working on link that contains a `prevent` CSS class
+  // define a custom function that will prevent Barba
+  // from working on links that contains a `prevent` CSS class
   prevent: ({ el }) => el.classList && el.classList.contains('prevent'),
 });
 ```
@@ -510,7 +510,7 @@ barba.init({
       barba.go('/404');
     }
 
-    // prevents Barba from redirecting the user to the requested URL
+    // prevent Barba from redirecting the user to the requested URL
     // this is equivalent to e.preventDefault()
     return false;
   },
