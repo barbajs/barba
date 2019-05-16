@@ -112,18 +112,16 @@
 
 <span class="hljs-comment">// basic default transition (with no rules and minimal hooks)</span>
 barba.init({
-  <span class="hljs-attr">transitions</span>: [
-    {
-      leave({ current, next, trigger }) {
-        <span class="hljs-comment">// do something with `current.container` for your leave transition</span>
-        <span class="hljs-comment">// then return a promise or use `this.async()`</span>
-      },
-      enter({ current, next, trigger }) {
-        <span class="hljs-comment">// do something with `next.container` for your enter transition</span>
-        <span class="hljs-comment">// then return a promise or use `this.async()`</span>
-      },
+  <span class="hljs-attr">transitions</span>: [{
+    leave({ current, next, trigger }) {
+      <span class="hljs-comment">// do something with `current.container` for your leave transition</span>
+      <span class="hljs-comment">// then return a promise or use `this.async()`</span>
     },
-  ],
+    enter({ current, next, trigger }) {
+      <span class="hljs-comment">// do something with `next.container` for your enter transition</span>
+      <span class="hljs-comment">// then return a promise or use `this.async()`</span>
+    }
+  }]
 });
 
 <span class="hljs-comment">// dummy example to illustrate rules and hooks</span>
@@ -139,7 +137,7 @@ barba.init({
       <span class="hljs-attr">namespace</span>: [
         <span class="hljs-string">'products'</span>,
         <span class="hljs-string">'contact'</span>
-      ],
+      ]
     },
 
     <span class="hljs-comment">// apply only if clicked link contains `.cta`</span>
