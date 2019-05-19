@@ -1,7 +1,7 @@
 {
   "name": "@barba/router",
   "version": "2.1.3",
-  "description": "Barba is a ...",
+  "description": "Use custom routes for your page transitions",
   "publishConfig": {
     "access": "public"
   },
