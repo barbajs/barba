@@ -1,22 +1,70 @@
+
 .docs {
-
+  @import 'code-snippets';
 }
 
-.docs__side-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 27.43%;
-  height: 100%;
-  background: $c-blue-lightest;
-}
+.docs__markdown {
+  overflow: hidden;
+  width: 75vw;
+  margin-left: 25vw;
+  padding: 12rem 2rem;
 
-.docs__content {
-  max-width: 72rem;
-  margin-left: 27.43%;
-  padding-top: 16rem;
-  padding-bottom: 6rem;
-  padding-left: 6rem;
+  @include mq(l) {
+    min-width: 50vw;
+    max-width: 80rem;
+    padding: 12rem 6rem;
+  }
+
+  h1 {
+    display: flex;
+    margin: 0;
+    color: $c-blue-light;
+    font-family: 'Space Mono';
+    font-size: 5rem;
+    font-weight: 400;
+
+    small {
+      font-size: 2rem;
+    }
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  p {
+    margin: 0;
+    font-family: 'Rubik';
+  }
+
+  h2 {
+    font-size: 4rem;
+    font-weight: lighter;
+  }
+
+  h3 {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+
+  h4 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  h5 {
+    font-size: 1.7rem;
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+
+  figure {
+    overflow-x: auto;
+    margin: 0;
+  }
 }
 
 .docs__content__section {
@@ -89,14 +137,20 @@
 }
 
 // Side nav
+
 .docs__side-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 25vw;
+  height: fit-content;
+  min-height: 100vh;
+  background: $c-blue-lightest;
   padding-top: 14rem;
 }
 
 .docs__side-nav__list {
-  width: 50%;
-  margin: 0;
-  margin-left: 50%;
+  margin-left: 2rem;
   padding: 0;
   list-style: none;
 
@@ -127,6 +181,3 @@
   font-weight: 400;
   line-height: 2rem;
 }
-
-
-

@@ -20,6 +20,7 @@
     "gsap": "^2.0.2",
     "hexo": "^3.7.0",
     "kapla": "^2.0.1",
+    "prismjs": "^1.16.0",
     "verge": "^1.10.2"
   },
   "devDependencies": {
