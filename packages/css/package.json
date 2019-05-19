@@ -1,7 +1,7 @@
 {
   "name": "@barba/css",
   "version": "2.1.8",
-  "description": "Style helper that manage you CSS class during transitions",
+  "description": "Style helper that manage you CSS classes during transitions",
   "publishConfig": {
     "access": "public"
   },
