@@ -5,7 +5,7 @@ title: '@barba/css'
 
 # @barba/css
 
-Barba CSS is a **style helper** that manage you CSS class during transitions.
+Barba CSS is a **style helper** that manage you CSS classes during transitions.
 
 It is mainly inspired by [Vue.js transitions](https://vuejs.org/v2/guide/transitions.html#Transition-Classes).
 
