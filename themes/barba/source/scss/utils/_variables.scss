@@ -33,7 +33,7 @@ $c-woodsmoke: #101012;
 
 // Project colors
 $c-blue-lightest: #f5f7fc;
-$c-blue-lighter: #D3DEFC;
+$c-blue-lighter: #d3defc;
 $c-blue-light: #5a82f1;
 $c-blue-medium: #2e5bdc;
 $c-green-medium: #04bf0c;
@@ -53,6 +53,15 @@ $c-menu-change-log: #2E5BDC;
 $c-main: $c-blue-medium;
 $c-dark: $black;
 $c-light: $white;
+
+// Documentation snippets colors
+$c-doc-comment: $c-gray-medium;
+$c-doc-attribute: $c-menu-views-namespaces-logic;
+$c-doc-number: $c-menu-open-source;
+$c-doc-string: #718c00;
+$c-doc-function: #4271ae;
+$c-doc-keyword: $c-menu-prefetch;
+$c-doc-color: #3e999f;
 
 // Z Layers
 $z-layers: (

@@ -5,6 +5,10 @@ layout: docs
 url: '/docs/userguide/syntax'
 ---
 
+# @barba/core
+
+Barba core manages your **page transitions** with ease.
+
 ## Syntax
 
 ### `barba.init(<options>)`
