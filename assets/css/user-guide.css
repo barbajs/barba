@@ -53,6 +53,13 @@ body {
   display: none;
 }
 
+@media (min-width: 64em) {
+  .main {
+    max-width: 60vw;
+    margin: 32px auto;
+  }
+}
+
 @media (max-width: 39.9375em) {
   .main {
     margin-top: 97px;
