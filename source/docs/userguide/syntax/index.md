@@ -3,6 +3,14 @@ subtitle: Syntax
 namespace: docs
 layout: docs
 url: '/docs/userguide/syntax'
+prevpage: {
+    label: 'Markup',
+    slug: '/docs/userguide/markup',
+}
+nextpage: {
+    label: 'PLUGINS',
+    slug: '/docs/plugins/css',
+}
 ---
 
 # @barba/core

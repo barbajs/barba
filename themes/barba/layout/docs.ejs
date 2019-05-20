@@ -3,7 +3,6 @@
     name: 'Get Started',
     url: '/docs/getstarted',
     path: '/docs/getstarted',
-
   },
   {
     name: 'User Guide (Core)',
@@ -74,8 +73,34 @@
     </ul>
   </div>
 
+  <div class="docs__lateral-nav">
+    <% if (page.prevpage) { %>
+    <button class="docs__lateral-nav__btn--previous">
+      <a href="<%- page.prevpage.slug %>">
+        <%- partial('/components/common/icon', {
+            icon: 'barba-arrow-prev',
+            hidden: true,
+            viewbox: '0 0 21 15',
+          }) %>
+        <span><%- page.prevpage.label %></span>
+      </a>
+    </button>
+    <% }; %>
+    <% if (page.nextpage) { %>
+    <button class="docs__lateral-nav__btn--next">
+      <a href="<%- page.nextpage.slug %>">
+        <span><%- page.nextpage.label %></span>
+        <%- partial('/components/common/icon', {
+            icon: 'barba-arrow-next',
+            hidden: true,
+            viewbox: '0 0 21 15',
+          }) %>
+      </a>
+    </button>
+    <% }; %>
+  </div>
+
   <div class="docs__markdown">
     <%- page.content %>
-  </div>
   </div>
 </section>

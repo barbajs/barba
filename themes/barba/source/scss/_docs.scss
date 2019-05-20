@@ -102,6 +102,44 @@
   }
 }
 
+// Lateral nav
+
+.docs__lateral-nav,
+[class*='.docs__lateral-nav'] {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  display: flex;
+
+  [class*='__btn'] {
+    margin: 2rem;
+    border: 0;
+    padding: 1rem;
+    box-shadow: 0 2px 2px #D3DEFC;
+    background: $white;
+    border-radius: 4px;
+  }
+
+  a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: $c-gray-darker;
+    font-family: 'Space Mono';
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.212rem;
+
+    .icon--barba {
+      width: 2.1rem;
+      height: 1.5rem;
+      fill: $c-gray-darker;
+      stroke: $c-gray-darker;
+    }
+
+  }
+}
+
 // Content markdown
 
 .docs__markdown {

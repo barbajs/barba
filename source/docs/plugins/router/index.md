@@ -3,6 +3,14 @@ title: Router
 namespace: docs
 layout: docs
 url: '/docs/plugins/router'
+prevpage: {
+    label: 'Css',
+    slug: '/docs/plugins/css',
+}
+nextpage: {
+    label: 'Prefetch',
+    slug: '/docs/plugins/prefetch',
+}
 ---
 
 # @barba/router
