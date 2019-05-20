@@ -52,7 +52,7 @@ Then customize your CSS classes like this:
 
 ```css
 /* transition active state (same for leave and enter) */
-.barba-leave-active
+.barba-leave-active,
 .barba-enter-active {
   transition: opacity 450ms ease;
 }
@@ -119,8 +119,12 @@ barba.init({
 
     // css classes will look like `.slide-xxx[-xxx]`
     name: 'slide',
-    from: { namespace: 'home' },
-    to: { namespace: 'products' },
+    from: {
+      namespace: 'home'
+    },
+    to: {
+      namespace: 'products'
+    }
   }]
 });
 ```
