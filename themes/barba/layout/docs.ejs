@@ -2,10 +2,13 @@
   {
     name: 'Get Started',
     url: '/docs/getstarted',
+    path: '/docs/getstarted',
+
   },
   {
     name: 'User Guide (Core)',
     url: '/docs/userguide/markup',
+    path: '/docs/userguide',
     subdocs: [
       {
         name: 'Markup',
@@ -21,6 +24,7 @@
   {
     name: 'Plugins',
     url: '/docs/plugins/css',
+    path: '/docs/plugins',
     subdocs: [
       {
         name: 'CSS',
@@ -52,14 +56,15 @@
       <% docs.forEach(function(doc) { %>
       <li>
         <a href="<%- doc.url %>">
-          <h1 class="docs__side-nav__title"><%- doc.name %></h1>
+          <h1 class="docs__side-nav__title <%- is_current(doc.path) ? 'is-open' : '' %>"><%- doc.name %></h1>
         </a>
         <ul class="docs__side-nav__sublist">
           <% if (doc.subdocs) { %>
           <% doc.subdocs.forEach(function(subdoc) { %>
-          <li>
+          <li class="<%- is_current(subdoc.url) ? 'is-open' : '' %>">
             <a href="<%- subdoc.url %>">
-              <h2 class="docs__side-nav__subtitle"><%- subdoc.name %></h2>
+              <h2 class="docs__side-nav__subtitle <%- is_current(subdoc.url) ? 'is-open' : '' %>"><%- subdoc.name %>
+              </h2>
           </li>
           <% }); %>
           <% }; %>

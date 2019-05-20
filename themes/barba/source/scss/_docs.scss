@@ -3,7 +3,6 @@
   @import 'code-snippets';
 }
 
-
 // Side nav
 
 .docs__side-nav {
@@ -50,6 +49,10 @@
   @include mq(l) {
     font-size: 1.5rem;
   }
+
+  &.is-open {
+    opacity: 0.7;
+  }
 }
 
 .docs__side-nav__sublist {
@@ -62,6 +65,25 @@
   @include mq(l) {
     padding-left: 3rem;
   }
+
+  li .is-open {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0.5em;
+      left: -1em;
+      width: 0;
+      height: 0;
+      border-width: 0.35em 0 0.35em 0.45em;
+      border-style: solid;
+      border-color: transparent $c-blue-light;
+      @include mq(l) {
+        top: 0.3em;
+      }
+    }
+  }
 }
 
 .docs__side-nav__subtitle {
@@ -73,6 +95,10 @@
   }
   @include mq(l) {
     font-size: 1.5rem;
+  }
+
+  &.is-open {
+    color: $c-blue-light;
   }
 }
 
@@ -245,7 +271,7 @@
       border-width: 0.35em 0 0.35em 0.45em;
       border-style: solid;
       border-color: transparent $c-blue-light;
-  }
+    }
   }
 
   code {
