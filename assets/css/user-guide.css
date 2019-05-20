@@ -54,8 +54,8 @@ body {
 }
 
 @media (max-width: 39.9375em) {
-  body {
-    margin-top: 100px;
+  .main {
+    margin-top: 97px;
   }
 
   .header {
