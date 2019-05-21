@@ -14,6 +14,7 @@ import featureToPage from './transitions/featureToPage';
 import pageToPage from './transitions/pageToPage';
 import pageToHome from './transitions/pageToHome';
 import pageToFeature from './transitions/pageToFeature';
+import docToDoc from './transitions/docToDoc';
 // import Home from './views/Home';
 
 // Events
@@ -65,6 +66,7 @@ class App {
           pageToPage,
           pageToHome,
           pageToFeature,
+          docToDoc,
         ],
       });
 

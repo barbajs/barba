@@ -22,8 +22,6 @@ export default class extends Component {
     $on(this.$logoSvg, 'mouseenter', this.onEnterLogo);
     $on(this.$logoSvg, 'mouseleave', this.onLeaveLogo);
 
-
-
     function animate() {
       const tl = anime.timeline({
         loop: false,

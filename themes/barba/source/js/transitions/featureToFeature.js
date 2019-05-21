@@ -40,19 +40,23 @@ export default {
             opacity: 0,
             onComplete: () => {
               resolve();
-            }
+            },
           });
-        }
+        },
       });
-
     });
   },
 
   enter() {
     return new Promise(resolve => {
+      resolve();
+
+      // Menu
       const item = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
 
       document.querySelector(`.${item}`).classList.add('is-active');
+
+      // Logo
       const logoElementHover = document.querySelector('.hover');
       const logoElementBig = document.querySelectorAll('.to-animate');
 
@@ -60,18 +64,15 @@ export default {
         item.classList.remove('to-animate');
       });
 
-      TweenMax.fromTo(logoElementHover, 0.4, {
-        opacity: 0,
-      }, {
-          opacity: 1,
-          onComplete: () => {
-            logoElementBig.forEach(item => {
-              item.classList.add('to-animate');
-            });
-            resolve();
-          }
-        });
+      TweenMax.to(logoElementHover, 0.4, {
+        opacity: 1,
+        onComplete: () => {
+          logoElementBig.forEach(item => {
+            item.classList.add('to-animate');
+          });
+        },
+      });
     });
-  }
+  },
 };
 

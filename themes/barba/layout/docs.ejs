@@ -50,6 +50,8 @@
 ] %>
 
 <section class="docs">
+  <div class="docs__page-transition"></div>
+
   <div class="docs__side-nav">
     <ul class="docs__side-nav__list">
       <% docs.forEach(function(doc) { %>
@@ -75,28 +77,24 @@
 
   <div class="docs__lateral-nav">
     <% if (page.prevpage) { %>
-    <button class="docs__lateral-nav__btn--previous">
-      <a href="<%- page.prevpage.slug %>">
-        <%- partial('/components/common/icon', {
+    <a href="<%- page.prevpage.slug %>" class="docs__lateral-nav--previous">
+      <%- partial('/components/common/icon', {
             icon: 'barba-arrow-prev',
             hidden: true,
             viewbox: '0 0 21 15',
           }) %>
-        <span><%- page.prevpage.label %></span>
-      </a>
-    </button>
+      <span><%- page.prevpage.label %></span>
+    </a>
     <% }; %>
     <% if (page.nextpage) { %>
-    <button class="docs__lateral-nav__btn--next">
-      <a href="<%- page.nextpage.slug %>">
-        <span><%- page.nextpage.label %></span>
-        <%- partial('/components/common/icon', {
+    <a href="<%- page.nextpage.slug %>" class="docs__lateral-nav--next">
+      <span><%- page.nextpage.label %></span>
+      <%- partial('/components/common/icon', {
             icon: 'barba-arrow-next',
             hidden: true,
             viewbox: '0 0 21 15',
           }) %>
-      </a>
-    </button>
+    </a>
     <% }; %>
   </div>
 
