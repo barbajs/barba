@@ -5,7 +5,7 @@ layout: docs
 url: '/docs/userguide/markup'
 prevpage: {
     label: 'GET STARTED',
-    slug: '/docs/getstarted',
+    slug: '/docs/getstarted/intro',
 }
 nextpage: {
     label: 'Syntax',
