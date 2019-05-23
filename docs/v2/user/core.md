@@ -537,4 +537,17 @@ Barba sends a custom **HTTP Header** named `x-barba` in the `XMLHttpRequest`.
 
 If you are using a server side language like PHP, you can detect this custom HTTP Header and output just the container instead of the entire page: this could result in **less bandwidth usage** and **less server-side load**.
 
-> Note that doing so, you have to manually handle the upate of the page `title`.
+> Note that doing so, you have to manually handle the update of the page `title`.
+
+Example:
+
+```php
+<?php
+  // check for the server side x-barba request header
+  if (isset($_SERVER['HTTP_X_BARBA'])) {
+
+    // this content will only be displayed if the page is called with BarbaJS
+    echo "I ❤ Barba";
+  }
+?>
+```
