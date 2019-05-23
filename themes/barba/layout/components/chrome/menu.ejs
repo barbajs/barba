@@ -1,6 +1,7 @@
 <% const pages = [
   {
     name: 'Features',
+    path: '/features/dependency-free',
     subpages: [
       {
         name: 'Dependency Free',
@@ -76,9 +77,9 @@
 
         <!-- Page with subpages-->
         <li class="menu__pages__item">
-          <div class="menu__pages__item__title">
+          <a class="menu__pages__item__link" href="<%- page.path %>">
             <%- page.name %>
-          </div>
+          </a>
 
           <div class="menu__pages__item__subpages menu-subpages">
             <ul class="menu-subpages__list">

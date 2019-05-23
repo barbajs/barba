@@ -35,7 +35,7 @@ export default {
         }));
         tl.add(TweenMax.to(background, 0.6, {
           right: 0,
-          ease: 'Power3.easeIn',
+          ease: 'Power2.easeIn',
           onComplete: () => {
             resolve();
           },
@@ -47,7 +47,7 @@ export default {
         }));
         tl.add(TweenMax.to(background, 0.6, {
           right: 0,
-          ease: 'Power3.easeIn',
+          ease: 'Power2.easeIn',
           onComplete: () => {
             resolve();
           },
@@ -72,7 +72,7 @@ export default {
         }));
         tl.add(TweenMax.to(background, 0.6, {
           right: '100%',
-          ease: 'Power3.easeOut',
+          ease: 'Power2.easeOut',
         }));
         tl.add(TweenMax.set(background, {
           display: 'none',
@@ -84,7 +84,7 @@ export default {
         }));
         tl.add(TweenMax.to(background, 0.6, {
           right: '-100%',
-          ease: 'Power3.easeOut',
+          ease: 'Power2.easeOut',
         }));
         tl.add(TweenMax.set(background, {
           display: 'none',

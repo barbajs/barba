@@ -9,7 +9,7 @@ export default {
     route: 'feature',
   },
 
-  leave() {
+  leave(data) {
     return new Promise(resolve => {
       // Menu
       const menuEls = document.querySelectorAll('.menu__pages__item');
@@ -23,14 +23,17 @@ export default {
       });
 
       // Logo
-      const logoElementHover = document.querySelector('.hover');
-      const logoElementBig = document.querySelectorAll('.to-animate');
-
-      console.log(logoElementBig);
+      const logoElementHover = data.current.container.querySelector('.hover');
+      const logoElementBig = data.current.container.querySelectorAll('.to-animate');
 
       logoElementBig.forEach(item => {
         item.classList.remove('to-animate');
       });
+
+      // TweenMax.set(logoElementBig, {
+      //   className: "-=to-animate",
+      // });
+
       TweenMax.to(logoElementBig, 0.4, {
         onComplete: () => {
           TweenMax.to(logoElementBig, 0.4, {
@@ -44,10 +47,23 @@ export default {
           });
         },
       });
+
+      const logoElementHoverNext = data.next.container.querySelector('.hover');
+      const logoElementBigNext = data.next.container.querySelectorAll('.to-animate');
+
+      logoElementBigNext.forEach(item => {
+        item.classList.remove('to-animate');
+      });
+      TweenMax.set(logoElementBigNext, {
+        opacity: 0,
+      });
+      TweenMax.set(logoElementHoverNext, {
+        opacity: 0,
+      });
     });
   },
 
-  enter() {
+  enter(data) {
     return new Promise(resolve => {
       resolve();
 
@@ -57,14 +73,13 @@ export default {
       document.querySelector(`.${item}`).classList.add('is-active');
 
       // Logo
-      const logoElementHover = document.querySelector('.hover');
-      const logoElementBig = document.querySelectorAll('.to-animate');
-
-      logoElementBig.forEach(item => {
-        item.classList.remove('to-animate');
-      });
+      const logoElementHover = data.next.container.querySelector('.hover');
+      const logoElementBig = data.next.container.querySelectorAll('.select-to-animate');
 
       TweenMax.to(logoElementHover, 0.4, {
+        opacity: 1,
+      });
+      TweenMax.to(logoElementBig, 0.4, {
         opacity: 1,
         onComplete: () => {
           logoElementBig.forEach(item => {

@@ -11,17 +11,17 @@
 
   .base,
   .js__letter {
-    transition: stroke .4s, fill .4s;
+    transition: stroke 0.4s, fill 0.4s;
   }
 
   svg.gray,
   svg.fillgray {
     .base {
-      stroke: #E3E3E3;
+      stroke: $gray-lightest;
     }
 
     .js__letter {
-      fill: #E3E3E3;
+      fill: $gray-lightest;
     }
   }
 
@@ -34,7 +34,7 @@
       rect,
       circle,
       path {
-        fill: #fff;
+        fill: $white;
       }
     }
   }
@@ -69,11 +69,11 @@
 .featured {
   svg {
     .base {
-      stroke: #E3E3E3;
+      stroke: $gray-lightest;
     }
 
     .js__letter {
-      fill: #E3E3E3;
+      fill: $gray-lightest;
     }
   }
 
@@ -81,14 +81,14 @@
     rect,
     circle,
     path {
-      fill: #fff;
+      fill: $white;
     }
   }
 
 }
 
 .big * {
-  transition: transform .4s ease-in-out;
+  transition: transform 0.4s ease-in-out;
 }
 
 .featured--dep {
@@ -224,14 +224,13 @@
 .featured--change {
   .hover .c6 {
     opacity: 1;
-
   }
 
   svg {
     .js__letter {
       display: none;
       fill: $c-blue-medium;
-      opacity: .1;
+      opacity: 0.1;
 
       &.to-animate {
         transform: scale(18) translate(-10%, 10%) rotate(-30deg);
