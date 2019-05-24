@@ -551,3 +551,15 @@ Example:
   }
 ?>
 ```
+
+## Utils <small>*draft section*</small>
+
+- barba.destroy()
+- barba.force(href: string)
+- barba.go(href: string, trigger?: Trigger, e?: LinkEvent | PopStateEvent)
+- barba.prefetch(href: string)
+- barba.request(url: string, ttl?: number, requestError: RequestError)
+- barba.version
+- barba.url.*
+
+> This is a draft section of **@barba/core** utilities, check the [API documentation](https://barba.js.org/docs/v2/api) for more informations.
