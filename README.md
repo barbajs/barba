@@ -33,7 +33,7 @@ It helps reducing the delay between your pages, minimizing browser HTTP requests
   - `@barba/css`: automatic addition of CSS classes
   - `@barba/prefetch`: automatic pages prefetching (and caching), based on viewport
   - `@barba/head`: update your `<head>` _(coming soon)_
-  - `@barba/transition`: ready-to-use basic transitions pack (fade, slide, …) _(coming soon)_
+  - `@barba/preset`: ready-to-use basic transitions pack (fade, slide, …) _(coming soon)_
 
 ## Main changes (TL;DR)
 
