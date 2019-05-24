@@ -1,16 +1,18 @@
 import { TimelineMax } from 'gsap/TimelineMax';
 import { TweenMax } from 'gsap/TweenMax';
 
-const paths = [
-  '/docs/getstarted/intro',
-  '/docs/userguide/markup',
-  '/docs/userguide/syntax',
-  '/docs/plugins/css',
-  '/docs/plugins/router',
-  '/docs/plugins/prefetch',
-  '/docs/plugins/transitions',
-  '/docs/plugins/head',
-];
+const docs = window.docs.array;
+const docsUrlOrderedList = [];
+
+for (let i = 0; i < docs.length; i++) {
+  if (docs[i].subpages) {
+    for (let j = 0; j < docs[i].subpages.length; j++) {
+      docsUrlOrderedList.push(docs[i].subpages[j].url);
+    }
+  } else {
+    docsUrlOrderedList.push(docs[i].url);
+  }
+}
 
 export default {
   sync: false,
@@ -28,7 +30,7 @@ export default {
       const currentPage = data.current.url.path;
       const nextPage = data.next.url.path;
 
-      if (paths.indexOf(currentPage) < paths.indexOf(nextPage)) {
+      if (docsUrlOrderedList.indexOf(currentPage) < docsUrlOrderedList.indexOf(nextPage)) {
         tl.add(TweenMax.set(background, {
           right: '-100%',
           display: 'block',
@@ -65,7 +67,15 @@ export default {
       const currentPage = data.current.url.path;
       const nextPage = data.next.url.path;
 
-      if (paths.indexOf(currentPage) < paths.indexOf(nextPage)) {
+      // TEST
+      let prevLink = data.current.container.querySelector('.docs__lateral-nav--previous').href;
+
+      console.log(prevLink);
+      prevLink = docsUrlOrderedList[docsUrlOrderedList.indexOf(nextPage) - 1];
+      console.log(prevLink);
+
+
+      if (docsUrlOrderedList.indexOf(currentPage) < docsUrlOrderedList.indexOf(nextPage)) {
         tl.add(TweenMax.set(background, {
           right: 0,
           display: 'block',

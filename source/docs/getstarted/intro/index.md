@@ -3,10 +3,6 @@ title: Get started
 namespace: docs
 layout: docs
 url: '/docs/getstarted/intro'
-nextpage: {
-    label: 'USER GUIDE',
-    slug: '/docs/userguide/markup',
-}
 ---
 
 # barba.js <small>[v2]</small>

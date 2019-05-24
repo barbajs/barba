@@ -3,15 +3,6 @@ title: Markup
 namespace: docs
 layout: docs
 url: '/docs/userguide/markup'
-prevpage: {
-    label: 'GET STARTED',
-    slug: '/docs/getstarted/intro',
-}
-nextpage: {
-    label: 'Syntax',
-    slug: '/docs/userguide/syntax',
-}
-
 ---
 
 # @barba/core

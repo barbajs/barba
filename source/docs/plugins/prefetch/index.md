@@ -3,14 +3,6 @@ title: Prefetch
 namespace: docs
 layout: docs
 url: '/docs/plugins/prefetch'
-prevpage: {
-    label: 'Router',
-    slug: '/docs/plugins/router',
-}
-nextpage: {
-    label: 'Transitions',
-    slug: '/docs/plugins/transitions',
-}
 ---
 
 # @barba/prefetch

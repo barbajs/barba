@@ -1,115 +1,54 @@
-<% const pages = [
-  {
-    name: 'Features',
-    path: '/features/dependency-free',
-    subpages: [
-      {
-        name: 'Dependency Free',
-        url: '/features/dependency-free',
-        modifier: 'dependency-free',
-      },
-      {
-        name: 'Small size',
-        url: '/features/small-size',
-        modifier: 'small-size',
-      },
-      {
-        name: 'Open Source',
-        url: '/features/open-source',
-        modifier: 'open-source',
-      },
-      {
-        name: 'Views/Namespaces Logic',
-        url: '/features/views-namespaces-logic',
-        modifier: 'views-namespaces-logic',
-      },
-      {
-        name: 'Prefetch',
-        url: '/features/prefetch',
-        modifier: 'prefetch',
-      },
-      {
-        name: 'Change Log',
-        url: '/features/change-log',
-        modifier: 'change-log',
-      },
-    ],
-  },
-  {
-    name: 'About',
-    url: '/about',
-  },
-  {
-    name: 'Example',
-    url: '/example',
-  },
-  {
-    name: 'Showcase',
-    url: '/showcase',
-  },
-  {
-    name: 'Docs',
-    url: '/docs/getstarted/intro',
-  },
-] %>
-
 <div class="menu" data-component="menu">
 
   <div class="menu__overlay"></div>
 
+  <!-- Menu Nav -->
   <div class="menu__panel">
+
+    <!-- Menu Pages -->
     <div class="menu__pages">
       <ul class="menu__pages__list">
 
-        <% pages.forEach(function(page) { %>
-
-        <% if(page.url) { %>
-
-        <!-- Page without subpages -->
-        <li class="menu__pages__item <%- is_current(page.url) ? 'is-active' : '' %>">
-          <a class="menu__pages__item__link" href="<%- page.url %>">
-            <%- page.name %>
-          </a>
-        </li>
-        <!-- Page without subpages [end] -->
-
-        <% } else { %>
-
-        <!-- Page with subpages-->
+        <!-- Page -->
+        <% theme.menu.forEach(function(page) { %>
         <li class="menu__pages__item">
-          <a class="menu__pages__item__link" href="<%- page.path %>">
-            <%- page.name %>
+          <a class="menu__pages__item__link" href="<%- page.url %>">
+            <%- page.title %>
           </a>
 
+          <!-- Subpages -->
+          <% if(page.subpages) { %>
           <div class="menu__pages__item__subpages menu-subpages">
             <ul class="menu-subpages__list">
 
-              <% page.subpages.forEach(function(page) { %>
-
               <!-- Subpage -->
-              <li class="menu-subpages__item <%- page.modifier %> <%- is_current(page.url) ? 'is-active' : '' %>">
-                <a class="menu-subpages__item__link" href="<%- page.url %>">
-                  <div class="menu-subpages__item__link__line" style="background: <%- page.color %>"></div>
+              <% page.subpages.forEach(function(subpage) { %>
+              <li class="menu-subpages__item <%- subpage.modifier %> <%- is_current(subpage.url) ? 'is-active' : '' %>">
+                <a class="menu-subpages__item__link" href="<%- subpage.url %>">
+                  <div class="menu-subpages__item__link__line">
+                  </div>
                   <span class="menu-subpages__item__link__label">
-                    <%- page.name %>
+                    <%- subpage.title %>
                   </span>
                 </a>
               </li>
-              <!-- Subpage [end] -->
-
               <% }); %>
+              <!-- Subpage [end] -->
 
             </ul>
           </div>
+          <% }; %>
+          <!-- Subpages [end]-->
+
         </li>
-        <!-- Page with subpages [end] -->
-
-        <% } %>
-
         <% }); %>
+        <!-- Page [end]-->
 
       </ul>
     </div>
+    <!-- Menu Pages [end]-->
+
+    <!-- Menu Footer -->
     <div class="menu__footer">
       <button class="menu__footer__download">
         Download .zip
@@ -129,6 +68,9 @@
         </a>
       </div>
     </div>
+    <!-- Menu Footer [end]-->
+
   </div>
+  <!-- Menu Nav [end]-->
 
 </div>

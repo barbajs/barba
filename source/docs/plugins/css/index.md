@@ -3,14 +3,6 @@ title: CSS
 namespace: docs
 layout: docs
 url: '/docs/plugins/css'
-prevpage: {
-    label: 'USER GUIDE',
-    slug: '/docs/userguide/markup',
-}
-nextpage: {
-    label: 'Router',
-    slug: '/docs/plugins/router',
-}
 ---
 
 # @barba/css
