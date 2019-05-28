@@ -103,7 +103,7 @@
       transform-origin: 0 70%;
 
       &.to-animate {
-        @include big-rectangle(20deg, 75vw, -40vw);
+        @include big-letter(20deg, 100%, -40%);
       }
     }
 
@@ -111,7 +111,7 @@
       transform-origin: 0 0%;
 
       &.to-animate {
-        @include big-circle(20deg, -75vw, -30vw);
+        @include big-letter(20deg, -75%, -30%);
       }
     }
   }
@@ -129,16 +129,7 @@
       transform-origin: 0 70%;
 
       &.to-animate {
-        transform: scale(12) rotate(-30deg) translate(-20%, 40%);
-        @include mq(s) {
-          transform: scale(15) rotate(-30deg) translate(-20%, 40%);
-        }
-        @include mq(m) {
-          transform: scale(21) rotate(-30deg) translate(-13vw, 8vh);
-        }
-        @include mq(l) {
-          transform: scale(30) rotate(-30deg) translate(-22%, 3.5vh);
-        }
+        @include big-letter(-20deg, -220%, 300%);
       }
     }
 
@@ -146,16 +137,7 @@
       transform-origin: 0 0%;
 
       &.to-animate {
-        transform: scale(12) rotate(20deg) translate(8%, -60%);
-        @include mq(s) {
-          transform: scale(15) rotate(20deg) translate(8%, -60%);
-        }
-        @include mq(m) {
-          transform: scale(21) rotate(20deg) translate(4vw, -12vh);
-        }
-        @include mq(l) {
-          transform: scale(30) rotate(20deg) translate(2vw, -13vh);
-        }
+        @include big-letter(-20deg, 75%, -350%);
       }
     }
   }
@@ -173,7 +155,7 @@
       transform-origin: 0 70%;
 
       &.to-animate {
-        transform: scale(21) rotate(30deg) translate(3vw, 0vh);
+        @include big-letter(20deg, 75%, -80%);
       }
     }
 
@@ -181,7 +163,7 @@
       transform-origin: 0 0%;
 
       &.to-animate {
-        transform: scale(21) rotate(-30deg) translate(-8vw, 8vh);
+        @include big-letter(20deg, -120%, 500%);
       }
     }
   }
@@ -199,7 +181,7 @@
       transform-origin: 0 70%;
 
       &.to-animate {
-        transform: scale(21) rotate(30deg) translate(3vw, 0vh);
+        @include big-letter(20deg, -140%, 140%);
       }
     }
 
@@ -207,7 +189,7 @@
       transform-origin: 0 0%;
 
       &.to-animate {
-        transform: scale(21) rotate(30deg) translate(-1vw, 0vh);
+        @include big-letter(20deg, 50%, -150%);
       }
     }
   }
@@ -225,7 +207,7 @@
       transform-origin: 0 70%;
 
       &.to-animate {
-        transform: scale(21) rotate(30deg) translate(3vw, 0vh);
+        @include big-letter(-20deg, -20%, 80%);
       }
     }
 
@@ -233,7 +215,7 @@
       transform-origin: 0 0%;
 
       &.to-animate {
-        transform: scale(21) rotate(30deg) translate(-1vw, 0vh);
+        @include big-letter(-20deg, -250%, -200%);
       }
     }
   }
