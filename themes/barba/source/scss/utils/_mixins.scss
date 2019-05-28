@@ -288,3 +288,27 @@
     padding-top: $spacing * 5;
   }
 }
+
+$scale-big-s: 10;
+$scale-big-m: 20;
+$scale-big-l: 40;
+
+@mixin big-rectangle($rotate, $translate-x, $translate-y) {
+  transform: scale($scale-big-s) rotate($rotate) translate(($translate-x / $scale-big-s), ($translate-y / $scale-big-s));
+  @include mq(m) {
+    transform: scale($scale-big-m) rotate($rotate) translate(($translate-x / $scale-big-m), ($translate-y / $scale-big-m));
+  }
+  @include mq(l) {
+    transform: scale($scale-big-l) rotate($rotate) translate(($translate-x / $scale-big-l), ($translate-y / $scale-big-l));
+  }
+}
+
+@mixin big-circle($rotate, $translate-x, $translate-y) {
+  transform: scale($scale-big-s) rotate($rotate) translate(($translate-x / $scale-big-s), ($translate-y / $scale-big-s));
+  @include mq(m) {
+    transform: scale($scale-big-m) rotate($rotate) translate(($translate-x / $scale-big-m), ($translate-y / $scale-big-m));
+  }
+  @include mq(l) {
+    transform: scale($scale-big-l) rotate($rotate) translate(($translate-x / $scale-big-l), ($translate-y / $scale-big-l));
+  }
+}

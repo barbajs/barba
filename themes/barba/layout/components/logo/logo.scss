@@ -103,7 +103,7 @@
       transform-origin: 0 70%;
 
       &.to-animate {
-        transform: scale(21) rotate(30deg) translate(3vw, 0vh);
+        @include big-rectangle(20deg, 75vw, -40vw);
       }
     }
 
@@ -111,7 +111,7 @@
       transform-origin: 0 0%;
 
       &.to-animate {
-        transform: scale(21) rotate(30deg) translate(-1vw, 0vh);
+        @include big-circle(20deg, -75vw, -30vw);
       }
     }
   }
@@ -129,7 +129,16 @@
       transform-origin: 0 70%;
 
       &.to-animate {
-        transform: scale(21) rotate(30deg) translate(3vw, 0vh);
+        transform: scale(12) rotate(-30deg) translate(-20%, 40%);
+        @include mq(s) {
+          transform: scale(15) rotate(-30deg) translate(-20%, 40%);
+        }
+        @include mq(m) {
+          transform: scale(21) rotate(-30deg) translate(-13vw, 8vh);
+        }
+        @include mq(l) {
+          transform: scale(30) rotate(-30deg) translate(-22%, 3.5vh);
+        }
       }
     }
 
@@ -137,7 +146,16 @@
       transform-origin: 0 0%;
 
       &.to-animate {
-        transform: scale(21) rotate(30deg) translate(-1vw, 0vh);
+        transform: scale(12) rotate(20deg) translate(8%, -60%);
+        @include mq(s) {
+          transform: scale(15) rotate(20deg) translate(8%, -60%);
+        }
+        @include mq(m) {
+          transform: scale(21) rotate(20deg) translate(4vw, -12vh);
+        }
+        @include mq(l) {
+          transform: scale(30) rotate(20deg) translate(2vw, -13vh);
+        }
       }
     }
   }

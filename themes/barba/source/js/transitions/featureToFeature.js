@@ -1,7 +1,6 @@
 import { TweenMax } from 'gsap/TweenMax';
 
 export default {
-  sync: false,
   from: {
     route: 'feature',
   },
@@ -11,28 +10,33 @@ export default {
 
   leave(data) {
     return new Promise(resolve => {
-      // Menu
-      const menuEls = document.querySelectorAll('.menu__pages__item');
-      const menuSubEls = document.querySelectorAll('.menu-subpages__item');
+      // Menu (remove close the header and side menu if open)
+      // const header = data.current.container.querySelector('.site-header');
+      // const menu = data.current.container.querySelector('.menu');
+      // const menuTrigger = data.current.container.querySelector('.menu-trigger');
+      // const menuEls = data.current.container.querySelectorAll('.menu__pages__item');
+      // const menuSubEls = data.current.container.querySelectorAll('.menu-subpages__item');
 
-      menuEls.forEach(item => {
-        item.classList.remove('is-active');
-      });
-      menuSubEls.forEach(item => {
-        item.classList.remove('is-active');
-      });
+      // if (header.classList.contains('is-open')) {
+      //   header.classList.remove('is-open');
+      //   menu.classList.remove('is-open');
+      //   menuTrigger.classList.remove('is-open');
+      //   menuEls.forEach(item => {
+      //     item.classList.remove('is-active');
+      //   });
+      //   menuSubEls.forEach(item => {
+      //     item.classList.remove('is-active');
+      //   });
+      //   document.body.classList.remove('prevent-scroll');
+      // }
 
-      // Logo
+      // Logo (remove big letter)
       const logoElementHover = data.current.container.querySelector('.hover');
       const logoElementBig = data.current.container.querySelectorAll('.to-animate');
 
       logoElementBig.forEach(item => {
         item.classList.remove('to-animate');
       });
-
-      // TweenMax.set(logoElementBig, {
-      //   className: "-=to-animate",
-      // });
 
       TweenMax.to(logoElementBig, 0.4, {
         onComplete: () => {
@@ -48,6 +52,7 @@ export default {
         },
       });
 
+      // Logo (prepare small letter for going big)
       const logoElementHoverNext = data.next.container.querySelector('.hover');
       const logoElementBigNext = data.next.container.querySelectorAll('.to-animate');
 
@@ -67,12 +72,7 @@ export default {
     return new Promise(resolve => {
       resolve();
 
-      // Menu
-      const item = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
-
-      document.querySelector(`.${item}`).classList.add('is-active');
-
-      // Logo
+      // Logo (small letter go big)
       const logoElementHover = data.next.container.querySelector('.hover');
       const logoElementBig = data.next.container.querySelectorAll('.select-to-animate');
 

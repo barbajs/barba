@@ -3,14 +3,22 @@ import { Component } from 'kapla';
 export default class extends Component {
   load() {
     const subscriber = this.subscribe('menu-trigger');
+    const links = this.$el.querySelectorAll('a');
+    const overlay = this.$el.querySelector('.menu__overlay');
 
     subscriber.on('menu:open', this.open);
     subscriber.on('menu:close', this.close);
 
     this.delegateClick = 'a';
-    document.querySelector('.menu__overlay').addEventListener('click', () => {
+
+    // Close menu if click on overlay
+    overlay.addEventListener('click', () => {
       this.onOverlayClick();
     });
+    // Close menu if click on other links
+    links.forEach(link => link.addEventListener('click', () => {
+      this.onLinkClick();
+    }));
   }
 
   open() {
@@ -23,6 +31,11 @@ export default class extends Component {
 
   onOverlayClick() {
     this.emit('overlay:close');
+    this.close();
+  }
+
+  onLinkClick() {
+    this.emit('link:close');
     this.close();
   }
 

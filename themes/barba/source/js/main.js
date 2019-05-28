@@ -58,14 +58,14 @@ class App {
         debug: true,
         transitions: [
           defaultTransition,
-          homeToPage,
           homeToFeature,
+          homeToPage,
           featureToFeature,
           featureToHome,
           featureToPage,
-          pageToPage,
           pageToHome,
           pageToFeature,
+          pageToPage,
           docToDoc,
         ],
       });

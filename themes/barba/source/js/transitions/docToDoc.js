@@ -67,14 +67,6 @@ export default {
       const currentPage = data.current.url.path;
       const nextPage = data.next.url.path;
 
-      // TEST
-      let prevLink = data.current.container.querySelector('.docs__lateral-nav--previous').href;
-
-      console.log(prevLink);
-      prevLink = docsUrlOrderedList[docsUrlOrderedList.indexOf(nextPage) - 1];
-      console.log(prevLink);
-
-
       if (docsUrlOrderedList.indexOf(currentPage) < docsUrlOrderedList.indexOf(nextPage)) {
         tl.add(TweenMax.set(background, {
           right: 0,

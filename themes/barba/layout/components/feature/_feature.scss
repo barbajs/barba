@@ -9,7 +9,7 @@
 
 .feature__nav {
   position: fixed;
-  z-index: 10;
+  z-index: 100;
   top: 50%;
   left: 0;
   display: none;
@@ -45,7 +45,7 @@
       white-space: nowrap;
       opacity: 0;
       pointer-events: none;
-      transition: opacity .3s, transform .3s ease-out;
+      transition: opacity 0.3s, transform 0.3s ease-out;
     }
   }
 
@@ -158,11 +158,7 @@
   }
 
   .big {
-    display: none;
-
-    @include mq(m) {
-      display: block;
-    }
+    display: block;
   }
 
   @include mq(m) {

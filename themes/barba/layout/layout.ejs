@@ -6,6 +6,9 @@
   <link rel="stylesheet" href="/scss/main.css" type="text/css" media="all">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script>
+    window.menu = {
+      array: JSON.parse('<%-JSON.stringify(theme.menu)%>'),
+    }
     window.docs = {
       array: JSON.parse('<%-JSON.stringify(theme.docs)%>'),
     }
@@ -13,17 +16,21 @@
   <script src="/js/main.js"></script>
 </head>
 
-<body>
+<body data-barba="wrapper">
   <%- partial('svg/sprite') %>
-  <%- partial('components/chrome/header') %>
-  <main class="site-main" role="main">
-    <div class="site-content" data-barba="wrapper">
-      <div class="site-content-inner" data-barba="container" data-barba-namespace="<%- page.namespace %>">
-        <%- body %>
-      </div>
-    </div><!-- end .site-content -->
-  </main><!-- end .site-main -->
-  <%- partial('components/chrome/footer') %>
+  <div data-barba="container" data-barba-namespace="<%- page.namespace %>">
+
+    <%- partial('components/chrome/header') %>
+    <main class="site-main" role="main">
+      <div class="site-content">
+        <div class="site-content-inner">
+
+          <%- body %>
+        </div>
+      </div><!-- end .site-content -->
+    </main><!-- end .site-main -->
+    <%- partial('components/chrome/footer') %>
+  </div>
 </body>
 
 </html>

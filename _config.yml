@@ -74,7 +74,8 @@ pagination_dir: page
 ## Menu Navigation
 menu:
 - title:  'Features'
-  url:   '/features/dependency-free'
+  url:    '/features/dependency-free'
+  slug:   '/features'
   subpages:
     - title:    'Dependency Free'
       url:      '/features/dependency-free'
@@ -96,14 +97,18 @@ menu:
       modifier: 'change-log'
 - title:  'About'
   url:    '/about'
+  slug:   '/about'
 - title:  'Example'
   url:    '/example'
+  slug:   '/example'
 - title:  'Showcase'
   url:    '/showcase'
+  slug:   '/showcase'
 - title:  'Docs'
   url:    '/docs/getstarted/intro'
+  slug:   '/docs'
 
-## Docs Navigation
+### Docs Navigation
 docs:
 - title:  'Get Started'
   url:    '/docs/getstarted/intro'
@@ -170,8 +175,8 @@ docs:
     - title:  'Head'
       url:    '/docs/plugins/head'
       prevpage:
-          label: 'Transitions'
-          slug: '/docs/plugins/transitions'
+          label:  'Transitions'
+          slug:   '/docs/plugins/transitions'
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/

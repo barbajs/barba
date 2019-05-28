@@ -10,6 +10,9 @@
         }) %>
       </a>
       <span class="header__infos__version">v2.x</span>
+      <% if (is_current('/docs')) { %>
+      <span class="header__infos__docs">/ DOCS</span>
+      <% }; %>
     </div>
     <div class="header__external-links">
       <a class="button--fill--black--rounded--github header__external-links__github" href="#">

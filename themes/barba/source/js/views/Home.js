@@ -1,16 +1,15 @@
 export default {
   namespace: 'home',
-  beforeEnter (data) {
-    //debugger;
+  beforeEnter(data) {
     console.info('views:beforeEnter');
   },
-  afterEnter () {
+  afterEnter() {
     console.info('views:afterEnter');
   },
-  beforeLeave () {
+  beforeLeave() {
     console.info('views:beforeLeave');
   },
-  afterLeave () {
+  afterLeave() {
     console.info('views:afterLeave');
   }
 }

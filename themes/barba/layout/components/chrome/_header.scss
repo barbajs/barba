@@ -40,6 +40,12 @@
   font-size: 1.1rem;
 }
 
+.header__infos__docs {
+  margin-left: 1rem;
+  color: $c-main;
+  font-size: 2rem;
+}
+
 .header__external-links {
   z-index: 1000;
   display: flex;

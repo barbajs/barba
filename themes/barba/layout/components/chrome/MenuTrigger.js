@@ -5,6 +5,7 @@ export default class extends Component {
     const subscriber = this.subscribe('menu');
 
     subscriber.on('overlay:close', this.close);
+    subscriber.on('link:close', this.close);
   }
 
   onClick(e) {

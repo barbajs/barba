@@ -9,8 +9,8 @@ export default {
 
   leave(data) {
     return new Promise(resolve => {
-      const menuEls = document.querySelectorAll('.menu__pages__item');
-      const menuSubEls = document.querySelectorAll('.menu-subpages__item');
+      const menuEls = data.current.container.querySelectorAll('.menu__pages__item');
+      const menuSubEls = data.current.container.querySelectorAll('.menu-subpages__item');
 
 
       menuEls.forEach(item => {
