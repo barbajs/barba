@@ -1,4 +1,8 @@
 ---
 title: {{ title }}
-date: {{ date }}
+namespace:
+layout:
+modifier:
 ---
+
+# 

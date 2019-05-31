@@ -1,4 +1,4 @@
-.page-grid {
+.grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -7,7 +7,7 @@
   list-style: none;
 }
 
-.page-grid__item {
+.grid__item {
   position: relative;
   width: 100%;
   margin-top: 3rem;
@@ -21,92 +21,19 @@
   }
 }
 
-.page-grid__infos {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 1.5rem .5rem;
-  background: $white;
-
-  p {
-    margin: 0;
-  }
-
-  &--example {
-    padding: 1rem .5rem;
-
-    a {
-      display: flex;
-      align-items: center;
-      float: left;
-      font-family: 'Space Mono';
-      font-size: 1.1rem;
-      letter-spacing: 0.212rem;
-
-
-      &:last-child {
-        float: right;
-      }
-
-      .icon--barba {
-        width: 1.5rem;
-        margin-right: .5rem;
-        fill: $c-blue-medium;
-      }
-    }
-  }
-}
-
-.page-grid__infos--example__source {
-  margin-left: 2rem;
-}
-
-.page-grid__infos--example__zip {
-  justify-content: flex-end;
-  flex: 1;
-}
-
-.page-grid__title {
-  color: $c-blue-medium;
-  font-size: 1.8rem;
-  line-height: 2.2rem;
-  letter-spacing: 0.347rem;
-
-  &--example {
-    font-family: 'Space Mono';
-    font-size: 1.5rem;
-    line-height: 2rem;
-    letter-spacing: 0.212rem;
-  }
-}
-
-.page-grid__name {
-  font-family: 'Space Mono';
-  font-size: 1.1rem;
-  line-height: 1.2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.212rem;
-  opacity: .3;
-}
-
-.page-grid__link {
-  position: absolute;
-  top: 1.5rem;
-  right: .5rem;
+.grid__item__link {
   display: flex;
   align-items: center;
   color: $c-blue-medium;
   font-family: 'Space Mono';
   font-size: 1.1rem;
   line-height: 1.2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.212rem;
+  letter-spacing: 0.2rem;
 
   .icon--barba {
     width: 1.5rem;
     height: 1.5rem;
-    margin-left: 1rem;
+    margin: 0 0.5rem;
     fill: $c-blue-medium;
   }
 }

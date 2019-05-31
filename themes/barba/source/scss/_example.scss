@@ -1,0 +1,26 @@
+.example__card,
+[class*='example__card--'] {
+
+  &:first-child {
+    display: flex;
+    flex-direction: column;
+  }
+
+  [class*='__title'] {
+    color: $black;
+    font-family: 'Space Mono';
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 2rem;
+    letter-spacing: 0.2rem;
+  }
+
+  [class*='__links'] {
+    display: flex;
+    flex-direction: row;
+
+    .link--zip {
+      align-self: flex-end;
+    }
+  }
+}

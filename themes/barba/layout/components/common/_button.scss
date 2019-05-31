@@ -62,3 +62,40 @@
   padding: (($btn-rounded-size - $icon-size) / 2) - $btn-border-size;
   border-radius: 50%;
 }
+
+// Call to action
+.cta {
+  display: flex;
+  align-items: center;
+  margin-right: 4rem;
+  border: 0;
+  padding: 0;
+  background: transparent;
+
+  [class*='.icon--barba'] {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  [class*='__caption'] {
+    display: flex;
+    flex-direction: column;
+    margin: 0 1rem;
+    color: $c-blue-medium;
+    font-family: 'Space Mono';
+    font-weight: 300;
+    text-align: left;
+    letter-spacing: 0.2rem;
+  }
+
+  [class*='__subtitle'] {
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    text-transform: uppercase;
+  }
+
+  [class*='__title'] {
+    font-size: 3rem;
+    line-height: 3rem;
+  }
+}

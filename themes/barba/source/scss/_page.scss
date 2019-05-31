@@ -26,6 +26,10 @@
 .page-wrapper {
   width: 100%;
   height: 100%;
+
+  [class*='icon--barba'] {
+    stroke-width: 0;
+  }
 }
 
 .page-inner {
@@ -81,7 +85,7 @@
 
 .page__separator {
   width: 5rem;
-  height: .2rem;
+  height: 0.2rem;
   margin: 5rem 0;
   background: $c-blue-medium;
 }

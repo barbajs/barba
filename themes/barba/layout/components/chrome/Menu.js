@@ -3,7 +3,6 @@ import { Component } from 'kapla';
 export default class extends Component {
   load() {
     const subscriber = this.subscribe('menu-trigger');
-    const links = this.$el.querySelectorAll('a');
     const overlay = this.$el.querySelector('.menu__overlay');
 
     subscriber.on('menu:open', this.open);
@@ -15,10 +14,6 @@ export default class extends Component {
     overlay.addEventListener('click', () => {
       this.onOverlayClick();
     });
-    // Close menu if click on other links
-    links.forEach(link => link.addEventListener('click', () => {
-      this.onLinkClick();
-    }));
   }
 
   open() {
@@ -34,12 +29,8 @@ export default class extends Component {
     this.close();
   }
 
-  onLinkClick() {
+  onClick() {
     this.emit('link:close');
     this.close();
-  }
-
-  onClick() {
-
   }
 }

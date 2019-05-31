@@ -3,13 +3,17 @@
   modifier: page.modifier,
 }) %>
 
-<div class="page-wrapper" data-component="about">
+<div class="page-wrapper">
   <div class="page-inner">
     <h1 class="page__title"><%- page.title %></h1>
     <p class="page__headline"><%- page.headline %></p>
 
     <% if (page.separator) {%>
     <div class="page__separator"></div>
+    <% } %>
+
+    <% if (is_current('/showcase')) {%>
+    <%- partial('components/showcase/showcase.ejs') %>
     <% } %>
   </div>
 

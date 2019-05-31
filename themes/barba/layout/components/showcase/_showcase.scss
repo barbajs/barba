@@ -1,0 +1,116 @@
+.showcase {
+  display: flex;
+
+  .showcase__overlay {
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($c-blue-lightest, 0.9);
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.4s ease-in-out;
+
+    &.is-open {
+      opacity: 1;
+      pointer-events: initial;
+    }
+  }
+
+  .showcase__modal {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    height: max-content;
+    margin: auto;
+    box-shadow: 0 1px 20px rgba($c-blue-darker, 0.4);
+    background: $c-blue-medium;
+    opacity: 0;
+
+    transition: opacity 0.4s ease-in-out;
+
+    &.is-open {
+      display: flex;
+      opacity: 1;
+    }
+
+    [class*='__form'] {
+
+      [class*='__title'] {
+        margin: 3rem;
+        color: $white;
+        font-family: 'Space Mono';
+        font-size: 4rem;
+        font-weight: 300;
+        text-align: center;
+        text-transform: capitalize;
+      }
+
+      [class*='__image'] {
+        margin: 1.5rem 3rem;
+        border: 1rem solid $c-blue-darker;
+        background: $c-blue-dark;
+      }
+
+      [class*='__section'] {
+        display: flex;
+        flex-direction: column;
+        margin: 1.5rem 3rem;
+        background: $c-blue-darker;
+
+        @include mq(m) {
+          flex-direction: row;
+        }
+      }
+
+      [class*='__field'] {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+      }
+
+      [class*='__label'] {
+        margin: 0;
+        color: $white;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+      }
+
+      [class*='__input--text'] {
+        border: 0;
+        padding: 1rem;
+        background: $c-blue-dark;
+        color: $white;
+      }
+
+      [class*='__submit'] {
+        margin: 1.5rem 3rem 3rem;
+      }
+
+      [class*='__input--submit'] {
+        width: 100%;
+        border: 0;
+        padding: 1.5rem;
+        background: $white;
+        color: $c-blue-medium;
+        font-family: 'Space Mono';
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+      }
+    }
+  }
+}

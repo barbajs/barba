@@ -1,59 +1,19 @@
-<ul class="page-grid">
-  <% grid.forEach(item => { %>
-  <li class="page-grid__item">
+<ol class="grid">
 
-    <% if (namespace === 'page--example') { %>
-      <p class="page-grid__title--example"><%- item.title %></p>
-    <% }%>
-    <%- partial('components/common/image.ejs', {
-      src: item.image.src,
-      alt: item.image.alt,
-    }) %>
-    <% if (namespace === 'page--showcase') {%>
-    <div class="page-grid__infos">
-      <p class="page-grid__title"><%- item.title %></p>
-      <p class="page-grid__name"><%- item.name %></p>
-      <% if (item.link) { %>
-        <a class="page-grid__link" href=<%-item.link%>>
-          View
-          <%- partial('components/common/icon', {
-            icon: 'barba-external',
-            hidden: true,
-            viewbox: '0 0 15 15',
-          }) %>
-        </a>
-      <% } %>
-    </div>
-    <% } %>
-    <% if (namespace === 'page--example') { %>
-      <div class="page-grid__infos--example">
-        <a class="page-grid__infos--example__watch" href=<%- item.watch_url %>>
-          <%- partial('components/common/icon', {
-            icon: 'barba-eye',
-            hidden: true,
-            viewbox: '0 0 20 15',
-          }) %>
-          Watch
-        </a>
-        <a class="page-grid__infos--example__source" href=<%- item.source_url %>>
-          <%- partial('components/common/icon', {
-            icon: 'barba-github',
-            hidden: true,
-            viewbox: '0 0 13 15',
-          }) %>
-          Source
-        </a>
-        <a class="page-grid__infos--example__zip" href=<%- item.zip_url %>>
-          <%- partial('components/common/icon', {
-            icon: 'barba-download',
-            hidden: true,
-            viewbox: '0 0 18 18',
-          }) %>
-          Zip
-        </a>
-      </div>
-    <% }%>
-  </li>
-  <% }) %>
+  <!-- Example items -->
+  <% if (namespace === 'page--example') { %>
+  <% site.categories.findOne({name: 'example'}).posts.forEach(function(post){ %>
+  <%- partial('example.ejs', { post: post }) %>
+  <% }); %>
+  <% } %>
+  <!-- Example items [end]-->
 
-</ul>
+  <!-- Showcase items -->
+  <% if (namespace === 'page--showcase') { %>
+  <% site.categories.findOne({name: 'showcase'}).posts.forEach(function(post){ %>
+  <%- partial('showcase.ejs', { post: post }) %>
+  <% }); %>
+  <% } %>
+  <!-- Showcase items [end]-->
+
+</ol>

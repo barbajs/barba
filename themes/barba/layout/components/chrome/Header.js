@@ -7,6 +7,12 @@ export default class extends Component {
     subscriber.on('menu:open', this.open);
     subscriber.on('menu:close', this.close);
 
+    // this
+    //   .subscribe('showcase')
+    //   .on('showcase:open', () => {
+    //     console.log('showcase');
+    //   });
+
     this.delegateClick = 'a';
   }
 
@@ -17,6 +23,4 @@ export default class extends Component {
   close() {
     this.$el.classList.remove('is-open');
   }
-
-  onClick() { }
 }

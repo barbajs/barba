@@ -29,7 +29,7 @@ i18n_dir: :lang
 skip_render:
 
 # Writing
-new_post_name: :title.md # File name of new posts
+new_post_name: :layout/:title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
@@ -80,21 +80,57 @@ menu:
     - title:    'Dependency Free'
       url:      '/features/dependency-free'
       modifier: 'dependency-free'
+      prevpage:
+          label:  'Change Log'
+          slug:   '/features/change-log'
+      nextpage:
+          label:  'Small size'
+          slug:   '/features/small-size'
     - title:    'Small size'
       url:      '/features/small-size'
       modifier: 'small-size'
+      prevpage:
+          label:  'Dependency Free'
+          slug:   '/features/dependency-free'
+      nextpage:
+          label:  'Open Source'
+          slug:   '/features/open-source'
     - title:    'Open Source'
       url:      '/features/open-source'
       modifier: 'open-source'
+      prevpage:
+          label:  'Small size'
+          slug:   '/features/small-size'
+      nextpage:
+          label:  'Views/Namespaces Logic'
+          slug:   '/features/views-namespaces-logic'
     - title:    'Views/Namespaces Logic'
       url:      '/features/views-namespaces-logic'
       modifier: 'views-namespaces-logic'
+      prevpage:
+          label:  'Open Source'
+          slug:   '/features/open-source'
+      nextpage:
+          label:  'Prefetch'
+          slug:   '/features/prefetch'
     - title:    'Prefetch'
       url:      '/features/prefetch'
       modifier: 'prefetch'
+      prevpage:
+          label:  'Views/Namespaces Logic'
+          slug:   '/features/views-namespaces-logic'
+      nextpage:
+          label:  'Change Log'
+          slug:   '/features/change-log'
     - title:    'Change Log'
       url:      '/features/change-log'
       modifier: 'change-log'
+      prevpage:
+          label:  'Prefetch'
+          slug:   '/features/prefetch'
+      nextpage:
+          label:  'Dependency Free'
+          slug:   '/features/dependency-free'
 - title:  'About'
   url:    '/about'
   slug:   '/about'
