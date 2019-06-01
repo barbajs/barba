@@ -9,6 +9,8 @@
   </a>
 
   <div class="example__card__links">
+
+    <% if (post.watch_url) { %>
     <a class="grid__item__link link--watch" href=<%- post.watch_url %>>
       <%- partial('components/common/icon', {
             icon: 'barba-eye',
@@ -17,6 +19,9 @@
           }) %>
       Watch
     </a>
+    <% }; %>
+
+    <% if (post.source_url) { %>
     <a class="grid__item__link link--source" href=<%- post.source_url %>>
       <%- partial('components/common/icon', {
             icon: 'barba-github',
@@ -25,6 +30,9 @@
           }) %>
       Source
     </a>
+    <% }; %>
+
+    <% if (post.zip_url) { %>
     <a class="grid__item__link link--zip" href=<%- post.zip_url %>>
       <%- partial('components/common/icon', {
             icon: 'barba-download',
@@ -33,5 +41,7 @@
           }) %>
       Zip
     </a>
+    <% }; %>
+
   </div>
 </li>

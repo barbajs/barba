@@ -38,48 +38,50 @@
   }
 }
 
-.page__title {
-  margin: 0;
-  color: $c-blue-light;
-  font-family: 'Space Mono';
-  font-size: 2.8rem;
-  font-weight: 400;
-  line-height: 3.2rem;
-
-  @include mq(m) {
-    font-size: 3.6rem;
-    line-height: 4.2rem;
-  }
-
-  @include mq(l) {
-    font-size: 6.5rem;
-    line-height: 6.5rem;
-  }
-
-  [data-barba-namespace*='--black'] & {
-    color: $white;
-  }
-}
-
-.page__headline {
-  margin: 0;
-  margin-top: 2rem;
-  font-size: 1.8rem;
-  line-height: 2.4rem;
-
-  @include mq(m) {
-    font-size: 2.4rem;
+.page__header {
+  h1 {
+    margin: 0;
+    color: $c-blue-light;
+    font-family: 'Space Mono';
+    font-size: 2.8rem;
+    font-weight: 400;
     line-height: 3.2rem;
+
+    @include mq(m) {
+      font-size: 3.6rem;
+      line-height: 4.2rem;
+    }
+
+    @include mq(l) {
+      font-size: 6.5rem;
+      line-height: 6.5rem;
+    }
+
+    [data-barba-namespace*='--black'] & {
+      color: $white;
+    }
   }
 
-  @include mq(l) {
-    margin-top: 5.4rem;
-    font-size: 3.5rem;
-    line-height: 4.8rem;
-  }
+  p {
+    margin: 0;
+    margin-top: 2rem;
+    font-size: 1.8rem;
+    line-height: 2.4rem;
 
-  [data-barba-namespace*='--black'] & {
-    color: $white;
+    @include mq(m) {
+      font-size: 2.4rem;
+      line-height: 3.2rem;
+    }
+
+    @include mq(l) {
+      margin-top: 5.4rem;
+      font-size: 3.5rem;
+      line-height: 4.8rem;
+    }
+
+    [data-barba-namespace*='--black'] & {
+      color: $white;
+    }
   }
 }
 

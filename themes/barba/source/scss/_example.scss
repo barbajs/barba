@@ -17,10 +17,9 @@
 
   [class*='__links'] {
     display: flex;
-    flex-direction: row;
 
     .link--zip {
-      align-self: flex-end;
+      margin-left: auto;
     }
   }
 }

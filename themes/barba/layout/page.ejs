@@ -3,10 +3,12 @@
   modifier: page.modifier,
 }) %>
 
-<div class="page-wrapper">
+<section class="page-wrapper">
   <div class="page-inner">
-    <h1 class="page__title"><%- page.title %></h1>
-    <p class="page__headline"><%- page.headline %></p>
+
+    <div class="page__header">
+      <%- page.content %>
+    </div>
 
     <% if (page.separator) {%>
     <div class="page__separator"></div>
@@ -23,4 +25,4 @@
     namespace: page.namespace
     }) %>
   <% } %>
-</div>
+</section>
