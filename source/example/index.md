@@ -1,5 +1,6 @@
 ---
 title: Example
+name: example
 namespace: page--example
 layout: page
 grid: true

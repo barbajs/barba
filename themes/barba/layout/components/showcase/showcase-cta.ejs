@@ -1,4 +1,4 @@
-<div class="showcase" data-component="showcase">
+<div class="showcase" data-component="showcase-cta">
 
   <a class="showcase__link cta">
     <%- partial('components/common/icon', {
@@ -12,7 +12,7 @@
     </figcaption>
   </a>
 
-  <button class="showcase__button cta" data-ref="showcase.submit">
+  <button class="showcase__button cta" data-ref="showcase-cta.submit">
     <%- partial('components/common/icon', {
       icon: 'barba-submit',
       hidden: true,
@@ -25,32 +25,32 @@
   </button>
 
   <!-- Modal submit -->
-  <div class="showcase__overlay" data-ref="showcase.overlay"></div>
+  <div class="showcase__overlay" data-ref="showcase-cta.overlay"></div>
 
-  <div class="showcase__modal" data-ref="showcase.modal">
+  <div class="showcase__modal" data-ref="showcase-cta.modal">
     <form action="" method="get" class="showcase__modal__form">
       <h1 class="showcase__modal__title">Submit website</h1>
       <div class="form__image">
-        <input type="file" name="name" accept=".jpg, .jpeg, .png, .gif" required>
+        <input type="file" name="picture" accept=".jpg, .jpeg, .png, .gif" required>
       </div>
       <div class="form__section">
         <div class="form__field">
-          <label class="form__label" for="site-name">Site name</label>
-          <input class="form__input--text" type="text" name="site-name" placeholder="Website name" required>
+          <label class="form__label" for="siteName">Site name</label>
+          <input class="form__input--text" type="text" name="siteName" placeholder="Website name" required>
         </div>
         <div class="form__field">
-          <label class="form__label" for="site-url">Url</label>
-          <input class="form__input--text" type="url" name="site-url" placeholder="http://" required>
+          <label class="form__label" for="siteUrl">Url</label>
+          <input class="form__input--text" type="url" name="siteUrl" placeholder="http://" required>
         </div>
       </div>
       <div class="form__section">
         <div class="form__field">
-          <label class="form__label" for="author-name">Project by</label>
-          <input class="form__input--text" type="text" name="author-name" placeholder="Author name" required>
+          <label class="form__label" for="authorName">Project by</label>
+          <input class="form__input--text" type="text" name="authorName" placeholder="Author name" required>
         </div>
         <div class="form__field">
-          <label class="form__label" for="author-site">Author url</label>
-          <input class="form__input--text" type="url" name="author-site" placeholder="http://" required>
+          <label class="form__label" for="authorUrl">Author url</label>
+          <input class="form__input--text" type="url" name="authorUrl" placeholder="http://" required>
         </div>
       </div>
       <div class="form__submit">

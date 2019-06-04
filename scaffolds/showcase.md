@@ -1,6 +1,6 @@
 ---
 title: {{ title }}
-layout: showcase
+layout: components/showcase/showcase-item
 date: {{ date }}
 categories:
     - showcase

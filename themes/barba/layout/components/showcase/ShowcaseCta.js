@@ -1,5 +1,5 @@
 import { Component } from 'kapla';
-
+import { format } from 'url';
 export default class extends Component {
   load() {
     this.delegateClick = 'button';
@@ -9,6 +9,17 @@ export default class extends Component {
       this.onOverlayClick();
     });
   }
+
+  // onSubmit() {
+  //   db.collection('showcases').add({
+  //     authorName: form.authorName.value,
+  //     authorUrl: form.authorUrl.value,
+  //     display: false,
+  //     picture: form.picture.value,
+  //     siteName: form.siteName.value,
+  //     siteUrl: form.siteUrl.value,
+  //   });
+  // }
 
   onClick() {
     this.open();

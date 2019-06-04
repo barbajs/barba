@@ -1,5 +1,6 @@
 ---
 title: Showcase
+name: showcase
 namespace: page--showcase
 layout: page
 separator: true

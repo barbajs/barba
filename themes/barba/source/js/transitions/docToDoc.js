@@ -1,7 +1,7 @@
 import { TimelineMax } from 'gsap/TimelineMax';
 import { TweenMax } from 'gsap/TweenMax';
 
-const docs = window.docs.array;
+const docs = window.barbaDocs.array;
 const docsUrlOrderedList = [];
 
 for (let i = 0; i < docs.length; i++) {

@@ -15,14 +15,15 @@
     <% } %>
 
     <% if (is_current('/showcase')) {%>
-    <%- partial('components/showcase/showcase.ejs') %>
+    <%- partial('components/showcase/showcase-cta.ejs') %>
     <% } %>
   </div>
 
   <% if (page.grid) { %>
   <%- partial('components/grid/grid.ejs', {
     grid: page.grid,
-    namespace: page.namespace
+    namespace: page.namespace,
+    name: page.name
     }) %>
   <% } %>
 </section>

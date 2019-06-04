@@ -4,6 +4,10 @@ module.exports = {
   ],
   module: {
     loaders: [{
+      test: /\.ejs$/,
+      loader: 'ejs-loader',
+    },
+    {
       test: /\.js/,
       use: [
         {
@@ -33,3 +37,4 @@ module.exports = {
     }],
   },
 };
+

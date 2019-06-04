@@ -1,6 +1,6 @@
 ---
 title: showcase1
-layout: showcase
+layout: components/showcase/showcase-item
 categories:
   - showcase
 date: 2019-05-31 10:00:44

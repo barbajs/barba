@@ -1,9 +1,9 @@
-<ol class="grid">
+<ol class="grid" data-component="<%- name %>-grid">
 
   <!-- Example items -->
   <% if (namespace === 'page--example') { %>
   <% site.categories.findOne({name: 'example'}).posts.forEach(function(post){ %>
-  <%- partial('example.ejs', { post: post }) %>
+  <%- partial('components/example/example-item.ejs', { post: post }) %>
   <% }); %>
   <% } %>
   <!-- Example items [end]-->
@@ -11,7 +11,7 @@
   <!-- Showcase items -->
   <% if (namespace === 'page--showcase') { %>
   <% site.categories.findOne({name: 'showcase'}).posts.forEach(function(post){ %>
-  <%- partial('showcase.ejs', { post: post }) %>
+  <%- partial('components/showcase/showcase-item.ejs', { post: post }) %>
   <% }); %>
   <% } %>
   <!-- Showcase items [end]-->

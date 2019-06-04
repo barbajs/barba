@@ -1,6 +1,6 @@
 ---
 title: {{ title }}
-layout: example
+layout: components/example/example-item
 date: {{ date }}
 categories:
     - example

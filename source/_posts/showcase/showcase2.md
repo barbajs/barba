@@ -1,6 +1,6 @@
 ---
 title: showcase2
-layout: showcase
+layout: components/showcase/showcase-item
 link: https://www.epic.net/en/
 categories:
   - showcase

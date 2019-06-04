@@ -1,6 +1,6 @@
 ---
 title: example3
-layout: example
+layout: components/example/example-item
 categories:
   - example
 date: 2019-05-31 15:40:51
