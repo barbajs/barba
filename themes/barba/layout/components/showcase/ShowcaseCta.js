@@ -1,5 +1,6 @@
 import { Component } from 'kapla';
-import { format } from 'url';
+import db from '../../../source/js/connectionDB';
+
 export default class extends Component {
   load() {
     this.delegateClick = 'button';
@@ -10,16 +11,22 @@ export default class extends Component {
     });
   }
 
-  // onSubmit() {
-  //   db.collection('showcases').add({
-  //     authorName: form.authorName.value,
-  //     authorUrl: form.authorUrl.value,
-  //     display: false,
-  //     picture: form.picture.value,
-  //     siteName: form.siteName.value,
-  //     siteUrl: form.siteUrl.value,
-  //   });
-  // }
+  onSubmit(e) {
+    e.preventDefault();
+    db.collection('showcases').add({
+      authorName: this.$refs.form.authorName.value,
+      authorUrl: this.$refs.form.authorUrl.value,
+      display: false,
+      picture: this.$refs.form.picture.value,
+      siteName: this.$refs.form.siteName.value,
+      siteUrl: this.$refs.form.siteUrl.value,
+    });
+    this.$refs.form.authorName.value = '';
+    this.$refs.form.authorUrl.value = '';
+    this.$refs.form.picture.value = '';
+    this.$refs.form.siteName.value = '';
+    this.$refs.form.siteUrl.value = '';
+  }
 
   onClick() {
     this.open();
