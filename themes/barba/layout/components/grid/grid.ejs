@@ -9,11 +9,7 @@
   <!-- Example items [end]-->
 
   <!-- Showcase items -->
-  <% if (namespace === 'page--showcase') { %>
-  <% site.categories.findOne({name: 'showcase'}).posts.forEach(function(post){ %>
-  <%- partial('components/showcase/showcase-item.ejs', { post: post }) %>
-  <% }); %>
-  <% } %>
+
   <!-- Showcase items [end]-->
 
 </ol>

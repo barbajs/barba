@@ -1,24 +1,24 @@
 <li class="grid__item showcase__card">
 
-  <a href="<%- post.link %>" target="_blank" rel="noopener noreferrer">
-    <%- partial('components/common/image.ejs', {
-        src: post.asset,
-        alt: post.alt,
+  <a href="<%- siteUrl %>" target="_blank" rel="noopener noreferrer">
+    <%- require('ejs-compiled-loader!../common/image.ejs')({
+        src: picture,
+        alt: siteName,
       }) %>
   </a>
 
   <div class="showcase__card__footer">
     <figcaption>
-      <stong class="showcase__card__footer__title"><%- post.name %></stong>
-      <span class="showcase__card__footer__author"><%- post.author %></span>
+      <strong class="showcase__card__footer__title"><%- siteName %></strong>
+      <span class="showcase__card__footer__author"><%- authorName %></span>
     </figcaption>
-    <a class="grid__item__link link--view" target="_blank" href="<%- post.link %>">
+    <a class="grid__item__link link--view" target="_blank" href="<%- siteUrl %>">
       View
-      <%- partial('components/common/icon', {
-          icon: 'barba-external',
-          hidden: true,
-          viewbox: '0 0 15 15',
-        }) %>
+      <%- require('ejs-compiled-loader!../common/icon.ejs')({
+        icon: 'barba-external',
+        hidden: true,
+        viewbox: '0 0 15 15',
+      }) %>
     </a>
   </div>
 
