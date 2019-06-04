@@ -1,7 +1,7 @@
 <li class="grid__item showcase__card">
 
   <a href="<%- post.link %>" target="_blank" rel="noopener noreferrer">
-    <%- partial('components/common/image.ejs', {
+    <%- require('ejs-compiled-loader!../common/image.ejs')({
         src: post.asset,
         alt: post.alt,
       }) %>
@@ -9,16 +9,16 @@
 
   <div class="showcase__card__footer">
     <figcaption>
-      <stong class="showcase__card__footer__title"><%- post.name %></stong>
+      <strong class="showcase__card__footer__title"><%- post.name %></strong>
       <span class="showcase__card__footer__author"><%- post.author %></span>
     </figcaption>
     <a class="grid__item__link link--view" target="_blank" href="<%- post.link %>">
       View
-      <%- partial('components/common/icon', {
-          icon: 'barba-external',
-          hidden: true,
-          viewbox: '0 0 15 15',
-        }) %>
+      <%- require('ejs-compiled-loader!../common/icon.ejs')({
+        icon: 'barba-external',
+        hidden: true,
+        viewbox: '0 0 15 15',
+      }) %>
     </a>
   </div>
 
