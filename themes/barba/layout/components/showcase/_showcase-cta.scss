@@ -1,7 +1,7 @@
-.showcase {
+.showcase-cta {
   display: flex;
 
-  .showcase__overlay {
+  .showcase-cta__overlay {
     position: fixed;
     z-index: 9;
     top: 0;
@@ -20,7 +20,23 @@
     }
   }
 
-  .showcase__modal {
+  .showcase-cta__modal__close {
+    position: absolute;
+    bottom: -7rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    @include mq(m) {
+      top: 0;
+      right: -7rem;
+      justify-content: flex-end;
+      width: max-content;
+      height: max-content;
+    }
+  }
+
+  .showcase-cta__modal {
     position: fixed;
     z-index: 10;
     top: 0;
@@ -92,6 +108,18 @@
         padding: 1rem;
         background: $c-blue-dark;
         color: $white;
+
+        &::placeholder {
+          color: $black;
+        }
+
+        &:focus {
+          outline: 1px solid $white;
+
+          &::placeholder {
+            color: $white;
+          }
+        }
       }
 
       [class*='__submit'] {

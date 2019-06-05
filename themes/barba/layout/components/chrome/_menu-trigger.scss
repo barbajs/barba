@@ -1,12 +1,12 @@
 .menu-trigger {
   position: relative;
+  z-index: 999;
   overflow: hidden;
   width: 50px;
   height: 50px;
-  margin-left: 1rem;
-  background-color: rgba($c-blue-medium, .2);
+  margin: 0 1rem;
+  background-color: rgba($c-blue-medium, 0.2);
   border-radius: 50%;
-  z-index: 999;
   cursor: pointer;
 
   &.is-open {
@@ -17,22 +17,13 @@
 .menu-trigger__github {
   @extend %text-nodecoration;
   position: absolute;
+  z-index: 999;
   top: 50px;
   right: 110px;
-  z-index: 999;
-}
 
-.menu-trigger__github,
-.menu-trigger__github__icon {
-  display: block;
-  width: 50px;
-  height: 50px;
-}
-
-.menu-trigger__github {
   .circle {
     fill: $c-gray-dark;
-    transition: fill .2s ease-out;
+    transition: fill 0.2s ease-out;
   }
 
   &:hover .circle {
@@ -42,6 +33,13 @@
   .shape {
     fill: $white;
   }
+}
+
+.menu-trigger__github,
+.menu-trigger__github__icon {
+  display: block;
+  width: 50px;
+  height: 50px;
 }
 
 .menu-trigger__bar {

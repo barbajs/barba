@@ -11,6 +11,23 @@ export default class ShowcaseCta extends Component {
     this.$refs.overlay.addEventListener('click', () => {
       this.onOverlayClick();
     });
+
+    // Close modal if click on escape keypress
+    this.$el.addEventListener('keydown', e => {
+      if (e.key === 'Escape' || e.keyCode === 27) {
+        this.onOverlayClick();
+      }
+    });
+
+    // Close modal if click on escape keypress
+    this.$refs.close.addEventListener('click', () => {
+      this.onClose();
+    });
+
+    // Add border to the close button if the form is focused
+    this.$refs.modal.addEventListener('click', () => {
+      this.isFocused();
+    });
   }
 
   onSubmit(e) {
@@ -18,13 +35,22 @@ export default class ShowcaseCta extends Component {
 
     const [file] = this.$refs.form.pictureUrl.files;
 
+    this.$refs.modal.classList.remove('is-open');
+    this.$refs.close.classList.remove('is-open');
+    this.emit('spinner:start');
+
     ShowcaseCta
+      // Start the loader
       .uploadFile(file)
       .then(downloadURL => {
         this.createShowcase(downloadURL);
       })
+      // Stop the loader
+      // Display succeed/fail
       .then(() => {
         console.log('COMPLETE');
+        this.emit('spinner:stop');
+        this.$refs.overlay.classList.remove('is-open');
         this.$refs.form.authorName.value = '';
         this.$refs.form.authorUrl.value = '';
         this.$refs.form.pictureUrl.value = '';
@@ -75,8 +101,6 @@ export default class ShowcaseCta extends Component {
   }
 
   createShowcase(downloadURL) {
-    console.log(this);
-
     return db.collection('showcases').add({
       authorName: this.$refs.form.authorName.value,
       authorUrl: this.$refs.form.authorUrl.value,
@@ -93,6 +117,22 @@ export default class ShowcaseCta extends Component {
     this.emit('showcase:open');
   }
 
+  onEscapePress() {
+    this.close();
+  }
+
+  onClose() {
+    this.close();
+  }
+
+  onOverlayClick() {
+    this.close();
+  }
+
+  isFocused() {
+    this.$refs.close.classList.add('is-open');
+  }
+
   open() {
     this.$refs.modal.classList.add('is-open');
     this.$refs.overlay.classList.add('is-open');
@@ -101,9 +141,6 @@ export default class ShowcaseCta extends Component {
   close() {
     this.$refs.modal.classList.remove('is-open');
     this.$refs.overlay.classList.remove('is-open');
-  }
-
-  onOverlayClick() {
-    this.close();
+    this.$refs.close.classList.remove('is-open');
   }
 }

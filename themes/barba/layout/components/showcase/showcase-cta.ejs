@@ -1,35 +1,47 @@
-<div class="showcase" data-component="showcase-cta">
+<div class="showcase-cta" data-component="showcase-cta">
 
-  <a class="showcase__link cta">
+  <a class="showcase-cta__link cta">
     <%- partial('components/common/icon', {
       icon: 'barba-download',
       hidden: true,
       viewbox: '0 0 30 30',
     }) %>
-    <figcaption class="showcase__link__caption">
-      <span class="showcase__link__subtitle">Download</span>
-      <span class="showcase__link__title">barba.js</span>
+    <figcaption class="showcase-cta__link__caption">
+      <span class="showcase-cta__link__subtitle">Download</span>
+      <span class="showcase-cta__link__title">barba.js</span>
     </figcaption>
   </a>
 
-  <button class="showcase__button cta" data-ref="showcase-cta.submit">
+  <button class="showcase-cta__button cta" data-ref="showcase-cta.submit">
     <%- partial('components/common/icon', {
       icon: 'barba-submit',
       hidden: true,
       viewbox: '0 0 30 30',
     }) %>
-    <figcaption class="showcase__button__caption">
-      <span class="showcase__button__subtitle">Submit</span>
-      <span class="showcase__button__title">website</span>
+    <figcaption class="showcase-cta__button__caption">
+      <span class="showcase-cta__button__subtitle">Submit</span>
+      <span class="showcase-cta__button__title">website</span>
     </figcaption>
   </button>
 
-  <!-- Modal submit -->
-  <div class="showcase__overlay" data-ref="showcase-cta.overlay"></div>
+  <%- partial('components/common/spinner') %>
 
-  <div class="showcase__modal" data-ref="showcase-cta.modal">
-    <form class="showcase__modal__form" data-ref="showcase-cta.form">
-      <h1 class="showcase__modal__title">Submit website</h1>
+  <!-- Modal submit -->
+  <div class="showcase-cta__overlay" data-ref="showcase-cta.overlay"></div>
+
+  <div class="showcase-cta__modal" data-ref="showcase-cta.modal">
+
+    <form class="showcase-cta__modal__form" data-ref="showcase-cta.form">
+
+      <div class="showcase-cta__modal__close">
+        <div class="menu-trigger" data-ref="showcase-cta.close">
+          <span class="menu-trigger__bar"></span>
+          <span></span>
+          <span class="menu-trigger__bar"></span>
+        </div>
+      </div>
+
+      <h1 class="showcase-cta__modal__title">Submit website</h1>
       <div class="form__image">
         <input type="file" name="pictureUrl" accept=".jpg, .jpeg, .png, .gif" required>
       </div>
@@ -57,7 +69,7 @@
         <input class="form__input--submit" type="submit" value="Submit project">
       </div>
     </form>
+
   </div>
-  <!-- Modal submit [end]-->
 
 </div>
