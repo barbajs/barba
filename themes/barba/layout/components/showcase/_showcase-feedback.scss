@@ -1,0 +1,36 @@
+.form__feedback,
+[class*='form__feedback--'] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Space Mono';
+  font-size: 4rem;
+  text-align: center;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.form__feedback--succeed {
+  display: none;
+  color: $c-green-medium;
+  opacity: 0;
+
+  &.is-active {
+    display: flex;
+    opacity: 1;
+  }
+}
+
+.form__feedback--failed {
+  display: none;
+  color: $c-dev-error;
+  opacity: 0;
+
+  &.is-active {
+    display: flex;
+    opacity: 1;
+  }
+}

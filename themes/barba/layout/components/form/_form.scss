@@ -1,0 +1,144 @@
+.form__title {
+  margin: 3rem;
+  color: $white;
+  font-family: 'Space Mono';
+  font-size: 4rem;
+  font-weight: 300;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.form__wrapper {
+  visibility: visible;
+
+  &.is-hidden {
+    visibility: hidden;
+  }
+}
+
+.drop-area {
+  margin: 1.5rem 3rem;
+  border: 1rem solid $c-blue-darker;
+  background: $c-blue-dark;
+
+  &.highlight {
+    border: 1rem solid $white;
+  }
+
+  // &.invalid {
+  //   border: 1rem solid $c-dev-error;
+  // }
+}
+
+.form__picture {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem;
+  color: $c-blue-darkest;
+  font-family: 'Space Mono';
+
+  .icon--barba {
+    width: 6rem;
+    height: 6rem;
+    stroke: $c-blue-darkest;
+
+    .highlight & {
+      stroke: $white;
+    }
+  }
+}
+
+.form__picture__size {
+  margin: 0;
+  font-size: 4rem;
+  line-height: 4rem;
+}
+
+
+.form__picture__infos,
+[class*='form__picture__infos--'] {
+  margin: 1rem 0;
+  font-size: 1.4rem;
+
+  &[class*='--white'] {
+    color: $white;
+  }
+}
+
+.form__picture__input {
+  display: none;
+}
+
+.form__section {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem 3rem;
+  background: $c-blue-darker;
+
+  @include mq(m) {
+    flex-direction: row;
+  }
+}
+
+.form__field {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.form__label {
+  margin: 0;
+  color: $white;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.form__input--text {
+  border: 0;
+  padding: 1rem;
+  background: $c-blue-dark;
+  color: $white;
+
+  &::placeholder {
+    color: $black;
+  }
+
+  &:focus {
+    outline: 1px solid $white;
+
+    &::placeholder {
+      color: $white;
+    }
+  }
+
+  // &:invalid {
+  //   outline: 1px solid $c-dev-error;
+  // }
+
+  @include mq(m) {
+    width: 22rem;
+  }
+}
+
+.form__submit {
+  margin: 1.5rem 3rem 3rem;
+}
+
+.form__input--submit {
+  width: 100%;
+  border: 0;
+  padding: 1.5rem;
+  background: $white;
+  color: $c-blue-medium;
+  font-family: 'Space Mono';
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+
+  .is-invalid & {
+    opacity: 0.5;
+  }
+}

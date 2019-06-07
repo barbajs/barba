@@ -1,4 +1,4 @@
-import { Component } from 'kapla';
+import { Component, ee } from 'kapla';
 import { Spinner } from 'spin.js';
 
 const opts = {
@@ -8,7 +8,7 @@ const opts = {
   radius: 0, // The radius of the inner circle
   scale: 1.2, // Scales overall size of the spinner
   corners: 0, // Corner roundness (0..1)
-  color: '#3c5dcd', // CSS color or array of colors
+  color: 'white', // CSS color or array of colors
   fadeColor: 'transparent', // CSS color or array of colors
   speed: 1.2, // Rounds per second
   rotate: 0, // The rotation offset
@@ -22,21 +22,21 @@ const opts = {
   position: 'absolute' // Element positioning
 };
 
-export default class ShowcaseCta extends Component {
+export default class LoaderSpinner extends Component {
   load() {
-    const subscriber = this.subscribe('showcase-cta');
-
     this.spinner = new Spinner(opts);
 
-    subscriber.on('spinner:start', this.start);
-    subscriber.on('spinner:stop', this.stop);
+    ee.on('spinner:start', this.start.bind(this));
+    ee.on('spinner:stop', this.stop.bind(this));
   }
 
   start() {
     this.spinner.spin(this.$el);
+    this.$el.classList.add('is-active');
   }
 
   stop() {
     this.spinner.stop();
+    this.$el.classList.remove('is-active');
   }
 }

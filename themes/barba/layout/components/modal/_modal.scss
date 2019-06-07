@@ -1,0 +1,73 @@
+.modal,
+[class*='modal--'] {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  &.is-open {
+    display: flex;
+  }
+}
+
+.modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($c-blue-lightest, 0.9);
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.4s ease-in-out;
+
+  .is-open & {
+    opacity: 1;
+    pointer-events: initial;
+  }
+}
+
+.modal__box__close {
+  position: absolute;
+  bottom: -7rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  @include mq(m) {
+    top: 0;
+    right: -7rem;
+    justify-content: flex-end;
+    width: max-content;
+    height: max-content;
+  }
+}
+
+.modal__box {
+  position: relative;
+  z-index: 1000;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  min-width: 30rem;
+  height: max-content;
+  min-height: 30rem;
+  margin: auto;
+  box-shadow: 0 1px 20px rgba($c-blue-darker, 0.4);
+  background: $c-blue-medium;
+  opacity: 0;
+
+  transition: opacity 0.4s ease-in-out;
+
+  .is-open & {
+    display: flex;
+    opacity: 1;
+  }
+}

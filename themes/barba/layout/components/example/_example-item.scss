@@ -5,21 +5,21 @@
     display: flex;
     flex-direction: column;
   }
+}
 
-  [class*='__title'] {
-    color: $black;
-    font-family: 'Space Mono';
-    font-size: 2rem;
-    font-weight: 300;
-    line-height: 2rem;
-    letter-spacing: 0.2rem;
-  }
+.example__card__title {
+  color: $black;
+  font-family: 'Space Mono';
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 2rem;
+  letter-spacing: 0.2rem;
+}
 
-  [class*='__links'] {
-    display: flex;
+.example__card__links {
+  display: flex;
 
-    .link--zip {
-      margin-left: auto;
-    }
+  .link--zip {
+    margin-left: auto;
   }
 }

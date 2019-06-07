@@ -48,7 +48,7 @@
     margin-left: 1rem;
     opacity: 0;
     transform: translateY(-50%);
-    transition: opacity .4s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
 
     .is-open & {
       opacity: 1;
@@ -72,7 +72,7 @@
   padding: 0;
   background: transparent;
 
-  [class*='.icon--barba'] {
+  .icon--barba {
     width: 4rem;
     height: 4rem;
   }

@@ -1,4 +1,20 @@
 .loader--spinner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+
+  &.is-active {
+    display: flex;
+    opacity: 1;
+  }
+
   @keyframes spinner-line-fade-more {
     0%,
     100% {

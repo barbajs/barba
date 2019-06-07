@@ -1,0 +1,55 @@
+<form class="form" data-component="form">
+
+  <h1 class="form__title">Submit website</h1>
+
+  <div class=form__wrapper data-ref="form.inputs">
+
+    <div class="form__picture drop-area" data-ref="form.dropArea" data-ref="form.picture">
+      <p class="form__picture__size">720x460</p>
+      <p class="form__picture__infos">GIF/JPG/PNG (MAX $$$Mb)</p>
+      <%- partial('components/common/icon', {
+        icon: 'barba-upload',
+        hidden: true,
+        viewbox: '0 0 10 10',
+      }) %>
+      <p class="form__picture__infos--white" data-ref="form.pictureName">No file submitted</p>
+      <input class="form__picture__input" type="file" name="picture" accept=".jpg, .jpeg, .png, .gif"
+        data-ref="form.pictureFile">
+      <label class="form__picture__infos" for="picture">Drag an image here or browse to upload.</label>
+    </div required>
+    <div class="form__section">
+      <div class="form__field">
+        <label class="form__label" for="siteName">Site name</label>
+        <input class="form__input--text" type="text" name="siteName" placeholder="Website name" data-ref="form.siteName"
+          required>
+      </div>
+      <div class="form__field">
+        <label class="form__label" for="siteUrl">Url</label>
+        <input class="form__input--text" type="url" name="siteUrl" placeholder="http://" data-ref="form.siteUrl"
+          required>
+      </div>
+    </div>
+    <div class="form__section">
+      <div class="form__field">
+        <label class="form__label" for="authorName">Project by</label>
+        <input class="form__input--text" type="text" name="authorName" placeholder="Author name"
+          data-ref="form.authorName" required>
+      </div>
+      <div class="form__field">
+        <label class="form__label" for="authorUrl">Author url</label>
+        <input class="form__input--text" type="url" name="authorUrl" placeholder="http://" data-ref="form.authorUrl"
+          required>
+      </div>
+    </div>
+    <div class="form__submit" data-ref="form.submit">
+      <input class="form__input--submit" type="submit" value="Submit project">
+    </div>
+
+  </div>
+
+  <!-- Behavior onSubmit -->
+  <%- loader %>
+  <%- feedback %>
+  <!-- Behavior onSubmit [end]-->
+
+</form>
