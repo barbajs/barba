@@ -17,9 +17,8 @@ title: User guide
 
 It helps reducing the delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.
 
-> Notice: This guide assumes intermediate level knowledge of HTML, CSS, and JavaScript.
-> It is worth mentioning that all the code examples use ES6+ syntax.<br>
-> If you are not comfortable with, we encourage you to grasp the basics then come back.<br>
+> Notice: this guide assumes intermediate level knowledge of HTML, CSS, and JavaScript. It is worth mentioning that all the code examples use ES6+ syntax. If you are not comfortable with, we encourage you to grasp the basics then come back.
+>
 > In case of emergency, check this ["legacy" code example](legacy.md).
 
 ## Useful links
@@ -29,8 +28,8 @@ It helps reducing the delay between your pages, minimizing browser HTTP requests
   - [@barba/router](https://barba.js.org/docs/v2/user/router.html)
   - [@barba/prefetch](https://barba.js.org/docs/v2/user/prefetch.html)
   - [@barba/css](https://barba.js.org/docs/v2/user/css.html)
-  - @barba/transitions _(coming soon)_
   - @barba/head _(coming soon)_
+  - @barba/preset _(coming soon)_
 - [API documentation](https://barba.js.org/docs/v2/api/)
 - [Github repo](https://github.com/barbajs/barba)
 - [Slack channel](https://barbajs.slack.com)
@@ -60,58 +59,63 @@ or using a CDN:
 > See [@barba/core](https://barba.js.org/docs/v2/user/core.html) for more details…
 
 ```js
-import barba from '@barba/core'; // Or nothing if loaded via the browser
+// do not import Barba like this if you load the library through the browser
+import barba from '@barba/core';
 
-// Basic default transition, with no rules and minimal hooks…
+// basic default transition (with no rules and minimal hooks)
 barba.init({
-  transitions: [
-    {
-      leave({ current, next, trigger }) {
-        // Do something with `current.container` for your leave transition
-        // then return a promise or use `this.async()`
-      },
-      enter({ current, next, trigger }) {
-        // Do something with `next.container` for your enter transition
-        // then return a promise or use `this.async()`
-      },
+  transitions: [{
+    leave({ current, next, trigger }) {
+      // do something with `current.container` for your leave transition
+      // then return a promise or use `this.async()`
     },
-  ],
+    enter({ current, next, trigger }) {
+      // do something with `next.container` for your enter transition
+      // then return a promise or use `this.async()`
+    }
+  }]
 });
 
-// Dummy example to illustrate rules and hooks…
+// dummy example to illustrate rules and hooks
 barba.init({
-  transitions: [
-    {
-      name: 'dummy transitions',
-      // Apply only when leaving `[data-barba-namespace="home"]`.
-      namespace: 'home',
-      // Apply only when transitioning to `[data-barba-namespace="products | contact"]`.
-      to: {
-        namespace: ['products', 'contact'],
-      },
-      // Apply only if clicked link contains `.cta`.
-      custom: ({ current, next, trigger }) =>
-        trigger.classList && trigger.classList.contains('cta'),
-      // Do leave and enter concurrently.
-      sync: true,
-      // Available hooks…
-      beforeAppear() {},
-      appear() {},
-      afterAppear() {},
-      beforeLeave() {},
-      leave() {},
-      afterLeave() {},
-      beforeEnter() {},
-      enter() {},
-      afterEnter() {},
+  transitions: [{
+    name: 'dummy-transition',
+
+    // apply only when leaving `[data-barba-namespace="home"]`
+    from: 'home',
+
+    // apply only when transitioning to `[data-barba-namespace="products | contact"]`
+    to: {
+      namespace: [
+        'products',
+        'contact'
+      ]
     },
-  ],
+
+    // apply only if clicked link contains `.cta`
+    custom: ({ current, next, trigger })
+      => trigger.classList && trigger.classList.contains('cta'),
+
+    // do leave and enter concurrently
+    sync: true,
+
+    // available hooks…
+    beforeAppear() {},
+    appear() {},
+    afterAppear() {},
+    beforeLeave() {},
+    leave() {},
+    afterLeave() {},
+    beforeEnter() {},
+    enter() {},
+    afterEnter() {}
+  }]
 });
 ```
 
 ## Browser support
 
-Barba.js can be viewed as a [progressive enhancement](https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/).
+Barba.js can be viewed as a [progressive enhancement](https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/).  
 Main "modern features" used are:
 
 - [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)

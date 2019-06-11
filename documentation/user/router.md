@@ -35,7 +35,7 @@ Example:
 import barba from '@barba/core';
 import barbaRouter from '@barba/router';
 
-// defines your routes
+// define your routes
 const routes = [{
   path: '/index',
   name: 'home'
@@ -44,10 +44,11 @@ const routes = [{
   name: 'item'
 }];
 
-// tells barba to use the router with your custom routes
+// tell Barba to use the router with your custom routes
 barba.use(barbaRouter, {
   routes,
 });
 
+// init Barba
 barba.init();
 ```

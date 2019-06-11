@@ -49,6 +49,7 @@ The namespace allow you to define **a unique name for each pages**. Barba mainly
 | [`prefetchIgnore`](#prefetchignore) | Boolean \| string \| string[] | true              | Prefetch strategy                             |
 | [`prevent`](#prevent)               | Function                      | (optional)        | Custom prevent test                           |
 | [`requestError`](#requesterror)     | Function                      | (optional)        | Custom request error callback                 |
+| [`timeout`](#timeout)               | Integer                       | 2000              | Custom request timeout (ms)                   |
 
 #### `<transition>` object
 
@@ -93,7 +94,7 @@ All hooks are **methods** and receive the same [`data`](#data-argument) object.
 | 7     | `afterEnter`  | After **enter** transition                                      |
 | 8     | `after`       | After everything                                                |
 
-> "Hooks can be run either synchronously or asynchronously using the common `this.async()` style ([see run-async](https://github.com/sboudrias/run-async#readme)) or returning a promise.
+> Hooks can be run either synchronously or asynchronously using the common `this.async()` style ([see run-async](https://github.com/sboudrias/run-async#readme)) or returning a promise.
 >
 > If you use [`sync: true`](#sync-mode), as **leave** and **enter** will be concurrent, order will differ: all before\*, then enter/leave, then all after\*.
 >
@@ -104,7 +105,7 @@ Example:
 ```js
 import barba from '@barba/core';
 
-// defines a global hook
+// define a global hook
 barba.hooks.leave((data) => {
   // this hook will be called for each transitions
 });
@@ -137,7 +138,7 @@ barba.init({
     leave: (data) => asyncAnimation(data.current.container),
 
     // es6 syntax: `{ current } = data.current`
-    leave: ({ current }) => asyncAnimation(current.container);,
+    leave: ({ current }) => asyncAnimation(current.container),
 
     // using a promise
     leave(data) => {
@@ -148,8 +149,7 @@ barba.init({
           },
         });
       });
-    },
-
+    }
   }]
 });
 ```
@@ -208,19 +208,17 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  transitions: [
-    {
-      name: 'svg-circle',
-      leave(data) {
-        // retrieves the current page url
-        const from = data.current.url;
-      },
-      enter({ next }) {
-        // retrieves the next page url (short syntax)
-        const to = next.url;
-      },
+  transitions: [{
+    name: 'svg-circle',
+    leave(data) {
+      // retrieve the current page url
+      const from = data.current.url;
     },
-  ],
+    enter({ next }) {
+      // retrieve the next page url (short syntax)
+      const to = next.url;
+    }
+  }]
 });
 ```
 
@@ -255,12 +253,12 @@ barba.init({
     name: 'custom-transition',
     from: {
 
-      // defines a custom rule based on the trigger class
+      // define a custom rule based on the trigger class
       custom: ({ trigger }) => {
         return trigger.classList && trigger.classList.contains('use-custom-transition');
       },
 
-      // defines rule based on multiple route names
+      // define rule based on multiple route names
       route: [
         'index',
         'product'
@@ -268,7 +266,7 @@ barba.init({
     },
     to: {
 
-      // defines rule based on multiple namespaces
+      // define rule based on multiple namespaces
       namespace: [
         'home',
         'item'
@@ -316,17 +314,15 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  transitions: [
-    {
-      sync: true,
-      leave() {
-        // transition that will play concurrently to `enter`
-      },
-      enter() {
-        // transition that will play concurrently to `leave`
-      },
+  transitions: [{
+    sync: true,
+    leave() {
+      // transition that will play concurrently to `enter`
     },
-  ],
+    enter() {
+      // transition that will play concurrently to `leave`
+    }
+  }]
 });
 ```
 
@@ -351,20 +347,17 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  views: [
-    {
-      namespace: 'index',
-      beforeLeave(data) {
-        // do something before leaving the current `index` namespace
-      },
-    },
-    {
-      namespace: 'contact',
-      beforeEnter(data) {
-        // do something before entering the `contact` namespace
-      },
-    },
-  ],
+  views: [{
+    namespace: 'index',
+    beforeLeave(data) {
+      // do something before leaving the current `index` namespace
+    }
+  }, {
+    namespace: 'contact',
+    beforeEnter(data) {
+      // do something before entering the `contact` namespace
+    }
+  }]
 });
 ```
 
@@ -379,7 +372,7 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  debug: true,
+  debug: true
 });
 ```
 
@@ -403,10 +396,10 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  // overrides defaults and create a custom prefix for wrapper, containers, etc.
+  // override defaults and create a custom prefix for wrapper, containers, etc.
   schema: {
-    prefix: 'data-custom',
-  },
+    prefix: 'data-custom'
+  }
 });
 ```
 
@@ -434,7 +427,10 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  cacheIgnore: ['/contact/', '/:category/post?'],
+  cacheIgnore: [
+    '/contact/',
+    '/:category/post?'
+  ]
 });
 ```
 
@@ -454,7 +450,7 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  prefetchIgnore: false,
+  prefetchIgnore: false
 });
 ```
 
@@ -475,9 +471,9 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  // defines a custom function that will prevent Barba
-  // from working on link that contains a `prevent` CSS class
-  prevent: ({ el }) => el.classList && el.classList.contains('prevent'),
+  // define a custom function that will prevent Barba
+  // from working on links that contains a `prevent` CSS class
+  prevent: ({ el }) => el.classList && el.classList.contains('prevent')
 });
 ```
 
@@ -505,19 +501,35 @@ import barba from '@barba/core';
 
 barba.init({
   requestError: (trigger, action, url, response) => {
+
     // go to a custom 404 page if the user click on a link that return a 404 response status
     if (action === 'click' && response.status && response.status === 404) {
       barba.go('/404');
     }
 
-    // prevents Barba from redirecting the user to the requested URL
+    // prevent Barba from redirecting the user to the requested URL
     // this is equivalent to e.preventDefault()
     return false;
-  },
+  }
 });
 ```
 
 > Note that if you use `barba.go()` directive without returning `false`, you will be redirected to the requested URL because Barba uses `barba.force()` to reach the page.
+
+#### timeout
+On slow network or with a high page weight, the server can take time to give a response to the user. In case the page take **more than timeout** to be loaded, it lead Barba to abort the transition and display a *Timeout error [2000]* message.
+
+To prevent this behavior, you can increase the `timeout`:
+
+```js
+import barba from '@barba/core';
+
+barba.init({
+  timeout: 5000
+});
+```
+
+In addition, you can properly catch the error by using the [`requestError`](#requesterror) callback.
 
 ## Partial output
 
@@ -525,4 +537,29 @@ Barba sends a custom **HTTP Header** named `x-barba` in the `XMLHttpRequest`.
 
 If you are using a server side language like PHP, you can detect this custom HTTP Header and output just the container instead of the entire page: this could result in **less bandwidth usage** and **less server-side load**.
 
-> Note that doing so, you have to manually handle the upate of the page `title`.
+> Note that doing so, you have to manually handle the update of the page `title`.
+
+Example:
+
+```php
+<?php
+  // check for the server side x-barba request header
+  if (isset($_SERVER['HTTP_X_BARBA'])) {
+
+    // this content will only be displayed if the page is called with BarbaJS
+    echo "I ❤ Barba";
+  }
+?>
+```
+
+## Utils <small>*draft section*</small>
+
+- barba.destroy()
+- barba.force(href: string)
+- barba.go(href: string, trigger?: Trigger, e?: LinkEvent | PopStateEvent)
+- barba.prefetch(href: string)
+- barba.request(url: string, ttl?: number, requestError: RequestError)
+- barba.version
+- barba.url.*
+
+> This is a draft section of **@barba/core** utilities, check the [API documentation](https://barba.js.org/docs/v2/api) for more informations.

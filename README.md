@@ -16,7 +16,7 @@
 
 It helps reducing the delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.
 
-> This is beta version, use it at your own risks! 😱<br>
+> This is beta version, use it at your own risks! 😱  
 > Thanks in advance for reporting bugs. #sharethelove 😊
 >
 > [Looking for v1?](https://barba.js.org/v1) 👈
@@ -33,18 +33,22 @@ It helps reducing the delay between your pages, minimizing browser HTTP requests
   - `@barba/css`: automatic addition of CSS classes
   - `@barba/prefetch`: automatic pages prefetching (and caching), based on viewport
   - `@barba/head`: update your `<head>` _(coming soon)_
-  - `@barba/transition`: ready-to-use basic transitions pack (fade, slide, …) _(coming soon)_
+  - `@barba/preset`: ready-to-use basic transitions pack (fade, slide, …) _(coming soon)_
 
 ## Main changes (TL;DR)
 
-- Barba [container](https://barba.js.org/docs/v2/user/core.html#container) and [wrapper](https://barba.js.org/docs/v2/user/core.html#wrapper) now use `data-barba` attribute
-- Same for [namespace](https://barba.js.org/docs/v2/user/core.html#namespace) via `data-barba-namespace`
-- 2 main methods: `barba.init()` and `barba.use()` (for plugins)
+- Barba now use `data-barba-*` attributes:
+  - data-barba-container for the [container](https://barba.js.org/docs/v2/user/core.html#container)
+  - data-barba-wrapper for the [wrapper](https://barba.js.org/docs/v2/user/core.html#wrapper)
+  - data-barba-namespace for the [namespace](https://barba.js.org/docs/v2/user/core.html#namespace)
+- 2 main methods:
+  - `barba.init()` for transitions, views and Barba core settings
+  - `barba.use()` for plugins (router, css, prefetch, etc.)
 - [Transitions](https://barba.js.org/docs/v2/user/core.html#transition-object):
   - are plain JS objects
   - are declared via the `barba.init({ transitions })`
   - use "[hooks](https://barba.js.org/docs/v2/user/core.html#hooks)" corresponding to animation steps
-    - hooks can be synchronous or asynchronous (via `this.async()` or promise based)
+    - hooks can be synchronous or asynchronous (via `this.async()` or Promise based)
     - all hooks receive same [`data` argument](https://barba.js.org/docs/v2/user/core.html#data-argument)
   - use "[rules](https://barba.js.org/docs/v2/user/core.html#rules)" to select which transition to use
     - default rules are `namespace` and `custom`

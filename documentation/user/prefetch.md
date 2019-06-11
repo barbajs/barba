@@ -23,8 +23,13 @@ Example:
 import barba from '@barba/core';
 import barbaPrefetch from '@barba/prefetch';
 
-// tells barba to use the prefetch module
+// tell Barba to use the prefetch module
 barba.use(barbaPrefetch);
 
+// init Barba
 barba.init();
 ```
+
+> On slow network or with a high page weight, the server can take time to prefetch the response and can lead Barba to abort the transition and display a *Timeout error [2000]* message.
+>
+> See the [`timeout`](core.md#timeout) setting to properly manage this behavior.

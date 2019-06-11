@@ -1,7 +1,7 @@
 {
   "name": "@barba/core",
   "version": "2.3.9",
-  "description": "Barba is a ...",
+  "description": "Create badass, fluid and smooth transition between your website's pages",
   "publishConfig": {
     "access": "public"
   },
