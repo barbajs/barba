@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.10](https://github.com/barbajs/barba/compare/@barba/core@2.3.9...@barba/core@2.3.10) (2019-06-11)
+
+### Bug Fixes
+
+- **core:** :bug: remove "force repaint" when new container is added ([5a34322](https://github.com/barbajs/barba/commit/5a34322))
+- **core:** :construction: fix "glitch" when new container added ([1286bf9](https://github.com/barbajs/barba/commit/1286bf9))
+
 ## [2.3.9](https://github.com/barbajs/barba/compare/@barba/core@2.3.8...@barba/core@2.3.9) (2019-04-29)
 
 **Note:** Version bump only for package @barba/core
