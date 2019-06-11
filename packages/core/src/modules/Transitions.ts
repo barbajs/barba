@@ -282,7 +282,7 @@ export class Transitions {
    */
   public async add(data: ITransitionData, wrapper: Wrapper): Promise<void> {
     wrapper.appendChild(data.next.container);
-    await helpers.nextTick();
+    // await helpers.nextTick();
     hooks.do('nextAdded', data);
   }
 
