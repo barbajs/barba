@@ -282,7 +282,6 @@ export class Transitions {
    */
   public async add(data: ITransitionData, wrapper: Wrapper): Promise<void> {
     wrapper.appendChild(data.next.container);
-    // await helpers.nextTick();
     hooks.do('nextAdded', data);
   }
 
@@ -293,9 +292,7 @@ export class Transitions {
     const { container } = data.current;
 
     if (document.body.contains(container)) {
-      await helpers.nextTick();
       container.parentNode.removeChild(container);
-      await helpers.nextTick();
       hooks.do('currentRemoved', data);
     }
   }
