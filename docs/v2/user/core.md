@@ -556,7 +556,7 @@ Example:
 
 - barba.destroy()
 - barba.force(href: string)
-- barba.go(href: string, trigger?: Trigger, e?: LinkEvent | PopStateEvent)
+- barba.go(href: string, trigger?: Trigger, e?: LinkEvent \| PopStateEvent)
 - barba.prefetch(href: string)
 - barba.request(url: string, ttl?: number, requestError: RequestError)
 - barba.version
