@@ -3,6 +3,9 @@ body {
 }
 
 .header {
+  position: fixed;
+  top: 0;
+  width: 100%;
   display: flex;
   align-items: center;
   height: 65px;
@@ -46,7 +49,7 @@ body {
 }
 
 .main {
-  margin: 2rem;
+  margin: 100px 32px;
 }
 
 .nav__trigger {
@@ -56,21 +59,11 @@ body {
 @media (min-width: 64em) {
   .main {
     max-width: 60vw;
-    margin: 32px auto;
+    margin: 100px auto;
   }
 }
 
 @media (max-width: 39.9375em) {
-  .main {
-    margin-top: 97px;
-  }
-
-  .header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-  }
-
   .nav a {
     font-size: 25px;
     text-transform: capitalize;
