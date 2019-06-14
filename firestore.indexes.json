@@ -1,0 +1,19 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "showcases",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "isValidated",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "dateCreation",
+          "order": "DESCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

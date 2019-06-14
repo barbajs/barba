@@ -6,6 +6,8 @@ export default class Form extends Component {
   load() {
     const dragEvents = ['dragenter', 'dragover', 'dragleave', 'drop'];
 
+    this.url = '***REMOVED***';
+
     this.file = [];
 
     dragEvents.forEach(e => {

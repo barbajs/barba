@@ -19,10 +19,13 @@
     "@google-cloud/storage": "^2.5.0",
     "animejs": "^3.0.1",
     "firebase": "^6.1.0",
+    "firebase-functions": "^3.0.1",
     "gsap": "^2.0.2",
     "hexo": "^3.7.0",
     "kapla": "^2.0.1",
     "prismjs": "^1.16.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
     "spin.js": "^4.0.0",
     "verge": "^1.10.2"
   },
@@ -46,6 +49,7 @@
     "hexo-renderer-webpack-2-advanced": "^0.5.0",
     "hexo-server": "^0.3.1",
     "html-webpack-plugin": "^3.2.0",
+    "json-loader": "^0.5.7",
     "npm-run-all": "^4.1.5",
     "sass-lint": "^1.12.1",
     "svg-sprite": "^1.5.0"
