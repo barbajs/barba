@@ -9,7 +9,7 @@ admin.initializeApp(functions.config().firebase);
 // Initialize Webhook
 const webhook = new IncomingWebhook(functions.config().slack.url);
 
-exports.showcaseSubmission = functions.firestore.document('showcases/{documentId}').onCreate(async (snap, context) => {
+exports.showcaseSubmission = functions.firestore.document('showcases/{documentId}').onCreate(async snap => {
   const showcase = snap.data();
 
   const slackNotification = {
@@ -71,19 +71,19 @@ exports.showcaseValidation = functions.https.onRequest((req, res) => {
   Object.assign({ replace_original: true, response_type: 'in_channel' }, slackNotification);
   delete slackNotification.attachments[0].actions;
 
-  const processingMessage = JSON.parse(JSON.stringify(slackNotification));
+  const processingMessage = { ...slackNotification };
   processingMessage.attachments.push({
     color: '#FFA500',
     text: `The validation of ${parsedPayload.original_message.attachments[0].title} has been sent.`,
   })
 
-  const approveMessage = JSON.parse(JSON.stringify(slackNotification));
+  const approveMessage = { ...slackNotification };
   approveMessage.attachments.push({
     color: '#00FF00',
     text: `Submission has been agreed by *@${parsedPayload.user.name}*.`,
   })
 
-  const rejectMessage = JSON.parse(JSON.stringify(slackNotification));
+  const rejectMessage = { ...slackNotification };
   rejectMessage.attachments.push({
     color: '#FF0000',
     text: `Submission has been rejected by *@${parsedPayload.user.name}*.`,
@@ -120,7 +120,7 @@ exports.showcaseValidation = functions.https.onRequest((req, res) => {
   })
 });
 
-exports.showcaseNotifications = functions.firestore.document('showcases/{documentId}').onUpdate(async (change, context) => {
+exports.showcaseNotifications = functions.firestore.document('showcases/{documentId}').onUpdate(async change => {
   const showcase = change.after.data();
   const webhook3 = new IncomingWebhook('https://hooks.slack.com/services/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');
 
@@ -144,6 +144,5 @@ exports.showcaseNotifications = functions.firestore.document('showcases/{documen
 
     await webhook3.send(slackNotification);
   }
-
 });
 

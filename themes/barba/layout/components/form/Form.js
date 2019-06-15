@@ -73,12 +73,14 @@ export default class Form extends Component {
         })
         .catch(err => {
           console.error(err);
+          ee.emit('spinner:stop');
           this.$refs.failed.classList.add('is-active');
+          this.$refs.failed.innerHTML = err.message;
           setTimeout(() => {
             this.$refs.failed.classList.remove('is-active');
             ee.emit('modal:close');
             this.$refs.inputs.classList.remove('is-hidden');
-          }, 3000);
+          }, 5000);
         });
     }
   }
