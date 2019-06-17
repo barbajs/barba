@@ -220,13 +220,13 @@ export default class extends Component {
         anime.remove(link);
         anime.remove($base);
 
-        //     anime({
-        //       targets: $names,
-        //       opacity: 0,
-        //       translateY: -30,
-        //       easing: 'easeOutExpo',
-        //       duration: 400,
-        //     })
+        // anime({
+        //   targets: $names,
+        //   opacity: 0,
+        //   translateY: -30,
+        //   easing: 'easeOutExpo',
+        //   duration: 400,
+        // })
 
         anime.remove($names[index]);
         anime({

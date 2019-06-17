@@ -9,7 +9,11 @@
 ## Partials
 
 - [x] Adapter le partial image pour les showcases et examples (enlever le backgound-image)
-- [ ] Comportement du header sur mobile
+- [x] Comportement du header sur mobile
+
+## Home
+
+- [ ] Smooth hover on barba letters
 
 ## Documentation
 
@@ -21,8 +25,8 @@
 
 ## Showcases
 
-- [ ] Règles d'enregistrement sur le Storage de Firebase (storage.rules) -> pour les images ?
-- [ ] Règles d'enregistrement dans la Database de Firebase (firestore.rules) -> pour les infos ?
+- [ ] Règles d'écriture et de lecture du Storage de Firebase (storage.rules) -> pour les images ?
+- [ ] Règles d'écriture et de lecture de la Database de Firebase (firestore.rules) -> pour les infos ?
 - [x] Check inputs du formulaire lorsqu'il est submit
 - [ ] Design de la réponse (Success) suite à l'enregistrement d'un showcase
 - [ ] Design du loader en attente de la réponse de la base de donnée
@@ -40,7 +44,7 @@
 ## Features
 
 - [ ] Transition des grandes letters (big) -> une solution plus simple qui correspondrait davantage aux wireframes
-- [ ] Navigation latérale en arrière plan par rapport au menu principal
+- [x] Navigation latérale en arrière plan par rapport au menu principal
 - [ ] Ajout des illustrations
 - [ ] Transition pour la dernière lettre? (cercle avec JS)
 - [ ] Change Log page
