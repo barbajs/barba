@@ -99,9 +99,9 @@ export const parseQuery = (str: string) =>
   }, {});
 
 /**
- * Clean URL, remove "hash".
+ * Clean URL, remove "hash" and/or "trailing slash".
  */
-export const clean = (url: string) => url.replace(/#.*/, '');
+export const clean = (url: string) => url.replace(/(\/#.*|\/|#.*)$/, '');
 /**
  * Clean URL, remove "origin".
  */
