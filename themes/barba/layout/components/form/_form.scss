@@ -1,3 +1,11 @@
+.form {
+  display: none;
+
+  @include mq(m) {
+    display: block;
+  }
+}
+
 .form__title {
   margin: 3rem;
   color: $white;

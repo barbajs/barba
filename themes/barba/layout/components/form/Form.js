@@ -28,14 +28,14 @@ export default class Form extends Component {
       this.onDropAreaClick();
     });
 
-    this.$refs.pictureFile.addEventListener('change', () => {
+    this.$refs.pictureFile.addEventListener('input', () => {
       this.file = this.$refs.pictureFile.files[0]; // eslint-disable-line prefer-destructuring
       this.$refs.pictureName.innerHTML = this.file.name;
       this.highlight();
     });
 
     Array.prototype.forEach.call(this.$el.elements, input => {
-      input.addEventListener('change', () => {
+      input.addEventListener('input', () => {
         this.checkInputs();
       });
     });
@@ -43,13 +43,12 @@ export default class Form extends Component {
 
   onClick() { // eslint-disable-line class-methods-use-this
     ee.emit('modal:focused');
-    this.$el.classList.add('is-invalid');
   }
 
   onSubmit(e) {
     e.preventDefault();
 
-    if (this.checkInputs()) {
+    if (this.formValidation()) {
       this.$refs.inputs.classList.add('is-hidden');
       ee.emit('spinner:start');
       this.unhighlight();
@@ -172,7 +171,7 @@ export default class Form extends Component {
   }
 
   checkInputs() {
-    if (this.$refs.authorName.value && this.$refs.authorUrl.value && this.$refs.siteName.value &&
+    if (this.$refs.authorName.value && this.$refs.siteName.value &&
       this.$refs.siteUrl.value && this.file.length !== 0) {
       this.$el.classList.remove('is-invalid');
 
@@ -181,5 +180,58 @@ export default class Form extends Component {
     this.$el.classList.add('is-invalid');
 
     return false;
+  }
+
+  formValidation() {
+    const urlPattern = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+
+    // Picture
+    if (
+      this.file.length === 0 ||
+      this.file.size > 2100000 || (
+        this.file.type !== 'image/jpeg' &&
+        this.file.type !== 'image/png' &&
+        this.file.type !== 'image/gif'
+      )
+    ) {
+      console.error('Invalid image, please respect indications');
+
+      return false;
+    } else if (
+      // Site Name
+      typeof this.$refs.siteName.value !== 'string' &&
+      this.$refs.siteName.value.length < 2 &&
+      this.$refs.siteName.value.length > 64
+    ) {
+      console.error('Invalid site name, it should be between 2 and 64 characters');
+
+      return false;
+    } else if (
+      // Site Url
+      urlPattern.test(this.$refs.siteUrl.value) === false
+    ) {
+      console.error('Invalid site url');
+
+      return false;
+    } else if (
+      // Author Name
+      typeof this.$refs.authorName.value !== 'string' &&
+      this.$refs.authorName.value.length < 2 &&
+      this.$refs.authorName.value.length > 64
+    ) {
+      console.error('Invalid author name, it should be between 2 and 64 characters');
+
+      return false;
+    } else if (
+      // Author Url
+      this.$refs.authorUrl.value &&
+      urlPattern.test(this.$refs.authorUrl.value) === false
+    ) {
+      console.error('Invalid author url');
+
+      return false;
+    }
+
+    return true;
   }
 }

@@ -2,10 +2,12 @@
 
   <a href="<%- post.watch_url %>" target="_blank" rel="noopener noreferrer">
     <h2 class="example__card__title"><%- post.name %></h2>
-    <%- partial('components/common/image.ejs', {
-      src: post.asset,
-      alt: post.alt,
-    }) %>
+    <div class="example__card__picture">
+      <%- partial('components/common/image.ejs', {
+          src: post.asset,
+          alt: post.alt,
+        }) %>
+    </div>
   </a>
 
   <div class="example__card__links">

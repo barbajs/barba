@@ -1,3 +1,8 @@
+.showcase__card__picture {
+  width: 100%;
+  height: 80%;
+}
+
 .showcase__card__footer {
   display: flex;
   justify-content: space-between;
@@ -10,6 +15,7 @@
 }
 
 .showcase__card__footer__title {
+  margin: 0;
   color: $c-blue-medium;
   font-size: 1.8rem;
   font-weight: 300;
@@ -18,6 +24,7 @@
 }
 
 .showcase__card__footer__author {
+  margin: 0;
   font-family: 'Space Mono';
   font-size: 1.1rem;
   line-height: 1.2rem;

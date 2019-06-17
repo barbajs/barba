@@ -1,10 +1,5 @@
 .partial-image {
   width: 100%;
-  background-size: cover;
-
-  &::after {
-    content: '';
-    display: block;
-    padding-top: 77.5%;
-  }
+  height: 100%;
+  object-fit: cover;
 }

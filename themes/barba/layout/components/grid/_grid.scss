@@ -1,23 +1,15 @@
 .grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 30rem;
+  grid-gap: 3rem;
   margin: 0;
   padding: 5rem 0;
   list-style: none;
-}
-
-.grid__item {
-  position: relative;
-  width: 100%;
-  margin-top: 3rem;
 
   @include mq(m) {
-    width: 48%;
-  }
-
-  @include mq(l) {
-    width: 31.57%;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: minmax(200px, 250px);
   }
 }
 

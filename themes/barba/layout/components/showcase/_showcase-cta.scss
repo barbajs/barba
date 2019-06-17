@@ -1,3 +1,7 @@
 .showcase-cta {
-  display: flex;
+  display: none;
+
+  @include mq(m) {
+    display: flex;
+  }
 }

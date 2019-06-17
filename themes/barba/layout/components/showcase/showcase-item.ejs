@@ -1,17 +1,31 @@
 <li class="grid__item showcase__card" data-id="<%- id %>">
 
-  <a href="<%- data().siteUrl %>" target="_blank" rel="noopener noreferrer">
-    <%- require('ejs-compiled-loader!../common/image.ejs')({
+  <div class="showcase__card__picture">
+    <a href="<%- data().siteUrl %>" target="_blank" rel="noopener noreferrer">
+
+      <%- require('ejs-compiled-loader!../common/image.ejs')({
         src: data().pictureUrl,
         alt: data().siteName,
       }) %>
-  </a>
+    </a>
+  </div>
 
-  <div class="showcase__card__footer">
-    <figcaption>
-      <strong class="showcase__card__footer__title"><%- data().siteName %></strong>
-      <span class="showcase__card__footer__author"><%- data().authorName %></span>
-    </figcaption>
+  <div class=" showcase__card__footer">
+    <div>
+
+      <a href="<%- data().siteUrl %>" target="_blank">
+        <h2 class="showcase__card__footer__title"><%- data().siteName %></h2>
+      </a>
+
+      <% if (data().authorUrl) { %>
+      <a href="<%- data().authorUrl %>" target="_blank">
+        <% }; %>
+        <h3 class="showcase__card__footer__author"><%- data().authorName %></h3>
+        <% if (data().authorUrl) { %>
+      </a>
+      <% }; %>
+
+    </div>
     <a class="grid__item__link link--view" target="_blank" href="<%- data().siteUrl %>">
       View
       <%- require('ejs-compiled-loader!../common/icon.ejs')({

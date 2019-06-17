@@ -30,7 +30,6 @@ main {
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  padding: $spacing * 2.5;
 
   &[data-barba-namespace='docs'] {
     display: block;
