@@ -1,0 +1,36 @@
+<!-- Docs Nav -->
+<div class="docs__nav" data-component="docs-nav">
+  <ul class="docs__nav__list">
+
+    <!-- Page -->
+    <% theme.docs.forEach(function(page) { %>
+    <li>
+      <a href="<%- page.url %>">
+        <h1 class="docs__nav__title <%- is_current(page.path) ? 'is-open' : '' %>"><%- page.title %></h1>
+      </a>
+
+      <!-- Subpages -->
+      <% if (page.subpages) { %>
+      <ol class="docs__nav__sublist">
+
+        <!-- Subpage -->
+        <% page.subpages.forEach(function(subpage) { %>
+        <li class="<%- is_current(subpage.url) ? 'is-open' : '' %>">
+          <a href="<%- subpage.url %>">
+            <h2 class="docs__nav__subtitle <%- is_current(subpage.url) ? 'is-open' : '' %>"><%- subpage.title %>
+            </h2>
+        </li>
+        <% }); %>
+        <!-- Subpage [end]-->
+
+      </ol>
+      <% }; %>
+      <!-- Subpages [end]-->
+
+    </li>
+    <% }); %>
+    <!-- Page [end]-->
+
+  </ul>
+</div>
+<!-- Docs Nav [end]-->

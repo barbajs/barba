@@ -1,0 +1,110 @@
+// Side nav
+
+.docs__nav {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  padding-top: 14rem;
+  background: $c-blue-lightest;
+
+  @include mq(m) {
+    right: unset;
+    display: block;
+    width: 25vw;
+  }
+
+  &.is-open {
+    display: block;
+  }
+}
+
+.docs__nav__list {
+  display: block;
+  overflow: auto;
+  margin-left: 1rem;
+  padding: 0;
+  list-style: none;
+  @include mq(s) {
+    margin-left: 5rem;
+  }
+  @include mq(l) {
+    margin-left: 50%;
+  }
+
+  & > li {
+    border-bottom: 1px solid rgba($black, 0.1);
+
+    a {
+      color: $gray-darker;
+    }
+  }
+}
+
+.docs__nav__title {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 2rem;
+  text-transform: uppercase;
+  opacity: 0.3;
+  @include mq(s) {
+    font-size: 1.2rem;
+  }
+  @include mq(l) {
+    font-size: 1.5rem;
+  }
+
+  &.is-open {
+    opacity: 0.7;
+  }
+}
+
+.docs__nav__sublist {
+  margin: 0;
+  padding-left: 1rem;
+  list-style: none;
+  @include mq(s) {
+    padding-left: 2rem;
+  }
+  @include mq(l) {
+    padding-left: 3rem;
+  }
+
+  li .is-open {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0.5em;
+      left: -1em;
+      width: 0;
+      height: 0;
+      border-width: 0.35em 0 0.35em 0.45em;
+      border-style: solid;
+      border-color: transparent $c-blue-light;
+      @include mq(l) {
+        top: 0.3em;
+      }
+    }
+  }
+}
+
+.docs__nav__subtitle {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 2rem;
+  @include mq(s) {
+    font-size: 1.2rem;
+  }
+  @include mq(l) {
+    font-size: 1.5rem;
+  }
+
+  &.is-open {
+    color: $c-blue-light;
+  }
+}

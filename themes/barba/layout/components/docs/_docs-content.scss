@@ -1,0 +1,188 @@
+// Content markdown
+
+.docs__markdown {
+  overflow: hidden;
+  width: 100vw;
+  padding: 12rem 2rem;
+
+  @include mq(m) {
+    width: 74vw;
+    margin-left: 25vw;
+  }
+
+  @include mq(l) {
+    min-width: 50vw;
+    max-width: 80rem;
+    padding: 12rem 6rem;
+  }
+
+  h1 {
+    display: flex;
+    margin: 0;
+    color: $c-blue-light;
+    font-family: 'Space Mono';
+    font-size: 3.2rem;
+    font-weight: 400;
+    @include mq(s) {
+      font-size: 4rem;
+    }
+    @include mq(l) {
+      font-size: 5rem;
+    }
+
+    small {
+      font-size: 1.5rem;
+      @include mq(s) {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  p {
+    margin: 0;
+    font-family: 'Rubik';
+  }
+
+  h2 {
+    padding-top: 1.5rem;
+    font-size: 2rem;
+    font-weight: lighter;
+    @include mq(s) {
+      padding-top: 2rem;
+      font-size: 2.5rem;
+    }
+    @include mq(l) {
+      padding-top: 3rem;
+      font-size: 3.5rem;
+    }
+  }
+
+  h3 {
+    padding-top: 1.2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    @include mq(s) {
+      padding-top: 1.2rem;
+      font-size: 2rem;
+    }
+    @include mq(l) {
+      padding-top: 1.2rem;
+      font-size: 2.5rem;
+    }
+  }
+
+  h4 {
+    padding-top: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    @include mq(s) {
+      font-size: 1.5rem;
+    }
+    @include mq(l) {
+      font-size: 2rem;
+    }
+  }
+
+  h5 {
+    padding-top: 0.8rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    @include mq(s) {
+      font-size: 1.4rem;
+    }
+    @include mq(l) {
+      font-size: 1.7rem;
+    }
+  }
+
+  h6 {
+    padding-top: 0.8rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    @include mq(s) {
+      font-size: 1.3rem;
+    }
+    @include mq(l) {
+      font-size: 1.6rem;
+    }
+  }
+
+  p {
+    font-size: 0.9rem;
+    @include mq(s) {
+      font-size: 1.2rem;
+    }
+    @include mq(l) {
+      font-size: 1.5rem;
+    }
+  }
+
+  table {
+    display: block;
+    overflow: auto;
+    width: 100%;
+
+    th,
+    td,
+    tr {
+      border: 1px solid $c-gray-medium;
+      padding: 0.5rem ;
+      font-size: 1rem;
+      @include mq(s) {
+        padding: 0.7rem;
+        font-size: 1.2rem;
+      }
+      @include mq(l) {
+        padding: 1rem;
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  ul {
+    padding-left: 2rem;
+    font-size: 0.8rem;
+    list-style: none;
+    @include mq(s) {
+      padding-left: 4rem;
+      font-size: 1.1rem;
+    }
+    @include mq(l) {
+      padding-left: 6rem;
+      font-size: 1.4rem;
+    }
+
+    li {
+      padding: 0.5rem;
+    }
+
+    li::before {
+      content: '';
+      position: relative;
+      top: 1em;
+      left: -1em;
+      display: block;
+      width: 0;
+      height: 0;
+      border-width: 0.35em 0 0.35em 0.45em;
+      border-style: solid;
+      border-color: transparent $c-blue-light;
+    }
+  }
+
+  code {
+    background: $c-blue-lightest;
+    border-radius: 4px;
+  }
+
+  blockquote {
+    margin: 2rem 0;
+    border-left: 3px solid $gray-lighter;
+    padding: 0 4rem;
+    color: $gray-light;
+  }
+}

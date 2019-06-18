@@ -1,0 +1,35 @@
+<!-- Lateral Nav -->
+<div class="docs__nav__lateral" data-component="docs-nav-lateral">
+  <!-- Left Link -->
+  <% if (page.prevpage) { %>
+  <a href="<%- page.prevpage.slug %>" class="docs__nav__lateral__link">
+    <%- partial('../common/icon', {
+                  icon: 'barba-arrow-prev',
+                  hidden: true,
+                  viewbox: '0 0 21 15',
+                }) %>
+    <span class="docs__nav__lateral__label"><%- page.prevpage.label %></span>
+  </a>
+  <% }; %>
+  <!-- Left Link [end]-->
+
+  <% if (page.nextpage) { %>
+  <!-- Center Menu (for mobile)-->
+  <button class="docs__nav__lateral__button">
+    Doc
+  </button>
+  <!-- Center Menu (for mobile) [end]-->
+
+  <!-- Rigth Link -->
+  <a href="<%- page.nextpage.slug %>" class="docs__nav__lateral__link">
+    <span class="docs__nav__lateral__label"><%- page.nextpage.label %></span>
+    <%- partial('../common/icon', {
+                  icon: 'barba-arrow-next',
+                  hidden: true,
+                  viewbox: '0 0 21 15',
+                }) %>
+  </a>
+  <!-- Rigth Link [end]-->
+  <% }; %>
+</div>
+<!-- Lateral Nav [end]-->

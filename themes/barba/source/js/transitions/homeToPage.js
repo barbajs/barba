@@ -7,27 +7,14 @@ export default {
     route: 'page',
   },
 
-  leave(data) {
+  leave() {
     return new Promise(resolve => {
-      const menuEls = document.querySelectorAll('.menu__pages__item');
-      const menuSubEls = document.querySelectorAll('.menu-subpages__item');
-
-
-      menuEls.forEach(item => {
-        item.classList.remove('is-active');
-      });
-
-      menuSubEls.forEach(item => {
-        item.classList.remove('is-active');
-      });
-
       resolve();
     });
   },
 
-  enter(data) {
+  enter() {
     return new Promise(resolve => {
-      data.trigger.parentNode.classList.add('is-active');
       resolve();
     });
   }

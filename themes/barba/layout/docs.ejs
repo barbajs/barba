@@ -1,114 +1,25 @@
 <section class="docs">
   <div class="docs__page-transition"></div>
 
-  <!-- Docs Nav -->
-  <div class="docs__side-nav">
-    <ul class="docs__side-nav__list">
+  <%- partial('/components/docs/docs-nav') %>
 
-      <!-- Page -->
-      <% theme.docs.forEach(function(page) { %>
-      <li>
-        <a href="<%- page.url %>">
-          <h1 class="docs__side-nav__title <%- is_current(page.path) ? 'is-open' : '' %>"><%- page.title %></h1>
-        </a>
+  <% theme.docs.forEach(function(page) { %>
+  <% if (page.subpages) { %>
+  <% page.subpages.forEach(function(subpage) { %>
+  <% if (is_current(subpage.url)) { %>
+  <%- partial('/components/docs/docs-nav-lateral', {
+            page: subpage,
+          }) %>
+  <% }; %>
+  <% }); %>
+  <% }; %>
+  <% if (is_current(page.url)) { %>
+  <%- partial('/components/docs/docs-nav-lateral', {
+    page: page,
+  }) %>
+  <% }; %>
+  <% }); %>
 
-        <!-- Subpages -->
-        <% if (page.subpages) { %>
-        <ol class="docs__side-nav__sublist">
-
-          <!-- Subpage -->
-          <% page.subpages.forEach(function(subpage) { %>
-          <li class="<%- is_current(subpage.url) ? 'is-open' : '' %>">
-            <a href="<%- subpage.url %>">
-              <h2 class="docs__side-nav__subtitle <%- is_current(subpage.url) ? 'is-open' : '' %>"><%- subpage.title %>
-              </h2>
-          </li>
-
-          <!-- Lateral Nav -->
-          <% if (is_current(subpage.url)) { %>
-          <div class="docs__lateral-nav">
-
-            <!-- Left Link -->
-            <% if (subpage.prevpage) { %>
-            <a href="<%- subpage.prevpage.slug %>" class="docs__lateral-nav--previous">
-              <%- partial('/components/common/icon', {
-                        icon: 'barba-arrow-prev',
-                        hidden: true,
-                        viewbox: '0 0 21 15',
-                      }) %>
-              <span><%- subpage.prevpage.label %></span>
-            </a>
-            <% }; %>
-            <!-- Left Link [end]-->
-
-            <!-- Rigth Link -->
-            <% if (subpage.nextpage) { %>
-            <a href="<%- subpage.nextpage.slug %>" class="docs__lateral-nav--next">
-              <span><%- subpage.nextpage.label %></span>
-              <%- partial('/components/common/icon', {
-                        icon: 'barba-arrow-next',
-                        hidden: true,
-                        viewbox: '0 0 21 15',
-                      }) %>
-            </a>
-            <% }; %>
-            <!-- Rigth Link [end]-->
-
-          </div>
-          <% }; %>
-          <!-- Lateral Nav [end]-->
-
-          <% }); %>
-          <!-- Subpage [end]-->
-
-        </ol>
-        <% }; %>
-        <!-- Subpages [end]-->
-
-        <!-- Lateral Nav -->
-        <% if (is_current(page.url)) { %>
-        <div class="docs__lateral-nav">
-
-          <!-- Left Link -->
-          <% if (page.prevpage) { %>
-          <a href="<%- page.prevpage.slug %>" class="docs__lateral-nav--previous">
-            <%- partial('/components/common/icon', {
-                        icon: 'barba-arrow-prev',
-                        hidden: true,
-                        viewbox: '0 0 21 15',
-                      }) %>
-            <span><%- page.prevpage.label %></span>
-          </a>
-          <% }; %>
-          <!-- Left Link [end]-->
-
-          <!-- Rigth Link -->
-          <% if (page.nextpage) { %>
-          <a href="<%- page.nextpage.slug %>" class="docs__lateral-nav--next">
-            <span><%- page.nextpage.label %></span>
-            <%- partial('/components/common/icon', {
-                        icon: 'barba-arrow-next',
-                        hidden: true,
-                        viewbox: '0 0 21 15',
-                      }) %>
-          </a>
-          <% }; %>
-          <!-- Rigth Link [end]-->
-
-        </div>
-        <% }; %>
-        <!-- Lateral Nav [end]-->
-
-      </li>
-      <% }); %>
-      <!-- Page [end]-->
-
-    </ul>
-  </div>
-  <!-- Docs Nav [end]-->
-
-  <div class="docs__markdown">
-    <%- page.content %>
-  </div>
+  <%- partial('/components/docs/docs-content') %>
 
 </section>

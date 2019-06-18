@@ -1,0 +1,67 @@
+// Lateral nav
+
+.docs__nav__lateral {
+  position: fixed;
+  z-index: 11;
+  right: 0;
+  bottom: 3rem;
+  left: 0;
+  display: flex;
+  width: 100%;
+
+  @include mq(l) {
+    right: 20vw;
+  }
+
+  .icon--barba {
+    width: 2.1rem;
+    height: 1.5rem;
+    margin: 1rem;
+    fill: inherit;
+  }
+}
+
+.docs__nav__lateral__link,
+.docs__nav__lateral__button {
+  display: flex;
+  align-items: center;
+  margin: 2rem;
+  border: 0;
+  box-shadow: 0 2px 2px $gray-light;
+  background: $white;
+  color: $c-gray-darker;
+  font-family: 'Space Mono';
+  font-size: 1.2rem;
+  border-radius: 4px;
+  fill: $c-gray-darker;
+
+  @include mq(s) {
+    font-size: 1.5rem;
+
+    &:hover {
+      background: $c-blue-light;
+      color: $white;
+      fill: $white;
+    }
+  }
+  @include mq(l) {
+    font-size: 2rem;
+  }
+}
+
+.docs__nav__lateral__link {
+  width: 35%;
+}
+
+.docs__nav__lateral__button {
+  display: flex;
+  width: 30%;
+
+  @include mq(m) {
+    display: none;
+  }
+}
+
+.docs__nav__lateral__label {
+  margin: 1rem;
+}
