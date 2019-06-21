@@ -54,12 +54,16 @@
   overflow-y: scroll;
   width: 100%;
   height: 100vh;
-  padding: 180px 50px 50px;
+  padding: 100px 50px 50px;
   box-shadow: 10px 10px 10px 10px #D3DEFC;
   background-color: $white;
 
   transform: translateX(110%);
   transition: transform 0.4s ease-out;
+
+  @include mq(m) {
+    padding: 180px 50px 50px;
+  }
 
   &::before {
     content: '';
@@ -67,8 +71,12 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 18rem;
+    height: 10rem;
     background: $white;
+
+    @include mq(m) {
+      height: 18rem;
+    }
   }
 
   .is-open & {
@@ -147,16 +155,16 @@
     background-color: $c-menu-small-size;
   }
 
-  .open-source & {
-    background-color: $c-menu-open-source;
+  .b-core & {
+    background-color: $c-menu-b-core;
   }
 
-  .views-namespaces-logic & {
-    background-color: $c-menu-views-namespaces-logic;
+  .b-router & {
+    background-color: $c-menu-b-router;
   }
 
-  .prefetch & {
-    background-color: $c-menu-prefetch;
+  .b-prefetch & {
+    background-color: $c-menu-b-prefetch;
   }
 
   .change-log & {
@@ -178,19 +186,19 @@
     color: $c-menu-small-size;
   }
 
-  .menu-subpages__item:hover.open-source &,
-  .menu-subpages__item.open-source.is-active & {
-    color: $c-menu-open-source;
+  .menu-subpages__item:hover.b-core &,
+  .menu-subpages__item.b-core.is-active & {
+    color: $c-menu-b-core;
   }
 
-  .menu-subpages__item:hover.views-namespaces-logic &,
-  .menu-subpages__item.views-namespaces-logic.is-active & {
-    color: $c-menu-views-namespaces-logic;
+  .menu-subpages__item:hover.b-router &,
+  .menu-subpages__item.b-router.is-active & {
+    color: $c-menu-b-router;
   }
 
-  .menu-subpages__item:hover.prefetch &,
-  .menu-subpages__item.prefetch.is-active & {
-    color: $c-menu-prefetch;
+  .menu-subpages__item:hover.b-prefetch &,
+  .menu-subpages__item.b-prefetch.is-active & {
+    color: $c-menu-b-prefetch;
   }
 
   .menu-subpages__item:hover.change-log &,

@@ -19,7 +19,7 @@
 
 - [x] Comportement menu version mobile
 - [ ] Design de la navigation latérale (prev/next + nav on mobile)
-- [ ] Taille des polices en fonctions des différents écrans
+- [x] Taille des polices en fonctions des différents écrans (à checker)
 - [ ] Style des balises pre et de toute la partie doc (générée via markdown)
 - [ ] Transition entre les différents sections de la doc (à revoir)
 

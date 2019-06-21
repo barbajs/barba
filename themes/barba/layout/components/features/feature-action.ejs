@@ -1,0 +1,13 @@
+<!--
+  Need: ctaLink, ctaModifier, ctaTitle, ctaIcon
+-->
+<a href="<%- ctaLink %>" class="feature__action--<%- ctaModifier %>">
+  <p class="feature__action__title colored"><%- ctaTitle %></p>
+  <% if (ctaIcon) { %>
+  <%- partial('components/common/icon', {
+        icon: ctaIcon,
+        hidden: true,
+        viewbox: '0 0 32 32',
+      }) %>
+  <% }; %>
+</a>

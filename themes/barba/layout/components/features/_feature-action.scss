@@ -1,0 +1,38 @@
+.feature__action,
+[class*='feature__action--'] {
+  display: flex;
+  padding: 1rem;
+  border-radius: 20px;
+
+  [data-barba-namespace='dependency-free'] & {
+    background-color: $c-menu-dependency-free-light;
+  }
+
+  [data-barba-namespace='small-size'] & {
+    background-color: $c-menu-small-size-light;
+  }
+
+  [data-barba-namespace='b-core'] & {
+    background-color: $c-menu-b-core-light;
+  }
+
+  [data-barba-namespace='b-router'] & {
+    background-color: $c-menu-b-router-light;
+  }
+
+  [data-barba-namespace='b-prefetch'] & {
+    background-color: $c-menu-b-prefetch-light;
+  }
+
+  [data-barba-namespace='change-log'] & {
+    background-color: $c-menu-change-log-light;
+  }
+}
+
+.feature__action__title {
+  margin: 0;
+  font-family: 'Space Mono';
+  font-size: 3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}

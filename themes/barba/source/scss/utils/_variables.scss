@@ -46,11 +46,17 @@ $c-gray-darker: #0c0c0c;
 
 
 $c-menu-dependency-free: #38d1f1;
+$c-menu-dependency-free-light: #d4f6fe;
 $c-menu-small-size: #04bf0c;
-$c-menu-open-source: #ffa543;
-$c-menu-views-namespaces-logic: #ec4343;
-$c-menu-prefetch: #8c44d9;
+$c-menu-small-size-light: #e4ffcc;
+$c-menu-b-core: #ffa543;
+$c-menu-b-core-light: #fef0d5;
+$c-menu-b-router: #ec4343;
+$c-menu-b-router-light: #fcdcdd;
+$c-menu-b-prefetch: #8c44d9;
+$c-menu-b-prefetch-light: #f8e6ff;
 $c-menu-change-log: #2e5bdc;
+$c-menu-change-log-light: #8fadff;
 
 // Semantic/project colors
 $c-main: $c-blue-medium;
@@ -59,11 +65,11 @@ $c-light: $white;
 
 // Documentation snippets colors
 $c-doc-comment: $c-gray-medium;
-$c-doc-attribute: $c-menu-views-namespaces-logic;
-$c-doc-number: $c-menu-open-source;
+$c-doc-attribute: $c-menu-b-router;
+$c-doc-number: $c-menu-b-core;
 $c-doc-string: #718c00;
 $c-doc-function: #4271ae;
-$c-doc-keyword: $c-menu-prefetch;
+$c-doc-keyword: $c-menu-b-prefetch;
 $c-doc-color: #3e999f;
 
 // Z Layers

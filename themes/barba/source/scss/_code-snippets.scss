@@ -17,12 +17,12 @@
     margin: 0;
     color: $c-gray-dark;
     font-family: 'Source Code Pro', Monaco, Menlo, Consolas, monospace;
-    line-height: 2rem;
+    line-height: 1.6rem;
     @include mq(s) {
-      line-height: 2.4rem;
+      line-height: 2rem;
     }
     @include mq(l) {
-      line-height: 3rem;
+      line-height: 2.5rem;
     }
 
     .comment,
@@ -86,7 +86,7 @@
   figcaption {
     margin: -5px 0 5px;
     color: $c-gray-medium;
-    font-size: 0.9em;
+    font-size: 1.2em;
     zoom: 1;
   }
 

@@ -1,0 +1,153 @@
+.feature {
+  @include get-all-space;
+  padding: 16rem 4rem 6rem;
+
+  @include mq(m) {
+    padding: 4rem;
+  }
+}
+
+.colored {
+  [data-barba-namespace='dependency-free'] & {
+    color: $c-menu-dependency-free;
+  }
+
+  [data-barba-namespace='small-size'] & {
+    color: $c-menu-small-size;
+  }
+
+  [data-barba-namespace='b-core'] & {
+    color: $c-menu-b-core;
+  }
+
+  [data-barba-namespace='b-router'] & {
+    color: $c-menu-b-router;
+  }
+
+  [data-barba-namespace='b-prefetch'] & {
+    color: $c-menu-b-prefetch;
+  }
+
+  [data-barba-namespace='change-log'] & {
+    color: $c-menu-change-log;
+  }
+}
+
+.feature__container {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  height: 100%;
+  margin: 0 auto;
+
+  p {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+
+    @include mq(m) {
+      font-size: 1.6rem;
+      line-height: 2.2rem;
+    }
+  }
+
+  @include mq(m) {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.feature__title {
+  font-family: 'Space Mono';
+  font-size: 3.2rem;
+  font-weight: 400;
+  text-align: left;
+
+  @include mq(m) {
+    font-size: 5rem;
+  }
+}
+
+.feature__box {
+  position: relative;
+  box-shadow: 0 1px 15px rgba($gray-light, 0.3);
+  background: rgba($white, 0.8);
+  border-radius: 10px;
+
+  & > div {
+    padding: 2rem;
+  }
+
+  @include mq(s) {
+    max-width: 70vw;
+  }
+
+  @include mq(l) {
+    width: 70rem;
+  }
+}
+
+.feature__box__body {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @include mq(l) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.feature__box__column,
+[class*='feature__box__column--'] {
+  &[class*='two'] {
+    grid-column: span 2;
+  }
+
+  &[class*='three'] {
+    grid-column: span 3;
+  }
+
+  &[class*='four'] {
+    grid-column: span 4;
+  }
+}
+
+.feature__box__body__title {
+  margin: 0;
+  font-family: 'Space Mono';
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.feature__box__body__text {
+  margin: 0 0 1rem;
+  font-size: 2rem;
+}
+
+.feature__box__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 0.1px solid $gray-lighter;
+}
+
+.feature .logo {
+  @include center-x;
+  z-index: -1;
+  top: 10rem;
+  width: 23.5rem;
+
+  .base {
+    position: relative;
+    z-index: 100;
+  }
+
+  .big {
+    display: block;
+  }
+
+  @include mq(m) {
+    top: 4rem;
+  }
+}

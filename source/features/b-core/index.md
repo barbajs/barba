@@ -1,9 +1,9 @@
 ---
-title: Dependency Free
-namespace: dependency-free
+title: B/Core
+namespace: b-core
 layout: features/feature
-modifier: 'dep'
-box: 'dependency-free.ejs'
+modifier: 'b-core'
+box: 'b-core.ejs'
 action: {
     title: 'Read Documentation',
     icon: b-barba,

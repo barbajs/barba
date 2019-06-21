@@ -19,10 +19,12 @@
   h1 {
     display: flex;
     margin: 0;
+    padding-bottom: 2rem;
     color: $c-blue-light;
     font-family: 'Space Mono';
-    font-size: 3.2rem;
+    font-size: 3rem;
     font-weight: 400;
+
     @include mq(s) {
       font-size: 4rem;
     }
@@ -42,82 +44,92 @@
   h3,
   h4,
   h5,
+  h6,
   p {
     margin: 0;
     font-family: 'Rubik';
   }
 
   h2 {
-    padding-top: 1.5rem;
-    font-size: 2rem;
+    padding-top: 2.8rem;
+    font-size: 2.2rem;
     font-weight: lighter;
     @include mq(s) {
-      padding-top: 2rem;
-      font-size: 2.5rem;
+      padding-top: 3.2rem;
+      font-size: 2.8rem;
     }
     @include mq(l) {
-      padding-top: 3rem;
+      padding-top: 4rem;
       font-size: 3.5rem;
     }
   }
 
   h3 {
     padding-top: 1.2rem;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: bold;
     @include mq(s) {
-      padding-top: 1.2rem;
-      font-size: 2rem;
+      padding-top: 1.6rem;
+      font-size: 2.2rem;
     }
     @include mq(l) {
-      padding-top: 1.2rem;
-      font-size: 2.5rem;
+      padding-top: 2rem;
+      font-size: 2.8rem;
     }
   }
 
   h4 {
-    padding-top: 1rem;
-    font-size: 1.2rem;
+    padding-top: 1.2rem;
+    font-size: 1.6rem;
     font-weight: bold;
     @include mq(s) {
-      font-size: 1.5rem;
+      padding-top: 1.4rem;
+      font-size: 1.8rem;
     }
     @include mq(l) {
-      font-size: 2rem;
+      padding-top: 1.8rem;
+      font-size: 2.4rem;
     }
   }
 
   h5 {
     padding-top: 0.8rem;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     @include mq(s) {
-      font-size: 1.4rem;
+      padding-top: 1rem;
+      font-size: 1.7rem;
     }
     @include mq(l) {
-      font-size: 1.7rem;
+      padding-top: 1.3rem;
+      font-size: 2.2rem;
     }
   }
 
   h6 {
     padding-top: 0.8rem;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: bold;
     @include mq(s) {
-      font-size: 1.3rem;
+      padding-top: 1rem;
+      font-size: 1.5rem;
     }
     @include mq(l) {
-      font-size: 1.6rem;
+      padding-top: 1.2rem;
+      font-size: 2rem;
     }
   }
 
   p {
-    font-size: 0.9rem;
+    padding-top: 0.5rem;
+    font-size: 1.2rem;
     @include mq(s) {
-      font-size: 1.2rem;
+      padding-top: 0.7rem;
+      font-size: 1.4rem;
     }
     @include mq(l) {
-      font-size: 1.5rem;
+      padding-top: 0.9rem;
+      font-size: 1.6rem;
     }
   }
 
@@ -125,13 +137,14 @@
     display: block;
     overflow: auto;
     width: 100%;
+    margin: 0.5rem 0 1rem;
 
     th,
     td,
     tr {
       border: 1px solid $c-gray-medium;
       padding: 0.5rem ;
-      font-size: 1rem;
+      font-size: 1.2rem;
       @include mq(s) {
         padding: 0.7rem;
         font-size: 1.2rem;
@@ -145,19 +158,20 @@
 
   ul {
     padding-left: 2rem;
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     list-style: none;
+
     @include mq(s) {
       padding-left: 4rem;
-      font-size: 1.1rem;
+      font-size: 1.4rem;
     }
     @include mq(l) {
       padding-left: 6rem;
-      font-size: 1.4rem;
+      font-size: 1.8rem;
     }
 
     li {
-      padding: 0.5rem;
+      padding-left: 0.5rem;
     }
 
     li::before {
