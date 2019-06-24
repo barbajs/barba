@@ -48,3 +48,5 @@
 - [ ] Ajout des illustrations
 - [ ] Transition pour la dernière lettre? (Change Log)
 - [ ] Change Log page
+- [x] Box informatives
+- [ ] Intégrer les différents logos

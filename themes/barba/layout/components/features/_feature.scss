@@ -69,6 +69,14 @@
   }
 }
 
+.feature__bodymovin {
+  position: absolute;
+  z-index: -1;
+  overflow: hidden;
+  width: 100vw;
+  height: auto;
+}
+
 .feature__box {
   position: relative;
   box-shadow: 0 1px 15px rgba($gray-light, 0.3);
@@ -81,6 +89,7 @@
 
   @include mq(s) {
     max-width: 70vw;
+    margin-top: 20rem;
   }
 
   @include mq(l) {

@@ -3,9 +3,12 @@
 
   <%- partial('components/features/feature-nav.ejs') %>
 
-  <div class="feature__container">
+  <div class="feature__container" data-component="feature">
     <h1 class="feature__title colored"><%- page.title %></h1>
     <% if (page.box) { %>
+
+    <div class="feature__bodymovin" data-ref="feature.bodymovin"></div>
+
     <div class="feature__box">
       <div class="feature__box__body">
         <%- partial('components/features/box-content/' + page.box) %>
