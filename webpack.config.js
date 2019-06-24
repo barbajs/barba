@@ -1,12 +1,6 @@
 module.exports = {
   entry: ['themes/barba/source/js/main.js'],
   module: {
-    rules: [
-      {
-        test: /\.json$/,
-        loader: 'json-loader',
-      },
-    ],
     loaders: [
       {
         test: /\.js/,
