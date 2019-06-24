@@ -1,7 +1,7 @@
 ---
 title: About
 namespace: page--about
-layout: page
+layout: pages/page
 ---
 
 # About

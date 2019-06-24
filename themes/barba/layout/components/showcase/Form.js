@@ -48,19 +48,21 @@ export default class Form extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    if (this.formValidation()) {
+    if (this.formValidation()) { // Check if the form has been completed correctly
       this.$refs.inputs.classList.add('is-hidden');
       ee.emit('spinner:start');
       this.unhighlight();
 
       Form
-        .uploadFile(this.file)
+        .uploadFile(this.file) // Store the picture in Firebase Cloud and the info in Firestore
         .then(downloadURL => {
           this.createShowcase(downloadURL);
         })
+        // Loader to wait the response
         .then(() => {
           ee.emit('spinner:stop');
         })
+        // Handle success with feedback
         .then(() => {
           this.$refs.succeed.classList.add('is-active');
           setTimeout(() => {
@@ -70,6 +72,7 @@ export default class Form extends Component {
             this.$refs.inputs.classList.remove('is-hidden');
           }, 2000);
         })
+        // Handle error with feedback
         .catch(err => {
           console.error(err);
           ee.emit('spinner:stop');

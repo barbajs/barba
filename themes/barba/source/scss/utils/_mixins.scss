@@ -213,7 +213,7 @@
 }
 // Beam [end]
 
-@mixin triangle-hover($color, $duration: .3s, $ease: ease-out) {
+@mixin triangle-hover($color, $duration: 0.3s, $ease: ease-out) {
   position: relative;
   overflow: hidden;
 

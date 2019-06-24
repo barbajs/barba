@@ -1,7 +1,7 @@
 ---
 title: Router
 namespace: docs
-layout: docs
+layout: pages/docs
 url: '/docs/plugins/router'
 ---
 

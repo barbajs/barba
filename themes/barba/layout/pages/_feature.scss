@@ -34,8 +34,6 @@
 }
 
 .feature__container {
-  position: relative;
-  z-index: 10;
   display: flex;
   flex-direction: column;
   max-width: 700px;
@@ -52,9 +50,9 @@
     }
   }
 
-  @include mq(m) {
-    justify-content: center;
+  @include mq(s) {
     align-items: center;
+    margin-top: 10rem;
   }
 }
 
@@ -62,9 +60,10 @@
   font-family: 'Space Mono';
   font-size: 3.2rem;
   font-weight: 400;
-  text-align: left;
+  text-align: center;
 
   @include mq(m) {
+    top: -5rem;
     font-size: 5rem;
   }
 }
@@ -72,6 +71,9 @@
 .feature__bodymovin {
   position: absolute;
   z-index: -1;
+  top: 0;
+  right: 0;
+  left: 0;
   overflow: hidden;
   width: 100vw;
   height: auto;
@@ -88,8 +90,8 @@
   }
 
   @include mq(s) {
+    top: 15rem;
     max-width: 70vw;
-    margin-top: 20rem;
   }
 
   @include mq(l) {

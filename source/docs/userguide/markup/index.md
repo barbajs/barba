@@ -1,7 +1,7 @@
 ---
 title: Markup
 namespace: docs
-layout: docs
+layout: pages/docs
 url: '/docs/userguide/markup'
 ---
 

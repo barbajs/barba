@@ -1,25 +1,25 @@
 <section class="docs">
   <div class="docs__page-transition"></div>
 
-  <%- partial('/components/docs/docs-nav') %>
+  <%- partial('../components/docs/docs-nav') %>
 
   <% theme.docs.forEach(function(page) { %>
   <% if (page.subpages) { %>
   <% page.subpages.forEach(function(subpage) { %>
   <% if (is_current(subpage.url)) { %>
-  <%- partial('/components/docs/docs-nav-lateral', {
+  <%- partial('../components/docs/docs-nav-lateral', {
             page: subpage,
           }) %>
   <% }; %>
   <% }); %>
   <% }; %>
   <% if (is_current(page.url)) { %>
-  <%- partial('/components/docs/docs-nav-lateral', {
+  <%- partial('../components/docs/docs-nav-lateral', {
     page: page,
   }) %>
   <% }; %>
   <% }); %>
 
-  <%- partial('/components/docs/docs-content') %>
+  <%- partial('../components/docs/docs-content') %>
 
 </section>

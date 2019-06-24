@@ -1,0 +1,29 @@
+<div class="feature" data-component="feature">
+  <%- partial('../components/common/logo.ejs', { classes: 'featured featured--'+page.modifier }) %>
+
+  <%- partial('../components/features/feature-nav.ejs') %>
+
+  <div class="feature__container">
+    <h1 class="feature__title colored"><%- page.title %></h1>
+    <% if (page.box) { %>
+
+    <div class="feature__bodymovin" data-namespace="<%- page.namespace %>" data-ref="feature.bodymovin"></div>
+
+    <div class="feature__box">
+      <div class="feature__box__body">
+        <%- partial('../components/features/box-content/' + page.box) %>
+      </div>
+      <div class="feature__box__footer">
+        <%- partial('../components/features/feature-action.ejs', {
+            ctaLink: page.action.link,
+            ctaModifier: page.modifier,
+            ctaTitle: page.action.title,
+            ctaIcon: page.action.icon,
+          }) %>
+      </div>
+    </div>
+    <% } else { %>
+    <%- page.content %>
+    <% }; %>
+  </div>
+</div>

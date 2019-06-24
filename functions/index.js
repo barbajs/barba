@@ -6,9 +6,12 @@ const cors = require('cors')({ origin: true });
 // Initialize App
 admin.initializeApp(functions.config().firebase);
 
-// Initialize Webhook
+// Initialize Webhook (test-app's channel on barbajs.slack.com)
 const webhook = new IncomingWebhook(functions.config().slack.url);
 
+/*
+Step 1: on showcase submit (if completed correctly) => Send a slack notification after the registration in Firestore
+*/
 exports.showcaseSubmission = functions.firestore.document('showcases/{documentId}').onCreate(async snap => {
   const showcase = snap.data();
 
@@ -26,6 +29,7 @@ exports.showcaseSubmission = functions.firestore.document('showcases/{documentId
         image_url: showcase.pictureUrl,
         alt_text: 'Barba.js Showcase',
         actions: [
+          // Approve the submission (to publish it on Barba)
           {
             name: snap.id,
             text: 'Approve',
@@ -39,6 +43,7 @@ exports.showcaseSubmission = functions.firestore.document('showcases/{documentId
               dismiss_text: 'No',
             },
           },
+          // Reject the submission (will stay in the database but won't be published)
           {
             name: snap.id,
             text: 'Reject',
@@ -59,18 +64,22 @@ exports.showcaseSubmission = functions.firestore.document('showcases/{documentId
   await webhook.send(slackNotification);
 });
 
+/*
+Step 2: on showcase rejection/approval in Slack => Give a feedback in the Slack discussion and change the isValidated value (true/false) of the showcase in the database
+*/
 exports.showcaseValidation = functions.https.onRequest((req, res) => {
   // TODO: add token
 
   res.status(200);
 
   const parsedPayload = JSON.parse(req.body.payload);
-  const webhook2 = new IncomingWebhook(parsedPayload.response_url);
+  const webhook2 = new IncomingWebhook(parsedPayload.response_url); // Webhook of the response
 
   const slackNotification = parsedPayload.original_message;
   Object.assign({ replace_original: true, response_type: 'in_channel' }, slackNotification);
   delete slackNotification.attachments[0].actions;
 
+  /* Slack feedback */
   const processingMessage = { ...slackNotification };
   processingMessage.attachments.push({
     color: '#FFA500',
@@ -88,6 +97,7 @@ exports.showcaseValidation = functions.https.onRequest((req, res) => {
     color: '#FF0000',
     text: `Submission has been rejected by *@${parsedPayload.user.name}*.`,
   })
+  /* Slack feedback [end] */
 
   cors(req, res, () => {
 
@@ -97,14 +107,16 @@ exports.showcaseValidation = functions.https.onRequest((req, res) => {
 
     showcase.get()
       .then(() => {
-
+        // If the showcase is approved
         if (parsedPayload.actions[0].value) {
           showcase.update({
             isValidated: true,
           })
           webhook2.send(approveMessage);
           return res.end();
-        } else {
+        }
+        // If the showcase is rejected
+        else {
           showcase.update({
             isValidated: false,
           })
@@ -120,10 +132,14 @@ exports.showcaseValidation = functions.https.onRequest((req, res) => {
   })
 });
 
+/*
+Step 3: on showcase approval and storing in the db => Send slack notifiaction to whom may be interessed to show the new Barba showcase
+*/
 exports.showcaseNotifications = functions.firestore.document('showcases/{documentId}').onUpdate(async change => {
   const showcase = change.after.data();
-  const webhook3 = new IncomingWebhook('https://hooks.slack.com/services/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');
+  const webhook3 = new IncomingWebhook('https://hooks.slack.com/services/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'); // Webhook of Olivier K discussion on epicagency.slack.com
 
+  // The notification is sent only if isValidated change from false to true, not for the other updates
   if (!change.before.data().isValidated && showcase.isValidated) {
     const slackNotification = {
       text: 'A new showcase has been published.',

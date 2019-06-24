@@ -24,6 +24,7 @@
 // sass-lint:disable clean-import-paths
 @import 'base/**/*.scss';
 @import '../../layout/components/**/*.scss';
+@import '../../layout/pages/*.scss';
 // @import 'global/*.scss';
 // @import 'layout/*.scss';
 // sass-lint:enable clean-import-paths
@@ -31,7 +32,4 @@
 /*
  * Dev related stuff or crappy hotfixes…
  */
-@import 'dev';
 @import 'shame';
-@import 'page';
-@import 'docs';

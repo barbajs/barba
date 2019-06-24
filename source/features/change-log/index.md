@@ -1,7 +1,7 @@
 ---
 title: Change Log
 namespace: change-log
-layout: features/feature
+layout: pages/feature
 modifier: 'change'
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: B/Core
 namespace: b-core
-layout: features/feature
+layout: pages/feature
 modifier: 'b-core'
 box: 'b-core.ejs'
 action: {

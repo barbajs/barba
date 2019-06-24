@@ -1,5 +1,5 @@
 ---
 title: Home 
 namespace: home 
-layout: homepage
+layout: index
 ---

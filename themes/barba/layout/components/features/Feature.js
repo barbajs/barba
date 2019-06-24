@@ -1,15 +1,18 @@
 import { Component } from 'kapla';
 import lottie from 'lottie-web';
 
+import * as prefetch from 'json-loader!./prefetch.json';
+
 export default class extends Component {
   load() {
-    console.log('ok');
+    console.log(this.$refs.bodymovin.getAttribute('data-namespace'));
+
     lottie.loadAnimation({
-      container: this.$refs.bodymovin, // the dom element that will contain the animation
+      container: this.$refs.bodymovin,
       renderer: 'svg',
       loop: true,
       autoplay: true,
-      path: 'b-prefetch.json', // the path to the animation json
+      animationData: prefetch,
     });
   }
 }

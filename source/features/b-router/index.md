@@ -1,7 +1,7 @@
 ---
 title: B/Router
 namespace: b-router
-layout: features/feature
+layout: pages/feature
 modifier: 'b-router'
 box: 'b-router.ejs'
 action: {

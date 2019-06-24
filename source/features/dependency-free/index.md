@@ -1,7 +1,7 @@
 ---
 title: Dependency Free
 namespace: dependency-free
-layout: features/feature
+layout: pages/feature
 modifier: 'dep'
 box: 'dependency-free.ejs'
 action: {

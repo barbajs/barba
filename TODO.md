@@ -49,4 +49,5 @@
 - [ ] Transition pour la dernière lettre? (Change Log)
 - [ ] Change Log page
 - [x] Box informatives
-- [ ] Intégrer les différents logos
+- [ ] Intégrer les différents logos dans les box
+- [ ] Gérer les animations en bodymovin // positionnement -> plusieurs tailles d'animation (pour les différents types de viewport) ?

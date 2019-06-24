@@ -1,7 +1,7 @@
 ---
 title: Get started
 namespace: docs
-layout: docs
+layout: pages/docs
 url: '/docs/getstarted/intro'
 ---
 
