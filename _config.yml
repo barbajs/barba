@@ -94,31 +94,31 @@ menu:
           slug:   '/features/dependency-free'
       nextpage:
           label:  'B/Core'
-          slug:   '/features/b-core'
+          slug:   '/features/core'
     - title:    'B/Core'
-      url:      '/features/b-core'
-      modifier: 'b-core'
+      url:      '/features/core'
+      modifier: 'core'
       prevpage:
           label:  'Small size'
           slug:   '/features/small-size'
       nextpage:
           label:  'B/Router'
-          slug:   '/features/b-router'
+          slug:   '/features/router'
     - title:    'B/Router'
-      url:      '/features/b-router'
-      modifier: 'b-router'
+      url:      '/features/router'
+      modifier: 'router'
       prevpage:
           label:  'B/Core'
-          slug:   '/features/b-core'
+          slug:   '/features/core'
       nextpage:
           label:  'B/Prefetch'
-          slug:   '/features/b-prefetch'
+          slug:   '/features/prefetch'
     - title:    'B/Prefetch'
-      url:      '/features/b-prefetch'
-      modifier: 'b-prefetch'
+      url:      '/features/prefetch'
+      modifier: 'prefetch'
       prevpage:
           label:  'B/Router'
-          slug:   '/features/b-router'
+          slug:   '/features/router'
       nextpage:
           label:  'Change Log'
           slug:   '/features/change-log'
@@ -127,7 +127,7 @@ menu:
       modifier: 'change-log'
       prevpage:
           label:  'B/Prefetch'
-          slug:   '/features/b-prefetch'
+          slug:   '/features/prefetch'
       nextpage:
           label:  'Dependency Free'
           slug:   '/features/dependency-free'

@@ -1,9 +1,9 @@
 ---
 title: B/Router
-namespace: b-router
+namespace: router
 layout: pages/feature
-modifier: 'b-router'
-box: 'b-router.ejs'
+modifier: 'router'
+box: 'router.ejs'
 action: {
     title: 'Transition rules',
     icon: b-barba,

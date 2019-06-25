@@ -12,16 +12,16 @@
     background-color: $c-menu-small-size-light;
   }
 
-  [data-barba-namespace='b-core'] & {
-    background-color: $c-menu-b-core-light;
+  [data-barba-namespace='core'] & {
+    background-color: $c-menu-core-light;
   }
 
-  [data-barba-namespace='b-router'] & {
-    background-color: $c-menu-b-router-light;
+  [data-barba-namespace='router'] & {
+    background-color: $c-menu-router-light;
   }
 
-  [data-barba-namespace='b-prefetch'] & {
-    background-color: $c-menu-b-prefetch-light;
+  [data-barba-namespace='prefetch'] & {
+    background-color: $c-menu-prefetch-light;
   }
 
   [data-barba-namespace='change-log'] & {

@@ -154,16 +154,16 @@
     background-color: $c-menu-small-size;
   }
 
-  .b-core & {
-    background-color: $c-menu-b-core;
+  .core & {
+    background-color: $c-menu-core;
   }
 
-  .b-router & {
-    background-color: $c-menu-b-router;
+  .router & {
+    background-color: $c-menu-router;
   }
 
-  .b-prefetch & {
-    background-color: $c-menu-b-prefetch;
+  .prefetch & {
+    background-color: $c-menu-prefetch;
   }
 
   .change-log & {
@@ -185,19 +185,19 @@
     color: $c-menu-small-size;
   }
 
-  .menu-subpages__item:hover.b-core &,
-  .menu-subpages__item.b-core.is-active & {
-    color: $c-menu-b-core;
+  .menu-subpages__item:hover.core &,
+  .menu-subpages__item.core.is-active & {
+    color: $c-menu-core;
   }
 
-  .menu-subpages__item:hover.b-router &,
-  .menu-subpages__item.b-router.is-active & {
-    color: $c-menu-b-router;
+  .menu-subpages__item:hover.router &,
+  .menu-subpages__item.router.is-active & {
+    color: $c-menu-router;
   }
 
-  .menu-subpages__item:hover.b-prefetch &,
-  .menu-subpages__item.b-prefetch.is-active & {
-    color: $c-menu-b-prefetch;
+  .menu-subpages__item:hover.prefetch &,
+  .menu-subpages__item.prefetch.is-active & {
+    color: $c-menu-prefetch;
   }
 
   .menu-subpages__item:hover.change-log &,

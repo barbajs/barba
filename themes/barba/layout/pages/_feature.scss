@@ -16,16 +16,16 @@
     color: $c-menu-small-size;
   }
 
-  [data-barba-namespace='b-core'] & {
-    color: $c-menu-b-core;
+  [data-barba-namespace='core'] & {
+    color: $c-menu-core;
   }
 
-  [data-barba-namespace='b-router'] & {
-    color: $c-menu-b-router;
+  [data-barba-namespace='router'] & {
+    color: $c-menu-router;
   }
 
-  [data-barba-namespace='b-prefetch'] & {
-    color: $c-menu-b-prefetch;
+  [data-barba-namespace='prefetch'] & {
+    color: $c-menu-prefetch;
   }
 
   [data-barba-namespace='change-log'] & {

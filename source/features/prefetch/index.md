@@ -1,9 +1,9 @@
 ---
 title: B/Prefetch
-namespace: b-prefetch
+namespace: prefetch
 layout: pages/feature
-modifier: 'b-prefetch'
-box: 'b-prefetch.ejs'
+modifier: 'prefetch'
+box: 'prefetch.ejs'
 action: {
     title: 'User Guide',
     icon: b-barba,
