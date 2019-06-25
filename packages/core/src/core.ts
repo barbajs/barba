@@ -368,7 +368,7 @@ export class Core {
 
     // Hook: between trigger and transition
     // Can be used to resolve "route"…
-    this.hooks.do('page', data);
+    await this.hooks.do('page', data);
 
     try {
       const transition = this.transitions.get(data, {
