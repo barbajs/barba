@@ -54,6 +54,7 @@ class App {
         routes,
       });
 
+
       barba.init({
         debug: true,
         transitions: [

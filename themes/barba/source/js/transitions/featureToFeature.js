@@ -35,6 +35,7 @@ export default {
       // Logo (prepare small letter for going big)
       const logoElementHoverNext = data.next.container.querySelector('.hover');
       const logoElementBigNext = data.next.container.querySelectorAll('.to-animate');
+      // const bodymovin = data.next.container.querySelector('.feature__bodymovin');
 
       logoElementBigNext.forEach(item => {
         item.classList.remove('to-animate');
@@ -42,6 +43,9 @@ export default {
       TweenMax.set(logoElementBigNext, {
         opacity: 0,
       });
+      // TweenMax.set(bodymovin, {
+      //   opacity: 0,
+      // });
       TweenMax.set(logoElementHoverNext, {
         opacity: 0,
       });
@@ -52,10 +56,15 @@ export default {
     return new Promise(resolve => {
       resolve();
 
+      // const bodymovin = data.next.container.querySelector('.feature__bodymovin');
+
       // Logo (small letter go big)
       const logoElementHover = data.next.container.querySelector('.hover');
       const logoElementBig = data.next.container.querySelectorAll('.select-to-animate');
 
+      // TweenMax.to(bodymovin, 2, {
+      //   opacity: 1,
+      // });
       TweenMax.to(logoElementHover, 0.4, {
         opacity: 1,
       });
