@@ -3,7 +3,7 @@ import { Prevent } from '../../../src/modules/Prevent';
 
 const prevent = new Prevent(false);
 let check: PreventCheck;
-const el = (document.createElement('a') as unknown) as HTMLLinkElement;
+const el = document.createElement('a');
 
 beforeEach(() => {
   check = jest.fn(data => prevent.tests.get('blank')(data));

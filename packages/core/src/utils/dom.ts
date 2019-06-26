@@ -13,7 +13,7 @@
 /***/
 
 // Definitions
-import { ISchemaAttribute, ITransitionData, Scope, Wrapper } from '../defs';
+import { ISchemaAttribute, Link, Scope, Wrapper } from '../defs';
 // Schemas
 import { schemaAttribute } from '../schemas/attribute';
 
@@ -98,8 +98,15 @@ export class Dom {
   /**
    * Get URL from `href` value.
    */
-  public getHref(el: HTMLLinkElement): string | null {
-    return el.getAttribute && el.getAttribute('href') ? el.href : null;
+  public getHref(el: Link): string | null {
+    // HTML tagName is UPPERCASE, xhtml tagName keeps existing case.
+    if (el.tagName && el.tagName.toLowerCase() === 'a') {
+      const href = el.getAttribute('href');
+
+      // When link comes from SVG, `href` returns an object, not a string.
+      return ((href as unknown) as SVGAnimatedString).baseVal || href;
+    }
+    return null;
   }
 }
 

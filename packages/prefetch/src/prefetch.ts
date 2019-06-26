@@ -13,7 +13,7 @@ import { IPrefetchOptions } from './defs/prefetch';
 
 // Definitions
 import { Core } from '@barba/core/src/core';
-import { IBarbaPlugin } from '@barba/core/src/defs';
+import { IBarbaPlugin, Link } from '@barba/core/src/defs';
 import { Logger } from '@barba/core/src/modules/Logger';
 
 import { version } from '../package.json';
@@ -69,7 +69,7 @@ class Prefetch implements IBarbaPlugin<IPrefetchOptions> {
     this.observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const link = entry.target as HTMLLinkElement;
+          const link = entry.target as Link;
           const href = this.barba.dom.getHref(link);
 
           if (this.toPrefetch.has(href)) {
@@ -109,13 +109,13 @@ class Prefetch implements IBarbaPlugin<IPrefetchOptions> {
       () => {
         // If not, find all links and use IntersectionObserver.
         this.root.querySelectorAll('a').forEach(el => {
-          const link = (el as unknown) as HTMLLinkElement;
+          const link = (el as unknown) as Link;
           const href = this.barba.dom.getHref(link);
 
           if (
             !this.barba.cache.has(href) &&
             !this.barba.prevent.checkUrl(href) &&
-            !this.barba.prevent.checkLink(link, {} as Event, link.href)
+            !this.barba.prevent.checkLink(link, {} as Event, href)
           ) {
             this.observer.observe(el);
             this.toPrefetch.add(href);

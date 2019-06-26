@@ -12,7 +12,7 @@
 /***/
 
 // Definitions
-import { IgnoreOption, PreventCheck } from '../defs';
+import { IgnoreOption, Link, PreventCheck } from '../defs';
 // Schemas
 import { schemaAttribute } from '../schemas/attribute';
 // Utils
@@ -44,23 +44,25 @@ const newTab: PreventCheck = ({ event }) =>
  * If the link has `_blank` target.
  */
 const blank: PreventCheck = ({ el }) =>
-  el.hasAttribute('target') && (el as HTMLLinkElement).target === '_blank';
+  el.hasAttribute('target') && (el as Link).target === '_blank';
 
 /**
  * If the domain is the same (in order to avoid pushState cross origin security problem).
+ * Note: SVGAElement do not have `protocol` neither `hostname` properties.
  */
 const corsDomain: PreventCheck = ({ el }) =>
-  window.location.protocol !==
-    ((el as unknown) as HTMLHyperlinkElementUtils).protocol ||
-  window.location.hostname !==
-    ((el as unknown) as HTMLHyperlinkElementUtils).hostname;
+  ((el as HTMLAnchorElement).protocol !== undefined &&
+    window.location.protocol !== (el as HTMLAnchorElement).protocol) ||
+  ((el as HTMLAnchorElement).hostname !== undefined &&
+    window.location.hostname !== (el as HTMLAnchorElement).hostname);
 
 /**
  * If the port is the same.
+ * Note: SVGAElement do not have `port` property.
  */
 const corsPort: PreventCheck = ({ el }) =>
-  url.getPort() !==
-  url.getPort(((el as unknown) as HTMLHyperlinkElementUtils).port);
+  (el as HTMLAnchorElement).port !== undefined &&
+  url.getPort() !== url.getPort((el as HTMLAnchorElement).port);
 
 /**
  * If the link has download attribute.
@@ -123,12 +125,7 @@ export class Prevent extends Ignore {
   /**
    * Run individual test
    */
-  public run(
-    name: string,
-    el: HTMLLinkElement,
-    event: Event,
-    href: string
-  ): boolean {
+  public run(name: string, el: Link, event: Event, href: string): boolean {
     return this.tests.get(name)({
       el,
       event,
@@ -139,7 +136,7 @@ export class Prevent extends Ignore {
   /**
    * Run test suite
    */
-  public checkLink(el: HTMLLinkElement, event: Event, href: string): boolean {
+  public checkLink(el: Link, event: Event, href: string): boolean {
     return this.suite.some(name => this.run(name, el, event, href));
   }
 }

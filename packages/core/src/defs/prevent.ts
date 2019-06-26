@@ -2,6 +2,8 @@
  * @module typings/core
  */
 
+// Definitions
+import { Link } from '.';
 /**
  * Available data for all prevent checks.
  *
@@ -10,7 +12,7 @@
  * - `href`: the href to use for fetching
  */
 export interface IPreventCheckData {
-  el: HTMLLinkElement;
+  el: Link;
   event: Event;
   href: string;
 }

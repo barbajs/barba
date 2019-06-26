@@ -23,6 +23,7 @@ import {
   ITransitionAppear,
   ITransitionData,
   ITransitionPage,
+  Link,
   LinkEvent,
   RequestCustomError,
   RequestErrorOrResponse,
@@ -538,15 +539,15 @@ export class Core {
    * Check for a "href" attribute.
    * Then check if eligible for Barba.
    */
-  private _getLinkElement(e: LinkEvent): HTMLLinkElement {
-    let el = e.target as HTMLLinkElement;
+  private _getLinkElement(e: LinkEvent): Link {
+    let el = e.target as Link;
 
     while (el && !this.dom.getHref(el)) {
-      el = (el as HTMLElement).parentNode as HTMLLinkElement;
+      el = (el as HTMLElement).parentNode as Link;
     }
 
     // Check prevent
-    if (!el || this.prevent.checkLink(el, e, el.href)) {
+    if (!el || this.prevent.checkLink(el, e, this.dom.getHref(el))) {
       return;
     }
 

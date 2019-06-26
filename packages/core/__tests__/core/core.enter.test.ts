@@ -81,7 +81,7 @@ it('handle link enter with prevent url', () => {
   spyHas = jest.spyOn(barba.cache, 'has');
   spySet = jest.spyOn(barba.cache, 'set');
 
-  link.href = 'foo';
+  link.href = '/foo';
   span.dispatchEvent(mouseover);
 
   expect(spyHas).toHaveBeenCalledTimes(0);
