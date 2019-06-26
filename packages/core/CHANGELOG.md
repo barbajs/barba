@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.12](https://github.com/barbajs/barba/compare/@barba/core@2.3.11...@barba/core@2.3.12) (2019-06-26)
+
+### Bug Fixes
+
+- **core:** :ok_hand: improve support of SVG links ([19e7e5d](https://github.com/barbajs/barba/commit/19e7e5d))
+
 ## [2.3.11](https://github.com/barbajs/barba/compare/@barba/core@2.3.10...@barba/core@2.3.11) (2019-06-25)
 
 ### Bug Fixes

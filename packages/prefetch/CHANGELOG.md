@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.5](https://github.com/barbajs/barba/compare/@barba/prefetch@2.1.4...@barba/prefetch@2.1.5) (2019-06-26)
+
+### Bug Fixes
+
+- **core:** :ok_hand: improve support of SVG links ([19e7e5d](https://github.com/barbajs/barba/commit/19e7e5d))
+
 ## [2.1.4](https://github.com/barbajs/barba/compare/@barba/prefetch@2.1.3...@barba/prefetch@2.1.4) (2019-06-11)
 
 **Note:** Version bump only for package @barba/prefetch
