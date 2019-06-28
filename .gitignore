@@ -158,5 +158,6 @@ $RECYCLE.BIN/
 
 dist
 tmp
+db.json
 
 themes/barba/layout/svg/sprite.ejs
