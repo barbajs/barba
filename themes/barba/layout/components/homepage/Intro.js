@@ -1,3 +1,82 @@
+import {
+  Component
+} from 'kapla';
+
+import {
+  TweenMax
+} from 'gsap/all';
+
+import {
+  $on,
+  qsa,
+  qs
+} from '../../../source/js/utils/dom';
+
+export default class extends Component {
+  load() {
+    this.$logo = qs('.logo svg', this.$el);
+    this.$links = [...qsa('.logo .links a', this.$el)];
+    this.$texts = [...qsa('.intro__list li', this.$el)];
+    this.$items = [...qsa('.hover .item', this.$el)];
+    this.$list = qs('.intro__list', this.$el);
+
+    this.mouseEnter = this.mouseEnter.bind(this);
+    this.mouseLeave = this.mouseLeave.bind(this);
+
+    this.$links.forEach((link, index) => {
+      $on(link, 'mouseenter', () => this.mouseEnter(index));
+      $on(link, 'mouseleave', () => this.mouseLeave(index));
+    });
+  }
+
+  // destroy() {
+  //   $on(this.$logoSvg, 'mouseenter', this.mouseEnter);
+  //   $on(this.$logoSvg, 'mouseleave', this.mouseLeave);
+  // }
+
+  mouseEnter(index) {
+    this.$logo.classList.add('gray');
+
+    TweenMax.killTweensOf(this.$texts[index]);
+    TweenMax.killTweensOf(this.$items[index]);
+
+    TweenMax.to(this.$items[index], 0.4, {
+      opacity: 1
+    });
+
+    TweenMax.to(this.$texts[index], 0.2, {
+      opacity: 1,
+      scale: 1,
+    });
+
+    TweenMax.to(this.$list, 0.4, {
+      yPercent: -(index * 100),
+      ease: 'Power4.easeOut',
+    });
+  }
+
+  mouseLeave(index) {
+    this.$logo.classList.remove('gray');
+
+    TweenMax.killTweensOf(this.$texts[index]);
+    TweenMax.killTweensOf(this.$items[index]);
+
+    TweenMax.to(this.$items[index], 0.4, {
+      opacity: 0
+    });
+
+    TweenMax.to(this.$texts[index], 0.2, {
+      opacity: 0,
+      scale: 0.9,
+    });
+  }
+
+  resize() {
+
+  }
+}
+
+
 // import {
 //   Component
 // } from 'kapla';

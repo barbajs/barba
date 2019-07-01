@@ -82,55 +82,55 @@ menu:
       modifier: 'dependency-free'
       prevpage:
           label:  'Change Log'
-          slug:   '/features/change-log'
+          slug:   '/features/change-log/'
       nextpage:
           label:  'Small size'
-          slug:   '/features/small-size'
+          slug:   '/features/small-size/'
     - title:    'Small size'
       url:      '/features/small-size'
       modifier: 'small-size'
       prevpage:
           label:  'Dependency Free'
-          slug:   '/features/dependency-free'
+          slug:   '/features/dependency-free/'
       nextpage:
           label:  'B/Core'
-          slug:   '/features/core'
+          slug:   '/features/core/'
     - title:    'B/Core'
       url:      '/features/core'
       modifier: 'core'
       prevpage:
           label:  'Small size'
-          slug:   '/features/small-size'
+          slug:   '/features/small-size/'
       nextpage:
           label:  'B/Router'
-          slug:   '/features/router'
+          slug:   '/features/router/'
     - title:    'B/Router'
       url:      '/features/router'
       modifier: 'router'
       prevpage:
           label:  'B/Core'
-          slug:   '/features/core'
+          slug:   '/features/core/'
       nextpage:
           label:  'B/Prefetch'
-          slug:   '/features/prefetch'
+          slug:   '/features/prefetch/'
     - title:    'B/Prefetch'
       url:      '/features/prefetch'
       modifier: 'prefetch'
       prevpage:
           label:  'B/Router'
-          slug:   '/features/router'
+          slug:   '/features/router/'
       nextpage:
           label:  'Change Log'
-          slug:   '/features/change-log'
+          slug:   '/features/change-log/'
     - title:    'Change Log'
       url:      '/features/change-log'
       modifier: 'change-log'
       prevpage:
           label:  'B/Prefetch'
-          slug:   '/features/prefetch'
+          slug:   '/features/prefetch/'
       nextpage:
           label:  'Dependency Free'
-          slug:   '/features/dependency-free'
+          slug:   '/features/dependency-free/'
 - title:  'About'
   url:    '/about'
   slug:   '/about'
