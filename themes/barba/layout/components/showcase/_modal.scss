@@ -9,6 +9,7 @@
   display: none;
   justify-content: center;
   align-items: center;
+  overflow: auto;
 
   &.is-open {
     display: flex;
