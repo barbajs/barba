@@ -1,5 +1,8 @@
 import barba from '@barba/core';
-import { Application, autoLoad } from 'kapla';
+import {
+  Application,
+  autoLoad
+} from 'kapla';
 
 // DEV
 import router from '@barba/router';
@@ -18,7 +21,12 @@ import docToDoc from './transitions/docToDoc';
 // import Home from './views/Home';
 
 // Events
-import { appear, raf, resize, scroll } from './events';
+import {
+  appear,
+  raf,
+  resize,
+  scroll
+} from './events';
 
 /*
  * App Class

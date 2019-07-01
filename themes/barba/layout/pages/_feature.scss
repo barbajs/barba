@@ -52,7 +52,8 @@
 
   @include mq(s) {
     align-items: center;
-    margin-top: 10rem;
+    // margin-top: 10rem;
+    padding-top: 10rem;
   }
 }
 
@@ -85,7 +86,7 @@
   background: rgba($white, 0.8);
   border-radius: 10px;
 
-  & > div {
+  &>div {
     padding: 2rem;
   }
 

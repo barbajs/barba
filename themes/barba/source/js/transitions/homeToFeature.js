@@ -1,6 +1,11 @@
-// import anime from 'animejs';
-import { TweenMax, TimelineMax } from 'gsap/all';
-import { qs, qsa } from '../../../source/js/utils/dom';
+import {
+  TweenMax,
+  TimelineMax
+} from 'gsap/all';
+import {
+  qs,
+  qsa
+} from '../../../source/js/utils/dom';
 import deferred from '../../../source/js/utils/deferred';
 
 export default {

@@ -1,5 +1,3 @@
-
-
 .logo {
   width: 100%;
   font-size: 0;
@@ -11,7 +9,7 @@
 
   .base,
   .js__letter {
-    transition: stroke 0.4s, fill 0.4s;
+    // transition: stroke 0.4s, fill 0.4s;
   }
 
   svg.gray,
@@ -27,6 +25,7 @@
 
   svg.holed {
     .hover {
+
       rect,
       circle,
       path {
@@ -55,7 +54,7 @@
     opacity: 0;
   }
 
-  .big > g {
+  .big>g {
     opacity: 0;
     pointer-events: none;
   }
@@ -74,6 +73,7 @@
   }
 
   .hover {
+
     rect,
     circle,
     path {
@@ -84,7 +84,7 @@
 }
 
 .big * {
-  transition: transform 0.4s ease-in-out;
+  // transition: transform 0.4s ease-in-out;
 }
 
 .featured--dep {
@@ -238,5 +238,3 @@
     }
   }
 }
-
-
