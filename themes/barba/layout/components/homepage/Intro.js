@@ -1,6 +1,12 @@
-import { Component } from 'kapla';
+import {
+  Component
+} from 'kapla';
 import anime from 'animejs';
-import { $on, qsa, qs } from '../../../source/js/utils/dom';
+import {
+  $on,
+  qsa,
+  qs
+} from '../../../source/js/utils/dom';
 
 class Letter {
   constructor(base, hover, big) {
