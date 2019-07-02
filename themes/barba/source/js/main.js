@@ -79,6 +79,14 @@ class App {
         ],
       });
 
+      barba.hooks.before(() => {
+        document.documentElement.classList.add('transitioning');
+      });
+
+      barba.hooks.after(() => {
+        document.documentElement.classList.remove('transitioning');
+      });
+
       // Kapla
       const context = require.context(
         './../../layout/components',
