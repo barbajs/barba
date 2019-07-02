@@ -1,9 +1,13 @@
+import barba from '@barba/core';
+
 import {
   Component
 } from 'kapla';
 
 import {
-  TweenMax
+  TweenMax,
+  TimelineMax,
+  Elastic,
 } from 'gsap/all';
 
 import {
@@ -27,6 +31,61 @@ export default class extends Component {
       $on(link, 'mouseenter', () => this.mouseEnter(index));
       $on(link, 'mouseleave', () => this.mouseLeave(index));
     });
+
+    // Play onboarding if it's the first page
+    if (!barba.history.previous) {
+      this.boarding();
+    }
+  }
+
+  boarding() {
+    const logo = qs('.logo', this.$el);
+    const logoItems = qsa('.logo .base-item', this.$el);
+    const title = qsa('h1 span', this.$el);
+    const buttons = qsa('.intro__buttons a', this.$el);
+    const chrome = [
+      qs('.header__infos'),
+      qs('.header__external-links'),
+      qs('.site-footer'),
+    ];
+
+    document.documentElement.classList.add('transitioning');
+
+    const tl = new TimelineMax({
+      delay: .5,
+      onComplete: () => {
+        document.documentElement.classList.remove('transitioning');
+      }
+    });
+
+    // tl.from(logo, .5, {
+    //   y: 100,
+    //   scale: 1.1,
+    //   ease: 'Power4.easeInOut'
+    // }, 0);
+
+    tl.staggerFrom(logoItems, 1, {
+      y: 100,
+      scale: 1.1,
+      ease: 'Power4.easeInOut'
+    }, 0.02, 0);
+
+    tl.staggerFrom(title, 1, {
+      yPercent: 100,
+      scale: 1,
+      ease: 'Power4.easeOut'
+    }, 0.05, .6);
+
+    tl.staggerFrom(buttons, 1, {
+      y: 40,
+      opacity: 0,
+      ease: 'Power4.easeOut'
+    }, 0.05, 1.2);
+
+    tl.staggerFrom(chrome, 1, {
+      scale: 0,
+      ease: Elastic.easeOut.config(1, 0.3),
+    }, 0.2, 1.5);
   }
 
   // destroy() {
