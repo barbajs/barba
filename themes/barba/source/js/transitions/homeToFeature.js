@@ -17,15 +17,80 @@ export default {
     route: 'feature',
   },
 
-  leave() {
+  leave(data) {
     return new Promise(resolve => {
-      resolve();
+      const oldLogo = data.current.container.querySelector('.logo');
+      const newLogo = data.next.container.querySelector('.logo.featured');
+      const title = data.current.container.querySelectorAll('h1 span');
+      const buttons = data.current.container.querySelectorAll('.intro__buttons a');
+
+      data.current.container.style.zIndex = -1;
+
+      oldLogo.querySelector('svg').classList.add('fillgray');
+
+      const oldLogoRect = oldLogo.getBoundingClientRect();
+      const newLogoRect = newLogo.getBoundingClientRect();
+
+      data.current.container.querySelector('.menu-trigger').style.opacity = '0';
+
+      const tl = new TimelineMax({
+        onComplete: () => {
+          resolve();
+        }
+      });
+
+      const scale = newLogoRect.width / oldLogoRect.width;
+
+      tl.to(oldLogo, 1.4, {
+        scale,
+        y: -((oldLogoRect.top - newLogoRect.top) + ((newLogoRect.height * scale) * 2) - 6),
+        ease: 'Power4.easeInOut'
+      }, 0);
+
+      tl.staggerTo(title, 1, {
+        yPercent: 100,
+        ease: 'Power4.easeInOut'
+      }, 0.05, 0);
+
+      tl.staggerTo(buttons, 1, {
+        y: 40,
+        opacity: 0,
+        ease: 'Power4.easeIn'
+      }, 0.05, 0.1);
+
+      // resolve();
     });
   },
 
-  enter() {
+  enter(data) {
     return new Promise(resolve => {
-      resolve();
+      const newLogo = data.next.container.querySelector('.logo.featured');
+      const container = data.next.container.querySelector('.feature__container');
+      const navigation = data.next.container.querySelectorAll('.feature__nav__el');
+
+      const tl = new TimelineMax({
+        delay: 1.3,
+        onComplete: () => {
+          resolve();
+        }
+      });
+
+      tl.from(newLogo, 1, {
+        opacity: 0,
+      }, 0);
+
+      tl.from(container, 1, {
+        opacity: 0,
+        y: 100,
+        ease: 'Power4.easeOut'
+      }, 0);
+
+      tl.staggerFrom(navigation, .4, {
+        opacity: 0,
+        y: 30,
+        ease: 'Power4.easeOut'
+      }, 0.2, 0.8);
+
     });
   }
 

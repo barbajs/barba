@@ -26,6 +26,14 @@
     width: 80%;
     font-size: 2.5rem;
   }
+
+  .line {
+    overflow: hidden;
+  }
+
+  span {
+    display: inline-block;
+  }
 }
 
 .intro__list {

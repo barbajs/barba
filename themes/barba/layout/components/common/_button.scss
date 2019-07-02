@@ -11,7 +11,7 @@
   fill: $c-blue-light;
   border-radius: 0.4rem;
 
-  transition: background-color 0.4s, color 0.4s, border-color 0.4s, transform 0.4s ease-in-out;
+  transition: background-color 0.4s, color 0.4s, border-color 0.4s;
 
   &:hover {
     background: $c-blue-light;
