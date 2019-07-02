@@ -23,6 +23,7 @@ export default {
       const newLogo = data.next.container.querySelector('.logo.featured');
       const title = data.current.container.querySelectorAll('h1 span');
       const buttons = data.current.container.querySelectorAll('.intro__buttons a');
+      const list = data.current.container.querySelector('.intro__list');
 
       data.current.container.style.zIndex = -1;
 
@@ -45,6 +46,11 @@ export default {
         scale,
         y: -((oldLogoRect.top - newLogoRect.top) + ((newLogoRect.height * scale) * 2) - 6),
         ease: 'Power4.easeInOut'
+      }, 0);
+
+      tl.to(list, .8, {
+        opacity: 0,
+        ease: 'Power4.easeIn'
       }, 0);
 
       tl.staggerTo(title, 1, {

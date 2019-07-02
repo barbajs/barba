@@ -60,6 +60,7 @@
   }
 
   .big>g {
+    display: none;
     opacity: 0;
     pointer-events: none;
   }
@@ -92,12 +93,107 @@
   // transition: transform 0.4s ease-in-out;
 }
 
+.logo .loop {
+  will-change: transform;
+
+  &.move1 {
+    animation: move1 10s infinite ease-in-out;
+  }
+
+  &.move2 {
+    animation: move2 14s infinite ease-in-out;
+  }
+
+  &.move3 {
+    animation: move3 12s infinite ease-in-out;
+  }
+
+  &.move4 {
+    animation: move4 18s infinite ease-in-out;
+  }
+
+  &.move5 {
+    animation: move5 9s infinite ease-in-out;
+  }
+}
+
+@keyframes move1 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(10vw, 10vh);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes move2 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(14vw, -10vh);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes move3 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(4vw, -20vh);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes move4 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(30vw, 8vh);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes move5 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-7vw, 8vh);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
 .featured--dep {
   .hover .b1 {
     opacity: 1;
   }
 
   .big1 {
+    display: block !important;
     opacity: 1 !important;
 
     rect {
@@ -124,6 +220,7 @@
   }
 
   .big2 {
+    display: block !important;
     opacity: 1 !important;
 
     rect {
@@ -150,6 +247,7 @@
   }
 
   .big3 {
+    display: block !important;
     opacity: 1 !important;
 
     rect {
@@ -176,6 +274,7 @@
   }
 
   .big4 {
+    display: block !important;
     opacity: 1 !important;
 
     rect {
@@ -202,6 +301,7 @@
   }
 
   .big5 {
+    display: block !important;
     opacity: 1 !important;
 
     rect {

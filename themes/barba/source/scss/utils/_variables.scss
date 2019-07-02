@@ -73,8 +73,7 @@ $c-doc-keyword: $c-menu-prefetch;
 $c-doc-color: #3e999f;
 
 // Z Layers
-$z-layers: (
-  lowest: 0,
+$z-layers: (lowest: 0,
   lower: 10,
   low: 20,
   high: 30,
@@ -89,11 +88,12 @@ $z-layers: (
 
 $base-font-size: 18px !default;
 
-$ff-default: 'Rubik', sans-serif;
-$ff-alt: 'Space Mono', sans-serif;
+$ff-default: 'Rubik',
+sans-serif;
+$ff-alt: 'Space Mono',
+sans-serif;
 
-$font-sizes: (
-  h1: 3.6rem,
+$font-sizes: (h1: 3.6rem,
   h2: 2.8rem,
   h3: 2.4rem,
   h4: 1.4rem,
@@ -105,24 +105,17 @@ $font-sizes: (
 // - For a screen < 400px, the `h1` will be 24px.
 // - For a screen > 800px, the `h1` will be 36px.
 // - For any screen size in between, the `h1` will scale between 24px and 36px.
-$scalable-text-map: (
-  h1: (
-    min: (
-      24px,
+$scalable-text-map: (h1: (min: (24px,
       'small',
     ),
-    max: (
-      36px,
+    max: (36px,
       'large',
     ),
   ),
-  p: (
-    min: (
-      13px,
+  p: (min: (13px,
       'small',
     ),
-    max: (
-      18px,
+    max: (18px,
       'large',
     ),
   ),
@@ -148,4 +141,4 @@ $mq-static-breakpoint: 'large';
  */
 $scale-big-s: 10;
 $scale-big-m: 20;
-$scale-big-l: 40;
+$scale-big-l: 30;

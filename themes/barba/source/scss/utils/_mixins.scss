@@ -7,6 +7,7 @@
 /// @example scss - Scrollbar styling
 ///   @include scrollbars(.5em, slategray);
 @mixin scrollbars($size: 6px, $foreground-color: $black, $background-color: $white) {
+
   // sass-lint:disable-block no-vendor-prefixes
   // For Google Chrome
   &::-webkit-scrollbar {
@@ -55,6 +56,7 @@
   @include mq($until: $font-min-break) {
     font-size: $font-min-size;
   }
+
   @include mq($from: $font-max-break) {
     font-size: $font-max-size;
   }
@@ -99,7 +101,7 @@
     padding-top: ($height / $width) * 100%;
   }
 
-  > * {
+  >* {
     position: absolute;
     top: 0;
     right: 0;
@@ -116,7 +118,9 @@
   @if $position {
     font-family: 'object-fit: #{$fit}; object-position: #{$position}';
     object-position: $position;
-  } @else {
+  }
+
+  @else {
     font-family: 'object-fit: #{$fit}';
   }
 }
@@ -134,7 +138,7 @@
     margin-bottom: 0;
   }
 
-  > * + * {
+  >*+* {
     // margin-top: 0;
 
     @if $margin {
@@ -160,9 +164,12 @@
   @if has-modifiers($str) {
     $modifiers: append($modifiers, get-base($str));
     $modifiers: get-modifiers(get-rest($str), $modifiers);
-  } @else {
+  }
+
+  @else {
     $modifiers: append($modifiers, $str);
   }
+
   @return $modifiers;
 }
 
@@ -170,14 +177,13 @@
   $parts: ();
 
   @if has-modifiers($str) {
-    $parts: (
-      'base': get-base($str),
-      'modifiers': get-modifiers(get-rest($str))
-    );
-  } @else {
-    $parts: (
-      'base': $str,
-    );
+    $parts: ('base': get-base($str),
+        'modifiers': get-modifiers(get-rest($str)));
+  }
+
+  @else {
+    $parts: ('base': $str,
+      );
   }
 
   @return $parts;
@@ -189,13 +195,15 @@
   $selector: '';
 
   @if map-has-key($parts, 'modifiers') {
-    $selector: '[class*="' + $base + '--"]';
+    $selector: '[class*="'+ $base + '--"]';
 
     @each $modifier in map-get($parts, 'modifiers') {
-      $selector: $selector + '[class*="--' + $modifier + '"]';
+      $selector: $selector + '[class*="--'+ $modifier + '"]';
     }
-  } @else {
-    $selector: '.' + $base + ',[class*="' + $base + '--"]';
+  }
+
+  @else {
+    $selector: '.'+ $base + ',[class*="'+ $base + '--"]';
   }
 
   @if $states {
@@ -211,13 +219,14 @@
     }
   }
 }
+
 // Beam [end]
 
 @mixin triangle-hover($color, $duration: 0.3s, $ease: ease-out) {
   position: relative;
   overflow: hidden;
 
-  > * {
+  >* {
     position: relative;
     z-index: 2;
   }
@@ -291,11 +300,12 @@
 
 @mixin big-letter ($rotate, $translate-x, $translate-y) {
   transform: scale($scale-big-s) rotate($rotate) translate(($translate-x / $scale-big-s), ($translate-y / $scale-big-s));
+
   @include mq(m) {
     transform: scale($scale-big-m) rotate($rotate) translate((($translate-x * 2) / $scale-big-m), (($translate-y * 2.5) / $scale-big-m));
   }
+
   @include mq(xl) {
-    transform: scale($scale-big-l) rotate($rotate) translate((($translate-x * 3) / $scale-big-l), (($translate-y * 5) / $scale-big-l));
+    transform: scale($scale-big-l) rotate($rotate) translate((($translate-x * 2.4) / $scale-big-l), (($translate-y * 4) / $scale-big-l));
   }
 }
-
