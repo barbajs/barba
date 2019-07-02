@@ -1,5 +1,6 @@
 .feature {
   @include get-all-space;
+  overflow: hidden;
   padding: 16rem 4rem 6rem;
   perspective: 1000px;
 
