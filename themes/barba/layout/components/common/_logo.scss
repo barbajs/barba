@@ -1,6 +1,7 @@
 .logo {
   width: 100%;
   font-size: 0;
+  will-change: transform;
 
   svg {
     overflow: visible;

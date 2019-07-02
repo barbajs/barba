@@ -58,17 +58,17 @@ export default class extends Component {
       }
     });
 
-    // tl.from(logo, .5, {
-    //   y: 100,
-    //   scale: 1.1,
-    //   ease: 'Power4.easeInOut'
-    // }, 0);
-
-    tl.staggerFrom(logoItems, 1, {
+    tl.from(logo, .5, {
       y: 100,
       scale: 1.1,
       ease: 'Power4.easeInOut'
-    }, 0.02, 0);
+    }, 0);
+
+    // tl.staggerFrom(logoItems, 1, {
+    //   y: 100,
+    //   scale: 1.1,
+    //   ease: 'Power4.easeInOut'
+    // }, 0.02, 0);
 
     tl.staggerFrom(title, 1, {
       yPercent: 100,

@@ -60,6 +60,7 @@ export default {
 
       tl.to(container, 1.8, {
         x: goingForward ? -window.innerWidth : window.innerWidth,
+        rotationY: goingForward ? '45deg' : '-45deg',
         ease: 'Power4.easeInOut',
       }, 0);
 
@@ -93,6 +94,7 @@ export default {
 
       tl.from(container, 1.8, {
         x: goingForward ? window.innerWidth : -window.innerWidth,
+        rotationY: goingForward ? '-45deg' : '45deg',
         ease: 'Power4.easeInOut',
       }, 0);
 

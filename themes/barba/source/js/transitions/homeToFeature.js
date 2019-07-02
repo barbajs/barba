@@ -81,8 +81,9 @@ export default {
 
       tl.from(container, 1, {
         opacity: 0,
-        y: 100,
-        ease: 'Power4.easeOut'
+        y: 200,
+        ease: 'Power4.easeOut',
+        rotationX: '20deg'
       }, 0);
 
       tl.staggerFrom(navigation, .4, {

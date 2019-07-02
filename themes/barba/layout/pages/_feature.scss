@@ -1,6 +1,7 @@
 .feature {
   @include get-all-space;
   padding: 16rem 4rem 6rem;
+  perspective: 1000px;
 
   @include mq(m) {
     padding: 4rem;
@@ -39,6 +40,7 @@
   max-width: 700px;
   height: 100%;
   margin: 0 auto;
+  will-change: transform;
 
   p {
     font-size: 1.4rem;
