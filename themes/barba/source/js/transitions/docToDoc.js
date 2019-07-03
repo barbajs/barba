@@ -1,5 +1,9 @@
-import { TimelineMax } from 'gsap/TimelineMax';
-import { TweenMax } from 'gsap/TweenMax';
+import {
+  TimelineMax
+} from 'gsap/TimelineMax';
+import {
+  TweenMax
+} from 'gsap/TweenMax';
 
 const docs = window.barbaDocs.array;
 const docsUrlOrderedList = [];
@@ -61,6 +65,9 @@ export default {
   enter(data) {
     return new Promise(resolve => {
       resolve();
+
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
 
       const background = data.next.container.querySelector('.docs__page-transition');
       const tl = new TimelineMax();
