@@ -68,13 +68,13 @@ class App {
         transitions: [
           defaultTransition,
           homeToFeature,
-          homeToPage,
+          // homeToPage,
           featureToFeature,
           featureToHome,
-          featureToPage,
-          pageToHome,
-          pageToFeature,
-          pageToPage,
+          // featureToPage,
+          // pageToHome,
+          // pageToFeature,
+          // pageToPage,
           docToDoc,
         ],
       });

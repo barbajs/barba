@@ -1,31 +1,33 @@
-import { TweenMax } from 'gsap/TweenMax';
+import {
+  TweenMax
+} from 'gsap/TweenMax';
 
 export default {
   leave(data) {
-    console.log(data);
-
     return new Promise(resolve => {
-      TweenMax.to(data.current.container, 0.2, {
+
+      TweenMax.to(data.current.container, 0.4, {
         opacity: 0,
+        ease: 'Power4.easeIn',
         onComplete: () => {
+          data.current.container.style.display = 'none';
           resolve();
         },
       });
     });
   },
   enter(data) {
-    console.log(data);
     const done = this.async();
 
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 
-    TweenMax.from(data.next.container, 0.4, {
+    TweenMax.from(data.next.container, 0.7, {
       opacity: 0,
+      ease: 'Power4.easeInOut',
       onComplete: () => {
         done();
       },
     });
   },
 };
-
