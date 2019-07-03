@@ -1,9 +1,10 @@
 <!doctype html>
 <html>
 
+
 <head>
-  <title>barba.js</title>
-  <meta name="description" content="Barba" />
+  <title><%= config.title %></title>
+  <meta name="description" content="<%= config.description %>" />
 
   <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png?rev=1">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png?rev=1">
@@ -16,24 +17,20 @@
   <meta name="theme-color" content="#ffffff">
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="EPIC Agency - Effective creativity for digital awesomeness." />
-  <meta property="og:description"
-    content="EPIC is a digital agency made of passion and creativity. We craft awesome and thoughtful digital experiences that change the way you connect with clients." />
-  <meta property="og:url" content="https://www.epic.net/en/" />
-  <meta property="og:site_name" content="EPIC Agency" />
-  <meta property="og:image" content="https://www.epic.net/wp/wp-content/uploads/2016/12/default-sharing-1024x468.jpg" />
-  <meta property="og:image:secure_url"
-    content="https://www.epic.net/wp/wp-content/uploads/2016/12/default-sharing-1024x468.jpg" />
-  <meta property="og:image:width" content="1024" />
-  <meta property="og:image:height" content="468" />
+  <meta property="og:title" content="<%= config.title %>" />
+  <meta property="og:description" content="<%= config.description %>" />
+  <meta property="og:url" content="<%= config.url %>" />
+  <meta property="og:site_name" content="<%= config.title %>" />
+  <meta property="og:image" content="<%= config.url %>/share.jpg" />
+  <meta property="og:image:width" content="1500" />
+  <meta property="og:image:height" content="500" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:description"
-    content="EPIC is a digital agency made of passion and creativity. We craft awesome and thoughtful digital experiences that change the way you connect with clients." />
-  <meta name="twitter:title" content="EPIC Agency - Effective creativity for digital awesomeness." />
-  <meta name="twitter:site" content="@epicwebagency" />
-  <meta name="twitter:image" content="https://www.epic.net/wp/wp-content/uploads/2016/12/default-sharing.jpg" />
-  <meta name="twitter:creator" content="@epicwebagency" />
+  <meta name="twitter:description" content="<%= config.description %>" />
+  <meta name="twitter:title" content="<%= config.title %>" />
+  <meta name="twitter:site" content="@barba_js" />
+  <meta name="twitter:image" content="<%= config.url %>/share.jpg" />
+  <meta name="twitter:creator" content="@barba_js" />
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
