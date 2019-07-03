@@ -29,6 +29,10 @@ export default {
       const list = data.current.container.querySelector('.intro__list');
       const hoverIndex = NAMESPACES_ORDER.indexOf(data.next.namespace);
       const bigShape = data.current.container.querySelectorAll('.logo.only-big .hover .item')[hoverIndex];
+      const oldBigShape = data.current.container.querySelector('.logo.only-big');
+      const newBigShape = data.next.container.querySelector('.logo.only-big');
+
+      newBigShape.classList.remove('can-move');
 
       data.current.container.style.zIndex = -1;
 
@@ -36,17 +40,22 @@ export default {
 
       const oldLogoRect = oldLogo.getBoundingClientRect();
       const newLogoRect = newLogo.getBoundingClientRect();
+      const oldBigShapeRect = oldBigShape.getBoundingClientRect();
+      const newBigShapeRect = newBigShape.getBoundingClientRect();
 
       data.current.container.querySelector('.menu-trigger').style.opacity = '0';
       intro.classList.add('to-feature');
 
       const tl = new TimelineMax({
         onComplete: () => {
+          newBigShape.classList.add('can-move');
           resolve();
         },
       });
 
       const scale = newLogoRect.width / oldLogoRect.width;
+
+      // TweenMax.set(newBigShape, { opacity: 0 });
 
       tl.to(oldLogo, 1.4, {
         scale,
@@ -55,13 +64,26 @@ export default {
       }, 0);
 
       TweenMax.killTweensOf(bigShape);
-      tl.to(bigShape, 0.4, {
+      tl.to(bigShape, 0.1, {
         opacity: 1,
       }, 0);
 
+      tl.to(oldBigShape, 1.3, {
+        y: newBigShapeRect.top - oldBigShapeRect.top,
+        ease: 'Power4.easeInOut',
+      }, 0.1);
+
+      tl.to(oldBigShape, 0.2, {
+        opacity: 0,
+      }, 1.4);
+
+      tl.from(newBigShape, 0.01, {
+        opacity: 0,
+      }, 1.4);
+
       tl.add(() => {
         bigShape.classList.add('grow');
-      }, 0.4);
+      }, 0);
 
       tl.to(list, 0.8, {
         opacity: 0,

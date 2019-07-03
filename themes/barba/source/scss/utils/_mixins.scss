@@ -301,11 +301,11 @@
 @mixin big-letter ($rotate, $translate-x, $translate-y) {
   transform: scale($scale-big-s) rotate($rotate) translate(($translate-x / $scale-big-s), ($translate-y / $scale-big-s));
 
-  @include mq(m) {
-    transform: scale($scale-big-m) rotate($rotate) translate((($translate-x * 2) / $scale-big-m), (($translate-y * 2.5) / $scale-big-m));
-  }
+  // @include mq(m) {
+  //   transform: scale($scale-big-m) rotate($rotate) translate((($translate-x * 2) / $scale-big-m), (($translate-y * 2.5) / $scale-big-m));
+  // }
 
-  @include mq(xl) {
-    transform: scale($scale-big-l) rotate($rotate) translate((($translate-x * 2.4) / $scale-big-l), (($translate-y * 4) / $scale-big-l));
-  }
+  // @include mq(xl) {
+  //   transform: scale($scale-big-l) rotate($rotate) translate((($translate-x * 2.4) / $scale-big-l), (($translate-y * 4) / $scale-big-l));
+  // }
 }

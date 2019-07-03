@@ -58,12 +58,6 @@
   .hover .item {
     opacity: 0;
   }
-
-  // .big>g {
-  //   display: none;
-  //   opacity: 0;
-  //   pointer-events: none;
-  // }
 }
 
 
@@ -89,6 +83,10 @@
     path {
       fill: $white;
     }
+
+    .c6 .js path {
+      fill: #2E5BDC;
+    }
   }
 
 }
@@ -98,47 +96,96 @@
 // }
 
 .item {
-  .can-grow {
-    transition: transform 1s;
+  .can-grow,
+  .detail-feature & {
+    transition: transform 1.4s $custom-easing;
     will-change: transform;
   }
 
-  &.grow.b1 {
+  &.grow.b1,
+  .detail-feature &.b1 {
     rect {
-      // transform-origin: 0 70%;
-      // @include big-letter(20deg, 100%, -40%);
-      transform: scale(6) translate(-3vw, -2vh) rotate(20deg);
+      transform: scale(6) translate(-3vw, -4vh) rotate(20deg);
     }
 
     circle {
-      transform: scale(6) translate(8vw, -1vh) rotate(20deg);
-      // transform-origin: 0 0%;
-      // @include big-letter(20deg, -75%, -30%);
+      transform: scale(6) translate(8vw, -3vh) rotate(20deg);
+    }
+  }
+
+  &.grow.a2,
+  .detail-feature &.a2 {
+    circle {
+      transform: scale(6) translate(1vw, -1vh) rotate(64deg);
+    }
+
+    rect {
+      transform: scale(8) translate(7vw, -14vh) rotate(30deg);
+    }
+  }
+
+  &.grow.r3,
+  .detail-feature &.r3 {
+    path {
+      transform: scale(7) translate(10vw, -2vh) rotate(-147deg);
+    }
+
+    rect {
+      transform: scale(7.3) translate(-5vw, -5vh) rotate(11deg);
+    }
+  }
+
+  &.grow.b4,
+  .detail-feature &.b4 {
+    rect {
+      transform: scale(7) translate(4vw, -4vh) rotate(-27deg);
+    }
+
+    circle {
+      transform: scale(7.3) translate(-5vw, -5vh) rotate(11deg);
+    }
+  }
+
+  &.grow.a5,
+  .detail-feature &.a5 {
+    rect {
+      transform: scale(7) translate(-15vw, -5vh) rotate(-24deg);
+    }
+
+    circle {
+      transform: scale(7.3) translate(2vw, -5vh) rotate(-9deg);
+    }
+  }
+
+  &.grow.c6,
+  .detail-feature &.c6 {
+    .togrow {
+      transform: scale(5) rotate(-35deg);
     }
   }
 }
 
-.logo .loop {
+.can-move .move {
   // will-change: transform;
 
   &.move1 {
-    animation: move1 10s infinite ease-in-out;
+    animation: move1 20s infinite ease-in-out;
   }
 
   &.move2 {
-    animation: move2 14s infinite ease-in-out;
+    animation: move2 29s infinite ease-in-out;
   }
 
   &.move3 {
-    animation: move3 12s infinite ease-in-out;
+    animation: move3 24s infinite ease-in-out;
   }
 
   &.move4 {
-    animation: move4 18s infinite ease-in-out;
+    animation: move4 39s infinite ease-in-out;
   }
 
   &.move5 {
-    animation: move5 9s infinite ease-in-out;
+    animation: move5 18s infinite ease-in-out;
   }
 }
 

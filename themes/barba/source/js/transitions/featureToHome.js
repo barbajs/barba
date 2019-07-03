@@ -20,18 +20,25 @@ export default {
       const navigation = data.current.container.querySelectorAll('.feature__nav__el');
       const oldLogo = data.current.container.querySelectorAll('.logo.featured .base, .logo.featured .hover');
       const fullOldLogo = data.current.container.querySelectorAll('.logo.featured');
+      const oldBigShape = data.current.container.querySelector('.logo.only-big');
 
       data.current.container.querySelector('.menu-trigger').style.opacity = '0';
 
       const tl = new TimelineMax({
         onComplete: () => {
           resolve();
-        }
+        },
       });
 
       tl.to(oldLogo, 0.3, {
         opacity: 0,
       }, 1);
+
+      tl.to(oldBigShape, 1.5, {
+        y: 100,
+        opacity: 0,
+        ease: 'Power4.easeIn',
+      }, 0.4);
 
       tl.to(fullOldLogo, 1, {
         opacity: 0,
