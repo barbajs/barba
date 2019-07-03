@@ -9,6 +9,24 @@
   }
 }
 
+.big-shape-container {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  transform: translateY(-50%);
+
+  svg {
+    display: block;
+    max-width: 568px;
+    margin: 0 auto;
+
+    .base {
+      display: none;
+    }
+  }
+}
+
 .colored {
   [data-barba-namespace='dependency-free'] & {
     color: $c-menu-dependency-free;
@@ -41,7 +59,7 @@
   max-width: 700px;
   height: 100%;
   margin: 0 auto;
-  will-change: transform;
+  // will-change: transform;
 
   p {
     font-size: 1.4rem;
@@ -147,9 +165,9 @@
   border-top: 0.1px solid $gray-lighter;
 }
 
-.feature .logo {
+.feature .logo.featured {
   @include center-x;
-  z-index: -1;
+  z-index: 10;
   top: 10rem;
   width: 23.5rem;
 

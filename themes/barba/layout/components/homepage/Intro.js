@@ -1,7 +1,7 @@
 import barba from '@barba/core';
 
 import {
-  Component
+  Component,
 } from 'kapla';
 
 import {
@@ -13,15 +13,18 @@ import {
 import {
   $on,
   qsa,
-  qs
+  qs,
 } from '../../../source/js/utils/dom';
 
 export default class extends Component {
   load() {
-    this.$logo = qs('.logo svg', this.$el);
-    this.$links = [...qsa('.logo .links a', this.$el)];
+    this.$logoContainer = qs('.logo-container', this.$el);
+    this.$logoHover = qs('.logo.only-big', this.$el);
+
+    this.$logo = qs('.home-logo.logo svg', this.$el);
+    this.$links = [...qsa('.home-logo.logo .links a', this.$el)];
     this.$texts = [...qsa('.intro__list li', this.$el)];
-    this.$items = [...qsa('.hover .item', this.$el)];
+    this.$items = [...qsa('.only-big .hover .item', this.$el)];
     this.$list = qs('.intro__list', this.$el);
 
     this.mouseEnter = this.mouseEnter.bind(this);
@@ -36,11 +39,13 @@ export default class extends Component {
     if (!barba.history.previous) {
       this.boarding();
     }
+
+    // this.onResize();
   }
 
   boarding() {
-    const logo = qs('.logo', this.$el);
-    const logoItems = qsa('.logo .base-item', this.$el);
+    const logo = qs('.logo.home-logo', this.$el);
+    const logoItems = qsa('.logo.home-logo .base-item', this.$el);
     const title = qsa('h1 span', this.$el);
     const buttons = qsa('.intro__buttons a', this.$el);
     const chrome = [
@@ -100,7 +105,7 @@ export default class extends Component {
     TweenMax.killTweensOf(this.$items[index]);
 
     TweenMax.to(this.$items[index], 0.4, {
-      opacity: 1
+      opacity: 1,
     });
 
     TweenMax.to(this.$texts[index], 0.2, {
@@ -115,13 +120,17 @@ export default class extends Component {
   }
 
   mouseLeave(index) {
+    if (barba.transitions.isRunning) {
+      return;
+    }
+
     this.$logo.classList.remove('gray');
 
     TweenMax.killTweensOf(this.$texts[index]);
     TweenMax.killTweensOf(this.$items[index]);
 
     TweenMax.to(this.$items[index], 0.4, {
-      opacity: 0
+      opacity: 0,
     });
 
     TweenMax.to(this.$texts[index], 0.2, {
@@ -130,9 +139,14 @@ export default class extends Component {
     });
   }
 
-  resize() {
+  // onResize() {
+  //   const bounds = this.$logo.getBoundingClientRect();
 
-  }
+  //   this.$logoHover.style.top = `${bounds.top}px`;
+  //   this.$logoHover.style.left = `${bounds.left}px`;
+  //   this.$logoHover.style.right = `${bounds.right}px`;
+  //   this.$logoHover.style.bottom = `${bounds.bottom}px`;
+  // }
 }
 
 

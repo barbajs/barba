@@ -1,5 +1,9 @@
 <div class="intro" data-component="intro">
-  <%- partial('components/common/logo.ejs', { classes: '' }) %>
+  <div class="logo-container">
+    <%- partial('components/common/logo.ejs', { classes: 'home-logo' }) %>
+    <%- partial('components/common/logo.ejs', { classes: 'only-big' }) %>
+  </div>
+
 
   <ul class="intro__list">
     <li style="color: #38D1F1">Dependency Free</li>

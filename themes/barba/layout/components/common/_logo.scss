@@ -1,7 +1,7 @@
 .logo {
   width: 100%;
   font-size: 0;
-  will-change: transform;
+  // will-change: transform;
 
   svg {
     overflow: visible;
@@ -59,13 +59,17 @@
     opacity: 0;
   }
 
-  .big>g {
-    display: none;
-    opacity: 0;
-    pointer-events: none;
-  }
+  // .big>g {
+  //   display: none;
+  //   opacity: 0;
+  //   pointer-events: none;
+  // }
 }
 
+
+.logo.only-big {
+  // will-change: initial;
+}
 
 .featured {
   svg {
@@ -89,12 +93,33 @@
 
 }
 
-.big * {
-  // transition: transform 0.4s ease-in-out;
+// .big * {
+//   // transition: transform 0.4s ease-in-out;
+// }
+
+.item {
+  .can-grow {
+    transition: transform 1s;
+    will-change: transform;
+  }
+
+  &.grow.b1 {
+    rect {
+      // transform-origin: 0 70%;
+      // @include big-letter(20deg, 100%, -40%);
+      transform: scale(6) translate(-3vw, -2vh) rotate(20deg);
+    }
+
+    circle {
+      transform: scale(6) translate(8vw, -1vh) rotate(20deg);
+      // transform-origin: 0 0%;
+      // @include big-letter(20deg, -75%, -30%);
+    }
+  }
 }
 
 .logo .loop {
-  will-change: transform;
+  // will-change: transform;
 
   &.move1 {
     animation: move1 10s infinite ease-in-out;
@@ -192,26 +217,26 @@
     opacity: 1;
   }
 
-  .big1 {
-    display: block !important;
-    opacity: 1 !important;
+  // .big1 {
+  //   display: block !important;
+  //   opacity: 1 !important;
 
-    rect {
-      transform-origin: 0 70%;
+  //   rect {
+  //     transform-origin: 0 70%;
 
-      &.to-animate {
-        @include big-letter(20deg, 100%, -40%);
-      }
-    }
+  //     &.to-animate {
+  //       @include big-letter(20deg, 100%, -40%);
+  //     }
+  //   }
 
-    circle {
-      transform-origin: 0 0%;
+  //   circle {
+  //     transform-origin: 0 0%;
 
-      &.to-animate {
-        @include big-letter(20deg, -75%, -30%);
-      }
-    }
-  }
+  //     &.to-animate {
+  //       @include big-letter(20deg, -75%, -30%);
+  //     }
+  //   }
+  // }
 }
 
 .featured--small {
@@ -219,26 +244,26 @@
     opacity: 1;
   }
 
-  .big2 {
-    display: block !important;
-    opacity: 1 !important;
+  // .big2 {
+  //   display: block !important;
+  //   opacity: 1 !important;
 
-    rect {
-      transform-origin: 0 70%;
+  //   rect {
+  //     transform-origin: 0 70%;
 
-      &.to-animate {
-        @include big-letter(-20deg, -220%, 300%);
-      }
-    }
+  //     &.to-animate {
+  //       @include big-letter(-20deg, -220%, 300%);
+  //     }
+  //   }
 
-    circle {
-      transform-origin: 0 0%;
+  //   circle {
+  //     transform-origin: 0 0%;
 
-      &.to-animate {
-        @include big-letter(-20deg, 75%, -350%);
-      }
-    }
-  }
+  //     &.to-animate {
+  //       @include big-letter(-20deg, 75%, -350%);
+  //     }
+  //   }
+  // }
 }
 
 .featured--core {
@@ -246,26 +271,26 @@
     opacity: 1;
   }
 
-  .big3 {
-    display: block !important;
-    opacity: 1 !important;
+  // .big3 {
+  //   display: block !important;
+  //   opacity: 1 !important;
 
-    rect {
-      transform-origin: 0 70%;
+  //   rect {
+  //     transform-origin: 0 70%;
 
-      &.to-animate {
-        @include big-letter(20deg, 75%, -80%);
-      }
-    }
+  //     &.to-animate {
+  //       @include big-letter(20deg, 75%, -80%);
+  //     }
+  //   }
 
-    path {
-      transform-origin: 0 0%;
+  //   path {
+  //     transform-origin: 0 0%;
 
-      &.to-animate {
-        @include big-letter(20deg, -120%, 500%);
-      }
-    }
-  }
+  //     &.to-animate {
+  //       @include big-letter(20deg, -120%, 500%);
+  //     }
+  //   }
+  // }
 }
 
 .featured--router {
@@ -273,26 +298,26 @@
     opacity: 1;
   }
 
-  .big4 {
-    display: block !important;
-    opacity: 1 !important;
+  // .big4 {
+  //   display: block !important;
+  //   opacity: 1 !important;
 
-    rect {
-      transform-origin: 0 70%;
+  //   rect {
+  //     transform-origin: 0 70%;
 
-      &.to-animate {
-        @include big-letter(20deg, -140%, 140%);
-      }
-    }
+  //     &.to-animate {
+  //       @include big-letter(20deg, -140%, 140%);
+  //     }
+  //   }
 
-    circle {
-      transform-origin: 0 0%;
+  //   circle {
+  //     transform-origin: 0 0%;
 
-      &.to-animate {
-        @include big-letter(20deg, 50%, -150%);
-      }
-    }
-  }
+  //     &.to-animate {
+  //       @include big-letter(20deg, 50%, -150%);
+  //     }
+  //   }
+  // }
 }
 
 .featured--prefetch {
@@ -300,26 +325,26 @@
     opacity: 1;
   }
 
-  .big5 {
-    display: block !important;
-    opacity: 1 !important;
+  // .big5 {
+  //   display: block !important;
+  //   opacity: 1 !important;
 
-    rect {
-      transform-origin: 0 70%;
+  //   rect {
+  //     transform-origin: 0 70%;
 
-      &.to-animate {
-        @include big-letter(-20deg, -20%, 80%);
-      }
-    }
+  //     &.to-animate {
+  //       @include big-letter(-20deg, -20%, 80%);
+  //     }
+  //   }
 
-    circle {
-      transform-origin: 0 0%;
+  //   circle {
+  //     transform-origin: 0 0%;
 
-      &.to-animate {
-        @include big-letter(-20deg, -250%, -200%);
-      }
-    }
-  }
+  //     &.to-animate {
+  //       @include big-letter(-20deg, -250%, -200%);
+  //     }
+  //   }
+  // }
 }
 
 .featured--change {

@@ -1,12 +1,14 @@
 import {
-  TweenMax,
-  TimelineMax
+  TimelineMax, TweenMax,
 } from 'gsap/all';
+
 import {
   qs,
-  qsa
+  qsa,
 } from '../../../source/js/utils/dom';
 import deferred from '../../../source/js/utils/deferred';
+
+import NAMESPACES_ORDER from './featuresOrder';
 
 export default {
   sync: true,
@@ -19,11 +21,14 @@ export default {
 
   leave(data) {
     return new Promise(resolve => {
-      const oldLogo = data.current.container.querySelector('.logo');
+      const intro = data.current.container.querySelector('.intro');
+      const oldLogo = data.current.container.querySelector('.logo.home-logo');
       const newLogo = data.next.container.querySelector('.logo.featured');
       const title = data.current.container.querySelectorAll('h1 span');
       const buttons = data.current.container.querySelectorAll('.intro__buttons a');
       const list = data.current.container.querySelector('.intro__list');
+      const hoverIndex = NAMESPACES_ORDER.indexOf(data.next.namespace);
+      const bigShape = data.current.container.querySelectorAll('.logo.only-big .hover .item')[hoverIndex];
 
       data.current.container.style.zIndex = -1;
 
@@ -33,11 +38,12 @@ export default {
       const newLogoRect = newLogo.getBoundingClientRect();
 
       data.current.container.querySelector('.menu-trigger').style.opacity = '0';
+      intro.classList.add('to-feature');
 
       const tl = new TimelineMax({
         onComplete: () => {
           resolve();
-        }
+        },
       });
 
       const scale = newLogoRect.width / oldLogoRect.width;
@@ -45,26 +51,33 @@ export default {
       tl.to(oldLogo, 1.4, {
         scale,
         y: -((oldLogoRect.top - newLogoRect.top) + ((newLogoRect.height * scale) * 2) - 6),
-        ease: 'Power4.easeInOut'
+        ease: 'Power4.easeInOut',
       }, 0);
 
-      tl.to(list, .8, {
+      TweenMax.killTweensOf(bigShape);
+      tl.to(bigShape, 0.4, {
+        opacity: 1,
+      }, 0);
+
+      tl.add(() => {
+        bigShape.classList.add('grow');
+      }, 0.4);
+
+      tl.to(list, 0.8, {
         opacity: 0,
-        ease: 'Power4.easeIn'
+        ease: 'Power4.easeIn',
       }, 0);
 
       tl.staggerTo(title, 1, {
         yPercent: 100,
-        ease: 'Power4.easeInOut'
+        ease: 'Power4.easeInOut',
       }, 0.05, 0);
 
       tl.staggerTo(buttons, 1, {
         y: 40,
         opacity: 0,
-        ease: 'Power4.easeIn'
+        ease: 'Power4.easeIn',
       }, 0.05, 0.1);
-
-      // resolve();
     });
   },
 

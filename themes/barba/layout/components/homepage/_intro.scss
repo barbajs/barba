@@ -13,6 +13,45 @@
   max-width: 57rem;
 }
 
+.intro .logo-container {
+  position: relative;
+  width: 100%;
+
+  .logo {
+    margin: 0 auto;
+  }
+
+  .home-logo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.intro .logo.only-big {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+
+  .base,
+  .links {
+    display: none;
+  }
+}
+
+
+.intro.to-feature {
+  .logo-container .home-logo {
+    z-index: -1;
+  }
+
+  .logo.only-big {
+    position: static;
+  }
+}
+
 .intro h1 {
   max-width: 65rem;
   margin: 0;

@@ -3,14 +3,7 @@ import {
   TimelineMax
 } from 'gsap/TweenMax';
 
-const NAMESPACES_ORDER = [
-  'dependency-free',
-  'small-size',
-  'core',
-  'router',
-  'prefetch',
-  'change-log',
-];
+import NAMESPACES_ORDER from './featuresOrder';
 
 // Return true for forward, false for backwards
 function isForward(fromNamespace, toNamespace) {

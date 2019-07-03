@@ -1,6 +1,10 @@
 <div class="feature" data-component="feature" data-namespace="<%- page.namespace %>">
   <%- partial('../components/common/logo.ejs', { classes: 'featured featured--'+page.modifier }) %>
 
+  <div class="big-shape-container">
+    <%- partial('../components/common/logo.ejs', { classes: 'only-big featured--'+page.modifier }) %>
+  </div>
+
   <%- partial('../components/features/feature-nav.ejs') %>
 
   <div class="feature__container">
