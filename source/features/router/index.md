@@ -6,7 +6,7 @@ modifier: 'router'
 box: 'router.ejs'
 action: {
     title: 'Transition rules',
-    icon: b-barba,
+    icon: barba-arrow-next,
     link: '#',
 }
 ---

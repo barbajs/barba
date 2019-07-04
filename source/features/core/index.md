@@ -6,7 +6,7 @@ modifier: 'core'
 box: 'core.ejs'
 action: {
     title: 'Read Documentation',
-    icon: b-barba,
+    icon: barba-arrow-next,
     link: '#',
 }
 ---

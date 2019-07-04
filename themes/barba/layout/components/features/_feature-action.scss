@@ -1,31 +1,70 @@
 .feature__action,
 [class*='feature__action--'] {
   display: flex;
-  padding: 1rem;
-  border-radius: 20px;
+  padding: 10px 14px;
+  border-radius: 50px;
+  align-items: center;
+
+  svg {
+    stroke: none;
+    fill: white;
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
+  }
 
   [data-barba-namespace='dependency-free'] & {
     background-color: $c-menu-dependency-free-light;
+
+    svg {
+      fill: $c-menu-dependency-free;
+      stroke: $c-menu-dependency-free;
+    }
   }
 
   [data-barba-namespace='small-size'] & {
     background-color: $c-menu-small-size-light;
+
+    svg {
+      fill: $c-menu-small-size;
+      stroke: $c-menu-small-size;
+    }
   }
 
   [data-barba-namespace='core'] & {
     background-color: $c-menu-core-light;
+
+    svg {
+      fill: $c-menu-core;
+      stroke: $c-menu-core;
+    }
   }
 
   [data-barba-namespace='router'] & {
     background-color: $c-menu-router-light;
+
+    svg {
+      fill: $c-menu-router;
+      stroke: $c-menu-router;
+    }
   }
 
   [data-barba-namespace='prefetch'] & {
     background-color: $c-menu-prefetch-light;
+
+    svg {
+      fill: $c-menu-prefetch;
+      stroke: $c-menu-prefetch;
+    }
   }
 
   [data-barba-namespace='about'] & {
     background-color: $c-menu-about-light;
+
+    svg {
+      fill: $c-menu-about;
+      stroke: $c-menu-about;
+    }
   }
 }
 

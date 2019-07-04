@@ -111,9 +111,14 @@
 .docs__page-transition {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   display: none;
   width: 100%;
   height: 100vh;
   background-color: $c-blue-light;
+
+  @include mq(m) {
+    left: 25vw;
+    width: 75vw;
+  }
 }

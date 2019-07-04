@@ -36,24 +36,28 @@ export default {
 
       if (docsUrlOrderedList.indexOf(currentPage) < docsUrlOrderedList.indexOf(nextPage)) {
         tl.add(TweenMax.set(background, {
-          right: '-100%',
+          xPercent: 110,
           display: 'block',
+          skewX: -10,
         }));
-        tl.add(TweenMax.to(background, 0.6, {
-          right: 0,
-          ease: 'Power2.easeIn',
+        tl.add(TweenMax.to(background, 1, {
+          xPercent: 0,
+          ease: 'Power4.easeInOut',
+          skewX: 0,
           onComplete: () => {
             resolve();
           },
         }));
       } else {
         tl.add(TweenMax.set(background, {
-          right: '100%',
+          xPercent: -110,
           display: 'block',
+          skewX: 10,
         }));
-        tl.add(TweenMax.to(background, 0.6, {
-          right: 0,
-          ease: 'Power2.easeIn',
+        tl.add(TweenMax.to(background, 1, {
+          xPercent: 0,
+          ease: 'Power4.easeInOut',
+          skewX: 0,
           onComplete: () => {
             resolve();
           },
@@ -76,24 +80,24 @@ export default {
 
       if (docsUrlOrderedList.indexOf(currentPage) < docsUrlOrderedList.indexOf(nextPage)) {
         tl.add(TweenMax.set(background, {
-          right: 0,
+          xPercent: 0,
           display: 'block',
         }));
         tl.add(TweenMax.to(background, 0.6, {
-          right: '100%',
-          ease: 'Power2.easeOut',
+          xPercent: -100,
+          ease: 'Power4.easeInOut',
         }));
         tl.add(TweenMax.set(background, {
           display: 'none',
         }));
       } else {
         tl.add(TweenMax.set(background, {
-          right: 0,
+          xPercent: 0,
           display: 'block',
         }));
         tl.add(TweenMax.to(background, 0.6, {
-          right: '-100%',
-          ease: 'Power2.easeOut',
+          xPercent: 100,
+          ease: 'Power4.easeInOut',
         }));
         tl.add(TweenMax.set(background, {
           display: 'none',

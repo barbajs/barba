@@ -6,7 +6,7 @@ modifier: 'small'
 box: 'small-size.ejs'
 action: {
     title: 'Download Barba.js',
-    icon: b-barba,
+    icon: barba-arrow-next,
     link: '#',
 }
 ---

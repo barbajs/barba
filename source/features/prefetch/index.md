@@ -6,7 +6,7 @@ modifier: 'prefetch'
 box: 'prefetch.ejs'
 action: {
     title: 'User Guide',
-    icon: b-barba,
+    icon: barba-arrow-next,
     link: '#',
 }
 ---

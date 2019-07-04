@@ -1,16 +1,23 @@
 // Lateral nav
 
 .docs__nav__lateral {
-  position: fixed;
-  z-index: 11;
-  right: 0;
-  bottom: 3rem;
-  left: 0;
+  position: static;
   display: flex;
   width: 100%;
 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include mq(m) {
+    width: 74vw;
+    margin-left: 25vw;
+  }
+
   @include mq(l) {
-    right: 20vw;
+    min-width: 50vw;
+    max-width: 80rem;
+    padding: 0rem 6rem;
   }
 
   .icon--barba {

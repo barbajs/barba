@@ -2,6 +2,7 @@
   <div class="docs__page-transition"></div>
 
   <%- partial('../components/docs/docs-nav') %>
+  <%- partial('../components/docs/docs-content') %>
 
   <% theme.docs.forEach(function(page) { %>
   <% if (page.subpages) { %>
@@ -19,7 +20,5 @@
   }) %>
   <% }; %>
   <% }); %>
-
-  <%- partial('../components/docs/docs-content') %>
 
 </section>

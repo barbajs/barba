@@ -6,7 +6,7 @@ modifier: 'dep'
 box: 'dependency-free.ejs'
 action: {
     title: 'Read Documentation',
-    icon: b-barba,
+    icon: barba-arrow-next,
     link: '#',
 }
 ---

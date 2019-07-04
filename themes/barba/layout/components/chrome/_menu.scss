@@ -231,6 +231,8 @@
 .menu__footer__download {
   @extend %text-uppercase;
   @extend %fw-bold;
+  display: block;
+  text-align: center;
   width: 100%;
   border: 0;
   padding: $spacing / 2;
