@@ -179,8 +179,8 @@
     background-color: $c-menu-prefetch;
   }
 
-  .change-log & {
-    background-color: $c-menu-change-log;
+  .about & {
+    background-color: $c-menu-about;
   }
 }
 
@@ -213,9 +213,9 @@
     color: $c-menu-prefetch;
   }
 
-  .menu-subpages__item:hover.change-log &,
-  .menu-subpages__item.change-log.is-active & {
-    color: $c-menu-change-log;
+  .menu-subpages__item:hover.about &,
+  .menu-subpages__item.about.is-active & {
+    color: $c-menu-about;
   }
 }
 

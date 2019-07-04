@@ -1,6 +1,7 @@
 .feature {
   @include get-all-space;
-  overflow: hidden;
+  // overflow: hidden;
+  overflow: auto;
   padding: 16rem 4rem 6rem;
   perspective: 1000px;
 
@@ -26,6 +27,10 @@
       display: none;
     }
   }
+
+  * {
+    pointer-events: none;
+  }
 }
 
 .colored {
@@ -49,8 +54,8 @@
     color: $c-menu-prefetch;
   }
 
-  [data-barba-namespace='change-log'] & {
-    color: $c-menu-change-log;
+  [data-barba-namespace='about'] & {
+    color: $c-menu-about;
   }
 }
 
@@ -73,7 +78,7 @@
   }
 
   @include mq(s) {
-    align-items: center;
+    // align-items: center;
     // margin-top: 10rem;
     padding-top: 10rem;
   }
@@ -92,14 +97,14 @@
 }
 
 .feature__bodymovin {
-  position: absolute;
+  @include get-all-space;
   z-index: -1;
   top: 0;
   right: 0;
   left: 0;
-  overflow: hidden;
-  width: 100vw;
-  height: auto;
+  // overflow: hidden;
+  // width: 100vw;
+  // height: auto;
 }
 
 .feature__box {
@@ -184,4 +189,8 @@
   @include mq(m) {
     top: 4rem;
   }
+}
+
+.credits-table {
+
 }

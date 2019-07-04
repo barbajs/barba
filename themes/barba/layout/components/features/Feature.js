@@ -7,7 +7,13 @@ import prefetch from './box-content/prefetch.json';
 export default class extends Component {
   load() {
     const featureNamespace = this.$el.dataset.namespace;
-    const bodymovins = { 'dependency-free': {}, 'small-size': {}, 'core': {}, 'router': {}, 'prefetch': prefetch };
+    const bodymovins = {
+      'dependency-free': prefetch,
+      'small-size': prefetch,
+      'core': prefetch,
+      'router': prefetch,
+      'prefetch': prefetch,
+    };
     const bodymovinsKeys = Object.keys(bodymovins);
 
     bodymovinsKeys.forEach(key => {

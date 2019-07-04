@@ -4,5 +4,5 @@ export default [
   'core',
   'router',
   'prefetch',
-  'change-log',
+  'about',
 ];

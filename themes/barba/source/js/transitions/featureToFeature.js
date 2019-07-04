@@ -35,6 +35,9 @@ export default {
 
   leave(data) {
     return new Promise(resolve => {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+
       const goingForward = isForward(data.current.namespace, data.next.namespace);
 
       // Logo (remove big letter)
