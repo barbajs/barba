@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.5](https://github.com/barbajs/barba/compare/@barba/router@2.1.4...@barba/router@2.1.5) (2019-07-16)
+
+### Bug Fixes
+
+- **root:** :mute: remove print version ([be5aa73](https://github.com/barbajs/barba/commit/be5aa73)), closes [#415](https://github.com/barbajs/barba/issues/415)
+
 ## [2.1.4](https://github.com/barbajs/barba/compare/@barba/router@2.1.3...@barba/router@2.1.4) (2019-06-11)
 
 **Note:** Version bump only for package @barba/router

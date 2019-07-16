@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.6](https://github.com/barbajs/barba/compare/@barba/prefetch@2.1.5...@barba/prefetch@2.1.6) (2019-07-16)
+
+### Bug Fixes
+
+- **root:** :mute: remove print version ([be5aa73](https://github.com/barbajs/barba/commit/be5aa73)), closes [#415](https://github.com/barbajs/barba/issues/415)
+
 ## [2.1.5](https://github.com/barbajs/barba/compare/@barba/prefetch@2.1.4...@barba/prefetch@2.1.5) (2019-06-26)
 
 ### Bug Fixes
