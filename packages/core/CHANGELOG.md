@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.13](https://github.com/barbajs/barba/compare/@barba/core@2.3.12...@barba/core@2.3.13) (2019-07-16)
+
+### Bug Fixes
+
+- **core:** :bug: Clean url extend ([7667a8d](https://github.com/barbajs/barba/commit/7667a8d))
+- **core:** :bug: fix link with no href attribute ([e434ecb](https://github.com/barbajs/barba/commit/e434ecb))
+
 ## [2.3.12](https://github.com/barbajs/barba/compare/@barba/core@2.3.11...@barba/core@2.3.12) (2019-06-26)
 
 ### Bug Fixes
