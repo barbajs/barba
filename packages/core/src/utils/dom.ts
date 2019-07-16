@@ -103,8 +103,10 @@ export class Dom {
     if (el.tagName && el.tagName.toLowerCase() === 'a') {
       const href = el.getAttribute('href');
 
-      // When link comes from SVG, `href` returns an object, not a string.
-      return ((href as unknown) as SVGAnimatedString).baseVal || href;
+      if (href) {
+        // When link comes from SVG, `href` returns an object, not a string.
+        return ((href as unknown) as SVGAnimatedString).baseVal || href;
+      }
     }
     return null;
   }
