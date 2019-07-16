@@ -38,7 +38,7 @@ class Prefetch implements IBarbaPlugin<IPrefetchOptions> {
     { root = document.body, timeout = 2e3 }: IPrefetchOptions = {}
   ) {
     this.logger = new barba.Logger(this.name);
-    this.logger.print(this.version);
+    this.logger.info(this.version);
     this.barba = barba;
     this.root = root;
     this.timeout = timeout;

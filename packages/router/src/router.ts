@@ -35,7 +35,7 @@ class Router implements IBarbaPlugin<IRouterOptions> {
    */
   public install(barba: Core, { routes = [] }: IRouterOptions = {}) {
     this.logger = new barba.Logger(this.name);
-    this.logger.print(this.version);
+    this.logger.info(this.version);
     this.barba = barba;
 
     routes.forEach(route => {

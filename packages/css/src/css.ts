@@ -44,7 +44,7 @@ class Css implements IBarbaPlugin<{}> {
    */
   public install(barba: Core) {
     this.logger = new barba.Logger(this.name);
-    this.logger.print(this.version);
+    this.logger.info(this.version);
     this.barba = barba;
     this._appear = this._appear.bind(this);
     this._leave = this._leave.bind(this);
