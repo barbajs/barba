@@ -99,8 +99,11 @@ If you want to play some transition on first load, use `appear`:
 
 ---
 
-If you want different transitions, you can name them and use rules.  
+If you want different transitions, you can name them and use rules.
 The transition `name` will be used as **CSS "prefix"**.
+
+> !!! To use a "custom named" __appear__ transition, you need to explicitly add a `appear() {}` hook to your transition.
+>
 
 ```js
 import barba from '@barba/core';
@@ -114,7 +117,11 @@ barba.init({
   transitions:[{
 
     // css classes will look like `.fade-xxx-[-xxx]`
-    name: 'fade'
+    name: 'fade',
+
+    // if you want to use `.fade-appear[-xxx]`
+    // add this empty hook…
+    appear() {}
   }, {
 
     // css classes will look like `.slide-xxx[-xxx]`
