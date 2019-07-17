@@ -53,6 +53,7 @@ export class Views {
     });
 
     hooks.ready(this._createHook('beforeEnter'), this);
+    hooks.ready(this._createHook('afterEnter'), this);
   }
 
   /**
