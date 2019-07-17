@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.15](https://github.com/barbajs/barba/compare/@barba/core@2.3.14...@barba/core@2.3.15) (2019-07-17)
+
+### Bug Fixes
+
+- **core:** :ok_hand: view hook on page load ([c631b54](https://github.com/barbajs/barba/commit/c631b54)), closes [#393](https://github.com/barbajs/barba/issues/393)
+
 ## [2.3.14](https://github.com/barbajs/barba/compare/@barba/core@2.3.13...@barba/core@2.3.14) (2019-07-16)
 
 ### Bug Fixes
