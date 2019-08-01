@@ -219,7 +219,7 @@ export class Core {
     this.plugins.forEach(plugin => plugin.init());
 
     // 8. Barba ready
-    // Set next + trigger for appear and `beforeEnter` view on page load.
+    // Set next + trigger for appear and `beforeEnter`/`afterEnter` view on page load.
     const readyData = this.data;
 
     readyData.trigger = 'barba';
@@ -227,7 +227,7 @@ export class Core {
     this.hooks.do('ready', readyData);
 
     // 9. Finally, do appear…
-    this.appear();
+    this.appear(readyData);
     // Clean data for first barba transition…
     this._resetData();
   }
@@ -301,20 +301,23 @@ export class Core {
    * If some registered "appear" transition,
    * get the "resolved" transition from the store and start it.
    */
-  public async appear(): Promise<void> {
+  public async appear(readyData: ITransitionData): Promise<void> {
+    await this.hooks.do('beforeEnter', readyData);
+
     // Check if appear transition
     if (this.transitions.hasAppear) {
       try {
-        const data = this._data;
-        const transition = this.transitions.get(data, {
+        const transition = this.transitions.get(readyData, {
           appear: true,
         }) as ITransitionAppear;
 
-        await this.transitions.doAppear({ transition, data });
+        await this.transitions.doAppear({ transition, data: readyData });
       } catch (error) {
         this.logger.error(error);
       }
     }
+
+    await this.hooks.do('afterEnter', readyData);
   }
 
   /**

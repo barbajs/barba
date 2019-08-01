@@ -1,11 +1,20 @@
 /* eslint-disable no-mixed-operators, cypress/no-unnecessary-waiting */
-const hooksDefault = [
+const appearHooks = [
+  'global:beforeEnter',
+  // 'global:before',
+  // 'before',
   'global:beforeAppear',
   'beforeAppear',
   'global:appear',
   'appear',
   'global:afterAppear',
   'afterAppear',
+  // 'global:after',
+  // 'after',
+  'global:afterEnter',
+];
+const hooksDefault = [
+  ...appearHooks,
   'global:before',
   'before',
   'global:beforeLeave',
@@ -24,12 +33,7 @@ const hooksDefault = [
   'after',
 ];
 const hooksSync = [
-  'global:beforeAppear',
-  'beforeAppear',
-  'global:appear',
-  'appear',
-  'global:afterAppear',
-  'afterAppear',
+  ...appearHooks,
   'global:before',
   'before',
   'global:beforeLeave',

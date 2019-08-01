@@ -51,9 +51,6 @@ export class Views {
     this.names.forEach(name => {
       hooks[name](this._createHook(name), this);
     });
-
-    hooks.ready(this._createHook('beforeEnter'), this);
-    hooks.ready(this._createHook('afterEnter'), this);
   }
 
   /**
