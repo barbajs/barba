@@ -72,6 +72,13 @@ export class History {
   get previous(): IHistoryItem | null {
     return this._state.length < 2 ? null : this._state[this._state.length - 2];
   }
+
+  /**
+   * Get the state size.
+   */
+  get size(): number {
+    return this._state.length;
+  }
 }
 
 const history = new History();
