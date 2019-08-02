@@ -49,7 +49,18 @@ it('do leave hooks', async () => {
   expect(css.end).toHaveBeenCalledWith(current, 'leave');
 });
 
+it('do enter hooks on first load', async () => {
+  await barba.hooks.do('beforeEnter', data, t);
+  await barba.hooks.do('afterEnter', data, t);
+
+  expect(css.start).not.toHaveBeenCalled();
+  expect(css.end).not.toHaveBeenCalled();
+});
+
 it('do enter hooks', async () => {
+  // Remove from history to simulate first page load.
+  barba.history.remove();
+
   await barba.hooks.do('beforeEnter', data, t);
   await barba.hooks.do('afterEnter', data, t);
 

@@ -222,6 +222,10 @@ class Css implements IBarbaPlugin<{}> {
    * `beforeEnter` hook.
    */
   private _beforeEnter(data: ITransitionData): Promise<void> {
+    // Avoid on first load
+    if (this.barba.history.size === 1) {
+      return Promise.resolve();
+    }
     return this.start(data.next.container, 'enter');
   }
 
@@ -241,6 +245,10 @@ class Css implements IBarbaPlugin<{}> {
    * `afterEnter` hook.
    */
   private _afterEnter(data: ITransitionData): Promise<void> {
+    // Avoid on first load
+    if (this.barba.history.size === 1) {
+      return Promise.resolve();
+    }
     return this.end(data.next.container, 'enter');
   }
 }
