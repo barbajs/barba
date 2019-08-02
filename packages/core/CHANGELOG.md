@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/barbajs/barba/compare/@barba/core@2.3.16...@barba/core@2.4.0) (2019-08-02)
+
+### Features
+
+- **core:** :sparkles: add history size ([3b8d7fd](https://github.com/barbajs/barba/commit/3b8d7fd))
+
 ## [2.3.16](https://github.com/barbajs/barba/compare/@barba/core@2.3.15...@barba/core@2.3.16) (2019-08-01)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.11](https://github.com/barbajs/barba/compare/@barba/css@2.1.10...@barba/css@2.1.11) (2019-08-02)
+
+### Bug Fixes
+
+- **css:** :bug: do not trigger `enter` transition on first load ([f283cd2](https://github.com/barbajs/barba/commit/f283cd2)), closes [#393](https://github.com/barbajs/barba/issues/393)
+
 ## [2.1.10](https://github.com/barbajs/barba/compare/@barba/css@2.1.9...@barba/css@2.1.10) (2019-07-16)
 
 ### Bug Fixes
