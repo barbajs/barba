@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/barbajs/barba/compare/@barba/core@2.4.0...@barba/core@2.5.0) (2019-08-22)
+
+### Features
+
+- **core:** :ok_hand: replace popstate with back/forward ([c665052](https://github.com/barbajs/barba/commit/c665052))
+
 # [2.4.0](https://github.com/barbajs/barba/compare/@barba/core@2.3.16...@barba/core@2.4.0) (2019-08-02)
 
 ### Features
