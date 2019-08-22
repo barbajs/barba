@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.1](https://github.com/barbajs/barba/compare/@barba/core@2.5.0...@barba/core@2.5.1) (2019-08-22)
+
+### Bug Fixes
+
+- **core:** :bug: keep container position ([5482154](https://github.com/barbajs/barba/commit/5482154))
+
 # [2.5.0](https://github.com/barbajs/barba/compare/@barba/core@2.4.0...@barba/core@2.5.0) (2019-08-22)
 
 ### Features
