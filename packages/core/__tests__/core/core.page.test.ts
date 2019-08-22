@@ -10,9 +10,7 @@ import { schemaAttribute } from '../../src/schemas/attribute';
 
 const namespace = 'next';
 const checkDoc = new RegExp(
-  `^<html>[\\s\\S]+body[\\s\\S]+${schemaAttribute.wrapper}[\\s\\S]+${
-    schemaAttribute.container
-  }[\\s\\S]+${namespace}[\\s\\S]+</html>$`
+  `^<html>[\\s\\S]+body[\\s\\S]+${schemaAttribute.wrapper}[\\s\\S]+${schemaAttribute.container}[\\s\\S]+${namespace}[\\s\\S]+</html>$`
 );
 const t = { leave() {}, enter() {} };
 const sameUrl = 'http://localhost/';
@@ -74,7 +72,7 @@ afterEach(() => {
 });
 
 it('do page', async () => {
-  barba.history.push = jest.fn();
+  barba.history.update = jest.fn();
   hooks.do = jest.fn();
 
   barba.transitions.store.add('transition', t);
@@ -87,7 +85,7 @@ it('do page', async () => {
 
   expect(spyCacheHas).toHaveBeenCalledTimes(1);
   expect(spyCacheSet).toHaveBeenCalledTimes(1);
-  expect(barba.history.push).toHaveBeenCalledTimes(1);
+  expect(barba.history.update).toHaveBeenCalledTimes(1);
   expect(hooks.do).toHaveBeenNthCalledWith(1, 'page', data);
   expect(hooks.do).toHaveBeenNthCalledWith(2, 'before', data, t);
   expect(hooks.do).toHaveBeenNthCalledWith(3, 'beforeLeave', data, t);
@@ -141,21 +139,6 @@ it('do page [waiting]', async () => {
   await barba.page(nextUrl, 'barba', false);
 
   expect(barba.data.next.html).toMatch(checkDoc);
-});
-
-it('force when manager running', async () => {
-  barba.force = jest.fn();
-  hooks.do = jest.fn();
-
-  barba.transitions.store.add('transition', { leave() {}, enter() {} });
-  barba.transitions['_running'] = true;
-  await barba.page(nextUrl, 'barba', false);
-
-  expect(barba.force).toHaveBeenCalledTimes(1);
-  expect(hooks.do).not.toHaveBeenCalled();
-  expect(barba.transitions.doPage).not.toHaveBeenCalled();
-
-  barba.transitions['_running'] = false;
 });
 
 it('catches error', async () => {

@@ -63,7 +63,7 @@ it('has current page content', () => {
   expect(barba.data.current.namespace).toBe(namespace);
   expect(barba.data.current.url).toEqual({
     hash: undefined,
-    href: 'http://localhost/',
+    href: '/',
     path: '/',
     query: {},
   });
@@ -71,11 +71,12 @@ it('has current page content', () => {
   expect(barba.data.current.html).toMatch(/^<html>.+<\/html>$/);
 });
 
-it('updates history', () => {
+it('init history', () => {
   barba.init();
   expect(barba.history.current).toEqual({
+    index: 0,
     ns: 'ns',
-    url: 'http://localhost/',
+    url: '/',
   });
   // expect(barba.cache.has('http://localhost/')).toBeTruthy();
 });

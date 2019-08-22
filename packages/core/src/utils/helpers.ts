@@ -44,14 +44,8 @@ export const update = async (
       // next.html = nextDocument.innerHTML;
       next.html = html;
 
-      // Update history
-      // If triggered from an history change (back, forward),
-      // simply add the new state without
-      if (trigger === 'popstate') {
-        history.add(next.url.href, next.namespace);
-      } else {
-        history.push(next.url.href, next.namespace);
-      }
+      // Update history namespace (not available when initially set)
+      history.update({ ns: next.namespace });
 
       // Update title.
       const { title } = dom.toDocument(html);

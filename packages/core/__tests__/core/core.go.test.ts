@@ -8,6 +8,7 @@ import { schemaAttribute } from '../../src/schemas/attribute';
 (global as any).Headers = class {};
 
 const namespace = 'next';
+const nextUrl = 'http://localhost/foo';
 
 init();
 
@@ -27,6 +28,7 @@ beforeEach(() => {
 });
 afterEach(() => {
   barba.destroy();
+  (global as any).jsdom.reconfigure({ url: 'http://localhost/' });
 });
 
 it('do go', async () => {
@@ -39,6 +41,22 @@ it('do go', async () => {
     'barba',
     false
   );
+});
+
+it('force when manager running', async () => {
+  barba.force = jest.fn();
+  barba.page = jest.fn();
+  hooks.do = jest.fn();
+
+  barba.transitions.store.add('transition', { leave() {}, enter() {} });
+  barba.transitions['_running'] = true;
+  await barba.go(nextUrl, 'barba');
+
+  expect(barba.force).toHaveBeenCalledTimes(1);
+  expect(hooks.do).not.toHaveBeenCalled();
+  expect(barba.page).not.toHaveBeenCalled();
+
+  barba.transitions['_running'] = false;
 });
 
 it('prevent same url with no self transition', async () => {
@@ -62,7 +80,11 @@ it('use self transition on same url [popstate]', async () => {
   barba.page = jest.fn();
   barba.transitions.store.add('transition', { name: 'self' });
 
-  await barba.go('http://localhost/', 'popstate');
+  await barba.go('http://localhost/', 'popstate', {
+    state: {},
+    stopPropagation() {},
+    preventDefault() {},
+  } as PopStateEvent);
 
   expect(barba.page).toHaveBeenCalledWith(
     'http://localhost/',

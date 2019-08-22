@@ -10,7 +10,7 @@
 
 /***/
 
-// Deifnitions
+// Definitions
 import { IGenericObject, IUrlBase } from '../defs';
 
 /**

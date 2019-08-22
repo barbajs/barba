@@ -6,6 +6,10 @@ const { link, span, click } = init();
 // Mocks
 barba.page = jest.fn();
 
+afterEach(() => {
+  (global as any).jsdom.reconfigure({ url: 'http://localhost/' });
+});
+
 it('handle link enter', () => {
   link.href = 'foo';
   span.dispatchEvent(click);

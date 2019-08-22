@@ -203,8 +203,8 @@ export class Core {
     }
 
     // 5. Use "current" data
-    // Set/update history
-    this.history.add(current.url.href, current.namespace);
+    // Init history
+    this.history.init(current.url.href, current.namespace);
     // Add to cache
     // TODO: do not cache renderer HTML, only request results…
     // this.cache.set(current.url.href, Promise.resolve(current.html), 'init');
@@ -235,6 +235,7 @@ export class Core {
   public destroy(): void {
     this._resetData();
     this._unbind();
+    this.history.clear();
     this.hooks.clear();
     this.plugins = [];
   }
@@ -272,6 +273,13 @@ export class Core {
     trigger: Trigger = 'barba',
     e?: LinkEvent | PopStateEvent
   ): Promise<void> {
+    // If animation running, force reload
+    if (this.transitions.isRunning) {
+      this.force(href);
+
+      return;
+    }
+
     let self = false;
 
     // Check prevent sameURL against current history
@@ -285,6 +293,16 @@ export class Core {
 
     if (self && !this.transitions.hasSelf) {
       return;
+    }
+
+    // Manage history / popstate direction
+    if (trigger === 'popstate') {
+      const { state } = e as PopStateEvent;
+      // Get direction
+      trigger = this.history.getDirection(state);
+      this.history.add(href, state.ns, state.index, false);
+    } else {
+      this.history.add(href, 'tmp');
     }
 
     if (e) {
@@ -338,13 +356,6 @@ export class Core {
     trigger: Trigger,
     self: boolean
   ): Promise<void> {
-    // If animation running, force reload
-    if (this.transitions.isRunning) {
-      this.force(href);
-
-      return;
-    }
-
     this.data.next.url = {
       href,
       ...this.url.parse(href),
@@ -532,8 +543,8 @@ export class Core {
    * Get "href" from URL
    * Go for a Barba transition.
    */
-  private _onStateChange(): void {
-    this.go(this.url.getHref(), 'popstate');
+  private _onStateChange(e: PopStateEvent): void {
+    this.go(this.url.getPath(this.url.getHref()), 'popstate', e);
   }
 
   /**
@@ -563,7 +574,7 @@ export class Core {
    * Set "current" and unset "next".
    */
   private _resetData() {
-    const href = this.url.getHref();
+    const href = this.url.getPath(this.url.getHref());
     const current = {
       container: this.dom.getContainer(),
       html: this.dom.getHtml(),
