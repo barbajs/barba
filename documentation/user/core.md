@@ -158,13 +158,14 @@ barba.init({
 
 Data argument is an object passed to all [transition hooks](#hooks), [view hooks subset](#view-object) and [custom rules](#rules).
 
-| Property                                  | Type              | Description                        |
-| ----------------------------------------- | ----------------- | ---------------------------------- |
-| [`data.current`](#currentnext-properties) | Object            | Current page related               |
-| [`data.next`](#currentnext-properties)    | Object            | Next page related                  |
-| `data.trigger`                            | HTMLElement       | Link that triggered the transition |
-|                                           | string 'popstate' | Browser back/forward               |
-|                                           | string 'barba'    | Programmatic navigation            |
+| Property                                  | Type             | Description                        |
+| ----------------------------------------- | ---------------- | ---------------------------------- |
+| [`data.current`](#currentnext-properties) | Object           | Current page related               |
+| [`data.next`](#currentnext-properties)    | Object           | Next page related                  |
+| `data.trigger`                            | HTMLElement      | Link that triggered the transition |
+|                                           | string 'barba'   | Programmatic navigation            |
+|                                           | string 'back'    | Browser back button                |
+|                                           | string 'forward' | Browser forward button             |
 
 ###### `current/next` properties
 
@@ -208,17 +209,19 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  transitions: [{
-    name: 'svg-circle',
-    leave(data) {
-      // retrieve the current page url
-      const from = data.current.url;
+  transitions: [
+    {
+      name: 'svg-circle',
+      leave(data) {
+        // retrieve the current page url
+        const from = data.current.url;
+      },
+      enter({ next }) {
+        // retrieve the next page url (short syntax)
+        const to = next.url;
+      },
     },
-    enter({ next }) {
-      // retrieve the next page url (short syntax)
-      const to = next.url;
-    }
-  }]
+  ],
 });
 ```
 
@@ -314,15 +317,17 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  transitions: [{
-    sync: true,
-    leave() {
-      // transition that will play concurrently to `enter`
+  transitions: [
+    {
+      sync: true,
+      leave() {
+        // transition that will play concurrently to `enter`
+      },
+      enter() {
+        // transition that will play concurrently to `leave`
+      },
     },
-    enter() {
-      // transition that will play concurrently to `leave`
-    }
-  }]
+  ],
 });
 ```
 
@@ -347,17 +352,20 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  views: [{
-    namespace: 'index',
-    beforeLeave(data) {
-      // do something before leaving the current `index` namespace
-    }
-  }, {
-    namespace: 'contact',
-    beforeEnter(data) {
-      // do something before entering the `contact` namespace
-    }
-  }]
+  views: [
+    {
+      namespace: 'index',
+      beforeLeave(data) {
+        // do something before leaving the current `index` namespace
+      },
+    },
+    {
+      namespace: 'contact',
+      beforeEnter(data) {
+        // do something before entering the `contact` namespace
+      },
+    },
+  ],
 });
 ```
 
@@ -372,7 +380,7 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  debug: true
+  debug: true,
 });
 ```
 
@@ -398,8 +406,8 @@ import barba from '@barba/core';
 barba.init({
   // override defaults and create a custom prefix for wrapper, containers, etc.
   schema: {
-    prefix: 'data-custom'
-  }
+    prefix: 'data-custom',
+  },
 });
 ```
 
@@ -427,10 +435,7 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  cacheIgnore: [
-    '/contact/',
-    '/:category/post?'
-  ]
+  cacheIgnore: ['/contact/', '/:category/post?'],
 });
 ```
 
@@ -450,7 +455,7 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  prefetchIgnore: false
+  prefetchIgnore: false,
 });
 ```
 
@@ -473,7 +478,7 @@ import barba from '@barba/core';
 barba.init({
   // define a custom function that will prevent Barba
   // from working on links that contains a `prevent` CSS class
-  prevent: ({ el }) => el.classList && el.classList.contains('prevent')
+  prevent: ({ el }) => el.classList && el.classList.contains('prevent'),
 });
 ```
 
@@ -489,7 +494,7 @@ If this function returns `false`, wrong links will not be "force" triggered.
 
 | Argument   | Type                | Description                                                                                                                  |
 | ---------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `trigger`  | HTMLElement\|string | The clicked/hovered HTMLElement, string 'popstate' or string 'barba' (see [`data.trigger`](#data-argument))                  |
+| `trigger`  | HTMLElement\|string | The clicked/hovered HTMLElement, string 'back \| forward' or string 'barba' (see [`data.trigger`](#data-argument))           |
 | `action`   | string              | The user action on the link: 'enter' when hovering, 'click' when clicking, or 'prefetch' with [@barba/prefetch](prefetch.md) |
 | `url`      | string              | Requested URL                                                                                                                |
 | `response` | Object              | Fetch error with `message` or response with `status`, `statusText`, …                                                        |
@@ -501,7 +506,6 @@ import barba from '@barba/core';
 
 barba.init({
   requestError: (trigger, action, url, response) => {
-
     // go to a custom 404 page if the user click on a link that return a 404 response status
     if (action === 'click' && response.status && response.status === 404) {
       barba.go('/404');
@@ -510,14 +514,15 @@ barba.init({
     // prevent Barba from redirecting the user to the requested URL
     // this is equivalent to e.preventDefault()
     return false;
-  }
+  },
 });
 ```
 
 > Note that if you use `barba.go()` directive without returning `false`, you will be redirected to the requested URL because Barba uses `barba.force()` to reach the page.
 
 #### timeout
-On slow network or with a high page weight, the server can take time to give a response to the user. In case the page take **more than timeout** to be loaded, it lead Barba to abort the transition and display a *Timeout error [2000]* message.
+
+On slow network or with a high page weight, the server can take time to give a response to the user. In case the page take **more than timeout** to be loaded, it lead Barba to abort the transition and display a _Timeout error [2000]_ message.
 
 To prevent this behavior, you can increase the `timeout`:
 
@@ -525,7 +530,7 @@ To prevent this behavior, you can increase the `timeout`:
 import barba from '@barba/core';
 
 barba.init({
-  timeout: 5000
+  timeout: 5000,
 });
 ```
 
@@ -552,7 +557,7 @@ Example:
 ?>
 ```
 
-## Utils <small>*draft section*</small>
+## Utils <small>_draft section_</small>
 
 - barba.destroy()
 - barba.force(href: string)
@@ -560,6 +565,6 @@ Example:
 - barba.prefetch(href: string)
 - barba.request(url: string, ttl?: number, requestError: RequestError)
 - barba.version
-- barba.url.*
+- barba.url.\*
 
 > This is a draft section of **@barba/core** utilities, check the [API documentation](https://barba.js.org/docs/v2/api) for more informations.
