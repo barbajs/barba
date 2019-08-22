@@ -32,7 +32,7 @@ It helps reducing the delay between your pages, minimizing browser HTTP requests
   - @barba/preset _(coming soon)_
 - [API documentation](https://barba.js.org/docs/v2/api/)
 - [Github repo](https://github.com/barbajs/barba)
-- [Slack channel](https://barbajs.slack.com)
+- [Slack channel](https://barbajs.slack.com) (Not in the channel? Use the [invite link](https://join.slack.com/t/barbajs/shared_invite/enQtNTU3NTAyMjkxMzAyLTI1NDIxZDZmMGJjMDlmNzFkODZmMmVmN2U2ODg2Y2M3MzczMDdjZTk5ODQwNWZkYWVlMDM5NGZiODJmMWVhODk) 👋🏻)
 
 ## Install
 
