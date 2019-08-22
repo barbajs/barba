@@ -18,6 +18,7 @@ wrapper.appendChild(container);
 
 // Expected
 const checkDoc = new RegExp(
+  // tslint:disable-next-line:max-line-length
   `^<html>[\\s\\S]+body[\\s\\S]+${dom['_attr'].wrapper}[\\s\\S]+${dom['_attr'].container}[\\s\\S]+${namespace}[\\s\\S]+</html>$`
 );
 

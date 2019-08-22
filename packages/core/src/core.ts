@@ -299,7 +299,7 @@ export class Core {
     if (trigger === 'popstate') {
       const { state } = e as PopStateEvent;
       // Get direction
-      trigger = this.history.getDirection(state);
+      trigger = this.history.getDirection(state.index as number);
       this.history.add(href, state.ns, state.index, false);
     } else {
       this.history.add(href, 'tmp');

@@ -76,9 +76,12 @@ it('init history', () => {
   expect(barba.history.current).toEqual({
     index: 0,
     ns: 'ns',
+    scroll: {
+      x: 0,
+      y: 0,
+    },
     url: '/',
   });
-  // expect(barba.cache.has('http://localhost/')).toBeTruthy();
 });
 
 it('calls appear', () => {

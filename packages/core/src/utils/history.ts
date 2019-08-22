@@ -13,10 +13,17 @@ import { Trigger } from '../defs';
 
 /***/
 
+interface ICoords {
+  x: number;
+  y: number;
+}
+
 /**
  * History item.
  *
+ * @property index
  * @property namespace
+ * @property scroll
  * @property URL
  */
 interface IHistoryItem {
@@ -24,6 +31,8 @@ interface IHistoryItem {
   index: number;
   /** namespace */
   ns: string | undefined;
+  /** Scroll position */
+  scroll: ICoords;
   /** URL */
   url: string;
 }
@@ -38,6 +47,10 @@ export class History {
     const state: IHistoryItem = {
       index: 0,
       ns,
+      scroll: {
+        x: window.scrollX,
+        y: window.scrollY,
+      },
       url,
     };
 
@@ -58,6 +71,10 @@ export class History {
     const state: IHistoryItem = {
       index,
       ns,
+      scroll: {
+        x: window.scrollX,
+        y: window.scrollY,
+      },
       url,
     };
 
@@ -111,12 +128,12 @@ export class History {
     return this._state[index];
   }
 
-  public getDirection(state: IHistoryItem): Trigger {
+  public getDirection(index: number): Trigger {
     let direction: Trigger = 'popstate';
 
-    if (state.index < this.current.index) {
+    if (index < this.current.index) {
       direction = 'back';
-    } else if (state.index > this.current.index) {
+    } else if (index > this.current.index) {
       direction = 'forward';
     }
 

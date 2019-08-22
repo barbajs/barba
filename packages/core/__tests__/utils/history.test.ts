@@ -3,11 +3,19 @@ import { history } from '../../src/utils/history';
 const first = {
   index: 0,
   ns: 'ns1',
+  scroll: {
+    x: 0,
+    y: 0,
+  },
   url: 'url1',
 };
 const second = {
   index: 1,
   ns: 'ns2',
+  scroll: {
+    x: 0,
+    y: 0,
+  },
   url: 'url2',
 };
 
@@ -67,8 +75,8 @@ it('gets directions', () => {
   history.init(first.url, first.ns);
   history.add(second.url, second.ns);
 
-  const back = history.getDirection({ index: 0, ns: '', url: '' });
-  const forward = history.getDirection({ index: 2, ns: '', url: '' });
+  const back = history.getDirection(0);
+  const forward = history.getDirection(2);
 
   expect(back).toEqual('back');
   expect(forward).toEqual('forward');
