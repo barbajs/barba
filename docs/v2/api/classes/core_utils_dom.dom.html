@@ -86,16 +86,19 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="core_utils_dom.dom.html#_attr" class="tsd-kind-icon">_attr</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="core_utils_dom.dom.html#_parser" class="tsd-kind-icon">_parser</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="core_utils_dom.dom.html#_sibling" class="tsd-kind-icon">_sibling</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_utils_dom.dom.html#addcontainer" class="tsd-kind-icon">add<wbr>Container</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_utils_dom.dom.html#getcontainer" class="tsd-kind-icon">get<wbr>Container</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_utils_dom.dom.html#gethref" class="tsd-kind-icon">get<wbr>Href</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_utils_dom.dom.html#gethtml" class="tsd-kind-icon">get<wbr>Html</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_utils_dom.dom.html#getnamespace" class="tsd-kind-icon">get<wbr>Namespace</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_utils_dom.dom.html#getwrapper" class="tsd-kind-icon">get<wbr>Wrapper</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_utils_dom.dom.html#removecontainer" class="tsd-kind-icon">remove<wbr>Container</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_utils_dom.dom.html#todocument" class="tsd-kind-icon">to<wbr>Document</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_utils_dom.dom.html#toelement" class="tsd-kind-icon">to<wbr>Element</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="core_utils_dom.dom.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
@@ -126,9 +129,50 @@
 						</ul>
 					</aside>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_sibling" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _sibling</h3>
+					<div class="tsd-signature tsd-kind-icon">_sibling<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">HTMLElement</span><span class="tsd-signature-symbol"> =&nbsp;null</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L23">core/src/utils/dom.ts:23</a></li>
+						</ul>
+					</aside>
+				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="addcontainer" class="tsd-anchor"></a>
+					<h3>add<wbr>Container</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Container<span class="tsd-signature-symbol">(</span>container<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLElement</span>, wrapper<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLElement</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L99">core/src/utils/dom.ts:99</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Add container before next sibling or at the end of the wrapper.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>container: <span class="tsd-signature-type">HTMLElement</span></h5>
+								</li>
+								<li>
+									<h5>wrapper: <span class="tsd-signature-type">HTMLElement</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="getcontainer" class="tsd-anchor"></a>
 					<h3>get<wbr>Container</h3>
@@ -139,7 +183,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L79">core/src/utils/dom.ts:79</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L80">core/src/utils/dom.ts:80</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -170,7 +214,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L101">core/src/utils/dom.ts:101</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L123">core/src/utils/dom.ts:123</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -201,7 +245,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L56">core/src/utils/dom.ts:56</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L57">core/src/utils/dom.ts:57</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -229,7 +273,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L88">core/src/utils/dom.ts:88</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L110">core/src/utils/dom.ts:110</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -260,7 +304,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L70">core/src/utils/dom.ts:70</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L71">core/src/utils/dom.ts:71</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -279,6 +323,34 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="removecontainer" class="tsd-anchor"></a>
+					<h3>remove<wbr>Container</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Container<span class="tsd-signature-symbol">(</span>container<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLElement</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L89">core/src/utils/dom.ts:89</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Remove container and store next sibling (if applicable).</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>container: <span class="tsd-signature-type">HTMLElement</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="todocument" class="tsd-anchor"></a>
 					<h3>to<wbr>Document</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -288,7 +360,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L36">core/src/utils/dom.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L37">core/src/utils/dom.ts:37</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -316,7 +388,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L46">core/src/utils/dom.ts:46</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L47">core/src/utils/dom.ts:47</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -346,7 +418,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L27">core/src/utils/dom.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/dom.ts#L28">core/src/utils/dom.ts:28</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -456,6 +528,12 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="core_utils_dom.dom.html#_parser" class="tsd-kind-icon">_parser</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="core_utils_dom.dom.html#_sibling" class="tsd-kind-icon">_sibling</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="core_utils_dom.dom.html#addcontainer" class="tsd-kind-icon">add<wbr>Container</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="core_utils_dom.dom.html#getcontainer" class="tsd-kind-icon">get<wbr>Container</a>
 							</li>
@@ -470,6 +548,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="core_utils_dom.dom.html#getwrapper" class="tsd-kind-icon">get<wbr>Wrapper</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="core_utils_dom.dom.html#removecontainer" class="tsd-kind-icon">remove<wbr>Container</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="core_utils_dom.dom.html#todocument" class="tsd-kind-icon">to<wbr>Document</a>
