@@ -20,6 +20,7 @@ import { schemaAttribute } from '../schemas/attribute';
 export class Dom {
   private _attr: ISchemaAttribute = schemaAttribute;
   private _parser: DOMParser = new DOMParser();
+  private _sibling: HTMLElement = null;
 
   /**
    * Convert HTMLDocument to string.
@@ -80,6 +81,27 @@ export class Dom {
     return scope.querySelector(
       `[${this._attr.prefix}="${this._attr.container}"]`
     );
+  }
+
+  /**
+   * Remove container and store next sibling (if applicable).
+   */
+  public removeContainer(container: HTMLElement) {
+    if (document.body.contains(container)) {
+      this._sibling = container.nextElementSibling as HTMLElement;
+      container.parentNode.removeChild(container);
+    }
+  }
+
+  /**
+   * Add container before next sibling or at the end of the wrapper.
+   */
+  public addContainer(container: HTMLElement, wrapper: HTMLElement) {
+    if (this._sibling) {
+      wrapper.insertBefore(container, this._sibling);
+    } else {
+      wrapper.appendChild(container);
+    }
   }
 
   /**

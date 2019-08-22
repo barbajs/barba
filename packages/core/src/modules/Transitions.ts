@@ -26,7 +26,7 @@ import {
 // Hooks
 import { hooks } from '../hooks';
 // Utils
-import { helpers } from '../utils';
+import { dom, helpers } from '../utils';
 // Modules
 import { Logger } from './Logger';
 import { Store } from './Store';
@@ -281,7 +281,7 @@ export class Transitions {
    * Add next container.
    */
   public async add(data: ITransitionData, wrapper: Wrapper): Promise<void> {
-    wrapper.appendChild(data.next.container);
+    dom.addContainer(data.next.container, wrapper);
     hooks.do('nextAdded', data);
   }
 
@@ -289,12 +289,8 @@ export class Transitions {
    * Remove current container.
    */
   public async remove(data: ITransitionData): Promise<void> {
-    const { container } = data.current;
-
-    if (document.body.contains(container)) {
-      container.parentNode.removeChild(container);
-      hooks.do('currentRemoved', data);
-    }
+    dom.removeContainer(data.current.container);
+    hooks.do('currentRemoved', data);
   }
 
   /**

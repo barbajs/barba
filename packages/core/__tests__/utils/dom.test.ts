@@ -18,9 +18,7 @@ wrapper.appendChild(container);
 
 // Expected
 const checkDoc = new RegExp(
-  `^<html>[\\s\\S]+body[\\s\\S]+${dom['_attr'].wrapper}[\\s\\S]+${
-    dom['_attr'].container
-  }[\\s\\S]+${namespace}[\\s\\S]+</html>$`
+  `^<html>[\\s\\S]+body[\\s\\S]+${dom['_attr'].wrapper}[\\s\\S]+${dom['_attr'].container}[\\s\\S]+${namespace}[\\s\\S]+</html>$`
 );
 
 afterEach(() => {
@@ -76,4 +74,34 @@ it('get namespace', () => {
 
   expect(dom.getNamespace()).toBe(namespace);
   expect(dom.getNamespace(wrapper)).toBe(namespace);
+});
+
+it('remove container', () => {
+  document.body.appendChild(wrapper);
+
+  dom.removeContainer(container);
+
+  expect(wrapper.children.length).toBe(0);
+});
+
+it('add container', () => {
+  document.body.appendChild(wrapper);
+
+  dom.removeContainer(container);
+  dom.addContainer(container, wrapper);
+
+  expect(wrapper.children.length).toBe(1);
+});
+
+it('add container with sibling', () => {
+  const sibling = document.createElement('div');
+
+  document.body.appendChild(wrapper);
+  wrapper.appendChild(sibling);
+
+  dom.removeContainer(container);
+  dom.addContainer(container, wrapper);
+
+  expect(wrapper.children.length).toBe(2);
+  expect(container.nextElementSibling).toBe(sibling);
 });
