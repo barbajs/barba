@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/barbajs/barba/compare/@barba/core@2.5.1...@barba/core@2.6.0) (2019-08-22)
+
+### Features
+
+- **core:** :alembic: store scroll position in history ([0fb28e2](https://github.com/barbajs/barba/commit/0fb28e2))
+
 ## [2.5.1](https://github.com/barbajs/barba/compare/@barba/core@2.5.0...@barba/core@2.5.1) (2019-08-22)
 
 ### Bug Fixes
