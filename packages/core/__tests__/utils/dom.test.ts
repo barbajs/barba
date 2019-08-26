@@ -9,6 +9,15 @@ const attr = schemaAttribute;
 const namespace = 'ns';
 const container = document.createElement('div');
 const wrapper = document.createElement('div');
+const link = document.createElement('a');
+const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+
+// const svgLink = document.createElement('a');
+const svgLink = document.createElementNS('http://www.w3.org/2000/svg', 'a');
+const svgXlink = document.createElementNS('http://www.w3.org/2000/svg', 'a');
+
+svg.appendChild(svgLink);
+svg.appendChild(svgXlink);
 
 container.setAttribute(attr.prefix, attr.container);
 container.setAttribute(`${attr.prefix}-${attr.namespace}`, namespace);
@@ -21,6 +30,7 @@ const checkDoc = new RegExp(
   // tslint:disable-next-line:max-line-length
   `^<html>[\\s\\S]+body[\\s\\S]+${dom['_attr'].wrapper}[\\s\\S]+${dom['_attr'].container}[\\s\\S]+${namespace}[\\s\\S]+</html>$`
 );
+const checkHref = 'http://localhost/page.html';
 
 afterEach(() => {
   document.body.innerHTML = '';
@@ -75,6 +85,92 @@ it('get namespace', () => {
 
   expect(dom.getNamespace()).toBe(namespace);
   expect(dom.getNamespace(wrapper)).toBe(namespace);
+});
+
+it('get href [link / absolute]', () => {
+  link.setAttribute('href', 'http://localhost/page.html');
+
+  expect(dom.getHref(link)).toBe(checkHref);
+});
+
+it('get href [link / relative]', () => {
+  link.setAttribute('href', 'page.html');
+
+  expect(dom.getHref(link)).toBe(checkHref);
+});
+
+it('get href [svg / absolute]', () => {
+  const val = 'http://localhost/page.html';
+
+  svgLink.setAttribute('href', val);
+  svgXlink.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', val);
+
+  expect(dom.getHref(svgLink)).toBe(checkHref);
+  expect(dom.getHref(svgXlink)).toBe(checkHref);
+});
+
+it('get href [svg / absolute no protocol]', () => {
+  const val = '//localhost/page.html';
+
+  svgLink.setAttribute('href', val);
+  svgXlink.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', val);
+
+  expect(dom.getHref(svgLink)).toBe(checkHref);
+  expect(dom.getHref(svgXlink)).toBe(checkHref);
+});
+
+it('get href [svg / relative root]', () => {
+  const val = '/page.html';
+
+  svgLink.setAttribute('href', val);
+  svgXlink.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', val);
+
+  expect(dom.getHref(svgLink)).toBe(checkHref);
+  expect(dom.getHref(svgXlink)).toBe(checkHref);
+});
+
+it('get href [svg / relative simple]', () => {
+  const val = 'page.html';
+
+  svgLink.setAttribute('href', val);
+  svgXlink.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', val);
+
+  expect(dom.getHref(svgLink)).toBe(checkHref);
+  expect(dom.getHref(svgXlink)).toBe(checkHref);
+});
+
+it('get href [svg / relative same]', () => {
+  const val = './page.html';
+
+  svgLink.setAttribute('href', val);
+  svgXlink.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', val);
+
+  expect(dom.getHref(svgLink)).toBe(checkHref);
+  expect(dom.getHref(svgXlink)).toBe(checkHref);
+});
+
+it('get href [svg / relative level]', () => {
+  (global as any).jsdom.reconfigure({ url: 'http://localhost/foo/' });
+  const val = '../page.html';
+
+  svgLink.setAttribute('href', val);
+  svgXlink.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', val);
+
+  expect(dom.getHref(svgLink)).toBe(checkHref);
+  expect(dom.getHref(svgXlink)).toBe(checkHref);
+});
+
+it('get href [svg / relative level]', () => {
+  const url = 'http://localhost/foo.html';
+  const val = '#hash';
+
+  (global as any).jsdom.reconfigure({ url });
+
+  svgLink.setAttribute('href', val);
+  svgXlink.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', val);
+
+  expect(dom.getHref(svgLink)).toBe(url + val);
+  expect(dom.getHref(svgXlink)).toBe(url + val);
 });
 
 it('remove container', () => {

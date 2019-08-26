@@ -162,6 +162,7 @@ export class Core {
     Object.keys(schema).forEach(k => {
       const attr = k as SchemaAttributeValues;
 
+      /* istanbul ignore else */
       if (schemaAttribute[attr]) {
         schemaAttribute[attr] = schema[attr];
       }
@@ -544,7 +545,7 @@ export class Core {
    * Go for a Barba transition.
    */
   private _onStateChange(e: PopStateEvent): void {
-    this.go(this.url.getPath(this.url.getHref()), 'popstate', e);
+    this.go(this.url.getHref(), 'popstate', e);
   }
 
   /**

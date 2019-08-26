@@ -36,8 +36,8 @@
     "url": "git+ssh://git@github.com/barbajs/barba.git"
   },
   "scripts": {
-    "build": "microbundle --name barba --external none",
-    "build:watch": "microbundle watch --name barba --external none",
+    "build": "microbundle --name barba --external natives",
+    "build:watch": "microbundle watch --name barba --external natives",
     "clear": "rimraf dist",
     "lint": "tslint src/**",
     "precommit": "lint-staged",

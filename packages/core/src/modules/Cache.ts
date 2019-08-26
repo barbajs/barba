@@ -29,6 +29,7 @@ export class Cache extends Ignore {
     request: CacheRequest,
     action: CacheAction
   ): ICacheData {
+    /* istanbul ignore else */
     if (!this.checkUrl(href)) {
       this._state.set(href, {
         action,

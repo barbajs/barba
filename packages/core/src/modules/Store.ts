@@ -59,6 +59,7 @@ export class Store {
    * Init store.
    */
   constructor(transitions: ITransitionPage[] = []) {
+    /* istanbul ignore else */
     if (transitions) {
       // TODO: add check for valid transitions? criteria? (appear || enter && leave)
       this.all = this.all.concat(transitions);

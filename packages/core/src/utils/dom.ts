@@ -12,6 +12,8 @@
 
 /***/
 
+import path from 'path';
+
 // Definitions
 import { ISchemaAttribute, Link, Scope, Wrapper } from '../defs';
 // Schemas
@@ -123,11 +125,43 @@ export class Dom {
   public getHref(el: Link): string | null {
     // HTML tagName is UPPERCASE, xhtml tagName keeps existing case.
     if (el.tagName && el.tagName.toLowerCase() === 'a') {
-      const href = el.getAttribute('href');
+      // HTMLAnchorElement, full URL available
+      if (typeof el.href === 'string') {
+        return el.href;
+      }
 
+      // Probably a SVGAElement…
+      const href = el.getAttribute('href') || el.getAttribute('xlink:href');
+
+      /* istanbul ignore else */
       if (href) {
         // When link comes from SVG, `href` returns an object, not a string.
-        return ((href as unknown) as SVGAnimatedString).baseVal || href;
+        const attr: string =
+          ((href as unknown) as SVGAnimatedString).baseVal || href;
+
+        // If "relative" ref, we need to create a full URL…
+        // Absolute, with or without protocol
+        if (/^http/.test(attr)) {
+          return attr;
+        }
+        if (/^\/\//.test(attr)) {
+          return window.location.protocol + attr;
+        }
+
+        // Relative from root (/xxx)
+        if (/^\//.test(attr)) {
+          return window.location.origin + attr;
+        }
+
+        // Relative others (xxx, ./xxx, ../xxx)
+        if (/^(\w+|\.\/|\.\.\/)/.test(attr)) {
+          const base = window.location.pathname.replace(/[^\/]*$/, '');
+
+          return window.location.origin + path.resolve(base, attr);
+        }
+
+        // Just append…
+        return window.location.href + attr;
       }
     }
     return null;
