@@ -16,5 +16,5 @@
       }
     ]
   },
-  "exclude": ["node_modules", "**/__*__/**/*"]
+  "exclude": ["node_modules", "**/__*__/**/*", "**/polyfills/index.d.ts"]
 }
