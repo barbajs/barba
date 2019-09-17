@@ -9,7 +9,7 @@
     "build": "npm run svg && hexo generate",
     "clean": "hexo clean",
     "start": "npm run svg && hexo server",
-    "svg": "svg-sprite --config svg-sprite.config.json themes/barba/source/svg/./**/*.svg"
+    "svg": "svg-sprite --config svg-sprite.config.json 'themes/barba/source/svg/./**/*.svg'"
   },
   "dependencies": {
     "@barba/core": "^2.3.12",
