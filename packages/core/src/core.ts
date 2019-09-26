@@ -574,7 +574,7 @@ export class Core {
    * Set "current" and unset "next".
    */
   private _resetData() {
-    const href = this.url.getPath(this.url.getHref());
+    const href = this.url.getHref();
     const current = {
       container: this.dom.getContainer(),
       html: this.dom.getHtml(),

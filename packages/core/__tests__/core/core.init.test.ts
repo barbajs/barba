@@ -63,7 +63,7 @@ it('has current page content', () => {
   expect(barba.data.current.namespace).toBe(namespace);
   expect(barba.data.current.url).toEqual({
     hash: undefined,
-    href: '/',
+    href: 'http://localhost/',
     path: '/',
     query: {},
   });
@@ -80,7 +80,7 @@ it('init history', () => {
       x: 0,
       y: 0,
     },
-    url: '/',
+    url: 'http://localhost/',
   });
 });
 
