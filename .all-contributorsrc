@@ -652,6 +652,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "lmartins",
+      "name": "Luis Martins",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/151981?v=4",
+      "profile": "https://github.com/lmartins",
+      "contributions": [
+        "bug"
+      ]
     }
   ]
 }
