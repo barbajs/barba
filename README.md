@@ -6,7 +6,9 @@
 <a href='https://coveralls.io/github/luruke/barba.js?branch=master'><img src='https://coveralls.io/repos/github/luruke/barba.js/badge.svg?branch=master' alt='Coverage Status' /></a>
 </p>
 
-> This version is deprecated, [look at v2](https://github.com/barbajs/barba).
+> **Disclaimer**  
+> This production-ready version is now deprecated and unsupported.  
+> We encourage you to migrate to [BarbaJS v2](https://github.com/barbajs/barba) :tada:
 
 ---
 
