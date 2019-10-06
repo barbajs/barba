@@ -53,7 +53,8 @@
         "doc",
         "question",
         "test",
-        "review"
+        "review",
+        "bug"
       ]
     },
     {
