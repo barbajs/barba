@@ -671,6 +671,15 @@
         "ideas",
         "question"
       ]
+    },
+    {
+      "login": "Slgoetz",
+      "name": "Simon Goetz",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/393000?v=4",
+      "profile": "http://slgoetz.com",
+      "contributions": [
+        "bug"
+      ]
     }
   ]
 }
