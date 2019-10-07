@@ -3,7 +3,7 @@ version: 2
 defaults: &defaults
   working_directory: ~/repo
   docker:
-    - image: circleci/node:8.15.1-browsers
+    - image: circleci/node:latest-browsers
   # Not working: Job \"build\" has filters configured in the job definition. These filters are incompatible with workflows.
   # branches:
   #   only:
