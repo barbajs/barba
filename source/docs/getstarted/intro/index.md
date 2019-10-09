@@ -30,8 +30,8 @@ It helps reducing the delay between your pages, minimizing browser HTTP requests
   - [@barba/router](https://barba.js.org/docs/v2/user/router.html)
   - [@barba/prefetch](https://barba.js.org/docs/v2/user/prefetch.html)
   - [@barba/css](https://barba.js.org/docs/v2/user/css.html)
-  - @barba/transitions _(coming soon)_
   - @barba/head _(coming soon)_
+  - @barba/preset _(coming soon)_
 - [API documentation](https://barba.js.org/docs/v2/api/)
 - [Github repo](https://github.com/barbajs/barba)
 - [Slack channel](https://barbajs.slack.com)

@@ -2,9 +2,9 @@
 title: Transitions
 namespace: docs
 layout: pages/docs
-url: '/docs/plugins/transitions'
+url: '/docs/plugins/preset'
 ---
 
-# @barba/transitions
+# @barba/preset
 
 ### Coming soon.

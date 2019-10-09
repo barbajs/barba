@@ -198,10 +198,10 @@ docs:
           label:  'Router'
           slug:   '/docs/plugins/router'
       nextpage:
-          label:  'Transitions'
-          slug:   '/docs/plugins/transitions'
-    - title:  'Transitions'
-      url:    '/docs/plugins/transitions'
+          label:  'Preset'
+          slug:   '/docs/plugins/preset'
+    - title:  'Preset'
+      url:    '/docs/plugins/preset'
       prevpage:
           label:  'Prefetch'
           slug:   '/docs/plugins/prefetch'
@@ -211,8 +211,8 @@ docs:
     - title:  'Head'
       url:    '/docs/plugins/head'
       prevpage:
-          label:  'Transitions'
-          slug:   '/docs/plugins/transitions'
+          label:  'Preset'
+          slug:   '/docs/plugins/preset'
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
