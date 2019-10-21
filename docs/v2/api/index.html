@@ -65,9 +65,12 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<hr>
-				<p>layout: default</p>
-				<h2 id="title-user-guide">title: User guide</h2>
-				<h1 id="barba-js-small-v2-small-">barba.js <small>[v2]</small></h1>
+				<p>layout: default
+				title: User guide</p>
+				<hr>
+				<a href="#barbajs-smallv2small" id="barbajs-smallv2small" style="color: inherit; text-decoration: none;">
+					<h1>barba.js <small>[v2]</small></h1>
+				</a>
 				<p><img src="https://img.shields.io/badge/stability-beta-lightgrey.svg?style=flat-square" alt="stability-beta">
 					<a href="https://circleci.com/gh/barbajs/barba/tree/master"><img src="https://img.shields.io/circleci/project/github/barbajs/barba/master.svg?style=flat-square" alt="CircleCI"></a>
 					<a href="https://coveralls.io/github/barbajs/barba?branch=master"><img src="https://img.shields.io/coveralls/github/barbajs/barba/master.svg?style=flat-square" alt="Coverage Status"></a>
@@ -81,7 +84,9 @@
 					<p>Notice: this guide assumes intermediate level knowledge of HTML, CSS, and JavaScript. It is worth mentioning that all the code examples use ES6+ syntax. If you are not comfortable with, we encourage you to grasp the basics then come back.</p>
 					<p>In case of emergency, check this <a href="legacy.md">&quot;legacy&quot; code example</a>.</p>
 				</blockquote>
-				<h2 id="useful-links">Useful links</h2>
+				<a href="#useful-links" id="useful-links" style="color: inherit; text-decoration: none;">
+					<h2>Useful links</h2>
+				</a>
 				<ul>
 					<li><a href="https://barba.js.org/docs/v2/user/">User guide</a><ul>
 							<li><a href="https://barba.js.org/docs/v2/user/core.html">@barba/core</a></li>
@@ -94,16 +99,20 @@
 					</li>
 					<li><a href="https://barba.js.org/docs/v2/api/">API documentation</a></li>
 					<li><a href="https://github.com/barbajs/barba">Github repo</a></li>
-					<li><a href="https://barbajs.slack.com">Slack channel</a> (Not in the channel? Use the <a href="https://join.slack.com/t/barbajs/shared_invite/enQtNTU3NTAyMjkxMzAyLTI1NDIxZDZmMGJjMDlmNzFkODZmMmVmN2U2ODg2Y2M3MzczMDdjZTk5ODQwNWZkYWVlMDM5NGZiODJmMWVhODk">invite link</a> 👋🏻)</li>
+					<li><a href="https://barbajs.slack.com">Slack channel</a> (Not in the channel? Use the <a href="https://join.slack.com/t/barbajs/shared_invite/enQtNTU3NTAyMjkxMzAyLTkxYWUwZmM1YWQxMmNlYmE0ZjY4NDQxMGUxYjkwYWFlMzEzOWM4OTRhMWRmYTQyYzFlMmQ3OGFmYmI3MWY0OWY">invite link</a> 👋🏻)</li>
 				</ul>
-				<h2 id="install">Install</h2>
+				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+					<h2>Install</h2>
+				</a>
 				<p>Using npm:</p>
 				<pre><code class="language-sh">npm install @barba/core</code></pre>
 				<p>or using yarn:</p>
 				<pre><code class="language-sh">yarn add @barba/core</code></pre>
 				<p>or using a CDN:</p>
-				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://unpkg.com/@barba/core"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
-				<h2 id="getting-started">Getting started</h2>
+				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://unpkg.com/@barba/core"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+				<a href="#getting-started" id="getting-started" style="color: inherit; text-decoration: none;">
+					<h2>Getting started</h2>
+				</a>
 				<blockquote>
 					<p>See <a href="https://barba.js.org/docs/v2/user/core.html">@barba/core</a> for more details…</p>
 				</blockquote>
@@ -159,8 +168,11 @@ barba.init({
     afterEnter() {}
   }]
 });</code></pre>
-				<h2 id="browser-support">Browser support</h2>
-				<p>Barba.js can be viewed as a <a href="https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/">progressive enhancement</a>.<br>Main &quot;modern features&quot; used are:</p>
+				<a href="#browser-support" id="browser-support" style="color: inherit; text-decoration: none;">
+					<h2>Browser support</h2>
+				</a>
+				<p>Barba.js can be viewed as a <a href="https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/">progressive enhancement</a>.
+				Main &quot;modern features&quot; used are:</p>
 				<ul>
 					<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></li>
 					<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">Set()</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map()</a></li>
@@ -178,7 +190,7 @@ barba.init({
 				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>
   <span class="hljs-attr">crossorigin</span>=<span class="hljs-string">"anonymous"</span>
   <span class="hljs-attr">src</span>=<span class="hljs-string">"https://polyfill.io/v3/polyfill.min.js?features=default%2CArray.prototype.find%2CIntersectionObserver"</span>
-&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 				<p>or implement your own solution (<a href="https://github.com/stefanpenner/es6-promise">es6-promise</a> and <a href="https://github.com/zloirock/core-js">Core.js</a> or <a href="https://github.com/paulmillr/es6-shim/blob/master/README.md">es6-shim</a>, …).</p>
 			</div>
 		</div>
@@ -189,73 +201,112 @@ barba.init({
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_core_.html">"core/src/core"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_defs_barba_.html">"core/src/defs/barba"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_defs_cache_.html">"core/src/defs/cache"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_defs_dom_.html">"core/src/defs/dom"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_defs_global_.html">"core/src/defs/global"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_defs_hooks_.html">"core/src/defs/hooks"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_defs_ignore_.html">"core/src/defs/ignore"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_defs_prevent_.html">"core/src/defs/prevent"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_defs_request_.html">"core/src/defs/request"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_defs_rules_.html">"core/src/defs/rules"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_defs_schemas_.html">"core/src/defs/schemas"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_defs_transition_.html">"core/src/defs/transition"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_defs_url_.html">"core/src/defs/url"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_defs_view_.html">"core/src/defs/view"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_hooks_.html">"core/src/hooks"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_modules_cache_.html">"core/src/modules/<wbr>Cache"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_modules_ignore_.html">"core/src/modules/<wbr>Ignore"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_modules_prevent_.html">"core/src/modules/<wbr>Prevent"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_modules_store_.html">"core/src/modules/<wbr>Store"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_modules_transitions_.html">"core/src/modules/<wbr>Transitions"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_modules_views_.html">"core/src/modules/<wbr>Views"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_schemas_attribute_.html">"core/src/schemas/attribute"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_schemas_page_.html">"core/src/schemas/page"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_utils_dom_.html">"core/src/utils/dom"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_utils_helpers_.html">"core/src/utils/helpers"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="modules/_core_src_utils_history_.html">"core/src/utils/history"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/core.html">core</a>
+						<a href="modules/_core_src_utils_request_.html">"core/src/utils/request"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_src_utils_url_.html">"core/src/utils/url"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_css_src_css_.html">"css/src/css"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_css_src_defs_css_.html">"css/src/defs/css"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_prefetch_src_defs_prefetch_.html">"prefetch/src/defs/prefetch"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_prefetch_src_prefetch_.html">"prefetch/src/prefetch"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_router_src_defs_router_.html">"router/src/defs/router"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_router_src_router_.html">"router/src/router"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/core_modules_logger.html">core/modules/<wbr>Logger</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/core_modules_cache.html">core/modules/cache</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/core_modules_hooks.html">core/modules/hooks</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/core_modules_ignore.html">core/modules/ignore</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/core_modules_prevent.html">core/modules/prevent</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/core_modules_store.html">core/modules/store</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/core_modules_transitions.html">core/modules/transitions</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/core_modules_views.html">core/modules/views</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/core_schemas.html">core/schemas</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/core_utils_dom.html">core/utils/dom</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/core_utils_helpers.html">core/utils/helpers</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/core_utils_request.html">core/utils/request</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/core_utils_url.html">core/utils/url</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/css.html">css</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/prefetch.html">prefetch</a>
-					</li>
-					<li class=" tsd-kind-external-module">
 						<a href="modules/prefetch_polyfills.html">prefetch/polyfills</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/router.html">router</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/typings_core.html">typings/core</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/typings_css.html">typings/css</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/typings_prefetch.html">typings/prefetch</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/typings_router.html">typings/router</a>
 					</li>
 				</ul>
 			</nav>
@@ -278,6 +329,7 @@ barba.init({
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -326,7 +378,7 @@ barba.init({
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
