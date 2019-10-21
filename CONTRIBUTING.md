@@ -14,22 +14,24 @@ This project uses:
 
 ## Install
 
+Make sure you have `yarn` and `node >= 10.16.0`
+
 - `git clone git@github.com:barbajs/barba.git`
 - `cd barba`
-- `yarn install` or `npm install`
+- `yarn install`
 
 ## Testing
 
-Run `yarn test` or `npm test`.
+Run `yarn test`
 
-For watching mode, run `yarn run watch` or `npm run watch`.
+For watching mode, run `yarn run watch`
 
 > Do not pay attention to the few `console.error` logs…<br>
 > In watch mode, you can select a specific package by pressing `l` > :arrow_down: > `space` > :leftwards_arrow_with_hook:
 
 ## Comitting
 
-Run `yarn run commit` (or `npm run commit`) or install `commitizen` globally and run `cz`.
+Run `yarn run commit` or install `commitizen` globally and run `cz`.
 
 This project follows:
 
