@@ -680,6 +680,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "luis-pt",
+      "name": "Luís Carvalho",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/14956453?v=4",
+      "profile": "https://luis.pt",
+      "contributions": [
+        "question"
+      ]
     }
   ]
 }
