@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.7](https://github.com/barbajs/barba/compare/@barba/prefetch@2.1.6...@barba/prefetch@2.1.7) (2019-10-22)
+
+### Bug Fixes
+
+- **core:** :ambulance: fix URL with query/hash ([f5e639c](https://github.com/barbajs/barba/commit/f5e639c)), closes [#445](https://github.com/barbajs/barba/issues/445)
+
 ## [2.1.6](https://github.com/barbajs/barba/compare/@barba/prefetch@2.1.5...@barba/prefetch@2.1.6) (2019-07-16)
 
 ### Bug Fixes

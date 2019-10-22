@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.6.1](https://github.com/barbajs/barba/compare/@barba/core@2.6.0...@barba/core@2.6.1) (2019-10-22)
+
+### Bug Fixes
+
+- **core:** :ambulance: fix URL with query/hash ([f5e639c](https://github.com/barbajs/barba/commit/f5e639c)), closes [#445](https://github.com/barbajs/barba/issues/445)
+- **core:** :recycle: improve url/href/path management ([159afdc](https://github.com/barbajs/barba/commit/159afdc))
+
 # [2.6.0](https://github.com/barbajs/barba/compare/@barba/core@2.5.1...@barba/core@2.6.0) (2019-08-22)
 
 ### Features
