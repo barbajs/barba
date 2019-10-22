@@ -55,7 +55,7 @@ Cypress.Commands.add('prepare', (url, title, namespace) => {
 });
 
 Cypress.Commands.add('final', (url, title, namespace) => {
-  // 0. Wrapper is tha same
+  // 0. Wrapper is the same
   cy.get('@wrapper').should('have.attr', 'data-test-wrapper', 'current');
   // 1. URL has changed
   cy.url().should('include', url);

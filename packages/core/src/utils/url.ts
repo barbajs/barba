@@ -102,8 +102,3 @@ export const parseQuery = (str: string) =>
  * Clean URL, remove "hash" and/or "trailing slash".
  */
 export const clean = (url: string) => url.replace(/(\/#.*|\/|#.*)$/, '');
-/**
- * Clean URL, remove "origin".
- */
-// export const clean = (url: string, origin = getOrigin()) =>
-//   url.replace(origin, '');

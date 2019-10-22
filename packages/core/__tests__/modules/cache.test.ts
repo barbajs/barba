@@ -35,8 +35,8 @@ it('deletes ', () => {
 });
 
 it('checks url ', () => {
-  cache.checkUrl = jest.fn();
+  cache.checkHref = jest.fn();
   cache.set(key, request, action);
 
-  expect(cache.checkUrl).toHaveBeenCalled();
+  expect(cache.checkHref).toHaveBeenCalled();
 });

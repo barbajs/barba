@@ -8,26 +8,26 @@ const url3 = 'http://localhost/bar/foo.html';
 it('ignores none', () => {
   ignore = new Ignore(false);
 
-  expect(ignore.checkUrl(url)).toBeFalsy();
+  expect(ignore.checkHref(url)).toBeFalsy();
 });
 
 it('ignores all', () => {
   ignore = new Ignore(true);
 
-  expect(ignore.checkUrl(url)).toBeTruthy();
+  expect(ignore.checkHref(url)).toBeTruthy();
 });
 
 it('ignores URL ', () => {
   ignore = new Ignore('/');
 
-  expect(ignore.checkUrl(url)).toBeTruthy();
-  expect(ignore.checkUrl(url2)).toBeFalsy();
+  expect(ignore.checkHref(url)).toBeTruthy();
+  expect(ignore.checkHref(url2)).toBeFalsy();
 });
 
 it('ignores URLs ', () => {
   ignore = new Ignore(['/', '/:segment/foo.html']);
 
-  expect(ignore.checkUrl(url)).toBeTruthy();
-  expect(ignore.checkUrl(url2)).toBeFalsy();
-  expect(ignore.checkUrl(url3)).toBeTruthy();
+  expect(ignore.checkHref(url)).toBeTruthy();
+  expect(ignore.checkHref(url2)).toBeFalsy();
+  expect(ignore.checkHref(url3)).toBeTruthy();
 });

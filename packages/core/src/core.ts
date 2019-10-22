@@ -498,7 +498,7 @@ export class Core {
 
     const href = this.dom.getHref(link);
 
-    if (this.prevent.checkUrl(href)) {
+    if (this.prevent.checkHref(href)) {
       return;
     }
 
@@ -575,7 +575,7 @@ export class Core {
    * Set "current" and unset "next".
    */
   private _resetData() {
-    const href = this.url.getPath(this.url.getHref());
+    const href = this.url.getHref();
     const current = {
       container: this.dom.getContainer(),
       html: this.dom.getHtml(),

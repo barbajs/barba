@@ -114,7 +114,7 @@ class Prefetch implements IBarbaPlugin<IPrefetchOptions> {
 
           if (
             !this.barba.cache.has(href) &&
-            !this.barba.prevent.checkUrl(href) &&
+            !this.barba.prevent.checkHref(href) &&
             !this.barba.prevent.checkLink(link, {} as Event, href)
           ) {
             this.observer.observe(el);

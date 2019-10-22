@@ -32,12 +32,12 @@ export class Ignore {
     }
   }
 
-  public checkUrl(url: string): boolean {
+  public checkHref(href: string): boolean {
     if (typeof this._ignoreAll === 'boolean') {
       return this._ignoreAll;
     }
 
-    const { path } = parse(url);
+    const { path } = parse(href);
 
     return this._ignoreRegexes.some(regex => regex.exec(path) !== null);
   }

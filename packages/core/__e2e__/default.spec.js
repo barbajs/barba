@@ -1,5 +1,5 @@
 /* eslint-disable cypress/no-unnecessary-waiting */
-describe('Tranistion', () => {
+describe('Transition', () => {
   it('works', () => {
     cy.prepare('/index.html', 'home', 'home');
     cy.wait(1000); // Wait for appear complete
