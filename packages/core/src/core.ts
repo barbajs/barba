@@ -74,6 +74,7 @@ export class Core {
   public timeout: number;
   public cacheIgnore: IgnoreOption;
   public prefetchIgnore: IgnoreOption;
+  public preventRunning: boolean;
   /**
    * Hooks
    */
@@ -133,10 +134,12 @@ export class Core {
    *
    * - transitions: `[]`
    * - views: `[]`
+   * - schema: [[SchemaAttribute]]
    * - timeout: `2e3`
    * - cacheIgnore: `false`
    * - prefetchIgnore: `false`
-   * - schema: [[SchemaAttribute]]
+   * - preventRunning: `false`
+   * - prevent: `null`,
    * - debug: `false`
    * - logLevel: `'debug'`
    */
@@ -144,12 +147,14 @@ export class Core {
     /** @ignore */ {
       transitions = [],
       views = [],
-      prevent: preventCustom = null,
-      timeout = 2e3,
+      schema = schemaAttribute,
       requestError,
+      timeout = 2e3,
       cacheIgnore = false,
       prefetchIgnore = false,
-      schema = schemaAttribute,
+      /* istanbul ignore next */
+      preventRunning = false,
+      prevent: preventCustom = null,
       debug = false,
       logLevel = 'off',
     }: IBarbaOptions = {}
@@ -171,6 +176,7 @@ export class Core {
     this.timeout = timeout;
     this.cacheIgnore = cacheIgnore;
     this.prefetchIgnore = prefetchIgnore;
+    this.preventRunning = preventRunning;
 
     // 2. Get and check wrapper
     this._wrapper = this.dom.getWrapper();
@@ -532,6 +538,13 @@ export class Core {
     const link = this._getLinkElement(e);
 
     if (!link) {
+      return;
+    }
+
+    if (this.transitions.isRunning && this.preventRunning) {
+      e.preventDefault();
+      e.stopPropagation();
+
       return;
     }
 

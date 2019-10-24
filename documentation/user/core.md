@@ -14,7 +14,6 @@ By default, it uses this markup structure in your pages:
 
 ```html
 <body data-barba="wrapper">
-
   <!-- put here content that will not change
   between your pages, like <header> or <nav> -->
 
@@ -25,7 +24,6 @@ By default, it uses this markup structure in your pages:
 
   <!-- put here content that will not change
   between your pages, like <footer> -->
-
 </body>
 ```
 
@@ -49,18 +47,19 @@ The namespace allow you to define **a unique name for each pages**. Barba mainly
 
 ### `barba.init(<options>)`
 
-| Option                              | Type                          | Default           | Description                                   |
-| ----------------------------------- | ----------------------------- | ----------------- | --------------------------------------------- |
-| `transitions`                       | Array                         | []                | Array of [`<Transition>`](#transition-object) |
-| `views`                             | Array                         | []                | Array of [`<View>`](#view-object)             |
-| [`debug`](#debug)                   | Boolean                       | false             | Set logLevel to 'debug'                       |
-| [`logLevel`](#loglevel)             | string                        | 'off'             | Log level                                     |
-| [`schema`](#schema)                 | Object                        | `schemaAttribute` | Data attributes                               |
-| [`cacheIgnore`](#cacheignore)       | Boolean \| string \| string[] | false             | Cache strategy                                |
-| [`prefetchIgnore`](#prefetchignore) | Boolean \| string \| string[] | true              | Prefetch strategy                             |
-| [`prevent`](#prevent)               | Function                      | (optional)        | Custom prevent test                           |
-| [`requestError`](#requesterror)     | Function                      | (optional)        | Custom request error callback                 |
-| [`timeout`](#timeout)               | Integer                       | 2000              | Custom request timeout (ms)                   |
+| Option                              | Type                          | Default           | Description                                       |
+| ----------------------------------- | ----------------------------- | ----------------- | ------------------------------------------------- |
+| `transitions`                       | Array                         | []                | Array of [`<Transition>`](#transition-object)     |
+| `views`                             | Array                         | []                | Array of [`<View>`](#view-object)                 |
+| [`debug`](#debug)                   | Boolean                       | false             | Set logLevel to 'debug'                           |
+| [`logLevel`](#loglevel)             | string                        | 'off'             | Log level                                         |
+| [`schema`](#schema)                 | Object                        | `schemaAttribute` | Data attributes                                   |
+| [`cacheIgnore`](#cacheignore)       | Boolean \| string \| string[] | false             | Cache strategy                                    |
+| [`prefetchIgnore`](#prefetchignore) | Boolean \| string \| string[] | true              | Prefetch strategy                                 |
+| [`preventRunning`](#preventrunning) | Boolean                       | false             | Prevent "force reload" when transition is running |
+| [`prevent`](#prevent)               | Function                      | (optional)        | Custom prevent test                               |
+| [`requestError`](#requesterror)     | Function                      | (optional)        | Custom request error callback                     |
+| [`timeout`](#timeout)               | Integer                       | 2000              | Custom request timeout (ms)                       |
 
 #### `<transition>` object
 
@@ -467,6 +466,20 @@ import barba from '@barba/core';
 
 barba.init({
   prefetchIgnore: false,
+});
+```
+
+#### preventRunning
+
+Tells Barba to not "force reload" the page when a transition is running and the user clicks on an eligible link.
+
+Example:
+
+```js
+import barba from '@barba/core';
+
+barba.init({
+  preventRunning: true,
 });
 ```
 
