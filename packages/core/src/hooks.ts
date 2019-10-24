@@ -20,16 +20,16 @@
 // Third-party
 import runAsync from 'run-async';
 // Definitions
-import { HooksAll } from './defs';
+import { HookFunction, HookMethods, HooksAll } from './defs';
 // Modules
 import { Logger } from './modules/Logger';
 // Types
-interface IHookData {
+interface IHookInfos {
   ctx: any;
-  fn: () => Promise<void>;
+  fn: HookFunction;
 }
 
-export class Hooks {
+export class Hooks extends HookMethods {
   /**
    * Allow the use of `hooks[name](cb, ctx)`.
    */
@@ -71,9 +71,10 @@ export class Hooks {
    * - Unique hook name
    * - Associated data set(s) (callback + context)
    */
-  public registered: Map<HooksAll, Set<IHookData>> = new Map();
+  public registered: Map<HooksAll, Set<IHookInfos>> = new Map();
 
   constructor() {
+    super();
     this.init();
   }
 
@@ -81,7 +82,7 @@ export class Hooks {
     this.registered.clear();
     this.all.forEach(hook => {
       if (!this[hook]) {
-        this[hook] = (fn: () => Promise<void>, ctx: any = null) => {
+        this[hook] = (fn: HookFunction, ctx: any = null) => {
           if (!this.registered.has(hook)) {
             this.registered.set(hook, new Set());
           }

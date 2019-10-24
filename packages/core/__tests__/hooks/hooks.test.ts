@@ -51,6 +51,9 @@ it('do registered hooks', async () => {
 
   hooks[hookName](fn);
   hooks[hookName](fn2);
+  hooks.beforeEnter(data => {
+    console.info(data);
+  });
 
   await hooks.do(hookName);
 

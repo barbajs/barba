@@ -1,7 +1,7 @@
 /**
  * @module typings/core
  */
-import { ISchemaPage, Trigger } from '.';
+import { ITransitionData, ITransitionPage, IViewData } from '.';
 
 export type HooksBarba =
   | 'ready'
@@ -40,8 +40,20 @@ export type HooksAll = HooksBarba | HooksTransition;
 // Allow optional "dynamically created" hooks
 export type HooksTransitionMap = { [key in HooksTransition]?: any };
 
-export interface IHookViewData {
-  current: ISchemaPage;
-  next: ISchemaPage;
-  trigger: Trigger;
+export type HookFunction = (
+  data?: ITransitionData | IViewData,
+  t?: ITransitionPage
+) => Promise<void> | void;
+
+export class HookMethods {
+  public before?: (fn: HookFunction, ctx?: any) => void;
+  public beforeLeave?: (fn: HookFunction, ctx?: any) => void;
+  public leave?: (fn: HookFunction, ctx?: any) => void;
+  public afterLeave?: (fn: HookFunction, ctx?: any) => void;
+  public leaveCanceled?: (fn: HookFunction, ctx?: any) => void;
+  public beforeEnter?: (fn: HookFunction, ctx?: any) => void;
+  public enter?: (fn: HookFunction, ctx?: any) => void;
+  public afterEnter?: (fn: HookFunction, ctx?: any) => void;
+  public enterCanceled?: (fn: HookFunction, ctx?: any) => void;
+  public after?: (fn: HookFunction, ctx?: any) => void;
 }

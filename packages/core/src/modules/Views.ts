@@ -10,11 +10,11 @@
 /***/
 
 // Definitions
-import { HooksView, IHookViewData, IView } from '../defs';
+import { HooksView, IView, IViewData } from '../defs';
 // Hooks
 import { hooks } from '../hooks';
 // Types
-type Hook = (data: IHookViewData) => void;
+type Hook = (data: IViewData) => void;
 
 export class Views {
   /**

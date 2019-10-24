@@ -3,15 +3,21 @@
  */
 
 // Definitions
-import { IHookViewData } from '.';
+import { ISchemaPage, Trigger } from '.';
+
+export interface IViewData {
+  current: ISchemaPage;
+  next: ISchemaPage;
+  trigger: Trigger;
+}
 
 export interface IView {
   namespace: string;
   name?: string;
-  beforeAppear?(data: IHookViewData): void;
-  afterAppear?(data: IHookViewData): void;
-  beforeLeave?(data: IHookViewData): void;
-  afterLeave?(data: IHookViewData): void;
-  beforeEnter?(data: IHookViewData): void;
-  afterEnter?(data: IHookViewData): void;
+  beforeAppear?(data: IViewData): void;
+  afterAppear?(data: IViewData): void;
+  beforeLeave?(data: IViewData): void;
+  afterLeave?(data: IViewData): void;
+  beforeEnter?(data: IViewData): void;
+  afterEnter?(data: IViewData): void;
 }
