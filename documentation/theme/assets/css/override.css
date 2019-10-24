@@ -2,6 +2,13 @@
   hyphens: auto;
 }
 
+/* Hack: hide layout instructions */
+.tsd-panel > hr:first-child,
+.tsd-panel > hr + p,
+.tsd-panel > hr + p + hr {
+  display: none;
+}
+
 blockquote {
   border-left: 4px solid #e0e2e5;
   margin-left: 0;
