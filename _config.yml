@@ -2,3 +2,6 @@ exclude:
   - node_modules
   - packages
   - CNAME
+include:
+  - '_*_.html'
+  - '_*_.*.html'
