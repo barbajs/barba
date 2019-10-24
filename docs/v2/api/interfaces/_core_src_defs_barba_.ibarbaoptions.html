@@ -89,6 +89,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_core_src_defs_barba_.ibarbaoptions.html#loglevel" class="tsd-kind-icon">log<wbr>Level</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_core_src_defs_barba_.ibarbaoptions.html#prefetchignore" class="tsd-kind-icon">prefetch<wbr>Ignore</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_core_src_defs_barba_.ibarbaoptions.html#prevent" class="tsd-kind-icon">prevent</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_core_src_defs_barba_.ibarbaoptions.html#preventrunning" class="tsd-kind-icon">prevent<wbr>Running</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_core_src_defs_barba_.ibarbaoptions.html#requesterror" class="tsd-kind-icon">request<wbr>Error</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_core_src_defs_barba_.ibarbaoptions.html#schema" class="tsd-kind-icon">schema</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_core_src_defs_barba_.ibarbaoptions.html#timeout" class="tsd-kind-icon">timeout</a></li>
@@ -107,7 +108,7 @@
 					<div class="tsd-signature tsd-kind-icon">cache<wbr>Ignore<span class="tsd-signature-symbol">:</span> <a href="../modules/_core_src_defs_ignore_.html#ignoreoption" class="tsd-signature-type">IgnoreOption</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/barba.ts#L31">core/src/defs/barba.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/barba.ts#L29">core/src/defs/barba.ts:29</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -122,7 +123,7 @@
 					<div class="tsd-signature tsd-kind-icon">debug<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/barba.ts#L37">core/src/defs/barba.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/barba.ts#L39">core/src/defs/barba.ts:39</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -137,7 +138,7 @@
 					<div class="tsd-signature tsd-kind-icon">log<wbr>Level<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">keyof LogLevels</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/barba.ts#L39">core/src/defs/barba.ts:39</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/barba.ts#L41">core/src/defs/barba.ts:41</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -152,7 +153,7 @@
 					<div class="tsd-signature tsd-kind-icon">prefetch<wbr>Ignore<span class="tsd-signature-symbol">:</span> <a href="../modules/_core_src_defs_ignore_.html#ignoreoption" class="tsd-signature-type">IgnoreOption</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/barba.ts#L33">core/src/defs/barba.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/barba.ts#L31">core/src/defs/barba.ts:31</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -167,7 +168,7 @@
 					<div class="tsd-signature tsd-kind-icon">prevent<span class="tsd-signature-symbol">:</span> <a href="../modules/_core_src_defs_prevent_.html#preventcheck" class="tsd-signature-type">PreventCheck</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/barba.ts#L25">core/src/defs/barba.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/barba.ts#L33">core/src/defs/barba.ts:33</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -177,12 +178,27 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="preventrunning" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> prevent<wbr>Running</h3>
+					<div class="tsd-signature tsd-kind-icon">prevent<wbr>Running<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/barba.ts#L35">core/src/defs/barba.ts:35</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Prevent click when transition is running.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="requesterror" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> request<wbr>Error</h3>
 					<div class="tsd-signature tsd-kind-icon">request<wbr>Error<span class="tsd-signature-symbol">:</span> <a href="../modules/_core_src_defs_request_.html#requestcustomerror" class="tsd-signature-type">RequestCustomError</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/barba.ts#L29">core/src/defs/barba.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/barba.ts#L27">core/src/defs/barba.ts:27</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -197,7 +213,7 @@
 					<div class="tsd-signature tsd-kind-icon">schema<span class="tsd-signature-symbol">:</span> <a href="_core_src_defs_schemas_.ischemaattribute.html" class="tsd-signature-type">ISchemaAttribute</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/barba.ts#L35">core/src/defs/barba.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/barba.ts#L37">core/src/defs/barba.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -212,7 +228,7 @@
 					<div class="tsd-signature tsd-kind-icon">timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/barba.ts#L27">core/src/defs/barba.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/barba.ts#L25">core/src/defs/barba.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -285,6 +301,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_core_src_defs_barba_.ibarbaoptions.html#prevent" class="tsd-kind-icon">prevent</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_core_src_defs_barba_.ibarbaoptions.html#preventrunning" class="tsd-kind-icon">prevent<wbr>Running</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_core_src_defs_barba_.ibarbaoptions.html#requesterror" class="tsd-kind-icon">request<wbr>Error</a>
