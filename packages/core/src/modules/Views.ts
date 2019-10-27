@@ -9,20 +9,20 @@
 
 /***/
 
+// Third-party
+import runAsync from 'run-async';
 // Definitions
 import { HooksView, IView, IViewData } from '../defs';
 // Hooks
 import { hooks } from '../hooks';
 // Types
-type Hook = (data: IViewData) => void;
+type Hook = (data: IViewData) => Promise<void>;
 
 export class Views {
   /**
    * Available hook names for views.
    */
   public names: HooksView[] = [
-    'beforeAppear',
-    'afterAppear',
     'beforeLeave',
     'afterLeave',
     'beforeEnter',
@@ -66,9 +66,11 @@ export class Views {
 
       // TODO: manage self…
       // if (view && data.trigger !== 'self') {
-      if (view) {
-        view[name] && view[name](data);
+      if (view && view[name]) {
+        return runAsync(view[name])(data);
       }
+
+      return Promise.resolve();
     };
   }
 }

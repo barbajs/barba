@@ -349,8 +349,6 @@ They use a subset of transition hooks and receive the same [`data`](#data-argume
 
 Available hooks are:
 
-- `beforeAppear`
-- `afterAppear`
 - `beforeLeave`
 - `afterLeave`
 - `beforeEnter`
