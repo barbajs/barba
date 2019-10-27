@@ -165,8 +165,8 @@ it('calls hooks (sync: false)', async () => {
   expect(hooks.do).toHaveBeenNthCalledWith(6, 'beforeEnter', data, t);
   expect(hooks.do).toHaveBeenNthCalledWith(7, 'enter', data, t);
   expect(hooks.do).toHaveBeenNthCalledWith(8, 'afterEnter', data, t);
-  expect(hooks.do).toHaveBeenNthCalledWith(9, 'after', data, t);
-  expect(hooks.do).toHaveBeenNthCalledWith(10, 'currentRemoved', data);
+  expect(hooks.do).toHaveBeenNthCalledWith(9, 'currentRemoved', data);
+  expect(hooks.do).toHaveBeenNthCalledWith(10, 'after', data, t);
 });
 
 it('calls hooks (sync: true)', async () => {
@@ -194,8 +194,8 @@ it('calls hooks (sync: true)', async () => {
   expect(hooks.do).toHaveBeenNthCalledWith(6, 'enter', data, t);
   expect(hooks.do).toHaveBeenNthCalledWith(7, 'afterLeave', data, t);
   expect(hooks.do).toHaveBeenNthCalledWith(8, 'afterEnter', data, t);
-  expect(hooks.do).toHaveBeenNthCalledWith(9, 'after', data, t);
-  expect(hooks.do).toHaveBeenNthCalledWith(10, 'currentRemoved', data);
+  expect(hooks.do).toHaveBeenNthCalledWith(9, 'currentRemoved', data);
+  expect(hooks.do).toHaveBeenNthCalledWith(10, 'after', data, t);
 });
 
 it('catches error (leave, sync: false)', async () => {

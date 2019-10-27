@@ -227,10 +227,10 @@ export class Transitions {
         }
       }
 
-      await this._doAsyncHook('after', data, t);
-
       // Remove current contaienr
       await this.remove(data);
+
+      await this._doAsyncHook('after', data, t);
     } catch (error) {
       this._running = false;
       // TODO: use cases for cancellation
