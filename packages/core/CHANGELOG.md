@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/barbajs/barba/compare/@barba/core@2.6.1...@barba/core@2.7.0) (2019-10-27)
+
+### Bug Fixes
+
+- **core:** :bug: fix container + dom sibling insertion ([7f349a7](https://github.com/barbajs/barba/commit/7f349a7)), closes [#449](https://github.com/barbajs/barba/issues/449)
+- **core:** :ok_hand: move after hooks ([42742ea](https://github.com/barbajs/barba/commit/42742ea)), closes [#455](https://github.com/barbajs/barba/issues/455)
+
+### Features
+
+- **core:** :sparkles: add preventRunning option ([93f0b50](https://github.com/barbajs/barba/commit/93f0b50)), closes [#414](https://github.com/barbajs/barba/issues/414)
+
 ## [2.6.1](https://github.com/barbajs/barba/compare/@barba/core@2.6.0...@barba/core@2.6.1) (2019-10-22)
 
 ### Bug Fixes
