@@ -397,11 +397,11 @@ barba.init({
 #### logLevel
 
 ```
-0. off
-1. error   = console.error()
-2. warning = console.warn()
-3. info    = console.info()
-4. debug   = console.log()
+- 0 = off
+- 1 = error   = console.error()
+- 2 = warning = console.warn()
+- 3 = info    = console.info()
+- 4 = debug   = console.log()
 ```
 
 #### schema
