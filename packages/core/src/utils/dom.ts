@@ -22,7 +22,6 @@ import { schemaAttribute } from '../schemas/attribute';
 export class Dom {
   private _attr: ISchemaAttribute = schemaAttribute;
   private _parser: DOMParser = new DOMParser();
-  private _sibling: HTMLElement = null;
 
   /**
    * Convert HTMLDocument to string.
@@ -90,7 +89,6 @@ export class Dom {
    */
   public removeContainer(container: HTMLElement) {
     if (document.body.contains(container)) {
-      this._sibling = container.nextElementSibling as HTMLElement;
       container.parentNode.removeChild(container);
     }
   }
@@ -99,8 +97,10 @@ export class Dom {
    * Add container before next sibling or at the end of the wrapper.
    */
   public addContainer(container: HTMLElement, wrapper: HTMLElement) {
-    if (this._sibling) {
-      wrapper.insertBefore(container, this._sibling);
+    const existingContainer = this.getContainer();
+
+    if (existingContainer) {
+      this._insertAfter(container, existingContainer);
     } else {
       wrapper.appendChild(container);
     }
@@ -165,6 +165,13 @@ export class Dom {
       }
     }
     return null;
+  }
+
+  /**
+   * Insert node after another node.
+   */
+  private _insertAfter(newNode: Node, referenceNode: Node) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
   }
 }
 

@@ -7,7 +7,8 @@ const attr = schemaAttribute;
 
 // Dom
 const namespace = 'ns';
-const container = document.createElement('div');
+const currentContainer = document.createElement('div');
+const nextContainer = document.createElement('div');
 const wrapper = document.createElement('div');
 const link = document.createElement('a');
 const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -19,11 +20,10 @@ const svgXlink = document.createElementNS('http://www.w3.org/2000/svg', 'a');
 svg.appendChild(svgLink);
 svg.appendChild(svgXlink);
 
-container.setAttribute(attr.prefix, attr.container);
-container.setAttribute(`${attr.prefix}-${attr.namespace}`, namespace);
+currentContainer.setAttribute(attr.prefix, attr.container);
+currentContainer.setAttribute(`${attr.prefix}-${attr.namespace}`, namespace);
 
 wrapper.setAttribute(attr.prefix, attr.wrapper);
-wrapper.appendChild(container);
 
 // Expected
 const checkDoc = new RegExp(
@@ -33,6 +33,7 @@ const checkDoc = new RegExp(
 const checkHref = 'http://localhost/page.html';
 
 afterEach(() => {
+  wrapper.innerHTML = '';
   document.body.innerHTML = '';
 });
 
@@ -41,7 +42,7 @@ it('has attributeSchema', () => {
 });
 
 it('stringifies DOM', () => {
-  expect(typeof dom.toString(container)).toBe('string');
+  expect(typeof dom.toString(currentContainer)).toBe('string');
 });
 
 // see https://github.com/barbajs/barba/issues/362
@@ -54,6 +55,7 @@ it('parses string to Element', () => {
 });
 
 it('get html', () => {
+  wrapper.appendChild(currentContainer);
   document.body.appendChild(wrapper);
 
   expect(dom.getHtml()).toMatch(checkDoc);
@@ -63,6 +65,7 @@ it('get html', () => {
 it('get wrapper', () => {
   expect(dom.getWrapper()).toBeNull();
 
+  wrapper.appendChild(currentContainer);
   document.body.appendChild(wrapper);
 
   expect(dom.getWrapper()).toBe(wrapper);
@@ -72,15 +75,17 @@ it('get wrapper', () => {
 it('get container', () => {
   expect(dom.getContainer()).toBeNull();
 
+  wrapper.appendChild(currentContainer);
   document.body.appendChild(wrapper);
 
-  expect(dom.getContainer()).toBe(container);
-  expect(dom.getContainer(wrapper)).toBe(container);
+  expect(dom.getContainer()).toBe(currentContainer);
+  expect(dom.getContainer(wrapper)).toBe(currentContainer);
 });
 
 it('get namespace', () => {
   expect(dom.getNamespace()).toBeNull();
 
+  wrapper.appendChild(currentContainer);
   document.body.appendChild(wrapper);
 
   expect(dom.getNamespace()).toBe(namespace);
@@ -176,16 +181,17 @@ it('get href [svg / relative level]', () => {
 it('remove container', () => {
   document.body.appendChild(wrapper);
 
-  dom.removeContainer(container);
+  dom.removeContainer(currentContainer);
 
   expect(wrapper.children.length).toBe(0);
 });
 
 it('add container', () => {
+  wrapper.appendChild(currentContainer);
   document.body.appendChild(wrapper);
 
-  dom.removeContainer(container);
-  dom.addContainer(container, wrapper);
+  dom.addContainer(nextContainer, wrapper);
+  dom.removeContainer(currentContainer);
 
   expect(wrapper.children.length).toBe(1);
 });
@@ -193,12 +199,13 @@ it('add container', () => {
 it('add container with sibling', () => {
   const sibling = document.createElement('div');
 
+  wrapper.appendChild(currentContainer);
   document.body.appendChild(wrapper);
   wrapper.appendChild(sibling);
 
-  dom.removeContainer(container);
-  dom.addContainer(container, wrapper);
+  dom.addContainer(nextContainer, wrapper);
+  dom.removeContainer(currentContainer);
 
   expect(wrapper.children.length).toBe(2);
-  expect(container.nextElementSibling).toBe(sibling);
+  expect(nextContainer.nextElementSibling).toBe(sibling);
 });
