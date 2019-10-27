@@ -7,7 +7,7 @@ describe('Transition', () => {
   const hash = '#hash';
 
   it('default URL', () => {
-    cy.prepare('/href.html', 'home', 'home');
+    cy.prepare('/href.html', 'href', 'href');
     cy.get('[data-test=link]').click();
 
     cy.location().should(loc => {
@@ -19,7 +19,7 @@ describe('Transition', () => {
   });
 
   it('query string URL', () => {
-    cy.prepare('/href.html', 'home', 'home');
+    cy.prepare('/href.html', 'href', 'href');
     cy.get('[data-test=query]').click();
 
     cy.location().should(loc => {
@@ -32,7 +32,7 @@ describe('Transition', () => {
   });
 
   it('hash URL', () => {
-    cy.prepare('/href.html', 'home', 'home');
+    cy.prepare('/href.html', 'href', 'href');
     cy.get('[data-test=hash]').click();
 
     cy.location().should(loc => {
@@ -45,7 +45,7 @@ describe('Transition', () => {
   });
 
   it('hash + query URL', () => {
-    cy.prepare('/href.html', 'home', 'home');
+    cy.prepare('/href.html', 'href', 'href');
     cy.get('[data-test=complex]').click();
 
     cy.location().should(loc => {

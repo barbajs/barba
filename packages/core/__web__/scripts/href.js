@@ -5,8 +5,10 @@ const { barba } = window;
 
 barba.init({
   debug: true,
-  transitions: {
-    leave() {},
-    enter() {},
-  },
+  transitions: [
+    {
+      leave() {},
+      enter() {},
+    },
+  ],
 });
