@@ -87,6 +87,29 @@ export const parse = (url: string): IUrlBase => {
 };
 
 /**
+ * Parse the port in a url.
+ */
+export const parsePort = (str: string): number => {
+  const matches = str.match(/:\d+/);
+
+  if (matches != null) {
+    const portString = matches[0].substring(1);
+
+    return parseInt(portString, 10);
+  }
+
+  if (/^https/.test(str)) {
+    return 443;
+  }
+
+  if (/^http/.test(str)) {
+    return 80;
+  }
+
+  return getPort();
+};
+
+/**
  * Parse a query string to object.
  */
 export const parseQuery = (str: string) =>
