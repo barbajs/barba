@@ -139,32 +139,45 @@ export class Dom {
         const attr: string =
           ((href as unknown) as SVGAnimatedString).baseVal || href;
 
-        // If "relative" ref, we need to create a full URL…
-        // Absolute, with or without protocol
-        if (/^http/.test(attr)) {
-          return attr;
-        }
-        if (/^\/\//.test(attr)) {
-          return window.location.protocol + attr;
-        }
-
-        // Relative from root (/xxx)
-        if (/^\//.test(attr)) {
-          return window.location.origin + attr;
-        }
-
-        // Relative others (xxx, ./xxx, ../xxx)
-        if (/^(\w+|\.\/|\.\.\/)/.test(attr)) {
-          const base = window.location.pathname.replace(/[^\/]*$/, '');
-
-          return window.location.origin + path.resolve(base, attr);
-        }
-
-        // Just append…
-        return window.location.href + attr;
+        return this.resolveUrl(attr);
       }
     }
     return null;
+  }
+
+  // Copyright 2014 Simon Lydell
+  // X11 (“MIT”) Licensed. (See LICENSE
+  // https://github.com/lydell/resolve-url/blob/master/resolve-url.js
+  /* istanbul ignore next */
+  public resolveUrl(...urls: string[]) {
+    const numUrls = urls.length;
+
+    if (numUrls === 0) {
+      throw new Error('resolveUrl requires at least one argument; got none.');
+    }
+
+    const base = document.createElement('base');
+    base.href = arguments[0];
+
+    if (numUrls === 1) {
+      return base.href;
+    }
+
+    const head = document.getElementsByTagName('head')[0];
+    head.insertBefore(base, head.firstChild);
+
+    const a = document.createElement('a');
+    let resolved;
+
+    for (let index = 1; index < numUrls; index++) {
+      a.href = arguments[index];
+      resolved = a.href;
+      base.href = resolved;
+    }
+
+    head.removeChild(base);
+
+    return resolved;
   }
 
   /**
