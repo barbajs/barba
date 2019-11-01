@@ -108,8 +108,6 @@ export class Transitions {
     } catch (error) {
       this._running = false;
       this.logger.error(error);
-      // TODO: use this hooks on `cancel()`
-      // await this._doAsyncHook('onceCanceled', data, t);
       // TODO: should I throw or should I log…
       throw new Error('Transition error [once]');
     }
@@ -181,9 +179,6 @@ export class Transitions {
           await this._doAsyncHook('afterLeave', data, t);
           await this._doAsyncHook('afterEnter', data, t);
         } catch (error) {
-          // TODO: use these hooks on `cancel()`
-          // await this._doAsyncHook('leaveCanceled', data, t);
-          // await this._doAsyncHook('enterCanceled', data, t);
           throw new Error('Transition error [page][sync]');
         }
       } else {
@@ -202,8 +197,6 @@ export class Transitions {
           // TODO: check here "valid" page result
           // before going further
         } catch (error) {
-          // TODO: use this hooks on `cancel()`
-          // await this._doAsyncHook('leaveCanceled', data, t);
           throw new Error('Transition error [page][leave]');
         }
 
@@ -218,9 +211,6 @@ export class Transitions {
             await this._doAsyncHook('afterEnter', data, t);
           }
         } catch (error) {
-          // TODO: use these hooks on `cancel()`
-          // await this._doAsyncHook('leaveCanceled', data, t);
-          // await this._doAsyncHook('enterCanceled', data, t);
           throw new Error('Transition error [page][enter]');
         }
       }

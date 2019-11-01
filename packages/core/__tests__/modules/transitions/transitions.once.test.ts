@@ -1,7 +1,7 @@
 import {
   ISchemaPage,
-  ITransitionOnce,
   ITransitionData,
+  ITransitionOnce,
 } from '../../../src/defs';
 import { hooks } from '../../../src/hooks';
 import { Logger } from '../../../src/modules/Logger';
@@ -15,7 +15,6 @@ const transitions = new Transitions([]);
 const beforeOnce = jest.fn();
 const once = jest.fn();
 const afterOnce = jest.fn();
-const onceCanceled = jest.fn();
 
 hooks.do = jest.fn();
 
@@ -84,7 +83,7 @@ it('catches error', async () => {
   const onceError = () => {
     throw new Error('Test');
   };
-  const t = { once: onceError, onceCanceled };
+  const t = { once: onceError };
 
   try {
     await transitions.doOnce({

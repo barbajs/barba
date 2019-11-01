@@ -12,18 +12,16 @@ export type HooksBarba =
   | 'nextAdded'
   | 'nextRemoved';
 
-export type HooksOnce = 'beforeOnce' | 'once' | 'afterOnce' | 'onceCanceled';
+export type HooksOnce = 'beforeOnce' | 'once' | 'afterOnce';
 
 export type HooksPage =
   | 'before'
   | 'beforeLeave'
   | 'leave'
   | 'afterLeave'
-  | 'leaveCanceled'
   | 'beforeEnter'
   | 'enter'
   | 'afterEnter'
-  | 'enterCanceled'
   | 'after';
 
 export type HooksBefore = 'beforeOnce' | 'beforeLeave' | 'beforeEnter';
@@ -46,10 +44,8 @@ export class HookMethods {
   public beforeLeave?: (fn: HookFunction, ctx?: any) => void;
   public leave?: (fn: HookFunction, ctx?: any) => void;
   public afterLeave?: (fn: HookFunction, ctx?: any) => void;
-  public leaveCanceled?: (fn: HookFunction, ctx?: any) => void;
   public beforeEnter?: (fn: HookFunction, ctx?: any) => void;
   public enter?: (fn: HookFunction, ctx?: any) => void;
   public afterEnter?: (fn: HookFunction, ctx?: any) => void;
-  public enterCanceled?: (fn: HookFunction, ctx?: any) => void;
   public after?: (fn: HookFunction, ctx?: any) => void;
 }

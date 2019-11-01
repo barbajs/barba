@@ -53,16 +53,13 @@ export class Hooks extends HookMethods {
     'beforeOnce',
     'once',
     'afterOnce',
-    'onceCanceled',
     'before',
     'beforeLeave',
     'leave',
     'afterLeave',
-    'leaveCanceled',
     'beforeEnter',
     'enter',
     'afterEnter',
-    'enterCanceled',
     'after',
   ];
   /**

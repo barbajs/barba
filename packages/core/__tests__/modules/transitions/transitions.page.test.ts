@@ -18,8 +18,6 @@ const afterLeave = jest.fn();
 const beforeEnter = jest.fn();
 const enter = jest.fn();
 const afterEnter = jest.fn();
-const leaveCanceled = jest.fn();
-const enterCanceled = jest.fn();
 
 hooks.do = jest.fn();
 
@@ -204,7 +202,7 @@ it('catches error (leave, sync: false)', async () => {
   const leaveError = () => {
     throw new Error('test');
   };
-  const t = { leave: leaveError, leaveCanceled };
+  const t = { leave: leaveError };
 
   try {
     await transitions.doPage({
@@ -230,7 +228,6 @@ it('catches error (enter, sync: false)', async () => {
       return Promise.resolve('foo');
     },
     enter: enterError,
-    enterCanceled,
   };
 
   try {
@@ -252,7 +249,7 @@ it('catches error (leave, sync: true)', async () => {
   const leaveError = () => {
     throw new Error('test');
   };
-  const t = { sync: true, leave: leaveError, leaveCanceled, enter() {} };
+  const t = { sync: true, leave: leaveError, enter() {} };
 
   try {
     await transitions.doPage({
@@ -272,7 +269,7 @@ it('catches error (enter, sync: true)', async () => {
   const enterError = () => {
     throw new Error('test');
   };
-  const t = { sync: true, leave() {}, enter: enterError, enterCanceled };
+  const t = { sync: true, leave() {}, enter: enterError };
 
   try {
     await transitions.doPage({

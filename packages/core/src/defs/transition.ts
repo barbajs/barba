@@ -44,8 +44,6 @@ export interface ITransitionPage extends ITransitionRules {
   enter?(data: ITransitionData): Promise<void> | void;
   afterEnter?(data: ITransitionData): void;
   after?(data: ITransitionData): void;
-  leaveCanceled?(data: ITransitionData): void;
-  enterCanceled?(data: ITransitionData): void;
 }
 
 export interface ITransitionOnce extends ITransitionPage {
