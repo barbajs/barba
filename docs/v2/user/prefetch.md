@@ -5,6 +5,9 @@ title: '@barba/prefetch'
 
 # @barba/prefetch
 
+[![NPM version](https://img.shields.io/npm/v/@barba/prefetch?style=flat-square)](https://www.npmjs.com/package/@barba/prefetch)
+[![Dependencies](https://img.shields.io/librariesio/release/npm/@barba/prefetch?style=flat-square)](https://github.com/barbajs/barba/network/dependencies)
+
 Barba prefetch **automatically fetch and cache** your pages.
 
 It is mainly inspired by [quicklink](https://github.com/GoogleChromeLabs/quicklink).

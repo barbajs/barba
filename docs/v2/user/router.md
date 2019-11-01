@@ -5,6 +5,9 @@ title: '@barba/router'
 
 # @barba/router
 
+[![NPM version](https://img.shields.io/npm/v/@barba/router?style=flat-square)](https://www.npmjs.com/package/@barba/router)
+[![Dependencies](https://img.shields.io/librariesio/release/npm/@barba/router?style=flat-square)](https://github.com/barbajs/barba/network/dependencies)
+
 Barba router allows you to use **custom routes** for page transitions.
 
 ## Definition
