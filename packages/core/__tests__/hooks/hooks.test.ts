@@ -34,7 +34,7 @@ it('register hooks', () => {
   expect(v1.fn).toBe(fn);
   expect(v1.ctx).toBe(ctx);
   expect(v2.fn).toBe(fn2);
-  expect(v2.ctx).toBe(null);
+  expect(v2.ctx).toMatchObject({});
 });
 
 it('do nothing when no hooks', async () => {

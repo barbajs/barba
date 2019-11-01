@@ -26,7 +26,7 @@ import { ICssCallbacks } from './defs/css';
 
 import { version } from '../package.json';
 
-class Css implements IBarbaPlugin<{}> {
+export class Css implements IBarbaPlugin<{}> {
   public name = '@barba/css';
   public version = version;
   public barba: Core;

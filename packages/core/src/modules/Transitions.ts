@@ -11,8 +11,6 @@
 
 /***/
 
-// Third-party
-import runAsync from 'run-async';
 // Definitions
 import {
   HooksTransition,
@@ -26,7 +24,7 @@ import {
 // Hooks
 import { hooks } from '../hooks';
 // Utils
-import { dom, helpers } from '../utils';
+import { dom, helpers, runAsync } from '../utils';
 // Modules
 import { Logger } from './Logger';
 import { Store } from './Store';
@@ -252,7 +250,7 @@ export class Transitions {
   ): Promise<void> {
     await hooks.do('appear', data, t);
 
-    return t.appear ? runAsync(t.appear)(data) : Promise.resolve();
+    return t.appear ? runAsync(t.appear, t)(data) : Promise.resolve();
   }
 
   /**
@@ -261,7 +259,7 @@ export class Transitions {
   public async leave(data: ITransitionData, t: ITransitionPage): Promise<any> {
     await hooks.do('leave', data, t);
 
-    return t.leave ? runAsync(t.leave)(data) : Promise.resolve();
+    return t.leave ? runAsync(t.leave, t)(data) : Promise.resolve();
   }
 
   /**
@@ -274,7 +272,9 @@ export class Transitions {
   ): Promise<void> {
     await hooks.do('enter', data, t);
 
-    return t.enter ? runAsync(t.enter)(data, leaveResult) : Promise.resolve();
+    return t.enter
+      ? runAsync(t.enter, t)(data, leaveResult)
+      : Promise.resolve();
   }
 
   /**
@@ -303,6 +303,6 @@ export class Transitions {
   ): Promise<void> {
     await hooks.do(hook, data, t);
 
-    return t[hook] ? runAsync(t[hook])(data) : Promise.resolve();
+    return t[hook] ? runAsync(t[hook], t)(data) : Promise.resolve();
   }
 }

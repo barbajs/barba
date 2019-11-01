@@ -17,12 +17,12 @@
 
 /***/
 
-// Third-party
-import runAsync from 'run-async';
 // Definitions
 import { HookFunction, HookMethods, HooksAll } from './defs';
 // Modules
 import { Logger } from './modules/Logger';
+// Utils
+import { runAsync } from './utils';
 // Types
 interface IHookInfos {
   ctx: any;
@@ -82,7 +82,7 @@ export class Hooks extends HookMethods {
     this.registered.clear();
     this.all.forEach(hook => {
       if (!this[hook]) {
-        this[hook] = (fn: HookFunction, ctx: any = null) => {
+        this[hook] = (fn: HookFunction, ctx: any = {}) => {
           if (!this.registered.has(hook)) {
             this.registered.set(hook, new Set());
           }
@@ -109,9 +109,9 @@ export class Hooks extends HookMethods {
 
       this.registered.get(name).forEach(hook => {
         // If needed, bind the right context
-        const fn = hook.ctx ? hook.fn.bind(hook.ctx) : hook.fn;
+        // const fn = hook.ctx ? hook.fn.bind(hook.ctx) : hook.fn;
         // Chain async hooks promisified
-        chain = chain.then(() => runAsync(fn)(...args));
+        chain = chain.then(() => runAsync(hook.fn, hook.ctx)(...args));
       });
 
       return chain;

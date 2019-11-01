@@ -1,6 +1,7 @@
 /* tslint:disable:no-empty */
 import barba from '@barba/core/src';
 import css from '../src';
+import { Css } from '../src/css';
 
 // Dom
 const wrapper = document.createElement('div');

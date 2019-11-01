@@ -1,3 +1,4 @@
+import { IView } from '../../src/defs';
 import { hooks } from '../../src/hooks';
 import { Views } from '../../src/modules/Views';
 
@@ -116,4 +117,25 @@ it('do nothing for missing namespace', () => {
   expect(afterLeave).not.toHaveBeenCalled();
   expect(beforeEnter).not.toHaveBeenCalled();
   expect(afterEnter).not.toHaveBeenCalled();
+});
+
+it('has right context', async () => {
+  const v = {
+    bar: jest.fn(),
+    beforeEnter() {
+      this.bar(this.foo);
+    },
+    foo: 'foo',
+    namespace: 'success',
+  };
+
+  views = new Views([v]);
+
+  const success = {
+    next: { namespace: 'success' },
+  };
+
+  await hooks.do('beforeEnter', success);
+
+  expect(v.bar).toHaveBeenCalledWith(v.foo);
 });
