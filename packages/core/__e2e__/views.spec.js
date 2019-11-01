@@ -17,7 +17,7 @@ afterEach(() => {
 
 describe('Views hooks', () => {
   it('have default order', () => {
-    cy.wait(1000); // Wait for appear complete
+    cy.wait(1000); // Wait for once complete
 
     // Checks…
     loadHooks.forEach((name, i) => {
@@ -39,7 +39,7 @@ describe('Views hooks', () => {
     });
   });
   // it('have sync order', () => {
-  //   cy.wait(1000); // Wait for appear complete
+  //   cy.wait(1000); // Wait for once complete
   //   // Click link
   //   cy.get('[data-test="link.hooks-sync"]').click();
 

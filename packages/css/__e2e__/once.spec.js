@@ -1,6 +1,6 @@
-describe('Appear transition', () => {
+describe('Once transition', () => {
   it('works', () => {
-    cy.prepare('/appear.html', 'appear', 'appear');
+    cy.prepare('/once.html', 'once', 'once');
     // Click link
     // cy.get('[data-test=link]').click();
     // cy.final('/page.html', 'page', 'page');

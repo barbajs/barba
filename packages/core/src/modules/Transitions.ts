@@ -15,9 +15,9 @@
 import {
   HooksTransition,
   HooksTransitionMap,
-  ITransitionAppear,
   ITransitionData,
   ITransitionFilters,
+  ITransitionOnce,
   ITransitionPage,
   Wrapper,
 } from '../defs';
@@ -46,7 +46,7 @@ export class Transitions {
   public get(
     data: ITransitionData,
     filters?: ITransitionFilters
-  ): ITransitionAppear | ITransitionPage {
+  ): ITransitionOnce | ITransitionPage {
     return this.store.resolve(data, filters);
   }
 
@@ -61,10 +61,10 @@ export class Transitions {
   }
 
   /**
-   * Check for registered appear transition(s).
+   * Check for registered once transition(s).
    */
-  get hasAppear(): boolean {
-    return this.store.appear.length > 0;
+  get hasOnce(): boolean {
+    return this.store.once.length > 0;
   }
 
   /**
@@ -87,31 +87,31 @@ export class Transitions {
   }
 
   /**
-   * ### Do "appear" transition.
+   * ### Do "once" transition.
    *
-   * Hooks: see [[HooksAppear]].
+   * Hooks: see [[HooksOnce]].
    */
-  public async doAppear({
+  public async doOnce({
     data,
     transition,
   }: {
     data: ITransitionData;
-    transition: ITransitionAppear;
+    transition: ITransitionOnce;
   }) {
     const t = transition || {};
     this._running = true;
 
     try {
-      await this._doAsyncHook('beforeAppear', data, t);
-      await this.appear(data, t);
-      await this._doAsyncHook('afterAppear', data, t);
+      await this._doAsyncHook('beforeOnce', data, t);
+      await this.once(data, t);
+      await this._doAsyncHook('afterOnce', data, t);
     } catch (error) {
       this._running = false;
       this.logger.error(error);
       // TODO: use this hooks on `cancel()`
-      // await this._doAsyncHook('appearCanceled', data, t);
+      // await this._doAsyncHook('onceCanceled', data, t);
       // TODO: should I throw or should I log…
-      throw new Error('Transition error [appear]');
+      throw new Error('Transition error [once]');
     }
 
     this._running = false;
@@ -242,15 +242,12 @@ export class Transitions {
   }
 
   /**
-   * Appear hook + async "appear" transition.
+   * Once hook + async "once" transition.
    */
-  public async appear(
-    data: ITransitionData,
-    t: ITransitionAppear
-  ): Promise<void> {
-    await hooks.do('appear', data, t);
+  public async once(data: ITransitionData, t: ITransitionOnce): Promise<void> {
+    await hooks.do('once', data, t);
 
-    return t.appear ? runAsync(t.appear, t)(data) : Promise.resolve();
+    return t.once ? runAsync(t.once, t)(data) : Promise.resolve();
   }
 
   /**

@@ -14,8 +14,8 @@ export interface IViewData {
 export interface IView {
   namespace: string;
   name?: string;
-  beforeAppear?(data: IViewData): void;
-  afterAppear?(data: IViewData): void;
+  beforeOnce?(data: IViewData): void;
+  afterOnce?(data: IViewData): void;
   beforeLeave?(data: IViewData): void;
   afterLeave?(data: IViewData): void;
   beforeEnter?(data: IViewData): void;

@@ -46,7 +46,7 @@ export class Css implements IBarbaPlugin<{}> {
     this.logger = new barba.Logger(this.name);
     this.logger.info(this.version);
     this.barba = barba;
-    this._appear = this._appear.bind(this);
+    this._once = this._once.bind(this);
     this._leave = this._leave.bind(this);
     this._enter = this._enter.bind(this);
   }
@@ -57,18 +57,18 @@ export class Css implements IBarbaPlugin<{}> {
   public init() {
     // Register hooks to get prefix
     this.barba.hooks.before(this._getPrefix, this);
-    this.barba.hooks.beforeAppear(this._getPrefix, this);
+    this.barba.hooks.beforeOnce(this._getPrefix, this);
 
     // Register hook for CSS classes
-    this.barba.hooks.beforeAppear(this._beforeAppear, this);
-    this.barba.hooks.afterAppear(this._afterAppear, this);
+    this.barba.hooks.beforeOnce(this._beforeOnce, this);
+    this.barba.hooks.afterOnce(this._afterOnce, this);
     this.barba.hooks.beforeLeave(this._beforeLeave, this);
     this.barba.hooks.afterLeave(this._afterLeave, this);
     this.barba.hooks.beforeEnter(this._beforeEnter, this);
     this.barba.hooks.afterEnter(this._afterEnter, this);
 
     // Override main transitions
-    this.barba.transitions.appear = this._appear;
+    this.barba.transitions.once = this._once;
     this.barba.transitions.leave = this._leave;
     this.barba.transitions.enter = this._enter;
 
@@ -76,7 +76,7 @@ export class Css implements IBarbaPlugin<{}> {
     /* istanbul ignore next */
     this.barba.transitions.store.all.unshift({
       name: 'barba',
-      appear() {}, // tslint:disable-line:no-empty
+      once() {}, // tslint:disable-line:no-empty
       leave() {}, // tslint:disable-line:no-empty
       enter() {}, // tslint:disable-line:no-empty
     });
@@ -162,29 +162,26 @@ export class Css implements IBarbaPlugin<{}> {
   }
 
   /**
-   * `beforeAppear` hook.
+   * `beforeOnce` hook.
    */
-  private _beforeAppear(data: ITransitionData): Promise<void> {
-    return this.start(data.current.container, 'appear');
+  private _beforeOnce(data: ITransitionData): Promise<void> {
+    return this.start(data.current.container, 'once');
   }
 
   /**
-   * `appear` hook.
+   * `once` hook.
    */
-  private async _appear(
-    data: ITransitionData,
-    t: ITransitionPage
-  ): Promise<any> {
-    await this.barba.hooks.do('appear', data, t);
+  private async _once(data: ITransitionData, t: ITransitionPage): Promise<any> {
+    await this.barba.hooks.do('once', data, t);
 
-    return this.next(data.current.container, 'appear');
+    return this.next(data.current.container, 'once');
   }
 
   /**
-   * `afterAppear` hook.
+   * `afterOnce` hook.
    */
-  private _afterAppear(data: ITransitionData): Promise<void> {
-    return this.end(data.current.container, 'appear');
+  private _afterOnce(data: ITransitionData): Promise<void> {
+    return this.end(data.current.container, 'once');
   }
 
   /**

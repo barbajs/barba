@@ -1,6 +1,6 @@
 import {
   ISchemaPage,
-  ITransitionAppear,
+  ITransitionOnce,
   ITransitionData,
 } from '../../../src/defs';
 import { Logger } from '../../../src/modules/Logger';
@@ -24,15 +24,15 @@ beforeEach(() => {
 it('calls methods', async () => {
   const t = {
     bar: jest.fn(),
-    appear() {
+    once() {
       this.bar(this.foo);
     },
     foo: 'foo',
   };
 
-  await transitions.doAppear({
+  await transitions.doOnce({
     data,
-    transition: (t as any) as ITransitionAppear,
+    transition: (t as any) as ITransitionOnce,
   });
 
   expect(t.bar).toHaveBeenCalledWith(t.foo);

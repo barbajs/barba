@@ -16,7 +16,7 @@ document.body.appendChild(container);
 // Transitions
 const name = 'my-name';
 const unnamed = {
-  appear() {},
+  once() {},
   leave() {},
   enter() {},
 };
@@ -35,7 +35,7 @@ it('prefixes with transition name', async () => {
   await barba.hooks.do('before', data, named);
   expect(css.prefix).toBe(name);
   css.prefix = null;
-  await barba.hooks.do('beforeAppear', data, named);
+  await barba.hooks.do('beforeOnce', data, named);
   expect(css.prefix).toBe(name);
 });
 
@@ -43,17 +43,17 @@ it('prefixes with default ', async () => {
   await barba.hooks.do('before', data, unnamed);
   expect(css.prefix).toBe('barba');
   css.prefix = null;
-  await barba.hooks.do('beforeAppear', data, unnamed);
+  await barba.hooks.do('beforeOnce', data, unnamed);
   expect(css.prefix).toBe('barba');
 });
 
 // DEV
 // it('adds and removes default CSS classes', async () => {
-//   barba.hooks.do('beforeAppear', {}, unnamed);
+//   barba.hooks.do('beforeOnce', {}, unnamed);
 //   await checkHooks();
 // });
 
 // it('adds and removes named CSS classes', async () => {
-//   barba.hooks.do('beforeAppear', {}, named);
+//   barba.hooks.do('beforeOnce', {}, named);
 //   await checkHooks(name);
 // });

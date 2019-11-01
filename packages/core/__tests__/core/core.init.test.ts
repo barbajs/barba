@@ -84,10 +84,10 @@ it('init history', () => {
   });
 });
 
-it('calls appear', () => {
-  barba.appear = jest.fn();
+it('calls once', () => {
+  barba.once = jest.fn();
   barba.init();
-  expect(barba.appear).toHaveBeenCalledTimes(1);
+  expect(barba.once).toHaveBeenCalledTimes(1);
 });
 
 it('gets wrapper', () => {

@@ -16,9 +16,9 @@ document.body.appendChild(wrapper);
 document.body.appendChild(current);
 
 const t = {
-  appear: () => Promise.resolve(),
   enter: () => Promise.resolve(),
   leave: () => Promise.resolve(),
+  once: () => Promise.resolve(),
 };
 const data: ITransitionData = {
   current: ({ container: current } as unknown) as ISchemaPage,
@@ -33,12 +33,12 @@ css.start = jest.fn();
 css.next = jest.fn();
 css.end = jest.fn();
 
-it('do appear hooks', async () => {
-  await barba.hooks.do('beforeAppear', data, t);
-  await barba.hooks.do('afterAppear', data, t);
+it('do once hooks', async () => {
+  await barba.hooks.do('beforeOnce', data, t);
+  await barba.hooks.do('afterOnce', data, t);
 
-  expect(css.start).toHaveBeenCalledWith(current, 'appear');
-  expect(css.end).toHaveBeenCalledWith(current, 'appear');
+  expect(css.start).toHaveBeenCalledWith(current, 'once');
+  expect(css.end).toHaveBeenCalledWith(current, 'once');
 });
 
 it('do leave hooks', async () => {
@@ -69,11 +69,11 @@ it('do enter hooks', async () => {
 });
 
 it('override transitions', async () => {
-  await barba.transitions.appear(data, t);
+  await barba.transitions.once(data, t);
   await barba.transitions.leave(data, t);
   await barba.transitions.enter(data, t);
 
-  expect(css.next).toHaveBeenNthCalledWith(1, current, 'appear');
+  expect(css.next).toHaveBeenNthCalledWith(1, current, 'once');
   expect(css.next).toHaveBeenNthCalledWith(2, current, 'leave');
   expect(css.next).toHaveBeenNthCalledWith(3, next, 'enter');
 });

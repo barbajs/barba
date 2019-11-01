@@ -2,14 +2,14 @@
   opacity: 1;
 }
 
-.barba-appear {
+.barba-once {
   opacity: 0;
 }
 
-.barba-appear-active {
+.barba-once-active {
   transition: opacity 5s;
 }
 
-.barba-appear-to {
+.barba-once-to {
   opacity: 1;
 }

@@ -12,11 +12,7 @@ export type HooksBarba =
   | 'nextAdded'
   | 'nextRemoved';
 
-export type HooksAppear =
-  | 'beforeAppear'
-  | 'appear'
-  | 'afterAppear'
-  | 'appearCanceled';
+export type HooksOnce = 'beforeOnce' | 'once' | 'afterOnce' | 'onceCanceled';
 
 export type HooksPage =
   | 'before'
@@ -30,10 +26,10 @@ export type HooksPage =
   | 'enterCanceled'
   | 'after';
 
-export type HooksBefore = 'beforeAppear' | 'beforeLeave' | 'beforeEnter';
-export type HooksAfter = 'afterAppear' | 'afterLeave' | 'afterEnter';
+export type HooksBefore = 'beforeOnce' | 'beforeLeave' | 'beforeEnter';
+export type HooksAfter = 'afterOnce' | 'afterLeave' | 'afterEnter';
 
-export type HooksTransition = HooksAppear | HooksPage;
+export type HooksTransition = HooksOnce | HooksPage;
 export type HooksView = HooksBefore | HooksAfter;
 export type HooksAll = HooksBarba | HooksTransition;
 

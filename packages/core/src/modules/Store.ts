@@ -16,9 +16,9 @@
 import {
   IRule,
   IRules,
-  ITransitionAppear,
   ITransitionData,
   ITransitionFilters,
+  ITransitionOnce,
   ITransitionPage,
   RuleName,
 } from '../defs';
@@ -33,9 +33,9 @@ export class Store {
    */
   public all: ITransitionPage[] = [];
   /**
-   * "Appear only" registered transitions.
+   * "Once only" registered transitions.
    */
-  public appear: ITransitionAppear[] = [];
+  public once: ITransitionOnce[] = [];
   /**
    * Rules for transition resolution.
    *
@@ -61,7 +61,7 @@ export class Store {
   constructor(transitions: ITransitionPage[] = []) {
     /* istanbul ignore else */
     if (transitions) {
-      // TODO: add check for valid transitions? criteria? (appear || enter && leave)
+      // TODO: add check for valid transitions? criteria? (once || enter && leave)
       this.all = this.all.concat(transitions);
     }
     this.update();
@@ -92,9 +92,9 @@ export class Store {
   public resolve(
     data: ITransitionData,
     filters: ITransitionFilters = {}
-  ): ITransitionAppear | ITransitionPage {
-    // Filter on "appear"
-    let transitions = filters.appear ? this.appear : this.all;
+  ): ITransitionOnce | ITransitionPage {
+    // Filter on "once"
+    let transitions = filters.once ? this.once : this.all;
 
     // Filter on "self"
     if (filters.self) {
@@ -121,7 +121,7 @@ export class Store {
         if (valid) {
           valid = this._check(t, rule, data, match);
           // From/to check, only for page transitions
-          if (!filters.appear) {
+          if (!filters.once) {
             if (t.from && t.to) {
               valid =
                 this._check(t, rule, data, match, 'from') &&
@@ -144,8 +144,8 @@ export class Store {
 
     const activeMatch = matching.get(active);
     const transitionType = [];
-    if (filters.appear) {
-      transitionType.push('appear');
+    if (filters.once) {
+      transitionType.push('once');
     } else {
       transitionType.push('page');
     }
@@ -175,7 +175,7 @@ export class Store {
    *
    * - Reorder transition by priorities
    * - Get wait indicator
-   * - Get appear transitions
+   * - Get once transitions
    */
   public update(): void {
     // Reorder by priorities
@@ -188,9 +188,7 @@ export class Store {
 
         return t;
       });
-    this.appear = this.all.filter(
-      t => t.appear !== undefined
-    ) as ITransitionAppear[];
+    this.once = this.all.filter(t => t.once !== undefined) as ITransitionOnce[];
   }
 
   /**

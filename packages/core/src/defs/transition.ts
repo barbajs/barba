@@ -14,7 +14,7 @@ export interface ITransitionData {
 
 // Filter
 export interface ITransitionFilters {
-  appear?: boolean;
+  once?: boolean;
   self?: boolean;
 }
 
@@ -33,9 +33,9 @@ export interface ITransitionPage extends ITransitionRules {
   sync?: boolean;
   priority?: number;
   async?: () => (data?: any) => void;
-  beforeAppear?(data: ITransitionData): void;
-  appear?(data: ITransitionData): Promise<void> | void;
-  afterAppear?(data: ITransitionData): void;
+  beforeOnce?(data: ITransitionData): void;
+  once?(data: ITransitionData): Promise<void> | void;
+  afterOnce?(data: ITransitionData): void;
   before?(data: ITransitionData): void;
   beforeLeave?(data: ITransitionData): void;
   leave?(data: ITransitionData): Promise<any> | void;
@@ -48,6 +48,6 @@ export interface ITransitionPage extends ITransitionRules {
   enterCanceled?(data: ITransitionData): void;
 }
 
-export interface ITransitionAppear extends ITransitionPage {
-  appear?(data: ITransitionData): Promise<void>;
+export interface ITransitionOnce extends ITransitionPage {
+  once?(data: ITransitionData): Promise<void>;
 }

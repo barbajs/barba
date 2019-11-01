@@ -28,16 +28,16 @@ function sleep() {
 }
 
 export const base = {
-  beforeAppear() {
-    append('beforeAppear');
+  beforeOnce() {
+    append('beforeOnce');
     return sleep();
   },
-  appear() {
-    append('appear');
+  once() {
+    append('once');
     return sleep();
   },
-  afterAppear() {
-    append('afterAppear');
+  afterOnce() {
+    append('afterOnce');
     return sleep();
   },
   before() {
@@ -74,14 +74,14 @@ export const base = {
   },
 };
 
-barba.hooks.beforeAppear(() => {
-  append('beforeAppear', 'global:');
+barba.hooks.beforeOnce(() => {
+  append('beforeOnce', 'global:');
 });
-barba.hooks.appear(() => {
-  append('appear', 'global:');
+barba.hooks.once(() => {
+  append('once', 'global:');
 });
-barba.hooks.afterAppear(() => {
-  append('afterAppear', 'global:');
+barba.hooks.afterOnce(() => {
+  append('afterOnce', 'global:');
 });
 barba.hooks.before(() => {
   append('before', 'global:');

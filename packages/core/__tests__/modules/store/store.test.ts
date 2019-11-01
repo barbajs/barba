@@ -6,7 +6,7 @@ it('has defaults', () => {
   store = new Store([]);
 
   expect(store.all).toHaveLength(0);
-  expect(store.appear).toHaveLength(0);
+  expect(store.once).toHaveLength(0);
 });
 
 it('adds transitions', () => {

@@ -2,7 +2,7 @@
  * @module typings/css
  */
 
-type CssKinds = 'appear' | 'leave' | 'enter';
+type CssKinds = 'once' | 'leave' | 'enter';
 export interface ICssCallbacks {
   [key: string]: EventListenerOrEventListenerObject;
 }

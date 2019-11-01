@@ -20,8 +20,8 @@ import {
   IBarbaPlugin,
   IgnoreOption,
   ISchemaPage,
-  ITransitionAppear,
   ITransitionData,
+  ITransitionOnce,
   ITransitionPage,
   Link,
   LinkEvent,
@@ -226,15 +226,15 @@ export class Core {
     this.plugins.forEach(plugin => plugin.init());
 
     // 8. Barba ready
-    // Set next + trigger for appear and `beforeEnter`/`afterEnter` view on page load.
+    // Set next + trigger for once and `beforeEnter`/`afterEnter` view on page load.
     const readyData = this.data;
 
     readyData.trigger = 'barba';
     readyData.next = readyData.current;
     this.hooks.do('ready', readyData);
 
-    // 9. Finally, do appear…
-    this.appear(readyData);
+    // 9. Finally, do once…
+    this.once(readyData);
     // Clean data for first barba transition…
     this._resetData();
   }
@@ -321,22 +321,22 @@ export class Core {
   }
 
   /**
-   * ### Start an "appear" transition.
+   * ### Start an "once" transition.
    *
-   * If some registered "appear" transition,
+   * If some registered "once" transition,
    * get the "resolved" transition from the store and start it.
    */
-  public async appear(readyData: ITransitionData): Promise<void> {
+  public async once(readyData: ITransitionData): Promise<void> {
     await this.hooks.do('beforeEnter', readyData);
 
-    // Check if appear transition
-    if (this.transitions.hasAppear) {
+    // Check if once transition
+    if (this.transitions.hasOnce) {
       try {
         const transition = this.transitions.get(readyData, {
-          appear: true,
-        }) as ITransitionAppear;
+          once: true,
+        }) as ITransitionOnce;
 
-        await this.transitions.doAppear({ transition, data: readyData });
+        await this.transitions.doOnce({ transition, data: readyData });
       } catch (error) {
         this.logger.error(error);
       }
@@ -394,7 +394,7 @@ export class Core {
 
     try {
       const transition = this.transitions.get(data, {
-        appear: false,
+        once: false,
         self,
       }) as ITransitionPage;
 

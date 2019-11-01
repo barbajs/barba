@@ -11,23 +11,23 @@ beforeEach(() => {
 it('update all', () => {
   store = new Store([{}]);
   expect(store.all).toHaveLength(nb + 1);
-  expect(store.appear).toHaveLength(0);
+  expect(store.once).toHaveLength(0);
 });
 
-it('update appear', () => {
-  store = new Store([{ appear() {} }]);
+it('update once', () => {
+  store = new Store([{ once() {} }]);
   expect(store.all).toHaveLength(nb + 1);
-  expect(store.appear).toHaveLength(nb + 1);
+  expect(store.once).toHaveLength(nb + 1);
 });
 
 it('update page', () => {
   store = new Store([{ enter() {} }]);
   expect(store.all).toHaveLength(nb + 1);
-  expect(store.appear).toHaveLength(0);
+  expect(store.once).toHaveLength(0);
 });
 
-it('update appear and page', () => {
-  store = new Store([{ appear() {}, enter() {} }]);
+it('update once and page', () => {
+  store = new Store([{ once() {}, enter() {} }]);
   expect(store.all).toHaveLength(nb + 1);
-  expect(store.appear).toHaveLength(nb + 1);
+  expect(store.once).toHaveLength(nb + 1);
 });

@@ -15,25 +15,25 @@ afterEach(() => {
   barba.destroy();
 });
 
-it('do appear', async () => {
-  const t = { appear() {} };
-  const spyAppear = jest.spyOn(barba.transitions, 'doAppear');
+it('do once', async () => {
+  const t = { once() {} };
+  const spyOnce = jest.spyOn(barba.transitions, 'doOnce');
 
   barba.transitions.store.add('transition', t);
 
-  await barba.appear(data);
+  await barba.once(data);
 
-  expect(spyAppear).toHaveBeenCalledTimes(1);
-  spyAppear.mockRestore();
+  expect(spyOnce).toHaveBeenCalledTimes(1);
+  spyOnce.mockRestore();
 });
 
 it('catches error', async () => {
   expect.assertions(2);
-  const errorAppear = new Error('Appear error');
-  const errorTransition = new Error('Transition error [appear]');
+  const errorOnce = new Error('Once error');
+  const errorTransition = new Error('Transition error [once]');
   const t = {
-    appear() {
-      throw errorAppear;
+    once() {
+      throw errorOnce;
     },
   };
   barba.transitions.store.add('transition', t);
@@ -42,8 +42,8 @@ it('catches error', async () => {
   barba.logger.error = jest.fn();
   barba.transitions.logger.error = jest.fn();
 
-  await barba.appear(data);
+  await barba.once(data);
 
-  expect(barba.transitions.logger.error).toHaveBeenCalledWith(errorAppear);
+  expect(barba.transitions.logger.error).toHaveBeenCalledWith(errorOnce);
   expect(barba.logger.error).toHaveBeenCalledWith(errorTransition);
 });

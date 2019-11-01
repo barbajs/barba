@@ -5,7 +5,7 @@ describe('Route transition', () => {
   it('works', () => {
     cy.prepare('/index.html', 'home', 'home');
     cy.get('[data-test="logs-list"]').as('logs'); // Alias to @hooks
-    cy.wait(1000); // Wait for appear complete
+    cy.wait(1000); // Wait for once complete
 
     // Click link
     cy.get('[data-test=link]').click();

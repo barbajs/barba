@@ -4,15 +4,15 @@ let transitions: Transitions;
 
 it('has defaults', () => {
   transitions = new Transitions();
-  expect(transitions.hasAppear).toBeFalsy();
+  expect(transitions.hasOnce).toBeFalsy();
   expect(transitions.shouldWait).toBeFalsy();
   expect(transitions.isRunning).toBeFalsy();
   expect(transitions.store).toBeDefined();
 });
 
-it('has appear', () => {
-  transitions = new Transitions([{ appear: () => Promise.resolve() }]);
-  expect(transitions.hasAppear).toBeTruthy();
+it('has once', () => {
+  transitions = new Transitions([{ once: () => Promise.resolve() }]);
+  expect(transitions.hasOnce).toBeTruthy();
 });
 
 it('should wait', () => {

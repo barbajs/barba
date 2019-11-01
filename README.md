@@ -16,7 +16,7 @@
 
 It helps reducing the delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.
 
-> This is beta version, use it at your own risks! 😱  
+> This is beta version, use it at your own risks! 😱
 > Thanks in advance for reporting bugs. #sharethelove 😊
 >
 > [Looking for v1?](https://barba.js.org/v1) 👈
@@ -58,7 +58,7 @@ It helps reducing the delay between your pages, minimizing browser HTTP requests
   - are plain JS objects
   - are declared via the `barba.init({ views })`
   - use a subset of animation "hooks":
-    - `beforeAppear`, `afterAppear`, `beforeLeave`, `afterLeave`, `beforeEnter`, `afterEnter`
+    - `beforeOnce`, `afterOnce`, `beforeLeave`, `afterLeave`, `beforeEnter`, `afterEnter`
     - receive the same [`data` argument](https://barba.js.org/docs/v2/user/core.html#data-argument)
 - [Sync mode](https://barba.js.org/docs/v2/user/core.html#sync-mode) will start `leave` and `enter` transitions concurrently
 
