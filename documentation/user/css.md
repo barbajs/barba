@@ -5,6 +5,9 @@ title: '@barba/css'
 
 # @barba/css
 
+[![NPM version](https://img.shields.io/npm/v/@barba/css?style=flat-square)](https://www.npmjs.com/package/@barba/css)
+[![Dependencies](https://img.shields.io/librariesio/release/npm/@barba/css?style=flat-square)](https://github.com/barbajs/barba/network/dependencies)
+
 Barba CSS is a **style helper** that manage you CSS classes during transitions.
 
 It is mainly inspired by [Vue.js transitions](https://vuejs.org/v2/guide/transitions.html#Transition-Classes).
