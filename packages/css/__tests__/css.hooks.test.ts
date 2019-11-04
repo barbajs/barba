@@ -7,7 +7,7 @@ import css from '../src';
 // Dom
 const wrapper = document.createElement('div');
 const current = document.createElement('div');
-const next = current.cloneNode();
+const next = document.createElement('div');
 
 wrapper.dataset.barba = 'wrapper';
 current.dataset.barba = 'container';
@@ -37,8 +37,8 @@ it('do once hooks', async () => {
   await barba.hooks.do('beforeOnce', data, t);
   await barba.hooks.do('afterOnce', data, t);
 
-  expect(css.start).toHaveBeenCalledWith(current, 'once');
-  expect(css.end).toHaveBeenCalledWith(current, 'once');
+  expect(css.start).toHaveBeenCalledWith(next, 'once');
+  expect(css.end).toHaveBeenCalledWith(next, 'once');
 });
 
 it('do leave hooks', async () => {
@@ -73,7 +73,7 @@ it('override transitions', async () => {
   await barba.transitions.leave(data, t);
   await barba.transitions.enter(data, t);
 
-  expect(css.next).toHaveBeenNthCalledWith(1, current, 'once');
+  expect(css.next).toHaveBeenNthCalledWith(1, next, 'once');
   expect(css.next).toHaveBeenNthCalledWith(2, current, 'leave');
   expect(css.next).toHaveBeenNthCalledWith(3, next, 'enter');
 });

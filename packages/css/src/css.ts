@@ -165,7 +165,7 @@ export class Css implements IBarbaPlugin<{}> {
    * `beforeOnce` hook.
    */
   private _beforeOnce(data: ITransitionData): Promise<void> {
-    return this.start(data.current.container, 'once');
+    return this.start(data.next.container, 'once');
   }
 
   /**
@@ -174,14 +174,14 @@ export class Css implements IBarbaPlugin<{}> {
   private async _once(data: ITransitionData, t: ITransitionPage): Promise<any> {
     await this.barba.hooks.do('once', data, t);
 
-    return this.next(data.current.container, 'once');
+    return this.next(data.next.container, 'once');
   }
 
   /**
    * `afterOnce` hook.
    */
   private _afterOnce(data: ITransitionData): Promise<void> {
-    return this.end(data.current.container, 'once');
+    return this.end(data.next.container, 'once');
   }
 
   /**

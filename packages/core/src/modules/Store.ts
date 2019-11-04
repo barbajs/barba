@@ -120,19 +120,17 @@ export class Store {
       this._rules.reverse().forEach(rule => {
         if (valid) {
           valid = this._check(t, rule, data, match);
-          // From/to check, only for page transitions
-          if (!filters.once) {
-            if (t.from && t.to) {
-              valid =
-                this._check(t, rule, data, match, 'from') &&
-                this._check(t, rule, data, match, 'to');
-            }
-            if (t.from && !t.to) {
-              valid = this._check(t, rule, data, match, 'from');
-            }
-            if (!t.from && t.to) {
-              valid = this._check(t, rule, data, match, 'to');
-            }
+          // From/to check
+          if (t.from && t.to) {
+            valid =
+              this._check(t, rule, data, match, 'from') &&
+              this._check(t, rule, data, match, 'to');
+          }
+          if (t.from && !t.to) {
+            valid = this._check(t, rule, data, match, 'from');
+          }
+          if (!t.from && t.to) {
+            valid = this._check(t, rule, data, match, 'to');
           }
         }
       });

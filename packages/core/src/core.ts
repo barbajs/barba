@@ -227,14 +227,15 @@ export class Core {
 
     // 8. Barba ready
     // Set next + trigger for once and `beforeEnter`/`afterEnter` view on page load.
-    const readyData = this.data;
+    const onceData = this.data;
 
-    readyData.trigger = 'barba';
-    readyData.next = readyData.current;
-    this.hooks.do('ready', readyData);
+    onceData.trigger = 'barba';
+    onceData.next = onceData.current;
+    onceData.current = { ...this.schemaPage };
+    this.hooks.do('ready', onceData);
 
     // 9. Finally, do once…
-    this.once(readyData);
+    this.once(onceData);
     // Clean data for first barba transition…
     this._resetData();
   }

@@ -24,7 +24,10 @@ const named = {
   ...unnamed,
   name,
 };
-const data = { current: { container } };
+const data = {
+  current: { container },
+  next: { container },
+};
 
 barba.use(css);
 barba.init({
