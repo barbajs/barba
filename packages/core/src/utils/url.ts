@@ -16,35 +16,22 @@ import { IGenericObject, IUrlBase } from '../defs';
 /**
  * Get location href.
  */
-export const getHref = (): string => window.location.href;
+export const getHref = () => window.location.href;
 
 /**
  * Get location origin.
  */
-export const getOrigin = (): string => window.location.origin;
+export const getOrigin = () => window.location.origin;
 
 /**
- * Get port based on location.
+ * Get port based on URL or location.
  */
-export const getPort = (p?: string) => {
-  const port = p || window.location.port;
-  const { protocol } = window.location;
-
-  if (port !== '') {
-    return parseInt(port, 10);
-  }
-
-  if (protocol === 'https:') {
-    return 443;
-  }
-
-  return 80;
-};
+export const getPort = (url: string = window.location.href) => parse(url).port;
 
 /**
  * Get path from URL.
  */
-export const getPath = (url: string): string => parse(url).path;
+export const getPath = (url: string = window.location.href) => parse(url).path;
 
 /**
  * Get query object from URL.
@@ -57,14 +44,33 @@ export const getPath = (url: string): string => parse(url).path;
 // export const getHash = (url: string): string => parse(url).hash;
 
 /**
- * Parse URL for path, query and hash.
+ * Parse URL for path, query and hash and more.
  */
 export const parse = (url: string): IUrlBase => {
-  // let path = clean(url);
+  // Port
+  let port;
+  const matches = url.match(/:\d+/);
+
+  if (matches === null) {
+    if (/^http/.test(url)) {
+      port = 80;
+    }
+
+    if (/^https/.test(url)) {
+      port = 443;
+    }
+  } else {
+    const portString = matches[0].substring(1);
+
+    port = parseInt(portString, 10);
+  }
+
+  // Path
   let path = url.replace(getOrigin(), '');
   let hash;
   let query = {};
 
+  // Hash
   const hashIndex = path.indexOf('#');
 
   if (hashIndex >= 0) {
@@ -72,6 +78,7 @@ export const parse = (url: string): IUrlBase => {
     path = path.slice(0, hashIndex);
   }
 
+  // Query
   const queryIndex = path.indexOf('?');
 
   if (queryIndex >= 0) {
@@ -82,6 +89,7 @@ export const parse = (url: string): IUrlBase => {
   return {
     hash,
     path,
+    port,
     query,
   };
 };
@@ -101,4 +109,5 @@ export const parseQuery = (str: string) =>
 /**
  * Clean URL, remove "hash" and/or "trailing slash".
  */
-export const clean = (url: string) => url.replace(/(\/#.*|\/|#.*)$/, '');
+export const clean = (url: string = window.location.href) =>
+  url.replace(/(\/#.*|\/|#.*)$/, '');

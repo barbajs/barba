@@ -26,6 +26,13 @@ it('get port', () => {
 });
 
 it('get path', () => {
+  expect(url.getPath()).toBe('/');
+
+  (global as any).jsdom.reconfigure({
+    url: 'http://localhost/qux.html?foo=bar#hash',
+  });
+  expect(url.getPath()).toBe('/qux.html');
+
   const path = url.getPath('http://localhost/foo.html?foo=bar#hash');
 
   expect(path).toBe('/foo.html');

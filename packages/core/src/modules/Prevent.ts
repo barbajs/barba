@@ -62,7 +62,7 @@ const corsDomain: PreventCheck = ({ el }) =>
  */
 const corsPort: PreventCheck = ({ el }) =>
   (el as HTMLAnchorElement).port !== undefined &&
-  url.getPort() !== url.getPort((el as HTMLAnchorElement).port);
+  url.getPort() !== url.getPort((el as HTMLAnchorElement).href);
 
 /**
  * If the link has download attribute.
@@ -90,7 +90,7 @@ const preventAll: PreventCheck = ({ el }) =>
  * > Not in the test suite.
  */
 const sameUrl: PreventCheck = ({ href }) =>
-  url.clean(href) === url.clean(window.location.href);
+  url.clean(href) === url.clean() && url.getPort(href) === url.getPort();
 
 export class Prevent extends Ignore {
   public suite: string[] = [];

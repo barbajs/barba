@@ -65,6 +65,7 @@ it('has current page content', () => {
     hash: undefined,
     href: 'http://localhost/',
     path: '/',
+    port: 80,
     query: {},
   });
   expect(barba.data.current.container).toBe(container);
