@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.8](https://github.com/barbajs/barba/compare/@barba/prefetch@2.1.7...@barba/prefetch@2.1.8) (2019-11-05)
+
+**Note:** Version bump only for package @barba/prefetch
+
 ## [2.1.7](https://github.com/barbajs/barba/compare/@barba/prefetch@2.1.6...@barba/prefetch@2.1.7) (2019-10-22)
 
 ### Bug Fixes

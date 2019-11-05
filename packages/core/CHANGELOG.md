@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.2](https://github.com/barbajs/barba/compare/@barba/core@2.7.1...@barba/core@2.7.2) (2019-11-05)
+
+### Bug Fixes
+
+- **core:** :heavy_minus_sign: remove 'path' for URL resolution ([3875d0c](https://github.com/barbajs/barba/commit/3875d0c)), closes [#465](https://github.com/barbajs/barba/issues/465)
+- **root:** :bug: fix context for views and add to transitions ([9054673](https://github.com/barbajs/barba/commit/9054673)), closes [#467](https://github.com/barbajs/barba/issues/467)
+
 ## [2.7.1](https://github.com/barbajs/barba/compare/@barba/core@2.7.0...@barba/core@2.7.1) (2019-10-27)
 
 **Note:** Version bump only for package @barba/core

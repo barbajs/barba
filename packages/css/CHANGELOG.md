@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.12](https://github.com/barbajs/barba/compare/@barba/css@2.1.11...@barba/css@2.1.12) (2019-11-05)
+
+### Bug Fixes
+
+- **root:** :bug: fix context for views and add to transitions ([9054673](https://github.com/barbajs/barba/commit/9054673)), closes [#467](https://github.com/barbajs/barba/issues/467)
+
 ## [2.1.11](https://github.com/barbajs/barba/compare/@barba/css@2.1.10...@barba/css@2.1.11) (2019-08-02)
 
 ### Bug Fixes
