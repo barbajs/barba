@@ -92,8 +92,8 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_core_src_modules_store_.store.html#_rules" class="tsd-kind-icon">_rules</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_core_src_modules_store_.store.html#all" class="tsd-kind-icon">all</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_core_src_modules_store_.store.html#appear" class="tsd-kind-icon">appear</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_core_src_modules_store_.store.html#logger" class="tsd-kind-icon">logger</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_core_src_modules_store_.store.html#once" class="tsd-kind-icon">once</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -179,21 +179,6 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="appear" class="tsd-anchor"></a>
-					<h3>appear</h3>
-					<div class="tsd-signature tsd-kind-icon">appear<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_core_src_defs_transition_.itransitionappear.html" class="tsd-signature-type">ITransitionAppear</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/modules/Store.ts#L38">core/src/modules/Store.ts:38</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>&quot;Appear only&quot; registered transitions.</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="logger" class="tsd-anchor"></a>
 					<h3>logger</h3>
 					<div class="tsd-signature tsd-kind-icon">logger<span class="tsd-signature-symbol">:</span> <a href="core_modules_logger.logger.html" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol"> =&nbsp;new Logger(&#x27;@barba/core&#x27;)</span></div>
@@ -202,6 +187,21 @@
 							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/modules/Store.ts#L30">core/src/modules/Store.ts:30</a></li>
 						</ul>
 					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="once" class="tsd-anchor"></a>
+					<h3>once</h3>
+					<div class="tsd-signature tsd-kind-icon">once<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_core_src_defs_transition_.itransitiononce.html" class="tsd-signature-type">ITransitionOnce</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/modules/Store.ts#L38">core/src/modules/Store.ts:38</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>&quot;Once only&quot; registered transitions.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -216,7 +216,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/modules/Store.ts#L323">core/src/modules/Store.ts:323</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/modules/Store.ts#L321">core/src/modules/Store.ts:321</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -239,7 +239,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/modules/Store.ts#L298">core/src/modules/Store.ts:298</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/modules/Store.ts#L296">core/src/modules/Store.ts:296</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -280,7 +280,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/modules/Store.ts#L207">core/src/modules/Store.ts:207</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/modules/Store.ts#L205">core/src/modules/Store.ts:205</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -359,7 +359,7 @@
 					<a name="resolve" class="tsd-anchor"></a>
 					<h3>resolve</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">resolve<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><a href="../interfaces/_core_src_defs_transition_.itransitiondata.html" class="tsd-signature-type">ITransitionData</a>, filters<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_core_src_defs_transition_.itransitionfilters.html" class="tsd-signature-type">ITransitionFilters</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_core_src_defs_transition_.itransitionappear.html" class="tsd-signature-type">ITransitionAppear</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_core_src_defs_transition_.itransitionpage.html" class="tsd-signature-type">ITransitionPage</a></li>
+						<li class="tsd-signature tsd-kind-icon">resolve<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><a href="../interfaces/_core_src_defs_transition_.itransitiondata.html" class="tsd-signature-type">ITransitionData</a>, filters<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_core_src_defs_transition_.itransitionfilters.html" class="tsd-signature-type">ITransitionFilters</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_core_src_defs_transition_.itransitiononce.html" class="tsd-signature-type">ITransitionOnce</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_core_src_defs_transition_.itransitionpage.html" class="tsd-signature-type">ITransitionPage</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -382,7 +382,7 @@
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> filters: <a href="../interfaces/_core_src_defs_transition_.itransitionfilters.html" class="tsd-signature-type">ITransitionFilters</a><span class="tsd-signature-symbol"> =&nbsp;{}</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_core_src_defs_transition_.itransitionappear.html" class="tsd-signature-type">ITransitionAppear</a>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_core_src_defs_transition_.itransitiononce.html" class="tsd-signature-type">ITransitionOnce</a>
 								<span class="tsd-signature-symbol"> | </span>
 								<a href="../interfaces/_core_src_defs_transition_.itransitionpage.html" class="tsd-signature-type">ITransitionPage</a>
 							</h4>
@@ -411,7 +411,7 @@
 								<ul>
 									<li>Reorder transition by priorities</li>
 									<li>Get wait indicator</li>
-									<li>Get appear transitions</li>
+									<li>Get once transitions</li>
 								</ul>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -448,10 +448,10 @@
 								<a href="_core_src_modules_store_.store.html#all" class="tsd-kind-icon">all</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_core_src_modules_store_.store.html#appear" class="tsd-kind-icon">appear</a>
+								<a href="_core_src_modules_store_.store.html#logger" class="tsd-kind-icon">logger</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_core_src_modules_store_.store.html#logger" class="tsd-kind-icon">logger</a>
+								<a href="_core_src_modules_store_.store.html#once" class="tsd-kind-icon">once</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="_core_src_modules_store_.store.html#_addpriority" class="tsd-kind-icon">_add<wbr>Priority</a>

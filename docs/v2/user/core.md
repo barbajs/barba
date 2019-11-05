@@ -90,11 +90,11 @@ barba.init({
 
 All hooks are **methods** and receive the same [`data`](#data-argument) object.
 
-| Order | Name           | Description                        |
-| ----- | -------------- | ---------------------------------- |
-| 1     | `beforeAppear` | Before **appear** transition       |
-| 2     | `appear`       | Current page **appear** transition |
-| 3     | `afterAppear`  | Before **appear** transition       |
+| Order | Name         | Description                      |
+| ----- | ------------ | -------------------------------- |
+| 1     | `beforeOnce` | Before **once** transition       |
+| 2     | `once`       | Current page **once** transition |
+| 3     | `afterOnce`  | Before **once** transition       |
 
 | Order | Name          | Description                                                     |
 | ----- | ------------- | --------------------------------------------------------------- |

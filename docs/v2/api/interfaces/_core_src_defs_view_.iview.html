@@ -91,12 +91,12 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_core_src_defs_view_.iview.html#afterappear" class="tsd-kind-icon">after<wbr>Appear</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_core_src_defs_view_.iview.html#afterenter" class="tsd-kind-icon">after<wbr>Enter</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_core_src_defs_view_.iview.html#afterleave" class="tsd-kind-icon">after<wbr>Leave</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_core_src_defs_view_.iview.html#beforeappear" class="tsd-kind-icon">before<wbr>Appear</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_core_src_defs_view_.iview.html#afteronce" class="tsd-kind-icon">after<wbr>Once</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_core_src_defs_view_.iview.html#beforeenter" class="tsd-kind-icon">before<wbr>Enter</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_core_src_defs_view_.iview.html#beforeleave" class="tsd-kind-icon">before<wbr>Leave</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_core_src_defs_view_.iview.html#beforeonce" class="tsd-kind-icon">before<wbr>Once</a></li>
 							</ul>
 						</section>
 					</div>
@@ -127,29 +127,6 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="afterappear" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> after<wbr>Appear</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">after<wbr>Appear<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><a href="_core_src_defs_view_.iviewdata.html" class="tsd-signature-type">IViewData</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/view.ts#L18">core/src/defs/view.ts:18</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>data: <a href="_core_src_defs_view_.iviewdata.html" class="tsd-signature-type">IViewData</a></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="afterenter" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> after<wbr>Enter</h3>
@@ -197,16 +174,16 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="beforeappear" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> before<wbr>Appear</h3>
+					<a name="afteronce" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> after<wbr>Once</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">before<wbr>Appear<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><a href="_core_src_defs_view_.iviewdata.html" class="tsd-signature-type">IViewData</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">after<wbr>Once<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><a href="_core_src_defs_view_.iviewdata.html" class="tsd-signature-type">IViewData</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/view.ts#L17">core/src/defs/view.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/view.ts#L18">core/src/defs/view.ts:18</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -265,6 +242,29 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="beforeonce" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> before<wbr>Once</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">before<wbr>Once<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><a href="_core_src_defs_view_.iviewdata.html" class="tsd-signature-type">IViewData</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/view.ts#L17">core/src/defs/view.ts:17</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>data: <a href="_core_src_defs_view_.iviewdata.html" class="tsd-signature-type">IViewData</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -292,22 +292,22 @@
 								<a href="_core_src_defs_view_.iview.html#namespace" class="tsd-kind-icon">namespace</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_core_src_defs_view_.iview.html#afterappear" class="tsd-kind-icon">after<wbr>Appear</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="_core_src_defs_view_.iview.html#afterenter" class="tsd-kind-icon">after<wbr>Enter</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="_core_src_defs_view_.iview.html#afterleave" class="tsd-kind-icon">after<wbr>Leave</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_core_src_defs_view_.iview.html#beforeappear" class="tsd-kind-icon">before<wbr>Appear</a>
+								<a href="_core_src_defs_view_.iview.html#afteronce" class="tsd-kind-icon">after<wbr>Once</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="_core_src_defs_view_.iview.html#beforeenter" class="tsd-kind-icon">before<wbr>Enter</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="_core_src_defs_view_.iview.html#beforeleave" class="tsd-kind-icon">before<wbr>Leave</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_core_src_defs_view_.iview.html#beforeonce" class="tsd-kind-icon">before<wbr>Once</a>
 							</li>
 						</ul>
 					</li>

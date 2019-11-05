@@ -125,12 +125,12 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_core_src_core_.core.html#_onstatechange" class="tsd-kind-icon">_on<wbr>State<wbr>Change</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_core_src_core_.core.html#_resetdata" class="tsd-kind-icon">_reset<wbr>Data</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_core_src_core_.core.html#_unbind" class="tsd-kind-icon">_unbind</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_core_src_core_.core.html#appear" class="tsd-kind-icon">appear</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_core_src_core_.core.html#destroy" class="tsd-kind-icon">destroy</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_core_src_core_.core.html#force" class="tsd-kind-icon">force</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_core_src_core_.core.html#go" class="tsd-kind-icon">go</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_core_src_core_.core.html#init" class="tsd-kind-icon">init</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_core_src_core_.core.html#onrequesterror" class="tsd-kind-icon">on<wbr>Request<wbr>Error</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_core_src_core_.core.html#once" class="tsd-kind-icon">once</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_core_src_core_.core.html#page" class="tsd-kind-icon">page</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_core_src_core_.core.html#prefetch" class="tsd-kind-icon">prefetch</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="_core_src_core_.core.html#use" class="tsd-kind-icon">use</a></li>
@@ -635,38 +635,6 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="appear" class="tsd-anchor"></a>
-					<h3>appear</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">appear<span class="tsd-signature-symbol">(</span>readyData<span class="tsd-signature-symbol">: </span><a href="../interfaces/_core_src_defs_transition_.itransitiondata.html" class="tsd-signature-type">ITransitionData</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L329">core/src/core.ts:329</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<a href="#start-an-quotappearquot-transition" id="start-an-quotappearquot-transition" style="color: inherit; text-decoration: none;">
-										<h3>Start an &quot;appear&quot; transition.</h3>
-									</a>
-								</div>
-								<p>If some registered &quot;appear&quot; transition,
-								get the &quot;resolved&quot; transition from the store and start it.</p>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>readyData: <a href="../interfaces/_core_src_defs_transition_.itransitiondata.html" class="tsd-signature-type">ITransitionData</a></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="destroy" class="tsd-anchor"></a>
 					<h3>destroy</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -832,6 +800,38 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="once" class="tsd-anchor"></a>
+					<h3>once</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">once<span class="tsd-signature-symbol">(</span>readyData<span class="tsd-signature-symbol">: </span><a href="../interfaces/_core_src_defs_transition_.itransitiondata.html" class="tsd-signature-type">ITransitionData</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/core.ts#L329">core/src/core.ts:329</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<a href="#start-an-quotoncequot-transition" id="start-an-quotoncequot-transition" style="color: inherit; text-decoration: none;">
+										<h3>Start an &quot;once&quot; transition.</h3>
+									</a>
+								</div>
+								<p>If some registered &quot;once&quot; transition,
+								get the &quot;resolved&quot; transition from the store and start it.</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>readyData: <a href="../interfaces/_core_src_defs_transition_.itransitiondata.html" class="tsd-signature-type">ITransitionData</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1065,9 +1065,6 @@
 								<a href="_core_src_core_.core.html#_unbind" class="tsd-kind-icon">_unbind</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_core_src_core_.core.html#appear" class="tsd-kind-icon">appear</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_core_src_core_.core.html#destroy" class="tsd-kind-icon">destroy</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -1081,6 +1078,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_core_src_core_.core.html#onrequesterror" class="tsd-kind-icon">on<wbr>Request<wbr>Error</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_core_src_core_.core.html#once" class="tsd-kind-icon">once</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_core_src_core_.core.html#page" class="tsd-kind-icon">page</a>
