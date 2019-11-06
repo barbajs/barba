@@ -26,24 +26,3 @@ it('do once', async () => {
   expect(spyOnce).toHaveBeenCalledTimes(1);
   spyOnce.mockRestore();
 });
-
-it('catches error', async () => {
-  expect.assertions(2);
-  const errorOnce = new Error('Once error');
-  const errorTransition = new Error('Transition error [once]');
-  const t = {
-    once() {
-      throw errorOnce;
-    },
-  };
-  barba.transitions.store.add('transition', t);
-  Logger.setLevel('error');
-
-  barba.logger.error = jest.fn();
-  barba.transitions.logger.error = jest.fn();
-
-  await barba.once(data);
-
-  expect(barba.transitions.logger.error).toHaveBeenCalledWith(errorOnce);
-  expect(barba.logger.error).toHaveBeenCalledWith(errorTransition);
-});

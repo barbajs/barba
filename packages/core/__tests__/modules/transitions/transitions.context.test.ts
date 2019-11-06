@@ -1,7 +1,7 @@
 import {
   ISchemaPage,
-  ITransitionOnce,
   ITransitionData,
+  ITransitionOnce,
 } from '../../../src/defs';
 import { Logger } from '../../../src/modules/Logger';
 import { Transitions } from '../../../src/modules/Transitions';

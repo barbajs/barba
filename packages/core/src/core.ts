@@ -236,6 +236,7 @@ export class Core {
 
     // 9. Finally, do once…
     this.once(onceData);
+
     // Clean data for first barba transition…
     this._resetData();
   }
@@ -342,15 +343,11 @@ export class Core {
 
     // Check if once transition
     if (this.transitions.hasOnce) {
-      try {
-        const transition = this.transitions.get(readyData, {
-          once: true,
-        }) as ITransitionOnce;
+      const transition = this.transitions.get(readyData, {
+        once: true,
+      }) as ITransitionOnce;
 
-        await this.transitions.doOnce({ transition, data: readyData });
-      } catch (error) {
-        this.logger.error(error);
-      }
+      await this.transitions.doOnce({ transition, data: readyData });
     }
 
     await this.hooks.do('afterEnter', readyData);
@@ -419,7 +416,14 @@ export class Core {
       this._resetData();
     } catch (error) {
       // Something went wrong (rejected promise, error, 404, 505, other…)
-      this.logger.error(error);
+      // TODO: manage / use cases for cancellation
+      // this.logger.debug('Transition cancelled');
+
+      // If no debug mode, force back.
+      /* istanbul ignore else */
+      if (Logger.getLevel() === 0) {
+        this.force(data.current.url.href);
+      }
     }
   }
 

@@ -111,7 +111,10 @@ export class Hooks extends HookMethods {
         chain = chain.then(() => runAsync(hook.fn, hook.ctx)(...args));
       });
 
-      return chain;
+      return chain.catch(error => {
+        this.logger.debug(`Hook error [${name}]`);
+        this.logger.error(error);
+      });
     }
 
     return Promise.resolve();

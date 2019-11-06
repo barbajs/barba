@@ -78,20 +78,22 @@ it('calls hooks', async () => {
 
 it('catches error', async () => {
   expect.assertions(2);
+  transitions.logger.debug = jest.fn();
   transitions.logger.error = jest.fn();
 
+  const err = new Error('Test');
   const onceError = () => {
-    throw new Error('Test');
+    throw err;
   };
   const t = { once: onceError };
 
-  try {
-    await transitions.doOnce({
-      data,
-      transition: t,
-    });
-  } catch (e) {
-    expect(e).toEqual(new Error('Transition error [once]'));
-    expect(transitions.isRunning).toBeFalsy();
-  }
+  await transitions.doOnce({
+    data,
+    transition: t,
+  });
+
+  expect(transitions.logger.debug).toHaveBeenCalledWith(
+    'Transition error [before/after/once]'
+  );
+  expect(transitions.logger.error).toHaveBeenCalledWith(err);
 });

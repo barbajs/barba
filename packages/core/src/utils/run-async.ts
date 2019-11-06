@@ -13,6 +13,7 @@ export function runAsync(
       // Add async to context
       ctx.async = () => {
         async = true;
+
         return (err: any, value: any) => {
           if (err) {
             reject(err);

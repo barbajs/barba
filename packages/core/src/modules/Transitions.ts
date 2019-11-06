@@ -26,6 +26,7 @@ import { hooks } from '../hooks';
 // Utils
 import { dom, helpers, runAsync } from '../utils';
 // Modules
+import { BarbaError } from './Error';
 import { Logger } from './Logger';
 import { Store } from './Store';
 
@@ -107,9 +108,9 @@ export class Transitions {
       await this._doAsyncHook('afterOnce', data, t);
     } catch (error) {
       this._running = false;
+
+      this.logger.debug('Transition error [before/after/once]');
       this.logger.error(error);
-      // TODO: should I throw or should I log…
-      throw new Error('Transition error [once]');
     }
 
     this._running = false;
@@ -179,7 +180,9 @@ export class Transitions {
           await this._doAsyncHook('afterLeave', data, t);
           await this._doAsyncHook('afterEnter', data, t);
         } catch (error) {
-          throw new Error('Transition error [page][sync]');
+          // this.logger.debug('Transition error [sync]');
+          // this.logger.error(error);
+          throw new BarbaError(error, 'Transition error [sync]');
         }
       } else {
         let leaveResult: any = false;
@@ -197,7 +200,9 @@ export class Transitions {
           // TODO: check here "valid" page result
           // before going further
         } catch (error) {
-          throw new Error('Transition error [page][leave]');
+          // this.logger.debug('Transition error [before/after/leave]');
+          // this.logger.error(error);
+          throw new BarbaError(error, 'Transition error [before/after/leave]');
         }
 
         try {
@@ -211,7 +216,9 @@ export class Transitions {
             await this._doAsyncHook('afterEnter', data, t);
           }
         } catch (error) {
-          throw new Error('Transition error [page][enter]');
+          // this.logger.debug('Transition error [before/after/enter]');
+          // this.logger.error(error);
+          throw new BarbaError(error, 'Transition error [before/after/enter]');
         }
       }
 
@@ -221,11 +228,20 @@ export class Transitions {
       await this._doAsyncHook('after', data, t);
     } catch (error) {
       this._running = false;
-      // TODO: use cases for cancellation
+
+      // If "custom/specific" barba error.
+      /* istanbul ignore else */
+      if (error.name && error.name === 'BarbaError') {
+        this.logger.debug(error.label);
+        this.logger.error(error.error);
+
+        throw error;
+      }
+
+      this.logger.debug('Transition error [page]');
       this.logger.error(error);
 
-      // TODO: should I throw or should I log…
-      throw new Error('Transition error');
+      throw error;
     }
 
     this._running = false;

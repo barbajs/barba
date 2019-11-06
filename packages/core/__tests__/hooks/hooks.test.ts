@@ -99,3 +99,20 @@ it('print help', () => {
 
   expect(hooks.logger.info).toHaveBeenCalledTimes(2);
 });
+
+it('catch error', async () => {
+  expect.assertions(2);
+  hooks.logger.debug = jest.fn();
+  hooks.logger.error = jest.fn();
+
+  const err = new Error('Test error');
+
+  hooks.init();
+  hooks[hookName](() => {
+    throw err;
+  });
+  await hooks.do(hookName);
+
+  expect(hooks.logger.debug).toHaveBeenCalledWith(`Hook error [${hookName}]`);
+  expect(hooks.logger.error).toHaveBeenCalledWith(err);
+});

@@ -3,7 +3,11 @@ import xhrMock from 'xhr-mock';
 import { init } from '../../__mocks__/barba';
 import barba from '../../src';
 import { hooks } from '../../src/hooks';
+import { Logger } from '../../src/modules/Logger';
 import { schemaAttribute } from '../../src/schemas/attribute';
+
+// Silence is gold… :)
+Logger.setLevel('off');
 
 // Needed for "request" module
 (global as any).Headers = class {};
@@ -141,14 +145,11 @@ it('do page [waiting]', async () => {
   expect(barba.data.next.html).toMatch(checkDoc);
 });
 
-it('catches error', async () => {
+it('force on error', async () => {
   expect.assertions(2);
-  barba.logger.error = jest.fn();
+  barba.force = jest.fn();
   barba.transitions.logger.error = jest.fn();
-  barba.history.cancel = jest.fn();
-  spyPage.mockRestore();
   const errorLeave = new Error('Transition error [page][leave]');
-  const errorTransition = new Error('Transition error');
 
   barba.transitions.store.add('transition', {
     leave() {
@@ -159,6 +160,5 @@ it('catches error', async () => {
   await barba.page(nextUrl, 'barba', false);
 
   expect(barba.transitions.logger.error).toHaveBeenCalledWith(errorLeave);
-  expect(barba.logger.error).toHaveBeenCalledWith(errorTransition);
-  // expect(spyCacheGetAction).toHaveBeenCalledTimes(1);
+  expect(barba.force).toHaveBeenCalledTimes(1);
 });

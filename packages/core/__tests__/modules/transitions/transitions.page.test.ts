@@ -1,5 +1,6 @@
 /* tslint:disable:no-empty */
 import { init } from '../../../__mocks__/barba';
+import barba from '../../../src';
 import { ISchemaPage, ITransitionData } from '../../../src/defs';
 import { hooks } from '../../../src/hooks';
 import { Logger } from '../../../src/modules/Logger';
@@ -197,7 +198,7 @@ it('calls hooks (sync: true)', async () => {
 });
 
 it('catches error (leave, sync: false)', async () => {
-  expect.assertions(2);
+  expect.assertions(4);
 
   const leaveError = () => {
     throw new Error('test');
@@ -212,13 +213,15 @@ it('catches error (leave, sync: false)', async () => {
       wrapper,
     });
   } catch (e) {
-    expect(e).toEqual(new Error('Transition error'));
+    expect(e.name).toEqual('BarbaError');
+    expect(e.label).toEqual('Transition error [before/after/leave]');
+    expect(e.error).toEqual(new Error('test'));
     expect(transitions.isRunning).toBeFalsy();
   }
 });
 
 it('catches error (enter, sync: false)', async () => {
-  expect.assertions(2);
+  expect.assertions(4);
 
   const enterError = () => {
     throw new Error('test');
@@ -238,13 +241,15 @@ it('catches error (enter, sync: false)', async () => {
       wrapper,
     });
   } catch (e) {
-    expect(e).toEqual(new Error('Transition error'));
+    expect(e.name).toEqual('BarbaError');
+    expect(e.label).toEqual('Transition error [before/after/enter]');
+    expect(e.error).toEqual(new Error('test'));
     expect(transitions.isRunning).toBeFalsy();
   }
 });
 
 it('catches error (leave, sync: true)', async () => {
-  expect.assertions(1);
+  expect.assertions(3);
 
   const leaveError = () => {
     throw new Error('test');
@@ -259,12 +264,14 @@ it('catches error (leave, sync: true)', async () => {
       wrapper,
     });
   } catch (e) {
-    expect(e).toEqual(new Error('Transition error'));
+    expect(e.name).toEqual('BarbaError');
+    expect(e.label).toEqual('Transition error [sync]');
+    expect(e.error).toEqual(new Error('test'));
   }
 });
 
 it('catches error (enter, sync: true)', async () => {
-  expect.assertions(1);
+  expect.assertions(3);
 
   const enterError = () => {
     throw new Error('test');
@@ -279,6 +286,30 @@ it('catches error (enter, sync: true)', async () => {
       wrapper,
     });
   } catch (e) {
-    expect(e).toEqual(new Error('Transition error'));
+    expect(e.name).toEqual('BarbaError');
+    expect(e.label).toEqual('Transition error [sync]');
+    expect(e.error).toEqual(new Error('test'));
+  }
+});
+
+it('catches "global" error (before)', async () => {
+  expect.assertions(2);
+
+  const err = new Error('Test');
+  const beforeError = () => {
+    throw err;
+  };
+  const t = { sync: true, leave() {}, enter() {}, before: beforeError };
+
+  try {
+    await transitions.doPage({
+      data,
+      page,
+      transition: t,
+      wrapper,
+    });
+  } catch (e) {
+    expect(e.name).toEqual('Error');
+    expect(e).toEqual(err);
   }
 });
