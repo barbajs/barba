@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.8.0](https://github.com/barbajs/barba/compare/@barba/core@2.7.2...@barba/core@2.8.0) (2019-11-06)
+
+### Bug Fixes
+
+- **core:** :bug: compare ports for sameUrl prevent check ([e2a84e4](https://github.com/barbajs/barba/commit/e2a84e4)), closes [#463](https://github.com/barbajs/barba/issues/463)
+- **core:** :bug: popstate with unknown state (null) ([3369633](https://github.com/barbajs/barba/commit/3369633)), closes [#456](https://github.com/barbajs/barba/issues/456) [#466](https://github.com/barbajs/barba/issues/466)
+- **core:** :ok_hand: resolve once transitions ([20cafe1](https://github.com/barbajs/barba/commit/20cafe1)), closes [#439](https://github.com/barbajs/barba/issues/439)
+
+### Features
+
+- **core:** :loud_sound: add/improve error logs ([e67a17b](https://github.com/barbajs/barba/commit/e67a17b)), closes [#447](https://github.com/barbajs/barba/issues/447)
+
 ## [2.7.2](https://github.com/barbajs/barba/compare/@barba/core@2.7.1...@barba/core@2.7.2) (2019-11-05)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.13](https://github.com/barbajs/barba/compare/@barba/css@2.1.12...@barba/css@2.1.13) (2019-11-06)
+
+### Bug Fixes
+
+- **core:** :ok_hand: resolve once transitions ([20cafe1](https://github.com/barbajs/barba/commit/20cafe1)), closes [#439](https://github.com/barbajs/barba/issues/439)
+
 ## [2.1.12](https://github.com/barbajs/barba/compare/@barba/css@2.1.11...@barba/css@2.1.12) (2019-11-05)
 
 ### Bug Fixes
