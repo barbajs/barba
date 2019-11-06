@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IUrlFull | barba.js
+	<title>BarbaError | barba.js
 	</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_core_src_defs_url_.html">&quot;core/src/defs/url&quot;</a>
+					<a href="../modules/_core_src_modules_error_.html">&quot;core/src/modules/Error&quot;</a>
 				</li>
 				<li>
-					<a href="_core_src_defs_url_.iurlfull.html">IUrlFull</a>
+					<a href="_core_src_modules_error_.barbaerror.html">BarbaError</a>
 				</li>
 			</ul>
-			<h1>Interface IUrlFull</h1>
+			<h1>Class BarbaError</h1>
 		</div>
 	</div>
 </header>
@@ -73,10 +73,10 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="_core_src_defs_url_.iurlbase.html" class="tsd-signature-type">IUrlBase</a>
+						<span class="tsd-signature-type">Error</span>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">IUrlFull</span>
+								<span class="target">BarbaError</span>
 							</li>
 						</ul>
 					</li>
@@ -87,71 +87,120 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_core_src_modules_error_.barbaerror.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_core_src_defs_url_.iurlfull.html#hash" class="tsd-kind-icon">hash</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_core_src_defs_url_.iurlfull.html#href" class="tsd-kind-icon">href</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_core_src_defs_url_.iurlfull.html#path" class="tsd-kind-icon">path</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_core_src_defs_url_.iurlfull.html#port" class="tsd-kind-icon">port</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_core_src_defs_url_.iurlfull.html#query" class="tsd-kind-icon">query</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_core_src_modules_error_.barbaerror.html#error" class="tsd-kind-icon">error</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_core_src_modules_error_.barbaerror.html#label" class="tsd-kind-icon">label</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_core_src_modules_error_.barbaerror.html#message" class="tsd-kind-icon">message</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_core_src_modules_error_.barbaerror.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_core_src_modules_error_.barbaerror.html#stack" class="tsd-kind-icon">stack</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_core_src_modules_error_.barbaerror.html#error-1" class="tsd-kind-icon">Error</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Barba<wbr>Error<span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Error</span>, label<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, <span class="tsd-signature-symbol">...</span>params<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_core_src_modules_error_.barbaerror.html" class="tsd-signature-type">BarbaError</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/modules/Error.ts#L2">core/src/modules/Error.ts:2</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>error: <span class="tsd-signature-type">Error</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> label: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;Barba error&quot;</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>params: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_core_src_modules_error_.barbaerror.html" class="tsd-signature-type">BarbaError</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="hash" class="tsd-anchor"></a>
-					<h3>hash</h3>
-					<div class="tsd-signature tsd-kind-icon">hash<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="error" class="tsd-anchor"></a>
+					<h3>error</h3>
+					<div class="tsd-signature tsd-kind-icon">error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Error</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_core_src_defs_url_.iurlbase.html">IUrlBase</a>.<a href="_core_src_defs_url_.iurlbase.html#hash">hash</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/url.ts#L10">core/src/defs/url.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/modules/Error.ts#L5">core/src/modules/Error.ts:5</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="href" class="tsd-anchor"></a>
-					<h3>href</h3>
-					<div class="tsd-signature tsd-kind-icon">href<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="label" class="tsd-anchor"></a>
+					<h3>label</h3>
+					<div class="tsd-signature tsd-kind-icon">label<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/url.ts#L15">core/src/defs/url.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/modules/Error.ts#L6">core/src/modules/Error.ts:6</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="path" class="tsd-anchor"></a>
-					<h3>path</h3>
-					<div class="tsd-signature tsd-kind-icon">path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="message" class="tsd-anchor"></a>
+					<h3>message</h3>
+					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_core_src_defs_url_.iurlbase.html">IUrlBase</a>.<a href="_core_src_defs_url_.iurlbase.html#path">path</a></p>
+						<p>Inherited from Error.message</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/url.ts#L9">core/src/defs/url.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages//home/circleci/repo/node_modules/typescript/lib/lib.es5.d.ts#L974">/home/circleci/repo/node_modules/typescript/lib/lib.es5.d.ts:974</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="port" class="tsd-anchor"></a>
-					<h3>port</h3>
-					<div class="tsd-signature tsd-kind-icon">port<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="name" class="tsd-anchor"></a>
+					<h3>name</h3>
+					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_core_src_defs_url_.iurlbase.html">IUrlBase</a>.<a href="_core_src_defs_url_.iurlbase.html#port">port</a></p>
+						<p>Inherited from Error.name</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/url.ts#L12">core/src/defs/url.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages//home/circleci/repo/node_modules/typescript/lib/lib.es5.d.ts#L973">/home/circleci/repo/node_modules/typescript/lib/lib.es5.d.ts:973</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="query" class="tsd-anchor"></a>
-					<h3>query</h3>
-					<div class="tsd-signature tsd-kind-icon">query<span class="tsd-signature-symbol">:</span> <a href="_core_src_defs_global_.igenericobject.html" class="tsd-signature-type">IGenericObject</a></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
+					<a name="stack" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stack</h3>
+					<div class="tsd-signature tsd-kind-icon">stack<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_core_src_defs_url_.iurlbase.html">IUrlBase</a>.<a href="_core_src_defs_url_.iurlbase.html#query">query</a></p>
+						<p>Inherited from Error.stack</p>
+						<p>Overrides Error.stack</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/url.ts#L11">core/src/defs/url.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages//home/circleci/repo/node_modules/typescript/lib/lib.es5.d.ts#L975">/home/circleci/repo/node_modules/typescript/lib/lib.es5.d.ts:975</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
+					<a name="error-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> Error</h3>
+					<div class="tsd-signature tsd-kind-icon">Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ErrorConstructor</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages//home/circleci/repo/node_modules/typescript/lib/lib.es5.d.ts#L984">/home/circleci/repo/node_modules/typescript/lib/lib.es5.d.ts:984</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -164,34 +213,37 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_core_src_defs_url_.html">"core/src/defs/url"</a>
+						<a href="../modules/_core_src_modules_error_.html">"core/src/modules/<wbr>Error"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_core_src_defs_url_.iurlbase.html" class="tsd-kind-icon">IUrl<wbr>Base</a>
-					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_core_src_defs_url_.iurlfull.html" class="tsd-kind-icon">IUrl<wbr>Full</a>
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_core_src_modules_error_.barbaerror.html" class="tsd-kind-icon">Barba<wbr>Error</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_core_src_defs_url_.iurlfull.html#hash" class="tsd-kind-icon">hash</a>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="_core_src_modules_error_.barbaerror.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_core_src_defs_url_.iurlfull.html#href" class="tsd-kind-icon">href</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_core_src_modules_error_.barbaerror.html#error" class="tsd-kind-icon">error</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_core_src_defs_url_.iurlfull.html#path" class="tsd-kind-icon">path</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_core_src_modules_error_.barbaerror.html#label" class="tsd-kind-icon">label</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_core_src_defs_url_.iurlfull.html#port" class="tsd-kind-icon">port</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_core_src_modules_error_.barbaerror.html#message" class="tsd-kind-icon">message</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_core_src_defs_url_.iurlfull.html#query" class="tsd-kind-icon">query</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_core_src_modules_error_.barbaerror.html#name" class="tsd-kind-icon">name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
+								<a href="_core_src_modules_error_.barbaerror.html#stack" class="tsd-kind-icon">stack</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
+								<a href="_core_src_modules_error_.barbaerror.html#error-1" class="tsd-kind-icon">Error</a>
 							</li>
 						</ul>
 					</li>
