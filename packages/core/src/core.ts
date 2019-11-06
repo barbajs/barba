@@ -306,9 +306,19 @@ export class Core {
     // Manage history / popstate direction
     if (trigger === 'popstate') {
       const { state } = e as PopStateEvent;
-      // Get direction
-      trigger = this.history.getDirection(state.index as number);
-      this.history.add(href, state.ns, state.index, false);
+
+      // So we will add to barba.history but, as this is already "popstate"
+      // we do not push to browser history (last param => false).
+      if (state === null) {
+        // If no state, probably coming from "anchored" link
+        // or manually modified history…
+        this.history.add(href, 'tmp', null, false);
+      } else {
+        // If previous state exists,
+        // we update the trigger with the direction.
+        trigger = this.history.getDirection(state.index as number);
+        this.history.add(href, state.ns, state.index, false);
+      }
     } else {
       this.history.add(href, 'tmp');
     }

@@ -16,6 +16,7 @@ export const schemaPage: ISchemaPage = {
     hash: undefined,
     href: undefined,
     path: undefined,
+    port: undefined,
     query: {},
   },
 };
