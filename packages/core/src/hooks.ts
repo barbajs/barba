@@ -79,14 +79,14 @@ export class Hooks extends HookMethods {
     this.registered.clear();
     this.all.forEach(hook => {
       if (!this[hook]) {
-        this[hook] = (fn: HookFunction, ctx: any = {}) => {
+        this[hook] = (fn: HookFunction, ctx?: any) => {
           if (!this.registered.has(hook)) {
             this.registered.set(hook, new Set());
           }
           const set = this.registered.get(hook);
 
           set.add({
-            ctx,
+            ctx: ctx || {},
             fn,
           });
         };
@@ -105,8 +105,6 @@ export class Hooks extends HookMethods {
       let chain = Promise.resolve();
 
       this.registered.get(name).forEach(hook => {
-        // If needed, bind the right context
-        // const fn = hook.ctx ? hook.fn.bind(hook.ctx) : hook.fn;
         // Chain async hooks promisified
         chain = chain.then(() => runAsync(hook.fn, hook.ctx)(...args));
       });
