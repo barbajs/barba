@@ -1,4 +1,6 @@
-import { Trigger } from '../defs';
+import { HistoryAction, LinkEvent, Trigger } from '../defs';
+// Schemas
+import { schemaAttribute } from '../schemas/attribute';
 
 /**
  * @barba/core/utils/history
@@ -63,12 +65,24 @@ export class History {
    */
   public add(
     url: string,
-    ns: string,
-    i: number = null,
-    push: boolean = true
+    trigger: Trigger,
+    e?: LinkEvent | PopStateEvent
   ): void {
-    const index = i || this.size;
-    const state: IHistoryItem = {
+    // If no state, it will be updated later.
+    const state = e ? (e as PopStateEvent).state : null;
+    const ns = state ? state.ns : 'tmp';
+    const index = state ? state.index : this.size;
+
+    // By default (popstate), we will add to barba.history but
+    // we do not push to browser history.
+    let action: HistoryAction = 'none';
+
+    // No popstate means modifying the history.
+    if (trigger !== 'popstate') {
+      action = this._getAction(trigger);
+    }
+
+    const data: IHistoryItem = {
       index,
       ns,
       scroll: {
@@ -78,10 +92,16 @@ export class History {
       url,
     };
 
-    this._state.push(state);
+    this._state.push(data);
 
-    if (push) {
-      window.history && window.history.pushState(state, '', state.url);
+    switch (action) {
+      case 'push':
+        window.history && window.history.pushState(data, '', data.url);
+        break;
+      case 'replace':
+        window.history && window.history.replaceState(data, '', data.url);
+        break;
+      default:
     }
   }
 
@@ -163,6 +183,24 @@ export class History {
    */
   get size(): number {
     return this._state.length;
+  }
+
+  /**
+   * Get the hostiry action: push vs replace
+   */
+  private _getAction(trigger: Trigger): HistoryAction {
+    let action: HistoryAction = 'push';
+
+    // Manage `data-barba-history` attribute
+    // to get the right action (push vs replace).
+    const el = trigger as HTMLAnchorElement;
+    const attr = `${schemaAttribute.prefix}-${schemaAttribute.history}`;
+
+    if (el.hasAttribute && el.hasAttribute(attr)) {
+      action = el.getAttribute(attr) as HistoryAction;
+    }
+
+    return action;
   }
 }
 

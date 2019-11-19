@@ -10,6 +10,7 @@ export type SchemaAttributeValues =
   | 'wrapper'
   | 'container'
   | 'prevent'
+  | 'history'
   | 'namespace';
 
 /**
@@ -19,6 +20,7 @@ export type SchemaAttributeValues =
  * @param wrapper data-prefix="__wrapper__"
  * @param container data-prefix="__container__"
  * @param prevent data-prefix-__prevent__
+ * @param history data-prefix-__history__
  * @param namespace data-prefix-__namespace__
  */
 export interface ISchemaAttribute {
@@ -26,6 +28,7 @@ export interface ISchemaAttribute {
   wrapper?: string;
   container?: string;
   prevent?: string;
+  history?: string;
   namespace?: string;
 }
 

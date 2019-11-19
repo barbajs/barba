@@ -92,3 +92,33 @@ it('use self transition on same url [popstate]', async () => {
     true
   );
 });
+
+it('add history', async () => {
+  barba.history.add = jest.fn();
+
+  await barba.go('http://localhost/foo');
+
+  expect(barba.history.add).toHaveBeenCalledWith(
+    'http://localhost/foo',
+    'barba',
+    undefined
+  );
+});
+
+it('manage direction', async () => {
+  barba.page = jest.fn();
+
+  await barba.go('http://localhost/foo', 'popstate', {
+    state: {
+      index: 1,
+    },
+    stopPropagation() {},
+    preventDefault() {},
+  } as PopStateEvent);
+
+  expect(barba.page).toHaveBeenCalledWith(
+    'http://localhost/foo',
+    'forward',
+    false
+  );
+});

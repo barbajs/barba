@@ -17,6 +17,7 @@ import { ISchemaAttribute } from '../defs';
  */
 export const schemaAttribute: ISchemaAttribute = {
   container: 'container',
+  history: 'history',
   namespace: 'namespace',
   prefix: 'data-barba',
   prevent: 'prevent',

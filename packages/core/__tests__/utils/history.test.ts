@@ -18,6 +18,20 @@ const second = {
   },
   url: 'url2',
 };
+const tmp = {
+  ...second,
+  ns: 'tmp',
+};
+const triggerPush = document.createElement('a');
+const triggerReplace = document.createElement('a');
+
+triggerReplace.dataset.barbaHistory = 'replace';
+
+const h = {
+  b: (global as any).window.history.back = jest.fn(),
+  ps: (global as any).window.history.pushState = jest.fn(),
+  rs: (global as any).window.history.replaceState = jest.fn(),
+};
 
 afterEach(() => {
   history.clear();
@@ -28,33 +42,40 @@ it('has no history ', () => {
 });
 
 it('init state and has current', () => {
-  (global as any).window.history.replaceState = jest.fn();
   history.init(first.url, first.ns);
 
   expect(history.current).toEqual(first);
   expect(history.previous).toBeNull();
-  expect((global as any).window.history.replaceState).toHaveBeenCalledTimes(1);
+  expect(h.rs).toHaveBeenCalledTimes(1);
 });
 
 it('adds state and has previous', () => {
   history.init(first.url, first.ns);
-  history.add(second.url, second.ns);
+  history.add(second.url, 'barba');
 
-  expect(history.current).toEqual(second);
+  expect(history.current).toEqual(tmp);
   expect(history.previous).toEqual(first);
 });
 
 it('pushes history', () => {
-  (global as any).window.history.pushState = jest.fn();
-  history.add(first.url, first.ns);
-  history.add(second.url, second.ns, null, false);
+  history.add(first.url, triggerPush);
+  history.add(second.url, triggerReplace);
+  history.add(second.url, 'popstate');
 
-  expect((global as any).window.history.pushState).toHaveBeenCalledTimes(1);
+  expect(h.ps).toHaveBeenCalledTimes(1);
+});
+
+it('replaces history', () => {
+  history.add(first.url, triggerReplace);
+  history.add(second.url, triggerPush);
+  history.add(second.url, 'popstate');
+
+  expect(h.rs).toHaveBeenCalledTimes(1);
 });
 
 it('removes state', () => {
   history.init(first.url, first.ns);
-  history.add(second.url, second.ns);
+  history.add(second.url, 'barba');
   history.remove();
 
   expect(history.current).toEqual(first);
@@ -63,17 +84,17 @@ it('removes state', () => {
 
 it('gets state', () => {
   history.init(first.url, first.ns);
-  history.add(second.url, second.ns);
+  history.add(second.url, 'barba');
   const state1 = history.get(0);
   const state2 = history.get(1);
 
   expect(state1).toEqual(first);
-  expect(state2).toEqual(second);
+  expect(state2).toEqual(tmp);
 });
 
 it('gets directions', () => {
   history.init(first.url, first.ns);
-  history.add(second.url, second.ns);
+  history.add(second.url, 'barba');
 
   const back = history.getDirection(0);
   const forward = history.getDirection(2);
@@ -84,10 +105,34 @@ it('gets directions', () => {
 
 it('cancels', () => {
   history.remove = jest.fn();
-  (global as any).window.history.back = jest.fn();
 
   history.cancel();
 
   expect(history.remove).toHaveBeenCalledTimes(1);
-  expect((global as any).window.history.back).toHaveBeenCalledTimes(1);
+  expect(h.b).toHaveBeenCalledTimes(1);
+});
+
+it('manage history with "unknown" state', async () => {
+  history.add(second.url, 'barba');
+
+  expect(h.rs).toHaveBeenCalledTimes(0);
+  expect(h.ps).toHaveBeenCalledTimes(1);
+});
+
+it('manage history with previous state', async () => {
+  history.add(second.url, 'popstate');
+
+  expect(h.ps).toHaveBeenCalledTimes(0);
+  expect(h.rs).toHaveBeenCalledTimes(0);
+});
+
+it('manage history with data-barba-history="replace"', async () => {
+  const link = document.createElement('a');
+
+  link.dataset.barbaHistory = 'replace';
+
+  history.add(second.url, link);
+
+  expect(h.ps).toHaveBeenCalledTimes(0);
+  expect(h.rs).toHaveBeenCalledTimes(1);
 });

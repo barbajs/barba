@@ -186,6 +186,7 @@ export class Transitions {
         }
       } else {
         let leaveResult: any = false;
+
         try {
           // Leave
           await this._doAsyncHook('beforeLeave', data, t);
