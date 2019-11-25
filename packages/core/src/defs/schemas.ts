@@ -2,7 +2,10 @@
  * @module typings/core
  */
 
-import { IRouteResolved } from '@barba/router/src/defs/router';
+interface IRouteResolved {
+  name: string;
+  params: any;
+}
 import { IUrlFull } from '.';
 
 export type SchemaAttributeValues =
@@ -46,9 +49,9 @@ export interface ISchemaAttribute {
  */
 
 export interface ISchemaPage {
-  container: HTMLElement | undefined;
-  html: string | undefined;
-  namespace: string | undefined;
+  container: HTMLElement;
+  html: string;
+  namespace: string;
   url: IUrlFull;
   route?: IRouteResolved | null;
 }

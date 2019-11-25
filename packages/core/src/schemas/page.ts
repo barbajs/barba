@@ -9,14 +9,14 @@ import { ISchemaPage } from '../defs';
  * See [[ISchemaPage]]
  */
 export const schemaPage: ISchemaPage = {
-  container: undefined,
-  html: undefined,
-  namespace: undefined,
+  container: null,
+  html: '',
+  namespace: '',
   url: {
-    hash: undefined,
-    href: undefined,
-    path: undefined,
-    port: undefined,
+    hash: '',
+    href: '',
+    path: '',
+    port: null,
     query: {},
   },
 };

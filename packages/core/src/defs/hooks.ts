@@ -40,12 +40,12 @@ export type HookFunction = (
 ) => Promise<void> | void;
 
 export class HookMethods {
-  public before?: (fn: HookFunction, ctx?: any) => void;
-  public beforeLeave?: (fn: HookFunction, ctx?: any) => void;
-  public leave?: (fn: HookFunction, ctx?: any) => void;
-  public afterLeave?: (fn: HookFunction, ctx?: any) => void;
-  public beforeEnter?: (fn: HookFunction, ctx?: any) => void;
-  public enter?: (fn: HookFunction, ctx?: any) => void;
-  public afterEnter?: (fn: HookFunction, ctx?: any) => void;
-  public after?: (fn: HookFunction, ctx?: any) => void;
+  public before: (fn: HookFunction, ctx?: any) => void;
+  public beforeLeave: (fn: HookFunction, ctx?: any) => void;
+  public leave: (fn: HookFunction, ctx?: any) => void;
+  public afterLeave: (fn: HookFunction, ctx?: any) => void;
+  public beforeEnter: (fn: HookFunction, ctx?: any) => void;
+  public enter: (fn: HookFunction, ctx?: any) => void;
+  public afterEnter: (fn: HookFunction, ctx?: any) => void;
+  public after: (fn: HookFunction, ctx?: any) => void;
 }
