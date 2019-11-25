@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.2](https://github.com/barbajs/barba/compare/@barba/core@2.9.1...@barba/core@2.9.2) (2019-11-25)
+
+### Bug Fixes
+
+- **root:** :art: improve typings for TS ([48f0637](https://github.com/barbajs/barba/commit/48f0637))
+
 ## [2.9.1](https://github.com/barbajs/barba/compare/@barba/core@2.9.0...@barba/core@2.9.1) (2019-11-25)
 
 ### Bug Fixes

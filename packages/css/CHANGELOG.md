@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.15](https://github.com/barbajs/barba/compare/@barba/css@2.1.14...@barba/css@2.1.15) (2019-11-25)
+
+### Bug Fixes
+
+- **root:** :art: improve typings for TS ([48f0637](https://github.com/barbajs/barba/commit/48f0637))
+
 ## [2.1.14](https://github.com/barbajs/barba/compare/@barba/css@2.1.13...@barba/css@2.1.14) (2019-11-25)
 
 **Note:** Version bump only for package @barba/css
