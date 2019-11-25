@@ -1,7 +1,7 @@
 /**
  * @module typings/core
  */
-import { ITransitionData, ITransitionPage, IViewData } from '.';
+import { ITransitionData, ITransitionPage, IViewData } from './index';
 
 export type HooksBarba =
   | 'ready'

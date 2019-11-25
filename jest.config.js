@@ -2,6 +2,7 @@ module.exports = {
   collectCoverageFrom: [
     'packages/**/src/**/*.ts',
     '!packages/**/src/**/*.d.ts',
+    '!packages/**/src/typings.ts',
     '!packages/**/src/**/index.ts',
     '!packages/**/src/polyfills/**.ts',
     '!packages/core/src/utils/helpers.ts',

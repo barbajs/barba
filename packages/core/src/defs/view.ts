@@ -3,7 +3,7 @@
  */
 
 // Definitions
-import { ISchemaPage, Trigger } from '.';
+import { ISchemaPage, Trigger } from './index';
 
 export interface IViewData {
   current: ISchemaPage;

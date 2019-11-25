@@ -3,7 +3,7 @@
  */
 
 // Definitions
-import { ISchemaPage, Trigger } from '.';
+import { ISchemaPage, Trigger } from './index';
 
 // Data
 export interface ITransitionData {

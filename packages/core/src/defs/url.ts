@@ -3,7 +3,7 @@
  */
 
 // Definitions
-import { IGenericObject } from '.';
+import { IGenericObject } from './index';
 
 export interface IUrlBase {
   path: string | undefined;

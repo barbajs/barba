@@ -6,7 +6,7 @@ interface IRouteResolved {
   name: string;
   params: any;
 }
-import { IUrlFull } from '.';
+import { IUrlFull } from './index';
 
 export type SchemaAttributeValues =
   | 'prefix'

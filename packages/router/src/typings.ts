@@ -1,2 +1,2 @@
-import * as t from './typings';
+export * from './defs';
 export { default } from './router';

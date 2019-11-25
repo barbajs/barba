@@ -11,7 +11,7 @@
   "unpkg": "dist/barba-css.umd.js",
   "module": "dist/barba-css.mjs",
   "source": "src/index.ts",
-  "types": "dist/css/src/index.d.ts",
+  "types": "dist/css/src/typings",
   "mangle": {
     "regex": "^_"
   },

@@ -3,7 +3,7 @@
  */
 
 // Definitions
-import { Trigger } from '.';
+import { Trigger } from './index';
 
 export type RequestError = (
   url: string,

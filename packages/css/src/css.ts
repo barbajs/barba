@@ -22,7 +22,7 @@ import {
 import { Core } from '@barba/core/src/core';
 import { Logger } from '@barba/core/src/modules/Logger';
 
-import { ICssCallbacks } from './defs/css';
+import { ICssCallbacks } from './defs';
 
 import { version } from '../package.json';
 

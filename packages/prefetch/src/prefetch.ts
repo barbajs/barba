@@ -7,7 +7,7 @@
  * @preferred
  */
 
-import { IPrefetchOptions } from './defs/prefetch';
+import { IPrefetchOptions } from './defs';
 
 /***/
 

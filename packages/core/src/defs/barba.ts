@@ -2,6 +2,10 @@
  * @module typings/core
  */
 
+// Core
+import { Core } from '../core';
+// Modules
+import { LogLevels } from '../modules/Logger';
 // Definitions
 import {
   IgnoreOption,
@@ -10,11 +14,7 @@ import {
   IView,
   PreventCheck,
   RequestCustomError,
-} from '.';
-// Core
-import { Core } from '../core';
-// Modules
-import { LogLevels } from '../modules/Logger';
+} from './index';
 
 export interface IBarbaOptions {
   /** Array of transitions. */
