@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.1](https://github.com/barbajs/barba/compare/@barba/core@2.9.0...@barba/core@2.9.1) (2019-11-25)
+
+### Bug Fixes
+
+- **core:** :rotating_light: fix TS errors, improve TS defs ([a48acd2](https://github.com/barbajs/barba/commit/a48acd2)), closes [#468](https://github.com/barbajs/barba/issues/468)
+
 # [2.9.0](https://github.com/barbajs/barba/compare/@barba/core@2.8.0...@barba/core@2.9.0) (2019-11-25)
 
 ### Bug Fixes
