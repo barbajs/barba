@@ -40,8 +40,9 @@
     "clear": "rimraf dist",
     "lint": "tslint src/**",
     "precommit": "lint-staged",
-    "release:next": "npm dist-tag add @barba/router@$npm_package_version next",
-    "size": "echo '🚦 router' && gzip-size ./dist/barba-router.umd.js"
+    "size": "echo '🚦 router' && gzip-size ./dist/barba-router.umd.js",
+    "tag:latest": "npm dist-tag add @barba/router@$npm_package_version latest",
+    "tag:next": "npm dist-tag add @barba/router@$npm_package_version next"
   },
   "gitHead": "33c213bc36a0996f6333185dfc695fcd0d37c9d9"
 }

@@ -41,9 +41,10 @@
     "clear": "rimraf dist",
     "lint": "tslint src/**",
     "precommit": "lint-staged",
-    "release:next": "npm dist-tag add @barba/core@$npm_package_version next",
     "report": "source-map-explorer --html ./dist/barba.umd.js > report.html",
-    "size": "echo '📦 router' && gzip-size ./dist/barba.umd.js"
+    "size": "echo '📦 router' && gzip-size ./dist/barba.umd.js",
+    "tag:latest": "npm dist-tag add @barba/core@$npm_package_version latest",
+    "tag:next": "npm dist-tag add @barba/core@$npm_package_version next"
   },
   "dependencies": {
     "is-promise": "^2.1.0",
