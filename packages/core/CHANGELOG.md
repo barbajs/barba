@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/barbajs/barba/compare/@barba/core@2.8.0...@barba/core@2.9.0) (2019-11-25)
+
+### Bug Fixes
+
+- **core:** :bug: hooks: context can not be undefined ([f6bb536](https://github.com/barbajs/barba/commit/f6bb536)), closes [#468](https://github.com/barbajs/barba/issues/468)
+
+### Features
+
+- **core:** :sparkles: add replace history via data-attribute ([272a43f](https://github.com/barbajs/barba/commit/272a43f)), closes [#460](https://github.com/barbajs/barba/issues/460)
+
 # [2.8.0](https://github.com/barbajs/barba/compare/@barba/core@2.7.2...@barba/core@2.8.0) (2019-11-06)
 
 ### Bug Fixes

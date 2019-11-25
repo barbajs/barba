@@ -1,6 +1,6 @@
 {
   "name": "@barba/prefetch",
-  "version": "2.1.8",
+  "version": "2.1.9",
   "description": "Automatically fetch and cache your pages based on the viewport",
   "publishConfig": {
     "access": "public"
