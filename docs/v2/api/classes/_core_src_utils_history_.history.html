@@ -84,28 +84,33 @@
 						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_core_src_utils_history_.history.html#_state" class="tsd-kind-icon">_state</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_core_src_utils_history_.history.html#_pointer" class="tsd-kind-icon">_pointer</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_core_src_utils_history_.history.html#_session" class="tsd-kind-icon">_session</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_core_src_utils_history_.history.html#_states" class="tsd-kind-icon">_states</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-accessor tsd-parent-kind-class"><a href="_core_src_utils_history_.history.html#current" class="tsd-kind-icon">current</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_core_src_utils_history_.history.html#current" class="tsd-kind-icon">current</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_core_src_utils_history_.history.html#previous" class="tsd-kind-icon">previous</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_core_src_utils_history_.history.html#size" class="tsd-kind-icon">size</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_core_src_utils_history_.history.html#state" class="tsd-kind-icon">state</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_core_src_utils_history_.history.html#_getaction" class="tsd-kind-icon">_get<wbr>Action</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_core_src_utils_history_.history.html#_getdirection" class="tsd-kind-icon">_get<wbr>Direction</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_core_src_utils_history_.history.html#add" class="tsd-kind-icon">add</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_core_src_utils_history_.history.html#cancel" class="tsd-kind-icon">cancel</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_core_src_utils_history_.history.html#change" class="tsd-kind-icon">change</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_core_src_utils_history_.history.html#clear" class="tsd-kind-icon">clear</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_core_src_utils_history_.history.html#get" class="tsd-kind-icon">get</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_core_src_utils_history_.history.html#getdirection" class="tsd-kind-icon">get<wbr>Direction</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_core_src_utils_history_.history.html#init" class="tsd-kind-icon">init</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_core_src_utils_history_.history.html#remove" class="tsd-kind-icon">remove</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_core_src_utils_history_.history.html#replace" class="tsd-kind-icon">replace</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_core_src_utils_history_.history.html#set" class="tsd-kind-icon">set</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_core_src_utils_history_.history.html#update" class="tsd-kind-icon">update</a></li>
 							</ul>
 						</section>
@@ -115,57 +120,57 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_state" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _state</h3>
-					<div class="tsd-signature tsd-kind-icon">_state<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_core_src_utils_history_.ihistoryitem.html" class="tsd-signature-type">IHistoryItem</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
+					<a name="_pointer" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _pointer</h3>
+					<div class="tsd-signature tsd-kind-icon">_pointer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;-1</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/history.ts#L43">core/src/utils/history.ts:43</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/packages/core/src/utils/history.ts#L56">packages/core/src/utils/history.ts:56</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_session" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _session</h3>
+					<div class="tsd-signature tsd-kind-icon">_session<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/packages/core/src/utils/history.ts#L54">packages/core/src/utils/history.ts:54</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_states" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _states</h3>
+					<div class="tsd-signature tsd-kind-icon">_states<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_core_src_utils_history_.istateitem.html" class="tsd-signature-type">IStateItem</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/packages/core/src/utils/history.ts#L55">packages/core/src/utils/history.ts:55</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Accessors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
 					<a name="current" class="tsd-anchor"></a>
 					<h3>current</h3>
-					<ul class="tsd-signatures tsd-kind-accessor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> current<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_core_src_utils_history_.ihistoryitem.html" class="tsd-signature-type">IHistoryItem</a></li>
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">set</span> current<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><a href="../interfaces/_core_src_utils_history_.ihistoryitem.html" class="tsd-signature-type">IHistoryItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> current<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_core_src_utils_history_.istateitem.html" class="tsd-signature-type">IStateItem</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/history.ts#L166">core/src/utils/history.ts:166</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/packages/core/src/utils/history.ts#L208">packages/core/src/utils/history.ts:208</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Get/set the current state.</p>
+									<p>Get the current state.</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_core_src_utils_history_.ihistoryitem.html" class="tsd-signature-type">IHistoryItem</a></h4>
-						</li>
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/history.ts#L170">core/src/utils/history.ts:170</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Get/set the current state.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>state: <a href="../interfaces/_core_src_utils_history_.ihistoryitem.html" class="tsd-signature-type">IHistoryItem</a></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_core_src_utils_history_.istateitem.html" class="tsd-signature-type">IStateItem</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -173,13 +178,13 @@
 					<a name="previous" class="tsd-anchor"></a>
 					<h3>previous</h3>
 					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> previous<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_core_src_utils_history_.ihistoryitem.html" class="tsd-signature-type">IHistoryItem</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> previous<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_core_src_utils_history_.istateitem.html" class="tsd-signature-type">IStateItem</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/history.ts#L177">core/src/utils/history.ts:177</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/packages/core/src/utils/history.ts#L222">packages/core/src/utils/history.ts:222</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -187,7 +192,7 @@
 									<p>Get the previous state.</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_core_src_utils_history_.ihistoryitem.html" class="tsd-signature-type">IHistoryItem</a>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_core_src_utils_history_.istateitem.html" class="tsd-signature-type">IStateItem</a>
 								<span class="tsd-signature-symbol"> | </span>
 								<span class="tsd-signature-type">null</span>
 							</h4>
@@ -204,7 +209,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/history.ts#L184">core/src/utils/history.ts:184</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/packages/core/src/utils/history.ts#L229">packages/core/src/utils/history.ts:229</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -213,6 +218,28 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="state" class="tsd-anchor"></a>
+					<h3>state</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> state<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_core_src_utils_history_.istateitem.html" class="tsd-signature-type">IStateItem</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/packages/core/src/utils/history.ts#L215">packages/core/src/utils/history.ts:215</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the last state (top of the history stack).</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_core_src_utils_history_.istateitem.html" class="tsd-signature-type">IStateItem</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -229,12 +256,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/history.ts#L191">core/src/utils/history.ts:191</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/packages/core/src/utils/history.ts#L236">packages/core/src/utils/history.ts:236</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Get the hostiry action: push vs replace</p>
+									<p>Get the history action: push vs replace</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -247,17 +274,45 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="add" class="tsd-anchor"></a>
-					<h3>add</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">add<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, trigger<span class="tsd-signature-symbol">: </span><a href="../modules/_core_src_defs_dom_.html#trigger" class="tsd-signature-type">Trigger</a>, e<span class="tsd-signature-symbol">?: </span><a href="../modules/_core_src_defs_dom_.html#linkevent" class="tsd-signature-type">LinkEvent</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">PopStateEvent</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="_getdirection" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _get<wbr>Direction</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">_get<wbr>Direction<span class="tsd-signature-symbol">(</span>diff<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/_core_src_defs_dom_.html#trigger" class="tsd-signature-type">Trigger</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/history.ts#L66">core/src/utils/history.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/packages/core/src/utils/history.ts#L254">packages/core/src/utils/history.ts:254</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the direction of popstate change</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>diff: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../modules/_core_src_defs_dom_.html#trigger" class="tsd-signature-type">Trigger</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="add" class="tsd-anchor"></a>
+					<h3>add</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, trigger<span class="tsd-signature-symbol">: </span><a href="../modules/_core_src_defs_dom_.html#trigger" class="tsd-signature-type">Trigger</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/packages/core/src/utils/history.ts#L114">packages/core/src/utils/history.ts:114</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -273,33 +328,37 @@
 								<li>
 									<h5>trigger: <a href="../modules/_core_src_defs_dom_.html#trigger" class="tsd-signature-type">Trigger</a></h5>
 								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> e: <a href="../modules/_core_src_defs_dom_.html#linkevent" class="tsd-signature-type">LinkEvent</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">PopStateEvent</span></h5>
-								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="cancel" class="tsd-anchor"></a>
-					<h3>cancel</h3>
+					<a name="change" class="tsd-anchor"></a>
+					<h3>change</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">cancel<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">change<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, trigger<span class="tsd-signature-symbol">: </span><a href="../modules/_core_src_defs_dom_.html#trigger" class="tsd-signature-type">Trigger</a>, e<span class="tsd-signature-symbol">?: </span><a href="../modules/_core_src_defs_dom_.html#linkevent" class="tsd-signature-type">LinkEvent</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">PopStateEvent</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/_core_src_defs_dom_.html#trigger" class="tsd-signature-type">Trigger</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/history.ts#L138">core/src/utils/history.ts:138</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/packages/core/src/utils/history.ts#L86">packages/core/src/utils/history.ts:86</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Remove last state then go back.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>url: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>trigger: <a href="../modules/_core_src_defs_dom_.html#trigger" class="tsd-signature-type">Trigger</a></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> e: <a href="../modules/_core_src_defs_dom_.html#linkevent" class="tsd-signature-type">LinkEvent</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">PopStateEvent</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../modules/_core_src_defs_dom_.html#trigger" class="tsd-signature-type">Trigger</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -313,7 +372,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/history.ts#L118">core/src/utils/history.ts:118</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/packages/core/src/utils/history.ts#L179">packages/core/src/utils/history.ts:179</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -329,13 +388,13 @@
 					<a name="get" class="tsd-anchor"></a>
 					<h3>get</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<span class="tsd-signature-symbol">(</span>index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_core_src_utils_history_.ihistoryitem.html" class="tsd-signature-type">IHistoryItem</a></li>
+						<li class="tsd-signature tsd-kind-icon">get<span class="tsd-signature-symbol">(</span>index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_core_src_utils_history_.istateitem.html" class="tsd-signature-type">IStateItem</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/history.ts#L147">core/src/utils/history.ts:147</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/packages/core/src/utils/history.ts#L194">packages/core/src/utils/history.ts:194</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -349,30 +408,7 @@
 									<h5>index: <span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_core_src_utils_history_.ihistoryitem.html" class="tsd-signature-type">IHistoryItem</a></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="getdirection" class="tsd-anchor"></a>
-					<h3>get<wbr>Direction</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Direction<span class="tsd-signature-symbol">(</span>index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/_core_src_defs_dom_.html#trigger" class="tsd-signature-type">Trigger</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/history.ts#L151">core/src/utils/history.ts:151</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>index: <span class="tsd-signature-type">number</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../modules/_core_src_defs_dom_.html#trigger" class="tsd-signature-type">Trigger</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_core_src_utils_history_.istateitem.html" class="tsd-signature-type">IStateItem</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -386,7 +422,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/history.ts#L48">core/src/utils/history.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/packages/core/src/utils/history.ts#L61">packages/core/src/utils/history.ts:61</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -411,13 +447,13 @@
 					<a name="remove" class="tsd-anchor"></a>
 					<h3>remove</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">remove<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">remove<span class="tsd-signature-symbol">(</span>i<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/history.ts#L111">core/src/utils/history.ts:111</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/packages/core/src/utils/history.ts#L166">packages/core/src/utils/history.ts:166</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -425,7 +461,72 @@
 									<p>Remove last state.</p>
 								</div>
 							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> i: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="replace" class="tsd-anchor"></a>
+					<h3>replace</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">replace<span class="tsd-signature-symbol">(</span>newStates<span class="tsd-signature-symbol">: </span><a href="../interfaces/_core_src_utils_history_.istateitem.html" class="tsd-signature-type">IStateItem</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/packages/core/src/utils/history.ts#L187">packages/core/src/utils/history.ts:187</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Replace all states.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>newStates: <a href="../interfaces/_core_src_utils_history_.istateitem.html" class="tsd-signature-type">IStateItem</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="set" class="tsd-anchor"></a>
+					<h3>set</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">set<span class="tsd-signature-symbol">(</span>i<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, state<span class="tsd-signature-symbol">: </span><a href="../interfaces/_core_src_utils_history_.istateitem.html" class="tsd-signature-type">IStateItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_core_src_utils_history_.istateitem.html" class="tsd-signature-type">IStateItem</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/packages/core/src/utils/history.ts#L201">packages/core/src/utils/history.ts:201</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Set state by index.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>i: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>state: <a href="../interfaces/_core_src_utils_history_.istateitem.html" class="tsd-signature-type">IStateItem</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_core_src_utils_history_.istateitem.html" class="tsd-signature-type">IStateItem</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -433,24 +534,27 @@
 					<a name="update" class="tsd-anchor"></a>
 					<h3>update</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">update<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">update<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, i<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/history.ts#L125">core/src/utils/history.ts:125</a></li>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/packages/core/src/utils/history.ts#L152">packages/core/src/utils/history.ts:152</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Update current state.</p>
+									<p>Update state.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>data: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> i: <span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -466,7 +570,7 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_core_src_utils_history_.html">"core/src/utils/history"</a>
+						<a href="../modules/_core_src_utils_history_.html">&quot;core/src/utils/history&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -478,9 +582,15 @@
 						<a href="_core_src_utils_history_.history.html" class="tsd-kind-icon">History</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_core_src_utils_history_.history.html#_state" class="tsd-kind-icon">_state</a>
+								<a href="_core_src_utils_history_.history.html#_pointer" class="tsd-kind-icon">_pointer</a>
 							</li>
-							<li class=" tsd-kind-accessor tsd-parent-kind-class">
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_core_src_utils_history_.history.html#_session" class="tsd-kind-icon">_session</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_core_src_utils_history_.history.html#_states" class="tsd-kind-icon">_states</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 								<a href="_core_src_utils_history_.history.html#current" class="tsd-kind-icon">current</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
@@ -489,14 +599,20 @@
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 								<a href="_core_src_utils_history_.history.html#size" class="tsd-kind-icon">size</a>
 							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_core_src_utils_history_.history.html#state" class="tsd-kind-icon">state</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="_core_src_utils_history_.history.html#_getaction" class="tsd-kind-icon">_get<wbr>Action</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="_core_src_utils_history_.history.html#_getdirection" class="tsd-kind-icon">_get<wbr>Direction</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_core_src_utils_history_.history.html#add" class="tsd-kind-icon">add</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_core_src_utils_history_.history.html#cancel" class="tsd-kind-icon">cancel</a>
+								<a href="_core_src_utils_history_.history.html#change" class="tsd-kind-icon">change</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_core_src_utils_history_.history.html#clear" class="tsd-kind-icon">clear</a>
@@ -505,13 +621,16 @@
 								<a href="_core_src_utils_history_.history.html#get" class="tsd-kind-icon">get</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_core_src_utils_history_.history.html#getdirection" class="tsd-kind-icon">get<wbr>Direction</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_core_src_utils_history_.history.html#init" class="tsd-kind-icon">init</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_core_src_utils_history_.history.html#remove" class="tsd-kind-icon">remove</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_core_src_utils_history_.history.html#replace" class="tsd-kind-icon">replace</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_core_src_utils_history_.history.html#set" class="tsd-kind-icon">set</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_core_src_utils_history_.history.html#update" class="tsd-kind-icon">update</a>
@@ -525,6 +644,9 @@
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="../interfaces/_core_src_utils_history_.ihistoryitem.html" class="tsd-kind-icon">IHistory<wbr>Item</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../interfaces/_core_src_utils_history_.istateitem.html" class="tsd-kind-icon">IState<wbr>Item</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="../modules/_core_src_utils_history_.html#history-1" class="tsd-kind-icon">history</a>

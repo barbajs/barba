@@ -139,10 +139,10 @@ barba.init({
     <span class="hljs-attr">name</span>: <span class="hljs-string">'dummy-transition'</span>,
 
     <span class="hljs-comment">// apply only when leaving `[data-barba-namespace="home"]`</span>
-    <span class="hljs-keyword">from</span>: <span class="hljs-string">'home'</span>,
+    <span class="hljs-attr">from</span>: <span class="hljs-string">'home'</span>,
 
     <span class="hljs-comment">// apply only when transitioning to `[data-barba-namespace="products | contact"]`</span>
-    to: {
+    <span class="hljs-attr">to</span>: {
       <span class="hljs-attr">namespace</span>: [
         <span class="hljs-string">'products'</span>,
         <span class="hljs-string">'contact'</span>
@@ -150,11 +150,11 @@ barba.init({
     },
 
     <span class="hljs-comment">// apply only if clicked link contains `.cta`</span>
-    custom: <span class="hljs-function">(<span class="hljs-params">{ current, next, trigger }</span>)
+    <span class="hljs-attr">custom</span>: <span class="hljs-function">(<span class="hljs-params">{ current, next, trigger }</span>)
       =&gt;</span> trigger.classList &amp;&amp; trigger.classList.contains(<span class="hljs-string">'cta'</span>),
 
     <span class="hljs-comment">// do leave and enter concurrently</span>
-    sync: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">sync</span>: <span class="hljs-literal">true</span>,
 
     <span class="hljs-comment">// available hooks…</span>
     beforeOnce() {},
@@ -201,118 +201,118 @@ barba.init({
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_core_.html">"core/src/core"</a>
+						<a href="modules/_core_src_core_.html">&quot;core/src/core&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_defs_barba_.html">"core/src/defs/barba"</a>
+						<a href="modules/_core_src_defs_barba_.html">&quot;core/src/defs/barba&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_defs_cache_.html">"core/src/defs/cache"</a>
+						<a href="modules/_core_src_defs_cache_.html">&quot;core/src/defs/cache&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_defs_dom_.html">"core/src/defs/dom"</a>
+						<a href="modules/_core_src_defs_dom_.html">&quot;core/src/defs/dom&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_defs_global_.html">"core/src/defs/global"</a>
+						<a href="modules/_core_src_defs_global_.html">&quot;core/src/defs/global&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_defs_history_.html">"core/src/defs/history"</a>
+						<a href="modules/_core_src_defs_history_.html">&quot;core/src/defs/history&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_defs_hooks_.html">"core/src/defs/hooks"</a>
+						<a href="modules/_core_src_defs_hooks_.html">&quot;core/src/defs/hooks&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_defs_ignore_.html">"core/src/defs/ignore"</a>
+						<a href="modules/_core_src_defs_ignore_.html">&quot;core/src/defs/ignore&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_defs_prevent_.html">"core/src/defs/prevent"</a>
+						<a href="modules/_core_src_defs_prevent_.html">&quot;core/src/defs/prevent&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_defs_request_.html">"core/src/defs/request"</a>
+						<a href="modules/_core_src_defs_request_.html">&quot;core/src/defs/request&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_defs_rules_.html">"core/src/defs/rules"</a>
+						<a href="modules/_core_src_defs_rules_.html">&quot;core/src/defs/rules&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_defs_schemas_.html">"core/src/defs/schemas"</a>
+						<a href="modules/_core_src_defs_schemas_.html">&quot;core/src/defs/schemas&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_defs_transition_.html">"core/src/defs/transition"</a>
+						<a href="modules/_core_src_defs_transition_.html">&quot;core/src/defs/transition&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_defs_url_.html">"core/src/defs/url"</a>
+						<a href="modules/_core_src_defs_url_.html">&quot;core/src/defs/url&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_defs_view_.html">"core/src/defs/view"</a>
+						<a href="modules/_core_src_defs_view_.html">&quot;core/src/defs/view&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_hooks_.html">"core/src/hooks"</a>
+						<a href="modules/_core_src_hooks_.html">&quot;core/src/hooks&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_modules_cache_.html">"core/src/modules/<wbr>Cache"</a>
+						<a href="modules/_core_src_modules_cache_.html">&quot;core/src/modules/<wbr>Cache&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_modules_error_.html">"core/src/modules/<wbr>Error"</a>
+						<a href="modules/_core_src_modules_error_.html">&quot;core/src/modules/<wbr>Error&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_modules_ignore_.html">"core/src/modules/<wbr>Ignore"</a>
+						<a href="modules/_core_src_modules_ignore_.html">&quot;core/src/modules/<wbr>Ignore&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_modules_prevent_.html">"core/src/modules/<wbr>Prevent"</a>
+						<a href="modules/_core_src_modules_prevent_.html">&quot;core/src/modules/<wbr>Prevent&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_modules_store_.html">"core/src/modules/<wbr>Store"</a>
+						<a href="modules/_core_src_modules_store_.html">&quot;core/src/modules/<wbr>Store&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_modules_transitions_.html">"core/src/modules/<wbr>Transitions"</a>
+						<a href="modules/_core_src_modules_transitions_.html">&quot;core/src/modules/<wbr>Transitions&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_modules_views_.html">"core/src/modules/<wbr>Views"</a>
+						<a href="modules/_core_src_modules_views_.html">&quot;core/src/modules/<wbr>Views&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_schemas_attribute_.html">"core/src/schemas/attribute"</a>
+						<a href="modules/_core_src_schemas_attribute_.html">&quot;core/src/schemas/attribute&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_schemas_page_.html">"core/src/schemas/page"</a>
+						<a href="modules/_core_src_schemas_page_.html">&quot;core/src/schemas/page&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_typings_.html">"core/src/typings"</a>
+						<a href="modules/_core_src_typings_.html">&quot;core/src/typings&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_utils_dom_.html">"core/src/utils/dom"</a>
+						<a href="modules/_core_src_utils_dom_.html">&quot;core/src/utils/dom&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_utils_helpers_.html">"core/src/utils/helpers"</a>
+						<a href="modules/_core_src_utils_helpers_.html">&quot;core/src/utils/helpers&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_utils_history_.html">"core/src/utils/history"</a>
+						<a href="modules/_core_src_utils_history_.html">&quot;core/src/utils/history&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_utils_request_.html">"core/src/utils/request"</a>
+						<a href="modules/_core_src_utils_request_.html">&quot;core/src/utils/request&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_utils_run_async_.html">"core/src/utils/run-<wbr>async"</a>
+						<a href="modules/_core_src_utils_run_async_.html">&quot;core/src/utils/run-<wbr>async&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_core_src_utils_url_.html">"core/src/utils/url"</a>
+						<a href="modules/_core_src_utils_url_.html">&quot;core/src/utils/url&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_css_src_css_.html">"css/src/css"</a>
+						<a href="modules/_css_src_css_.html">&quot;css/src/css&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_css_src_typings_.html">"css/src/typings"</a>
+						<a href="modules/_css_src_typings_.html">&quot;css/src/typings&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_prefetch_src_prefetch_.html">"prefetch/src/prefetch"</a>
+						<a href="modules/_prefetch_src_prefetch_.html">&quot;prefetch/src/prefetch&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_prefetch_src_typings_.html">"prefetch/src/typings"</a>
+						<a href="modules/_prefetch_src_typings_.html">&quot;prefetch/src/typings&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_router_src_router_.html">"router/src/router"</a>
+						<a href="modules/_router_src_router_.html">&quot;router/src/router&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_router_src_typings_.html">"router/src/typings"</a>
+						<a href="modules/_router_src_typings_.html">&quot;router/src/typings&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/core_modules_logger.html">core/modules/<wbr>Logger</a>
