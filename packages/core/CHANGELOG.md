@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.3](https://github.com/barbajs/barba/compare/@barba/core@2.9.2...@barba/core@2.9.3) (2019-12-09)
+
+### Bug Fixes
+
+- **core:** :recycle: refactor history states ([08c83b8](https://github.com/barbajs/barba/commit/08c83b857d8ab3f7826631968afaabf76e1a2e87)), closes [#473](https://github.com/barbajs/barba/issues/473) [#472](https://github.com/barbajs/barba/issues/472)
+
 ## [2.9.2](https://github.com/barbajs/barba/compare/@barba/core@2.9.1...@barba/core@2.9.2) (2019-11-25)
 
 ### Bug Fixes
