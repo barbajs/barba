@@ -13,8 +13,22 @@ import { schemaAttribute } from '../schemas/attribute';
  * @preferred
  */
 
-/***/
+/**
+ * State item.
+ *
+ * @property from
+ * @property index
+ */
+interface IHistoryItem {
+  /** origin */
+  from: string;
+  /** index */
+  index: number;
+  /** states */
+  states: IStateItem[];
+}
 
+/***/
 interface ICoords {
   x: number;
   y: number;
@@ -23,14 +37,11 @@ interface ICoords {
 /**
  * History item.
  *
- * @property index
  * @property namespace
  * @property scroll
  * @property URL
  */
-interface IHistoryItem {
-  /** index */
-  index: number;
+interface IStateItem {
   /** namespace */
   ns: string | undefined;
   /** Scroll position */
@@ -40,14 +51,18 @@ interface IHistoryItem {
 }
 
 export class History {
-  private _state: IHistoryItem[] = [];
+  private _session: string;
+  private _states: IStateItem[] = [];
+  private _pointer = -1;
 
   /**
    * Init with first state.
    */
   public init(url: string, ns: string): void {
-    const state: IHistoryItem = {
-      index: 0,
+    this._session = 'barba';
+    const index = 0;
+
+    const state: IStateItem = {
       ns,
       scroll: {
         x: window.scrollX,
@@ -56,34 +71,52 @@ export class History {
       url,
     };
 
-    this._state.push(state);
-    window.history && window.history.replaceState(state, '', state.url);
+    this._states.push(state);
+    this._pointer = index;
+
+    const item: IHistoryItem = {
+      from: this._session,
+      index,
+      states: [...this._states],
+    };
+
+    window.history && window.history.replaceState(item, '', url);
+  }
+
+  public change(
+    url: string,
+    trigger: Trigger,
+    e?: LinkEvent | PopStateEvent
+  ): Trigger {
+    if (e && (e as PopStateEvent).state) {
+      // If popstate, move to existing state
+      // and get back/forward direction.
+      const { state }: { state: IHistoryItem } = e as PopStateEvent;
+      const { index } = state;
+      const diff = this._pointer - index;
+
+      trigger = this._getDirection(diff);
+
+      // Work with previous states
+      this.replace(state.states);
+      this._pointer = index;
+    } else {
+      // Add new state
+      this.add(url, trigger);
+    }
+
+    return trigger;
   }
 
   /**
    * Add a new state.
    */
-  public add(
-    url: string,
-    trigger: Trigger,
-    e?: LinkEvent | PopStateEvent
-  ): void {
+  public add(url: string, trigger: Trigger): void {
     // If no state, it will be updated later.
-    const state = e ? (e as PopStateEvent).state : null;
-    const ns = state ? state.ns : 'tmp';
-    const index = state ? state.index : this.size;
-
-    // By default (popstate), we will add to barba.history but
-    // we do not push to browser history.
-    let action: HistoryAction = 'none';
-
-    // No popstate means modifying the history.
-    if (trigger !== 'popstate') {
-      action = this._getAction(trigger);
-    }
-
-    const data: IHistoryItem = {
-      index,
+    const ns = 'tmp';
+    const index = this.size;
+    const action = this._getAction(trigger);
+    const state: IStateItem = {
       ns,
       scroll: {
         x: window.scrollX,
@@ -92,101 +125,113 @@ export class History {
       url,
     };
 
-    this._state.push(data);
+    this._states.push(state);
+    this._pointer = index;
+
+    const item: IHistoryItem = {
+      from: this._session,
+      index,
+      states: [...this._states],
+    };
 
     switch (action) {
       case 'push':
-        window.history && window.history.pushState(data, '', data.url);
+        window.history && window.history.pushState(item, '', url);
         break;
       case 'replace':
-        window.history && window.history.replaceState(data, '', data.url);
+        window.history && window.history.replaceState(item, '', url);
         break;
+      /* istanbul ignore next */
       default:
     }
   }
 
   /**
+   * Update state.
+   */
+  public update(data: any, i?: number): void {
+    const index = i || this._pointer;
+    const existing = this.get(index);
+    const state: IStateItem = {
+      ...existing,
+      ...data,
+    };
+
+    this.set(index, state);
+  }
+
+  /**
    * Remove last state.
    */
-  public remove(): void {
-    this._state.pop();
+  public remove(i?: number): void {
+    if (i) {
+      this._states.splice(i, 1);
+    } else {
+      this._states.pop();
+    }
+
+    this._pointer--;
   }
 
   /**
    * Delete all states.
    */
   public clear(): void {
-    this._state = [];
+    this._states = [];
+    this._pointer = -1;
   }
 
   /**
-   * Update current state.
+   * Replace all states.
    */
-  public update(data: any): void {
-    const state: IHistoryItem = {
-      ...this.current,
-      ...data,
-    };
-
-    this.current = state;
-    window.history && window.history.replaceState(state, '', state.url);
-  }
-
-  /**
-   * Remove last state then go back.
-   */
-  public cancel(): void {
-    this.remove();
-
-    window.history && window.history.back();
+  public replace(newStates: IStateItem[]): void {
+    this._states = newStates;
   }
 
   /**
    * Get state by index.
    */
   public get(index: number) {
-    return this._state[index];
-  }
-
-  public getDirection(index: number): Trigger {
-    let direction: Trigger = 'popstate';
-
-    if (index < this.current.index) {
-      direction = 'back';
-    } else if (index > this.current.index) {
-      direction = 'forward';
-    }
-
-    return direction;
+    return this._states[index];
   }
 
   /**
-   * Get/set the current state.
+   * Set state by index.
    */
-  get current(): IHistoryItem {
-    return this._state[this._state.length - 1];
+  public set(i: number, state: IStateItem) {
+    return (this._states[i] = state);
   }
 
-  set current(state: IHistoryItem) {
-    this._state[this._state.length - 1] = state;
+  /**
+   * Get the current state.
+   */
+  get current(): IStateItem {
+    return this._states[this._pointer];
+  }
+
+  /**
+   * Get the last state (top of the history stack).
+   */
+  get state(): IStateItem {
+    return this._states[this._states.length - 1];
   }
 
   /**
    * Get the previous state.
    */
-  get previous(): IHistoryItem | null {
-    return this._state.length < 2 ? null : this._state[this._state.length - 2];
+  get previous(): IStateItem | null {
+    return this._pointer < 1 ? null : this._states[this._pointer - 1];
   }
 
   /**
    * Get the state size.
    */
   get size(): number {
-    return this._state.length;
+    return this._states.length;
   }
 
   /**
-   * Get the hostiry action: push vs replace
+   * Get the history action: push vs replace
    */
   private _getAction(trigger: Trigger): HistoryAction {
     let action: HistoryAction = 'push';
@@ -201,6 +246,24 @@ export class History {
     }
 
     return action;
+  }
+
+  /**
+   * Get the direction of popstate change
+   */
+  private _getDirection(diff: number): Trigger {
+    // Check if "session switch"
+    if (Math.abs(diff) > 1) {
+      // Ex 6-0 > 0 -> forward, 0-6 < 0 -> back
+      return diff > 0 ? 'forward' : 'back';
+    } else {
+      if (diff === 0) {
+        return 'popstate';
+      } else {
+        // Ex 6-5 > 0 -> back, 5-6 < 0 -> forward
+        return diff > 0 ? 'back' : 'forward';
+      }
+    }
   }
 }
 

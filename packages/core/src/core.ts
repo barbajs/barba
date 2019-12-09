@@ -289,9 +289,21 @@ export class Core {
       return;
     }
 
+    // if (e) {
+    //   // No history, force page reload
+    //   const { state } = e as PopStateEvent;
+    //   if (trigger === 'popstate' && state === null) {
+    //     this.force(href);
+
+    //     return;
+    //   }
+    // }
+
     let self = false;
 
     // Check prevent sameURL against current history
+    // + state check
+    // + update trigger with direction
     if (trigger === 'popstate') {
       self =
         this.history.current &&
@@ -304,18 +316,7 @@ export class Core {
       return;
     }
 
-    this.history.add(href, trigger, e);
-
-    // Manage popstate direction
-    if (trigger === 'popstate' && e) {
-      const { state } = e as PopStateEvent;
-
-      /* istanbul ignore else */
-      if (state !== null) {
-        // We update the trigger with the direction.
-        trigger = this.history.getDirection(state.index as number);
-      }
-    }
+    trigger = this.history.change(href, trigger, e);
 
     if (e) {
       e.stopPropagation();

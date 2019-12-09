@@ -75,7 +75,6 @@ it('has current page content', () => {
 it('init history', () => {
   barba.init();
   expect(barba.history.current).toEqual({
-    index: 0,
     ns: 'ns',
     scroll: {
       x: 0,

@@ -10,10 +10,13 @@ import { schemaAttribute } from '../../src/schemas/attribute';
 const namespace = 'next';
 const nextUrl = 'http://localhost/foo';
 
-init();
+// Mocks
+let spyHistory: jest.SpyInstance;
 
 beforeEach(() => {
-  barba.init();
+  init();
+  // barba.init();
+
   self.fetch = jest.fn().mockImplementation(() => ({
     status: 200,
     text: () =>
@@ -28,6 +31,7 @@ beforeEach(() => {
 });
 afterEach(() => {
   barba.destroy();
+  spyHistory && spyHistory.mockRestore();
   (global as any).jsdom.reconfigure({ url: 'http://localhost/' });
 });
 
@@ -81,7 +85,9 @@ it('use self transition on same url [popstate]', async () => {
   barba.transitions.store.add('transition', { name: 'self' });
 
   await barba.go('http://localhost/', 'popstate', {
-    state: {},
+    state: {
+      index: 0,
+    },
     stopPropagation() {},
     preventDefault() {},
   } as PopStateEvent);
@@ -94,20 +100,21 @@ it('use self transition on same url [popstate]', async () => {
 });
 
 it('add history', async () => {
-  barba.history.add = jest.fn();
+  spyHistory = jest.spyOn(barba.history, 'add');
 
   await barba.go('http://localhost/foo');
 
   expect(barba.history.add).toHaveBeenCalledWith(
     'http://localhost/foo',
-    'barba',
-    undefined
+    'barba'
   );
 });
 
 it('manage direction', async () => {
   barba.page = jest.fn();
 
+  await barba.go('http://localhost/foo');
+  await barba.go('http://localhost/bar');
   await barba.go('http://localhost/foo', 'popstate', {
     state: {
       index: 1,
@@ -118,7 +125,7 @@ it('manage direction', async () => {
 
   expect(barba.page).toHaveBeenCalledWith(
     'http://localhost/foo',
-    'forward',
+    'back',
     false
   );
 });

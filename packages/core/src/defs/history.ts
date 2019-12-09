@@ -2,4 +2,4 @@
  * @module typings/history
  */
 
-export type HistoryAction = 'none' | 'push' | 'replace';
+export type HistoryAction = 'push' | 'replace';
