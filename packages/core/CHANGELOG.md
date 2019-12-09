@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.5](https://github.com/barbajs/barba/compare/@barba/core@2.9.4...@barba/core@2.9.5) (2019-12-09)
+
+### Bug Fixes
+
+- **core:** :bug: filter transition errors from request errors ([281c85f](https://github.com/barbajs/barba/commit/281c85fc7bbaf3d51ee58653468c48b2404152ea)), closes [#475](https://github.com/barbajs/barba/issues/475)
+
 ## [2.9.4](https://github.com/barbajs/barba/compare/@barba/core@2.9.3...@barba/core@2.9.4) (2019-12-09)
 
 ### Bug Fixes
