@@ -182,7 +182,9 @@ export class Transitions {
         } catch (error) {
           // this.logger.debug('Transition error [sync]');
           // this.logger.error(error);
-          throw new BarbaError(error, 'Transition error [sync]');
+          if (this._isTransitionError(error)) {
+            throw new BarbaError(error, 'Transition error [sync]');
+          }
         }
       } else {
         let leaveResult: any = false;
@@ -203,7 +205,12 @@ export class Transitions {
         } catch (error) {
           // this.logger.debug('Transition error [before/after/leave]');
           // this.logger.error(error);
-          throw new BarbaError(error, 'Transition error [before/after/leave]');
+          if (this._isTransitionError(error)) {
+            throw new BarbaError(
+              error,
+              'Transition error [before/after/leave]'
+            );
+          }
         }
 
         try {
@@ -219,7 +226,12 @@ export class Transitions {
         } catch (error) {
           // this.logger.debug('Transition error [before/after/enter]');
           // this.logger.error(error);
-          throw new BarbaError(error, 'Transition error [before/after/enter]');
+          if (this._isTransitionError(error)) {
+            throw new BarbaError(
+              error,
+              'Transition error [before/after/enter]'
+            );
+          }
         }
       }
 
@@ -295,6 +307,19 @@ export class Transitions {
   public async remove(data: ITransitionData): Promise<void> {
     dom.removeContainer(data.current.container);
     hooks.do('currentRemoved', data);
+  }
+
+  private _isTransitionError(error: any) {
+    if (error.message) {
+      // Errors from request
+      return !/Timeout error|Fetch error/.test(error.message);
+    }
+    if (error.status) {
+      // Errors from request
+      return false;
+    }
+
+    return true;
   }
 
   /**

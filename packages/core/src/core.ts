@@ -403,7 +403,7 @@ export class Core {
       // TODO: manage / use cases for cancellation
       // this.logger.debug('Transition cancelled');
 
-      // If no debug mode, force back.
+      // If transition error and no debug mode, force reload page.
       /* istanbul ignore else */
       if (Logger.getLevel() === 0) {
         this.force(data.current.url.href);
