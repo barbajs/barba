@@ -289,16 +289,6 @@ export class Core {
       return;
     }
 
-    // if (e) {
-    //   // No history, force page reload
-    //   const { state } = e as PopStateEvent;
-    //   if (trigger === 'popstate' && state === null) {
-    //     this.force(href);
-
-    //     return;
-    //   }
-    // }
-
     let self = false;
 
     // Check prevent sameURL against current history

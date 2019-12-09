@@ -29,13 +29,10 @@ export class Cache extends Ignore {
     request: CacheRequest,
     action: CacheAction
   ): ICacheData {
-    /* istanbul ignore else */
-    if (!this.checkHref(href)) {
-      this._state.set(href, {
-        action,
-        request,
-      });
-    }
+    this._state.set(href, {
+      action,
+      request,
+    });
 
     return {
       action,
@@ -68,6 +65,10 @@ export class Cache extends Ignore {
    * Check if value exists into cache
    */
   public has(href: string): boolean {
+    /* istanbul ignore else */
+    if (this.checkHref(href)) {
+      return false;
+    }
     return this._state.has(href);
   }
 
