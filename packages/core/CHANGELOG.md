@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.6](https://github.com/barbajs/barba/compare/@barba/core@2.9.5...@barba/core@2.9.6) (2019-12-12)
+
+### Bug Fixes
+
+- **core:** :bug: fix route (object) resolution ([1fb344f](https://github.com/barbajs/barba/commit/1fb344f9f07fbe58c5893b09f59d471704c0c521))
+
 ## [2.9.5](https://github.com/barbajs/barba/compare/@barba/core@2.9.4...@barba/core@2.9.5) (2019-12-09)
 
 ### Bug Fixes
