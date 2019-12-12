@@ -313,3 +313,62 @@ it('catches "global" error (before)', async () => {
     expect(e).toEqual(err);
   }
 });
+
+it('ignores "non transition" errors', async () => {
+  expect.assertions(3);
+  const tError = new Error('Weird transition error');
+
+  const leaveError1 = () => {
+    throw new Error('Timeout error');
+  };
+  const leaveError2 = () => {
+    throw new Error('Fetch error');
+  };
+  const enterError3 = () => {
+    const err = new Error('Request error');
+
+    delete err.message;
+    (err as any).status = 500;
+    throw err;
+  };
+  const leaveError4 = () => {
+    delete tError.message;
+    throw tError;
+  };
+  const t1 = { sync: true, leave: leaveError1, enter() {} };
+  const t2 = { leave: leaveError2, enter() {} };
+  const t3 = { leave() {}, enter: enterError3 };
+  const t4 = { leave: leaveError4, enter() {} };
+
+  await transitions.doPage({
+    data,
+    page,
+    transition: t1,
+    wrapper,
+  });
+  await transitions.doPage({
+    data,
+    page,
+    transition: t2,
+    wrapper,
+  });
+  await transitions.doPage({
+    data,
+    page,
+    transition: t3,
+    wrapper,
+  });
+
+  try {
+    await transitions.doPage({
+      data,
+      page,
+      transition: t4,
+      wrapper,
+    });
+  } catch (e) {
+    expect(e.name).toEqual('BarbaError');
+    expect(e.label).toEqual('Transition error [before/after/leave]');
+    expect(e.error).toEqual(tError);
+  }
+});

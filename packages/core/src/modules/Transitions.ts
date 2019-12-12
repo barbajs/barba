@@ -314,6 +314,7 @@ export class Transitions {
       // Errors from request
       return !/Timeout error|Fetch error/.test(error.message);
     }
+
     if (error.status) {
       // Errors from request
       return false;
