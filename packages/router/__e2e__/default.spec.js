@@ -1,5 +1,12 @@
 /* eslint-disable cypress/no-unnecessary-waiting */
-const logs = ['leave-from', 'enter-from', 'leave-to', 'enter-to'];
+const logs = [
+  'leave-from',
+  'enter-from',
+  'leave-default',
+  'enter-default',
+  'leave-to',
+  'enter-to',
+];
 
 describe('Route transition', () => {
   it('works', () => {
@@ -12,6 +19,17 @@ describe('Route transition', () => {
     // Check route "from"
     logs.forEach((name, i) => {
       if (i < 2) {
+        cy.get('@logs')
+          .find(`:nth-child(${i + 1})`)
+          .should('contain', name);
+      }
+    });
+
+    // Go to default
+    cy.get('[data-test=link2]').click();
+    // Check no route
+    logs.forEach((name, i) => {
+      if (i < 4) {
         cy.get('@logs')
           .find(`:nth-child(${i + 1})`)
           .should('contain', name);

@@ -33,6 +33,22 @@ barba.init({
   debug: true,
   transitions: [
     {
+      name: 'default',
+      leave: data => {
+        console.info('leave-default', data);
+        append('leave-default');
+
+        return Promise.resolve();
+      },
+      enter: data => {
+        console.info('enter-default', data);
+        append('enter-default');
+
+        return Promise.resolve();
+      },
+    },
+    {
+      name: 'from',
       from: { route: 'home' },
       leave: data => {
         console.info('leave-from', data);
@@ -48,6 +64,7 @@ barba.init({
       },
     },
     {
+      name: 'to',
       to: { route: 'home' },
       leave: data => {
         console.info('leave-to', data);
