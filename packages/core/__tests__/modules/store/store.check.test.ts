@@ -103,7 +103,7 @@ function runFunction(
 
 // "strings" type
 
-it('check inexisting "strings"', () => {
+it('check valid for inexisting rule "strings"', () => {
   const [rule] = store['_rules'].filter(r => r.name === 'namespace');
   const expected = store['_check'](
     {},
@@ -165,7 +165,7 @@ it('check array "strings" with "to"', () => {
 });
 
 // "object" type
-it('check inexisting "object"', () => {
+it('check valid for inexisting rule "object"', () => {
   const [rule] = store['_rules'].filter(r => r.name === 'route');
   const expected = store['_check'](
     {},
@@ -178,7 +178,7 @@ it('check inexisting "object"', () => {
   expect(match).toMatchObject({});
 });
 
-it('check non matching "object"', () => {
+it('check invalid for non matching rule "object"', () => {
   const transition = { route: 'r' };
   const [rule] = store['_rules'].filter(r => r.name === 'route');
   const data = { current: { route: null } as ISchemaPage };
@@ -189,7 +189,7 @@ it('check non matching "object"', () => {
     match
   );
 
-  expect(expected).toBeTruthy();
+  expect(expected).toBeFalsy();
   expect(match).toMatchObject({});
 });
 
@@ -243,7 +243,7 @@ it('check array "object" with "to"', () => {
 
 // "function" type
 
-it('check inexisting "function"', () => {
+it('check valid for inexisting rule "function"', () => {
   const [rule] = store['_rules'].filter(r => r.name === 'custom');
   const expected = store['_check'](
     {},

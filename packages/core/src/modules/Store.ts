@@ -257,6 +257,8 @@ export class Store {
             if (names.indexOf(page[objRule].name) === -1) {
               isValid = false;
             }
+          } else {
+            isValid = false;
           }
           break;
         }
