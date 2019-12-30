@@ -1,3 +1,5 @@
+import kapla from '../kaplaInstance';
+
 import {
   TweenMax,
   TimelineMax
@@ -33,50 +35,58 @@ export default {
 
   sync: true,
 
-  leave(data) {
+  leave({
+    current,
+    next
+  }) {
     return new Promise(resolve => {
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
-
-      const goingForward = isForward(data.current.namespace, data.next.namespace);
+      const {
+        container
+      } = current;
+      const goingForward = isForward(current.namespace, next.namespace);
 
       // Logo (remove big letter)
-      const container = data.current.container.querySelector('.feature__container');
-      const box = data.current.container.querySelector('.feature__box');
+      const featureComponent = container.querySelector('[data-component="feature"]');
+      const featureContainer = featureComponent.querySelector('.feature__container');
+      const featureBox = featureComponent.querySelector('.feature__box');
       // const shapes = data.next.container.querySelector('.logo .big');
-      const logo = data.current.container.querySelector('.logo.only-big');
+      const logo = container.querySelector('.logo.only-big');
 
-      data.current.container.querySelector('.menu-trigger').style.opacity = '0';
+      const featureInstance = kapla.instanceByElement(featureComponent);
+
+      featureInstance.animateOut();
+
+      container.querySelector('.menu-trigger').style.opacity = '0';
 
       const tl = new TimelineMax({
         onComplete: () => {
           resolve();
-        }
+        },
       });
 
-      tl.to(container, 1.8, {
+      tl.to(featureContainer, 1.8, {
         x: goingForward ? -window.innerWidth : window.innerWidth,
         rotationY: goingForward ? '45deg' : '-45deg',
         ease: 'Power4.easeInOut',
       }, 0);
 
-      box && tl.to(box, 1.8, {
+      featureBox && tl.to(featureBox, 1.8, {
         x: goingForward ? (-window.innerWidth * 0.3) : (window.innerWidth * 0.3),
         ease: 'Power4.easeInOut',
       }, 0);
 
       tl.to(logo, 1.5, {
         opacity: 0,
-        ease: 'Power4.easeInOut'
+        ease: 'Power4.easeInOut',
       }, 0);
-
     });
   },
 
   enter(data) {
     return new Promise(resolve => {
       const goingForward = isForward(data.current.namespace, data.next.namespace);
-
       const container = data.next.container.querySelector('.feature__container');
       const box = data.next.container.querySelector('.feature__box');
       // const shapes = data.next.container.querySelector('.logo .big');
@@ -85,7 +95,7 @@ export default {
       const tl = new TimelineMax({
         onComplete: () => {
           resolve();
-        }
+        },
       });
 
       tl.from(container, 1.8, {
@@ -101,9 +111,8 @@ export default {
 
       tl.from(logo, 1.5, {
         opacity: 0,
-        ease: 'Power4.easeInOut'
+        ease: 'Power4.easeInOut',
       }, 0);
-
     });
   },
 };

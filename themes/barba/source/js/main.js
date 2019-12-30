@@ -1,8 +1,8 @@
 import barba from '@barba/core';
 import {
-  Application,
-  autoLoad
+  autoLoad,
 } from 'kapla';
+import kapla from './kaplaInstance';
 
 // DEV
 import router from '@barba/router';
@@ -17,6 +17,7 @@ import featureToPage from './transitions/featureToPage';
 import pageToPage from './transitions/pageToPage';
 import pageToHome from './transitions/pageToHome';
 import pageToFeature from './transitions/pageToFeature';
+import onceHome from './transitions/onceHome';
 import docToDoc from './transitions/docToDoc';
 // import Home from './views/Home';
 
@@ -25,7 +26,7 @@ import {
   appear,
   raf,
   resize,
-  scroll
+  scroll,
 } from './events';
 
 /*
@@ -76,6 +77,7 @@ class App {
           // pageToFeature,
           // pageToPage,
           docToDoc,
+          onceHome,
         ],
       });
 
@@ -93,17 +95,17 @@ class App {
         true,
         /\.js$/
       );
-      const app = Application.start();
+
 
       // 1. Register events
-      app.use('appear', appear);
-      app.use('raf', raf);
-      app.use('resize', resize);
-      app.use('scroll', scroll);
+      kapla.use('appear', appear);
+      kapla.use('raf', raf);
+      kapla.use('resize', resize);
+      kapla.use('scroll', scroll);
 
       // 2. Register components
       // Auto loading
-      app.load(autoLoad(context));
+      kapla.load(autoLoad(context));
     } catch (err) {
       console.error(err);
     }
