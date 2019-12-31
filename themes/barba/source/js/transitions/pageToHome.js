@@ -9,7 +9,6 @@ export default {
 
   leave() {
     return new Promise(resolve => {
-
       resolve();
     });
   },
@@ -20,4 +19,3 @@ export default {
     });
   }
 };
-

@@ -155,7 +155,10 @@ export default {
 
 };
 
-
+/**
+ *
+ * @param {*HTMLElement} data getting container
+ */
 function oldEnder(data) {
   data.next.container.style.cssText = `
     visibility: hidden;
@@ -167,6 +170,7 @@ function oldEnder(data) {
   `;
 
   const current = {};
+
   current.$logo = qs('.logo', data.current.container),
     current.logoRect = current.$logo.getBoundingClientRect();
   current.$morphParent = qs('.big1', current.$logo);
@@ -207,7 +211,7 @@ function oldEnder(data) {
   current.$morphs.forEach((el, index) => {
     tl.to(el, 3, {
       // transformOrigin: next.$morphs[index].style.transformOrigin,
-      transform: getComputedStyle(next.$morphs[index]).transform
+      transform: getComputedStyle(next.$morphs[index]).transform,
     }, 0.1 + (0.1 * index));
   });
 
