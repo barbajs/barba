@@ -1,6 +1,8 @@
 ---
 title: B/Core
-namespace: core
+namespace: feature
+slug: core
+order: 2
 layout: pages/feature
 modifier: 'core'
 box: 'core.ejs'

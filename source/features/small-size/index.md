@@ -1,6 +1,8 @@
 ---
 title: Small Size
-namespace: small-size
+namespace: feature
+slug: small-size
+order: 1
 layout: pages/feature
 modifier: 'small'
 box: 'small-size.ejs'

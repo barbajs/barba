@@ -1,6 +1,8 @@
 ---
 title: B/Router
-namespace: router
+namespace: feature
+slug: router
+order: 3
 layout: pages/feature
 modifier: 'router'
 box: 'router.ejs'

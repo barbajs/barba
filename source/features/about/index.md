@@ -1,6 +1,9 @@
 ---
 title: About
-namespace: about
+# namespace: about
+namespace: feature
+slug: about
+order: 5
 layout: pages/feature
 modifier: 'about'
 ---

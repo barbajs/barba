@@ -47,12 +47,11 @@
     document.documentElement.classList.add('js');
 
   </script>
-  <script src="/js/main.js"></script>
 </head>
 
 <body data-barba="wrapper">
   <%- partial('svg/sprite') %>
-  <div data-barba="container" data-barba-namespace="<%- page.namespace %>">
+  <div data-barba="container" data-barba-namespace="<%- page.namespace || 'home' %>">
 
     <%- partial('components/chrome/header') %>
 
@@ -68,7 +67,7 @@
     <%- partial('components/chrome/footer') %>
 
   </div>
-
+  <script src="/js/main.js"></script>
 </body>
 
 </html>
