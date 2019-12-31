@@ -1,16 +1,27 @@
-import kapla from '../kaplaInstance';
+import {
+  getInstance,
+} from '../app';
 
 import {
-  TweenMax,
-  TimelineMax
+  TimelineMax,
 } from 'gsap/TweenMax';
 
 import NAMESPACES_ORDER from './featuresOrder';
 
+
+
 // Return true for forward, false for backwards
-function isForward(fromNamespace, toNamespace) {
-  const oldIndex = NAMESPACES_ORDER.indexOf(fromNamespace);
-  const newIndex = NAMESPACES_ORDER.indexOf(toNamespace);
+
+/**
+ * Get namespace from pages
+ *
+ * @param {int} currentFeatureOrder page namepspace
+ * @param {int} nextFeatureOrder page namepspace
+ * @returns {string} Page namespace
+ */
+function isForward(currentFeatureOrder, nextFeatureOrder) {
+  const oldIndex = Number(currentFeatureOrder);
+  const newIndex = Number(nextFeatureOrder);
 
   // From last to first
   if (oldIndex === NAMESPACES_ORDER.length - 1 && newIndex === 0) {
@@ -33,86 +44,104 @@ export default {
     route: 'feature',
   },
 
-  sync: true,
-
   leave({
     current,
-    next
+    next,
   }) {
-    return new Promise(resolve => {
+    return new Promise(async resolve => {
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
       const {
-        container
+        container,
       } = current;
-      const goingForward = isForward(current.namespace, next.namespace);
+      const currentFeatureSlug = container.querySelector('.feature').dataset.featureSlug;
+      const currentFeatureOrder = container.querySelector('.feature').dataset.featureOrder;
+      const nextFeatureOrder = next.container.querySelector('.feature').dataset.featureOrder;
+      const goingForward = isForward(currentFeatureOrder, nextFeatureOrder);
+      const featureContainer = container.querySelector('.feature__container');
+      const featureBox = container.querySelector('.feature__box');
+      const featureInstance = getInstance(container, 'feature');
 
-      // Logo (remove big letter)
-      const featureComponent = container.querySelector('[data-component="feature"]');
-      const featureContainer = featureComponent.querySelector('.feature__container');
-      const featureBox = featureComponent.querySelector('.feature__box');
-      // const shapes = data.next.container.querySelector('.logo .big');
-      const logo = container.querySelector('.logo.only-big');
+      const logo = container.querySelector('.logo');
+      const logoShapes = container.querySelector('.logo.only-big');
 
-      const featureInstance = kapla.instanceByElement(featureComponent);
+      const nextLogo = next.container.querySelector('.logo');
+      const nextLogoShapes = next.container.querySelector('.logo.only-big');
 
-      featureInstance.animateOut();
-
+      if (currentFeatureSlug !== 'about') {
+        await featureInstance.animateOut();
+      }
       container.querySelector('.menu-trigger').style.opacity = '0';
 
-      const tl = new TimelineMax({
-        onComplete: () => {
-          resolve();
-        },
-      });
+      resolve();
+      const tl = new TimelineMax();
 
-      tl.to(featureContainer, 1.8, {
-        x: goingForward ? -window.innerWidth : window.innerWidth,
-        rotationY: goingForward ? '45deg' : '-45deg',
+      featureBox && tl.to(featureBox, 1, {
+        x: goingForward ? -window.innerWidth * 0.3 : window.innerWidth * 0.3,
         ease: 'Power4.easeInOut',
       }, 0);
 
-      featureBox && tl.to(featureBox, 1.8, {
-        x: goingForward ? (-window.innerWidth * 0.3) : (window.innerWidth * 0.3),
-        ease: 'Power4.easeInOut',
-      }, 0);
-
-      tl.to(logo, 1.5, {
-        opacity: 0,
-        ease: 'Power4.easeInOut',
-      }, 0);
+      tl
+        .to(featureContainer, 1.5, {
+          x: goingForward ? -window.innerWidth : window.innerWidth,
+          rotationY: goingForward ? '45deg' : '-45deg',
+          ease: 'Power4.easeInOut',
+        }, 0)
+        .to(logoShapes, 1, {
+          opacity: 0,
+          ease: 'Power4.easeInOut',
+        }, 0)
+        .to(logo, 0.5, {
+          opacity: 0,
+          ease: 'Power4.easeInOut',
+        }, 0)
+        .from(nextLogoShapes, 1, {
+          opacity: 0,
+          ease: 'Power4.easeOut',
+        }, 0)
+        .from(nextLogo, 0.5, {
+          opacity: 0,
+          ease: 'Power4.easeOut',
+        }, 0);
     });
   },
 
-  enter(data) {
+  enter({
+    current,
+    next,
+  }) {
     return new Promise(resolve => {
-      const goingForward = isForward(data.current.namespace, data.next.namespace);
-      const container = data.next.container.querySelector('.feature__container');
-      const box = data.next.container.querySelector('.feature__box');
-      // const shapes = data.next.container.querySelector('.logo .big');
-      const logo = data.next.container.querySelector('.logo.only-big');
+      const {
+        container,
+      } = next;
+      const nextFeatureSlug = container.querySelector('.feature').dataset.featureSlug;
+      const currentFeatureOrder = current.container.querySelector('.feature').dataset.featureOrder;
+      const nextFeatureOrder = container.querySelector('.feature').dataset.featureOrder;
+      const goingForward = isForward(currentFeatureOrder, nextFeatureOrder);
+      const featureContainer = container.querySelector('.feature__container');
+      const featureBox = container.querySelector('.feature__box');
+      const featureInstance = getInstance(container, 'feature');
 
       const tl = new TimelineMax({
         onComplete: () => {
           resolve();
+          if (nextFeatureSlug !== 'about') {
+            featureInstance.animateIn();
+          }
         },
       });
 
-      tl.from(container, 1.8, {
-        x: goingForward ? window.innerWidth : -window.innerWidth,
-        rotationY: goingForward ? '-45deg' : '45deg',
-        ease: 'Power4.easeInOut',
-      }, 0);
-
-      box && tl.from(box, 2, {
+      featureBox && tl.from(featureBox, 2, {
         x: goingForward ? window.innerWidth * 0.5 : -window.innerWidth * 0.5,
-        ease: 'Power4.easeInOut',
-      }, 0);
+        ease: 'Power4.easeOut',
+      }, 0.5);
 
-      tl.from(logo, 1.5, {
-        opacity: 0,
-        ease: 'Power4.easeInOut',
-      }, 0);
+      tl
+        .from(featureContainer, 1.8, {
+          x: goingForward ? window.innerWidth : -window.innerWidth,
+          rotationY: goingForward ? '-45deg' : '45deg',
+          ease: 'Power4.easeOut',
+        }, 0.5);
     });
   },
 };

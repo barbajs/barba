@@ -1,5 +1,5 @@
 export default {
-  from: {
+  to: {
     namespace: 'home',
   },
 

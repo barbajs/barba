@@ -1,7 +1,8 @@
 ---
 title: B/Prefetch
-namespace: prefetch
-feature: 4
+namespace: feature
+slug: prefetch
+order: 4
 layout: pages/feature
 modifier: 'prefetch'
 box: 'prefetch.ejs'

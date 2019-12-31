@@ -1,6 +1,7 @@
 ---
 title: About
 namespace: page--about
+slug: about
 layout: pages/page
 ---
 

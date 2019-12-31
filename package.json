@@ -12,10 +12,10 @@
     "svg": "svg-sprite --config svg-sprite.config.json 'themes/barba/source/svg/./**/*.svg'"
   },
   "dependencies": {
-    "@barba/core": "^2.3.12",
-    "@barba/css": "^2.1.9",
-    "@barba/prefetch": "^2.1.5",
-    "@barba/router": "^2.1.4",
+    "@barba/core": "^2.9.6",
+    "@barba/css": "^2.1.15",
+    "@barba/prefetch": "^2.1.10",
+    "@barba/router": "^2.1.10",
     "@google-cloud/storage": "^2.5.0",
     "firebase": "^6.2.4",
     "firebase-functions": "^3.0.2",

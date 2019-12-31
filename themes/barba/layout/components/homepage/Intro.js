@@ -57,16 +57,16 @@ export default class extends Component {
     document.documentElement.classList.add('transitioning');
 
     const tl = new TimelineMax({
-      delay: .5,
+      delay: 0.5,
       onComplete: () => {
         document.documentElement.classList.remove('transitioning');
-      }
+      },
     });
 
-    tl.from(logo, .5, {
+    tl.from(logo, 0.5, {
       y: 100,
       scale: 1.1,
-      ease: 'Power4.easeInOut'
+      ease: 'Power4.easeInOut',
     }, 0);
 
     // tl.staggerFrom(logoItems, 1, {
@@ -78,18 +78,18 @@ export default class extends Component {
     tl.staggerFrom(title, 1, {
       yPercent: 100,
       scale: 1,
-      ease: 'Power4.easeOut'
-    }, 0.05, .6);
+      ease: 'Power4.easeOut',
+    }, 0.05, 0.6);
 
     tl.staggerFrom(buttons, 1, {
       y: 40,
       opacity: 0,
-      ease: 'Power4.easeOut'
+      ease: 'Power4.easeOut',
     }, 0.05, 1.2);
 
-    tl.staggerFrom(chrome, 1, {
+    tl.staggerFrom(chrome, 0.3, {
       scale: 0,
-      ease: Elastic.easeOut.config(1, 0.3),
+      ease: 'Power4.easeOut',
     }, 0.2, 1.5);
   }
 

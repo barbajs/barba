@@ -1,7 +1,8 @@
 ---
 title: Dependency Free
-namespace: dependency-free
-feature: 0
+namespace: feature
+slug: dependency-free
+order: 0
 layout: pages/feature
 modifier: 'dep'
 box: 'dependency-free.ejs'

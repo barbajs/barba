@@ -1,6 +1,11 @@
 import {
-  TimelineMax, TweenMax,
+  TimelineMax,
+  TweenMax,
 } from 'gsap/all';
+
+import {
+  getInstance,
+} from '../app';
 
 import {
   qs,
@@ -19,22 +24,29 @@ export default {
     route: 'feature',
   },
 
-  leave(data) {
+  leave({
+    current,
+    next,
+  }) {
     return new Promise(resolve => {
-      const intro = data.current.container.querySelector('.intro');
-      const oldLogo = data.current.container.querySelector('.logo.home-logo');
-      const newLogo = data.next.container.querySelector('.logo.featured');
-      const title = data.current.container.querySelectorAll('h1 span');
-      const buttons = data.current.container.querySelectorAll('.intro__buttons a');
-      const list = data.current.container.querySelector('.intro__list');
-      const hoverIndex = NAMESPACES_ORDER.indexOf(data.next.namespace);
-      const bigShape = data.current.container.querySelectorAll('.logo.only-big .hover .item')[hoverIndex];
-      const oldBigShape = data.current.container.querySelector('.logo.only-big');
-      const newBigShape = data.next.container.querySelector('.logo.only-big');
+      const intro = current.container.querySelector('.intro');
+      const oldLogo = current.container.querySelector('.logo.home-logo');
+      const newLogo = next.container.querySelector('.logo.featured');
+      const title = current.container.querySelectorAll('h1 span');
+      const buttons = current.container.querySelectorAll('.intro__buttons a');
+      const list = current.container.querySelector('.intro__list');
+      const {
+        featureSlug,
+      } = next.container.querySelector('.feature').dataset;
+      const hoverIndex = NAMESPACES_ORDER.indexOf(featureSlug);
+      const bigShape = current.container.querySelectorAll('.logo.only-big .hover .item')[hoverIndex];
+      const oldBigShape = current.container.querySelector('.logo.only-big');
+      const newBigShape = next.container.querySelector('.logo.only-big');
+
 
       newBigShape.classList.remove('can-move');
 
-      data.current.container.style.zIndex = -1;
+      current.container.style.zIndex = -1;
 
       oldLogo.querySelector('svg').classList.add('fillgray');
 
@@ -43,7 +55,7 @@ export default {
       const oldBigShapeRect = oldBigShape.getBoundingClientRect();
       const newBigShapeRect = newBigShape.getBoundingClientRect();
 
-      data.current.container.querySelector('.menu-trigger').style.opacity = '0';
+      current.container.querySelector('.menu-trigger').style.opacity = '0';
       intro.classList.add('to-feature');
 
       const tl = new TimelineMax({
@@ -103,38 +115,43 @@ export default {
     });
   },
 
-  enter(data) {
+  enter({
+    next,
+  }) {
     return new Promise(resolve => {
-      const newLogo = data.next.container.querySelector('.logo.featured');
-      const container = data.next.container.querySelector('.feature__container');
-      const navigation = data.next.container.querySelectorAll('.feature__nav__el');
+      const {
+        container,
+      } = next;
+      const newLogo = container.querySelector('.logo.featured');
+      const featureContainer = container.querySelector('.feature__container');
+      const navigation = container.querySelectorAll('.feature__nav__el');
 
       const tl = new TimelineMax({
         delay: 1.3,
         onComplete: () => {
+          getInstance(next.container, 'feature').animateIn();
           resolve();
-        }
+        },
       });
 
       tl.from(newLogo, 1, {
         opacity: 0,
       }, 0);
 
-      tl.from(container, 1, {
+      tl.from(featureContainer, 1, {
         opacity: 0,
         y: 200,
         ease: 'Power4.easeOut',
-        rotationX: '20deg'
+        rotationX: '20deg',
       }, 0);
 
-      tl.staggerFrom(navigation, .4, {
+      tl.staggerFrom(navigation, 0.4, {
         opacity: 0,
         y: 30,
-        ease: 'Power4.easeOut'
+        ease: 'Power4.easeOut',
       }, 0.2, 0.8);
-
     });
-  }
+  },
 
 };
 

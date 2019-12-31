@@ -1,12 +1,16 @@
 .feature {
   @include get-all-space;
-  // overflow: hidden;
-  overflow: auto;
+  display: block;
+  overflow: hidden;
   padding: 16rem 4rem 6rem;
   perspective: 1000px;
 
   @include mq(m) {
     padding: 4rem;
+  }
+
+  &[data-feature-slug='about'] {
+    overflow: auto;
   }
 }
 
@@ -16,6 +20,7 @@
   right: 0;
   left: 0;
   transform: translateY(-50%);
+  opacity: 0.8;
 
   svg {
     display: block;
@@ -34,38 +39,38 @@
 }
 
 .colored {
-  [data-barba-namespace='dependency-free'] & {
+  [data-feature-slug='dependency-free'] & {
     color: $c-menu-dependency-free;
   }
 
-  [data-barba-namespace='small-size'] & {
+  [data-feature-slug='small-size'] & {
     color: $c-menu-small-size;
   }
 
-  [data-barba-namespace='core'] & {
+  [data-feature-slug='core'] & {
     color: $c-menu-core;
   }
 
-  [data-barba-namespace='router'] & {
+  [data-feature-slug='router'] & {
     color: $c-menu-router;
   }
 
-  [data-barba-namespace='prefetch'] & {
+  [data-feature-slug='prefetch'] & {
     color: $c-menu-prefetch;
   }
 
-  [data-barba-namespace='about'] & {
+  [data-feature-slug='about'] & {
     color: $c-menu-about;
   }
 }
 
 .feature__container {
+  position: relative;
   display: flex;
   flex-direction: column;
   max-width: 700px;
   height: 100%;
   margin: 0 auto;
-  // will-change: transform;
 
   p {
     font-size: 1.4rem;
@@ -78,8 +83,6 @@
   }
 
   @include mq(s) {
-    // align-items: center;
-    // margin-top: 10rem;
     padding-top: 10rem;
   }
 }
@@ -98,33 +101,34 @@
 
 .feature__bodymovin {
   @include get-all-space;
+  @include center-xy;
   z-index: -1;
-  top: 0;
-  right: 0;
-  left: 0;
-  // overflow: hidden;
-  // width: 100vw;
-  // height: auto;
+  width: 100vw;
 }
 
 .feature__box {
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  max-width: 85vw;
   box-shadow: 0 1px 15px rgba($gray-light, 0.3);
   background: rgba($white, 0.8);
   border-radius: 10px;
+
 
   &>div {
     padding: 2rem;
   }
 
-  @include mq(s) {
-    top: 15rem;
-    max-width: 70vw;
-  }
-
   @include mq(l) {
+    top: initial;
+    bottom: 5rem;
     width: 70rem;
   }
+
+  @include mq(xxxl) {
+    bottom: 10rem;
+  }
+
 }
 
 .feature__box__body {
@@ -192,5 +196,33 @@
 }
 
 .credits-table {
+  tr {
+    display: inline;
+  }
 
+  td,
+  th {
+    position: relative;
+
+    float: left;
+    width: 33%;
+    margin: 2rem 0;
+    padding: 0;
+
+    @include mq(m) {
+      width: 25%;
+    }
+  }
+
+  td>sup {
+    display: none;
+  }
+
+  img {
+    // @include image-fit(cover);
+  }
+
+  a {
+    color: $c-menu-about;
+  }
 }

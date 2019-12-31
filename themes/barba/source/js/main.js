@@ -2,7 +2,7 @@ import barba from '@barba/core';
 import {
   autoLoad,
 } from 'kapla';
-import kapla from './kaplaInstance';
+import kapla from './app';
 
 // DEV
 import router from '@barba/router';
@@ -18,6 +18,7 @@ import pageToPage from './transitions/pageToPage';
 import pageToHome from './transitions/pageToHome';
 import pageToFeature from './transitions/pageToFeature';
 import onceHome from './transitions/onceHome';
+import onceFeature from './transitions/onceFeature';
 import docToDoc from './transitions/docToDoc';
 // import Home from './views/Home';
 
@@ -30,15 +31,15 @@ import {
 } from './events';
 
 /*
- * App Class
+ * Main Class
  */
-class App {
+class Main {
   static start() {
-    return new App();
+    return new Main();
   }
 
   constructor() {
-    Promise.all([App.domReady()]).then(this.init.bind(this));
+    Promise.all([Main.domReady()]).then(this.init.bind(this));
   }
 
   static domReady() {
@@ -78,6 +79,7 @@ class App {
           // pageToPage,
           docToDoc,
           onceHome,
+          onceFeature,
         ],
       });
 
@@ -110,8 +112,8 @@ class App {
       console.error(err);
     }
 
-    App.showPage();
+    Main.showPage();
   }
 }
 
-App.start();
+Main.start();

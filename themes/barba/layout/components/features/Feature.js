@@ -10,57 +10,66 @@ import feature2 from './box-content/feature2.json';
 import feature3 from './box-content/feature3.json';
 import feature4 from './box-content/feature4.json';
 
+const bodymovins = [{
+    data: feature0,
+    step: 158,
+  },
+  {
+    data: feature1,
+    step: 140,
+  },
+  {
+    data: feature2,
+    step: 100,
+  },
+  {
+    data: feature3,
+    step: 140,
+  },
+  {
+    data: feature4,
+    step: 110,
+  },
+];
+
 export default class extends Component {
   load() {
-    const bodymovins = [
-      feature0,
-      feature1,
-      feature2,
-      feature3,
-      feature4,
-    ];
     const featureOrder = this.data.get('order');
-    // const featureNamespace = this.$el.dataset.namespace;
 
-    lottie.loadAnimation({
+    this.bodymovin = bodymovins[featureOrder];
+
+    if (!this.bodymovin) {
+      return;
+    }
+    this.animation = lottie.loadAnimation({
       container: this.$refs.bodymovin,
       renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      animationData: bodymovins[featureOrder],
+      loop: false,
+      autoplay: false,
+      animationData: this.bodymovin.data,
     });
-
-    // const bodymovins = {
-    //   'dependency-free': prefetch,
-    //   'small-size': prefetch,
-    //   'core': prefetch,
-    //   'router': prefetch,
-    //   'prefetch': prefetch,
-    // };
-
-    // const bodymovinsKeys = Object.keys(bodymovins);
-
-    // bodymovinsKeys.forEach(key => {
-    //   if (key === featureNamespace && bodymovins[key].layers) {
-    //     lottie.loadAnimation({
-    //       container: this.$refs.bodymovin,
-    //       renderer: 'svg',
-    //       loop: true,
-    //       autoplay: true,
-    //       animationData: bodymovins[key],
-    //     });
-    //   }
-    // });
   }
 
   animateOut() {
     return new Promise(resolve => {
-      console.log('animateStart');
-      setTimeout(() => {
-        console.log('animateEnd');
+      this.animation.playSegments([this.bodymovin.step, this.animation.animationData.op], true);
+      this.animation.onComplete = () => {
         resolve();
-      }, 1000);
+      };
+    });
+  }
 
-    })
+  animateIn() {
+    return new Promise(resolve => {
+      console.log('animateInStart');
+      if (this.animation) {
+
+        this.animation.playSegments([0, this.bodymovin.step], true);
+        setTimeout(() => {
+          console.log('animateInEnd');
+          resolve();
+        }, 1000);
+      }
+    });
   }
 }

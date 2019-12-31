@@ -51,7 +51,7 @@
 
 <body data-barba="wrapper">
   <%- partial('svg/sprite') %>
-  <div data-barba="container" data-barba-namespace="<%- page.namespace %>">
+  <div data-barba="container" data-barba-namespace="<%- page.namespace || 'home' %>">
 
     <%- partial('components/chrome/header') %>
 
