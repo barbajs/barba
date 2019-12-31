@@ -24,7 +24,7 @@
 
   svg {
     display: block;
-    max-width: 568px;
+    max-width: 56.8rem;
     margin: 0 auto;
 
     .base,
@@ -88,6 +88,7 @@
 }
 
 .feature__title {
+  margin: 0;
   font-family: 'Space Mono';
   font-size: 3.2rem;
   font-weight: 400;
@@ -110,10 +111,9 @@
   position: absolute;
   bottom: 0;
   max-width: 85vw;
-  box-shadow: 0 1px 15px rgba($gray-light, 0.3);
+  box-shadow: 0 14px 30px rgba($gray-light, 0.3);
   background: rgba($white, 0.8);
   border-radius: 10px;
-
 
   &>div {
     padding: 2rem;
@@ -121,14 +121,13 @@
 
   @include mq(l) {
     top: initial;
-    bottom: 5rem;
+    bottom: 1rem;
     width: 70rem;
   }
 
   @include mq(xxxl) {
     bottom: 10rem;
   }
-
 }
 
 .feature__box__body {
@@ -155,6 +154,25 @@
   }
 }
 
+.feature__box__column__icon,
+[class*='feature__box__column__icon--'] {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  margin: 0 0 1rem;
+
+  &[class*='big'] {
+    width: 15rem;
+    height: 11rem;
+  }
+
+  &[class*='png'] {
+    width: 60%;
+    height: 60%;
+    margin: 0 auto;
+  }
+}
+
 .feature__box__body__title {
   margin: 0;
   font-family: 'Space Mono';
@@ -166,6 +184,7 @@
 .feature__box__body__text {
   margin: 0 0 1rem;
   font-size: 2rem;
+  line-height: 2.8rem !important; //sass-lint:disable-line no-important
 }
 
 .feature__box__footer {
@@ -216,10 +235,6 @@
 
   td>sup {
     display: none;
-  }
-
-  img {
-    // @include image-fit(cover);
   }
 
   a {

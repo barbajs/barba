@@ -6,10 +6,6 @@ import {
   TimelineMax,
 } from 'gsap/TweenMax';
 
-import NAMESPACES_ORDER from './featuresOrder';
-
-
-
 // Return true for forward, false for backwards
 
 /**
@@ -22,18 +18,22 @@ import NAMESPACES_ORDER from './featuresOrder';
 function isForward(currentFeatureOrder, nextFeatureOrder) {
   const oldIndex = Number(currentFeatureOrder);
   const newIndex = Number(nextFeatureOrder);
+  const featureNav = document.querySelector('.menu-subpages__list');
+  const featureLength = featureNav.children.length;
+
+  console.log(featureLength);
 
   // From last to first
-  if (oldIndex === NAMESPACES_ORDER.length - 1 && newIndex === 0) {
+  if (oldIndex === featureLength - 1 && newIndex === 0) {
     return true;
   }
 
   // From first to last
-  if (oldIndex === 0 && newIndex === NAMESPACES_ORDER.length - 1) {
+  if (oldIndex === 0 && newIndex === featureLength - 1) {
     return false;
   }
 
-  return oldIndex < newIndex ? true : false;
+  return oldIndex < newIndex;
 }
 
 export default {
@@ -125,22 +125,24 @@ export default {
       const tl = new TimelineMax({
         onComplete: () => {
           resolve();
-          if (nextFeatureSlug !== 'about') {
-            featureInstance.animateIn();
-          }
         },
       });
 
-      featureBox && tl.from(featureBox, 2, {
+      featureBox && tl.from(featureBox, 1.5, {
         x: goingForward ? window.innerWidth * 0.5 : -window.innerWidth * 0.5,
         ease: 'Power4.easeOut',
-      }, 0.5);
+      }, 1);
 
       tl
-        .from(featureContainer, 1.8, {
+        .from(featureContainer, 1.5, {
           x: goingForward ? window.innerWidth : -window.innerWidth,
           rotationY: goingForward ? '-45deg' : '45deg',
           ease: 'Power4.easeOut',
+          onComplete: () => {
+            if (nextFeatureSlug !== 'about') {
+              featureInstance.animateIn();
+            }
+          },
         }, 0.5);
     });
   },

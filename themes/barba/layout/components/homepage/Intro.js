@@ -7,7 +7,6 @@ import {
 import {
   TweenMax,
   TimelineMax,
-  Elastic,
 } from 'gsap/all';
 
 import {

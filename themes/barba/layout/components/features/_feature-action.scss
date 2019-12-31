@@ -1,19 +1,19 @@
 .feature__action,
 [class*='feature__action--'] {
   display: flex;
-  padding: 10px 14px;
-  border-radius: 50px;
   align-items: center;
+  padding: 1rem 1.4rem;
+  border-radius: 5rem;
 
   svg {
-    stroke: none;
-    fill: white;
     width: 15px;
     height: 15px;
-    margin-left: 10px;
+    margin-left: 1rem;
+    stroke: none;
+    fill: $white;
   }
 
-  [data-barba-namespace='dependency-free'] & {
+  [data-feature-slug='dependency-free'] & {
     background-color: $c-menu-dependency-free-light;
 
     svg {
@@ -22,7 +22,7 @@
     }
   }
 
-  [data-barba-namespace='small-size'] & {
+  [data-feature-slug='small-size'] & {
     background-color: $c-menu-small-size-light;
 
     svg {
@@ -31,7 +31,7 @@
     }
   }
 
-  [data-barba-namespace='core'] & {
+  [data-feature-slug='core'] & {
     background-color: $c-menu-core-light;
 
     svg {
@@ -40,7 +40,7 @@
     }
   }
 
-  [data-barba-namespace='router'] & {
+  [data-feature-slug='router'] & {
     background-color: $c-menu-router-light;
 
     svg {
@@ -49,7 +49,7 @@
     }
   }
 
-  [data-barba-namespace='prefetch'] & {
+  [data-feature-slug='prefetch'] & {
     background-color: $c-menu-prefetch-light;
 
     svg {
