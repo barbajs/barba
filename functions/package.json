@@ -16,13 +16,13 @@
     "@slack/client": "^5.0.1",
     "@slack/webhook": "^5.0.0",
     "cors": "^2.8.5",
-    "firebase-admin": "^7.0.0",
-    "firebase-functions": "^2.3.0",
+    "firebase-admin": "^8.9.0",
+    "firebase-functions": "^3.3.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
   },
   "devDependencies": {
-    "eslint": "^5.12.0",
+    "eslint": "^6.8.0",
     "eslint-plugin-promise": "^4.0.1",
     "firebase-functions-test": "^0.1.6"
   },
