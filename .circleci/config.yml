@@ -56,7 +56,7 @@ jobs:
           name: Deploy website to gh-pages branch
           command: ./node_modules/.bin/gh-pages -d dist -m 'Deploy website [ci skip]'
 workflows:
-version: 2
+  version: 2
   build_and_deploy:
     jobs:
       - build:
