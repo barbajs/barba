@@ -3,7 +3,7 @@ version: 2
 defaults: &defaults
   working_directory: ~/repo
   docker:
-    - image: circleci/node:latest-browsers
+    - image: circleci/node:lts
 
 jobs:
   build:
