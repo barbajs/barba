@@ -36,7 +36,7 @@ jobs:
       - persist_to_workspace:
           root: ~/repo
           paths:
-            - node_modules
+            - dist
   deploy:
     <<: *defaults
     steps:
