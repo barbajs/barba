@@ -1,19 +1,17 @@
 <!doctype html>
 <html>
-
-
 <head>
   <title><%= config.title %></title>
   <meta name="description" content="<%= config.description %>" />
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png?rev=1">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png?rev=1">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png?rev=1">
-  <link rel="manifest" href="/favicons/site.webmanifest?rev=1">
-  <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg?rev=1" color="#5bbad5">
-  <link rel="shortcut icon" href="/favicons/favicon.ico?rev=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="<%= config.url %>/favicons/apple-touch-icon.png?rev=1">
+  <link rel="icon" type="image/png" sizes="32x32" href="<%= config.url %>/favicons/favicon-32x32.png?rev=1">
+  <link rel="icon" type="image/png" sizes="16x16" href="<%= config.url %>/favicons/favicon-16x16.png?rev=1">
+  <link rel="manifest" href="<%= config.url %>/favicons/site.webmanifest?rev=1">
+  <link rel="mask-icon" href="<%= config.url %>/favicons/safari-pinned-tab.svg?rev=1" color="#5bbad5">
+  <link rel="shortcut icon" href="<%= config.url %>/favicons/favicon.ico?rev=1">
   <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-config" content="/favicons/browserconfig.xml?rev=1">
+  <meta name="msapplication-config" content="<%= config.url %>/favicons/browserconfig.xml?rev=1">
   <meta name="theme-color" content="#ffffff">
 
   <meta property="og:type" content="website" />
@@ -34,7 +32,7 @@
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <link rel="stylesheet" href="/scss/main.css" type="text/css" media="all">
+  <link rel="stylesheet" href="<%= config.url %>/scss/main.css" type="text/css" media="all">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script>
     window.barbaMenu = {
@@ -67,7 +65,7 @@
     <%- partial('components/chrome/footer') %>
 
   </div>
-  <script src="/js/main.js"></script>
+  <script src="<%= config.url %>/js/main.js"></script>
 </body>
 
 </html>
