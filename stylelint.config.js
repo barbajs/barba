@@ -1,5 +1,6 @@
 /* eslint-disable */
 const kebab = '^([a-z][a-z0-9]*)(-[a-z0-9]+)*$'
+const bem = '^[a-z][a-z0-9]*[-_a-z0-9]*[a-z0-9]+$'
 
 /**
  * Rules organisation
@@ -85,7 +86,7 @@ module.exports = {
     // Declaration block
     'declaration-block-single-line-max-declarations': 1,
     // Selector
-    'selector-class-pattern': kebab,
+    'selector-class-pattern': bem,
     'selector-id-pattern': kebab,
     'selector-max-attribute': 3,
     'selector-max-class': 4,
