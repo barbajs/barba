@@ -1,5 +1,5 @@
+<% if (!is_post()) { %>
 <li class="grid__item example__card">
-
   <a href="<%- post.watch_url %>" target="_blank" rel="noopener noreferrer">
     <h2 class="example__card__title"><%- post.name %></h2>
     <div class="example__card__picture">
@@ -47,3 +47,4 @@
 
   </div>
 </li>
+<%} %>
