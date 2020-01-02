@@ -1,0 +1,71 @@
+version: 2
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:latest-browsers
+
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - restore_cache:
+          name: Restore Node modules
+          keys:
+            - dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Hexo generate
+          command: yarn build
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - node_modules
+  deploy:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Install and configure dependencies
+          command: |
+            npm install gh-pages@2.0.1
+            git config user.email $GH_EMAIL
+            git config user.name $GH_NAME
+      - add_ssh_keys:
+          fingerprints:
+            - '2c:bd:91:1f:35:54:de:94:22:77:fc:3e:68:f9:6b:2f'
+      - run:
+          name: Deploy website to gh-pages branch
+          command: ./node_modules/.bin/gh-pages -d dist -m 'Deploy website [ci skip]'
+workflows:
+version: 2
+  build_and_deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: dev
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: dev
