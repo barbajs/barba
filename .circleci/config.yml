@@ -51,7 +51,7 @@ jobs:
             git config user.name $GH_NAME
       - add_ssh_keys:
           fingerprints:
-            - '2c:bd:91:1f:35:54:de:94:22:77:fc:3e:68:f9:6b:2f'
+            - 'b0:13:62:de:66:d2:a9:5b:0b:fb:5e:9e:b9:a7:3f:8a'
       - run:
           name: Deploy website to gh-pages branch
           command: ./node_modules/.bin/gh-pages -d dist -m 'Deploy website [ci skip]'
