@@ -1,72 +1,68 @@
-import barba from '@barba/core';
+import barba from '@barba/core'
 
-import {
-  Component,
-} from 'kapla';
+import { Component } from 'kapla'
 
-import {
-  TweenMax,
-  TimelineMax,
-} from 'gsap/all';
+import { TweenMax, TimelineMax } from 'gsap/all'
 
-import {
-  $on,
-  qsa,
-  qs,
-} from '../../../source/js/utils/dom';
+import { $on, qsa, qs } from '../../../source/js/utils/dom'
 
 export default class extends Component {
   load() {
-    this.$logoContainer = qs('.logo-container', this.$el);
-    this.$logoHover = qs('.logo.only-big', this.$el);
+    this.$logoContainer = qs('.logo-container', this.$el)
+    this.$logoHover = qs('.logo.only-big', this.$el)
 
-    this.$logo = qs('.home-logo.logo svg', this.$el);
-    this.$links = [...qsa('.home-logo.logo .links a', this.$el)];
-    this.$texts = [...qsa('.intro__list li', this.$el)];
-    this.$items = [...qsa('.only-big .hover .item', this.$el)];
-    this.$list = qs('.intro__list', this.$el);
+    this.$logo = qs('.home-logo.logo svg', this.$el)
+    this.$links = [...qsa('.home-logo.logo .links a', this.$el)]
+    this.$texts = [...qsa('.intro__list li', this.$el)]
+    this.$items = [...qsa('.only-big .hover .item', this.$el)]
+    this.$list = qs('.intro__list', this.$el)
 
-    this.mouseEnter = this.mouseEnter.bind(this);
-    this.mouseLeave = this.mouseLeave.bind(this);
+    this.mouseEnter = this.mouseEnter.bind(this)
+    this.mouseLeave = this.mouseLeave.bind(this)
 
     this.$links.forEach((link, index) => {
-      $on(link, 'mouseenter', () => this.mouseEnter(index));
-      $on(link, 'mouseleave', () => this.mouseLeave(index));
-    });
+      $on(link, 'mouseenter', () => this.mouseEnter(index))
+      $on(link, 'mouseleave', () => this.mouseLeave(index))
+    })
 
     // Play onboarding if it's the first page
     if (!barba.history.previous) {
-      this.boarding();
+      this.boarding()
     }
 
     // this.onResize();
   }
 
   boarding() {
-    const logo = qs('.logo.home-logo', this.$el);
-    const logoItems = qsa('.logo.home-logo .base-item', this.$el);
-    const title = qsa('h1 span', this.$el);
-    const buttons = qsa('.intro__buttons a', this.$el);
+    const logo = qs('.logo.home-logo', this.$el)
+    const logoItems = qsa('.logo.home-logo .base-item', this.$el)
+    const title = qsa('h1 span', this.$el)
+    const buttons = qsa('.intro__buttons a', this.$el)
     const chrome = [
       qs('.header__infos'),
       qs('.header__external-links'),
       qs('.site-footer'),
-    ];
+    ]
 
-    document.documentElement.classList.add('transitioning');
+    document.documentElement.classList.add('transitioning')
 
     const tl = new TimelineMax({
       delay: 0.5,
       onComplete: () => {
-        document.documentElement.classList.remove('transitioning');
+        document.documentElement.classList.remove('transitioning')
       },
-    });
+    })
 
-    tl.from(logo, 0.5, {
-      y: 100,
-      scale: 1.1,
-      ease: 'Power4.easeInOut',
-    }, 0);
+    tl.from(
+      logo,
+      0.5,
+      {
+        y: 100,
+        scale: 1.1,
+        ease: 'Power4.easeInOut',
+      },
+      0
+    )
 
     // tl.staggerFrom(logoItems, 1, {
     //   y: 100,
@@ -74,22 +70,40 @@ export default class extends Component {
     //   ease: 'Power4.easeInOut'
     // }, 0.02, 0);
 
-    tl.staggerFrom(title, 1, {
-      yPercent: 100,
-      scale: 1,
-      ease: 'Power4.easeOut',
-    }, 0.05, 0.6);
+    tl.staggerFrom(
+      title,
+      1,
+      {
+        yPercent: 100,
+        scale: 1,
+        ease: 'Power4.easeOut',
+      },
+      0.05,
+      0.6
+    )
 
-    tl.staggerFrom(buttons, 1, {
-      y: 40,
-      opacity: 0,
-      ease: 'Power4.easeOut',
-    }, 0.05, 1.2);
+    tl.staggerFrom(
+      buttons,
+      1,
+      {
+        y: 40,
+        opacity: 0,
+        ease: 'Power4.easeOut',
+      },
+      0.05,
+      1.2
+    )
 
-    tl.staggerFrom(chrome, 0.3, {
-      scale: 0,
-      ease: 'Power4.easeOut',
-    }, 0.2, 1.5);
+    tl.staggerFrom(
+      chrome,
+      0.3,
+      {
+        scale: 0,
+        ease: 'Power4.easeOut',
+      },
+      0.2,
+      1.5
+    )
   }
 
   // destroy() {
@@ -98,44 +112,44 @@ export default class extends Component {
   // }
 
   mouseEnter(index) {
-    this.$logo.classList.add('gray');
+    this.$logo.classList.add('gray')
 
-    TweenMax.killTweensOf(this.$texts[index]);
-    TweenMax.killTweensOf(this.$items[index]);
+    TweenMax.killTweensOf(this.$texts[index])
+    TweenMax.killTweensOf(this.$items[index])
 
     TweenMax.to(this.$items[index], 0.4, {
       opacity: 1,
-    });
+    })
 
     TweenMax.to(this.$texts[index], 0.2, {
       opacity: 1,
       scale: 1,
-    });
+    })
 
     TweenMax.to(this.$list, 0.4, {
       yPercent: -(index * 100),
       ease: 'Power4.easeOut',
-    });
+    })
   }
 
   mouseLeave(index) {
     if (barba.transitions.isRunning) {
-      return;
+      return
     }
 
-    this.$logo.classList.remove('gray');
+    this.$logo.classList.remove('gray')
 
-    TweenMax.killTweensOf(this.$texts[index]);
-    TweenMax.killTweensOf(this.$items[index]);
+    TweenMax.killTweensOf(this.$texts[index])
+    TweenMax.killTweensOf(this.$items[index])
 
     TweenMax.to(this.$items[index], 0.4, {
       opacity: 0,
-    });
+    })
 
     TweenMax.to(this.$texts[index], 0.2, {
       opacity: 0,
       scale: 0.9,
-    });
+    })
   }
 
   // onResize() {
@@ -147,7 +161,6 @@ export default class extends Component {
   //   this.$logoHover.style.bottom = `${bounds.bottom}px`;
   // }
 }
-
 
 // import {
 //   Component
@@ -261,7 +274,6 @@ export default class extends Component {
 //         },
 //         duration: 800,
 //       });
-
 
 //       var obj2 = {
 //         rotation: 0

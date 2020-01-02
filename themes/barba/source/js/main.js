@@ -1,55 +1,48 @@
-import barba from '@barba/core';
-import {
-  autoLoad,
-} from 'kapla';
-import kapla from './app';
+import barba from '@barba/core'
+import router from '@barba/router'
+import { autoLoad } from 'kapla'
+import kapla from './app'
 
+import routes from './transitions/routes'
+import defaultTransition from './transitions/default'
+import homeToFeature from './transitions/homeToFeature'
+import featureToFeature from './transitions/featureToFeature'
+import featureToHome from './transitions/featureToHome'
 // DEV
-import router from '@barba/router';
-
-import routes from './transitions/routes';
-import defaultTransition from './transitions/default';
-import homeToFeature from './transitions/homeToFeature';
-import homeToPage from './transitions/homeToPage';
-import featureToFeature from './transitions/featureToFeature';
-import featureToHome from './transitions/featureToHome';
-import featureToPage from './transitions/featureToPage';
-import pageToPage from './transitions/pageToPage';
-import pageToHome from './transitions/pageToHome';
-import pageToFeature from './transitions/pageToFeature';
-import onceHome from './transitions/onceHome';
-import onceFeature from './transitions/onceFeature';
-import docToDoc from './transitions/docToDoc';
+// import homeToPage from './transitions/homeToPage'
+// import featureToPage from './transitions/featureToPage'
+// import pageToPage from './transitions/pageToPage'
+// import pageToHome from './transitions/pageToHome'
+// import pageToFeature from './transitions/pageToFeature'
+import onceHome from './transitions/onceHome'
+import onceFeature from './transitions/onceFeature'
+import docToDoc from './transitions/docToDoc'
+// Views are not really needed with Kapla…
 // import Home from './views/Home';
 
 // Events
-import {
-  appear,
-  raf,
-  resize,
-  scroll,
-} from './events';
+import { appear, raf, resize, scroll } from './events'
 
 /*
  * Main Class
  */
 class Main {
   static start() {
-    return new Main();
+    return new Main()
   }
 
   constructor() {
-    Promise.all([Main.domReady()]).then(this.init.bind(this));
+    Promise.all([Main.domReady()]).then(this.init.bind(this))
   }
 
   static domReady() {
     return new Promise(resolve => {
-      document.addEventListener('DOMContentLoaded', resolve);
-    });
+      document.addEventListener('DOMContentLoaded', resolve)
+    })
   }
 
   static showPage() {
-    document.documentElement.classList.add('ready');
+    document.documentElement.classList.add('ready')
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -62,17 +55,17 @@ class Main {
       // DEV
       barba.use(router, {
         routes,
-      });
-
+      })
 
       barba.init({
         debug: true,
         transitions: [
           defaultTransition,
           homeToFeature,
-          // homeToPage,
           featureToFeature,
           featureToHome,
+          // DEV
+          // homeToPage,
           // featureToPage,
           // pageToHome,
           // pageToFeature,
@@ -81,39 +74,38 @@ class Main {
           onceHome,
           onceFeature,
         ],
-      });
+      })
 
       barba.hooks.before(() => {
-        document.documentElement.classList.add('transitioning');
-      });
+        document.documentElement.classList.add('transitioning')
+      })
 
       barba.hooks.after(() => {
-        document.documentElement.classList.remove('transitioning');
-      });
+        document.documentElement.classList.remove('transitioning')
+      })
 
       // Kapla
       const context = require.context(
         './../../layout/components',
         true,
         /\.js$/
-      );
-
+      )
 
       // 1. Register events
-      kapla.use('appear', appear);
-      kapla.use('raf', raf);
-      kapla.use('resize', resize);
-      kapla.use('scroll', scroll);
+      kapla.use('appear', appear)
+      kapla.use('raf', raf)
+      kapla.use('resize', resize)
+      kapla.use('scroll', scroll)
 
       // 2. Register components
       // Auto loading
-      kapla.load(autoLoad(context));
+      kapla.load(autoLoad(context))
     } catch (err) {
-      console.error(err);
+      console.error(err)
     }
 
-    Main.showPage();
+    Main.showPage()
   }
 }
 
-Main.start();
+Main.start()

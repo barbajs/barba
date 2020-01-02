@@ -1,7 +1,7 @@
-import { Component } from 'kapla';
-import db from '../../../source/js/connectionDB';
+import { Component } from 'kapla'
+import db from '../../../source/js/connectionDB'
 
-import template from 'ejs-compiled-loader!./showcase-item.ejs';
+import template from 'ejs-compiled-loader!./showcase-item.ejs'
 
 export default class extends Component {
   load() {
@@ -11,8 +11,8 @@ export default class extends Component {
       .get()
       .then(snapshot => {
         snapshot.docs.forEach(doc => {
-          this.$el.innerHTML += template(doc);
-        });
-      });
+          this.$el.innerHTML += template(doc)
+        })
+      })
   }
 }

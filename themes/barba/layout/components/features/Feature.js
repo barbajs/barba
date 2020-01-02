@@ -1,16 +1,15 @@
-import {
-  Component,
-} from 'kapla';
-import lottie from 'lottie-web';
+import { Component } from 'kapla'
+import lottie from 'lottie-web'
 
 // Bodymovin JSON files
-import feature0 from './lottie-animation/feature0.json';
-import feature1 from './lottie-animation/feature1.json';
-import feature2 from './lottie-animation/feature2.json';
-import feature3 from './lottie-animation/feature3.json';
-import feature4 from './lottie-animation/feature4.json';
+import feature0 from './lottie-animation/feature0.json'
+import feature1 from './lottie-animation/feature1.json'
+import feature2 from './lottie-animation/feature2.json'
+import feature3 from './lottie-animation/feature3.json'
+import feature4 from './lottie-animation/feature4.json'
 
-const bodymovins = [{
+const bodymovins = [
+  {
     data: feature0,
     step: 158,
   },
@@ -30,16 +29,16 @@ const bodymovins = [{
     data: feature4,
     step: 110,
   },
-];
+]
 
 export default class extends Component {
   load() {
-    const featureOrder = this.data.get('order');
+    const featureOrder = this.data.get('order')
 
-    this.bodymovin = bodymovins[featureOrder];
+    this.bodymovin = bodymovins[featureOrder]
 
     if (!this.bodymovin) {
-      return;
+      return
     }
     this.animation = lottie.loadAnimation({
       container: this.$refs.bodymovin,
@@ -47,33 +46,36 @@ export default class extends Component {
       loop: false,
       autoplay: false,
       animationData: this.bodymovin.data,
-    });
+    })
 
-    this.animation.setSpeed(1.25);
+    this.animation.setSpeed(1.25)
   }
 
   animateOut() {
     return new Promise(resolve => {
-      this.animation.playSegments([this.bodymovin.step, this.animation.animationData.op], true);
+      this.animation.playSegments(
+        [this.bodymovin.step, this.animation.animationData.op],
+        true
+      )
       setTimeout(() => {
-        resolve();
-      }, 1500);
+        resolve()
+      }, 1500)
       // this.animation.onComplete = () => {
       //   resolve();
       // };
-    });
+    })
   }
 
   animateIn() {
     return new Promise(resolve => {
-      console.log('animateInStart');
+      console.log('animateInStart')
       if (this.animation) {
-        this.animation.playSegments([0, this.bodymovin.step], true);
+        this.animation.playSegments([0, this.bodymovin.step], true)
         setTimeout(() => {
-          console.log('animateInEnd');
-          resolve();
-        }, 1000);
+          console.log('animateInEnd')
+          resolve()
+        }, 1000)
       }
-    });
+    })
   }
 }

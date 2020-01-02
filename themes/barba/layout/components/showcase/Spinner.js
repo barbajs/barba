@@ -1,5 +1,5 @@
-import { Component, ee } from 'kapla';
-import { Spinner } from 'spin.js';
+import { Component, ee } from 'kapla'
+import { Spinner } from 'spin.js'
 
 const opts = {
   lines: 5, // The number of lines to draw
@@ -19,24 +19,24 @@ const opts = {
   top: '50%', // Top position relative to parent
   left: '50%', // Left position relative to parent
   shadow: '0 0 1px transparent', // Box-shadow for the lines
-  position: 'absolute' // Element positioning
-};
+  position: 'absolute', // Element positioning
+}
 
 export default class LoaderSpinner extends Component {
   load() {
-    this.spinner = new Spinner(opts);
+    this.spinner = new Spinner(opts)
 
-    ee.on('spinner:start', this.start.bind(this));
-    ee.on('spinner:stop', this.stop.bind(this));
+    ee.on('spinner:start', this.start.bind(this))
+    ee.on('spinner:stop', this.stop.bind(this))
   }
 
   start() {
-    this.spinner.spin(this.$el);
-    this.$el.classList.add('is-active');
+    this.spinner.spin(this.$el)
+    this.$el.classList.add('is-active')
   }
 
   stop() {
-    this.spinner.stop();
-    this.$el.classList.remove('is-active');
+    this.spinner.stop()
+    this.$el.classList.remove('is-active')
   }
 }
