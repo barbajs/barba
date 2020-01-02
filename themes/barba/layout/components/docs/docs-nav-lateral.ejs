@@ -2,7 +2,7 @@
 <div class="docs__nav__lateral" data-component="docs-nav-lateral">
   <!-- Left Link -->
   <% if (page.prevpage) { %>
-  <a href="<%- page.prevpage.slug %>" class="docs__nav__lateral__link">
+  <a href="<%- theme.root %><%- page.prevpage.url %>" class="docs__nav__lateral__link">
     <%- partial('../common/icon', {
                   icon: 'barba-arrow-prev',
                   hidden: true,
@@ -21,7 +21,7 @@
   <!-- Center Menu (for mobile) [end]-->
 
   <!-- Rigth Link -->
-  <a href="<%- page.nextpage.slug %>" class="docs__nav__lateral__link">
+  <a href="<%- theme.root %><%- page.nextpage.url %>" class="docs__nav__lateral__link">
     <span class="docs__nav__lateral__label"><%- page.nextpage.label %></span>
     <%- partial('../common/icon', {
                   icon: 'barba-arrow-next',

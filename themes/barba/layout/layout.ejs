@@ -35,11 +35,10 @@
   <link rel="stylesheet" href="<%= config.url %>/scss/main.css" type="text/css" media="all">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script>
-    window.barbaMenu = {
-      array: JSON.parse('<%-JSON.stringify(theme.menu)%>'),
-    }
-    window.barbaDocs = {
-      array: JSON.parse('<%-JSON.stringify(theme.docs)%>'),
+    window.BARBA = {
+      root: '<%= theme.root%>',
+      menu: JSON.parse('<%-JSON.stringify(theme.menu)%>'),
+      docs: JSON.parse('<%-JSON.stringify(theme.docs)%>'),
     }
 
     document.documentElement.classList.add('js');

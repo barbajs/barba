@@ -12,7 +12,7 @@
         <!-- Page -->
         <% theme.menu.forEach(function(page) { %>
         <li class="menu__pages__item">
-          <a class="menu__pages__item__link <%- is_current(page.slug) ? 'is-active' : '' %>" href="<%- page.url %>">
+          <a class="menu__pages__item__link <%- is_current(page.slug) ? 'is-active' : '' %>" href="<%- theme.root %><%- page.url %>">
             <%- page.title %>
           </a>
 
@@ -24,7 +24,7 @@
               <!-- Subpage -->
               <% page.subpages.forEach(function(subpage) { %>
               <li class="menu-subpages__item <%- subpage.modifier %> <%- is_current(subpage.url) ? 'is-active' : '' %>">
-                <a class="menu-subpages__item__link" href="<%- subpage.url %>">
+                <a class="menu-subpages__item__link" href="<%- theme.root %><%- subpage.url %>">
                   <div class="menu-subpages__item__link__line">
                   </div>
                   <span class="menu-subpages__item__link__label">
@@ -50,7 +50,7 @@
 
     <!-- Menu Footer -->
     <div class="menu__footer">
-      <a class="menu__footer__download" href="/docs/getstarted/intro">
+      <a class="menu__footer__download" href="<%- theme.root %>/docs/getstarted/intro">
         Get started
       </a>
       <div class="menu__footer__extra menu-extra">

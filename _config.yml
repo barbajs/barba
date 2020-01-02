@@ -74,145 +74,145 @@ pagination_dir: page
 ## Menu Navigation
 menu:
   - title: 'Features'
-    url: '/features/dependency-free'
+    url: 'features/dependency-free'
     slug: '/features'
     subpages:
       - title: 'Dependency Free'
-        url: '/features/dependency-free'
+        url: 'features/dependency-free'
         modifier: 'dependency-free'
         prevpage:
           label: 'About'
-          slug: '/features/about/'
+          url: 'features/about/'
         nextpage:
           label: 'Small size'
-          slug: '/features/small-size/'
+          url: 'features/small-size/'
       - title: 'Small size'
-        url: '/features/small-size'
+        url: 'features/small-size'
         modifier: 'small-size'
         prevpage:
           label: 'Dependency Free'
-          slug: '/features/dependency-free/'
+          url: 'features/dependency-free/'
         nextpage:
           label: 'B/Core'
-          slug: '/features/core/'
+          url: 'features/core/'
       - title: 'B/Core'
-        url: '/features/core'
+        url: 'features/core'
         modifier: 'core'
         prevpage:
           label: 'Small size'
-          slug: '/features/small-size/'
+          url: 'features/small-size/'
         nextpage:
           label: 'B/Router'
-          slug: '/features/router/'
+          url: 'features/router/'
       - title: 'B/Router'
-        url: '/features/router'
+        url: 'features/router'
         modifier: 'router'
         prevpage:
           label: 'B/Core'
-          slug: '/features/core/'
+          url: 'features/core/'
         nextpage:
           label: 'B/Prefetch'
-          slug: '/features/prefetch/'
+          url: 'features/prefetch/'
       - title: 'B/Prefetch'
-        url: '/features/prefetch'
+        url: 'features/prefetch'
         modifier: 'prefetch'
         prevpage:
           label: 'B/Router'
-          slug: '/features/router/'
+          url: 'features/router/'
         nextpage:
           label: 'About'
-          slug: '/features/about/'
+          url: 'features/about/'
       - title: 'About'
-        url: '/features/about'
+        url: 'features/about'
         modifier: 'about'
         prevpage:
           label: 'B/Prefetch'
-          slug: '/features/prefetch/'
+          url: 'features/prefetch/'
         nextpage:
           label: 'Dependency Free'
-          slug: '/features/dependency-free/'
+          url: 'features/dependency-free/'
   # - title:  'About'
   #   url:    '/about'
   #   slug:   '/about'
   - title: 'Example'
-    url: '/example'
+    url: 'example'
     slug: '/example'
   - title: 'Showcase'
-    url: '/showcase'
+    url: 'showcase'
     slug: '/showcase'
   - title: 'Docs'
-    url: '/docs/getstarted/intro'
+    url: 'docs/getstarted/intro'
     slug: '/docs'
 
 ### Docs Navigation
 docs:
   - title: 'Get Started'
-    url: '/docs/getstarted/intro'
+    url: 'docs/getstarted/intro'
     path: '/docs/getstarted'
     nextpage:
       label: 'USER GUIDE'
-      slug: '/docs/userguide/markup'
+      url: 'docs/userguide/markup'
   - title: 'User Guide (Core)'
-    url: '/docs/userguide/markup'
+    url: 'docs/userguide/markup'
     path: '/docs/userguide'
     subpages:
       - title: 'Markup'
-        url: '/docs/userguide/markup'
+        url: 'docs/userguide/markup'
         prevpage:
           label: 'GET STARTED'
-          slug: '/docs/getstarted/intro'
+          url: 'docs/getstarted/intro'
         nextpage:
           label: 'Syntax'
-          slug: '/docs/userguide/syntax'
+          url: 'docs/userguide/syntax'
       - title: 'Syntax'
-        url: '/docs/userguide/syntax'
+        url: 'docs/userguide/syntax'
         prevpage:
           label: 'Markup'
-          slug: '/docs/userguide/markup'
+          url: 'docs/userguide/markup'
         nextpage:
           label: 'PLUGINS'
-          slug: '/docs/plugins/css'
+          url: 'docs/plugins/css'
   - title: 'Plugins'
     url: '/docs/plugins/css'
     path: '/docs/plugins'
     subpages:
       - title: 'Css'
-        url: '/docs/plugins/css'
+        url: 'docs/plugins/css'
         prevpage:
           label: 'USER GUIDE'
-          slug: '/docs/userguide/markup'
+          url: 'docs/userguide/markup'
         nextpage:
           label: 'Router'
-          slug: '/docs/plugins/router'
+          url: 'docs/plugins/router'
       - title: 'Router'
-        url: '/docs/plugins/router'
+        url: 'docs/plugins/router'
         prevpage:
           label: 'Css'
-          slug: '/docs/plugins/css'
+          url: 'docs/plugins/css'
         nextpage:
           label: 'Prefetch'
-          slug: '/docs/plugins/prefetch'
+          url: 'docs/plugins/prefetch'
       - title: 'Prefetch'
-        url: '/docs/plugins/prefetch'
+        url: 'docs/plugins/prefetch'
         prevpage:
           label: 'Router'
-          slug: '/docs/plugins/router'
+          url: 'docs/plugins/router'
         nextpage:
           label: 'Preset'
-          slug: '/docs/plugins/preset'
+          url: 'docs/plugins/preset'
       - title: 'Preset'
-        url: '/docs/plugins/preset'
+        url: 'docs/plugins/preset'
         prevpage:
           label: 'Prefetch'
-          slug: '/docs/plugins/prefetch'
+          url: 'docs/plugins/prefetch'
         nextpage:
           label: 'Head'
-          slug: '/docs/plugins/head'
+          url: 'docs/plugins/head'
       - title: 'Head'
-        url: '/docs/plugins/head'
+        url: 'docs/plugins/head'
         prevpage:
           label: 'Preset'
-          slug: '/docs/plugins/preset'
+          url: 'docs/plugins/preset'
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/

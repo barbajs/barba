@@ -1,39 +1,34 @@
 <ul class="feature__nav">
-
-  <% theme.menu.forEach(function(page) { %>
+<% theme.menu.forEach(function(page) { %>
   <% if (page.slug == '/features') { %>
   <% page.subpages.forEach(function(subpage) { %>
-  <% if (is_current(subpage.url)) { %>
-
-  <!-- Left link -->
-  <li class="feature__nav__el">
-    <a href="<%- subpage.prevpage.slug %>">
-      <%- partial('components/common/icon', {
-          icon: 'barba-arrow-prev',
-          hidden: true,
-          viewbox: '0 0 21 15',
-        }) %>
-      <span><%- subpage.prevpage.label %></span>
-    </a>
-  </li>
-  <!-- Left link [end]-->
-
-  <!-- Right link -->
-  <li class="feature__nav__el">
-    <a href="<%- subpage.nextpage.slug %>">
-      <span><%- subpage.nextpage.label %></span>
-      <%- partial('components/common/icon', {
-          icon: 'barba-arrow-next',
-          hidden: true,
-          viewbox: '0 0 21 15',
-        }) %>
-    </a>
-  </li>
-  <!-- Right link [end]-->
-
-  <% } %>
+    <% if (is_current(subpage.url)) { %>
+      <!-- Left link -->
+      <li class="feature__nav__el">
+        <a href="<%- theme.root %><%- subpage.prevpage.url %>">
+          <%- partial('components/common/icon', {
+              icon: 'barba-arrow-prev',
+              hidden: true,
+              viewbox: '0 0 21 15',
+            }) %>
+          <span><%- subpage.prevpage.label %></span>
+        </a>
+      </li>
+      <!-- Left link [end]-->
+      <!-- Right link -->
+      <li class="feature__nav__el">
+        <a href="<%- theme.root %><%- subpage.nextpage.url %>">
+          <span><%- subpage.nextpage.label %></span>
+          <%- partial('components/common/icon', {
+              icon: 'barba-arrow-next',
+              hidden: true,
+              viewbox: '0 0 21 15',
+            }) %>
+        </a>
+      </li>
+      <!-- Right link [end]-->
+    <% } %>
   <% }); %>
   <% } %>
-  <% }); %>
-
+<% }); %>
 </ul>

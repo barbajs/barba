@@ -1,0 +1,5 @@
+# Hexo Local Configuration
+## Docs: https://hexo.io/docs/configuration.html#Using-an-Alternate-Config
+
+url: http://localhost:4000
+root: /

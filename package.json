@@ -6,9 +6,9 @@
     "version": "4.2.0"
   },
   "scripts": {
-    "build": "yarn svg && hexo generate",
+    "build": "yarn clean && yarn svg && hexo generate",
     "clean": "hexo clean",
-    "start": "yarn svg && hexo server",
+    "start": "yarn clean && yarn svg && hexo server --config _config.yml,_config.local.yml",
     "svg": "svg-sprite --config svg-sprite.config.json 'themes/barba/source/svg/./**/*.svg'"
   },
   "dependencies": {

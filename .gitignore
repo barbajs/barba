@@ -159,5 +159,6 @@ $RECYCLE.BIN/
 dist
 tmp
 db.json
+_multiconfig.yml
 
 themes/barba/layout/svg/sprite.ejs
