@@ -4,7 +4,6 @@
   z-index: 100;
   top: 0;
   left: 0;
-
   background: $white;
 
   @include mq(nav) {
@@ -56,6 +55,7 @@
 
   .is-open & {
     transform: translateX(calc(-100vw + 170px));
+
     @include mq(nav) {
       transform: translateX(-300px);
     }

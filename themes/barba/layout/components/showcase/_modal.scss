@@ -25,7 +25,6 @@
   background-color: rgba($c-blue-lightest, 0.9);
   opacity: 0;
   pointer-events: none;
-
   transition: opacity 0.4s ease-in-out;
 
   .is-open & {
@@ -61,10 +60,9 @@
   height: max-content;
   min-height: 30rem;
   margin: auto;
-  box-shadow: 0 1px 20px rgba($c-blue-darker, 0.4);
   background: $c-blue-medium;
+  box-shadow: 0 1px 20px rgba($c-blue-darker, 0.4);
   opacity: 0;
-
   transition: opacity 0.4s ease-in-out;
 
   .is-open & {

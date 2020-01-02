@@ -1,45 +1,45 @@
 .button,
 [class*='button--'] {
   display: block;
-  border: $btn-border-size solid $c-blue-light;
   padding: 1rem 3.8rem;
   color: $c-blue-light;
-  font-family: 'Space Mono';
+  font-family: $ff-alt;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
+  border: $btn-border-size solid $c-blue-light;
   fill: $c-blue-light;
   border-radius: 0.4rem;
-
   transition: background-color 0.4s, color 0.4s, border-color 0.4s;
 
   &:hover {
-    background: $c-blue-light;
     color: $white;
+    background: $c-blue-light;
   }
 }
 
 [class*='button--'][class*='--fill'] {
-  background: $c-blue-light;
   color: $white;
+  background: $c-blue-light;
   fill: $white;
 
   &:hover {
-    border-color: $c-blue-medium;
     background: $c-blue-medium;
+    border-color: $c-blue-medium;
   }
 }
 
 [class*='button--'][class*='--fill'][class*='--black'] {
-  border-color: transparent;
   background: $c-dark;
+  border-color: transparent;
 }
 
 [class*='button--'][class*='--github'] {
   color: $c-dark;
   font-size: 11px;
   font-weight: 300;
-  transition: background-color 0.4s, color 0.4s, border-color 0.4s, transform 0.4s;
+  transition: background-color 0.4s, color 0.4s, border-color 0.4s,
+    transform 0.4s;
 
   span {
     position: absolute;
@@ -69,9 +69,9 @@
   display: flex;
   align-items: center;
   margin-right: 4rem;
-  border: 0;
   padding: 0;
   background: transparent;
+  border: 0;
 
   .icon--barba {
     width: 4rem;
@@ -83,7 +83,7 @@
     flex-direction: column;
     margin: 0 1rem;
     color: $c-blue-medium;
-    font-family: 'Space Mono';
+    font-family: $ff-alt;
     font-weight: 300;
     text-align: left;
     letter-spacing: 0.2rem;

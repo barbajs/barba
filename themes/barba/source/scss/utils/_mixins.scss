@@ -6,8 +6,11 @@
 /// @param {Color} $background-color [mix($foreground-color, white, 50%)] - color
 /// @example scss - Scrollbar styling
 ///   @include scrollbars(.5em, slategray);
-@mixin scrollbars($size: 6px, $foreground-color: $black, $background-color: $white) {
-
+@mixin scrollbars(
+  $size: 6px,
+  $foreground-color: $black,
+  $background-color: $white
+) {
   // sass-lint:disable-block no-vendor-prefixes
   // For Google Chrome
   &::-webkit-scrollbar {
@@ -51,7 +54,12 @@
   $font-min-break: valid-breakpoint(nth($min, 2));
   $font-max-break: valid-breakpoint(nth($max, 2));
 
-  font-size: calc(#{$font-min-size} + (#{strip-unit($font-max-size)} - #{strip-unit($font-min-size)}) * ((100vw - #{$font-min-break}) / (#{strip-unit($font-max-break)} - #{strip-unit($font-min-break)}))); // sass-lint:disable-line max-line-length
+  font-size: calc(
+    #{$font-min-size} + (
+        #{strip-unit($font-max-size)} - #{strip-unit($font-min-size)}
+      ) * ((100vw - #{$font-min-break}) /
+          (#{strip-unit($font-max-break)} - #{strip-unit($font-min-break)}))
+  );
 
   @include mq($until: $font-min-break) {
     font-size: $font-min-size;
@@ -101,7 +109,7 @@
     padding-top: ($height / $width) * 100%;
   }
 
-  >* {
+  > * {
     position: absolute;
     top: 0;
     right: 0;
@@ -118,9 +126,7 @@
   @if $position {
     font-family: 'object-fit: #{$fit}; object-position: #{$position}';
     object-position: $position;
-  }
-
-  @else {
+  } @else {
     font-family: 'object-fit: #{$fit}';
   }
 }
@@ -138,7 +144,7 @@
     margin-bottom: 0;
   }
 
-  >*+* {
+  > * + * {
     // margin-top: 0;
 
     @if $margin {
@@ -153,7 +159,7 @@
 }
 
 @function get-rest($str) {
-  @return str-slice($str, str-index($str, '--')+2);
+  @return str-slice($str, str-index($str, '--') + 2);
 }
 
 @function has-modifiers($str) {
@@ -164,9 +170,7 @@
   @if has-modifiers($str) {
     $modifiers: append($modifiers, get-base($str));
     $modifiers: get-modifiers(get-rest($str), $modifiers);
-  }
-
-  @else {
+  } @else {
     $modifiers: append($modifiers, $str);
   }
 
@@ -177,13 +181,14 @@
   $parts: ();
 
   @if has-modifiers($str) {
-    $parts: ('base': get-base($str),
-        'modifiers': get-modifiers(get-rest($str)));
-  }
-
-  @else {
-    $parts: ('base': $str,
-      );
+    $parts: (
+      'base': get-base($str),
+      'modifiers': get-modifiers(get-rest($str)),
+    );
+  } @else {
+    $parts: (
+      'base': $str,
+    );
   }
 
   @return $parts;
@@ -195,15 +200,13 @@
   $selector: '';
 
   @if map-has-key($parts, 'modifiers') {
-    $selector: '[class*="'+ $base + '--"]';
+    $selector: '[class*="' + $base + '--"]';
 
     @each $modifier in map-get($parts, 'modifiers') {
-      $selector: $selector + '[class*="--'+ $modifier + '"]';
+      $selector: $selector + '[class*="--' + $modifier + '"]';
     }
-  }
-
-  @else {
-    $selector: '.'+ $base + ',[class*="'+ $base + '--"]';
+  } @else {
+    $selector: '.' + $base + ',[class*="' + $base + '--"]';
   }
 
   @if $states {
@@ -226,7 +229,7 @@
   position: relative;
   overflow: hidden;
 
-  >* {
+  > * {
     position: relative;
     z-index: 2;
   }
@@ -242,12 +245,23 @@
     height: 0;
     padding-top: 100%;
     transform: translateY(0%);
-    transition: transform $duration $ease, top $duration $ease, margin $duration $ease;
+
+    /* prettier-ignore */
+    transition:
+      transform $duration $ease,
+      top $duration $ease,
+      margin $duration $ease;
     will-change: transform, top, margin;
   }
 
   &::before {
-    background: linear-gradient(45deg, $color 0%, $color 50%, transparent 50.000001%, transparent 100%);
+    background: linear-gradient(
+      45deg,
+      $color 0%,
+      $color 50%,
+      transparent 50%,
+      transparent 100%
+    );
   }
 
   &::after {
@@ -298,8 +312,9 @@
   }
 }
 
-@mixin big-letter ($rotate, $translate-x, $translate-y) {
-  transform: scale($scale-big-s) rotate($rotate) translate(($translate-x / $scale-big-s), ($translate-y / $scale-big-s));
+@mixin big-letter($rotate, $translate-x, $translate-y) {
+  transform: scale($scale-big-s) rotate($rotate)
+    translate(($translate-x / $scale-big-s), ($translate-y / $scale-big-s));
 
   // @include mq(m) {
   //   transform: scale($scale-big-m) rotate($rotate) translate((($translate-x * 2) / $scale-big-m), (($translate-y * 2.5) / $scale-big-m));

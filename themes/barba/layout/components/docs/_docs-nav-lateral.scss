@@ -33,24 +33,25 @@
   display: flex;
   align-items: center;
   margin: 2rem;
-  border: 0;
-  box-shadow: 0 2px 2px $gray-light;
-  background: $white;
   color: $c-gray-darker;
-  font-family: 'Space Mono';
+  font-family: $ff-alt;
   font-size: 1.2rem;
+  background: $white;
+  border: 0;
   border-radius: 4px;
+  box-shadow: 0 2px 2px $gray-light;
   fill: $c-gray-darker;
 
   @include mq(s) {
     font-size: 1.5rem;
 
     &:hover {
-      background: $c-blue-light;
       color: $white;
+      background: $c-blue-light;
       fill: $white;
     }
   }
+
   @include mq(l) {
     font-size: 2rem;
   }

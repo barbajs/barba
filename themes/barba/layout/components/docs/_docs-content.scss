@@ -21,19 +21,21 @@
     margin: 0;
     padding-bottom: 2rem;
     color: $c-blue-light;
-    font-family: 'Space Mono';
+    font-family: $ff-alt;
     font-size: 3rem;
     font-weight: 400;
 
     @include mq(s) {
       font-size: 4rem;
     }
+
     @include mq(l) {
       font-size: 5rem;
     }
 
     small {
       font-size: 1.5rem;
+
       @include mq(s) {
         font-size: 2rem;
       }
@@ -47,17 +49,19 @@
   h6,
   p {
     margin: 0;
-    font-family: 'Rubik';
+    font-family: $ff-default;
   }
 
   h2 {
     padding-top: 2.8rem;
     font-size: 2.2rem;
-    font-weight: lighter;
+    font-weight: 100;
+
     @include mq(s) {
       padding-top: 3.2rem;
       font-size: 2.8rem;
     }
+
     @include mq(l) {
       padding-top: 4rem;
       font-size: 3.5rem;
@@ -67,11 +71,13 @@
   h3 {
     padding-top: 1.2rem;
     font-size: 1.8rem;
-    font-weight: bold;
+    font-weight: 700;
+
     @include mq(s) {
       padding-top: 1.6rem;
       font-size: 2.2rem;
     }
+
     @include mq(l) {
       padding-top: 2rem;
       font-size: 2.8rem;
@@ -81,11 +87,13 @@
   h4 {
     padding-top: 1.2rem;
     font-size: 1.6rem;
-    font-weight: bold;
+    font-weight: 700;
+
     @include mq(s) {
       padding-top: 1.4rem;
       font-size: 1.8rem;
     }
+
     @include mq(l) {
       padding-top: 1.8rem;
       font-size: 2.4rem;
@@ -95,11 +103,13 @@
   h5 {
     padding-top: 0.8rem;
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 700;
+
     @include mq(s) {
       padding-top: 1rem;
       font-size: 1.7rem;
     }
+
     @include mq(l) {
       padding-top: 1.3rem;
       font-size: 2.2rem;
@@ -109,11 +119,13 @@
   h6 {
     padding-top: 0.8rem;
     font-size: 1.3rem;
-    font-weight: bold;
+    font-weight: 700;
+
     @include mq(s) {
       padding-top: 1rem;
       font-size: 1.5rem;
     }
+
     @include mq(l) {
       padding-top: 1.2rem;
       font-size: 2rem;
@@ -123,10 +135,12 @@
   p {
     padding-top: 0.5rem;
     font-size: 1.2rem;
+
     @include mq(s) {
       padding-top: 0.7rem;
       font-size: 1.4rem;
     }
+
     @include mq(l) {
       padding-top: 0.9rem;
       font-size: 1.6rem;
@@ -142,13 +156,15 @@
     th,
     td,
     tr {
-      border: 1px solid $c-gray-medium;
-      padding: 0.5rem ;
+      padding: 0.5rem;
       font-size: 1.2rem;
+      border: 1px solid $c-gray-medium;
+
       @include mq(s) {
         padding: 0.7rem;
         font-size: 1.2rem;
       }
+
       @include mq(l) {
         padding: 1rem;
         font-size: 1.5rem;
@@ -165,6 +181,7 @@
       padding-left: 4rem;
       font-size: 1.4rem;
     }
+
     @include mq(l) {
       padding-left: 6rem;
       font-size: 1.8rem;
@@ -195,8 +212,8 @@
 
   blockquote {
     margin: 2rem 0;
-    border-left: 3px solid $gray-lighter;
     padding: 0 4rem;
     color: $gray-light;
+    border-left: 3px solid $gray-lighter;
   }
 }

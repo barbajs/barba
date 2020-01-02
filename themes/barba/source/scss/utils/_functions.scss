@@ -5,9 +5,9 @@
   @if type-of($number) == 'number' and not unitless($number) {
     @return $number / ($number * 0 + 1);
   }
+
   @return $number;
 }
-
 
 // Convert the unit of a length
 // @param {Number} $number - Number to convert the unit
@@ -17,14 +17,12 @@
   @return unquote(strip-unit($number) + $unit);
 }
 
-
 // Calculate a ratio
 // @param {Number} $target - Target size
 // @param {Number} $context - Context size
 @function calc-ratio($target, $context) {
   @return strip-unit($target / $context);
 }
-
 
 // Calculate a ratio into percentage
 // @param {Number} $target - Target size
@@ -37,15 +35,16 @@
   @return map-get($font-sizes, $tag);
 }
 
-
 // Px to Rem:
 // Converts px to rem
 // @param {Number} $number - The px value
 // @return {Number} - The rem value
 @function rem($number) {
-  @return convert-unit((strip-unit($number) / strip-unit($base-font-size)), 'rem');
+  @return convert-unit(
+    (strip-unit($number) / strip-unit($base-font-size)),
+    'rem'
+  );
 }
-
 
 // Convert the Photoshop letter-spacing to CSS value.
 // Basically we devide the Photoshop value by 1000 to get the correct CSS value.
@@ -54,7 +53,6 @@
   @return strip-unit($number) / 1000;
 }
 
-
 // Check minimum breakpoint eligibility.
 // String: Get the value from the `mq-breakpoints` map.
 // Number: Set the value to the variable.
@@ -62,6 +60,7 @@
 // @return {Number}
 @function valid-breakpoint($breakpoint) {
   $type: type-of($breakpoint);
+
   @if $type == 'string' {
     @if variable-exists(mq-breakpoints) {
       @if map-get($mq-breakpoints, $breakpoint) {

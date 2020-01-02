@@ -1,8 +1,8 @@
 .intro {
   @include get-all-space;
+
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
+  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
   padding: 4rem;
@@ -23,10 +23,10 @@
 
   .home-logo {
     position: absolute;
-    left: 0;
     top: 0;
     right: 0;
     bottom: 0;
+    left: 0;
   }
 }
 
@@ -40,7 +40,6 @@
     display: none;
   }
 }
-
 
 .intro.to-feature {
   .logo-container .home-logo {
@@ -56,7 +55,7 @@
   max-width: 65rem;
   margin: 0;
   margin-bottom: 2rem;
-  font-family: 'Space Mono', monospace;
+  font-family: $ff-alt;
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 1.2;
@@ -77,10 +76,10 @@
 
 .intro__list {
   position: relative;
+  z-index: -1;
   width: 100%;
   margin: 3rem 0;
   padding: 0;
-  z-index: -1;
 
   div {
     position: absolute;
@@ -89,22 +88,14 @@
     left: 0;
   }
 
-  li:first-child {
-    position: relative;
-    //opacity: 1;
-  }
-
   li {
     display: block;
-    // left: 0;
-    opacity: 0;
-    // position: absolute;
     width: 100%;
-    // top: 0;
-    text-align: center;
-    font-family: 'Space Mono', monospace;
-    font-weight: 400;
+    font-family: $ff-alt;
     font-size: 2.2rem;
+    font-weight: 400;
+    text-align: center;
+    opacity: 0;
     transform: scale(0.9);
 
     @include mq(s) {
@@ -114,5 +105,9 @@
     @include mq(m) {
       font-size: 4rem;
     }
+  }
+
+  li:first-child {
+    position: relative;
   }
 }

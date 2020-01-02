@@ -1,5 +1,6 @@
 .feature {
   @include get-all-space;
+
   display: block;
   overflow: hidden;
   padding: 16rem 4rem 6rem;
@@ -72,6 +73,10 @@
   height: 100%;
   margin: 0 auto;
 
+  @include mq(s) {
+    padding-top: 10rem;
+  }
+
   p {
     font-size: 1.4rem;
     line-height: 1.8rem;
@@ -81,15 +86,11 @@
       line-height: 2.2rem;
     }
   }
-
-  @include mq(s) {
-    padding-top: 10rem;
-  }
 }
 
 .feature__title {
   margin: 0;
-  font-family: 'Space Mono';
+  font-family: $ff-alt;
   font-size: 3.2rem;
   font-weight: 400;
   text-align: center;
@@ -103,6 +104,7 @@
 .feature__bodymovin {
   @include get-all-space;
   @include center-xy;
+
   z-index: -1;
   width: 100vw;
 }
@@ -111,13 +113,9 @@
   position: absolute;
   bottom: 0;
   max-width: 85vw;
-  box-shadow: 0 14px 30px rgba($gray-light, 0.3);
   background: rgba($white, 0.8);
   border-radius: 10px;
-
-  &>div {
-    padding: 2rem;
-  }
+  box-shadow: 0 14px 30px rgba($gray-light, 0.3);
 
   @include mq(l) {
     top: initial;
@@ -127,6 +125,10 @@
 
   @include mq(xxxl) {
     bottom: 10rem;
+  }
+
+  & > div {
+    padding: 2rem;
   }
 }
 
@@ -175,7 +177,7 @@
 
 .feature__box__body__title {
   margin: 0;
-  font-family: 'Space Mono';
+  font-family: $ff-alt;
   font-size: 2rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -184,7 +186,7 @@
 .feature__box__body__text {
   margin: 0 0 1rem;
   font-size: 2rem;
-  line-height: 2.8rem !important; //sass-lint:disable-line no-important
+  line-height: 2.8rem !important; //stylelint-disable-line declaration-no-important
 }
 
 .feature__box__footer {
@@ -196,9 +198,14 @@
 
 .feature .logo.featured {
   @include center-x;
+
   z-index: 10;
   top: 10rem;
   width: 23.5rem;
+
+  @include mq(m) {
+    top: 4rem;
+  }
 
   .base {
     position: relative;
@@ -207,10 +214,6 @@
 
   .big {
     display: block;
-  }
-
-  @include mq(m) {
-    top: 4rem;
   }
 }
 
@@ -222,7 +225,6 @@
   td,
   th {
     position: relative;
-
     float: left;
     width: 33%;
     margin: 2rem 0;
@@ -233,7 +235,7 @@
     }
   }
 
-  td>sup {
+  td > sup {
     display: none;
   }
 

@@ -110,6 +110,8 @@ module.exports = {
       'use',
       'forward',
       'import',
+      'media',
+      'keyframes',
       'mixin',
       'include',
       'function',
@@ -180,7 +182,7 @@ module.exports = {
     // Declaration
     'declaration-bang-space-after': 'never',
     'declaration-bang-space-before': 'always',
-    'declaration-colon-newline-after': 'always-multi-line',
+    // 'declaration-colon-newline-after': 'always-multi-line',
     'declaration-colon-space-after': 'always-single-line',
     'declaration-colon-space-before': 'never',
     'declaration-empty-line-before': [
@@ -260,7 +262,7 @@ module.exports = {
       },
     ],
     'at-rule-name-case': 'lower',
-    'at-rule-name-newline-after': 'always-multi-line',
+    // 'at-rule-name-newline-after': 'always-multi-line',
     'at-rule-name-space-after': 'always-single-line',
     'at-rule-semicolon-newline-after': 'always',
     'at-rule-semicolon-space-before': 'never',

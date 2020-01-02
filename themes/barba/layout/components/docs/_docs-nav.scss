@@ -28,9 +28,11 @@
   margin-left: 1rem;
   padding: 0;
   list-style: none;
+
   @include mq(s) {
     margin-left: 5rem;
   }
+
   @include mq(l) {
     margin-left: 50%;
   }
@@ -50,9 +52,11 @@
   line-height: 2rem;
   text-transform: uppercase;
   opacity: 0.3;
+
   @include mq(s) {
     font-size: 1.2rem;
   }
+
   @include mq(l) {
     font-size: 1.5rem;
   }
@@ -66,9 +70,11 @@
   margin: 0;
   padding-left: 1rem;
   list-style: none;
+
   @include mq(s) {
     padding-left: 2rem;
   }
+
   @include mq(l) {
     padding-left: 3rem;
   }
@@ -86,6 +92,7 @@
       border-width: 0.35em 0 0.35em 0.45em;
       border-style: solid;
       border-color: transparent $c-blue-light;
+
       @include mq(l) {
         top: 0.3em;
       }
@@ -97,9 +104,11 @@
   font-size: 1rem;
   font-weight: 400;
   line-height: 2rem;
+
   @include mq(s) {
     font-size: 1.2rem;
   }
+
   @include mq(l) {
     font-size: 1.5rem;
   }

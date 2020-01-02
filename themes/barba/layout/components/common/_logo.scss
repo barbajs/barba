@@ -1,3 +1,4 @@
+/* stylelint-disable selector-max-combinators, selector-max-compound-selectors, no-descending-specificity */
 .logo {
   width: 100%;
   font-size: 0;
@@ -17,6 +18,16 @@
     transition: stroke 0.4s, fill 0.4s;
   }
 
+  .base {
+    .js__rect {
+      opacity: 0;
+    }
+
+    .js__rect__alternate {
+      display: none;
+    }
+  }
+
   svg.gray,
   svg.fillgray {
     .base {
@@ -30,22 +41,11 @@
 
   svg.holed {
     .hover {
-
       rect,
       circle,
       path {
         fill: $white;
       }
-    }
-  }
-
-  .base {
-    .js__rect {
-      opacity: 0;
-    }
-
-    .js__rect__alternate {
-      display: none;
     }
   }
 
@@ -59,7 +59,6 @@
     opacity: 0;
   }
 }
-
 
 .logo.only-big {
   // will-change: initial;
@@ -77,7 +76,6 @@
   }
 
   .hover {
-
     rect,
     circle,
     path {
@@ -85,16 +83,14 @@
     }
 
     .c6 .js path {
-      fill: #2E5BDC;
+      fill: $c-blue-medium;
     }
   }
-
 }
 
 // .big * {
 //   // transition: transform 0.4s ease-in-out;
 // }
-
 .item {
   .can-grow,
   .detail-feature & {

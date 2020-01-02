@@ -10,15 +10,18 @@
   margin: 0;
   padding: 0 5rem;
   list-style: none;
-
   transform: translateY(-50%);
+
+  @include mq(m) {
+    display: flex;
+  }
 
   a {
     position: relative;
     display: flex;
     align-items: center;
     color: $c-gray-darker;
-    font-family: 'Space Mono';
+    font-family: $ff-alt;
     font-size: 1.1rem;
     text-transform: uppercase;
     letter-spacing: 0.212rem;
@@ -38,10 +41,6 @@
       pointer-events: none;
       transition: opacity 0.3s, transform 0.3s ease-out;
     }
-  }
-
-  @include mq(m) {
-    display: flex;
   }
 }
 

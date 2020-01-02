@@ -1,4 +1,3 @@
-
 .docs {
   // Code-snippets formatting
   .highlight {
@@ -14,18 +13,21 @@
     th,
     td,
     tr {
-      border: 0;
       padding: 1rem;
+      border: 0;
     }
 
+    /* stylelint-disable selector-max-combinators, selector-max-compound-selectors, selector-max-class, no-descending-specificity */
     pre {
       margin: 0;
       color: $c-gray-dark;
-      font-family: 'Source Code Pro', Monaco, Menlo, Consolas, monospace;
+      font-family: $ff-code;
       line-height: 1.6rem;
+
       @include mq(s) {
         line-height: 2rem;
       }
+
       @include mq(l) {
         line-height: 2.5rem;
       }

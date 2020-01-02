@@ -16,6 +16,7 @@
 
 .menu-trigger__github {
   @extend %text-nodecoration;
+
   position: absolute;
   z-index: 999;
   top: 50px;
@@ -54,6 +55,7 @@
   transform-origin: center center;
   transition: top 0.4s, transform 0.4s, opacity 0.4s ease-in-out;
 
+  /* stylelint-disable no-descending-specificity */
   &:nth-child(1) {
     top: 35%;
 
@@ -80,4 +82,5 @@
       transform: translate(-50%, -50%) rotate(-45deg);
     }
   }
+  /* stylelint-enable no-descending-specificity */
 }

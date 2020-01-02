@@ -9,7 +9,7 @@
 .form__title {
   margin: 3rem;
   color: $white;
-  font-family: 'Space Mono';
+  font-family: $ff-alt;
   font-size: 4rem;
   font-weight: 300;
   text-align: center;
@@ -26,8 +26,8 @@
 
 .drop-area {
   margin: 1.5rem 3rem;
-  border: 1rem solid $c-blue-darker;
   background: $c-blue-dark;
+  border: 1rem solid $c-blue-darker;
 
   &.highlight {
     border: 1rem solid $white;
@@ -44,7 +44,7 @@
   align-items: center;
   padding: 4rem;
   color: $c-blue-darkest;
-  font-family: 'Space Mono';
+  font-family: $ff-alt;
 
   .icon--barba {
     width: 6rem;
@@ -62,7 +62,6 @@
   font-size: 4rem;
   line-height: 4rem;
 }
-
 
 .form__picture__infos,
 [class*='form__picture__infos--'] {
@@ -103,10 +102,14 @@
 }
 
 .form__input--text {
-  border: 0;
   padding: 1rem;
-  background: $c-blue-dark;
   color: $white;
+  background: $c-blue-dark;
+  border: 0;
+
+  @include mq(m) {
+    width: 22rem;
+  }
 
   &::placeholder {
     color: $black;
@@ -123,10 +126,6 @@
   // &:invalid {
   //   outline: 1px solid $c-dev-error;
   // }
-
-  @include mq(m) {
-    width: 22rem;
-  }
 }
 
 .form__submit {
@@ -135,16 +134,16 @@
 
 .form__input--submit {
   width: 100%;
-  border: 0;
   padding: 1.5rem;
-  background: $white;
   color: $c-blue-medium;
-  font-family: 'Space Mono';
+  font-family: $ff-alt;
   font-size: 1.5rem;
   font-weight: 700;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
+  background: $white;
+  border: 0;
 
   .is-invalid & {
     opacity: 0.5;

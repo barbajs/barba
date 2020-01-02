@@ -24,7 +24,7 @@
  * http://juicystudio.com/article/screen-readers-display-none.php
  */
 %hidden {
-  display: none !important; // sass-lint:disable-line no-important
+  display: none !important; // stylelint-disable-line declaration-no-important
   visibility: hidden;
 }
 
@@ -38,8 +38,8 @@
   width: 1px;
   height: 1px;
   margin: -1px;
-  border: 0;
   padding: 0;
+  border: 0;
   clip: rect(0 0 0 0);
 }
 
