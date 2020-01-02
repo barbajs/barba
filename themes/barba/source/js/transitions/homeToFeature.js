@@ -4,8 +4,6 @@ import { getInstance } from '../app'
 // import { qs, qsa } from '../../../source/js/utils/dom'
 // import deferred from '../../../source/js/utils/deferred'
 
-import NAMESPACES_ORDER from './featuresOrder'
-
 export default {
   sync: true,
   from: {
@@ -22,8 +20,7 @@ export default {
     const title = current.container.querySelectorAll('h1 span')
     const buttons = current.container.querySelectorAll('.intro__buttons a')
     const list = current.container.querySelector('.intro__list')
-    const { featureSlug } = next.container.querySelector('.feature').dataset
-    const hoverIndex = NAMESPACES_ORDER.indexOf(featureSlug)
+    const hoverIndex = next.container.querySelector('.feature').dataset.featureOrder
     const bigShape = current.container.querySelectorAll(
       '.logo.only-big .hover .item'
     )[hoverIndex]
