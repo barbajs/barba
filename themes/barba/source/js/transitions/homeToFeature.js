@@ -191,7 +191,7 @@ function oldEnder(data) {
     onComplete: () => {
       data.next.container.style.cssText = '';
       dfd.resolve();
-    }
+    },
   });
 
   tl.to(current.$logo, 2, {

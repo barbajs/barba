@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34px" height="33px" viewBox="0 0 34 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>Group 17 Copy 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="2" y="11" width="6" height="6" rx="3"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="6" height="6" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <rect id="path-3" x="10" y="3" width="6" height="6" rx="3"></rect>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="6" height="6" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+        <rect id="path-5" x="10" y="19" width="6" height="6" rx="3"></rect>
+        <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="6" height="6" fill="white">
+            <use xlink:href="#path-5"></use>
+        </mask>
+        <rect id="path-7" x="18" y="11" width="6" height="6" rx="3"></rect>
+        <mask id="mask-8" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="6" height="6" fill="white">
+            <use xlink:href="#path-7"></use>
+        </mask>
+    </defs>
+    <g id="01-BarbaSite" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="11-Page-R" transform="translate(-634.000000, -707.000000)">
+            <g id="Group-17-Copy-2" transform="translate(633.000000, 706.000000)">
+                <rect id="Rectangle" fill="#D8D8D8" opacity="0" x="0" y="0" width="36" height="36"></rect>
+                <g id="Group-22" transform="translate(1.000000, 1.000000)">
+                    <rect id="Rectangle-Copy-3" fill="#FCD07E" x="0" y="5" width="34" height="28" rx="4"></rect>
+                    <rect id="Rectangle-Copy-3" fill="#FCEFD7" x="0" y="0" width="34" height="28" rx="2"></rect>
+                    <path d="M5,3 C6.65685425,3 8,4.34314575 8,6 C8,7.65685425 6.65685425,9 5,9 C3.34314575,9 2,7.65685425 2,6 C2,4.34314575 3.34314575,3 5,3 Z" id="Rectangle-Copy-3" fill="#FFA543"></path>
+                    <use id="Rectangle-Copy-9" stroke="#FFA121" mask="url(#mask-2)" stroke-width="2" stroke-dasharray="38" xlink:href="#path-1"></use>
+                    <path d="M5,19 C6.65685425,19 8,20.3431458 8,22 C8,23.6568542 6.65685425,25 5,25 C3.34314575,25 2,23.6568542 2,22 C2,20.3431458 3.34314575,19 5,19 Z" id="Rectangle-Copy-13" fill="#FFA543"></path>
+                    <use id="Rectangle-Copy-6" stroke="#FFA121" mask="url(#mask-4)" stroke-width="2" stroke-dasharray="38" xlink:href="#path-3"></use>
+                    <path d="M13,11 C14.6568542,11 16,12.3431458 16,14 C16,15.6568542 14.6568542,17 13,17 C11.3431458,17 10,15.6568542 10,14 C10,12.3431458 11.3431458,11 13,11 Z" id="Rectangle-Copy-10" fill="#FFA543" opacity="0.639999986"></path>
+                    <use id="Rectangle-Copy-14" stroke="#FFA121" mask="url(#mask-6)" stroke-width="2" stroke-dasharray="38" xlink:href="#path-5"></use>
+                    <path d="M21,3 C22.6568542,3 24,4.34314575 24,6 C24,7.65685425 22.6568542,9 21,9 C19.3431458,9 18,7.65685425 18,6 C18,4.34314575 19.3431458,3 21,3 Z" id="Rectangle-Copy-7" fill="#FFA543"></path>
+                    <use id="Rectangle-Copy-11" stroke="#FFA121" mask="url(#mask-8)" stroke-width="2" stroke-dasharray="38" xlink:href="#path-7"></use>
+                    <path d="M21,19 C22.6568542,19 24,20.3431458 24,22 C24,23.6568542 22.6568542,25 21,25 C19.3431458,25 18,23.6568542 18,22 C18,20.3431458 19.3431458,19 21,19 Z" id="Rectangle-Copy-15" fill="#FFA543"></path>
+                    <path d="M29,3 C30.6568542,3 32,4.34314575 32,6 C32,7.65685425 30.6568542,9 29,9 C27.3431458,9 26,7.65685425 26,6 C26,4.34314575 27.3431458,3 29,3 Z" id="Rectangle-Copy-8" fill="#FFA543" opacity="0.639999986"></path>
+                    <path d="M29,11 C30.6568542,11 32,12.3431458 32,14 C32,15.6568542 30.6568542,17 29,17 C27.3431458,17 26,15.6568542 26,14 C26,12.3431458 27.3431458,11 29,11 Z" id="Rectangle-Copy-12" fill="#FFA543"></path>
+                    <path d="M29,19 C30.6568542,19 32,20.3431458 32,22 C32,23.6568542 30.6568542,25 29,25 C27.3431458,25 26,23.6568542 26,22 C26,20.3431458 27.3431458,19 29,19 Z" id="Rectangle-Copy-16" fill="#FFA543" opacity="0.639999986"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

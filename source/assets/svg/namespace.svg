@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="28px" viewBox="0 0 32 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>Group 17 Copy 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFA543" offset="0%"></stop>
+            <stop stop-color="#FEB357" offset="30.4854899%"></stop>
+            <stop stop-color="#FCD07E" offset="32.3601683%"></stop>
+            <stop stop-color="#FCD07E" offset="100%"></stop>
+        </linearGradient>
+        <polygon id="path-2" points="8 0.5 24 0.5 32 9.5 16 28.5 0 9.5"></polygon>
+    </defs>
+    <g id="01-BarbaSite" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="11-Page-R" transform="translate(-830.000000, -710.000000)">
+            <g id="Group-17-Copy-3" transform="translate(828.000000, 706.000000)">
+                <rect id="Rectangle" fill="#D8D8D8" opacity="0" x="0" y="0" width="36" height="36"></rect>
+                <g id="Group-23" transform="translate(2.000000, 3.500000)">
+                    <mask id="mask-3" fill="white">
+                        <use xlink:href="#path-2"></use>
+                    </mask>
+                    <use id="Rectangle-Copy-3" fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+                    <line x1="0" y1="9.5" x2="32" y2="9.5" id="Line" stroke="#FCEFD7" stroke-width="1.5" stroke-linecap="square" mask="url(#mask-3)"></line>
+                    <line x1="8" y1="0.5" x2="16" y2="27.5" id="Line" stroke="#FCEFD7" stroke-width="1.5" stroke-linecap="square" mask="url(#mask-3)"></line>
+                    <line x1="16" y1="0.5" x2="11" y2="9.5" id="Line" stroke="#FCEFD7" stroke-width="1.5" stroke-linecap="square" mask="url(#mask-3)"></line>
+                    <line x1="16" y1="0.5" x2="22" y2="9.5" id="Line" stroke="#FCEFD7" stroke-width="1.5" stroke-linecap="square" mask="url(#mask-3)"></line>
+                    <line x1="24" y1="0.5" x2="16" y2="27.5" id="Line" stroke="#FCEFD7" stroke-width="1.5" stroke-linecap="square" mask="url(#mask-3)"></line>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

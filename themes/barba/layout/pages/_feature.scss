@@ -111,6 +111,7 @@
 
 .feature__box {
   position: absolute;
+  ;
   bottom: 0;
   max-width: 85vw;
   background: rgba($white, 0.8);
@@ -127,7 +128,7 @@
     bottom: 10rem;
   }
 
-  & > div {
+  &>div {
     padding: 2rem;
   }
 }
@@ -164,14 +165,12 @@
   margin: 0 0 1rem;
 
   &[class*='big'] {
-    width: 15rem;
-    height: 11rem;
+    width: 18rem;
+    height: 13rem;
   }
 
-  &[class*='png'] {
-    width: 60%;
-    height: 60%;
-    margin: 0 auto;
+  .partial-image {
+    object-fit: contain;
   }
 }
 
@@ -235,7 +234,7 @@
     }
   }
 
-  td > sup {
+  td>sup {
     display: none;
   }
 
