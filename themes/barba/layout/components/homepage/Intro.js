@@ -1,10 +1,7 @@
 import barba from '@barba/core'
-
 import { Component } from 'kapla'
-
-import { TweenMax, TimelineMax } from 'gsap/all'
-
-import { $on, qsa, qs } from '../../../source/js/utils/dom'
+import { gsap } from 'gsap'
+import { $on, $off, qsa, qs } from '../../../source/js/utils/dom'
 
 export default class extends Component {
   load() {
@@ -30,12 +27,12 @@ export default class extends Component {
       this.boarding()
     }
 
+    // DEV
     // this.onResize();
   }
 
   boarding() {
     const logo = qs('.logo.home-logo', this.$el)
-    const logoItems = qsa('.logo.home-logo .base-item', this.$el)
     const title = qsa('h1 span', this.$el)
     const buttons = qsa('.intro__buttons a', this.$el)
     const chrome = [
@@ -46,7 +43,7 @@ export default class extends Component {
 
     document.documentElement.classList.add('transitioning')
 
-    const tl = new TimelineMax({
+    const tl = gsap.timeline({
       delay: 0.5,
       onComplete: () => {
         document.documentElement.classList.remove('transitioning')
@@ -55,80 +52,76 @@ export default class extends Component {
 
     tl.from(
       logo,
-      0.5,
       {
+        duration: 0.5,
         y: 100,
         scale: 1.1,
-        ease: 'Power4.easeInOut',
+        ease: 'power4.inOut',
       },
       0
     )
-
-    // tl.staggerFrom(logoItems, 1, {
-    //   y: 100,
-    //   scale: 1.1,
-    //   ease: 'Power4.easeInOut'
-    // }, 0.02, 0);
-
-    tl.staggerFrom(
-      title,
-      1,
-      {
-        yPercent: 100,
-        scale: 1,
-        ease: 'Power4.easeOut',
-      },
-      0.05,
-      0.6
-    )
-
-    tl.staggerFrom(
-      buttons,
-      1,
-      {
-        y: 40,
-        opacity: 0,
-        ease: 'Power4.easeOut',
-      },
-      0.05,
-      1.2
-    )
-
-    tl.staggerFrom(
-      chrome,
-      0.3,
-      {
-        scale: 0,
-        ease: 'Power4.easeOut',
-      },
-      0.2,
-      1.5
-    )
+      .from(
+        title,
+        {
+          duration: 1,
+          yPercent: 100,
+          scale: 1,
+          ease: 'power4',
+          stagger: 0.05,
+        },
+        0.6
+      )
+      .from(
+        buttons,
+        {
+          duration: 1,
+          y: 40,
+          opacity: 0,
+          ease: 'power4',
+          stagger: 0.05,
+        },
+        1.2
+      )
+      .from(
+        chrome,
+        {
+          duration: 0.3,
+          scale: 0,
+          ease: 'power4',
+          stagger: 0.2,
+        },
+        1.5
+      )
   }
 
-  // destroy() {
-  //   $on(this.$logoSvg, 'mouseenter', this.mouseEnter);
-  //   $on(this.$logoSvg, 'mouseleave', this.mouseLeave);
-  // }
+  destroy() {
+    this.$links.forEach((link, index) => {
+      $off(link, 'mouseenter', () => this.mouseEnter(index))
+      $off(link, 'mouseleave', () => this.mouseLeave(index))
+    })
+  }
 
   mouseEnter(index) {
     this.$logo.classList.add('gray')
 
-    TweenMax.killTweensOf(this.$texts[index])
-    TweenMax.killTweensOf(this.$items[index])
+    gsap.killTweensOf(this.$texts[index])
+    gsap.killTweensOf(this.$items[index])
 
-    TweenMax.to(this.$items[index], 0.4, {
+    gsap.to(this.$items[index], {
+      duration: 0.4,
       opacity: 1,
     })
 
-    TweenMax.to(this.$texts[index], 0.2, {
+    gsap.to(this.$texts[index], {
+      duration: 0.2,
       opacity: 1,
       scale: 1,
     })
 
-    TweenMax.to(this.$list, 0.4, {
+    gsap.to(this.$list, {
+      duration: 0.4,
       yPercent: -(index * 100),
-      ease: 'Power4.easeOut',
+      ease: 'power4',
     })
   }
 
@@ -139,19 +132,22 @@ export default class extends Component {
 
     this.$logo.classList.remove('gray')
 
-    TweenMax.killTweensOf(this.$texts[index])
-    TweenMax.killTweensOf(this.$items[index])
+    gsap.killTweensOf(this.$texts[index])
+    gsap.killTweensOf(this.$items[index])
 
-    TweenMax.to(this.$items[index], 0.4, {
+    gsap.to(this.$items[index], {
+      duration: 0.4,
       opacity: 0,
     })
 
-    TweenMax.to(this.$texts[index], 0.2, {
+    gsap.to(this.$texts[index], {
+      duration: 0.2,
       opacity: 0,
       scale: 0.9,
     })
   }
 
+  // DEV
   // onResize() {
   //   const bounds = this.$logo.getBoundingClientRect();
 
@@ -162,6 +158,7 @@ export default class extends Component {
   // }
 }
 
+// BU
 // import {
 //   Component
 // } from 'kapla';

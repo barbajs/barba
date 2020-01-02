@@ -1,4 +1,9 @@
 [data-barba='container'] {
   position: relative;
   min-height: 100vh;
+
+  .is-transitioning & {
+    position: absolute;
+    width: 100%;
+  }
 }

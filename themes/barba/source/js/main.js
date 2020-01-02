@@ -8,15 +8,15 @@ import defaultTransition from './transitions/default'
 import homeToFeature from './transitions/homeToFeature'
 import featureToFeature from './transitions/featureToFeature'
 import featureToHome from './transitions/featureToHome'
+import docToDoc from './transitions/docToDoc'
+import onceHome from './transitions/onceHome'
+import onceFeature from './transitions/onceFeature'
 // DEV
 // import homeToPage from './transitions/homeToPage'
 // import featureToPage from './transitions/featureToPage'
 // import pageToPage from './transitions/pageToPage'
 // import pageToHome from './transitions/pageToHome'
 // import pageToFeature from './transitions/pageToFeature'
-import onceHome from './transitions/onceHome'
-import onceFeature from './transitions/onceFeature'
-import docToDoc from './transitions/docToDoc'
 // Views are not really needed with Kapla…
 // import Home from './views/Home';
 
@@ -64,24 +64,24 @@ class Main {
           homeToFeature,
           featureToFeature,
           featureToHome,
+          docToDoc,
+          onceHome,
+          onceFeature,
           // DEV
           // homeToPage,
           // featureToPage,
           // pageToHome,
           // pageToFeature,
           // pageToPage,
-          docToDoc,
-          onceHome,
-          onceFeature,
         ],
       })
 
       barba.hooks.before(() => {
-        document.documentElement.classList.add('transitioning')
+        document.documentElement.classList.add('is-transitioning')
       })
 
       barba.hooks.after(() => {
-        document.documentElement.classList.remove('transitioning')
+        document.documentElement.classList.remove('is-transitioning')
       })
 
       // Kapla

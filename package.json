@@ -17,7 +17,7 @@
     "@barba/prefetch": "^2.1.10",
     "@barba/router": "^2.1.10",
     "firebase-functions": "^3.0.2",
-    "gsap": "^2.0.2",
+    "gsap": "3.0.4",
     "hexo": "^4.2.0",
     "kapla": "^2.0.1",
     "lottie-web": "^5.5.5",

@@ -30,7 +30,7 @@ a:visited {
   text-decoration: none;
 }
 
-html.transitioning {
+html.is-transitioning {
   &,
   * {
     pointer-events: none;

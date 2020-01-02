@@ -1,5 +1,4 @@
-import { TimelineMax } from 'gsap/TimelineMax'
-import { TweenMax } from 'gsap/TweenMax'
+import { gsap } from 'gsap'
 
 const { docs } = window.BARBA
 const docsUrlOrderedList = []
@@ -15,7 +14,6 @@ for (let i = 0; i < docs.length; i++) {
 }
 
 export default {
-  sync: false,
   from: {
     route: 'doc',
   },
@@ -23,112 +21,92 @@ export default {
     route: 'doc',
   },
 
-  leave(data) {
-    return new Promise(resolve => {
-      const background = data.current.container.querySelector(
-        '.docs__page-transition'
-      )
-      const tl = new TimelineMax()
-      const currentPage = data.current.url.path
-      const nextPage = data.next.url.path
+  leave({ current, next }) {
+    const background = current.container.querySelector('.docs__page-transition')
+    const currentPage = current.url.path
+    const nextPage = next.url.path
+    const tl = gsap.timeline()
 
-      if (
-        docsUrlOrderedList.indexOf(currentPage) <
-        docsUrlOrderedList.indexOf(nextPage)
-      ) {
-        tl.add(
-          TweenMax.set(background, {
-            xPercent: 110,
-            display: 'block',
-            skewX: -10,
-          })
-        )
-        tl.add(
-          TweenMax.to(background, 1, {
-            xPercent: 0,
-            ease: 'Power4.easeInOut',
-            skewX: 0,
-            onComplete: () => {
-              resolve()
-            },
-          })
-        )
-      } else {
-        tl.add(
-          TweenMax.set(background, {
-            xPercent: -110,
-            display: 'block',
-            skewX: 10,
-          })
-        )
-        tl.add(
-          TweenMax.to(background, 1, {
-            xPercent: 0,
-            ease: 'Power4.easeInOut',
-            skewX: 0,
-            onComplete: () => {
-              resolve()
-            },
-          })
-        )
-      }
-    })
+    if (
+      docsUrlOrderedList.indexOf(currentPage) <
+      docsUrlOrderedList.indexOf(nextPage)
+    ) {
+      tl.add(
+        gsap.set(background, {
+          xPercent: 110,
+          display: 'block',
+          skewX: -10,
+        })
+      ).add(
+        gsap.to(background, {
+          duration: 1,
+          xPercent: 0,
+          ease: 'power4.inOut',
+          skewX: 0,
+        })
+      )
+    } else {
+      tl.add(
+        gsap.set(background, {
+          xPercent: -110,
+          display: 'block',
+          skewX: 10,
+        })
+      ).add(
+        gsap.to(background, {
+          duration: 1,
+          xPercent: 0,
+          ease: 'power4.inOut',
+          skewX: 0,
+        })
+      )
+    }
+
+    return tl.then()
   },
 
-  enter(data) {
-    return new Promise(resolve => {
-      resolve()
+  enter({ current, next }) {
+    document.body.scrollTop = 0
+    document.documentElement.scrollTop = 0
 
-      document.body.scrollTop = 0
-      document.documentElement.scrollTop = 0
+    const background = next.container.querySelector('.docs__page-transition')
+    const currentPage = current.url.path
+    const nextPage = next.url.path
+    const tl = gsap.timeline()
 
-      const background = data.next.container.querySelector(
-        '.docs__page-transition'
+    if (
+      docsUrlOrderedList.indexOf(currentPage) <
+      docsUrlOrderedList.indexOf(nextPage)
+    ) {
+      tl.add(
+        gsap.set(background, {
+          xPercent: 0,
+          display: 'block',
+        })
       )
-      const tl = new TimelineMax()
-      const currentPage = data.current.url.path
-      const nextPage = data.next.url.path
-
-      if (
-        docsUrlOrderedList.indexOf(currentPage) <
-        docsUrlOrderedList.indexOf(nextPage)
-      ) {
-        tl.add(
-          TweenMax.set(background, {
-            xPercent: 0,
-            display: 'block',
-          })
-        )
-        tl.add(
-          TweenMax.to(background, 0.6, {
-            xPercent: -100,
-            ease: 'Power4.easeInOut',
-          })
-        )
-        tl.add(
-          TweenMax.set(background, {
-            display: 'none',
-          })
-        )
-      } else {
-        tl.add(
-          TweenMax.set(background, {
-            xPercent: 0,
-            display: 'block',
-          })
-        )
-        tl.add(
-          TweenMax.to(background, 0.6, {
-            xPercent: 100,
-            ease: 'Power4.easeInOut',
-          })
-        )
-        tl.add(
-          TweenMax.set(background, {
-            display: 'none',
-          })
-        )
-      }
-    })
+        .to(background, {
+          duration: 0.6,
+          xPercent: -100,
+          ease: 'power4.inOut',
+        })
+        .set(background, {
+          display: 'none',
+        })
+    } else {
+      tl.add(
+        gsap.set(background, {
+          xPercent: 0,
+          display: 'block',
+        })
+      )
+        .to(background, {
+          duration: 0.6,
+          xPercent: 100,
+          ease: 'power4.inOut',
+        })
+        .set(background, {
+          display: 'none',
+        })
+    }
   },
 }

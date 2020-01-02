@@ -1,39 +1,30 @@
-import {
-  getInstance,
-} from '../app';
-
-import {
-  TimelineMax,
-} from 'gsap/TweenMax';
-
-// Return true for forward, false for backwards
+import { getInstance } from '../app'
+import { gsap } from 'gsap'
 
 /**
- * Get namespace from pages
+ * Check if forward or backward direction
  *
  * @param {int} currentFeatureOrder page namepspace
  * @param {int} nextFeatureOrder page namepspace
- * @returns {string} Page namespace
+ * @returns {boolean} If forward
  */
 function isForward(currentFeatureOrder, nextFeatureOrder) {
-  const oldIndex = Number(currentFeatureOrder);
-  const newIndex = Number(nextFeatureOrder);
-  const featureNav = document.querySelector('.menu-subpages__list');
-  const featureLength = featureNav.children.length;
-
-  console.log(featureLength);
+  const oldIndex = Number(currentFeatureOrder)
+  const newIndex = Number(nextFeatureOrder)
+  const featureNav = document.querySelector('.menu-subpages__list')
+  const featureLength = featureNav.children.length
 
   // From last to first
   if (oldIndex === featureLength - 1 && newIndex === 0) {
-    return true;
+    return true
   }
 
   // From first to last
   if (oldIndex === 0 && newIndex === featureLength - 1) {
-    return false;
+    return false
   }
 
-  return oldIndex < newIndex;
+  return oldIndex < newIndex
 }
 
 export default {
@@ -44,106 +35,132 @@ export default {
     route: 'feature',
   },
 
-  leave({
-    current,
-    next,
-  }) {
-    return new Promise(async resolve => {
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-      const {
-        container,
-      } = current;
-      const currentFeatureSlug = container.querySelector('.feature').dataset.featureSlug;
-      const currentFeatureOrder = container.querySelector('.feature').dataset.featureOrder;
-      const nextFeatureOrder = next.container.querySelector('.feature').dataset.featureOrder;
-      const goingForward = isForward(currentFeatureOrder, nextFeatureOrder);
-      const featureContainer = container.querySelector('.feature__container');
-      const featureBox = container.querySelector('.feature__box');
-      const featureInstance = getInstance(container, 'feature');
+  leave({ current }) {
+    document.body.scrollTop = 0
+    document.documentElement.scrollTop = 0
+    const { container } = current
+    const $feature = container.querySelector('.feature')
+    const { featureSlug } = $feature.dataset
 
-      const logo = container.querySelector('.logo');
-      const logoShapes = container.querySelector('.logo.only-big');
+    if (featureSlug !== 'about') {
+      const featureInstance = getInstance(container, 'feature')
 
-      const nextLogo = next.container.querySelector('.logo');
-      const nextLogoShapes = next.container.querySelector('.logo.only-big');
+      return featureInstance.animateOut()
+    }
 
-      if (currentFeatureSlug !== 'about') {
-        await featureInstance.animateOut();
-      }
-      container.querySelector('.menu-trigger').style.opacity = '0';
-
-      resolve();
-      const tl = new TimelineMax();
-
-      featureBox && tl.to(featureBox, 1, {
-        x: goingForward ? -window.innerWidth * 0.3 : window.innerWidth * 0.3,
-        ease: 'Power4.easeInOut',
-      }, 0);
-
-      tl
-        .to(featureContainer, 1.5, {
-          x: goingForward ? -window.innerWidth : window.innerWidth,
-          rotationY: goingForward ? '45deg' : '-45deg',
-          ease: 'Power4.easeInOut',
-        }, 0)
-        .to(logoShapes, 1, {
-          opacity: 0,
-          ease: 'Power4.easeInOut',
-        }, 0)
-        .to(logo, 0.5, {
-          opacity: 0,
-          ease: 'Power4.easeInOut',
-        }, 0)
-        .from(nextLogoShapes, 1, {
-          opacity: 0,
-          ease: 'Power4.easeOut',
-        }, 0)
-        .from(nextLogo, 0.5, {
-          opacity: 0,
-          ease: 'Power4.easeOut',
-        }, 0);
-    });
+    return Promise.resolve()
   },
 
-  enter({
-    current,
-    next,
-  }) {
-    return new Promise(resolve => {
-      const {
-        container,
-      } = next;
-      const nextFeatureSlug = container.querySelector('.feature').dataset.featureSlug;
-      const currentFeatureOrder = current.container.querySelector('.feature').dataset.featureOrder;
-      const nextFeatureOrder = container.querySelector('.feature').dataset.featureOrder;
-      const goingForward = isForward(currentFeatureOrder, nextFeatureOrder);
-      const featureContainer = container.querySelector('.feature__container');
-      const featureBox = container.querySelector('.feature__box');
-      const featureInstance = getInstance(container, 'feature');
+  enter({ current, next }) {
+    const $nextFeature = next.container.querySelector('.feature')
+    const $currentFeature = current.container.querySelector('.feature')
 
-      const tl = new TimelineMax({
-        onComplete: () => {
-          resolve();
+    const nextFeatureSlug = $nextFeature.dataset.featureSlug
+    const nextFeatureOrder = $nextFeature.dataset.featureOrder
+    const currentFeatureOrder = $currentFeature.dataset.featureOrder
+    const goingForward = isForward(currentFeatureOrder, nextFeatureOrder)
+
+    const $nextContainer = $nextFeature.querySelector('.feature__container')
+    const $nextBox = $nextFeature.querySelector('.feature__box')
+    const $nextInstance = getInstance(next.container, 'feature')
+
+    const $currentContainer = $currentFeature.querySelector(
+      '.feature__container'
+    )
+    const $currentBox = $currentFeature.querySelector('.feature__box')
+
+    const $currentLogo = $currentFeature.querySelector('.logo')
+    const $currentLogoShapes = $currentFeature.querySelector('.logo.only-big')
+
+    const $nextLogo = $nextFeature.querySelector('.logo')
+    const $nextLogoShapes = $nextFeature.querySelector('.logo.only-big')
+
+    const tl = gsap.timeline()
+
+    $currentBox &&
+      tl.to(
+        $currentBox,
+        {
+          duration: 1,
+          x: goingForward ? -window.innerWidth * 0.3 : window.innerWidth * 0.3,
+          ease: 'power4.inOut',
         },
-      });
+        0
+      )
 
-      featureBox && tl.from(featureBox, 1.5, {
-        x: goingForward ? window.innerWidth * 0.5 : -window.innerWidth * 0.5,
-        ease: 'Power4.easeOut',
-      }, 1);
-
-      tl
-        .from(featureContainer, 1.5, {
+    tl.to(
+      $currentContainer,
+      {
+        duration: 1.5,
+        x: goingForward ? -window.innerWidth : window.innerWidth,
+        rotationY: goingForward ? '45deg' : '-45deg',
+        ease: 'power4.inOut',
+      },
+      0
+    )
+      .to(
+        $currentLogoShapes,
+        {
+          duration: 1,
+          opacity: 0,
+          ease: 'power4.inOut',
+        },
+        0
+      )
+      .to(
+        $currentLogo,
+        {
+          duration: 0.5,
+          opacity: 0,
+          ease: 'power4.inOut',
+        },
+        0
+      )
+      .from(
+        $nextLogoShapes,
+        {
+          duration: 1,
+          opacity: 0,
+          ease: 'power4',
+        },
+        0
+      )
+      .from(
+        $nextLogo,
+        {
+          duration: 0.5,
+          opacity: 0,
+          ease: 'power4',
+        },
+        0
+      )
+      .from(
+        $nextContainer,
+        {
+          duration: 1.5,
           x: goingForward ? window.innerWidth : -window.innerWidth,
           rotationY: goingForward ? '-45deg' : '45deg',
-          ease: 'Power4.easeOut',
+          ease: 'power4',
           onComplete: () => {
             if (nextFeatureSlug !== 'about') {
-              featureInstance.animateIn();
+              $nextInstance.animateIn()
             }
           },
-        }, 0.5);
-    });
+        },
+        0.5
+      )
+
+    $nextBox &&
+      tl.from(
+        $nextBox,
+        {
+          duration: 1.5,
+          x: goingForward ? window.innerWidth * 0.5 : -window.innerWidth * 0.5,
+          ease: 'power4',
+        },
+        1
+      )
+
+    return tl.then()
   },
-};
+}
