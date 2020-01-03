@@ -130,7 +130,7 @@ export default {
         $nextLogoShapes, {
           duration: 1,
           opacity: 0,
-          ease: 'power4.out',
+          ease: 'power4',
         },
         0
       )
@@ -138,7 +138,7 @@ export default {
         $nextLogo, {
           duration: 0.5,
           opacity: 0,
-          ease: 'power4.out',
+          ease: 'power4',
         },
         0
       )
@@ -147,7 +147,7 @@ export default {
           duration: 1.5,
           x: goingForward ? window.innerWidth : -window.innerWidth,
           rotationY: goingForward ? '-45deg' : '45deg',
-          ease: 'power4.out',
+          ease: 'power4',
           onComplete: () => {
             if (nextFeatureSlug !== 'about') {
               $nextInstance.animateIn()
@@ -162,7 +162,7 @@ export default {
         $nextBox, {
           duration: 1.5,
           x: goingForward ? window.innerWidth * 0.5 : -window.innerWidth * 0.5,
-          ease: 'power4.out',
+          ease: 'power4',
         },
         0.5
       )

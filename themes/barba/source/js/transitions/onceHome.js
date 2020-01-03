@@ -9,7 +9,8 @@ export default {
 
   once() {
     const logo = document.querySelector('.logo.homepage__logo')
-    const title = document.querySelectorAll('h1 span')
+    const logoItems = document.querySelectorAll('.only-big .hover .item', this.$el)
+    const title = document.querySelectorAll('.homepage__title span')
     const buttons = document.querySelectorAll('.homepage__buttons a')
     const chrome = [
       document.querySelector('.header__infos'),
@@ -31,10 +32,27 @@ export default {
         logo, {
           duration: 0.5,
           y: 100,
-          scale: 1.1,
-          ease: 'power4.inOut',
+          scale: 1.2,
+          ease: 'power4',
         },
         0
+      )
+      .to(
+        logoItems, {
+          duration: 0.3,
+          opacity: 1,
+          ease: 'power4',
+        },
+        0.5
+      )
+      .to(
+        logoItems, {
+          duration: 0.5,
+          opacity: 0,
+          ease: 'power4',
+          stagger: 0.05,
+        },
+        1
       )
       .from(
         title, {

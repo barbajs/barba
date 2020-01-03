@@ -19,7 +19,7 @@ export default {
 
   leave({
     current,
-    next
+    next,
   }) {
     const intro = current.container.querySelector('.homepage')
     const oldLogo = current.container.querySelector('.logo.homepage__logo')
@@ -172,7 +172,7 @@ export default {
           duration: 1,
           opacity: 0,
           y: 200,
-          ease: 'power4.out',
+          ease: 'power4',
           rotationX: '20deg',
         },
         0
@@ -182,7 +182,7 @@ export default {
           duration: 0.4,
           opacity: 0,
           y: 30,
-          ease: 'power4.out',
+          ease: 'power4',
           stagger: 0.2,
         },
         0.8
