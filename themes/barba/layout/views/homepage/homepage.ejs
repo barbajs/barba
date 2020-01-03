@@ -1,0 +1,41 @@
+<div class="homepage" data-component="homepage">
+  <div class="homepage__logo-outer" data-ref="homepage.container">
+    <%- partial('components/common/logo.ejs', { classes: 'homepage__logo' }) %>
+    <%- partial('components/common/logo.ejs', { classes: 'only-big' }) %>
+  </div>
+
+  <ul class="homepage__list" data-ref="homepage.list">
+    <li class="homepage__list__item--dependency-free" data-ref="homepage.listItem">
+      Dependency Free
+    </li>
+    <div>
+      <li class="homepage__list__item--small-size" data-ref="homepage.listItem">
+        Small size
+      </li>
+      <li class="homepage__list__item--core" data-ref="homepage.listItem">
+        B/Core
+      </li>
+      <li class="homepage__list__item--router" data-ref="homepage.listItem">
+        B/Router
+      </li>
+      <li class="homepage__list__item--prefetch" data-ref="homepage.listItem">
+        B/Prefetch
+      </li>
+      <li class="homepage__list__item--about" data-ref="homepage.listItem">
+        About
+      </li>
+    </div>
+  </ul>
+
+  <h1 class="homepage__title">
+    <div class="line">
+      <span>Create badass fluid and smooth transitions</span>
+    </div>
+    <div class="line"><span>between your website’s pages.</span></div>
+  </h1>
+
+  <div class="homepage__buttons">
+    <a href="<%- theme.root %>features/dependency-free/" class="button">features 💪</a>
+    <a href="<%- theme.root %>docs/getstarted/intro" class="button button--fill">Documentation 📖</a>
+  </div>
+</div>
