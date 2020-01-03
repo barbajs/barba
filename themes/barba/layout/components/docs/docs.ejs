@@ -8,9 +8,11 @@
   <% if (page.subpages) { %>
   <% page.subpages.forEach(function(subpage) { %>
   <% if (is_current(subpage.url)) { %>
-  <%- partial('./docs-nav-lateral', {
-            page: subpage,
-          }) %>
+  <%- partial('./docs-nav-lateral',
+    {
+      page: subpage,
+    }
+  ) %>
   <% }; %>
   <% }); %>
   <% }; %>
