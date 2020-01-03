@@ -15,12 +15,11 @@
   }
 }
 
-.big-shape-container {
-  position: absolute;
-  top: 50%;
+.big-shape-outer {
+  @include center-y;
+
   right: 0;
   left: 0;
-  transform: translateY(-50%);
   opacity: 0.8;
 
   svg {
@@ -65,11 +64,11 @@
   }
 }
 
-.feature__container {
+.feature-outer {
   position: relative;
   display: flex;
   flex-direction: column;
-  max-width: 700px;
+  max-width: 70rem;
   height: 100%;
   margin: 0 auto;
 
@@ -111,12 +110,11 @@
 
 .feature__box {
   position: absolute;
-  ;
   bottom: 0;
   max-width: 85vw;
   background: rgba($white, 0.8);
   border-radius: 10px;
-  box-shadow: 0 14px 30px rgba($gray-light, 0.3);
+  box-shadow: 0 1.4rem 3rem rgba($gray-light, 0.3);
 
   @include mq(l) {
     top: initial;
