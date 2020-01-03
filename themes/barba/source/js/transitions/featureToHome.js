@@ -77,7 +77,7 @@ export default {
     const newLogoSVG = newLogo.querySelector('svg')
     const oldLogo = current.container.querySelector('.logo.featured')
     const title = next.container.querySelectorAll('h1 span')
-    const buttons = next.container.querySelectorAll('.intro__buttons a')
+    const buttons = next.container.querySelectorAll('.homepage__buttons a')
 
     const oldLogoRect = oldLogo.getBoundingClientRect()
     const newLogoRect = newLogo.getBoundingClientRect()

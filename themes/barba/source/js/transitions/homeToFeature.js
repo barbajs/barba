@@ -1,5 +1,9 @@
-import { gsap } from 'gsap'
-import { getInstance } from '../app'
+import {
+  gsap
+} from 'gsap'
+import {
+  getInstance
+} from '../app'
 // DEV
 // import { qs, qsa } from '../../../source/js/utils/dom'
 // import deferred from '../../../source/js/utils/deferred'
@@ -13,13 +17,16 @@ export default {
     route: 'feature',
   },
 
-  leave({ current, next }) {
-    const intro = current.container.querySelector('.intro')
-    const oldLogo = current.container.querySelector('.logo.home-logo')
+  leave({
+    current,
+    next
+  }) {
+    const intro = current.container.querySelector('.homepage')
+    const oldLogo = current.container.querySelector('.logo.homepage__logo')
     const newLogo = next.container.querySelector('.logo.featured')
     const title = current.container.querySelectorAll('h1 span')
-    const buttons = current.container.querySelectorAll('.intro__buttons a')
-    const list = current.container.querySelector('.intro__list')
+    const buttons = current.container.querySelectorAll('.homepage__buttons a')
+    const list = current.container.querySelector('.homepage__list')
     const hoverIndex = next.container.querySelector('.feature').dataset.featureOrder
     const bigShape = current.container.querySelectorAll(
       '.logo.only-big .hover .item'
@@ -49,8 +56,7 @@ export default {
         },
       })
       .to(
-        oldLogo,
-        {
+        oldLogo, {
           duration: 1.4,
           scale,
           y: -(
@@ -64,16 +70,14 @@ export default {
         0
       )
       .to(
-        bigShape,
-        {
+        bigShape, {
           duration: 0.1,
           opacity: 1,
         },
         0
       )
       .to(
-        oldBigShape,
-        {
+        oldBigShape, {
           duration: 1.3,
           y: newBigShapeRect.top - oldBigShapeRect.top,
           ease: 'power4.inOut',
@@ -81,16 +85,14 @@ export default {
         0.1
       )
       .to(
-        oldBigShape,
-        {
+        oldBigShape, {
           duration: 0.2,
           opacity: 0,
         },
         1.4
       )
       .from(
-        newBigShape,
-        {
+        newBigShape, {
           duration: 0.01,
           opacity: 0,
         },
@@ -100,8 +102,7 @@ export default {
         bigShape.classList.add('grow')
       }, 0)
       .to(
-        list,
-        {
+        list, {
           duration: 0.8,
           opacity: 0,
           ease: 'power4.in',
@@ -109,8 +110,7 @@ export default {
         0
       )
       .to(
-        title,
-        {
+        title, {
           duration: 1,
           yPercent: 100,
           ease: 'power4.inOut',
@@ -119,8 +119,7 @@ export default {
         0
       )
       .to(
-        buttons,
-        {
+        buttons, {
           duration: 1,
           y: 40,
           opacity: 0,
@@ -131,8 +130,12 @@ export default {
       )
       .then()
   },
-  enter({ next }) {
-    const { container } = next
+  enter({
+    next
+  }) {
+    const {
+      container
+    } = next
     const newLogo = container.querySelector('.logo.featured')
     const featureContainer = container.querySelector('.feature__container')
     const navigation = container.querySelectorAll('.feature__nav__el')
@@ -145,16 +148,14 @@ export default {
         },
       })
       .from(
-        newLogo,
-        {
+        newLogo, {
           duration: 1,
           opacity: 0,
         },
         0
       )
       .from(
-        featureContainer,
-        {
+        featureContainer, {
           duration: 1,
           opacity: 0,
           y: 200,
@@ -164,8 +165,7 @@ export default {
         0
       )
       .from(
-        navigation,
-        {
+        navigation, {
           duration: 0.4,
           opacity: 0,
           y: 30,
