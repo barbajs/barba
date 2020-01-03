@@ -2,7 +2,7 @@
   data-feature-order="<%- page.order %>">
   <%-
     partial(
-      '../components/common/logo.ejs',
+      '../common/logo.ejs',
       {
         classes: 'featured featured--'+page.modifier
       }
@@ -11,7 +11,7 @@
   <div class="big-shape-outer">
     <%-
       partial(
-        '../components/common/logo.ejs',
+        '../common/logo.ejs',
         {
           classes: 'only-big can-move detail-feature featured--'+page.modifier
         }
@@ -19,7 +19,7 @@
     %>
   </div>
 
-  <%- partial('../components/features/feature-nav.ejs') %>
+  <%- partial('./feature-nav.ejs') %>
 
   <div class="feature-outer">
     <h1 class="feature__title colored">
@@ -31,11 +31,11 @@
 
     <div class="feature__box">
       <div class="feature__box__body">
-        <%- partial('../components/features/box-content/' + page.box) %>
+        <%- partial('./feature-box/' + page.box) %>
       </div>
       <div class="feature__box__footer">
         <%-
-          partial('../components/features/feature-action.ejs',
+          partial('./feature-action.ejs',
             {
               ctaLink: page.action.link,
               ctaModifier: page.modifier,

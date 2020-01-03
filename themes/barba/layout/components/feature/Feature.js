@@ -1,4 +1,6 @@
-import { Component } from 'kapla'
+import {
+  Component,
+} from 'kapla'
 import lottie from 'lottie-web'
 
 // Bodymovin JSON files
@@ -8,8 +10,7 @@ import feature2 from './lottie-animation/feature2.json'
 import feature3 from './lottie-animation/feature3.json'
 import feature4 from './lottie-animation/feature4.json'
 
-const bodymovins = [
-  {
+const bodymovins = [{
     data: feature0,
     step: 158,
   },
@@ -33,6 +34,7 @@ const bodymovins = [
 
 export default class extends Component {
   load() {
+    console.log('test');
     const featureOrder = this.data.get('order')
 
     this.bodymovin = bodymovins[featureOrder]

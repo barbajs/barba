@@ -1,8 +1,8 @@
 import {
-  getInstance
+  getInstance,
 } from '../app'
 import {
-  gsap
+  gsap,
 } from 'gsap'
 
 export default {
@@ -10,16 +10,17 @@ export default {
     namespace: 'feature',
   },
   once: ({
-    next
+    next,
   }) => {
     const {
-      container
+      container,
     } = next
     const nextFeatureSlug = container.querySelector('.feature').dataset
       .featureSlug
     const featureContainer = container.querySelector('.feature-outer')
     const featureBox = container.querySelector('.feature__box')
     const featureInstance = getInstance(container, 'feature')
+    console.log(getInstance);
 
     const tl = gsap.timeline()
 

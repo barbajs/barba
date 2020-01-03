@@ -3,12 +3,8 @@ title: B/Core
 namespace: feature
 slug: core
 order: 2
-layout: pages/feature
+layout: components/feature/feature
 modifier: 'core'
 box: 'core.ejs'
-action: {
-    title: 'Read Documentation',
-    icon: barba-arrow-next,
-    link: '#',
-}
+action: { title: 'Read Documentation', icon: barba-arrow-next, link: '#' }
 ---

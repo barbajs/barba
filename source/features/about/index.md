@@ -4,7 +4,7 @@ title: About
 namespace: feature
 slug: about
 order: 5
-layout: pages/feature
+layout: components/feature/feature
 modifier: 'about'
 ---
 
