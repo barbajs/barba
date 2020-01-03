@@ -1,7 +1,7 @@
 ---
 subtitle: Syntax
 namespace: docs
-layout: pages/docs
+layout: components/docs/docs
 url: '/docs/userguide/syntax'
 ---
 
@@ -180,7 +180,7 @@ Properties attached to `data.current.route` and `data.next.route` objects.
 Example:
 
 ```js
-import barba from '@barba/core';
+import barba from '@barba/core'
 
 barba.init({
   transitions: [
@@ -188,15 +188,15 @@ barba.init({
       name: 'svg-circle',
       leave(data) {
         // retrieves the current page url
-        const from = data.current.url;
+        const from = data.current.url
       },
       enter({ next }) {
         // retrieves the next page url (short syntax)
-        const to = next.url;
+        const to = next.url
       },
     },
   ],
-});
+})
 ```
 
 ##### Rules
@@ -288,7 +288,7 @@ By default the sync mode is set to `false`.
 Example:
 
 ```js
-import barba from '@barba/core';
+import barba from '@barba/core'
 
 barba.init({
   transitions: [
@@ -302,7 +302,7 @@ barba.init({
       },
     },
   ],
-});
+})
 ```
 
 #### `<view>` object
@@ -323,7 +323,7 @@ Available hooks are:
 Example:
 
 ```js
-import barba from '@barba/core';
+import barba from '@barba/core'
 
 barba.init({
   views: [
@@ -340,7 +340,7 @@ barba.init({
       },
     },
   ],
-});
+})
 ```
 
 #### debug
@@ -351,11 +351,11 @@ It sets [logLevel](#loglevel) to `debug`. Default is `off`.
 Example:
 
 ```js
-import barba from '@barba/core';
+import barba from '@barba/core'
 
 barba.init({
   debug: true,
-});
+})
 ```
 
 #### logLevel
@@ -375,14 +375,14 @@ Allows you to override data attributes. See default [`schemaAttribute`](https://
 Example:
 
 ```js
-import barba from '@barba/core';
+import barba from '@barba/core'
 
 barba.init({
   // overrides defaults and create a custom prefix for wrapper, containers, etc.
   schema: {
     prefix: 'data-custom',
   },
-});
+})
 ```
 
 #### cacheIgnore
@@ -406,11 +406,11 @@ You can also define "route" pattern(s) ([see @barba/router](router.md)).
 Example:
 
 ```js
-import barba from '@barba/core';
+import barba from '@barba/core'
 
 barba.init({
   cacheIgnore: ['/contact/', '/:category/post?'],
-});
+})
 ```
 
 #### prefetchIgnore
@@ -426,11 +426,11 @@ If follows the same logic as the above `cacheIgnore` option…
 Example:
 
 ```js
-import barba from '@barba/core';
+import barba from '@barba/core'
 
 barba.init({
   prefetchIgnore: false,
-});
+})
 ```
 
 #### prevent
@@ -447,13 +447,13 @@ If your function returns `true`, Barba will not be enabled.
 Example:
 
 ```js
-import barba from '@barba/core';
+import barba from '@barba/core'
 
 barba.init({
   // defines a custom function that will prevent Barba
   // from working on link that contains a `prevent` CSS class
   prevent: ({ el }) => el.classList && el.classList.contains('prevent'),
-});
+})
 ```
 
 > Note that you can prevent a link of using Barba with the `data-barba-prevent` attribute:
@@ -476,20 +476,20 @@ If this function returns `false`, wrong links will not be "force" triggered.
 Example:
 
 ```js
-import barba from '@barba/core';
+import barba from '@barba/core'
 
 barba.init({
   requestError: (trigger, action, url, response) => {
     // go to a custom 404 page if the user click on a link that return a 404 response status
     if (action === 'click' && response.status && response.status === 404) {
-      barba.go('/404');
+      barba.go('/404')
     }
 
     // prevents Barba from redirecting the user to the requested URL
     // this is equivalent to e.preventDefault()
-    return false;
+    return false
   },
-});
+})
 ```
 
 > Note that if you use `barba.go()` directive without returning `false`, you will be redirected to the requested URL because Barba uses `barba.force()` to reach the page.

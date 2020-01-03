@@ -1,7 +1,7 @@
 ---
 title: CSS
 namespace: docs
-layout: pages/docs
+layout: components/docs/docs
 url: '/docs/plugins/css'
 ---
 
@@ -40,22 +40,21 @@ During the transition process, Barba defines custom classes according to the tra
 Example with default naming:
 
 ```js
-import barba from '@barba/core';
-import barbaCss from '@barba/css';
+import barba from '@barba/core'
+import barbaCss from '@barba/css'
 
 // tell Barba to use the css module
-barba.use(barbaCss);
+barba.use(barbaCss)
 
 // init Barba
-barba.init();
+barba.init()
 ```
 
 Then customize your CSS classes like this:
 
 ```css
 /* transition active state (same for leave and enter) */
-.barba-leave-active
-.barba-enter-active {
+.barba-leave-active .barba-enter-active {
   transition: opacity 450ms ease;
 }
 
@@ -101,30 +100,31 @@ If you want to play some transition on first load, use `appear`:
 
 ---
 
-If you want different transitions, you can name them and use rules.  
+If you want different transitions, you can name them and use rules.
 The transition `name` will be used as **CSS "prefix"**.
 
 ```js
-import barba from '@barba/core';
-import barbaCss from '@barba/css';
+import barba from '@barba/core'
+import barbaCss from '@barba/css'
 
 // tell Barba to use the css module
-barba.use(barbaCss);
+barba.use(barbaCss)
 
 // init Barba
 barba.init({
-  transitions:[{
-
-    // css classes will look like `.fade-xxx-[-xxx]`
-    name: 'fade'
-  }, {
-
-    // css classes will look like `.slide-xxx[-xxx]`
-    name: 'slide',
-    from: { namespace: 'home' },
-    to: { namespace: 'products' },
-  }]
-});
+  transitions: [
+    {
+      // css classes will look like `.fade-xxx-[-xxx]`
+      name: 'fade',
+    },
+    {
+      // css classes will look like `.slide-xxx[-xxx]`
+      name: 'slide',
+      from: { namespace: 'home' },
+      to: { namespace: 'products' },
+    },
+  ],
+})
 ```
 
 ```css

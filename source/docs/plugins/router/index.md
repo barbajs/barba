@@ -1,7 +1,7 @@
 ---
 title: Router
 namespace: docs
-layout: pages/docs
+layout: components/docs/docs
 url: '/docs/plugins/router'
 ---
 
@@ -11,7 +11,7 @@ Barba router allows you to use **custom routes** for page transitions.
 
 ## Definition
 
-This module adds a __route__ rule to Barba, that is less important than `custom()` but more than `namespace`, see core [transition rules](core.md#rules) for details.
+This module adds a **route** rule to Barba, that is less important than `custom()` but more than `namespace`, see core [transition rules](core.md#rules) for details.
 
 ## Syntax
 
@@ -34,23 +34,26 @@ This module adds a __route__ rule to Barba, that is less important than `custom(
 Example:
 
 ```js
-import barba from '@barba/core';
-import barbaRouter from '@barba/router';
+import barba from '@barba/core'
+import barbaRouter from '@barba/router'
 
 // define your routes
-const routes = [{
-  path: '/index',
-  name: 'home'
-}, {
-  path: '/product/:id',
-  name: 'item'
-}];
+const routes = [
+  {
+    path: '/index',
+    name: 'home',
+  },
+  {
+    path: '/product/:id',
+    name: 'item',
+  },
+]
 
 // tell Barba to use the router with your custom routes
 barba.use(barbaRouter, {
   routes,
-});
+})
 
 // init Barba
-barba.init();
+barba.init()
 ```

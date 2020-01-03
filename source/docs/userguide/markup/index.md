@@ -1,7 +1,7 @@
 ---
 title: Markup
 namespace: docs
-layout: pages/docs
+layout: components/docs/docs
 url: '/docs/userguide/markup'
 ---
 
@@ -35,4 +35,3 @@ The container defines **a section in which content is updated automatically** wh
 The namespace allow you to define **a unique name for each pages**. Barba mainly uses this namespace for transition [rules](#rules) and [views](#view-object).
 
 > Note that all **data-barba** attributes can be easily customized using the Barba [schema](#schema).
-

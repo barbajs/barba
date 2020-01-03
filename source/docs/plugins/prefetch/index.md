@@ -1,7 +1,7 @@
 ---
 title: Prefetch
 namespace: docs
-layout: pages/docs
+layout: components/docs/docs
 url: '/docs/plugins/prefetch'
 ---
 
@@ -22,16 +22,16 @@ You can use this feature regardless the [`prefetchIgnore`](core.md#prefetchignor
 Example:
 
 ```js
-import barba from '@barba/core';
-import barbaPrefetch from '@barba/prefetch';
+import barba from '@barba/core'
+import barbaPrefetch from '@barba/prefetch'
 
 // tell Barba to use the prefetch module
-barba.use(barbaPrefetch);
+barba.use(barbaPrefetch)
 
 // init Barba
-barba.init();
+barba.init()
 ```
 
-> On slow network or with a high page weight, the server can take time to prefetch the response and can lead Barba to abort the transition and display a *Timeout error [2000]* message.
+> On slow network or with a high page weight, the server can take time to prefetch the response and can lead Barba to abort the transition and display a _Timeout error [2000]_ message.
 >
 > See the [`timeout`](core.md#timeout) setting to properly manage this behavior.

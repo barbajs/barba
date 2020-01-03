@@ -1,7 +1,7 @@
 ---
 title: Head
 namespace: docs
-layout: pages/docs
+layout: components/docs/docs
 url: '/docs/plugins/head'
 ---
 

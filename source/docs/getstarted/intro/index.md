@@ -1,7 +1,7 @@
 ---
 title: Get started
 namespace: docs
-layout: pages/docs
+layout: components/docs/docs
 url: '/docs/getstarted/intro'
 ---
 
@@ -117,7 +117,7 @@ barba.init({
 
 ## Browser support
 
-Barba.js can be viewed as a [progressive enhancement](https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/).  
+Barba.js can be viewed as a [progressive enhancement](https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/).
 Main "modern features" used are:
 
 - [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
