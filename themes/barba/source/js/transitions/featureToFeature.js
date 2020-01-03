@@ -1,11 +1,15 @@
-import { getInstance } from '../app'
-import { gsap } from 'gsap'
+import {
+  getInstance,
+} from '../app'
+import {
+  gsap,
+} from 'gsap'
 
 /**
  * Check if forward or backward direction
  *
- * @param {int} currentFeatureOrder page namepspace
- * @param {int} nextFeatureOrder page namepspace
+ * @param {int} currentFeatureOrder Current page order
+ * @param {int} nextFeatureOrder Next page order
  * @returns {boolean} If forward
  */
 function isForward(currentFeatureOrder, nextFeatureOrder) {
@@ -35,12 +39,18 @@ export default {
     route: 'feature',
   },
 
-  leave({ current }) {
+  leave({
+    current,
+  }) {
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
-    const { container } = current
+    const {
+      container,
+    } = current
     const $feature = container.querySelector('.feature')
-    const { featureSlug } = $feature.dataset
+    const {
+      featureSlug
+    } = $feature.dataset
 
     if (featureSlug !== 'about') {
       const featureInstance = getInstance(container, 'feature')
@@ -51,7 +61,10 @@ export default {
     return Promise.resolve()
   },
 
-  enter({ current, next }) {
+  enter({
+    current,
+    next,
+  }) {
     const $nextFeature = next.container.querySelector('.feature')
     const $currentFeature = current.container.querySelector('.feature')
 
@@ -60,12 +73,12 @@ export default {
     const currentFeatureOrder = $currentFeature.dataset.featureOrder
     const goingForward = isForward(currentFeatureOrder, nextFeatureOrder)
 
-    const $nextContainer = $nextFeature.querySelector('.feature__container')
+    const $nextContainer = $nextFeature.querySelector('.feature-outer')
     const $nextBox = $nextFeature.querySelector('.feature__box')
     const $nextInstance = getInstance(next.container, 'feature')
 
     const $currentContainer = $currentFeature.querySelector(
-      '.feature__container'
+      '.feature-outer'
     )
     const $currentBox = $currentFeature.querySelector('.feature__box')
 
@@ -79,8 +92,7 @@ export default {
 
     $currentBox &&
       tl.to(
-        $currentBox,
-        {
+        $currentBox, {
           duration: 1,
           x: goingForward ? -window.innerWidth * 0.3 : window.innerWidth * 0.3,
           ease: 'power4.inOut',
@@ -88,19 +100,18 @@ export default {
         0
       )
 
-    tl.to(
-      $currentContainer,
-      {
-        duration: 1.5,
-        x: goingForward ? -window.innerWidth : window.innerWidth,
-        rotationY: goingForward ? '45deg' : '-45deg',
-        ease: 'power4.inOut',
-      },
-      0
-    )
+    tl
       .to(
-        $currentLogoShapes,
-        {
+        $currentContainer, {
+          duration: 1.5,
+          x: goingForward ? -window.innerWidth : window.innerWidth,
+          rotationY: goingForward ? '45deg' : '-45deg',
+          ease: 'power4.inOut',
+        },
+        0
+      )
+      .to(
+        $currentLogoShapes, {
           duration: 1,
           opacity: 0,
           ease: 'power4.inOut',
@@ -108,8 +119,7 @@ export default {
         0
       )
       .to(
-        $currentLogo,
-        {
+        $currentLogo, {
           duration: 0.5,
           opacity: 0,
           ease: 'power4.inOut',
@@ -117,30 +127,27 @@ export default {
         0
       )
       .from(
-        $nextLogoShapes,
-        {
+        $nextLogoShapes, {
           duration: 1,
           opacity: 0,
-          ease: 'power4',
+          ease: 'power4.out',
         },
         0
       )
       .from(
-        $nextLogo,
-        {
+        $nextLogo, {
           duration: 0.5,
           opacity: 0,
-          ease: 'power4',
+          ease: 'power4.out',
         },
         0
       )
       .from(
-        $nextContainer,
-        {
+        $nextContainer, {
           duration: 1.5,
           x: goingForward ? window.innerWidth : -window.innerWidth,
           rotationY: goingForward ? '-45deg' : '45deg',
-          ease: 'power4',
+          ease: 'power4.out',
           onComplete: () => {
             if (nextFeatureSlug !== 'about') {
               $nextInstance.animateIn()
@@ -152,13 +159,12 @@ export default {
 
     $nextBox &&
       tl.from(
-        $nextBox,
-        {
+        $nextBox, {
           duration: 1.5,
           x: goingForward ? window.innerWidth * 0.5 : -window.innerWidth * 0.5,
-          ease: 'power4',
+          ease: 'power4.out',
         },
-        1
+        0.5
       )
 
     return tl.then()
