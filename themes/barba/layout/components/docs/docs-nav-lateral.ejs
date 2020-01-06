@@ -4,7 +4,7 @@
 
 <div class="docs__nav__lateral" data-component="docs-nav-lateral">
   <% if (prev !== null) { %>
-    <a href="<%- theme.root %><%- prev.url %>" class="docs__nav__lateral__link--prev">
+    <a href="<%- theme.root %><%- prev.url %>" class="docs__nav__lateral__link--prev" data-ref="docs-nav-lateral.link">
       <%- partial('../common/icon', {
         icon: 'barba-arrow-prev',
         hidden: true,
@@ -19,7 +19,7 @@
   </button>
 
   <% if (next !== null) { %>
-    <a href="<%- theme.root %><%- next.url %>" class="docs__nav__lateral__link--next">
+    <a href="<%- theme.root %><%- next.url %>" class="docs__nav__lateral__link--next" data-ref="docs-nav-lateral.link">
       <span class="docs__nav__lateral__label"><%- next.title %></span>
       <%- partial('../common/icon', {
         icon: 'barba-arrow-next',
