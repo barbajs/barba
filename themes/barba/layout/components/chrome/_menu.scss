@@ -12,17 +12,17 @@
   user-select: none;
   pointer-events: none;
 
+  @include mq(nav) {
+    width: 500px;
+  }
+
   &.is-open {
     display: flex;
     pointer-events: initial;
   }
 
-  > div {
+  >div {
     width: 100%;
-  }
-
-  @include mq(nav) {
-    width: 500px;
   }
 }
 
@@ -36,6 +36,7 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease-in-out;
+  cursor: pointer;
 
   .is-open & {
     opacity: 1;
@@ -56,7 +57,7 @@
   background-color: $white;
   box-shadow: 10px 10px 10px 10px $c-blue-lighter;
   transform: translateX(110%);
-  transition: transform 0.4s ease-out;
+  transition: transform 0.4s ease-in-out;
 
   &::before {
     content: '';
@@ -95,7 +96,7 @@
 }
 
 .menu__pages__item {
-  & + & {
+  &+& {
     margin-top: $spacing;
 
     @media screen and (max-height: 850px) {
@@ -138,7 +139,7 @@
   font-size: 1.6rem;
   line-height: 1.2em;
 
-  & + & {
+  &+& {
     margin-top: $spacing * 0.75;
   }
 }

@@ -95,7 +95,7 @@ export default {
     $currentBox &&
       tl.to(
         $currentBox, {
-          duration: 1,
+          duration: 0.7,
           x: goingForward ? -window.innerWidth * 0.3 : window.innerWidth * 0.3,
           ease: 'power4.inOut',
         },
@@ -105,7 +105,7 @@ export default {
     tl
       .to(
         $currentContainer, {
-          duration: 1.5,
+          duration: 1,
           x: goingForward ? -window.innerWidth : window.innerWidth,
           rotationY: goingForward ? '45deg' : '-45deg',
           ease: 'power4.inOut',
@@ -114,7 +114,7 @@ export default {
       )
       .to(
         $currentLogoShapes, {
-          duration: 1,
+          duration: 0.7,
           opacity: 0,
           ease: 'power4.inOut',
         },
@@ -130,7 +130,7 @@ export default {
       )
       .from(
         $nextLogoShapes, {
-          duration: 1,
+          duration: 0.7,
           opacity: 0,
           ease: 'power4',
         },
@@ -146,7 +146,7 @@ export default {
       )
       .from(
         $nextContainer, {
-          duration: 1.5,
+          duration: 1,
           x: goingForward ? window.innerWidth : -window.innerWidth,
           rotationY: goingForward ? '-45deg' : '45deg',
           ease: 'power4',
@@ -162,7 +162,7 @@ export default {
     $nextBox &&
       tl.from(
         $nextBox, {
-          duration: 1.5,
+          duration: 0.7,
           x: goingForward ? window.innerWidth * 0.5 : -window.innerWidth * 0.5,
           ease: 'power4',
         },

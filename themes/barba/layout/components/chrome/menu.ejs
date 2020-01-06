@@ -1,6 +1,6 @@
 <div class="menu" data-component="menu">
 
-  <div class="menu__overlay"></div>
+  <div class="menu__overlay" data-ref="menu.overlay"></div>
 
   <!-- Menu Nav -->
   <div class="menu__panel">
@@ -12,7 +12,8 @@
         <!-- Page -->
         <% theme.menu.forEach(function(page) { %>
         <li class="menu__pages__item">
-          <a class="menu__pages__item__link <%- is_current(page.slug) ? 'is-active' : '' %>" href="<%- theme.root %><%- page.url %>">
+          <a class="menu__pages__item__link <%- is_current(page.slug) ? 'is-active' : '' %>"
+            href="<%- theme.root %><%- page.url %>">
             <%- page.title %>
           </a>
 

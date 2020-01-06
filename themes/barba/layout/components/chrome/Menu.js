@@ -1,9 +1,10 @@
-import { Component } from 'kapla'
+import {
+  Component,
+} from 'kapla'
 
 export default class extends Component {
   load() {
     const subscriber = this.subscribe('menu-trigger')
-    const overlay = this.$el.querySelector('.menu__overlay')
 
     subscriber.on('menu:open', this.open)
     subscriber.on('menu:close', this.close)
@@ -11,7 +12,7 @@ export default class extends Component {
     this.delegateClick = 'a'
 
     // Close menu if click on overlay
-    overlay.addEventListener('click', () => {
+    this.$refs.overlay.addEventListener('click', () => {
       this.onOverlayClick()
     })
   }

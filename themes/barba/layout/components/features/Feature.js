@@ -48,7 +48,7 @@ export default class extends Component {
       animationData: this.bodymovin.data,
     })
 
-    this.animation.setSpeed(1.25)
+    this.animation.setSpeed(1.5)
   }
 
   animateOut() {
