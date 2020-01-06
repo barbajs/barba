@@ -5,7 +5,7 @@
     <!-- Page -->
     <% theme.docs.forEach(function(page) { %>
     <li>
-      <a href="<%- page.url %>">
+      <a href="<%- theme.root %><%- page.url %>">
         <h1 class="docs__nav__title <%- is_current(page.path) ? 'is-open' : '' %>"><%- page.title %></h1>
       </a>
 
@@ -16,7 +16,7 @@
         <!-- Subpage -->
         <% page.subpages.forEach(function(subpage) { %>
         <li class="<%- is_current(subpage.url) ? 'is-open' : '' %>">
-          <a href="<%- subpage.url %>">
+          <a href="<%- theme.root %><%- subpage.url %>">
             <h2 class="docs__nav__subtitle <%- is_current(subpage.url) ? 'is-open' : '' %>"><%- subpage.title %>
             </h2>
         </li>

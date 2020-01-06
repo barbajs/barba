@@ -10,6 +10,6 @@ action:
   {
     title: 'Read Documentation',
     icon: barba-arrow-next,
-    link: 'docs/plugins/css/',
+    link: 'docs/userguide/markup',
   }
 ---
