@@ -131,3 +131,20 @@
     position: relative;
   }
 }
+
+.homepage__buttons {
+  display: flex;
+  flex-direction: column;
+
+  @include mq(m) {
+    flex-direction: row;
+
+    .button+.button {
+      margin-left: 2rem;
+    }
+  }
+
+  .button {
+    margin-top: 1rem;
+  }
+}

@@ -12,6 +12,14 @@ html {
   }
 }
 
+body {
+  &.prevent-scroll {
+    overflow: hidden;
+    height: 100vh;
+    margin-left: calc(100vw - 100%);
+  }
+}
+
 // SVG sprite
 body>svg {
   display: none;
