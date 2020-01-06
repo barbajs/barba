@@ -1,11 +1,13 @@
 <ol class="grid" data-component="<%- name %>-grid">
 
   <!-- Example items -->
+
   <% if (namespace === 'page--example') { %>
   <% site.categories.findOne({name: 'example'}).posts.forEach(function(post){ %>
   <%- partial('components/example/example-item.ejs', { post: post }) %>
   <% }); %>
   <% } %>
+
   <!-- Example items [end]-->
 
   <!-- Showcase items -->
