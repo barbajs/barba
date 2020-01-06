@@ -13,7 +13,7 @@ html {
 }
 
 // SVG sprite
-body > svg {
+body>svg {
   display: none;
 }
 
@@ -31,6 +31,7 @@ a:visited {
 }
 
 html.is-transitioning {
+
   &,
   * {
     pointer-events: none;

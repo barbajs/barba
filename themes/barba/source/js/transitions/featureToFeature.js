@@ -88,6 +88,8 @@ export default {
     const $nextLogo = $nextFeature.querySelector('.logo')
     const $nextLogoShapes = $nextFeature.querySelector('.logo.only-big')
 
+    current.container.querySelector('.menu-trigger').style.opacity = '0';
+
     const tl = gsap.timeline()
 
     $currentBox &&

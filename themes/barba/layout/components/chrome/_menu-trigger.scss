@@ -5,9 +5,29 @@
   width: 50px;
   height: 50px;
   margin: 0 1rem;
-  background-color: rgba($c-blue-medium, 0.2);
+  background-color: rgba($c-menu-about, 0.2);
   border-radius: 50%;
   cursor: pointer;
+
+  [data-feature-slug='dependency-free'] & {
+    background-color: rgba($c-menu-dependency-free, 0.2);
+  }
+
+  [data-feature-slug='small-size'] & {
+    background-color: rgba($c-menu-small-size, 0.2);
+  }
+
+  [data-feature-slug='core'] & {
+    background-color: rgba($c-menu-core, 0.2);
+  }
+
+  [data-feature-slug='router'] & {
+    background-color: rgba($c-menu-router, 0.2);
+  }
+
+  [data-feature-slug='prefetch'] & {
+    background-color: rgba($c-menu-prefetch, 0.2);
+  }
 }
 
 .menu-trigger__shape {
@@ -19,9 +39,30 @@
   stroke-width: 4px;
   stroke-dasharray: 160px;
   stroke-dashoffset: 160px;
-  transition: stroke-dashoffset 0.6s $ease-in-out-quart;
+  transition: stroke-dashoffset 0.6s $ease-out-quart;
 
-  .is-open & {
+  [data-feature-slug='dependency-free'] & {
+    stroke: $c-menu-dependency-free;
+  }
+
+  [data-feature-slug='small-size'] & {
+    stroke: $c-menu-small-size;
+  }
+
+  [data-feature-slug='core'] & {
+    stroke: $c-menu-core;
+  }
+
+  [data-feature-slug='router'] & {
+    stroke: $c-menu-router;
+  }
+
+  [data-feature-slug='prefetch'] & {
+    stroke: $c-menu-prefetch;
+  }
+
+  .is-open &,
+  .menu-trigger:hover & {
     stroke-dashoffset: 0;
   }
 }
@@ -66,6 +107,26 @@
   transform: translate(-50%, -50%);
   transform-origin: center center;
   transition: top 0.4s, transform 0.4s, opacity 0.4s ease-in-out;
+
+  [data-feature-slug='dependency-free'] & {
+    background-color: $c-menu-dependency-free;
+  }
+
+  [data-feature-slug='small-size'] & {
+    background-color: $c-menu-small-size;
+  }
+
+  [data-feature-slug='core'] & {
+    background-color: $c-menu-core;
+  }
+
+  [data-feature-slug='router'] & {
+    background-color: $c-menu-router;
+  }
+
+  [data-feature-slug='prefetch'] & {
+    background-color: $c-menu-prefetch;
+  }
 
   /* stylelint-disable no-descending-specificity */
   &:nth-child(2) {

@@ -1,11 +1,15 @@
 import barba from '@barba/core'
 import router from '@barba/router'
-import { autoLoad } from 'kapla'
+import {
+  autoLoad
+} from 'kapla'
 import kapla from './app'
 
 // DEV
 // import routes from './transitions/routes'
-import { getRoutes } from './transitions/routes'
+import {
+  getRoutes
+} from './transitions/routes'
 import defaultTransition from './transitions/default'
 import homeToFeature from './transitions/homeToFeature'
 import featureToFeature from './transitions/featureToFeature'
@@ -23,7 +27,12 @@ import onceFeature from './transitions/onceFeature'
 // import Home from './views/Home';
 
 // Events
-import { appear, raf, resize, scroll } from './events'
+import {
+  appear,
+  raf,
+  resize,
+  scroll
+} from './events'
 
 /*
  * Main Class
