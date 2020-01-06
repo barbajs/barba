@@ -2,7 +2,7 @@
 title: About
 namespace: page--about
 slug: about
-layout: pages/page
+layout: page/page
 ---
 
 # About

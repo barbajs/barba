@@ -1,7 +1,7 @@
 ---
 title: Credits
 namespace: page--credits--black
-layout: pages/page
+layout: page/page
 modifier: --black
 separator: true
 ---
