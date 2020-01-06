@@ -81,9 +81,85 @@
     line-height: 1.8rem;
 
     @include mq(m) {
-      font-size: 1.6rem;
-      line-height: 2.2rem;
+      font-size: 2.4rem;
+      line-height: 3.6rem;
     }
+
+    a {
+      position: relative;
+      color: $c-menu-about;
+
+      [data-feature-slug='dependency-free'] & {
+        color: $c-menu-dependency-free;
+      }
+
+      [data-feature-slug='small-size'] & {
+        color: $c-menu-small-size;
+      }
+
+      [data-feature-slug='core'] & {
+        color: $c-menu-core;
+      }
+
+      [data-feature-slug='router'] & {
+        color: $c-menu-router;
+      }
+
+      [data-feature-slug='prefetch'] & {
+        color: $c-menu-prefetch;
+      }
+
+      [data-feature-slug='about'] & {
+        color: $c-menu-about;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: -0.5rem;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 0.2rem;
+        background-color: $c-menu-about;
+        transform-origin: center left;
+        transition: transform 0.3s ease-out;
+
+        [data-feature-slug='dependency-free'] & {
+          background-color: $c-menu-dependency-free;
+        }
+
+        [data-feature-slug='small-size'] & {
+          background-color: $c-menu-small-size;
+        }
+
+        [data-feature-slug='core'] & {
+          background-color: $c-menu-core;
+        }
+
+        [data-feature-slug='router'] & {
+          background-color: $c-menu-router;
+        }
+
+        [data-feature-slug='prefetch'] & {
+          background-color: $c-menu-prefetch;
+        }
+
+        [data-feature-slug='about'] & {
+          background-color: $c-menu-about;
+        }
+      }
+
+      &:hover::before {
+        transform-origin: center right;
+        transform: scaleX(0);
+      }
+    }
+  }
+
+  .feature__action__title {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
   }
 }
 
@@ -182,7 +258,7 @@
 
 .feature__box__body__text {
   margin: 0 0 1rem;
-  font-size: 2rem;
+  font-size: 1.6rem !important; //stylelint-disable-line declaration-no-important
   line-height: 2.8rem !important; //stylelint-disable-line declaration-no-important
 }
 
@@ -223,12 +299,12 @@
   th {
     position: relative;
     float: left;
-    width: 33%;
-    margin: 2rem 0;
+    width: 31%;
+    margin: 2rem 0.5%;
     padding: 0;
 
     @include mq(m) {
-      width: 25%;
+      width: 23%;
     }
   }
 
@@ -238,5 +314,9 @@
 
   a {
     color: $c-menu-feature-5;
+
+    img {
+      width: 100%;
+    }
   }
 }

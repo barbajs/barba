@@ -1,4 +1,6 @@
-import { Component } from 'kapla'
+import {
+  Component
+} from 'kapla'
 
 export default class extends Component {
   load() {

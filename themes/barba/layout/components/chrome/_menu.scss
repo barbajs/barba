@@ -58,6 +58,14 @@
   box-shadow: 10px 10px 10px 10px $c-blue-lighter;
   transform: translateX(110%);
 
+  @include mq(m) {
+    padding: 180px 50px 50px;
+
+    @media screen and (max-height: 850px) {
+      padding-top: 140px;
+    }
+  }
+
   &::before {
     content: '';
     position: fixed;
@@ -69,18 +77,6 @@
 
     @include mq(m) {
       height: 18rem;
-    }
-  }
-
-  // .is-open & {
-  //   transform: translateX(0);
-  // }
-
-  @include mq(m) {
-    padding: 180px 50px 50px;
-
-    @media screen and (max-height: 850px) {
-      padding-top: 140px;
     }
   }
 }

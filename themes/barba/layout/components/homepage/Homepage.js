@@ -38,7 +38,12 @@ export default class extends Component {
 
   mouseEnter(index) {
     this.$logo.classList.add('gray')
+    const {
+      featureSlug
+    } = this.$refs.listItem[index].dataset
+    const container = document.querySelector('[data-barba="container"]')
 
+    container.dataset.featureSlug = featureSlug;
     gsap.killTweensOf(this.$refs.listItem[index])
     gsap.killTweensOf(this.$items[index])
 
@@ -64,6 +69,10 @@ export default class extends Component {
     if (barba.transitions.isRunning) {
       return
     }
+
+    const container = document.querySelector('[data-barba="container"]')
+
+    container.dataset.featureSlug = '';
 
     this.$logo.classList.remove('gray')
 

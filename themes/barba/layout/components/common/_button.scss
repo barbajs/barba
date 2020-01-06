@@ -16,6 +16,31 @@
     color: $white;
     background: $c-blue-light;
   }
+
+  [data-feature-slug='dependency-free'] & {
+    color: $c-menu-dependency-free;
+    border-color: $c-menu-dependency-free;
+  }
+
+  [data-feature-slug='small-size'] & {
+    color: $c-menu-small-size;
+    border-color: $c-menu-small-size;
+  }
+
+  [data-feature-slug='core'] & {
+    color: $c-menu-core;
+    border-color: $c-menu-core;
+  }
+
+  [data-feature-slug='router'] & {
+    color: $c-menu-router;
+    border-color: $c-menu-router;
+  }
+
+  [data-feature-slug='prefetch'] & {
+    color: $c-menu-prefetch;
+    border-color: $c-menu-prefetch;
+  }
 }
 
 [class*='button--'][class*='--fill'] {
