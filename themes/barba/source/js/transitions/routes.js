@@ -1,18 +1,21 @@
-export default [
+const { hostname } = window.location
+const root = hostname === 'barbajs.github.io' ? '/website.v2/' : '/'
+
+export const getRoutes = () => [
   {
-    path: '/website.v2/features/:type',
+    path: `${root}features/:type`,
     name: 'feature',
   },
   {
-    path: '/website.v2//docs/:section/:subsection',
+    path: `${root}docs/:section/:subsection`,
     name: 'doc',
   },
   {
-    path: '/website.v2/:page',
+    path: `${root}:page`,
     name: 'page',
   },
   {
-    path: '/website.v2/',
+    path: `${root}`,
     name: 'home',
   },
 ]

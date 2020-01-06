@@ -3,7 +3,9 @@ import router from '@barba/router'
 import { autoLoad } from 'kapla'
 import kapla from './app'
 
-import routes from './transitions/routes'
+// DEV
+// import routes from './transitions/routes'
+import { getRoutes } from './transitions/routes'
 import defaultTransition from './transitions/default'
 import homeToFeature from './transitions/homeToFeature'
 import featureToFeature from './transitions/featureToFeature'
@@ -52,9 +54,8 @@ class Main {
 
     // Avoid 'blank page' on JS error
     try {
-      // DEV
       barba.use(router, {
-        routes,
+        routes: getRoutes(),
       })
 
       barba.init({
@@ -84,10 +85,11 @@ class Main {
         document.documentElement.classList.remove('is-transitioning')
       })
 
-      window.BARBA_DEBUG = {
-        barba,
-        router,
-      }
+      // DEV
+      // window.BARBA_DEBUG = {
+      //   barba,
+      //   router,
+      // }
 
       // Kapla
       const context = require.context(
