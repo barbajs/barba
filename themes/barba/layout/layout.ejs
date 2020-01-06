@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
   <title><%= config.title %></title>
   <meta name="description" content="<%= config.description %>" />
@@ -48,7 +49,8 @@
 
 <body data-barba="wrapper">
   <%- partial('svg/sprite') %>
-  <div data-barba="container" data-barba-namespace="<%- page.namespace || 'home' %>">
+  <div data-barba="container" data-barba-namespace="<%- page.namespace || 'home' %>" <% if (page.slug) { %>
+    data-feature-slug="<%- page.slug %>" <% }; %>>
 
     <%- partial('components/chrome/header') %>
 

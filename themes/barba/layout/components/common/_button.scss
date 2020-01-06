@@ -23,9 +23,69 @@
   background: $c-blue-light;
   fill: $white;
 
+  [data-feature-slug='dependency-free'] & {
+    background-color: $c-menu-dependency-free;
+    border-color: $c-menu-dependency-free;
+  }
+
+  [data-feature-slug='small-size'] & {
+    background-color: $c-menu-small-size;
+    border-color: $c-menu-small-size;
+  }
+
+  [data-feature-slug='core'] & {
+    background-color: $c-menu-core;
+    border-color: $c-menu-core;
+  }
+
+  [data-feature-slug='router'] & {
+    background-color: $c-menu-router;
+    border-color: $c-menu-router;
+  }
+
+  [data-feature-slug='prefetch'] & {
+    background-color: $c-menu-prefetch;
+    border-color: $c-menu-prefetch;
+  }
+
+  [data-barba-namespace='about'] & {
+    background-color: $c-menu-about;
+    border-color: $c-menu-about;
+  }
+
   &:hover {
     background: $c-blue-medium;
     border-color: $c-blue-medium;
+
+    [data-feature-slug='dependency-free'] & {
+      background-color: darken($c-menu-dependency-free, 10%);
+      border-color: darken($c-menu-dependency-free, 10%);
+    }
+
+    [data-feature-slug='small-size'] & {
+      background-color: darken($c-menu-small-size, 10%);
+      border-color: darken($c-menu-small-size, 10%);
+    }
+
+    [data-feature-slug='core'] & {
+      background-color: darken($c-menu-core, 10%);
+      border-color: darken($c-menu-core, 10%);
+    }
+
+    [data-feature-slug='router'] & {
+      background-color: darken($c-menu-router, 10%);
+      border-color: darken($c-menu-router, 10%);
+    }
+
+    [data-feature-slug='prefetch'] & {
+      background-color: darken($c-menu-prefetch, 10%);
+      border-color: darken($c-menu-prefetch, 10%);
+    }
+
+    [data-barba-namespace='about'] & {
+      background-color: darken($c-menu-about, 10%);
+      border-color: darken($c-menu-about, 10%);
+    }
   }
 }
 
@@ -38,7 +98,10 @@
   color: $c-dark;
   font-size: 11px;
   font-weight: 300;
-  transition: background-color 0.4s, color 0.4s, border-color 0.4s,
+  transition:
+    background-color 0.4s,
+    color 0.4s,
+    border-color 0.4s,
     transform 0.4s;
 
   span {
