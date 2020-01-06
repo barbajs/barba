@@ -84,7 +84,10 @@ class Main {
         document.documentElement.classList.remove('is-transitioning')
       })
 
-      window.BARBA_DEBUG = barba
+      window.BARBA_DEBUG = {
+        barba,
+        router,
+      }
 
       // Kapla
       const context = require.context(
