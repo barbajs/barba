@@ -57,7 +57,6 @@
   background-color: $white;
   box-shadow: 10px 10px 10px 10px $c-blue-lighter;
   transform: translateX(110%);
-  transition: transform 0.4s ease-in-out;
 
   &::before {
     content: '';
@@ -73,9 +72,9 @@
     }
   }
 
-  .is-open & {
-    transform: translateX(0);
-  }
+  // .is-open & {
+  //   transform: translateX(0);
+  // }
 
   @include mq(m) {
     padding: 180px 50px 50px;

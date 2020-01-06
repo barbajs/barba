@@ -3,7 +3,7 @@
   <div class="menu__overlay" data-ref="menu.overlay"></div>
 
   <!-- Menu Nav -->
-  <div class="menu__panel">
+  <div class="menu__panel" data-ref="menu.panel">
 
     <!-- Menu Pages -->
     <div class="menu__pages">
@@ -11,7 +11,7 @@
 
         <!-- Page -->
         <% theme.menu.forEach(function(page) { %>
-        <li class="menu__pages__item">
+        <li class="menu__pages__item" data-ref="menu.item">
           <a class="menu__pages__item__link <%- is_current(page.slug) ? 'is-active' : '' %>"
             href="<%- theme.root %><%- page.url %>">
             <%- page.title %>
@@ -24,7 +24,8 @@
 
               <!-- Subpage -->
               <% page.subpages.forEach(function(subpage) { %>
-              <li class="menu-subpages__item <%- subpage.modifier %> <%- is_current(subpage.url) ? 'is-active' : '' %>">
+              <li class="menu-subpages__item <%- subpage.modifier %> <%- is_current(subpage.url) ? 'is-active' : '' %>"
+                data-ref="menu.item">
                 <a class="menu-subpages__item__link" href="<%- theme.root %><%- subpage.url %>">
                   <div class="menu-subpages__item__link__line">
                   </div>
@@ -51,11 +52,12 @@
 
     <!-- Menu Footer -->
     <div class="menu__footer">
-      <a class="menu__footer__download" href="<%- theme.root %>docs/getstarted/intro">
+      <a class="menu__footer__download" href="<%- theme.root %>docs/getstarted/intro" data-ref="menu.item">
         Get started
       </a>
       <div class="menu__footer__extra menu-extra">
-        <a class="menu-extra__twitter" href="https://twitter.com/barba_js" target="_blank" data-barba-prevent>
+        <a class="menu-extra__twitter" href="https://twitter.com/barba_js" target="_blank" data-barba-prevent
+          data-ref="menu.item">
           <svg class="menu-extra__twitter__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 13">
             <path
               d="M14.4487 3.221153c.00693.140201.00952.282132.00952.422333 0 4.318526-3.28606 9.296514-9.294778 9.296514-1.845976 0-3.562135-.540898-5.008279-1.468645.256169.03029.5158.045868.778893.045868 1.531821 0 2.939886-.522724 4.057164-1.397679-1.428835-.026829-2.636118-.970154-3.051528-2.268308.199051.037213.404159.057118.61446.057118.298575 0 .587631-.038944.861109-.113372C1.920653 7.493811.79472 6.174021.79472 4.590273v-.040676c.440507.244919.945057.392043 1.479896.409351C1.397929 4.372183.820683 3.37347.820683 2.238883c0-.598016.160972-1.159684.443104-1.642598 1.610576 1.977522 4.019085 3.277407 6.733958 3.414146-.055388-.239726-.083948-.488106-.083948-.745141C7.913797 1.461721 9.375519 0 11.17995 0c.93987 0 1.78886.395504 2.38514 1.030734.74341-.147124 1.44269-.418871 2.07445-.792739-.24405.762449-.76244 1.402872-1.43662 1.80703.66119-.07962 1.2895-.253572 1.87627-.514069-.43791.656001-.99179 1.23065-1.63049 1.690197z" />
@@ -64,7 +66,7 @@
             barba_js
           </div>
         </a>
-        <div class="menu-extra__credits">
+        <div class="menu-extra__credits" data-ref="menu.item">
           <a href="https://join.slack.com/t/barbajs/shared_invite/enQtNTU3NTAyMjkxMzAyLTI1NDIxZDZmMGJjMDlmNzFkODZmMmVmN2U2ODg2Y2M3MzczMDdjZTk5ODQwNWZkYWVlMDM5NGZiODJmMWVhODk"
             target="_blank" rel="nofollow"><img
               src="https://camo.githubusercontent.com/50859fa18a7c6eafbdd959f2c43603ec0aad96b8/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f736c61636b2d6368616e6e656c2d707572706c652e7376673f7374796c653d666c61742d737175617265266c6f676f3d736c61636b"
