@@ -46,3 +46,18 @@ html.is-transitioning {
     cursor: progress;
   }
 }
+
+.site-content-inner {
+  @include owl;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+
+  &[data-barba-namespace='docs'] {
+    display: block;
+    padding: 0;
+  }
+}

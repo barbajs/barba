@@ -47,7 +47,7 @@
   </script>
 </head>
 
-<body data-barba="wrapper">
+<body data-barba="wrapper" data-slug="<%- page.slug || page.namespace || 'home' %>">
   <%- partial('svg/sprite') %>
   <div data-barba="container" data-barba-namespace="<%- page.namespace || 'home' %>">
 
@@ -63,8 +63,8 @@
     </main><!-- end .site-main -->
 
     <%- partial('components/chrome/footer') %>
-
   </div>
+  <%- partial('components/transition/transition') %>
   <script src="<%= config.url %>/js/main.js"></script>
 </body>
 

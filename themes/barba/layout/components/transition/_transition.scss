@@ -1,0 +1,65 @@
+.transition {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
+
+.transition__background {
+  @include get-all-space;
+
+  background-color: $c-blue-light;
+  transform: translateX(-100%);
+
+  [data-slug='dependency-free'] & {
+    background-color: $c-menu-dependency-free;
+  }
+
+  [data-slug='small-size'] & {
+    background-color: $c-menu-small-size;
+  }
+
+  [data-slug='core'] & {
+    background-color: $c-menu-core;
+  }
+
+  [data-slug='router'] & {
+    background-color: $c-menu-router;
+  }
+
+  [data-slug='prefetch'] & {
+    background-color: $c-menu-prefetch;
+  }
+}
+
+.transition__title {
+  @include center-xy;
+
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  margin: 0 auto;
+  color: $white;
+  font-family: $ff-alt;
+  font-size: 2.4rem !important; //stylelint-disable-line declaration-no-important
+  font-weight: 400;
+  letter-spacing: 0.5px !important; //stylelint-disable-line declaration-no-important
+  // opacity: 0;
+  will-change: opacity, transform;
+
+
+  @include mq('m') {
+    font-size: 3.6rem !important; //stylelint-disable-line declaration-no-important
+  }
+
+  @include mq('xl') {
+    font-size: 4.8rem !important; //stylelint-disable-line declaration-no-important
+  }
+}
