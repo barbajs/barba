@@ -6,7 +6,8 @@
     "version": "4.2.0"
   },
   "scripts": {
-    "build": "yarn clean && yarn svg && hexo generate",
+    "v1": "cpx 'v1/**/*' dist/_/v1",
+    "build": "yarn clean && yarn svg && hexo generate && yarn v1",
     "clean": "hexo clean",
     "start": "yarn clean && yarn svg && hexo server --config _config.yml,_config.local.yml",
     "svg": "svg-sprite --config svg-sprite.config.json 'themes/barba/source/svg/./**/*.svg'"
@@ -34,6 +35,7 @@
     "@google-cloud/storage": "^4.1.3",
     "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.5",
+    "cpx": "^1.5.0",
     "dotenv": "^8.2.0",
     "ejs": "^3.0.1",
     "ejs-compiled-loader": "^1.1.0",
