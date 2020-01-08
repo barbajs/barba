@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const functions = require('firebase-functions')
 const { IncomingWebhook } = require('@slack/webhook')
 const admin = require('firebase-admin')
@@ -9,9 +10,10 @@ admin.initializeApp(functions.config().firebase)
 // Initialize Webhook (#website-showcase on barbajs.slack.com)
 const webhook = new IncomingWebhook(functions.config().slack.url)
 
-/*
-Step 1: on showcase submit (if completed correctly) => Send a slack notification after the registration in Firestore
-*/
+/**
+ * Step 1: on showcase submit (if completed correctly)
+ * => Send a slack notification after the registration in Firestore
+ */
 exports.showcaseSubmission = functions.firestore
   .document('showcases/{documentId}')
   .onCreate(async snap => {
@@ -62,40 +64,49 @@ exports.showcaseSubmission = functions.firestore
         },
       ],
     }
+
     await webhook.send(notif)
   })
 
-/*
-Step 2: on showcase rejection/approval in Slack => Give a feedback in the Slack discussion and change the isValidated value (true/false) of the showcase in the database
-*/
+/**
+ * Step 2: on showcase rejection/approval in Slack
+ * => Give a feedback in the Slack discussion and
+ * change the isValidated value (true/false) of the showcase in the database
+ */
 exports.showcaseValidation = functions.https.onRequest((req, res) => {
   res.status(200)
 
   const payload = JSON.parse(req.body.payload)
   const webhook = new IncomingWebhook(payload.response_url) // Webhook of the response
-
   const notif = payload.original_message
+
   Object.assign({ replace_original: true, response_type: 'in_channel' }, notif)
+
   delete notif.attachments[0].actions
 
   /* Slack feedback */
+
   const processMsg = { ...notif }
+
   processMsg.attachments.push({
     color: '#FFA500',
     text: `The validation of ${payload.original_message.attachments[0].title} has been sent.`,
   })
 
   const approveMsg = { ...notif }
+
   approveMsg.attachments.push({
     color: '#00FF00',
     text: `Submission has been agreed by *@${payload.user.name}*.`,
   })
 
   const rejectMsg = { ...notif }
+
   rejectMsg.attachments.push({
     color: '#FF0000',
     text: `Submission has been rejected by *@${payload.user.name}*.`,
   })
+
   /* Slack feedback [end] */
 
   cors(req, res, () => {
@@ -108,34 +119,38 @@ exports.showcaseValidation = functions.https.onRequest((req, res) => {
     showcase
       .get()
       .then(() => {
-        // If the showcase is approved
         if (payload.actions[0].value) {
+          // If the showcase is approved
           showcase.update({
             isValidated: true,
           })
           webhook.send(approveMsg)
+
           return res.end()
         }
+
         // If the showcase is rejected
-        else {
-          showcase.update({
-            isValidated: false,
-          })
-          webhook.send(rejectMsg)
-          return res.end()
-        }
+        showcase.update({
+          isValidated: false,
+        })
+        webhook.send(rejectMsg)
+
+        return res.end()
       })
       .catch(error => {
         // Handle the error
         console.log(error)
+
         return res.status(500).send(error)
       })
   })
 })
 
-/*
-Step 3: on showcase approval and storing in the db => Send slack notifiaction to whom may be interessed to show the new Barba showcase
-*/
+/**
+ * Step 3: on showcase approval and storing in the db
+ * => Send slack notifiaction to whom may be interessed
+ * to show the new Barba showcase
+ */
 exports.showcaseNotifications = functions.firestore
   .document('showcases/{documentId}')
   .onUpdate(async change => {
