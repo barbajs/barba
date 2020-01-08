@@ -6,9 +6,7 @@ export default class Form extends Component {
   load() {
     const dragEvents = ['dragenter', 'dragover', 'dragleave', 'drop']
 
-    this.url =
-      '***REMOVED***'
-
+    this.url = process.env.SLACK_WEBHOOK
     this.file = []
 
     dragEvents.forEach(e => {
@@ -18,11 +16,9 @@ export default class Form extends Component {
         false
       )
     })
-
     ;['dragenter', 'dragover', 'drop'].forEach(e => {
       this.$refs.dropArea.addEventListener(e, this.highlight.bind(this), false)
     })
-
     ;['dragleave'].forEach(e => {
       this.$refs.dropArea.addEventListener(
         e,

@@ -150,15 +150,14 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-
 # End of https://www.gitignore.io/api/node,macos,linux,windows,visualstudiocode
 
 
 ### Custom ###
-
+.env
+_multiconfig.yml
+db.json
 dist
 tmp
-db.json
-_multiconfig.yml
 
 themes/barba/layout/svg/sprite.ejs

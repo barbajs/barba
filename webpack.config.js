@@ -1,3 +1,6 @@
+require('dotenv').config()
+const webpack = require('webpack')
+
 module.exports = {
   entry: ['themes/barba/source/js/main.js'],
   module: {
@@ -40,4 +43,12 @@ module.exports = {
       },
     ],
   },
-};
+  plugins: [
+    new webpack.DefinePlugin({
+      // Definitions...
+      'process.env': {
+        SLACK_WEBHOOK: JSON.stringify(process.env.SLACK_WEBHOOK),
+      },
+    }),
+  ],
+}
