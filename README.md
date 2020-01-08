@@ -8,9 +8,3 @@ NB: You need [`yarn`](https://yarnpkg.com/lang/en/).
 yarn
 yarn start
 ```
-
-## Environment variables
-
-```sh
-echo 'SLACK_WEBHOOK=https://hooks.slack.com/services/xxx/xxxxxxxx' > .env
-```

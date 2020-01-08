@@ -6,7 +6,6 @@ export default class Form extends Component {
   load() {
     const dragEvents = ['dragenter', 'dragover', 'dragleave', 'drop']
 
-    this.url = process.env.SLACK_WEBHOOK
     this.file = []
 
     dragEvents.forEach(e => {
@@ -50,8 +49,8 @@ export default class Form extends Component {
     })
   }
 
+  // eslint-disable-next-line class-methods-use-this
   onClick() {
-    // eslint-disable-line class-methods-use-this
     ee.emit('modal:focused')
   }
 
@@ -132,7 +131,8 @@ export default class Form extends Component {
           // Handle successful uploads on complete
           // For instance, get the download URL: https://firebasestorage.googleapis.com/...
           uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
-            console.log('File available at', downloadURL)
+            // DEV
+            // console.log('File available at', downloadURL)
             resolve(downloadURL)
           })
         }
@@ -163,8 +163,8 @@ export default class Form extends Component {
     this.file = []
   }
 
+  // eslint-disable-next-line class-methods-use-this
   preventDefaults(e) {
-    // eslint-disable-line class-methods-use-this
     e.preventDefault()
     e.stopPropagation()
   }
@@ -206,6 +206,7 @@ export default class Form extends Component {
   }
 
   formValidation() {
+    // eslint-disable-next-line max-len
     const urlPattern = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/
 
     // Picture
