@@ -7,9 +7,6 @@ const cors = require('cors')({ origin: true })
 // Initialize App
 admin.initializeApp(functions.config().firebase)
 
-// Initialize Webhook (#website-showcase on barbajs.slack.com)
-const webhook = new IncomingWebhook(functions.config().slack.url)
-
 /**
  * Step 1: on showcase submit (if completed correctly)
  * => Send a slack notification after the registration in Firestore
@@ -17,6 +14,8 @@ const webhook = new IncomingWebhook(functions.config().slack.url)
 exports.showcaseSubmission = functions.firestore
   .document('showcases/{documentId}')
   .onCreate(async snap => {
+    // Initialize webhook for admin private channel submission (🔒website-showcase on barbajs.slack.com)
+    const webhook = new IncomingWebhook(functions.config().slack.private)
     const showcase = snap.data()
     const notif = {
       text: 'A new showcase has been submitted.',
@@ -77,6 +76,8 @@ exports.showcaseValidation = functions.https.onRequest((req, res) => {
   res.status(200)
 
   const payload = JSON.parse(req.body.payload)
+
+  // Initialize webhook for validation (🔒website-showcase on barbajs.slack.com)
   const webhook = new IncomingWebhook(payload.response_url) // Webhook of the response
   const notif = payload.original_message
 
@@ -93,19 +94,25 @@ exports.showcaseValidation = functions.https.onRequest((req, res) => {
     text: `The validation of ${payload.original_message.attachments[0].title} has been sent.`,
   })
 
-  const approveMsg = { ...notif }
+  const approveMsg = { ...processMsg }
 
-  approveMsg.attachments.push({
-    color: '#00FF00',
-    text: `Submission has been agreed by *@${payload.user.name}*.`,
-  })
+  approveMsg.attachments = [
+    ...processMsg.attachments,
+    {
+      color: '#00FF00',
+      text: `Submission has been agreed by *@${payload.user.name}*.`,
+    },
+  ]
 
-  const rejectMsg = { ...notif }
+  const rejectMsg = { ...processMsg }
 
-  rejectMsg.attachments.push({
-    color: '#FF0000',
-    text: `Submission has been rejected by *@${payload.user.name}*.`,
-  })
+  rejectMsg.attachments = [
+    ...processMsg.attachments,
+    {
+      color: '#FF0000',
+      text: `Submission has been rejected by *@${payload.user.name}*.`,
+    },
+  ]
 
   /* Slack feedback [end] */
 
@@ -154,6 +161,8 @@ exports.showcaseValidation = functions.https.onRequest((req, res) => {
 exports.showcaseNotifications = functions.firestore
   .document('showcases/{documentId}')
   .onUpdate(async change => {
+    // Initialize webhook for public channel post (#showcase on barbajs.slack.com)
+    const webhook = new IncomingWebhook(functions.config().slack.public)
     const showcase = change.after.data()
 
     // The notification is sent only if isValidated change from false to true, not for the other updates
