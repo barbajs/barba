@@ -2,7 +2,7 @@
 title: Showcase
 name: showcase
 namespace: page--showcase
-layout: page/page
+layout: components/page/page
 separator: true
 grid: true
 ---

@@ -21,7 +21,7 @@ body {
 }
 
 // SVG sprite
-body>svg {
+body > svg {
   display: none;
 }
 
@@ -39,12 +39,17 @@ a:visited {
 }
 
 html.is-transitioning {
-
   &,
   * {
     pointer-events: none;
     cursor: progress;
   }
+}
+
+.site-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .site-content-inner {

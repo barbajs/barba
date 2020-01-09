@@ -5,3 +5,80 @@
     display: flex;
   }
 }
+
+.showcase-cta__button:hover {
+  .showcase-cta__button__pulse {
+    background-color: darken($c-main, 10%);
+  }
+}
+
+// Button & Pulse animation
+
+.showcase-cta__button-inner {
+  position: relative;
+  margin-right: 2rem;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    background-color: $c-main;
+    border-radius: 4rem;
+    opacity: 0.4;
+  }
+
+  &::before {
+    animation: pulse 1.3s $ease-out-quad infinite both;
+  }
+
+  &::after {
+    animation: pulse 1.3s 0.5s $ease-out-quad infinite both;
+  }
+}
+
+.showcase-cta__button__pulse {
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  background-color: $c-main;
+  border-radius: 4rem;
+  cursor: pointer;
+  transition: 0.3s $ease-out-quad;
+  transition-property: transform, background-color;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 2px;
+    height: 30%;
+    background-color: $white;
+  }
+
+  &::after {
+    width: 30%;
+    height: 2px;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.75);
+  }
+}

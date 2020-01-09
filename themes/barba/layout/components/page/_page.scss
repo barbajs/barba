@@ -7,7 +7,7 @@
   padding: 16rem 4rem 6rem;
 
   @include mq(m) {
-    padding: 25rem 11.19% 0;
+    padding: 16rem 11.19% 0;
   }
 }
 
@@ -30,12 +30,6 @@
 
   .icon--barba {
     stroke-width: 0;
-  }
-}
-
-.page-inner {
-  @include mq(m) {
-    padding: 5rem;
   }
 }
 

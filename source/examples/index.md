@@ -2,7 +2,7 @@
 title: Examples
 name: examples
 namespace: page--examples
-layout: page/page
+layout: components/page/page
 grid: true
 ---
 
