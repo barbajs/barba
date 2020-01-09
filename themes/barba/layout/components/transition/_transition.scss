@@ -14,24 +14,24 @@
     background-color: $c-blue-light;
     transform: translateX(-100%);
 
-    [data-feature-slug='dependency-free'] ~ & {
-      background-color: $c-menu-dependency-free;
+    [data-feature-order='0'] ~ & {
+      background-color: $c-menu-feature-0;
     }
 
-    [data-feature-slug='small-size'] ~ & {
-      background-color: $c-menu-small-size;
+    [data-feature-order='1'] ~ & {
+      background-color: $c-menu-feature-1;
     }
 
-    [data-feature-slug='core'] ~ & {
-      background-color: $c-menu-core;
+    [data-feature-order='2'] ~ & {
+      background-color: $c-menu-feature-2;
     }
 
-    [data-feature-slug='router'] ~ & {
-      background-color: $c-menu-router;
+    [data-feature-order='3'] ~ & {
+      background-color: $c-menu-feature-3;
     }
 
-    [data-feature-slug='prefetch'] ~ & {
-      background-color: $c-menu-prefetch;
+    [data-feature-order='4'] ~ & {
+      background-color: $c-menu-feature-4;
     }
   }
 }

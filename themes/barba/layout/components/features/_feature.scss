@@ -1,3 +1,4 @@
+/* stylelint-disable selector-max-combinators, selector-max-compound-selectors, max-nesting-depth, no-descending-specificity */
 .feature {
   @include get-all-space;
 
@@ -87,30 +88,30 @@
 
     a {
       position: relative;
-      color: $c-menu-about;
+      color: $c-menu-feature-5;
 
-      [data-feature-slug='dependency-free'] & {
-        color: $c-menu-dependency-free;
+      [data-feature-order='0'] & {
+        color: $c-menu-feature-0;
       }
 
-      [data-feature-slug='small-size'] & {
-        color: $c-menu-small-size;
+      [data-feature-order='1'] & {
+        color: $c-menu-feature-1;
       }
 
-      [data-feature-slug='core'] & {
-        color: $c-menu-core;
+      [data-feature-order='2'] & {
+        color: $c-menu-feature-2;
       }
 
-      [data-feature-slug='router'] & {
-        color: $c-menu-router;
+      [data-feature-order='3'] & {
+        color: $c-menu-feature-3;
       }
 
-      [data-feature-slug='prefetch'] & {
-        color: $c-menu-prefetch;
+      [data-feature-order='4'] & {
+        color: $c-menu-feature-4;
       }
 
-      [data-feature-slug='about'] & {
-        color: $c-menu-about;
+      [data-feature-order='5'] & {
+        color: $c-menu-feature-5;
       }
 
       &::before {
@@ -121,32 +122,32 @@
         display: block;
         width: 100%;
         height: 0.2rem;
-        background-color: $c-menu-about;
+        background-color: $c-menu-feature-5;
         transform-origin: center left;
         transition: transform 0.3s ease-out;
 
-        [data-feature-slug='dependency-free'] & {
-          background-color: $c-menu-dependency-free;
+        [data-feature-order='0'] & {
+          background-color: $c-menu-feature-0;
         }
 
-        [data-feature-slug='small-size'] & {
-          background-color: $c-menu-small-size;
+        [data-feature-order='1'] & {
+          background-color: $c-menu-feature-1;
         }
 
-        [data-feature-slug='core'] & {
-          background-color: $c-menu-core;
+        [data-feature-order='2'] & {
+          background-color: $c-menu-feature-2;
         }
 
-        [data-feature-slug='router'] & {
-          background-color: $c-menu-router;
+        [data-feature-order='3'] & {
+          background-color: $c-menu-feature-3;
         }
 
-        [data-feature-slug='prefetch'] & {
-          background-color: $c-menu-prefetch;
+        [data-feature-order='4'] & {
+          background-color: $c-menu-feature-4;
         }
 
-        [data-feature-slug='about'] & {
-          background-color: $c-menu-about;
+        [data-feature-order='5'] & {
+          background-color: $c-menu-feature-5;
         }
       }
 

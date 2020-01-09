@@ -17,29 +17,29 @@
     background: $c-blue-light;
   }
 
-  [data-feature-slug='dependency-free'] & {
-    color: $c-menu-dependency-free;
-    border-color: $c-menu-dependency-free;
+  [data-feature-order='0'] & {
+    color: $c-menu-feature-0;
+    border-color: $c-menu-feature-0;
   }
 
-  [data-feature-slug='small-size'] & {
-    color: $c-menu-small-size;
-    border-color: $c-menu-small-size;
+  [data-feature-order='1'] & {
+    color: $c-menu-feature-1;
+    border-color: $c-menu-feature-1;
   }
 
-  [data-feature-slug='core'] & {
-    color: $c-menu-core;
-    border-color: $c-menu-core;
+  [data-feature-order='2'] & {
+    color: $c-menu-feature-2;
+    border-color: $c-menu-feature-2;
   }
 
-  [data-feature-slug='router'] & {
-    color: $c-menu-router;
-    border-color: $c-menu-router;
+  [data-feature-order='3'] & {
+    color: $c-menu-feature-3;
+    border-color: $c-menu-feature-3;
   }
 
-  [data-feature-slug='prefetch'] & {
-    color: $c-menu-prefetch;
-    border-color: $c-menu-prefetch;
+  [data-feature-order='4'] & {
+    color: $c-menu-feature-4;
+    border-color: $c-menu-feature-4;
   }
 }
 
