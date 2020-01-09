@@ -6,12 +6,6 @@
   }
 }
 
-.showcase-cta__button:hover {
-  .showcase-cta__button__pulse {
-    background-color: darken($c-main, 10%);
-  }
-}
-
 // Button & Pulse animation
 
 .showcase-cta__button-inner {
@@ -68,6 +62,12 @@
   &::after {
     width: 30%;
     height: 2px;
+  }
+}
+
+.showcase-cta__button:hover {
+  .showcase-cta__button__pulse {
+    background-color: darken($c-main, 10%);
   }
 }
 
