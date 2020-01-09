@@ -7,32 +7,32 @@
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-}
 
-.transition__background {
-  @include get-all-space;
+  .transition__background {
+    @include get-all-space;
 
-  background-color: $c-blue-light;
-  transform: translateX(-100%);
+    background-color: $c-blue-light;
+    transform: translateX(-100%);
 
-  [data-slug='dependency-free'] & {
-    background-color: $c-menu-dependency-free;
-  }
+    [data-feature-slug='dependency-free'] ~ & {
+      background-color: $c-menu-dependency-free;
+    }
 
-  [data-slug='small-size'] & {
-    background-color: $c-menu-small-size;
-  }
+    [data-feature-slug='small-size'] ~ & {
+      background-color: $c-menu-small-size;
+    }
 
-  [data-slug='core'] & {
-    background-color: $c-menu-core;
-  }
+    [data-feature-slug='core'] ~ & {
+      background-color: $c-menu-core;
+    }
 
-  [data-slug='router'] & {
-    background-color: $c-menu-router;
-  }
+    [data-feature-slug='router'] ~ & {
+      background-color: $c-menu-router;
+    }
 
-  [data-slug='prefetch'] & {
-    background-color: $c-menu-prefetch;
+    [data-feature-slug='prefetch'] ~ & {
+      background-color: $c-menu-prefetch;
+    }
   }
 }
 
@@ -51,9 +51,8 @@
   font-size: 2.4rem !important; //stylelint-disable-line declaration-no-important
   font-weight: 400;
   letter-spacing: 0.5px !important; //stylelint-disable-line declaration-no-important
-  // opacity: 0;
+  opacity: 0;
   will-change: opacity, transform;
-
 
   @include mq('m') {
     font-size: 3.6rem !important; //stylelint-disable-line declaration-no-important

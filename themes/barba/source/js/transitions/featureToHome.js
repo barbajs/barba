@@ -1,6 +1,4 @@
-import {
-  gsap
-} from 'gsap'
+import { gsap } from 'gsap'
 
 export default {
   sync: true,
@@ -13,12 +11,8 @@ export default {
     route: 'home',
   },
 
-  leave({
-    current
-  }) {
-    const {
-      container
-    } = current
+  leave({ current }) {
+    const { container } = current
     const feature = container.querySelector('.feature-outer')
     const navigation = container.querySelectorAll('.feature__nav__el')
     const oldLogo = container.querySelectorAll(
@@ -30,14 +24,16 @@ export default {
     return gsap
       .timeline()
       .to(
-        oldLogo, {
+        oldLogo,
+        {
           duration: 0.3,
           opacity: 0,
         },
         1
       )
       .to(
-        oldBigShape, {
+        oldBigShape,
+        {
           duration: 1.5,
           y: 100,
           opacity: 0,
@@ -46,14 +42,16 @@ export default {
         0.4
       )
       .to(
-        fullOldLogo, {
+        fullOldLogo,
+        {
           duration: 1,
           opacity: 0,
         },
         1.3
       )
       .to(
-        feature, {
+        feature,
+        {
           duration: 1,
           y: 100,
           opacity: 0,
@@ -62,7 +60,8 @@ export default {
         0
       )
       .to(
-        navigation, {
+        navigation,
+        {
           duration: 0.5,
           y: 30,
           opacity: 0,
@@ -73,10 +72,7 @@ export default {
       .then()
   },
 
-  enter({
-    current,
-    next
-  }) {
+  enter({ current, next }) {
     const newLogo = next.container.querySelector('.logo')
     const newLogoSVG = newLogo.querySelector('svg')
     const oldLogo = current.container.querySelector('.logo.featured')
@@ -102,14 +98,16 @@ export default {
         newLogoSVG.classList.remove('fillgray')
       }, 1.5)
       .to(
-        newLogo, {
+        newLogo,
+        {
           duration: 0.3,
           opacity: 1,
         },
         1
       )
       .to(
-        newLogo, {
+        newLogo,
+        {
           duration: 1,
           scale: 1,
           y: 0,
@@ -118,7 +116,8 @@ export default {
         1.3
       )
       .from(
-        title, {
+        title,
+        {
           duration: 1,
           yPercent: 100,
           ease: 'power4',
@@ -127,7 +126,8 @@ export default {
         1.6
       )
       .from(
-        buttons, {
+        buttons,
+        {
           duration: 1,
           y: 40,
           opacity: 0,

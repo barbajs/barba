@@ -1,9 +1,5 @@
-import {
-  getInstance,
-} from '../app'
-import {
-  gsap,
-} from 'gsap'
+import { getInstance } from '../app'
+import { gsap } from 'gsap'
 
 /**
  * Check if forward or backward direction
@@ -39,18 +35,12 @@ export default {
     route: 'feature',
   },
 
-  leave({
-    current,
-  }) {
+  leave({ current }) {
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
-    const {
-      container,
-    } = current
+    const { container } = current
     const $feature = container.querySelector('.feature')
-    const {
-      featureSlug
-    } = $feature.dataset
+    const { featureSlug } = $feature.dataset
 
     if (featureSlug !== 'about') {
       const featureInstance = getInstance(container, 'feature')
@@ -61,10 +51,7 @@ export default {
     return Promise.resolve()
   },
 
-  enter({
-    current,
-    next,
-  }) {
+  enter({ current, next }) {
     const $nextFeature = next.container.querySelector('.feature')
     const $currentFeature = current.container.querySelector('.feature')
 
@@ -77,9 +64,7 @@ export default {
     const $nextBox = $nextFeature.querySelector('.feature__box')
     const $nextInstance = getInstance(next.container, 'feature')
 
-    const $currentContainer = $currentFeature.querySelector(
-      '.feature-outer'
-    )
+    const $currentContainer = $currentFeature.querySelector('.feature-outer')
     const $currentBox = $currentFeature.querySelector('.feature__box')
 
     const $currentLogo = $currentFeature.querySelector('.logo')
@@ -88,13 +73,15 @@ export default {
     const $nextLogo = $nextFeature.querySelector('.logo')
     const $nextLogoShapes = $nextFeature.querySelector('.logo.only-big')
 
-    current.container.querySelector('.menu-trigger').style.opacity = '0';
+    current.container.querySelector('.menu-trigger').style.opacity = '0'
+    current.container.querySelector('.feature__nav').style.opacity = '0'
 
     const tl = gsap.timeline()
 
     $currentBox &&
       tl.to(
-        $currentBox, {
+        $currentBox,
+        {
           duration: 0.7,
           x: goingForward ? -window.innerWidth * 0.3 : window.innerWidth * 0.3,
           ease: 'power4.inOut',
@@ -102,18 +89,19 @@ export default {
         0
       )
 
-    tl
+    tl.to(
+      $currentContainer,
+      {
+        duration: 1,
+        x: goingForward ? -window.innerWidth : window.innerWidth,
+        rotationY: goingForward ? '45deg' : '-45deg',
+        ease: 'power4.inOut',
+      },
+      0
+    )
       .to(
-        $currentContainer, {
-          duration: 1,
-          x: goingForward ? -window.innerWidth : window.innerWidth,
-          rotationY: goingForward ? '45deg' : '-45deg',
-          ease: 'power4.inOut',
-        },
-        0
-      )
-      .to(
-        $currentLogoShapes, {
+        $currentLogoShapes,
+        {
           duration: 0.7,
           opacity: 0,
           ease: 'power4.inOut',
@@ -121,7 +109,8 @@ export default {
         0
       )
       .to(
-        $currentLogo, {
+        $currentLogo,
+        {
           duration: 0.5,
           opacity: 0,
           ease: 'power4.inOut',
@@ -129,7 +118,8 @@ export default {
         0
       )
       .from(
-        $nextLogoShapes, {
+        $nextLogoShapes,
+        {
           duration: 0.7,
           opacity: 0,
           ease: 'power4',
@@ -137,7 +127,8 @@ export default {
         0
       )
       .from(
-        $nextLogo, {
+        $nextLogo,
+        {
           duration: 0.5,
           opacity: 0,
           ease: 'power4',
@@ -145,7 +136,8 @@ export default {
         0
       )
       .from(
-        $nextContainer, {
+        $nextContainer,
+        {
           duration: 1,
           x: goingForward ? window.innerWidth : -window.innerWidth,
           rotationY: goingForward ? '-45deg' : '45deg',
@@ -161,7 +153,8 @@ export default {
 
     $nextBox &&
       tl.from(
-        $nextBox, {
+        $nextBox,
+        {
           duration: 0.7,
           x: goingForward ? window.innerWidth * 0.5 : -window.innerWidth * 0.5,
           ease: 'power4',

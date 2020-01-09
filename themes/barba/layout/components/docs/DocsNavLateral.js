@@ -1,6 +1,4 @@
-import {
-  Component
-} from 'kapla'
+import { Component } from 'kapla'
 
 export default class DocsNavLateral extends Component {
   load() {
@@ -9,7 +7,9 @@ export default class DocsNavLateral extends Component {
     subscriber.on('link:close', this.close)
 
     this.delegateClick = 'button'
+  }
 
+  init() {
     this.$refs.link.forEach(link => {
       link.addEventListener('click', () => {
         this.close()
