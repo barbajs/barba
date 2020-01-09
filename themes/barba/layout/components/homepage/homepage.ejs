@@ -5,25 +5,18 @@
   </div>
 
   <ul class="homepage__list" data-ref="homepage.list">
-    <li class="homepage__list__item--dependency-free" data-ref="homepage.listItem">
-      Dependency Free
+    <% var features = theme.menu[0].subpages %>
+    <li class="homepage__list__item--0" data-ref="homepage.listItem">
+      <%- features[0].title %>
     </li>
     <div>
-      <li class="homepage__list__item--small-size" data-ref="homepage.listItem">
-        Small size
-      </li>
-      <li class="homepage__list__item--core" data-ref="homepage.listItem">
-        B/Core
-      </li>
-      <li class="homepage__list__item--router" data-ref="homepage.listItem">
-        B/Router
-      </li>
-      <li class="homepage__list__item--prefetch" data-ref="homepage.listItem">
-        B/Prefetch
-      </li>
-      <li class="homepage__list__item--about" data-ref="homepage.listItem">
-        About
-      </li>
+      <% features.forEach(function(feature, index) { %>
+        <% if(index > 0) { %>
+          <li class="homepage__list__item--<%- index %>" data-ref="homepage.listItem">
+            <%- feature.title %>
+          </li>
+        <% }; %>
+      <% }); %>
     </div>
   </ul>
 
@@ -35,7 +28,7 @@
   </h1>
 
   <div class="homepage__buttons">
-    <a href="<%- theme.root %>features/dependency-free/" class="button">features 💪</a>
+    <a href="<%- theme.root %><%- features[0].url %>" class="button">features 💪</a>
     <a href="<%- theme.root %>docs/getstarted/intro" class="button button--fill">Documentation 📖</a>
   </div>
 </div>

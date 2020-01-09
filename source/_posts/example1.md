@@ -1,13 +1,13 @@
 ---
-title: example1
-layout: components/example/example-item
+title: Sync sliding
+layout: components/examples/example-item
 categories:
-  - example
-date: 2019-05-31 10:44:12
-name: Example 1
-asset: /assets/examples/cover.jpg
-alt: Example 1
-watch_url: https://www.epic.net/en/
-source_url: https://www.epic.net/en/
-zip_url: https://www.epic.net/en/
+  - examples
+date: 2020-01-08
+name: Sync sliding
+asset: /assets/examples/example01.png
+alt: Barba.js example 01
+watch_url: https://codepen.io/thierrymichel/project/full/XkkWWv
+source_url: https://codepen.io/thierrymichel/project/editor/XkkWWv
+zip_url:
 ---

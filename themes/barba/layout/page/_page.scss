@@ -1,4 +1,5 @@
-[data-barba-namespace*='page'] {
+.page,
+[data-barba-namespace*='page--'] {
   width: 100%;
   max-width: 1440px;
   height: 100%;

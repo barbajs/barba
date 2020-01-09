@@ -103,28 +103,28 @@
     font-size: 4rem;
   }
 
-  &[class*='--dependency-free'] {
-    color: $c-menu-dependency-free;
+  &[class*='--0'] {
+    color: $c-menu-feature-0;
   }
 
-  &[class*='--small-size'] {
-    color: $c-menu-small-size;
+  &[class*='--1'] {
+    color: $c-menu-feature-1;
   }
 
-  &[class*='--core'] {
-    color: $c-menu-core;
+  &[class*='--2'] {
+    color: $c-menu-feature-2;
   }
 
-  &[class*='--router'] {
-    color: $c-menu-router;
+  &[class*='--3'] {
+    color: $c-menu-feature-3;
   }
 
-  &[class*='--prefetch'] {
-    color: $c-menu-prefetch;
+  &[class*='--4'] {
+    color: $c-menu-feature-4;
   }
 
-  &[class*='--about'] {
-    color: $c-menu-about;
+  &[class*='--5'] {
+    color: $c-menu-feature-5;
   }
 
   &:first-child {
@@ -139,7 +139,7 @@
   @include mq(m) {
     flex-direction: row;
 
-    .button+.button {
+    .button + .button {
       margin-left: 2rem;
     }
   }

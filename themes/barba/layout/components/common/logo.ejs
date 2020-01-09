@@ -50,7 +50,6 @@
           <rect class="js__rect__alternate" x="1" y="-91" width="38" height="128" />
         </g>
 
-
         <g class="js__letter" stroke="none" fill="#2E5BDC" transform="translate(-1, 50)">
           <path
             d="M38.3027766,20.6493333 C38.3027766,21.316 38.1782152,21.941 37.9290924,22.5243333 C37.6799696,23.1076667 37.3395018,23.6076667 36.9076889,24.0243333 C36.475876,24.441 35.9693263,24.7743333 35.3880398,25.0243333 C34.808414,25.2743333 34.2005544,25.3993333 33.5694433,25.3993333 C32.9051158,25.3993333 32.2906129,25.2743333 31.7259345,25.0243333 C31.1612561,24.7743333 30.6630105,24.441 30.2328585,24.0243333 C29.7993848,23.6076667 29.458917,23.1076667 29.2097942,22.5243333 C28.9606713,21.941 28.8361099,21.316 28.8361099,20.6493333 C28.8361099,19.9826667 28.9606713,19.3576667 29.2097942,18.7743333 C29.458917,18.191 29.7993848,17.6926667 30.2328585,17.2743333 C30.6630105,16.8576667 31.1612561,16.5243333 31.7259345,16.2743333 C32.2906129,16.0243333 32.9051158,15.8993333 33.5694433,15.8993333 C34.2005544,15.8993333 34.808414,16.0243333 35.3880398,16.2743333 C35.9693263,16.5243333 36.475876,16.8576667 36.9076889,17.2743333 C37.3395018,17.6926667 37.6799696,18.191 37.9290924,18.7743333 C38.1782152,19.3576667 38.3027766,19.9826667 38.3027766,20.6493333 L38.3027766,20.6493333 Z M27.6087649,29.666 L36.8097006,29.666 L36.8097006,59.366 C36.8097006,61.0993333 36.3430105,62.3826667 35.4146129,63.216 C34.4828936,64.0493333 33.2721567,64.466 31.7757591,64.466 L20.068648,64.466 L20.068648,58.466 L29.0354082,58.466 C30.0335602,58.466 30.530145,57.916 30.530145,56.816 L30.530145,35.666 L27.6087649,35.666 L27.6087649,29.666 Z">
@@ -251,28 +250,14 @@
       </g>
     </g> -->
 
-
     <g class="links">
-      <a xlink:href="<%- theme.root %>features/dependency-free/" href="<%- theme.root %>features/dependency-free/">
-        <rect stroke="none" fill="rgba(0, 0, 0, 0)" x="0" y="0" width="95" height="134" />
-      </a>
-      <a xlink:href="<%- theme.root %>features/small-size/" href="<%- theme.root %>features/small-size/">
-        <rect stroke="none" fill="rgba(0, 0, 0, 0)" x="95" y="0" width="95" height="134" />
-      </a>
-      <a xlink:href="<%- theme.root %>features/core/" href="<%- theme.root %>features/core/">
-        <rect stroke="none" fill="rgba(0, 0, 0, 0)" x="190" y="0" width="95" height="134" />
-      </a>
-      <a xlink:href="<%- theme.root %>features/router/" href="<%- theme.root %>features/router/">
-        <rect stroke="none" fill="rgba(0, 0, 0, 0)" x="285" y="0" width="95" height="134" />
-      </a>
-      <a xlink:href="<%- theme.root %>features/prefetch/" href="<%- theme.root %>features/prefetch/">
-        <rect stroke="none" fill="rgba(0, 0, 0, 0)" x="380" y="0" width="95" height="134" />
-      </a>
-      <a xlink:href="<%- theme.root %>features/about/" href="<%- theme.root %>features/about/">
-        <rect stroke="none" fill="rgba(0, 0, 0, 0)" x="475" y="0" width="95" height="134" />
-      </a>
+      <% var features = theme.menu[0].subpages %>
+      <% var x = 95 %>
+      <% features.forEach(function(feature, i) { %>
+        <a xlink:href="<%- theme.root %><%- feature.url %>" href="<%- theme.root %><%- feature.url %>">
+          <rect stroke="none" fill="rgba(0, 0, 0, 0)" x="<%- x * i %>" y="0" width="95" height="134" />
+        </a>
+      <% }); %>
     </g>
-
-
   </svg>
 </div>

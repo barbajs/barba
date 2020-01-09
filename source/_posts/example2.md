@@ -1,13 +1,13 @@
 ---
-title: example2
-layout: components/example/example-item
+title: Once upon a router
+layout: components/examples/example-item
 categories:
-  - example
-date: 2019-05-31 10:47:45
-name: Example 2
-asset: /assets/examples/cover.jpg
-alt: Example 2
-watch_url: https://www.epic.net/en/
-source_url: https://www.epic.net/en/
-zip_url: https://www.epic.net/en/
+  - examples
+date: 2020-01-08
+name: Once upon a router
+asset: /assets/examples/example02.png
+alt: Barba.js example 02
+watch_url: https://codepen.io/thierrymichel/project/full/ZrzBBK
+source_url: https://codepen.io/thierrymichel/project/editor/ZrzBBK
+zip_url:
 ---

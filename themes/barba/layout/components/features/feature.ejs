@@ -1,0 +1,52 @@
+<% var features = theme.menu[0].subpages %>
+<div class="feature" data-component="feature" data-feature-slug="<%- page.slug %>"
+  data-feature-order="<%- page.order %>">
+  <%-
+    partial(
+      '../common/logo.ejs',
+      {
+        classes: 'featured featured--' + page.order
+      }
+    )
+  %>
+  <div class="big-shape-outer">
+    <%-
+      partial(
+        '../common/logo.ejs',
+        {
+          classes: 'only-big can-move detail-feature featured--' + page.order
+        }
+      )
+    %>
+  </div>
+
+  <%- partial('./feature-nav.ejs', { index: page.order }) %>
+
+  <div class="feature-outer">
+    <h1 class="feature__title colored">
+      <%- page.title %>
+    </h1>
+    <% if (page.slug && page.order < features.length - 1) { %>
+      <div class="feature__bodymovin" data-ref="feature.bodymovin"></div>
+      <div class="feature__box">
+        <div class="feature__box__body">
+          <%- partial('./feature-box/feature-' + page.order + '.ejs') %>
+        </div>
+        <div class="feature__box__footer">
+          <%-
+            partial('./feature-action.ejs',
+              {
+                ctaLink: theme.root + page.action.link,
+                ctaModifier: page.order,
+                ctaTitle: page.action.title,
+                ctaIcon: page.action.icon,
+              }
+            )
+          %>
+        </div>
+      </div>
+    <% } else { %>
+      <%- page.content %>
+    <% }; %>
+  </div>
+</div>

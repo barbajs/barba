@@ -1,14 +1,14 @@
 <ol class="grid" data-component="<%- name %>-grid">
 
-  <!-- Example items -->
+  <!-- Examples items -->
 
-  <% if (namespace === 'page--example') { %>
-  <% site.categories.findOne({name: 'example'}).posts.forEach(function(post){ %>
-  <%- partial('components/example/example-item.ejs', { post: post }) %>
+  <% if (namespace === 'page--examples') { %>
+  <% site.categories.findOne({name: 'examples'}).posts.forEach(function(post){ %>
+  <%- partial('components/examples/example-item.ejs', { post: post }) %>
   <% }); %>
   <% } %>
 
-  <!-- Example items [end]-->
+  <!-- Examples items [end]-->
 
   <!-- Showcase items -->
   <!-- Generated in javascript with the template -->

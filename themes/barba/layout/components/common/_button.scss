@@ -24,63 +24,61 @@
   fill: $white;
 
   &:not([class*='--black']) {
-
-    [data-feature-slug='dependency-free'] & {
-      background-color: $c-menu-dependency-free;
-      border-color: $c-menu-dependency-free;
+    [data-feature-order='0'] & {
+      background-color: $c-menu-feature-0;
+      border-color: $c-menu-feature-0;
     }
 
-    [data-feature-slug='small-size'] & {
-      background-color: $c-menu-small-size;
-      border-color: $c-menu-small-size;
+    [data-feature-order='1'] & {
+      background-color: $c-menu-feature-1;
+      border-color: $c-menu-feature-1;
     }
 
-    [data-feature-slug='core'] & {
-      background-color: $c-menu-core;
-      border-color: $c-menu-core;
+    [data-feature-order='2'] & {
+      background-color: $c-menu-feature-2;
+      border-color: $c-menu-feature-2;
     }
 
-    [data-feature-slug='router'] & {
-      background-color: $c-menu-router;
-      border-color: $c-menu-router;
+    [data-feature-order='3'] & {
+      background-color: $c-menu-feature-3;
+      border-color: $c-menu-feature-3;
     }
 
-    [data-feature-slug='prefetch'] & {
-      background-color: $c-menu-prefetch;
-      border-color: $c-menu-prefetch;
+    [data-feature-order='4'] & {
+      background-color: $c-menu-feature-4;
+      border-color: $c-menu-feature-4;
     }
 
     &:hover {
       background: $c-blue-medium;
       border-color: $c-blue-medium;
 
-      [data-feature-slug='dependency-free'] & {
-        background-color: darken($c-menu-dependency-free, 10%);
-        border-color: darken($c-menu-dependency-free, 10%);
+      [data-feature-order='0'] & {
+        background-color: darken($c-menu-feature-0, 10%);
+        border-color: darken($c-menu-feature-0, 10%);
       }
 
-      [data-feature-slug='small-size'] & {
-        background-color: darken($c-menu-small-size, 10%);
-        border-color: darken($c-menu-small-size, 10%);
+      [data-feature-order='1'] & {
+        background-color: darken($c-menu-feature-1, 10%);
+        border-color: darken($c-menu-feature-1, 10%);
       }
 
-      [data-feature-slug='core'] & {
-        background-color: darken($c-menu-core, 10%);
-        border-color: darken($c-menu-core, 10%);
+      [data-feature-order='2'] & {
+        background-color: darken($c-menu-feature-2, 10%);
+        border-color: darken($c-menu-feature-2, 10%);
       }
 
-      [data-feature-slug='router'] & {
-        background-color: darken($c-menu-router, 10%);
-        border-color: darken($c-menu-router, 10%);
+      [data-feature-order='3'] & {
+        background-color: darken($c-menu-feature-3, 10%);
+        border-color: darken($c-menu-feature-3, 10%);
       }
 
-      [data-feature-slug='prefetch'] & {
-        background-color: darken($c-menu-prefetch, 10%);
-        border-color: darken($c-menu-prefetch, 10%);
+      [data-feature-order='4'] & {
+        background-color: darken($c-menu-feature-4, 10%);
+        border-color: darken($c-menu-feature-4, 10%);
       }
     }
   }
-
 }
 
 [class*='button--'][class*='--fill'][class*='--black'] {
@@ -92,10 +90,7 @@
   color: $c-dark;
   font-size: 11px;
   font-weight: 300;
-  transition:
-    background-color 0.4s,
-    color 0.4s,
-    border-color 0.4s,
+  transition: background-color 0.4s, color 0.4s, border-color 0.4s,
     transform 0.4s;
 
   span {

@@ -1,0 +1,27 @@
+<% var features = theme.menu[0].subpages %>
+<% var max = features.length %>
+<% var prev = index === 0 ? features[max - 1] : features[index - 1] %>
+<% var next = index === max - 1 ? features[0] : features[index + 1] %>
+
+<ul class="feature__nav">
+  <li class="feature__nav__el">
+    <a href="<%- theme.root %><%- prev.url %>">
+      <%- partial('components/common/icon', {
+          icon: 'barba-arrow-prev',
+          hidden: true,
+          viewbox: '0 0 21 15',
+        }) %>
+      <span><%- prev.title %></span>
+    </a>
+  </li>
+  <li class="feature__nav__el">
+    <a href="<%- theme.root %><%- next.url %>">
+      <span><%- next.title %></span>
+      <%- partial('components/common/icon', {
+          icon: 'barba-arrow-next',
+          hidden: true,
+          viewbox: '0 0 21 15',
+        }) %>
+    </a>
+  </li>
+</ul>

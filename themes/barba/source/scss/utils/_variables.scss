@@ -44,18 +44,18 @@ $c-gray-medium: #858585;
 $c-gray-dark: #333;
 $c-gray-darker: #0c0c0c;
 
-$c-menu-dependency-free: #38d1f1;
-$c-menu-dependency-free-light: #d4f6fe;
-$c-menu-small-size: #04bf0c;
-$c-menu-small-size-light: #e4ffcc;
-$c-menu-core: #ffa543;
-$c-menu-core-light: #fef0d5;
-$c-menu-router: #ec4343;
-$c-menu-router-light: #fcdcdd;
-$c-menu-prefetch: #8c44d9;
-$c-menu-prefetch-light: #f8e6ff;
-$c-menu-about: #2e5bdc;
-$c-menu-about-light: #8fadff;
+$c-menu-feature-0: #38d1f1;
+$c-menu-feature-0-light: #d4f6fe;
+$c-menu-feature-1: #04bf0c;
+$c-menu-feature-1-light: #e4ffcc;
+$c-menu-feature-2: #ffa543;
+$c-menu-feature-2-light: #fef0d5;
+$c-menu-feature-3: #ec4343;
+$c-menu-feature-3-light: #fcdcdd;
+$c-menu-feature-4: #8c44d9;
+$c-menu-feature-4-light: #f8e6ff;
+$c-menu-feature-5: #2e5bdc;
+$c-menu-feature-5-light: #8fadff;
 
 // Semantic/project colors
 $c-main: $c-blue-medium;
@@ -64,11 +64,11 @@ $c-light: $white;
 
 // Documentation snippets colors
 $c-doc-comment: $c-gray-medium;
-$c-doc-attribute: $c-menu-router;
-$c-doc-number: $c-menu-core;
+$c-doc-attribute: $c-menu-feature-3;
+$c-doc-number: $c-menu-feature-2;
 $c-doc-string: #718c00;
 $c-doc-function: #4271ae;
-$c-doc-keyword: $c-menu-prefetch;
+$c-doc-keyword: $c-menu-feature-4;
 $c-doc-color: #3e999f;
 
 // Z Layers
