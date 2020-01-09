@@ -2,7 +2,7 @@
 title: Prefetch
 namespace: docs
 layout: components/docs/docs
-url: '/docs/plugins/prefetch'
+url: 'docs/plugins/prefetch'
 ---
 
 # @barba/prefetch

@@ -2,7 +2,7 @@
 title: Router
 namespace: docs
 layout: components/docs/docs
-url: '/docs/plugins/router'
+url: 'docs/plugins/router'
 ---
 
 # @barba/router

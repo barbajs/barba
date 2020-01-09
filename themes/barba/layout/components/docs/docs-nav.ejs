@@ -17,7 +17,8 @@
         <% page.subpages.forEach(function(subpage) { %>
         <li class="<%- is_current(subpage.url) ? 'is-open' : '' %>">
           <a href="<%- theme.root %><%- subpage.url %>">
-            <h2 class="docs__nav__subtitle <%- is_current(subpage.url) ? 'is-open' : '' %>"><%- subpage.title %>
+            <h2 class="docs__nav__subtitle <%- is_current(subpage.url) ? 'is-open' : '' %>">
+              <%- subpage.title %>
             </h2>
         </li>
         <% }); %>

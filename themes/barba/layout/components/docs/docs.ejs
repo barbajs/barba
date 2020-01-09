@@ -4,23 +4,10 @@
   <%- partial('./docs-nav') %>
   <%- partial('./docs-content') %>
 
-  <% theme.docs.forEach(function(page) { %>
-  <% if (page.subpages) { %>
-  <% page.subpages.forEach(function(subpage) { %>
-  <% if (is_current(subpage.url)) { %>
   <%- partial('./docs-nav-lateral',
     {
-      page: subpage,
+      page: page,
     }
   ) %>
-  <% }; %>
-  <% }); %>
-  <% }; %>
-  <% if (is_current(page.url)) { %>
-  <%- partial('./docs-nav-lateral', {
-    page: page,
-  }) %>
-  <% }; %>
-  <% }); %>
 
 </section>

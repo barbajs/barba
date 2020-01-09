@@ -3,11 +3,9 @@
 .docs__nav__lateral {
   position: static;
   display: flex;
-  width: 100%;
-
-  display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 
   @include mq(m) {
     width: 74vw;
@@ -17,7 +15,7 @@
   @include mq(l) {
     min-width: 50vw;
     max-width: 80rem;
-    padding: 0rem 6rem;
+    padding: 0 6rem;
   }
 
   .icon--barba {
@@ -29,6 +27,7 @@
 }
 
 .docs__nav__lateral__link,
+[class*='docs__nav__lateral__link--'],
 .docs__nav__lateral__button {
   display: flex;
   align-items: center;
@@ -57,7 +56,8 @@
   }
 }
 
-.docs__nav__lateral__link {
+.docs__nav__lateral__link,
+[class*='docs__nav__lateral__link--'] {
   width: 35%;
 }
 

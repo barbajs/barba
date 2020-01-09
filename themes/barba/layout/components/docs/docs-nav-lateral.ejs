@@ -1,35 +1,31 @@
-<!-- Lateral Nav -->
-<div class="docs__nav__lateral" data-component="docs-nav-lateral">
-  <!-- Left Link -->
-  <% if (page.prevpage) { %>
-  <a href="<%- theme.root %><%- page.prevpage.url %>" class="docs__nav__lateral__link">
-    <%- partial('../common/icon', {
-                  icon: 'barba-arrow-prev',
-                  hidden: true,
-                  viewbox: '0 0 21 15',
-                }) %>
-    <span class="docs__nav__lateral__label"><%- page.prevpage.label %></span>
-  </a>
-  <% }; %>
-  <!-- Left Link [end]-->
+<% var nav = getDocsNav(page.url, theme.docs) %>
+<% var prev = nav[0] %>
+<% var next = nav[1] %>
 
-  <% if (page.nextpage) { %>
-  <!-- Center Menu (for mobile)-->
+<div class="docs__nav__lateral" data-component="docs-nav-lateral">
+  <% if (prev !== null) { %>
+    <a href="<%- theme.root %><%- prev.url %>" class="docs__nav__lateral__link--prev">
+      <%- partial('../common/icon', {
+        icon: 'barba-arrow-prev',
+        hidden: true,
+        viewbox: '0 0 21 15',
+      }) %>
+      <span class="docs__nav__lateral__label"><%- prev.title %></span>
+    </a>
+  <% }; %>
+
   <button class="docs__nav__lateral__button">
     Doc
   </button>
-  <!-- Center Menu (for mobile) [end]-->
 
-  <!-- Rigth Link -->
-  <a href="<%- theme.root %><%- page.nextpage.url %>" class="docs__nav__lateral__link">
-    <span class="docs__nav__lateral__label"><%- page.nextpage.label %></span>
-    <%- partial('../common/icon', {
-                  icon: 'barba-arrow-next',
-                  hidden: true,
-                  viewbox: '0 0 21 15',
-                }) %>
-  </a>
-  <!-- Rigth Link [end]-->
+  <% if (next !== null) { %>
+    <a href="<%- theme.root %><%- next.url %>" class="docs__nav__lateral__link--next">
+      <span class="docs__nav__lateral__label"><%- next.title %></span>
+      <%- partial('../common/icon', {
+        icon: 'barba-arrow-next',
+        hidden: true,
+        viewbox: '0 0 21 15',
+      }) %>
+    </a>
   <% }; %>
 </div>
-<!-- Lateral Nav [end]-->

@@ -103,71 +103,32 @@ menu:
 docs:
   - title: 'Get Started'
     url: 'docs/getstarted/intro'
-    path: '/docs/getstarted'
+    path: 'docs/getstarted'
     nextpage:
       label: 'USER GUIDE'
       url: 'docs/userguide/markup'
   - title: 'User Guide (Core)'
     url: 'docs/userguide/markup'
-    path: '/docs/userguide'
+    path: 'docs/userguide'
     subpages:
       - title: 'Markup'
         url: 'docs/userguide/markup'
-        prevpage:
-          label: 'GET STARTED'
-          url: 'docs/getstarted/intro'
-        nextpage:
-          label: 'Syntax'
-          url: 'docs/userguide/syntax'
       - title: 'Syntax'
         url: 'docs/userguide/syntax'
-        prevpage:
-          label: 'Markup'
-          url: 'docs/userguide/markup'
-        nextpage:
-          label: 'PLUGINS'
-          url: 'docs/plugins/css'
   - title: 'Plugins'
-    url: '/docs/plugins/css'
-    path: '/docs/plugins'
+    url: 'docs/plugins/css'
+    path: 'docs/plugins'
     subpages:
       - title: 'Css'
         url: 'docs/plugins/css'
-        prevpage:
-          label: 'USER GUIDE'
-          url: 'docs/userguide/markup'
-        nextpage:
-          label: 'Router'
-          url: 'docs/plugins/router'
       - title: 'Router'
         url: 'docs/plugins/router'
-        prevpage:
-          label: 'Css'
-          url: 'docs/plugins/css'
-        nextpage:
-          label: 'Prefetch'
-          url: 'docs/plugins/prefetch'
       - title: 'Prefetch'
         url: 'docs/plugins/prefetch'
-        prevpage:
-          label: 'Router'
-          url: 'docs/plugins/router'
-        nextpage:
-          label: 'Preset'
-          url: 'docs/plugins/preset'
       - title: 'Preset'
         url: 'docs/plugins/preset'
-        prevpage:
-          label: 'Prefetch'
-          url: 'docs/plugins/prefetch'
-        nextpage:
-          label: 'Head'
-          url: 'docs/plugins/head'
       - title: 'Head'
         url: 'docs/plugins/head'
-        prevpage:
-          label: 'Preset'
-          url: 'docs/plugins/preset'
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/

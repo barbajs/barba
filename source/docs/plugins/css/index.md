@@ -2,7 +2,7 @@
 title: CSS
 namespace: docs
 layout: components/docs/docs
-url: '/docs/plugins/css'
+url: 'docs/plugins/css'
 ---
 
 # @barba/css
