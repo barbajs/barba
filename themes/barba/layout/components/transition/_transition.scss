@@ -37,7 +37,6 @@
 }
 
 .transition__title {
-  @extend %text-uppercase;
   @include center-xy;
 
   z-index: 1;
@@ -51,6 +50,7 @@
   font-family: $ff-alt;
   font-size: 2.4rem !important; //stylelint-disable-line declaration-no-important
   font-weight: 400;
+  text-transform: capitalize;
   letter-spacing: 0.5px !important; //stylelint-disable-line declaration-no-important
   opacity: 0;
   will-change: opacity, transform;
