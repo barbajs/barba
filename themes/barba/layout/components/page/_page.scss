@@ -1,5 +1,4 @@
-.page,
-[data-barba-namespace*='page--'] {
+.page {
   width: 100%;
   max-width: 1440px;
   height: 100%;
@@ -8,6 +7,10 @@
 
   @include mq(m) {
     padding: 16rem 11.19% 0;
+  }
+
+  .icon--barba {
+    stroke-width: 0;
   }
 }
 
@@ -28,9 +31,7 @@
   width: 100%;
   height: 100%;
 
-  .icon--barba {
-    stroke-width: 0;
-  }
+
 }
 
 .page__header {
