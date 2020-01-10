@@ -115,7 +115,10 @@
   color: $black;
   font-size: 11px;
   font-weight: 300;
-  transition: background-color 0.4s, color 0.4s, border-color 0.4s,
+  transition:
+    background-color 0.4s,
+    color 0.4s,
+    border-color 0.4s,
     transform 0.4s;
 
   span {
