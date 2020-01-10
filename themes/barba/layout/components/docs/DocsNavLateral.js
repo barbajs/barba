@@ -10,7 +10,7 @@ export default class DocsNavLateral extends Component {
   }
 
   init() {
-    this.$refs.link.forEach(link => {
+    [].concat(this.$refs.link).forEach(link => {
       link.addEventListener('click', () => {
         this.close()
       })
