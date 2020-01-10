@@ -37,6 +37,7 @@
 }
 
 .transition__title {
+  @extend %text-uppercase;
   @include center-xy;
 
   z-index: 1;

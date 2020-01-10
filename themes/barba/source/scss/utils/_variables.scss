@@ -10,66 +10,66 @@ $env: 'dev' !default;
  */
 
 // Global colors
-$black: rgb(0, 0, 0);
-$gray-darkest: rgb(32, 32, 32);
-$gray-darker: rgb(64, 64, 64);
-$gray-dark: rgb(96, 96, 96);
-$gray-medium: rgb(128, 128, 128);
-$gray-light: rgb(160, 160, 160);
-$gray-lighter: rgb(192, 192, 192);
-$gray-lightest: rgb(224, 224, 224);
-$white: rgb(255, 255, 255);
-$transparent: transparent;
+$black                    : rgb(0, 0, 0);
+$gray-darkest             : rgb(32, 32, 32);
+$gray-darker              : rgb(64, 64, 64);
+$gray-dark                : rgb(96, 96, 96);
+$gray-medium              : rgb(128, 128, 128);
+$gray-light               : rgb(160, 160, 160);
+$gray-lighter             : rgb(192, 192, 192);
+$gray-lightest            : rgb(224, 224, 224);
+$white                    : rgb(255, 255, 255);
+$transparent              : transparent;
 
 // Dev colors
-$c-dev-bg: #3e4b55;
-$c-dev-error: #d90b0b;
-$c-dev-warning: #f50;
-$c-dev-info: #829deb;
+$c-dev-bg                 : #3e4b55;
+$c-dev-error              : #d90b0b;
+$c-dev-warning            : #f50;
+$c-dev-info               : #829deb;
 
 // Name colors
-$c-dove-gray: #666;
-$c-woodsmoke: #101012;
+$c-dove-gray              : #666;
+$c-woodsmoke              : #101012;
 
 // Project colors
-$c-blue-lightest: #f5f7fc;
-$c-blue-lighter: #d3defc;
-$c-blue-light: #5a82f1;
-$c-blue-medium: #2e5bdc;
-$c-blue-dark: #2448b0;
-$c-blue-darker: #1c398c;
-$c-blue-darkest: #112356;
-$c-green-medium: #04bf0c;
-$c-gray-medium: #858585;
-$c-gray-dark: #333;
-$c-gray-darker: #0c0c0c;
+$c-blue-lightest          : #f5f7fc;
+$c-blue-lighter           : #d3defc;
+$c-blue-light             : #5a82f1;
+$c-blue-medium            : #2e5bdc;
+$c-blue-dark              : #2448b0;
+$c-blue-darker            : #1c398c;
+$c-blue-darkest           : #112356;
+$c-green-medium           : #04bf0c;
+$c-gray-medium            : #858585;
+$c-gray-dark              : #333;
+$c-gray-darker            : #0c0c0c;
 
-$c-menu-feature-0: #38d1f1;
-$c-menu-feature-0-light: #d4f6fe;
-$c-menu-feature-1: #04bf0c;
-$c-menu-feature-1-light: #e4ffcc;
-$c-menu-feature-2: #ffa543;
-$c-menu-feature-2-light: #fef0d5;
-$c-menu-feature-3: #ec4343;
-$c-menu-feature-3-light: #fcdcdd;
-$c-menu-feature-4: #8c44d9;
-$c-menu-feature-4-light: #f8e6ff;
-$c-menu-feature-5: #2e5bdc;
-$c-menu-feature-5-light: #8fadff;
+$c-menu-feature-0         : #38d1f1;
+$c-menu-feature-0-light   : #d4f6fe;
+$c-menu-feature-1         : #04bf0c;
+$c-menu-feature-1-light   : #e4ffcc;
+$c-menu-feature-2         : #ffa543;
+$c-menu-feature-2-light   : #fef0d5;
+$c-menu-feature-3         : #ec4343;
+$c-menu-feature-3-light   : #fcdcdd;
+$c-menu-feature-4         : #8c44d9;
+$c-menu-feature-4-light   : #f8e6ff;
+$c-menu-feature-5         : #2e5bdc;
+$c-menu-feature-5-light   : #8fadff;
 
 // Semantic/project colors
-$c-main: $c-blue-medium;
-$c-dark: $black;
-$c-light: $white;
+$c-main                   : $c-blue-medium;
+
+$c-light                  : $white;
 
 // Documentation snippets colors
-$c-doc-comment: $c-gray-medium;
-$c-doc-attribute: $c-menu-feature-3;
-$c-doc-number: $c-menu-feature-2;
-$c-doc-string: #718c00;
-$c-doc-function: #4271ae;
-$c-doc-keyword: $c-menu-feature-4;
-$c-doc-color: #3e999f;
+$c-doc-comment            : $c-gray-medium;
+$c-doc-attribute          : $c-menu-feature-3;
+$c-doc-number             : $c-menu-feature-2;
+$c-doc-string             : #718c00;
+$c-doc-function           : #4271ae;
+$c-doc-keyword            : $c-menu-feature-4;
+$c-doc-color              : #3e999f;
 
 // Z Layers
 $z-layers: (
