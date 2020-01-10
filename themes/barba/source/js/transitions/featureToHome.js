@@ -21,6 +21,8 @@ export default {
     const fullOldLogo = container.querySelectorAll('.logo.featured')
     const oldBigShape = container.querySelector('.logo.only-big')
 
+    current.container.querySelector('.menu-trigger').style.opacity = '0'
+
     return gsap
       .timeline()
       .to(

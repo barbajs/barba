@@ -1,16 +1,7 @@
 import barba from '@barba/core'
-import {
-  Component,
-} from 'kapla'
-import {
-  gsap,
-} from 'gsap'
-import {
-  $on,
-  $off,
-  qsa,
-  qs,
-} from '../../../source/js/utils/dom'
+import { Component } from 'kapla'
+import { gsap } from 'gsap'
+import { $on, $off, qsa, qs } from '../../../source/js/utils/dom'
 
 export default class extends Component {
   load() {
@@ -38,12 +29,10 @@ export default class extends Component {
 
   mouseEnter(index) {
     this.$logo.classList.add('gray')
-    const {
-      featureSlug
-    } = this.$refs.listItem[index].dataset
+
     const container = document.querySelector('[data-barba="container"]')
 
-    container.dataset.featureSlug = featureSlug;
+    container.dataset.featureOrder = index
     gsap.killTweensOf(this.$refs.listItem[index])
     gsap.killTweensOf(this.$items[index])
 
@@ -72,7 +61,7 @@ export default class extends Component {
 
     const container = document.querySelector('[data-barba="container"]')
 
-    container.dataset.featureSlug = '';
+    container.dataset.featureOrder = ''
 
     this.$logo.classList.remove('gray')
 
