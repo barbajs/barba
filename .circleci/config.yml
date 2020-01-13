@@ -36,7 +36,7 @@ jobs:
             - node_modules
       - run:
           name: Bootstrap Lerna monorepo
-          command: yarn run bootstrap
+          command: yarn bootstrap
       - persist_to_workspace:
           root: ~/repo
           paths:
@@ -49,16 +49,16 @@ jobs:
           at: ~/repo
       - run:
           name: Lint
-          command: yarn run lint
+          command: yarn lint
       - run:
           name: Bundle
-          command: yarn run build
+          command: yarn build
       - run:
           name: Test
-          command: yarn run unit:ci
+          command: yarn unit:ci
       - run:
           name: Coverage
-          command: yarn run coverage
+          command: yarn coverage
       - store_artifacts:
           path: coverage
       - persist_to_workspace:
@@ -73,7 +73,7 @@ jobs:
           at: ~/repo
       - run:
           name: Build docs
-          command: yarn run doc
+          command: yarn doc
       - persist_to_workspace:
           root: ~/repo
           paths: documentation
@@ -95,6 +95,55 @@ jobs:
       - run:
           name: Deploy docs to gh-pages branch
           command: ./node_modules/.bin/gh-pages -d documentation -e docs/v2 -m 'Deploy docs [ci skip]'
+  www-build:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - restore_cache:
+          name: Restore Node modules
+          keys:
+            - dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Hexo generate
+          command: yarn build
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - dist
+  www-deploy:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Install and configure dependencies
+          command: |
+            npm install gh-pages@2.0.1
+            git config user.email $GH_EMAIL
+            git config user.name $GH_NAME
+      - add_ssh_keys:
+          fingerprints:
+            - '2c:bd:91:1f:35:54:de:94:22:77:fc:3e:68:f9:6b:2f'
+      - run:
+          name: Deploy website to gh-pages branch
+          command: ./node_modules/.bin/gh-pages -d dist -e _/v2 -m 'Deploy website [ci skip]'
 
 workflows:
   version: 2
@@ -122,3 +171,15 @@ workflows:
           filters:
             branches:
               only: master
+  website_v2:
+    jobs:
+      - www-build:
+          filters:
+            branches:
+              only: website-2.x
+      - www-deploy:
+          requires:
+            - www-build
+          filters:
+            branches:
+              only: website-2.x
