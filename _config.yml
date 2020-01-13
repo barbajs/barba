@@ -13,8 +13,8 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://barba.js.org/_/v2
-root: /_/v2/
+url: https://barba.js.org/preview/v2
+root: /preview/v2/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
