@@ -128,6 +128,9 @@ exports.showcaseValidation = functions.https.onRequest((req, res) => {
       .then(() => {
         if (payload.actions[0].value) {
           // If the showcase is approved
+          console.info(
+            `[${payload.original_message.attachments[0].title}] approved by [${payload.user.name}]`
+          )
           showcase.update({
             isValidated: true,
           })
@@ -137,6 +140,9 @@ exports.showcaseValidation = functions.https.onRequest((req, res) => {
         }
 
         // If the showcase is rejected
+        console.info(
+          `[${payload.original_message.attachments[0].title}] rejected by [${payload.user.name}]`
+        )
         showcase.update({
           isValidated: false,
         })

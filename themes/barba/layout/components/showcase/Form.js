@@ -2,6 +2,9 @@ import { Component, ee } from 'kapla'
 import db from '../../../source/js/connectionDB'
 import firebase from 'firebase/app'
 
+const Cryptr = require('cryptr')
+const cryptr = new Cryptr('barba.js')
+
 export default class Form extends Component {
   load() {
     const dragEvents = ['dragenter', 'dragover', 'dragleave', 'drop']
@@ -142,6 +145,7 @@ export default class Form extends Component {
 
   createShowcase(downloadURL) {
     return db.collection('showcases').add({
+      from: cryptr.decrypt(process.env.FIREBASE_UID),
       authorName: this.$refs.authorName.value,
       authorUrl: this.$refs.authorUrl.value,
       isValidated: false,

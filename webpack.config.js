@@ -1,4 +1,7 @@
 require('dotenv').config()
+const webpack = require('webpack')
+const Cryptr = require('cryptr')
+const cryptr = new Cryptr('barba.js')
 
 module.exports = {
   entry: ['themes/barba/source/js/main.js'],
@@ -42,4 +45,11 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        FIREBASE_UID: JSON.stringify(cryptr.encrypt(process.env.FIREBASE_UID)),
+      },
+    }),
+  ],
 }

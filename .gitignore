@@ -156,6 +156,7 @@ $RECYCLE.BIN/
 ### Custom ###
 .env
 _multiconfig.yml
+firestore.rules
 db.json
 dist
 tmp

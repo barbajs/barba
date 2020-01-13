@@ -17,6 +17,7 @@
     "@barba/css": "^2.1.15",
     "@barba/prefetch": "^2.1.10",
     "@barba/router": "^2.1.10",
+    "cryptr": "^6.0.1",
     "firebase-functions": "^3.0.2",
     "gsap": "3.0.4",
     "hexo": "^4.2.0",
