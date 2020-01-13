@@ -54,7 +54,7 @@ jobs:
             - '2c:bd:91:1f:35:54:de:94:22:77:fc:3e:68:f9:6b:2f'
       - run:
           name: Deploy website to gh-pages branch
-          command: ./node_modules/.bin/gh-pages -d dist -e _/v2 -m 'Deploy website [ci skip]'
+          command: ./node_modules/.bin/gh-pages -d dist -e preview/v2 -m 'Deploy website [ci skip]'
 workflows:
   version: 2
   website_v2:
