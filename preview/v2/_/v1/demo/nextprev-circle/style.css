@@ -1,0 +1,69 @@
+@import url('http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|PT+Serif:400,700,400italic');
+
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: 'PT Serif', serif;
+  color: #555;
+}
+
+h1 {
+  font-family: 'Source Sans Pro', serif;
+}
+
+.barba-container {
+  position: relative;
+}
+
+header {
+  position: relative;
+  height: 40vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+}
+
+header h1 {
+  position: absolute;
+  width: 90%;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  color: #fff;
+  transform: translate(-50%, -50%);
+  webkit-transform: translate(-50%, -50%);
+  moz-transform: translate(-50%, -50%);
+}
+
+p {
+  margin: 15px auto;
+  width: 90%;
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+a.nav {
+  font-family: 'Source Sans Pro', serif;
+  display: block;
+  position: fixed;
+  height: 40vh;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-position: center;
+  background-size: cover;
+  text-decoration: none;
+  color: #fff;
+  z-index: 99;
+  outline: none;
+}
+
+a.nav.next {
+  -webkit-clip-path: circle(40px at 97% 50%);
+}
+
+a.nav.prev {
+  -webkit-clip-path: circle(40px at 3% 50%);
+}

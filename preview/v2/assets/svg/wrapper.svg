@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34px" height="34px" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>Group 17 Copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="-8.8817842e-16" y="-3.5971226e-13" width="16" height="16" rx="8"></rect>
+    </defs>
+    <g id="01-BarbaSite" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="11-Page-R" transform="translate(-439.000000, -707.000000)">
+            <g id="Group-17-Copy" transform="translate(436.000000, 704.000000)">
+                <rect id="Rectangle" fill="#D8D8D8" opacity="0" x="2" y="2" width="36" height="36"></rect>
+                <g id="Group-21" transform="translate(20.353553, 20.353553) rotate(-45.000000) translate(-20.353553, -20.353553) translate(2.353553, 10.853553)">
+                    <g id="Rectangle-Copy-4" transform="translate(10.000000, 1.000000)">
+                        <rect id="Rectangle-Copy-3" fill="#FFA543" opacity="0.200000003" x="0" y="0" width="16" height="16" rx="8"></rect>
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Rectangle-Copy-3" fill="#FFA543" opacity="0.200000003" xlink:href="#path-1"></use>
+                        <g id="Group-17" mask="url(#mask-2)" fill="#FFA543">
+                            <g transform="translate(0.000000, -2.000000)">
+                                <rect id="Rectangle" x="0" y="0" width="3" height="21"></rect>
+                                <rect id="Rectangle-Copy" x="5" y="0" width="2" height="21"></rect>
+                                <rect id="Rectangle-Copy-2" x="9" y="0" width="2" height="21"></rect>
+                                <rect id="Rectangle-Copy-5" x="13" y="0" width="3" height="21"></rect>
+                            </g>
+                        </g>
+                    </g>
+                    <path d="M26.9350288,9.06497116 L32.5208153,3.47918472 C33.3018639,2.69813614 34.5681938,2.69813614 35.3492424,3.47918472 C35.7243152,3.85425748 35.9350288,4.3629653 35.9350288,4.89339828 L35.9350288,13.236544 C35.9350288,14.3411135 35.0395983,15.236544 33.9350288,15.236544 C33.4045959,15.236544 32.895888,15.0258304 32.5208153,14.6507576 L26.9350288,9.06497116 L26.9350288,9.06497116 Z" id="Rectangle" fill="#FFA543"></path>
+                    <path d="M0.0649711575,9.06497116 L5.6507576,3.47918472 C6.43180618,2.69813614 7.69813614,2.69813614 8.47918472,3.47918472 C8.85425748,3.85425748 9.06497116,4.3629653 9.06497116,4.89339828 L9.06497116,13.236544 C9.06497116,14.3411135 8.16954066,15.236544 7.06497116,15.236544 C6.53453818,15.236544 6.02583035,15.0258304 5.6507576,14.6507576 L0.0649711575,9.06497116 L0.0649711575,9.06497116 Z" id="Rectangle" fill="#FFA543" transform="translate(4.564971, 9.064971) rotate(-180.000000) translate(-4.564971, -9.064971) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="150px" height="110px" viewBox="0 0 150 110" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>modular</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="modular">
+            <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" fill-rule="nonzero" opacity="0" x="0.5" y="0.5" width="149" height="109"></rect>
+            <g id="size" transform="translate(48.900000, 10.000000)" fill="#04BF0C">
+                <text id="9" font-family="Rubik-Medium, Rubik" font-size="78" font-weight="400">
+                    <tspan x="0.398" y="73">9</tspan>
+                </text>
+                <text id="kB" font-family="Rubik-Regular, Rubik" font-size="12" font-weight="normal" letter-spacing="-0.428571429">
+                    <tspan x="32" y="72.3">kB</tspan>
+                </text>
+            </g>
+            <g id="Group-16">
+                <rect id="Rectangle" fill="#04BF0C" fill-rule="nonzero" opacity="0.200000003" x="0" y="0" width="10" height="10" rx="2"></rect>
+                <rect id="Rectangle-Copy-6" stroke="#04BF0C" opacity="0.5" x="0.5" y="20.5" width="9" height="9" rx="4.5"></rect>
+                <rect id="Rectangle-Copy-9" fill="#04BF0C" fill-rule="nonzero" opacity="0.200000003" x="20" y="0" width="10" height="10" rx="2"></rect>
+                <rect id="Rectangle-Copy-10" stroke="#04BF0C" fill="#04BF0C" fill-rule="nonzero" x="22.5" y="22.5" width="5" height="5" rx="2.5"></rect>
+                <rect id="Rectangle-Copy" fill="#04BF0C" fill-rule="nonzero" opacity="0.200000003" x="40" y="0" width="10" height="10" rx="2"></rect>
+                <rect id="Rectangle-Copy-2" stroke="#04BF0C" fill="#04BF0C" fill-rule="nonzero" x="62.5" y="2.5" width="5" height="5" rx="2.5"></rect>
+                <rect id="Rectangle-Copy-3" stroke="#04BF0C" fill="#04BF0C" fill-rule="nonzero" x="82.5" y="2.5" width="5" height="5" rx="2.5"></rect>
+                <rect id="Rectangle-Copy-4" stroke="#04BF0C" opacity="0.5" x="100.5" y="0.5" width="9" height="9" rx="4.5"></rect>
+                <rect id="Rectangle-Copy-5" stroke="#04BF0C" opacity="0.5" x="120.5" y="0.5" width="9" height="9" rx="4.5"></rect>
+                <rect id="Rectangle-Copy-14" stroke="#04BF0C" fill="#04BF0C" fill-rule="nonzero" x="122.5" y="22.5" width="5" height="5" rx="2.5"></rect>
+                <rect id="Rectangle-Copy-8" stroke="#04BF0C" opacity="0.5" x="140.5" y="0.5" width="9" height="9" rx="4.5"></rect>
+                <rect id="Rectangle-Copy-15" stroke="#04BF0C" opacity="0.5" x="140.5" y="20.5" width="9" height="9" rx="4.5"></rect>
+                <rect id="Rectangle-Copy-23" stroke="#04BF0C" fill="#04BF0C" fill-rule="nonzero" x="2.5" y="42.5" width="5" height="5" rx="2.5"></rect>
+                <rect id="Rectangle-Copy-22" stroke="#04BF0C" fill="#04BF0C" fill-rule="nonzero" x="22.5" y="42.5" width="5" height="5" rx="2.5"></rect>
+                <rect id="Rectangle-Copy-17" fill="#04BF0C" fill-rule="nonzero" opacity="0.200000003" x="120" y="40" width="10" height="10" rx="2"></rect>
+                <rect id="Rectangle-Copy-16" fill="#04BF0C" fill-rule="nonzero" opacity="0.200000003" x="140" y="40" width="10" height="10" rx="2"></rect>
+                <rect id="Rectangle-Copy-31" fill="#04BF0C" fill-rule="nonzero" opacity="0.200000003" x="0" y="60" width="10" height="10" rx="2"></rect>
+                <rect id="Rectangle-Copy-30" stroke="#04BF0C" opacity="0.5" x="20.5" y="60.5" width="9" height="9" rx="4.5"></rect>
+                <rect id="Rectangle-Copy-25" stroke="#04BF0C" opacity="0.5" x="120.5" y="60.5" width="9" height="9" rx="4.5"></rect>
+                <rect id="Rectangle-Copy-24" fill="#04BF0C" fill-rule="nonzero" opacity="0.200000003" x="140" y="60" width="10" height="10" rx="2"></rect>
+                <rect id="Rectangle-Copy-39" stroke="#04BF0C" opacity="0.5" x="0.5" y="80.5" width="9" height="9" rx="4.5"></rect>
+                <rect id="Rectangle-Copy-38" stroke="#04BF0C" fill="#04BF0C" fill-rule="nonzero" x="22.5" y="82.5" width="5" height="5" rx="2.5"></rect>
+                <rect id="Rectangle-Copy-33" stroke="#04BF0C" opacity="0.5" x="120.5" y="80.5" width="9" height="9" rx="4.5"></rect>
+                <rect id="Rectangle-Copy-32" fill="#04BF0C" fill-rule="nonzero" opacity="0.200000003" x="140" y="80" width="10" height="10" rx="2"></rect>
+                <rect id="Rectangle-Copy-47" stroke="#04BF0C" fill="#04BF0C" fill-rule="nonzero" x="2.5" y="102.5" width="5" height="5" rx="2.5"></rect>
+                <rect id="Rectangle-Copy-46" stroke="#04BF0C" fill="#04BF0C" fill-rule="nonzero" x="22.5" y="102.5" width="5" height="5" rx="2.5"></rect>
+                <rect id="Rectangle-Copy-45" stroke="#04BF0C" opacity="0.5" x="40.5" y="100.5" width="9" height="9" rx="4.5"></rect>
+                <rect id="Rectangle-Copy-44" stroke="#04BF0C" x="60.5" y="100.5" width="9" height="9" rx="4.5"></rect>
+                <rect id="Rectangle-Copy-43" fill="#04BF0C" fill-rule="nonzero" opacity="0.300000012" x="80" y="100" width="10" height="10" rx="2"></rect>
+                <rect id="Rectangle-Copy-42" fill="#04BF0C" fill-rule="nonzero" opacity="0.300000012" x="100" y="100" width="10" height="10" rx="2"></rect>
+                <rect id="Rectangle-Copy-41" stroke="#04BF0C" x="120.5" y="100.5" width="9" height="9" rx="4.5"></rect>
+                <rect id="Rectangle-Copy-40" stroke="#04BF0C" fill="#04BF0C" fill-rule="nonzero" x="142.5" y="102.5" width="5" height="5" rx="2.5"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,475 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>barba.js</title>
+  <meta name="description" content="Create badass, fluid and smooth transition between your website&#39;s pages." />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="https://barba.js.org/favicons/apple-touch-icon.png?rev=1">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://barba.js.org/favicons/favicon-32x32.png?rev=1">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://barba.js.org/favicons/favicon-16x16.png?rev=1">
+  <link rel="manifest" href="https://barba.js.org/favicons/site.webmanifest?rev=1">
+  <link rel="mask-icon" href="https://barba.js.org/favicons/safari-pinned-tab.svg?rev=1" color="#5bbad5">
+  <link rel="shortcut icon" href="https://barba.js.org/favicons/favicon.ico?rev=1">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-config" content="https://barba.js.org/favicons/browserconfig.xml?rev=1">
+  <meta name="theme-color" content="#ffffff">
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="barba.js" />
+  <meta property="og:description" content="Create badass, fluid and smooth transition between your website&#39;s pages." />
+  <meta property="og:url" content="https://barba.js.org" />
+  <meta property="og:site_name" content="barba.js" />
+  <meta property="og:image" content="https://barba.js.org/share.jpg" />
+  <meta property="og:image:width" content="1500" />
+  <meta property="og:image:height" content="500" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:description" content="Create badass, fluid and smooth transition between your website&#39;s pages." />
+  <meta name="twitter:title" content="barba.js" />
+  <meta name="twitter:site" content="@barba_js" />
+  <meta name="twitter:image" content="https://barba.js.org/share.jpg" />
+  <meta name="twitter:creator" content="@barba_js" />
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="https://barba.js.org/scss/main.css" type="text/css" media="all">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    window.BARBA = {
+      root: '/_/v2/',
+      menu: JSON.parse('[{"title":"Features","url":"features/fast-flexible","slug":"/features","subpages":[{"title":"User friendly","url":"features/user-friendly"},{"title":"Easy peasy","url":"features/easy-peasy"},{"title":"Smart","url":"features/smart"},{"title":"Extensible","url":"features/extensible"},{"title":"Futureproof","url":"features/futureproof"},{"title":"Community","url":"features/community"}]},{"title":"Examples","url":"examples","slug":"/examples"},{"title":"Showcase","url":"showcase","slug":"/showcase"},{"title":"Docs","url":"docs/getstarted/intro","slug":"/docs"}]'),
+      docs: JSON.parse('[{"title":"Get Started","url":"docs/getstarted/intro","path":"docs/getstarted","nextpage":{"label":"USER GUIDE","url":"docs/userguide/markup"}},{"title":"User Guide (Core)","url":"docs/userguide/markup","path":"docs/userguide","subpages":[{"title":"Markup","url":"docs/userguide/markup"},{"title":"Syntax","url":"docs/userguide/syntax"}]},{"title":"Plugins","url":"docs/plugins/css","path":"docs/plugins","subpages":[{"title":"Css","url":"docs/plugins/css"},{"title":"Router","url":"docs/plugins/router"},{"title":"Prefetch","url":"docs/plugins/prefetch"},{"title":"Preset","url":"docs/plugins/preset"},{"title":"Head","url":"docs/plugins/head"}]}]'),
+    }
+
+    document.documentElement.classList.add('js');
+
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body data-barba="wrapper" data-slug="docs">
+  <?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol viewBox="0 0 21 15" id="barba-arrow-next" xmlns="http://www.w3.org/2000/svg"><path d="M16.243 8.142H0v-2h16.385l-4.728-4.728L13.07 0l5.657 5.657 1.414 1.414-7.07 7.071-1.415-1.414 4.586-4.586z" fill-rule="evenodd"/></symbol><symbol viewBox="0 0 21 15" id="barba-arrow-prev" xmlns="http://www.w3.org/2000/svg"><path d="M4.757 8.142H21v-2H4.615l4.728-4.728L7.93 0 2.272 5.657.858 7.07l7.07 7.071 1.415-1.414-4.586-4.586z" fill-rule="evenodd"/></symbol><symbol viewBox="0 0 32 32" id="barba-b" xmlns="http://www.w3.org/2000/svg"><defs><path d="M8 10c-4.418 0-8 3.59-8 8 0 4.418 3.59 8 8 8H0V0h8v10z" id="ca"/></defs><g fill-rule="evenodd"><use stroke-width="2" xlink:href="#ca" transform="translate(9.5 3)"/><path d="M9.5 21c0 4.418 3.59 8 8 8h0c4.418 0 8-3.59 8-8h0c0-4.418-3.59-8-8-8h0c-4.418 0-8 3.59-8 8h0z" stroke-width="2"/></g></symbol><symbol id="barba-download" viewBox="0 0 37.1 37.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><style>.dst0{fill-rule:evenodd;clip-rule:evenodd}.dst0,.dst1{fill:#2e5bdc}</style><g transform="translate(-463 -796)"><g id="dGroup-17" transform="translate(160 546)"><g id="dGroup-15" transform="translate(303 250)"><g id="dGroup-7"><path id="dCombined-Shape-Copy-2" class="dst0" d="M16.5 20.8l-5.3-5.3-2.9 2.9 7.5 7.5 2.9 2.9 10.5-10.5-2.9-2.9-5.6 5.6V4h-4.1v16.8z"/><path id="dOval-4" class="dst1" d="M18.6 33c8 0 14.4-6.5 14.4-14.4S26.5 4.1 18.6 4.1 4.1 10.6 4.1 18.6 10.6 33 18.6 33zm0 4.1C8.3 37.1 0 28.8 0 18.6S8.3 0 18.6 0s18.6 8.3 18.6 18.6-8.4 18.5-18.6 18.5z"/></g></g></g></g></symbol><symbol id="barba-external" viewBox="0 0 30 30" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><style>.est0{fill:#2e5bdc}</style><g transform="translate(-880 -939)"><g id="eGroup-3-Copy" transform="translate(540 699)"><g id="eGroup-2" transform="translate(5 240)"><g id="eGroup-4" transform="translate(291)"><g id="eGroup" transform="translate(44)"><path id="eRectangle" class="est0" d="M24 26v-6h4v6c0 2.2-1.8 4-4 4H4c-2.2 0-4-1.8-4-4V6c0-2.2 1.8-4 4-4h6v4H4v20h20zM10 6H4v20h20v-6h4v6c0 2.2-1.8 4-4 4H4c-2.2 0-4-1.8-4-4V6c0-2.2 1.8-4 4-4h6v4zm13.3-2H16V0h14v14h-4V7l-7.3 7.3-2.8-2.8L23.3 4z"/></g></g></g></g></g></symbol><symbol id="barba-eye" viewBox="0 0 47.7 35.8" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><style>.fst0,.fst1{fill:#2e5bdc}.fst1{fill-rule:evenodd;clip-rule:evenodd}</style><g transform="translate(-165 -796)"><g id="fGroup-17" transform="translate(160 546)"><g id="fGroup-6" transform="translate(5 250)"><g id="fGroup-5"><path id="fCombined-Shape" class="fst0" d="M24.6 31c6.5 0 12.4-3.8 15.1-9.5C37 15.8 31.2 12 24.6 12s-12.4 3.8-15.1 9.5C12.2 27.2 18 31 24.6 31zm0-23.8c9.3 0 17.3 6 20.2 14.3-2.9 8.3-10.9 14.3-20.2 14.3s-17.3-6-20.2-14.3C7.3 13.1 15.2 7.2 24.6 7.2z"/><path class="fst0" d="M7.1 13.6c2.8-5.7 9-8.8 17.5-8.8S39.2 7.9 42 13.6h5.2C43.9 4.3 35 0 24.6 0S5.2 4.3 1.9 13.6h5.2zm17.5-8.8c8.5 0 14.7 3.1 17.5 8.8h5.2C43.9 4.3 35 0 24.6 0S5.2 4.3 1.9 13.6h5.2c2.8-5.7 9-8.8 17.5-8.8z"/><circle id="fOval-3" class="fst1" cx="24.6" cy="21.5" r="4.8"/></g></g></g></g></symbol><symbol viewBox="0 0 13 15" id="barba-github" xmlns="http://www.w3.org/2000/svg"><path d="M4.259 15c.376 0 .359-.75.359-1 0-.223-.009-.815-.013-1.6-2.633.569-3.189-1.26-3.189-1.26-.43-1.087-1.05-1.377-1.05-1.377-.86-.583.065-.572.065-.572.95.067 1.45.97 1.45.97.844 1.437 2.214 1.022 2.754.781.086-.608.33-1.022.6-1.257-2.1-.238-4.31-1.045-4.31-4.65 0-1.026.368-1.866.974-2.524-.098-.238-.422-1.194.092-2.49 0 0 .795-.252 2.603.965a9.138 9.138 0 012.37-.317 9.148 9.148 0 012.37.317C11.14-.231 11.932.022 11.932.022c.516 1.295.192 2.251.094 2.49.607.657.973 1.497.973 2.524 0 3.613-2.213 4.409-4.321 4.642.34.29.642.864.642 1.742 0 1.257-.011 2.271-.011 2.58 0 .252 0 1 .357 1H4.26z" fill-rule="nonzero"/></symbol><symbol viewBox="0 0 50 50" id="barba-submit" xmlns="http://www.w3.org/2000/svg"><style>.hst0,.hst1{fill-rule:evenodd;clip-rule:evenodd}.hst0{fill:#2e5bdc}.hst1{stroke:#2e5bdc}.hcross{fill:#fff}</style><path class="hst0" d="M25 40c8.284 0 15-6.716 15-15 0-8.284-6.716-15-15-15-8.284 0-15 6.716-15 15 0 8.284 6.716 15 15 15z"/><path class="hst1" opacity=".2" d="M48.5 25c0 12.979-10.521 23.5-23.5 23.5S1.5 37.979 1.5 25 12.021 1.5 25 1.5 48.5 12.021 48.5 25z" stroke-width="3"/><g class="hcross"><rect x="19" y="24" width="12" height="2" rx="1"/><rect x="24" y="19" width="2" height="12" rx="1"/></g></symbol><symbol viewBox="0 0 9 9" id="barba-triangle" xmlns="http://www.w3.org/2000/svg"><path d="M7.989 3.85L1.564.638C.91.311.5.564.5 1.297v6c0 .738.406.988 1.064.659L7.99 4.744c.618-.31.618-.584 0-.894z" fill-rule="evenodd"/></symbol><symbol class="jbarba-upload" viewBox="0 0 52 41" id="barba-upload" xmlns="http://www.w3.org/2000/svg"><path d="M24.657 1.414L18 8.071l1.414 1.414L25 3.9V30h2V3.757l5.728 5.728 1.414-1.414-6.657-6.657L26.071 0l-1.414 1.414z" stroke-width="2"/><path d="M51 20v15a5 5 0 01-5 5H6a5 5 0 01-5-5V20" stroke-width="2"/></symbol><symbol viewBox="0 0 32 32" id="social-github" xmlns="http://www.w3.org/2000/svg"><path d="M12.685 28.205c.556 0 .53-1.12.53-1.493 0-.334-.012-1.217-.019-2.39-3.894.85-4.716-1.885-4.716-1.885-.636-1.623-1.554-2.055-1.554-2.055-1.271-.873.096-.855.096-.855 1.405.1 2.144 1.449 2.144 1.449 1.25 2.148 3.277 1.527 4.075 1.167.127-.908.489-1.528.889-1.879-3.109-.355-6.377-1.56-6.377-6.946 0-1.535.545-2.79 1.441-3.772-.144-.356-.625-1.784.137-3.72 0 0 1.176-.377 3.85 1.441a13.39 13.39 0 013.505-.473c1.189.006 2.387.161 3.505.473 2.672-1.818 3.846-1.44 3.846-1.44.764 1.935.283 3.363.139 3.719.898.983 1.44 2.237 1.44 3.772 0 5.4-3.274 6.588-6.393 6.936.503.434.95 1.29.95 2.602 0 1.88-.017 3.395-.017 3.856 0 .376 0 1.495.529 1.493 0 .002-8 0-8 0z" fill-rule="nonzero"/></symbol><symbol viewBox="0 0 32 32" id="social-twitter" xmlns="http://www.w3.org/2000/svg"><path d="M25.655 12.559c.01.192.013.386.013.577 0 5.904-4.492 12.708-12.706 12.708-2.523 0-4.869-.74-6.846-2.007.35.041.705.062 1.065.062a8.963 8.963 0 005.546-1.91 4.47 4.47 0 01-4.171-3.1 4.564 4.564 0 002.017-.078 4.47 4.47 0 01-3.582-4.38v-.056a4.455 4.455 0 002.023.56A4.466 4.466 0 017.632 8.97a12.677 12.677 0 009.205 4.667 4.51 4.51 0 01-.115-1.019 4.463 4.463 0 014.465-4.463 4.46 4.46 0 013.26 1.409 8.993 8.993 0 002.836-1.084 4.482 4.482 0 01-1.964 2.47 8.933 8.933 0 002.565-.702 9.018 9.018 0 01-2.23 2.31z" fill-rule="nonzero"/></symbol><symbol viewBox="0 0 30 31" id="ui-flexible" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-4 -1)" fill-rule="evenodd"><rect opacity=".3" x="16" y="1" width="18" height="18" rx="9"/><rect x="22" y="7" width="6" height="6" rx="3"/><rect x="5" y="7" width="6" height="6" rx="3"/><rect x="5" y="25" width="6" height="6" rx="3"/><rect x="23" y="25" width="6" height="6" rx="3"/><g stroke-linecap="square" stroke-width="2"><path d="M8 17v4M8 21l-2-2M10 19l-2 2"/></g><g stroke-linecap="square" stroke-width="2"><path d="M19 28h-4M15 28l2-2M17 30l-2-2"/></g></g></symbol></svg>
+  <div data-barba="container" data-barba-namespace="docs" >
+
+    <header class="site-header header" role="banner" data-component="header">
+  <div class="header__wrapper">
+    <div class="header__infos">
+      <a class="header__infos__logo button--fill--rounded" href="/_/v2/">
+        <span class="h-visually-hidden">Go to home</span>
+        <svg viewBox="0 0 32 32" aria-hidden="true" class="icon--barba">
+  <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-b"></use> -->
+  <use xlink:href="#barba-b"></use>
+</svg>
+      </a>
+      <span class="header__infos__version">v2.x</span>
+      
+      <span class="header__infos__docs">/ DOCS</span>
+      
+    </div>
+    <div class="header__external-links">
+      <a class="button--fill--black--rounded--github header__external-links__github"
+        href="https://github.com/barbajs/barba" target="_blank">
+        <svg viewBox="0 0 32 32" aria-hidden="true" class="icon">
+  <!-- <use attr.xlink:href="assets/svg/sprite.svg#social-github"></use> -->
+  <use xlink:href="#social-github"></use>
+</svg>
+        <span>Collaborate on <b>Github</b></span>
+      </a>
+
+      <div class="menu-trigger" data-component="menu-trigger">
+  <svg viewbox="0 0 50 50" width="50" height="50" class="menu-trigger__shape">
+    <circle r="25" cx="25" cy="25"></circle>
+  </svg>
+  <span class="menu-trigger__bar"></span>
+  <span class="menu-trigger__bar"></span>
+  <span class="menu-trigger__bar"></span>
+</div>
+
+    </div>
+  </div>
+  <nav class="header__nav nav">
+    <div class="menu" data-component="menu">
+
+  <div class="menu__overlay" data-ref="menu.overlay"></div>
+
+  <!-- Menu Nav -->
+  <div class="menu__panel" data-ref="menu.panel">
+
+    <!-- Menu Pages -->
+    <div class="menu__pages">
+      <ul class="menu__pages__list">
+
+        <!-- Page -->
+        
+        <li class="menu__pages__item" data-ref="menu.item">
+          <a class="menu__pages__item__link "
+            href="/_/v2/features/fast-flexible">
+            Features
+          </a>
+
+          <!-- Subpages -->
+          
+          <div class="menu__pages__item__subpages menu-subpages">
+            <ul class="menu-subpages__list">
+
+              <!-- Subpage -->
+              
+              <li class="menu-subpages__item  "
+                data-ref="menu.item">
+                <a class="menu-subpages__item__link" href="/_/v2/features/user-friendly">
+                  <div class="menu-subpages__item__link__line">
+                  </div>
+                  <span class="menu-subpages__item__link__label">
+                    User friendly
+                  </span>
+                </a>
+              </li>
+              
+              <li class="menu-subpages__item  "
+                data-ref="menu.item">
+                <a class="menu-subpages__item__link" href="/_/v2/features/easy-peasy">
+                  <div class="menu-subpages__item__link__line">
+                  </div>
+                  <span class="menu-subpages__item__link__label">
+                    Easy peasy
+                  </span>
+                </a>
+              </li>
+              
+              <li class="menu-subpages__item  "
+                data-ref="menu.item">
+                <a class="menu-subpages__item__link" href="/_/v2/features/smart">
+                  <div class="menu-subpages__item__link__line">
+                  </div>
+                  <span class="menu-subpages__item__link__label">
+                    Smart
+                  </span>
+                </a>
+              </li>
+              
+              <li class="menu-subpages__item  "
+                data-ref="menu.item">
+                <a class="menu-subpages__item__link" href="/_/v2/features/extensible">
+                  <div class="menu-subpages__item__link__line">
+                  </div>
+                  <span class="menu-subpages__item__link__label">
+                    Extensible
+                  </span>
+                </a>
+              </li>
+              
+              <li class="menu-subpages__item  "
+                data-ref="menu.item">
+                <a class="menu-subpages__item__link" href="/_/v2/features/futureproof">
+                  <div class="menu-subpages__item__link__line">
+                  </div>
+                  <span class="menu-subpages__item__link__label">
+                    Futureproof
+                  </span>
+                </a>
+              </li>
+              
+              <li class="menu-subpages__item  "
+                data-ref="menu.item">
+                <a class="menu-subpages__item__link" href="/_/v2/features/community">
+                  <div class="menu-subpages__item__link__line">
+                  </div>
+                  <span class="menu-subpages__item__link__label">
+                    Community
+                  </span>
+                </a>
+              </li>
+              
+              <!-- Subpage [end] -->
+
+            </ul>
+          </div>
+          
+          <!-- Subpages [end]-->
+
+        </li>
+        
+        <li class="menu__pages__item" data-ref="menu.item">
+          <a class="menu__pages__item__link "
+            href="/_/v2/examples">
+            Examples
+          </a>
+
+          <!-- Subpages -->
+          
+          <!-- Subpages [end]-->
+
+        </li>
+        
+        <li class="menu__pages__item" data-ref="menu.item">
+          <a class="menu__pages__item__link "
+            href="/_/v2/showcase">
+            Showcase
+          </a>
+
+          <!-- Subpages -->
+          
+          <!-- Subpages [end]-->
+
+        </li>
+        
+        <li class="menu__pages__item" data-ref="menu.item">
+          <a class="menu__pages__item__link is-active"
+            href="/_/v2/docs/getstarted/intro">
+            Docs
+          </a>
+
+          <!-- Subpages -->
+          
+          <!-- Subpages [end]-->
+
+        </li>
+        
+        <!-- Page [end]-->
+
+      </ul>
+    </div>
+    <!-- Menu Pages [end]-->
+
+    <!-- Menu Footer -->
+    <div class="menu__footer">
+      <a class="menu__footer__download" href="/_/v2/docs/getstarted/intro" data-ref="menu.item">
+        Get started
+      </a>
+      <div class="menu__footer__extra menu-extra">
+        <a class="menu-extra__twitter" href="https://twitter.com/barba_js" target="_blank" data-barba-prevent
+          data-ref="menu.item">
+          <svg class="menu-extra__twitter__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 13">
+            <path
+              d="M14.4487 3.221153c.00693.140201.00952.282132.00952.422333 0 4.318526-3.28606 9.296514-9.294778 9.296514-1.845976 0-3.562135-.540898-5.008279-1.468645.256169.03029.5158.045868.778893.045868 1.531821 0 2.939886-.522724 4.057164-1.397679-1.428835-.026829-2.636118-.970154-3.051528-2.268308.199051.037213.404159.057118.61446.057118.298575 0 .587631-.038944.861109-.113372C1.920653 7.493811.79472 6.174021.79472 4.590273v-.040676c.440507.244919.945057.392043 1.479896.409351C1.397929 4.372183.820683 3.37347.820683 2.238883c0-.598016.160972-1.159684.443104-1.642598 1.610576 1.977522 4.019085 3.277407 6.733958 3.414146-.055388-.239726-.083948-.488106-.083948-.745141C7.913797 1.461721 9.375519 0 11.17995 0c.93987 0 1.78886.395504 2.38514 1.030734.74341-.147124 1.44269-.418871 2.07445-.792739-.24405.762449-.76244 1.402872-1.43662 1.80703.66119-.07962 1.2895-.253572 1.87627-.514069-.43791.656001-.99179 1.23065-1.63049 1.690197z" />
+          </svg>
+          <div class="menu-extra__twitter__label">
+            barba_js
+          </div>
+        </a>
+        <div class="menu-extra__credits" data-ref="menu.item">
+          <a href="https://join.slack.com/t/barbajs/shared_invite/enQtNTU3NTAyMjkxMzAyLTI1NDIxZDZmMGJjMDlmNzFkODZmMmVmN2U2ODg2Y2M3MzczMDdjZTk5ODQwNWZkYWVlMDM5NGZiODJmMWVhODk"
+            target="_blank" rel="nofollow"><img
+              src="https://camo.githubusercontent.com/50859fa18a7c6eafbdd959f2c43603ec0aad96b8/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f736c61636b2d6368616e6e656c2d707572706c652e7376673f7374796c653d666c61742d737175617265266c6f676f3d736c61636b"
+              alt="Slack channel"
+              data-canonical-src="https://img.shields.io/badge/slack-channel-purple.svg?style=flat-square&amp;logo=slack"
+              style="max-width:100%;"></a>
+        </div>
+      </div>
+    </div>
+    <!-- Menu Footer [end]-->
+
+  </div>
+  <!-- Menu Nav [end]-->
+
+</div>
+
+  </nav>
+</header>
+
+
+    <main class="site-main" role="main">
+      <div class="site-content">
+        <div class="site-content-inner">
+
+          <section class="docs">
+  <div class="docs__page-transition"></div>
+
+  <!-- Docs Nav -->
+<div class="docs__nav" data-component="docs-nav">
+  <ul class="docs__nav__list">
+
+    <!-- Page -->
+    
+    <li>
+      <a href="/_/v2/docs/getstarted/intro">
+        <h1 class="docs__nav__title ">Get Started</h1>
+      </a>
+
+      <!-- Subpages -->
+      
+      <!-- Subpages [end]-->
+
+    </li>
+    
+    <li>
+      <a href="/_/v2/docs/userguide/markup">
+        <h1 class="docs__nav__title ">User Guide (Core)</h1>
+      </a>
+
+      <!-- Subpages -->
+      
+      <ol class="docs__nav__sublist">
+
+        <!-- Subpage -->
+        
+        <li class="">
+          <a href="/_/v2/docs/userguide/markup">
+            <h2 class="docs__nav__subtitle ">
+              Markup
+            </h2>
+        </li>
+        
+        <li class="">
+          <a href="/_/v2/docs/userguide/syntax">
+            <h2 class="docs__nav__subtitle ">
+              Syntax
+            </h2>
+        </li>
+        
+        <!-- Subpage [end]-->
+
+      </ol>
+      
+      <!-- Subpages [end]-->
+
+    </li>
+    
+    <li>
+      <a href="/_/v2/docs/plugins/css">
+        <h1 class="docs__nav__title is-open">Plugins</h1>
+      </a>
+
+      <!-- Subpages -->
+      
+      <ol class="docs__nav__sublist">
+
+        <!-- Subpage -->
+        
+        <li class="is-open">
+          <a href="/_/v2/docs/plugins/css">
+            <h2 class="docs__nav__subtitle is-open">
+              Css
+            </h2>
+        </li>
+        
+        <li class="">
+          <a href="/_/v2/docs/plugins/router">
+            <h2 class="docs__nav__subtitle ">
+              Router
+            </h2>
+        </li>
+        
+        <li class="">
+          <a href="/_/v2/docs/plugins/prefetch">
+            <h2 class="docs__nav__subtitle ">
+              Prefetch
+            </h2>
+        </li>
+        
+        <li class="">
+          <a href="/_/v2/docs/plugins/preset">
+            <h2 class="docs__nav__subtitle ">
+              Preset
+            </h2>
+        </li>
+        
+        <li class="">
+          <a href="/_/v2/docs/plugins/head">
+            <h2 class="docs__nav__subtitle ">
+              Head
+            </h2>
+        </li>
+        
+        <!-- Subpage [end]-->
+
+      </ol>
+      
+      <!-- Subpages [end]-->
+
+    </li>
+    
+    <!-- Page [end]-->
+
+  </ul>
+</div>
+<!-- Docs Nav [end]-->
+
+  <div class="docs__markdown">
+  <h1 id="barba-css"><a href="#barba-css" class="headerlink" title="@barba/css"></a>@barba/css</h1><p>Barba CSS is a <strong>style helper</strong> that manage you CSS class during transitions.</p>
+<p>It is mainly inspired by <a href="https://vuejs.org/v2/guide/transitions.html#Transition-Classes" target="_blank" rel="noopener">Vue.js transitions</a>.</p>
+<h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>This module adds/removes CSS classes from the <code>data-barba=&quot;container&quot;</code> DOM element automatically. By default, it uses <code>.barba-xxx[-xxx]</code> but if you add a <code>name</code> property to your transition, it uses <code>.name-xxx[-xxx]</code> CSS classes instead.</p>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>During the transition process, Barba defines custom classes according to the transition <code>appear</code> / <code>leave</code> / <code>enter</code> hooks and the transition name, if specified. Here is the list of hooks supported by the module:</p>
+<h3 id="appear"><a href="#appear" class="headerlink" title="appear"></a>appear</h3><ul>
+<li><code>.barba-appear</code>: <strong>starting state</strong> for <code>appear</code>, added when appear transition is triggered, removed one frame after.</li>
+<li><code>.barba-appear-active</code>: <strong>active state</strong> for <code>appear</code>, applied during the entire appearing phase, then added when appear transition is triggered and removed when transition/animation finishes. This class can be used to define the duration, delay and easing curve.</li>
+<li><code>.barba-appear-to</code>: <strong>ending state</strong> for <code>appear</code>, added one frame after transition is triggered (at the same time <code>barba-appear</code> is removed) and removed when transition/animation finishes.</li>
+</ul>
+<h3 id="leave"><a href="#leave" class="headerlink" title="leave"></a>leave</h3><ul>
+<li><code>.barba-leave</code>: <strong>starting state</strong> for <code>leave</code>, added when leave transition is triggered, removed one frame after.</li>
+<li><code>.barba-leave-active</code>: <strong>active state</strong> for <code>leave</code>, applied during the entire leaving phase, then added when leave transition is triggered and removed when transition/animation finishes. This class can be used to define the duration, delay and easing curve.</li>
+<li><code>.barba-leave-to</code>: <strong>ending state</strong> for <code>leave</code>, added one frame after transition is triggered (at the same time <code>barba-leave</code> is removed) and removed when transition/animation finishes.</li>
+</ul>
+<h3 id="enter"><a href="#enter" class="headerlink" title="enter"></a>enter</h3><ul>
+<li><code>.barba-enter</code>: <strong>starting state</strong> for <code>enter</code>, added when enter transition is triggered, removed one frame after next container is inserted.</li>
+<li><code>.barba-enter-active</code>: <strong>active state</strong> for <code>enter</code>, applied during the entire leaving phase, then added after next container is inserted and removed when transition/animation finishes. This class can be used to define the duration, delay and easing curve.</li>
+<li><code>.barba-enter-to</code>: <strong>ending state</strong> for <code>enter</code>, added one frame after next container is inserted (at the same time <code>barba-enter</code> is removed) and removed when transition/animation finishes.</li>
+</ul>
+<p>Example with default naming:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span></span><br><span class="line"><span class="keyword">import</span> barbaCss <span class="keyword">from</span> <span class="string">'@barba/css'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// tell Barba to use the css module</span></span><br><span class="line">barba.use(barbaCss)</span><br><span class="line"></span><br><span class="line"><span class="comment">// init Barba</span></span><br><span class="line">barba.init()</span><br></pre></td></tr></table></figure>
+
+<p>Then customize your CSS classes like this:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* transition active state (same for leave and enter) */</span></span><br><span class="line"><span class="selector-class">.barba-leave-active</span> <span class="selector-class">.barba-enter-active</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: opacity <span class="number">450ms</span> ease;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* initial state */</span></span><br><span class="line"><span class="selector-class">.barba-leave</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.barba-enter</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* ending state */</span></span><br><span class="line"><span class="selector-class">.barba-leave-to</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.barba-enter-to</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Note that this code can be refactored for optimization */</span></span><br></pre></td></tr></table></figure>
+
+<p>If you want to play some transition on first load, use <code>appear</code>:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* appear: active state, define the transition */</span></span><br><span class="line"><span class="selector-class">.barba-appear-active</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: opacity <span class="number">450ms</span> ease;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* appear: initial state */</span></span><br><span class="line"><span class="selector-class">.barba-appear</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* appear: ending state */</span></span><br><span class="line"><span class="selector-class">.barba-appear-to</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>If you want different transitions, you can name them and use rules.<br>The transition <code>name</code> will be used as <strong>CSS “prefix”</strong>.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span></span><br><span class="line"><span class="keyword">import</span> barbaCss <span class="keyword">from</span> <span class="string">'@barba/css'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// tell Barba to use the css module</span></span><br><span class="line">barba.use(barbaCss)</span><br><span class="line"></span><br><span class="line"><span class="comment">// init Barba</span></span><br><span class="line">barba.init(&#123;</span><br><span class="line">  transitions: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">// css classes will look like `.fade-xxx-[-xxx]`</span></span><br><span class="line">      name: <span class="string">'fade'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">// css classes will look like `.slide-xxx[-xxx]`</span></span><br><span class="line">      name: <span class="string">'slide'</span>,</span><br><span class="line">      <span class="keyword">from</span>: &#123; <span class="attr">namespace</span>: <span class="string">'home'</span> &#125;,</span><br><span class="line">      to: &#123; <span class="attr">namespace</span>: <span class="string">'products'</span> &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* fade and slide transition active states (same for leave and enter) */</span></span><br><span class="line"><span class="selector-class">.fade-leave-active</span>,</span><br><span class="line"><span class="selector-class">.fade-enter-active</span>,</span><br><span class="line"><span class="selector-class">.slide-leave-active</span>,</span><br><span class="line"><span class="selector-class">.slide-enter-active</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: opacity <span class="number">450ms</span> ease, transform <span class="number">650ms</span> ease-in-out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* fade transition states */</span></span><br><span class="line"><span class="selector-class">.fade-leave</span>,</span><br><span class="line"><span class="selector-class">.fade-enter-to</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.fade-enter</span>,</span><br><span class="line"><span class="selector-class">.fade-leave-to</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* slide transition states */</span></span><br><span class="line"><span class="selector-class">.slide-leave</span>,</span><br><span class="line"><span class="selector-class">.slide-enter-to</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateX</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.slide-enter</span>,</span><br><span class="line"><span class="selector-class">.slide-leave-to</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateX</span>(<span class="number">100%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div>
+
+
+  
+
+
+
+<div class="docs__nav__lateral" data-component="docs-nav-lateral">
+  
+    <a href="/_/v2/docs/userguide/syntax" class="docs__nav__lateral__link--prev" data-ref="docs-nav-lateral.link">
+      <svg viewBox="0 0 21 15" aria-hidden="true" class="icon--barba">
+  <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-prev"></use> -->
+  <use xlink:href="#barba-arrow-prev"></use>
+</svg>
+      <span class="docs__nav__lateral__label">Syntax</span>
+    </a>
+  
+
+  <button class="docs__nav__lateral__button">
+    Doc
+  </button>
+
+  
+    <a href="/_/v2/docs/plugins/router" class="docs__nav__lateral__link--next" data-ref="docs-nav-lateral.link">
+      <span class="docs__nav__lateral__label">Router</span>
+      <svg viewBox="0 0 21 15" aria-hidden="true" class="icon--barba">
+  <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-next"></use> -->
+  <use xlink:href="#barba-arrow-next"></use>
+</svg>
+    </a>
+  
+</div>
+
+
+</section>
+
+        </div>
+      </div><!-- end .site-content -->
+    </main><!-- end .site-main -->
+
+    <footer class="site-footer footer">
+  b.js©2020
+</footer>
+
+  </div>
+  <div class="transition">
+  <div class="transition__title"></div>
+  <div class="transition__background"></div>
+</div>
+
+  <script src="https://barba.js.org/js/main.js"></script>
+</body>
+
+</html>

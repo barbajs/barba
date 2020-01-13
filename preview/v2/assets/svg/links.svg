@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="28px" viewBox="0 0 32 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>Group 17 Copy</title>
+    <desc>Created with Sketch.</desc>
+    <g id="01-BarbaSite" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="13-Page-A" transform="translate(-741.000000, -727.000000)">
+            <g id="Group-20" transform="translate(414.000000, 699.000000)">
+                <g id="Group-17-Copy" transform="translate(325.000000, 24.000000)">
+                    <rect id="Rectangle" fill="#D8D8D8" opacity="0" x="0" y="0" width="36" height="36"></rect>
+                    <g id="Group-18" transform="translate(2.000000, 4.000000)">
+                        <g id="Group-17" transform="translate(0.000000, 7.000000)">
+                            <path d="M0,0 L32,0 L32,19 C32,20.1045695 31.1045695,21 30,21 L2,21 C0.8954305,21 1.3527075e-16,20.1045695 0,19 L0,0 L0,0 Z" id="Rectangle" fill="#8C44D9" opacity="0.200000003"></path>
+                            <g id="Group-16" transform="translate(7.000000, 7.000000)">
+                                <path d="M17.5,-0.5 L17.5,4.5625 C17.5,5.57059111 16.559798,6.5 15.5,6.5 L13.5,6.5 C12.440202,6.5 11.5,5.57059111 11.5,4.5625 L11.5,-0.5" id="Path" stroke="#8C44D9" stroke-width="2" transform="translate(14.500000, 3.000000) rotate(-90.000000) translate(-14.500000, -3.000000) "></path>
+                                <path d="M0.5,6.5 L0.5,1.56666667 C0.5,0.567628673 1.44020203,-0.5 2.5,-0.5 L4.5,-0.5 C5.55979797,-0.5 6.5,0.567628673 6.5,1.56666667 L6.5,6.5" id="Path" stroke="#8C44D9" stroke-width="2" transform="translate(3.500000, 3.000000) rotate(-90.000000) translate(-3.500000, -3.000000) "></path>
+                                <polygon id="Rectangle" fill="#8C44D9" points="5 2 13 2 13 4 5 4"></polygon>
+                            </g>
+                        </g>
+                        <path d="M2,0 L30,0 C31.1045695,-2.02906125e-16 32,0.8954305 32,2 L32,7 L32,7 L0,7 L0,2 C-1.3527075e-16,0.8954305 0.8954305,2.02906125e-16 2,0 Z" id="Rectangle" fill="#8C44D9"></path>
+                        <rect id="Rectangle" fill="#FFFFFF" x="3" y="2" width="3" height="3" rx="1.5"></rect>
+                        <rect id="Rectangle-Copy" fill="#FFFFFF" x="8" y="2" width="3" height="3" rx="1.5"></rect>
+                        <rect id="Rectangle-Copy-2" fill="#FFFFFF" x="13" y="2" width="3" height="3" rx="1.5"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
