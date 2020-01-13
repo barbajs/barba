@@ -1,5 +1,5 @@
 import { Component } from 'kapla'
-import db from '../../../source/js/connectionDB'
+import db from '../../../source/_js/connectionDB'
 
 import template from 'ejs-compiled-loader!./showcase-item.ejs'
 

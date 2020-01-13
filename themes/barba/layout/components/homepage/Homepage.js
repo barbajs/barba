@@ -1,7 +1,7 @@
 import barba from '@barba/core'
 import { Component } from 'kapla'
 import { gsap } from 'gsap'
-import { $on, $off, qsa, qs } from '../../../source/js/utils/dom'
+import { $on, $off, qsa, qs } from '../../../source/_js/utils/dom'
 
 export default class extends Component {
   load() {

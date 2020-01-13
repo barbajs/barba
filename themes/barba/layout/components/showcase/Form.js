@@ -1,5 +1,5 @@
 import { Component, ee } from 'kapla'
-import db from '../../../source/js/connectionDB'
+import db from '../../../source/_js/connectionDB'
 import firebase from 'firebase/app'
 
 const Cryptr = require('cryptr')

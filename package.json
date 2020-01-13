@@ -7,7 +7,7 @@
   },
   "scripts": {
     "v1": "cpx 'v1/**/*' dist/_/v1",
-    "build": "yarn clean && yarn svg && hexo generate && yarn v1",
+    "build": "yarn clean && yarn svg && NODE_ENV=production hexo generate && yarn v1",
     "clean": "hexo clean",
     "start": "yarn clean && yarn svg && hexo server --config _config.yml,_config.local.yml",
     "svg": "svg-sprite --config svg-sprite.config.json 'themes/barba/source/svg/./**/*.svg'"
@@ -50,8 +50,8 @@
     "hexo-renderer-ejs": "^1.0.0",
     "hexo-renderer-marked": "^2.0.0",
     "hexo-renderer-scss": "^1.2.0",
-    "hexo-renderer-webpack-2-advanced": "^0.5.0",
     "hexo-server": "^1.0.0",
+    "hexo-webpack": "^1.0.0",
     "html-webpack-plugin": "^3.2.0",
     "json-loader": "^0.5.7",
     "npm-run-all": "^4.1.5",

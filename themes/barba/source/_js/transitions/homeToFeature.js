@@ -5,8 +5,8 @@ import {
   getInstance,
 } from '../app'
 // DEV
-// import { qs, qsa } from '../../../source/js/utils/dom'
-// import deferred from '../../../source/js/utils/deferred'
+// import { qs, qsa } from '../../../source/_js/utils/dom'
+// import deferred from '../../../source/_js/utils/deferred'
 
 export default {
   sync: true,

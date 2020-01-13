@@ -3,10 +3,19 @@ const webpack = require('webpack')
 const Cryptr = require('cryptr')
 const cryptr = new Cryptr('barba.js')
 
+console.info('NODE_ENV', process.env.NODE_ENV)
+
 module.exports = {
-  entry: ['themes/barba/source/js/main.js'],
+  mode:
+    process.env.NODE_ENV === 'production'
+      ? process.env.NODE_ENV
+      : 'development',
+  entry: ['../themes/barba/source/_js/main.js'],
+  output: {
+    filename: 'js/main.js',
+  },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         use: [

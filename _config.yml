@@ -26,6 +26,9 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
+exclude:
+  # Exclude any file in 'source/_js/'.
+  - 'js/*'
 skip_render:
 
 # Writing

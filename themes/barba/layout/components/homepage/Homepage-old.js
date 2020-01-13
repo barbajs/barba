@@ -7,7 +7,7 @@
 //   $on,
 //   qsa,
 //   qs
-// } from '../../../source/js/utils/dom';
+// } from '../../../source/_js/utils/dom';
 
 // class Letter {
 //   constructor(base, hover, big) {
