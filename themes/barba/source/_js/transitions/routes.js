@@ -1,9 +1,8 @@
-const {
-  hostname
-} = window.location
-const root = hostname === 'barbajs.github.io' ? '/website.v2/' : '/'
+const { hostname } = window.location
+const root = hostname === 'barba.js.org' ? '/preview/v2/' : '/'
 
-export const getRoutes = () => [{
+export const getRoutes = () => [
+  {
     path: `${root}features/:type`,
     name: 'feature',
   },
