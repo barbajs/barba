@@ -1818,10 +1818,10 @@ body {
 .example__card__title {
   color: black;
   font-family: "Space Mono", monospace;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 300;
   line-height: 2rem;
-  letter-spacing: 0.2rem; }
+  letter-spacing: 0.1rem; }
 
 .example__card__picture {
   width: 100;
