@@ -1,17 +1,7 @@
 <ol class="grid" data-component="<%- name %>-grid">
-
-  <!-- Examples items -->
-
-  <% if (namespace === 'page--examples') { %>
-  <% site.categories.findOne({name: 'examples'}).posts.forEach(function(post){ %>
-  <%- partial('components/examples/example-item.ejs', { post: post }) %>
-  <% }); %>
+  <% if (namespace === 'examples') { %>
+    <% site.categories.findOne({name: 'examples'}).posts.forEach(function(post){ %>
+      <%- partial('components/examples/example-item.ejs', { post: post }) %>
+    <% }); %>
   <% } %>
-
-  <!-- Examples items [end]-->
-
-  <!-- Showcase items -->
-  <!-- Generated in javascript with the template -->
-  <!-- Showcase items [end]-->
-
 </ol>

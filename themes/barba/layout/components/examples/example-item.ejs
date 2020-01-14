@@ -4,7 +4,7 @@
     <h2 class="example__card__title"><%- post.name %></h2>
     <div class="example__card__picture">
       <%- partial('components/common/image.ejs', {
-          src: post.asset,
+          src: theme.root + post.asset,
           alt: post.alt,
         }) %>
     </div>
