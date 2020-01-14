@@ -2,7 +2,7 @@
 title: Markup
 namespace: docs
 layout: components/docs/docs
-url: 'docs/userguide/markup'
+url: 'docs/userguide/markup/'
 ---
 
 # @barba/core

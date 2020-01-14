@@ -2,7 +2,7 @@
 subtitle: Syntax
 namespace: docs
 layout: components/docs/docs
-url: 'docs/userguide/syntax'
+url: 'docs/userguide/syntax/'
 ---
 
 # @barba/core

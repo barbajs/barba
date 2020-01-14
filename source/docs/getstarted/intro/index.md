@@ -2,7 +2,7 @@
 title: Get started
 namespace: docs
 layout: components/docs/docs
-url: 'docs/getstarted/intro'
+url: 'docs/getstarted/intro/'
 ---
 
 # barba.js <small>[v2]</small>
