@@ -1,7 +1,7 @@
 ---
 title: Examples
 name: examples
-namespace: examples
+namespace: page--examples
 layout: components/page/page
 grid: true
 ---
