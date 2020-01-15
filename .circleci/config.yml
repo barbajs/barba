@@ -1,13 +1,14 @@
-version: 2
+version: 2.1
 
-defaults: &defaults
-  working_directory: ~/repo
-  docker:
-    - image: circleci/node:lts
+executors:
+  node-lts:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:lts
 
 jobs:
   build:
-    <<: *defaults
+    executor: node-lts
     steps:
       - checkout
       - restore_cache:
@@ -38,7 +39,7 @@ jobs:
           paths:
             - dist
   deploy:
-    <<: *defaults
+    executor: node-lts
     steps:
       - checkout
       - attach_workspace:
@@ -55,8 +56,8 @@ jobs:
       - run:
           name: Deploy website to gh-pages branch
           command: ./node_modules/.bin/gh-pages -d dist -e preview/v2 -m 'Deploy website [ci skip]'
+
 workflows:
-  version: 2
   website_v2:
     jobs:
       - build:
