@@ -1,0 +1,16 @@
+version: 2.1
+
+jobs:
+  fake:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
+
+workflows:
+  do-nothing:
+    jobs:
+      - fake:
+          filters:
+            branches:
+              ignore: /.*/
