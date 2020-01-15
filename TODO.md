@@ -1,5 +1,14 @@
 # TODOs
 
+- Documentation
+  - [ ] final location
+  - [ ] deploy job
+  - [ ] update absolute/relative links
+
+---
+
+> Olivier
+
 ## General
 
 - [ ] Hiérarchie des transitions avec Barba.js (dans main.js)
