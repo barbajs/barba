@@ -1,0 +1,70 @@
+.link {
+  position: relative;
+  color: $c-menu-feature-5;
+
+  [data-feature-order='0'] & {
+    color: $c-menu-feature-0;
+  }
+
+  [data-feature-order='1'] & {
+    color: $c-menu-feature-1;
+  }
+
+  [data-feature-order='2'] & {
+    color: $c-menu-feature-2;
+  }
+
+  [data-feature-order='3'] & {
+    color: $c-menu-feature-3;
+  }
+
+  [data-feature-order='4'] & {
+    color: $c-menu-feature-4;
+  }
+
+  [data-feature-order='5'] & {
+    color: $c-menu-feature-5;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 0.2rem;
+    background-color: $c-menu-feature-5;
+    transform-origin: center left;
+    transition: transform 0.3s ease-out;
+
+    [data-feature-order='0'] & {
+      background-color: $c-menu-feature-0;
+    }
+
+    [data-feature-order='1'] & {
+      background-color: $c-menu-feature-1;
+    }
+
+    [data-feature-order='2'] & {
+      background-color: $c-menu-feature-2;
+    }
+
+    [data-feature-order='3'] & {
+      background-color: $c-menu-feature-3;
+    }
+
+    [data-feature-order='4'] & {
+      background-color: $c-menu-feature-4;
+    }
+
+    [data-feature-order='5'] & {
+      background-color: $c-menu-feature-5;
+    }
+  }
+
+  &:hover::before {
+    transform-origin: center right;
+    transform: scaleX(0);
+  }
+}

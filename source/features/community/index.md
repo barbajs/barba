@@ -10,7 +10,7 @@ barba.js started as weekend side-project, and thanks the community it is now wid
 
 Used by Google, New York Times and many more.
 
-A big 🤗 to <a href="https://epic.net" target="_blank">EPIC Agency</a>
+A big 🤗 to <a class="link" href="https://epic.net" target="_blank">EPIC Agency</a>
 
 <div class="credits-table">
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
