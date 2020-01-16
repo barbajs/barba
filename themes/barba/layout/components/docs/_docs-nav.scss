@@ -34,7 +34,7 @@
   }
 
   @include mq(l) {
-    margin-left: 50%;
+    margin: 0 12%;
   }
 
   & > li {

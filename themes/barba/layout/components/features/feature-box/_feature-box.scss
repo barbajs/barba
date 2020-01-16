@@ -10,24 +10,25 @@
   @include mq(l) {
     top: initial;
     bottom: 1rem;
-    width: 70rem;
+    left: 50%;
+    width: 80rem;
+    transform: translateX(-50%);
   }
 
   @include mq(xxxl) {
     bottom: 10rem;
-  }
-
-  & > div {
-    padding: 2rem;
   }
 }
 
 .feature-box__body {
   display: grid;
   grid-template-columns: 1fr;
+  grid-gap: 3rem;
+  padding: 3rem;
 
   @include mq(l) {
     grid-template-columns: repeat(6, 1fr);
+    padding: 4rem;
   }
 }
 
@@ -35,6 +36,13 @@
 [class*='feature-box__column--'] {
   &[class*='two'] {
     grid-column: span 2;
+
+    @include mq($until: l) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+
   }
 
   &[class*='three'] {
@@ -44,14 +52,20 @@
   &[class*='four'] {
     grid-column: span 4;
   }
+
+  @include mq($until: l) {
+    & + & {
+      margin-top: 2rem;
+    }
+  }
 }
 
 .feature-box__column__icon,
 [class*='feature-box__column__icon--'] {
   display: block;
-  width: 4rem;
-  height: 4rem;
-  margin: 0 0 1rem;
+  width: 3rem;
+  height: 3rem;
+  margin: 0 1rem 1rem 0;
 
   &[class*='big'] {
     width: 18rem;
@@ -60,6 +74,11 @@
 
   .partial-image {
     object-fit: contain;
+  }
+
+  @include mq(l) {
+    width: 4rem;
+    height: 4rem;
   }
 }
 
@@ -72,15 +91,20 @@
 }
 
 .feature-box__body__text {
-  margin: 0 0 1rem;
-  font-size: 1.6rem !important; //stylelint-disable-line declaration-no-important
+  margin: 1rem 0;
+  font-size: 1.4rem !important; //stylelint-disable-line declaration-no-important
   line-height: 1.5 !important; //stylelint-disable-line declaration-no-important
+
+  @include mq(l) {
+    font-size: 1.6rem !important; //stylelint-disable-line declaration-no-important
+  }
 }
 
 .feature-box__footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 2rem;
   border-top: 0.1px solid $gray-lighter;
 }
 

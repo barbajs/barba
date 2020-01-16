@@ -76,7 +76,7 @@
     padding-top: 10rem;
   }
 
-  @include mq(l, xxl) {
+  @include mq(l, xxxl) {
     padding-top: 6rem;
   }
 
@@ -177,6 +177,10 @@
   @include mq(m) {
     top: -5rem;
     font-size: 5rem;
+  }
+
+  @include mq(xxxl) {
+    font-size: 9rem;
   }
 }
 
@@ -284,8 +288,8 @@
 .feature .logo.featured {
   @include center-x;
 
-  @include mq(l, xxl) {
-    top: 40%;
+  @include mq(l, xxxl) {
+    top: 45%;
   }
 }
 

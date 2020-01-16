@@ -94,7 +94,7 @@
 .item {
   .can-grow,
   .detail-feature & {
-    transition: transform 1.4s $custom-easing;
+    transition: transform 1.4s $ease-in-out-quart;
     will-change: transform;
   }
 

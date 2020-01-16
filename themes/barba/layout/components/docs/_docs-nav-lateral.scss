@@ -7,6 +7,10 @@
   align-items: center;
   width: 100%;
 
+  @include mq($until: l) {
+    margin-bottom: 6rem;
+  }
+
   @include mq(m) {
     width: 74vw;
     margin-left: 25vw;
