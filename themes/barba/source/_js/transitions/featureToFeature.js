@@ -104,6 +104,7 @@ export default {
         {
           duration: 0.7,
           opacity: 0,
+          scale: 2,
           ease: 'power4.inOut',
         },
         0
@@ -122,9 +123,10 @@ export default {
         {
           duration: 0.7,
           opacity: 0,
+          scale: 2,
           ease: 'power4',
         },
-        0
+        0.7
       )
       .from(
         $nextLogo,
