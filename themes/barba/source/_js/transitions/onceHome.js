@@ -8,7 +8,7 @@ export default {
   once() {
     const logo = document.querySelector('.logo.homepage__logo')
     const logoItems = document.querySelectorAll(
-      '.logo.homepage__logo .base .item',
+      '.logo.homepage__logo .base .base-item',
       this.$el
     )
     const logoItemsColor = document.querySelectorAll(
@@ -36,22 +36,21 @@ export default {
       logo,
       {
         duration: 1,
-        y: 100,
         scale: 1.5,
-        ease: 'power4.inOut',
+        ease: 'back.out',
       },
-      0
+      0.3
     )
-      // .from(
-      //   logoItems, {
-      //   duration: 0.5,
-      //   y: 100,
-      //   scale: 4,
-      //   ease: 'power4',
-      //   stagger: 0.05,
-      // },
-      //   0
-      // )
+      .from(
+        logoItems,
+        {
+          duration: 1,
+          y: 100,
+          ease: 'back.out',
+          stagger: 0.05,
+        },
+        0.3
+      )
       .to(
         logoItemsColor,
         {
@@ -59,7 +58,7 @@ export default {
           opacity: 1,
           ease: 'power4',
         },
-        1.3
+        1.6
       )
       .to(
         logoItemsColor,
@@ -69,7 +68,7 @@ export default {
           ease: 'power4',
           stagger: 0.05,
         },
-        2.5
+        2.8
       )
       .from(
         title,
@@ -80,7 +79,7 @@ export default {
           ease: 'power4',
           stagger: 0.05,
         },
-        1.4
+        1.7
       )
       .from(
         buttons,
@@ -91,7 +90,7 @@ export default {
           ease: 'power4',
           stagger: 0.05,
         },
-        2
+        2.3
       )
       .from(
         chrome,
@@ -101,7 +100,7 @@ export default {
           ease: 'power4',
           stagger: 0.2,
         },
-        2.3
+        2.6
       )
   },
 }

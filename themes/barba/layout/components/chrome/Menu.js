@@ -1,10 +1,6 @@
-import {
-  Component,
-} from 'kapla'
+import { Component } from 'kapla'
 
-import {
-  gsap,
-} from 'gsap'
+import { gsap } from 'gsap'
 
 export default class extends Component {
   load() {
@@ -23,29 +19,34 @@ export default class extends Component {
 
   open() {
     return gsap
-      .timeline({
-        onComplete: () => {
-          this.$el.classList.add('is-open');
-        },
-      })
+      .timeline({})
       .set(this.$refs.item, {
         y: 50,
         opacity: 0,
       })
       .to(
-        this.$refs.panel, {
-        duration: 1,
-        x: 0,
-        ease: 'power4.inOut',
-      }, 0)
+        this.$refs.panel,
+        {
+          duration: 1,
+          x: 0,
+          ease: 'power4.inOut',
+          onComplete: () => {
+            this.$el.classList.add('is-open')
+          },
+        },
+        0
+      )
       .to(
-        this.$refs.item, {
-        duration: 1,
-        y: 0,
-        opacity: 1,
-        ease: 'power4',
-        stagger: 0.05,
-      }, 0.25)
+        this.$refs.item,
+        {
+          duration: 1,
+          y: 0,
+          opacity: 1,
+          ease: 'power4',
+          stagger: 0.05,
+        },
+        0.25
+      )
       .then()
   }
 
@@ -53,15 +54,18 @@ export default class extends Component {
     return gsap
       .timeline({
         onComplete: () => {
-          this.$el.classList.remove('is-open');
+          this.$el.classList.remove('is-open')
         },
       })
       .to(
-        this.$refs.panel, {
-        duration: 0.5,
-        x: '110%',
-        ease: 'power4.inOut',
-      }, 0)
+        this.$refs.panel,
+        {
+          duration: 0.5,
+          x: '110%',
+          ease: 'power4.inOut',
+        },
+        0
+      )
       .then()
   }
 
