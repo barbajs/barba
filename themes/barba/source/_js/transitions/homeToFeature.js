@@ -57,45 +57,45 @@ export default {
       })
       .to(
         oldLogo, {
-          duration: 1.4,
-          scale,
-          y: -(
-            oldLogoRect.top -
-            newLogoRect.top +
-            (newLogoRect.height * (scale * 2)) -
-            6
-          ),
-          ease: 'power4.inOut',
-        },
+        duration: 1.4,
+        scale,
+        y: -(
+          oldLogoRect.top -
+          newLogoRect.top +
+          (newLogoRect.height * (scale * 2)) -
+          6
+        ),
+        ease: 'power4.inOut',
+      },
         0
       )
       .to(
         bigShape, {
-          duration: 0.1,
-          opacity: 1,
-        },
+        duration: 0.1,
+        opacity: 1,
+      },
         0
       )
       .to(
         oldBigShape, {
-          duration: 1.3,
-          y: newBigShapeRect.top - oldBigShapeRect.top,
-          ease: 'power4.inOut',
-        },
+        duration: 1.3,
+        y: newBigShapeRect.top - oldBigShapeRect.top,
+        ease: 'power4.inOut',
+      },
         0.1
       )
       .to(
         oldBigShape, {
-          duration: 0.2,
-          opacity: 0,
-        },
+        duration: 0.2,
+        opacity: 0,
+      },
         1.4
       )
       .from(
         newBigShape, {
-          duration: 0.01,
-          opacity: 0,
-        },
+        duration: 0.01,
+        opacity: 0,
+      },
         1.4
       )
       .add(() => {
@@ -103,29 +103,29 @@ export default {
       }, 0)
       .to(
         list, {
-          duration: 0.8,
-          opacity: 0,
-          ease: 'power4.in',
-        },
+        duration: 0.8,
+        opacity: 0,
+        ease: 'power4.in',
+      },
         0
       )
       .to(
         title, {
-          duration: 1,
-          yPercent: 100,
-          ease: 'power4.in',
-          stagger: 0.05,
-        },
+        duration: 1,
+        yPercent: 100,
+        ease: 'power4.in',
+        stagger: 0.05,
+      },
         0
       )
       .to(
         buttons, {
-          duration: 1,
-          y: 40,
-          opacity: 0,
-          ease: 'power4.in',
-          stagger: 0.05,
-        },
+        duration: 1,
+        y: 40,
+        opacity: 0,
+        ease: 'power4.in',
+        stagger: 0.05,
+      },
         0.1
       )
       .then()
@@ -151,40 +151,40 @@ export default {
 
     tl.from(
       newLogo, {
-        duration: 1,
-        opacity: 0,
-      },
+      duration: 1,
+      opacity: 0,
+    },
       0
     );
     featureBox &&
       tl.from(
         featureBox, {
-          duration: 1.5,
-          y: 100,
-          opacity: 0,
-          ease: 'power4',
-        },
+        duration: 1.5,
+        y: 100,
+        opacity: 0,
+        ease: 'power4',
+      },
         0
       );
     tl
       .from(
         featureContainer, {
-          duration: 1,
-          opacity: 0,
-          y: 200,
-          ease: 'power4',
-          rotationX: '20deg',
-        },
+        duration: 1,
+        opacity: 0,
+        y: 200,
+        ease: 'power4',
+        rotationX: '20deg',
+      },
         0
       )
       .from(
         navigation, {
-          duration: 0.4,
-          opacity: 0,
-          y: 30,
-          ease: 'power4',
-          stagger: 0.2,
-        },
+        duration: 0.4,
+        opacity: 0,
+        y: 30,
+        ease: 'power4',
+        stagger: 0.2,
+      },
         0.8
       );
 
