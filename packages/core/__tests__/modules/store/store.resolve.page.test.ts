@@ -11,7 +11,7 @@ const tNsFromTo = {
   from: { namespace: 'nsFrom' },
   to: { namespace: 'nsTo' },
 };
-const tSelf = { name: 'self' };
+const tSelf = { enter() {}, name: 'self' };
 
 const store = new Store([t, tNs, tNsFrom, tNsTo, tNsFromTo, tSelf]);
 

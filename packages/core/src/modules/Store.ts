@@ -33,6 +33,10 @@ export class Store {
    */
   public all: ITransitionPage[] = [];
   /**
+   * "Page only" registered transitions.
+   */
+  public page: ITransitionPage[] = [];
+  /**
    * "Once only" registered transitions.
    */
   public once: ITransitionOnce[] = [];
@@ -94,7 +98,7 @@ export class Store {
     filters: ITransitionFilters = {}
   ): ITransitionOnce | ITransitionPage {
     // Filter on "once"
-    let transitions = filters.once ? this.once : this.all;
+    let transitions = filters.once ? this.once : this.page;
 
     // Filter on "self"
     if (filters.self) {
@@ -186,6 +190,9 @@ export class Store {
 
         return t;
       });
+    this.page = this.all.filter(
+      t => t.leave !== undefined || t.enter !== undefined
+    ) as ITransitionPage[];
     this.once = this.all.filter(t => t.once !== undefined) as ITransitionOnce[];
   }
 
