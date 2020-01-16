@@ -1,4 +1,5 @@
 import { gsap } from 'gsap'
+import { getInstance } from '../app'
 
 export default {
   enter({ current, next }) {
@@ -10,9 +11,19 @@ export default {
       '.transition__background'
     )
 
-    console.log('transitionBackground', transitionBackground)
-
     transitionTitle.innerHTML = next.container.dataset.barbaNamespace
+
+    if (next.container.dataset.barbaNamespace === 'feature') {
+      const featureInstance = getInstance(next.container, 'feature')
+      const nextFeatureSlug = next.container.querySelector('.feature').dataset
+        .featureSlug
+
+      transitionTitle.innerHTML = nextFeatureSlug
+
+      if (nextFeatureSlug !== 'about') {
+        featureInstance.animateIn()
+      }
+    }
 
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
