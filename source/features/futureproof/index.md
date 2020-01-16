@@ -5,5 +5,5 @@ slug: futureproof
 order: 4
 layout: components/features/feature
 action:
-  { title: 'User Guide', icon: barba-arrow-next, link: 'docs/plugins/router/' }
+  { title: 'API documentation', icon: barba-arrow-next, link: '/docs/v2/api/' }
 ---

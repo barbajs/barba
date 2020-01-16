@@ -11,9 +11,14 @@
   padding: 0 5rem;
   list-style: none;
   transform: translateY(-50%);
+  pointer-events: none;
 
   @include mq(m) {
     display: flex;
+  }
+
+  li {
+    pointer-events: all;
   }
 
   a {

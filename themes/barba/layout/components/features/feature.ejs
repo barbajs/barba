@@ -27,8 +27,24 @@
       <%- page.title %>
     </h1>
     <% if (page.slug && page.order < features.length - 1) { %>
-    <div class="feature__bodymovin" data-ref="feature.bodymovin"></div>
-    <%- partial('./feature-box/feature-' + page.order + '.ejs') %>
+      <div class="feature__bodymovin" data-ref="feature.bodymovin"></div>
+      <div class="feature__box">
+        <div class="feature__box__body">
+          <%- partial('./feature-box/feature-' + page.order + '.ejs') %>
+        </div>
+        <div class="feature__box__footer">
+          <%-
+            partial('./feature-action.ejs',
+              {
+                ctaLink: page.action.link.startsWith('/') ? page.action.link : theme.root + page.action.link,
+                ctaModifier: page.order,
+                ctaTitle: page.action.title,
+                ctaIcon: page.action.icon,
+              }
+            )
+          %>
+        </div>
+      </div>
     <% } else { %>
     <%- page.content %>
     <% }; %>

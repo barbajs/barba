@@ -1,32 +1,38 @@
-<div class="feature-box">
-  <div class="feature-box__body">
-    <div class="feature-box__column--two">
-      <div class="feature-box__column__icon--big">
-        <%- partial('components/common/image.ejs',{
-          src: theme.root + 'assets/svg/modular.svg',
-          alt: 'modular icon',
-        }) %>
-      </div>
-    </div>
+<div class="feature__box__column--two">
+  <div class="feature__box__column__icon">
+    <%- partial('components/common/image.ejs', {
+      src: theme.root + 'assets/svg/wrapper.svg',
+      alt: 'wrapper icon',
+    }) %>
+  </div>
+  <h2 class="feature__box__body__title colored">Wrapper</h2>
+  <p class="feature__box__body__text">
+    Is the main section that contains all your page structure and the <strong>Barba container</strong>.
+  </p>
+</div>
 
-    <div class="feature-box__column--four">
-      <p class="feature-box__body__text">
-        The modular structure provides excellent compression.<br />
-        Oh yes, it weights only 9kb minified and compressed with every functionality
-        included.
-      </p>
-    </div>
+<div class="feature__box__column--two">
+  <div class="feature__box__column__icon">
+    <%- partial('components/common/image.ejs', {
+      src: theme.root + 'assets/svg/container.svg',
+      alt: 'container icon',
+    }) %>
   </div>
-  <div class="feature-box__footer">
-    <%-
-      partial('../feature-action.ejs',
-        {
-          ctaLink: theme.root + page.action.link,
-          ctaModifier: page.order,
-          ctaTitle: page.action.title,
-          ctaIcon: page.action.icon,
-        }
-      )
-    %>
+  <h2 class="feature__box__body__title colored">Container</h2>
+  <p class="feature__box__body__text">
+    Defines a section in which content is <strong>updated automatically</strong> when you navigate between pages.
+  </p>
+</div>
+
+<div class="feature__box__column--two">
+  <div class="feature__box__column__icon">
+    <%- partial('components/common/image.ejs', {
+      src: theme.root + 'assets/svg/namespace.svg',
+      alt: 'namespace icon',
+    }) %>
   </div>
+  <h2 class="feature__box__body__title colored">Namespace</h2>
+  <p class="feature__box__body__text">
+    Allows you to define a <strong>unique</strong> name for each pages. Mainly used for transition rules and views.
+  </p>
 </div>
