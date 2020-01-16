@@ -2,17 +2,18 @@
 .feature-box {
   position: absolute;
   bottom: 0;
+  left: 50%;
+  width: 100%;
   max-width: 85vw;
   background: rgba($white, 0.8);
   border-radius: 10px;
   box-shadow: 0 1.4rem 3rem rgba($gray-light, 0.3);
+  transform: translateX(-50%);
 
   @include mq(l) {
     top: initial;
     bottom: 1rem;
-    left: 50%;
     width: 80rem;
-    transform: translateX(-50%);
   }
 
   @include mq(xxxl) {

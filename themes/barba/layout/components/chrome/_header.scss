@@ -24,6 +24,7 @@
 }
 
 .header__infos {
+  position: fixed;
   display: flex;
   align-items: center;
 }
@@ -66,7 +67,9 @@
 }
 
 .header__external-links {
+  position: fixed;
   z-index: 1000;
+  right: 4rem;
   display: flex;
 }
 

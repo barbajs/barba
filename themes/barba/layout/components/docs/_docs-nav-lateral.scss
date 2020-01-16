@@ -23,46 +23,12 @@
   }
 
   .icon--barba {
-    width: 2.1rem;
-    height: 1.5rem;
-    margin: 1rem;
-    fill: inherit;
+    width: 15px;
+    height: 15px;
+    margin-left: 1rem;
+    stroke: $c-menu-feature-5;
+    fill: $c-menu-feature-5;
   }
-}
-
-.docs__nav__lateral__link,
-[class*='docs__nav__lateral__link--'],
-.docs__nav__lateral__button {
-  display: flex;
-  align-items: center;
-  margin: 2rem;
-  color: $c-gray-darker;
-  font-family: $ff-alt;
-  font-size: 1.2rem;
-  background: $white;
-  border: 0;
-  border-radius: 4px;
-  box-shadow: 0 2px 2px $gray-light;
-  fill: $c-gray-darker;
-
-  @include mq(s) {
-    font-size: 1.5rem;
-
-    &:hover {
-      color: $white;
-      background: $c-blue-light;
-      fill: $white;
-    }
-  }
-
-  @include mq(l) {
-    font-size: 2rem;
-  }
-}
-
-.docs__nav__lateral__link,
-[class*='docs__nav__lateral__link--'] {
-  width: 35%;
 }
 
 .docs__nav__lateral__button {
@@ -76,4 +42,45 @@
 
 .docs__nav__lateral__label {
   margin: 1rem;
+}
+
+.docs__nav__lateral__link,
+[class*='docs__nav__lateral__link--'] {
+  @extend %text-uppercase;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 25%;
+  margin: 2rem;
+  padding: 1rem 2rem;
+  color: $c-menu-feature-5;
+  font-family: $ff-alt;
+  font-weight: 700;
+  background-color: rgba($c-menu-feature-5-light, 0.2);
+  border-radius: 5rem;
+  transition: 0.2s $ease-out-quad;
+  transition-property: color, background-color;
+
+  @include mq(s) {
+    font-size: 1.5rem;
+
+    &:hover {
+      color: $white;
+      background: $c-blue-light;
+
+      svg {
+        fill: $white;
+        stroke: $white;
+      }
+    }
+  }
+}
+
+.feature__action__title {
+  margin: 0;
+  font-family: $ff-alt;
+  font-size: 3rem;
+  font-weight: 900;
+  text-transform: uppercase;
 }
