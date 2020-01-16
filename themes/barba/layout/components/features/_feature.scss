@@ -71,11 +71,7 @@
   height: 100%;
   margin: 0 auto;
 
-  @include mq(s) {
-    padding-top: 10rem;
-  }
-
-  @include mq(l, xxxl) {
+  @include mq(m, xxxl) {
     padding-top: 6rem;
   }
 

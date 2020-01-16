@@ -3,6 +3,7 @@
 .docs__nav__lateral {
   position: static;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -32,8 +33,15 @@
 }
 
 .docs__nav__lateral__button {
+  @extend %button-nostyle;
+
   display: flex;
-  width: 30%;
+  width: 100%;
+  margin: 2rem;
+  color: $c-menu-feature-5;
+  font-family: $ff-alt;
+  font-size: 1.5rem;
+  font-weight: 700;
 
   @include mq(m) {
     display: none;
@@ -56,6 +64,7 @@
   padding: 1rem 2rem;
   color: $c-menu-feature-5;
   font-family: $ff-alt;
+  font-size: 1.5rem;
   font-weight: 700;
   background-color: rgba($c-menu-feature-5-light, 0.2);
   border-radius: 5rem;
@@ -63,8 +72,6 @@
   transition-property: color, background-color;
 
   @include mq(s) {
-    font-size: 1.5rem;
-
     &:hover {
       color: $white;
       background: $c-blue-light;
@@ -75,12 +82,4 @@
       }
     }
   }
-}
-
-.feature__action__title {
-  margin: 0;
-  font-family: $ff-alt;
-  font-size: 3rem;
-  font-weight: 900;
-  text-transform: uppercase;
 }

@@ -128,6 +128,19 @@
   list-style-type: none;
 }
 
+%button-nostyle {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0 none;
+  -webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
+  border-radius: 0;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+}
+
 %letter-spaced {
   letter-spacing: 0.15em;
 }

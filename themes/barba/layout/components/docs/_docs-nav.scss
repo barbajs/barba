@@ -7,18 +7,21 @@
   right: 0;
   bottom: 0;
   left: 0;
-  display: none;
   padding-top: 14rem;
   background: $c-blue-lightest;
+  transition: transform 0.3s $ease-out-quad;
 
   @include mq(m) {
     right: unset;
-    display: block;
     width: 25vw;
   }
 
-  &.is-open {
-    display: block;
+  @include mq($until: m) {
+    transform: translateX(-100%);
+
+    &.is-open {
+      transform: translateX(0);
+    }
   }
 }
 

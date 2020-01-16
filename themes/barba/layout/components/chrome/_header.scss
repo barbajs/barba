@@ -24,9 +24,12 @@
 }
 
 .header__infos {
-  position: fixed;
   display: flex;
   align-items: center;
+
+  @include mq(m) {
+    position: fixed;
+  }
 }
 
 .header__infos__logo {
@@ -67,10 +70,13 @@
 }
 
 .header__external-links {
-  position: fixed;
   z-index: 1000;
-  right: 4rem;
   display: flex;
+
+  @include mq(m) {
+    position: fixed;
+    right: 4rem;
+  }
 }
 
 .header__external-links__github {

@@ -1,31 +1,29 @@
-<% var nav = getDocsNav(page.url, theme.docs) %>
-<% var prev = nav[0] %>
-<% var next = nav[1] %>
+<% var nav = getDocsNav(page.url, theme.docs) %> <% var prev = nav[0] %> <% var
+next = nav[1] %>
 
 <div class="docs__nav__lateral" data-component="docs-nav-lateral">
   <% if (prev !== null) { %>
-    <a href="<%- theme.root %><%- prev.url %>" class="docs__nav__lateral__link--prev" data-ref="docs-nav-lateral.link">
-      <%- partial('../common/icon', {
-        icon: 'barba-arrow-prev',
-        hidden: true,
-        viewbox: '0 0 21 15',
-      }) %>
-      <span class="docs__nav__lateral__label"><%- prev.title %></span>
-    </a>
+  <a
+    href="<%- theme.root %><%- prev.url %>"
+    class="docs__nav__lateral__link--prev"
+    data-ref="docs-nav-lateral.link"
+  >
+    <%- partial('../common/icon', { icon: 'barba-arrow-prev', hidden: true,
+    viewbox: '0 0 21 15', }) %>
+    <span class="docs__nav__lateral__label"><%- prev.title %></span>
+  </a>
+  <% }; %> <% if (next !== null) { %>
+  <a
+    href="<%- theme.root %><%- next.url %>"
+    class="docs__nav__lateral__link--next"
+    data-ref="docs-nav-lateral.link"
+  >
+    <span class="docs__nav__lateral__label"><%- next.title %></span>
+    <%- partial('../common/icon', { icon: 'barba-arrow-next', hidden: true,
+    viewbox: '0 0 21 15', }) %>
+  </a>
   <% }; %>
-
   <button class="docs__nav__lateral__button">
-    Doc
+    All topics
   </button>
-
-  <% if (next !== null) { %>
-    <a href="<%- theme.root %><%- next.url %>" class="docs__nav__lateral__link--next" data-ref="docs-nav-lateral.link">
-      <span class="docs__nav__lateral__label"><%- next.title %></span>
-      <%- partial('../common/icon', {
-        icon: 'barba-arrow-next',
-        hidden: true,
-        viewbox: '0 0 21 15',
-      }) %>
-    </a>
-  <% }; %>
 </div>
