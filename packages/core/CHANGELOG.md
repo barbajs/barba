@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.7](https://github.com/barbajs/barba/compare/@barba/core@2.9.6...@barba/core@2.9.7) (2020-01-16)
+
+### Bug Fixes
+
+- **core:** :bug: fix once only transition resolved for page ([0e52e61](https://github.com/barbajs/barba/commit/0e52e616e9964ad98f28239b1341a71cf1d29f4a)), closes [#483](https://github.com/barbajs/barba/issues/483)
+
 ## [2.9.6](https://github.com/barbajs/barba/compare/@barba/core@2.9.5...@barba/core@2.9.6) (2019-12-12)
 
 ### Bug Fixes
