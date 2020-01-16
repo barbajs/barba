@@ -1224,6 +1224,48 @@ body {
   height: 100%;
   object-fit: cover; }
 
+.link {
+  position: relative;
+  color: #2e5bdc; }
+  [data-feature-order='0'] .link {
+    color: #38d1f1; }
+  [data-feature-order='1'] .link {
+    color: #04bf0c; }
+  [data-feature-order='2'] .link {
+    color: #ffa543; }
+  [data-feature-order='3'] .link {
+    color: #ec4343; }
+  [data-feature-order='4'] .link {
+    color: #8c44d9; }
+  [data-feature-order='5'] .link {
+    color: #2e5bdc; }
+  .link::before {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 0.2rem;
+    background-color: #2e5bdc;
+    transform-origin: center left;
+    transition: transform 0.3s ease-out; }
+    [data-feature-order='0'] .link::before {
+      background-color: #38d1f1; }
+    [data-feature-order='1'] .link::before {
+      background-color: #04bf0c; }
+    [data-feature-order='2'] .link::before {
+      background-color: #ffa543; }
+    [data-feature-order='3'] .link::before {
+      background-color: #ec4343; }
+    [data-feature-order='4'] .link::before {
+      background-color: #8c44d9; }
+    [data-feature-order='5'] .link::before {
+      background-color: #2e5bdc; }
+  .link:hover::before {
+    transform-origin: center right;
+    transform: scaleX(0); }
+
 /* stylelint-disable selector-max-combinators, selector-max-compound-selectors, no-descending-specificity */
 .logo {
   width: 100%;
@@ -2018,6 +2060,9 @@ body {
   @media only screen and (min-width: 37.5em) {
     .feature-outer {
       padding-top: 10rem; } }
+  @media only screen and (min-width: 64em) and (max-width: 89.99em) {
+    .feature-outer {
+      padding-top: 6rem; } }
   .feature-outer p {
     font-size: 1.4rem;
     line-height: 1.8rem; }
@@ -2025,47 +2070,6 @@ body {
       .feature-outer p {
         font-size: 2.4rem;
         line-height: 3.6rem; } }
-    .feature-outer p a {
-      position: relative;
-      color: #2e5bdc; }
-      [data-feature-order='0'] .feature-outer p a {
-        color: #38d1f1; }
-      [data-feature-order='1'] .feature-outer p a {
-        color: #04bf0c; }
-      [data-feature-order='2'] .feature-outer p a {
-        color: #ffa543; }
-      [data-feature-order='3'] .feature-outer p a {
-        color: #ec4343; }
-      [data-feature-order='4'] .feature-outer p a {
-        color: #8c44d9; }
-      [data-feature-order='5'] .feature-outer p a {
-        color: #2e5bdc; }
-      .feature-outer p a::before {
-        content: '';
-        position: absolute;
-        bottom: -0.5rem;
-        left: 0;
-        display: block;
-        width: 100%;
-        height: 0.2rem;
-        background-color: #2e5bdc;
-        transform-origin: center left;
-        transition: transform 0.3s ease-out; }
-        [data-feature-order='0'] .feature-outer p a::before {
-          background-color: #38d1f1; }
-        [data-feature-order='1'] .feature-outer p a::before {
-          background-color: #04bf0c; }
-        [data-feature-order='2'] .feature-outer p a::before {
-          background-color: #ffa543; }
-        [data-feature-order='3'] .feature-outer p a::before {
-          background-color: #ec4343; }
-        [data-feature-order='4'] .feature-outer p a::before {
-          background-color: #8c44d9; }
-        [data-feature-order='5'] .feature-outer p a::before {
-          background-color: #2e5bdc; }
-      .feature-outer p a:hover::before {
-        transform-origin: center right;
-        transform: scaleX(0); }
   .feature-outer .feature__action__title {
     font-size: 1.6rem;
     line-height: 2.2rem; }
@@ -2095,6 +2099,9 @@ body {
   transform: translate(-50%, -50%);
   z-index: -1;
   width: 100vw; }
+  @media only screen and (min-width: 64em) and (max-width: 89.99em) {
+    .feature__bodymovin {
+      top: 40%; } }
 
 .credits-table tr {
   display: inline; }
@@ -2181,7 +2188,7 @@ body {
 .feature-box__body__text {
   margin: 0 0 1rem;
   font-size: 1.6rem !important;
-  line-height: 2.8rem !important; }
+  line-height: 1.5 !important; }
 
 .feature-box__footer {
   display: flex;
