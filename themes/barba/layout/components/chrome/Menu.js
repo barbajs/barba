@@ -34,18 +34,18 @@ export default class extends Component {
       })
       .to(
         this.$refs.panel, {
-          duration: 0.5,
-          x: 0,
-          ease: 'power4',
-        }, 0)
+        duration: 1,
+        x: 0,
+        ease: 'power4.inOut',
+      }, 0)
       .to(
         this.$refs.item, {
-          duration: 0.3,
-          y: 0,
-          opacity: 1,
-          ease: 'power4',
-          stagger: 0.075,
-        }, 0.25)
+        duration: 1,
+        y: 0,
+        opacity: 1,
+        ease: 'power4',
+        stagger: 0.05,
+      }, 0.25)
       .then()
   }
 
@@ -58,10 +58,10 @@ export default class extends Component {
       })
       .to(
         this.$refs.panel, {
-          duration: 0.5,
-          x: '110%',
-          ease: 'power4.inOut',
-        }, 0)
+        duration: 0.5,
+        x: '110%',
+        ease: 'power4.inOut',
+      }, 0)
       .then()
   }
 
