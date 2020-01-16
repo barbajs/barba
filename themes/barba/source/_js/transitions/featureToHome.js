@@ -26,32 +26,6 @@ export default {
     return gsap
       .timeline()
       .to(
-        oldLogo,
-        {
-          duration: 0.3,
-          opacity: 0,
-        },
-        1
-      )
-      .to(
-        oldBigShape,
-        {
-          duration: 1.5,
-          y: 100,
-          opacity: 0,
-          ease: 'power4.in',
-        },
-        0.4
-      )
-      .to(
-        fullOldLogo,
-        {
-          duration: 1,
-          opacity: 0,
-        },
-        1.3
-      )
-      .to(
         feature,
         {
           duration: 1,
@@ -59,7 +33,6 @@ export default {
           opacity: 0,
           ease: 'power4.in',
         },
-        0
       )
       .to(
         navigation,
@@ -69,7 +42,33 @@ export default {
           opacity: 0,
           ease: 'power4.in',
         },
-        0.2
+        '<0.2'
+      )
+      .to(
+        oldBigShape,
+        {
+          duration: 1.5,
+          opacity: 0,
+          scale: 2,
+          ease: 'power4.in',
+        },
+        '<0.2'
+      )
+      .to(
+        oldLogo,
+        {
+          duration: 0.3,
+          opacity: 0,
+        },
+        '<0.6'
+      )
+      .to(
+        fullOldLogo,
+        {
+          duration: 1,
+          opacity: 0,
+        },
+        '<0.3'
       )
       .then()
   },
