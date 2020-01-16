@@ -1,17 +1,35 @@
-<div class="feature__box__column--two">
-  <div class="feature__box__column__icon--big">
-    <%- partial('components/common/image.ejs', {
-      src: theme.root + 'assets/svg/extensible.svg',
-      alt: 'Extensible icon',
-    }) %>
-  </div>
-</div>
+<div class="feature-box">
+  <div class="feature-box__body">
+    <div class="feature-box__column--two">
+      <div class="feature-box__column__icon--big">
+        <%- partial('components/common/image.ejs', {
+          src: theme.root + 'assets/svg/extensible.svg',
+          alt: 'Extensible icon',
+        }) %>
+      </div>
+    </div>
 
-<div class="feature__box__column--four">
-  <p class="feature__box__body__text">
-    Want route-based transitions? 👉<a href="<%- theme.root %>docs/plugins/router/"><strong>@barba/router</strong></a><br>
-    Want to make it even faster? 👉<a href="<%- theme.root %>docs/plugins/prefetch/"><strong>@barba/prefetch</strong></a><br>
-    Don't like JavaScript? 👉<a href="<%- theme.root %>docs/plugins/css/"><strong>@barba/css</strong></a><br>
-    And more coming soon…
-  </p>
+    <div class="feature-box__column--four">
+      <p class="feature-box__body__text">
+        Want route-based transitions? 👉<a
+          href="<%- theme.root %>docs/plugins/router/"><strong>@barba/router</strong></a><br>
+        Want to make it even faster? 👉<a
+          href="<%- theme.root %>docs/plugins/prefetch/"><strong>@barba/prefetch</strong></a><br>
+        Don't like JavaScript? 👉<a href="<%- theme.root %>docs/plugins/css/"><strong>@barba/css</strong></a><br>
+        And more coming soon…
+      </p>
+    </div>
+  </div>
+  <div class="feature-box__footer">
+    <%-
+      partial('../feature-action.ejs',
+        {
+          ctaLink: page.action.link.startsWith('/') ? page.action.link : theme.root + page.action.link,
+          ctaModifier: page.order,
+          ctaTitle: page.action.title,
+          ctaIcon: page.action.icon,
+        }
+      )
+    %>
+  </div>
 </div>

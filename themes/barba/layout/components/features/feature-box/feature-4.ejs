@@ -1,24 +1,41 @@
-<div class="feature__box__column--three">
-  <div class="feature__box__column__icon">
-    <%- partial('components/common/image.ejs', {
-      src: theme.root + 'assets/svg/prefetch.svg',
-      alt: 'prefetch icon',
-    }) %>
-  </div>
-  <p class="feature__box__body__text">
-    Barba.js is written in <strong>TypeScript</strong> and works with promises (among others).<br>
-    Thanks to <strong>TypeDoc</strong>, there is a full API documentation!
-  </p>
-</div>
+<div class="feature-box">
+  <div class="feature-box__body">
+    <div class="feature-box__column--three">
+      <div class="feature-box__column__icon">
+        <%- partial('components/common/image.ejs', {
+          src: theme.root + 'assets/svg/prefetch.svg',
+          alt: 'prefetch icon',
+        }) %>
+      </div>
+      <p class="feature-box__body__text">
+        Barba.js is written in <strong>TypeScript</strong> and works with promises (among others).<br>
+        Thanks to <strong>TypeDoc</strong>, there is a full API documentation!
+      </p>
+    </div>
 
-<div class="feature-box__column--three">
-  <div class="feature-box__column__icon">
-    <%- partial('components/common/image.ejs', {
-      src: theme.root + 'assets/svg/links.svg',
-      alt: 'links icon',
-    }) %>
+    <div class="feature-box__column--three">
+      <div class="feature-box__column__icon">
+        <%- partial('components/common/image.ejs', {
+          src: theme.root + 'assets/svg/links.svg',
+          alt: 'links icon',
+        }) %>
+      </div>
+      <p class="feature-box__body__text">
+        Multiple builds allow you to use <strong>ES6 modules</strong>, commonJS and <a
+          href="https://unpkg.com/@barba/core">CDN</a> as well.
+      </p>
+    </div>
   </div>
-  <p class="feature__box__body__text">
-    Multiple builds allow you to use <strong>ES6 modules</strong>, commonJS and <a href="https://unpkg.com/@barba/core">CDN</a> as well.
-  </p>
+  <div class="feature-box__footer">
+    <%-
+      partial('../feature-action.ejs',
+        {
+          ctaLink: page.action.link.startsWith('/') ? page.action.link : theme.root + page.action.link,
+          ctaModifier: page.order,
+          ctaTitle: page.action.title,
+          ctaIcon: page.action.icon,
+        }
+      )
+    %>
+  </div>
 </div>
