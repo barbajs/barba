@@ -37,7 +37,7 @@ export default class extends Component {
     gsap.killTweensOf(this.$items[index])
 
     gsap.to(this.$items[index], {
-      duration: 0.4,
+      duration: 0.2,
       opacity: 1,
     })
 
@@ -65,12 +65,13 @@ export default class extends Component {
 
     this.$logo.classList.remove('gray')
 
-    gsap.killTweensOf(this.$refs.listItem[index])
-    gsap.killTweensOf(this.$items[index])
+    // gsap.killTweensOf(this.$refs.listItem[index])
+    // gsap.killTweensOf(this.$items[index])
 
     gsap.to(this.$items[index], {
-      duration: 0.4,
+      duration: 1,
       opacity: 0,
+      ease: 'power4.in',
     })
 
     gsap.to(this.$refs.listItem[index], {
