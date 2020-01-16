@@ -136,7 +136,7 @@ export default {
     const { container } = next
     const newLogo = container.querySelector('.logo.featured')
     const featureContainer = container.querySelector('.feature-outer')
-    const featureBox = container.querySelector('.feature__box')
+    const featureBox = container.querySelector('.feature-box')
     const navigation = container.querySelectorAll('.feature__nav__el')
 
     const tl = gsap.timeline({

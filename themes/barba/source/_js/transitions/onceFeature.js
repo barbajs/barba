@@ -10,7 +10,7 @@ export default {
     const nextFeatureSlug = container.querySelector('.feature').dataset
       .featureSlug
     const featureContainer = container.querySelector('.feature-outer')
-    const featureBox = container.querySelector('.feature__box')
+    const featureBox = container.querySelector('.feature-box')
     const featureInstance = getInstance(container, 'feature')
     const tl = gsap.timeline()
 

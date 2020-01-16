@@ -61,11 +61,11 @@ export default {
     const goingForward = isForward(currentFeatureOrder, nextFeatureOrder)
 
     const $nextContainer = $nextFeature.querySelector('.feature-outer')
-    const $nextBox = $nextFeature.querySelector('.feature__box')
+    const $nextBox = $nextFeature.querySelector('.feature-box')
     const $nextInstance = getInstance(next.container, 'feature')
 
     const $currentContainer = $currentFeature.querySelector('.feature-outer')
-    const $currentBox = $currentFeature.querySelector('.feature__box')
+    const $currentBox = $currentFeature.querySelector('.feature-box')
 
     const $currentLogo = $currentFeature.querySelector('.logo')
     const $currentLogoShapes = $currentFeature.querySelector('.logo.only-big')
