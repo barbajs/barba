@@ -49,7 +49,7 @@ export default {
           ease: 'back.out',
           stagger: 0.05,
         },
-        0.3
+        '<'
       )
       .to(
         logoItemsColor,
@@ -58,17 +58,7 @@ export default {
           opacity: 1,
           ease: 'power4',
         },
-        1.6
-      )
-      .to(
-        logoItemsColor,
-        {
-          duration: 0.8,
-          opacity: 0,
-          ease: 'power4',
-          stagger: 0.05,
-        },
-        2.8
+        '<1.3'
       )
       .from(
         title,
@@ -79,7 +69,7 @@ export default {
           ease: 'power4',
           stagger: 0.05,
         },
-        1.7
+        '<0.1'
       )
       .from(
         buttons,
@@ -90,7 +80,7 @@ export default {
           ease: 'power4',
           stagger: 0.05,
         },
-        2.3
+        '<0.6'
       )
       .from(
         chrome,
@@ -100,7 +90,17 @@ export default {
           ease: 'power4',
           stagger: 0.2,
         },
-        2.6
+        '<0.3'
+      )
+      .to(
+        logoItemsColor,
+        {
+          duration: 0.8,
+          opacity: 0,
+          ease: 'power4',
+          stagger: 0.05,
+        },
+        '<0.2'
       )
   },
 }
