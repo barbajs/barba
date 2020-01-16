@@ -3,7 +3,6 @@
   @include get-all-space;
 
   display: block;
-  overflow: hidden;
   padding: 16rem 4rem 6rem;
   perspective: 1000px;
 
@@ -11,8 +10,8 @@
     padding: 4rem;
   }
 
-  &[data-feature-order='5'] {
-    overflow: auto;
+  .is-transitioning & {
+    overflow: hidden;
   }
 }
 
