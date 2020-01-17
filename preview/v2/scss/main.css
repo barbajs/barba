@@ -2079,6 +2079,7 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
+  max-width: 80rem;
   height: 100%;
   margin: 0 auto; }
   @media only screen and (min-width: 48em) and (max-width: 99.99em) {
