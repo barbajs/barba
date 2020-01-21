@@ -77,7 +77,7 @@ pagination_dir: page
 ## Menu Navigation
 menu:
   - title: 'Features'
-    url: 'features/fast-flexible/'
+    url: 'features/user-friendly/'
     slug: '/features'
     subpages:
       - title: 'User friendly'
