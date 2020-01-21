@@ -2776,10 +2776,12 @@ body {
 .showcase__card__footer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 1rem; }
   .showcase__card__footer :first-child {
     display: flex;
-    flex-direction: column; }
+    flex-direction: column;
+    margin-right: 1em; }
 
 .showcase__card__footer__title {
   margin: 0;
@@ -2787,7 +2789,7 @@ body {
   font-size: 1.8rem;
   font-weight: 300;
   line-height: 2.2rem;
-  letter-spacing: 0.3rem; }
+  letter-spacing: 0.25rem; }
 
 .showcase__card__footer__author {
   margin: 0;
@@ -2799,7 +2801,6 @@ body {
   opacity: 0.3; }
 
 .link--view {
-  align-self: flex-start;
   text-transform: uppercase; }
 
 .loader--spinner {
