@@ -6,11 +6,13 @@
 .showcase__card__footer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 1rem;
 
   & :first-child {
     display: flex;
     flex-direction: column;
+    margin-right: 1em;
   }
 }
 
@@ -20,7 +22,7 @@
   font-size: 1.8rem;
   font-weight: 300;
   line-height: 2.2rem;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.25rem;
 }
 
 .showcase__card__footer__author {
@@ -34,6 +36,5 @@
 }
 
 .link--view {
-  align-self: flex-start;
   text-transform: uppercase;
 }
