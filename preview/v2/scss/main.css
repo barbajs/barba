@@ -2082,7 +2082,7 @@ body {
   max-width: 80rem;
   height: 100%;
   margin: 0 auto; }
-  @media only screen and (min-width: 48em) and (max-width: 99.99em) {
+  @media only screen and (min-width: 48em) {
     .feature-outer {
       padding-top: 6rem; } }
   .feature-outer p {
@@ -2149,7 +2149,7 @@ body {
       font-size: 5rem; } }
   @media only screen and (min-width: 100em) {
     .feature__title {
-      font-size: 9rem; } }
+      font-size: 7rem; } }
 
 .feature__bodymovin {
   position: absolute;
