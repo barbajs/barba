@@ -130,9 +130,7 @@
 
   /* stylelint-disable no-descending-specificity */
   &:nth-child(1) {
-    top: 50%;
-
-    .is-open & {
+    .modal.is-open & {
       top: 50%;
       transform: translate(-50%, -50%) rotate(-45deg);
     }
@@ -141,7 +139,7 @@
   &:nth-child(2) {
     top: 35%;
 
-    .modal.is-open & {
+    .is-open & {
       top: 50%;
       transform: translate(-50%, -50%) rotate(45deg);
     }
