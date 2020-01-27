@@ -821,14 +821,12 @@ body {
     background-color: #ec4343; }
   [data-feature-order='4'] .menu-trigger__bar {
     background-color: #8c44d9; }
-  .menu-trigger__bar:nth-child(1) {
-    top: 50%; }
-    .is-open .menu-trigger__bar:nth-child(1) {
-      top: 50%;
-      transform: translate(-50%, -50%) rotate(-45deg); }
+  .modal.is-open .menu-trigger__bar:nth-child(1) {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg); }
   .menu-trigger__bar:nth-child(2) {
     top: 35%; }
-    .modal.is-open .menu-trigger__bar:nth-child(2) {
+    .is-open .menu-trigger__bar:nth-child(2) {
       top: 50%;
       transform: translate(-50%, -50%) rotate(45deg); }
   .menu-trigger__bar:nth-child(3) {
