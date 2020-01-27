@@ -1,9 +1,7 @@
-import {
-  Component
-} from 'kapla'
+import { Component } from 'kapla'
 
 export default class extends Component {
-  load() {
+  init() {
     const subscriber = this.subscribe('menu')
 
     subscriber.on('overlay:close', this.close)
@@ -11,6 +9,7 @@ export default class extends Component {
   }
 
   onClick(e) {
+    console.log('MenuTrigger')
     e.preventDefault()
 
     if (this.isOpen()) {

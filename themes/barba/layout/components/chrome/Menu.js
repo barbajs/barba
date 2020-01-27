@@ -55,6 +55,7 @@ export default class extends Component {
       .timeline({
         onComplete: () => {
           this.$el.classList.remove('is-open')
+          console.log('Menu:overlayclick', this.$el)
         },
       })
       .to(
@@ -70,6 +71,7 @@ export default class extends Component {
   }
 
   onOverlayClick() {
+    console.log('Menu:overlayclick')
     this.emit('overlay:close')
     this.close()
   }
