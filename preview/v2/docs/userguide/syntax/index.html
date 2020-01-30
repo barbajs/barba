@@ -37,7 +37,7 @@
   <script>
     window.BARBA = {
       root: '/preview/v2/',
-      menu: JSON.parse('[{"title":"Features","url":"features/user-friendly/","slug":"/features","subpages":[{"title":"User friendly","url":"features/user-friendly/"},{"title":"Easy peasy","url":"features/easy-peasy/"},{"title":"Smart","url":"features/smart/"},{"title":"Extensible","url":"features/extensible/"},{"title":"Futureproof","url":"features/futureproof/"},{"title":"Community","url":"features/community/"}]},{"title":"Examples","url":"examples/","slug":"/examples"},{"title":"Showcase","url":"showcase/","slug":"/showcase"},{"title":"Docs","url":"docs/getstarted/intro/","slug":"/docs"}]'),
+      menu: JSON.parse('[{"title":"Features","url":"features/user-friendly/","slug":"/features","subpages":[{"title":"User friendly","url":"features/user-friendly/"},{"title":"Easy peasy","url":"features/easy-peasy/"},{"title":"Smart","url":"features/smart/"},{"title":"Extensible","url":"features/extensible/"},{"title":"Futureproof","url":"features/futureproof/"},{"title":"Community","url":"features/community/"}]},{"title":"Examples","url":"examples/","slug":"/examples"},{"title":"Showcases","url":"showcase/","slug":"/showcase"},{"title":"Docs","url":"docs/getstarted/intro/","slug":"/docs"}]'),
       docs: JSON.parse('[{"title":"Get Started","url":"docs/getstarted/intro/","path":"docs/getstarted","nextpage":{"label":"USER GUIDE","url":"docs/userguide/markup/"}},{"title":"User Guide (Core)","url":"docs/userguide/markup/","path":"docs/userguide","subpages":[{"title":"Markup","url":"docs/userguide/markup/"},{"title":"Syntax","url":"docs/userguide/syntax/"}]},{"title":"Plugins","url":"docs/plugins/css/","path":"docs/plugins","subpages":[{"title":"Css","url":"docs/plugins/css/"},{"title":"Router","url":"docs/plugins/router/"},{"title":"Prefetch","url":"docs/plugins/prefetch/"},{"title":"Preset","url":"docs/plugins/preset/"},{"title":"Head","url":"docs/plugins/head/"}]}]'),
     }
 
@@ -203,7 +203,7 @@
         <li class="menu__pages__item" data-ref="menu.item">
           <a class="menu__pages__item__link "
             href="/preview/v2/showcase/">
-            Showcase
+            Showcases
           </a>
 
           <!-- Subpages -->
@@ -735,14 +735,14 @@
 </tr>
 </tbody></table>
 <blockquote>
-<p>Notice that you can use <code>from</code> and <code>to</code> properties independently.</p>
+<p>Note: that you can use <code>from</code> and <code>to</code> properties independently.</p>
 </blockquote>
 <p>Example:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span>;</span><br><span class="line"></span><br><span class="line">barba.init(&#123;</span><br><span class="line">  transitions: [&#123;</span><br><span class="line">    name: <span class="string">'custom-transition'</span>,</span><br><span class="line">    <span class="keyword">from</span>: &#123;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// defines a custom rule based on the trigger class</span></span><br><span class="line">      custom: <span class="function">(<span class="params">&#123; trigger &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> trigger.classList &amp;&amp; trigger.classList.contains(<span class="string">'use-custom-transition'</span>);</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// defines rule based on multiple route names</span></span><br><span class="line">      route: [</span><br><span class="line">        <span class="string">'index'</span>,</span><br><span class="line">        <span class="string">'product'</span></span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line">    to: &#123;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// defines rule based on multiple namespaces</span></span><br><span class="line">      namespace: [</span><br><span class="line">        <span class="string">'home'</span>,</span><br><span class="line">        <span class="string">'item'</span></span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    name: <span class="string">'other-transition'</span>,</span><br><span class="line">    ...</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>In this example, based on the <a href="#priority">priority order</a>, Barba will use the <code>custom-transition</code>:</p>
 <ul>
-<li>if the link you clicked contains a <code>.use-custom-transition</code> CSS class</li>
+<li>if the link you clicked on contains a <code>.use-custom-transition</code> CSS class</li>
 <li>if you come <strong>from</strong> the <code>index</code> or <code>product</code> route</li>
 <li>if you are navigating <strong>to</strong> the <code>home</code> or <code>item</code> namespace AND <strong>from</strong> the <code>index</code> or <code>product</code> route</li>
 </ul>
@@ -756,12 +756,12 @@
 <p>The common/default behaviour is to start <strong>leave</strong> as soon as possible.<br><strong>enter</strong> will be called when <strong>leave</strong> ends <em>AND</em> next page is “available” (fetched or cached).<br>If you use some <code>to</code> logic, Barba can not predict and select the right transition until the next page is available.<br>This also applies when using <code>sync: true</code>.<br>But this does not apply if <code>to</code> is used with <code>route</code> property because “next route” is known when the click occurs…</p>
 <p>Bear with this!</p>
 </blockquote>
-<h5 id="Sync-mode"><a href="#Sync-mode" class="headerlink" title="Sync mode"></a>Sync mode</h5><p>A mode that indicate whether <strong>leave</strong> and <strong>enter</strong> hooks should “play together”.<br>This involves waiting until the next page is available (fetched or cached).</p>
+<h5 id="Sync-mode"><a href="#Sync-mode" class="headerlink" title="Sync mode"></a>Sync mode</h5><p>A mode that indicates whether <strong>leave</strong> and <strong>enter</strong> hooks should “play together”.<br>This involves waiting until the next page is available (fetched or cached).</p>
 <p>By default the sync mode is set to <code>false</code>.</p>
 <p>Example:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span></span><br><span class="line"></span><br><span class="line">barba.init(&#123;</span><br><span class="line">  transitions: [</span><br><span class="line">    &#123;</span><br><span class="line">      sync: <span class="literal">true</span>,</span><br><span class="line">      leave() &#123;</span><br><span class="line">        <span class="comment">// transition that will play concurrently to `enter`</span></span><br><span class="line">      &#125;,</span><br><span class="line">      enter() &#123;</span><br><span class="line">        <span class="comment">// transition that will play concurrently to `leave`</span></span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<h4 id="lt-view-gt-object"><a href="#lt-view-gt-object" class="headerlink" title="&lt;view&gt; object"></a><code>&lt;view&gt;</code> object</h4><p>Views allow you to have some <strong>logic related to the content of a namespace</strong>.<br>You can see it as “lifecycle” into Barba. It is a good place to init or destroy things…<br>They use a subset of transition hooks and receive the same <a href="#data-argument"><code>data</code></a> object.</p>
+<h4 id="lt-view-gt-object"><a href="#lt-view-gt-object" class="headerlink" title="&lt;view&gt; object"></a><code>&lt;view&gt;</code> object</h4><p>Views allows you to have some <strong>logic related to the content of a namespace</strong>.<br>You can see it as a “lifecycle” into Barba. It is a good place to init or destroy things…<br>They use a subset of transition hooks and receive the same <a href="#data-argument"><code>data</code></a> object.</p>
 <p>Available hooks are:</p>
 <ul>
 <li><code>beforeAppear</code></li>
@@ -785,7 +785,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span></span><br><span class="line"></span><br><span class="line">barba.init(&#123;</span><br><span class="line">  <span class="comment">// overrides defaults and create a custom prefix for wrapper, containers, etc.</span></span><br><span class="line">  schema: &#123;</span><br><span class="line">    prefix: <span class="string">'data-custom'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <h4 id="cacheIgnore"><a href="#cacheIgnore" class="headerlink" title="cacheIgnore"></a>cacheIgnore</h4><p>Allows Barba to cache your pages.</p>
-<p>Saving pages in the cache result in <strong>less bandwidth usage</strong> and <strong>less server-side load</strong>: no <code>XMLHttpRequest</code> are made for pages that have already been visited.</p>
+<p>Saving pages in the cache results in <strong>less bandwidth usage</strong> and <strong>less server-side load</strong>: no <code>XMLHttpRequest</code> are made for pages that have already been visited.</p>
 <p>If disabled, Barba will retrieve each page <strong>from the server</strong> on every request: this could be useful if your page contains scripts that need to be evaluated on each page call.</p>
 <p>You can also define “route” pattern(s) (<a href="router.md">see @barba/router</a>).</p>
 <table>
@@ -815,8 +815,8 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span></span><br><span class="line"></span><br><span class="line">barba.init(&#123;</span><br><span class="line">  cacheIgnore: [<span class="string">'/contact/'</span>, <span class="string">'/:category/post?'</span>],</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <h4 id="prefetchIgnore"><a href="#prefetchIgnore" class="headerlink" title="prefetchIgnore"></a>prefetchIgnore</h4><p>Allows Barba to prefetch your pages on <code>mouseover</code> or <code>touchstart</code> events.</p>
-<p>Since there is a 100-300ms delay during the user hover and the click, Barba is using this time to start prefetching the next page. Most of the time this dead time is enough to get the next page ready!</p>
-<p>If follows the same logic as the above <code>cacheIgnore</code> option…</p>
+<p>Since there is a 100-300ms delay during the user hover and the click, Barba is using this time to start prefetching the next page. Most of the time, this is enough to get the next page ready!</p>
+<p>It follows the same logic as the above <code>cacheIgnore</code> option…</p>
 <blockquote>
 <p>To prefetch all eligible links that enter the viewport, use the <a href="prefetch.md">@barba/prefetch</a> module.</p>
 </blockquote>
@@ -852,7 +852,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span></span><br><span class="line"></span><br><span class="line">barba.init(&#123;</span><br><span class="line">  <span class="comment">// defines a custom function that will prevent Barba</span></span><br><span class="line">  <span class="comment">// from working on link that contains a `prevent` CSS class</span></span><br><span class="line">  prevent: <span class="function">(<span class="params">&#123; el &#125;</span>) =&gt;</span> el.classList &amp;&amp; el.classList.contains(<span class="string">'prevent'</span>),</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>Note that you can prevent a link of using Barba with the <code>data-barba-prevent</code> attribute:</p>
+<p>Note that you can prevent a link from using Barba with the <code>data-barba-prevent</code> attribute:</p>
 <ol>
 <li><code>data-barba-prevent</code> or <code>data-barba-prevent=&quot;self&quot;</code> prevents the current link</li>
 <li><code>data-barba-prevent=&quot;all&quot;</code> prevents all children links of a container (<code>div</code>, <code>p</code>, etc.)</li>
