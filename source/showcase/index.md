@@ -1,5 +1,5 @@
 ---
-title: Showcase
+title: Showcases
 name: showcase
 namespace: showcase
 layout: components/page/page
@@ -7,6 +7,6 @@ separator: true
 grid: true
 ---
 
-# Showcase
+# Showcases
 
-Our special gallery shows the best websites built with support of barba.js.
+Our special gallery displays the best websites using barba.js.

@@ -95,7 +95,7 @@ menu:
   - title: 'Examples'
     url: 'examples/'
     slug: '/examples'
-  - title: 'Showcase'
+  - title: 'Showcases'
     url: 'showcase/'
     slug: '/showcase'
   - title: 'Docs'

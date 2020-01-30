@@ -15,11 +15,11 @@ url: 'docs/getstarted/intro/'
 [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](https://github.com/barbajs/barba/blob/master/LICENSE)
 [![Slack channel](https://img.shields.io/badge/slack-channel-purple.svg?style=flat-square&logo=slack)](https://barbajs.slack.com)
 
-**Barba.js** is a small (7kb minified and compressed) and easy-to-use library that helps you creating fluid and smooth transitions between your website's pages.
+**Barba.js** is a small (7kb minified and compressed) and easy-to-use library that helps you create fluid and smooth transitions between your website's pages.
 
-It helps reducing the delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.
+It helps reduce the delay between your pages, minimize browser HTTP requests and enhance your users’ web experience.
 
-> Notice: this guide assumes intermediate level knowledge of HTML, CSS, and JavaScript. It is worth mentioning that all the code examples use ES6+ syntax. If you are not comfortable with, we encourage you to grasp the basics then come back.
+> Notice: this guide assumes intermediate knowledge of HTML, CSS, and JavaScript. It is worth mentioning that all code examples use ES6+ syntax. If you are not comfortable with this syntax we would encourage you to grasp the basics then come back.
 >
 > In case of emergency, check this ["legacy" code example](legacy.md).
 

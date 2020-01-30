@@ -6,7 +6,7 @@ order: 5
 layout: components/features/feature
 ---
 
-barba.js started as weekend side-project, and thanks the community it is now widely used by agencies and individuals.
+barba.js started as a weekend side-project, and thanks to the community it is now widely used by agencies and individuals.
 
 Used by Google, New York Times and many more.
 
