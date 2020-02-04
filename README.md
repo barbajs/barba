@@ -16,11 +16,6 @@
 
 It helps reduce the delay between your pages, minimize browser HTTP requests and enhance your users' web experience.
 
-> This is beta version, use it at your own risks! 😱
-> Thanks in advance for reporting bugs. #sharethelove 😊
->
-> [Looking for v1?](https://barba.js.org/v1) 👈
-
 ## What's new?
 
 - Simplified API
@@ -38,34 +33,34 @@ It helps reduce the delay between your pages, minimize browser HTTP requests and
 ## Main changes (TL;DR)
 
 - Barba now use `data-barba-*` attributes:
-  - data-barba-container for the [container](https://barba.js.org/docs/v2/user/core.html#container)
-  - data-barba-wrapper for the [wrapper](https://barba.js.org/docs/v2/user/core.html#wrapper)
-  - data-barba-namespace for the [namespace](https://barba.js.org/docs/v2/user/core.html#namespace)
+  - data-barba-container for the [container](https://barba.js.org/docs/userguide/markup/#Container)
+  - data-barba-wrapper for the [wrapper](https://barba.js.org/docs/userguide/markup/#Wrapper)
+  - data-barba-namespace for the [namespace](https://barba.js.org/docs/userguide/markup/#Namespace)
 - 2 main methods:
   - `barba.init()` for transitions, views and Barba core settings
   - `barba.use()` for plugins (router, css, prefetch, etc.)
-- [Transitions](https://barba.js.org/docs/v2/user/core.html#transition-object):
+- [Transitions](https://barba.js.org/docs/userguide/syntax/#lt-transition-gt-object):
   - are plain JS objects
   - are declared via the `barba.init({ transitions })`
-  - use "[hooks](https://barba.js.org/docs/v2/user/core.html#hooks)" corresponding to animation steps
+  - use "[hooks](https://barba.js.org/docs/userguide/syntax/#Hooks)" corresponding to animation steps
     - hooks can be synchronous or asynchronous (via `this.async()` or Promise based)
-    - all hooks receive same [`data` argument](https://barba.js.org/docs/v2/user/core.html#data-argument)
-  - use "[rules](https://barba.js.org/docs/v2/user/core.html#rules)" to select which transition to use
+    - all hooks receive same [`data` argument](https://barba.js.org/docs/userguide/syntax/#data-argument)
+  - use "[rules](https://barba.js.org/docs/userguide/syntax/#Rules)" to select which transition to use
     - default rules are `namespace` and `custom`
     - `@barba/router` adds `route` rule
     - they can be combined within `from` and `to` properties
-- [Views](https://barba.js.org/docs/v2/user/core.html#view-object):
+- [Views](https://barba.js.org/docs/userguide/syntax/#lt-view-gt-object):
   - are plain JS objects
   - are declared via the `barba.init({ views })`
   - use a subset of animation "hooks":
     - `beforeOnce`, `afterOnce`, `beforeLeave`, `afterLeave`, `beforeEnter`, `afterEnter`
-    - receive the same [`data` argument](https://barba.js.org/docs/v2/user/core.html#data-argument)
-- [Sync mode](https://barba.js.org/docs/v2/user/core.html#sync-mode) will start `leave` and `enter` transitions concurrently
+    - receive the same [`data` argument](https://barba.js.org/docs/userguide/syntax/#data-argument)
+- [Sync mode](https://barba.js.org/docs/userguide/syntax/#Sync-mode) will start `leave` and `enter` transitions concurrently
 
 ## Documentation
 
-- [User guide](https://barba.js.org/docs/v2/user/)
-- [API documentation](https://barba.js.org/docs/v2/api/)
+- [User guide](https://barba.js.org/docs/getstarted/intro/)
+- [API documentation](https://barba.js.org/api/)
 
 ## How to contribute
 
@@ -86,6 +81,5 @@ Thanks for taking time to contribute to Barba :tada: :+1:
 - [x] CI setup (PR, publish, …)
 - [x] Write manual documentation
 - [x] Generate code documentation
-- [ ] Testing, debugging, fixing, testing…
-- [ ] e2e testing suite
-- [ ] New website
+- [x] New website
+- [ ] More Testing, debugging, fixing, testing…
