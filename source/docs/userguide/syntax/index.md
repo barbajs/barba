@@ -555,4 +555,4 @@ Example:
 - barba.version
 - barba.url.\*
 
-> This is a draft section of **@barba/core** utilities, check the [API documentation](https://barba.js.org/docs/v2/api) for more informations.
+> This is a draft section of **@barba/core** utilities, check the [API documentation](https://barba.js.org/api) for more informations.
