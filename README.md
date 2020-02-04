@@ -16,6 +16,12 @@
 
 It helps reduce the delay between your pages, minimize browser HTTP requests and enhance your users' web experience.
 
+## Documentation
+
+- [Site](https://barba.js.org/)
+- [User guide](https://barba.js.org/docs/getstarted/intro/)
+- [API documentation](https://barba.js.org/api/)
+
 ## What's new?
 
 - Simplified API
@@ -56,11 +62,6 @@ It helps reduce the delay between your pages, minimize browser HTTP requests and
     - `beforeOnce`, `afterOnce`, `beforeLeave`, `afterLeave`, `beforeEnter`, `afterEnter`
     - receive the same [`data` argument](https://barba.js.org/docs/userguide/syntax/#data-argument)
 - [Sync mode](https://barba.js.org/docs/userguide/syntax/#Sync-mode) will start `leave` and `enter` transitions concurrently
-
-## Documentation
-
-- [User guide](https://barba.js.org/docs/getstarted/intro/)
-- [API documentation](https://barba.js.org/api/)
 
 ## How to contribute
 
