@@ -1,0 +1,38 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.intro-thumb {
+  display: block;
+  height: 25vh;
+  width: 100%;
+  position: relative;
+}
+
+.full {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-position: center center;
+  background-size: cover;
+}
+
+a.back {
+  color: aqua;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.barba-container {
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
