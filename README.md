@@ -12,9 +12,9 @@
 
 > [Invite link to slack channel](https://join.slack.com/t/barbajs/shared_invite/enQtNTU3NTAyMjkxMzAyLTkxYWUwZmM1YWQxMmNlYmE0ZjY4NDQxMGUxYjkwYWFlMzEzOWM4OTRhMWRmYTQyYzFlMmQ3OGFmYmI3MWY0OWY)
 
-**Barba** is a small (7kb minified and compressed) and easy-to-use library that helps you creating fluid and smooth transitions between your website's pages.
+**Barba.js** is a small (7kb minified and compressed) and easy-to-use library that helps you create fluid and smooth transitions between your website's pages.
 
-It helps reducing the delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.
+It helps reduce the delay between your pages, minimize browser HTTP requests and enhance your users' web experience.
 
 > This is beta version, use it at your own risks! 😱
 > Thanks in advance for reporting bugs. #sharethelove 😊
