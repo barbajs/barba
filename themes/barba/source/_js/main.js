@@ -3,6 +3,13 @@ import router from '@barba/router'
 import { autoLoad } from 'kapla'
 import kapla from './app'
 
+// Update GA
+barba.hooks.after(() => {
+  if (gtag && GTAG_ID) {
+    gtag('config', window.GTAG_ID, { 'page_path': window.location.pathname });
+  }
+});
+
 // DEV
 // import routes from './transitions/routes'
 import { getRoutes } from './transitions/routes'
