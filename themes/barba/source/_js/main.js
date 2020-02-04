@@ -10,6 +10,18 @@ barba.hooks.after(() => {
   }
 });
 
+// Hash at page change...
+barba.hooks.after(() => {
+  window.setTimeout(() => {
+    const oldHash = window.location.hash;
+
+    if (oldHash) {
+      window.location.hash = '';
+      window.location.hash = oldHash;
+    }
+  }, 100);
+});
+
 // DEV
 // import routes from './transitions/routes'
 import { getRoutes } from './transitions/routes'

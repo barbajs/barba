@@ -17,7 +17,7 @@ Based on _Intersection Observer_, it processes **all eligible links** that enter
 
 ## Usage
 
-You can use this feature regardless of the [`prefetchIgnore`](core.md#prefetchignore) core property. Since the links will be prefetched depending on the viewport, it will prevent the core prefetch process from prefetching a link on enter.
+You can use this feature regardless of the [`prefetchIgnore`](/docs/userguide/syntax/#prefetchIgnore) core property. Since the links will be prefetched depending on the viewport, it will prevent the core prefetch process from prefetching a link on enter.
 
 Example:
 
@@ -34,4 +34,4 @@ barba.init();
 
 > On slow network or with a high page weight, the server can take time to prefetch the response and can lead Barba to abort the transition and display a *Timeout error [2000]* message.
 >
-> See the [`timeout`](core.md#timeout) setting to properly manage this behavior.
+> See the [`timeout`](/docs/userguide/syntax/#timeout) setting to properly manage this behavior.

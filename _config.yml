@@ -133,7 +133,7 @@ docs:
       - title: 'Head'
         url: 'docs/plugins/head/'
   - title: 'API'
-    url: 'api'
+    url: '/docs/v2/api'
     path: 'api'
 
 # Extensions

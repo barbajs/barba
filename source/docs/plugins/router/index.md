@@ -11,7 +11,7 @@ Barba router allows you to use **custom routes** for page transitions.
 
 ## Definition
 
-This module adds a __route__ rule to Barba, that is less important than `custom()` but more than `namespace`. You can check the core [transition rules](core.md#rules) for details.
+This module adds a __route__ rule to Barba, that is less important than `custom()` but more than `namespace`. You can check the core [transition rules](/docs/userguide/syntax/#Rules) for details.
 
 ## Syntax
 
@@ -19,7 +19,7 @@ This module adds a __route__ rule to Barba, that is less important than `custom(
 
 | Option   | Type  | Default | Description                         |
 | -------- | ----- | ------- | ----------------------------------- |
-| `routes` | Array | []      | Array of [`<Route>`](#route-object) |
+| `routes` | Array | []      | Array of [`<Route>`](/docs/userguide/syntax/#route-properties) |
 
 #### `<route>` object
 
