@@ -7,7 +7,7 @@ url: 'docs/plugins/css/'
 
 # @barba/css
 
-Barba CSS is a **style helper** that manage you CSS class during transitions.
+Barba CSS is a **style helper** that manage you CSS classes during transitions.
 
 It is mainly inspired by [Vue.js transitions](https://vuejs.org/v2/guide/transitions.html#Transition-Classes).
 
@@ -17,13 +17,13 @@ This module adds/removes CSS classes from the `data-barba="container"` DOM eleme
 
 ## Usage
 
-During the transition process, Barba defines custom classes according to the transition `appear` / `leave` / `enter` hooks and the transition name, if specified. Here is the list of hooks supported by the module:
+During the transition process, Barba defines custom classes according to the transition `once` / `leave` / `enter` hooks and the transition name, if specified. Here is the list of hooks supported by the module:
 
-### appear
+### once
 
-- `.barba-appear`: **starting state** for `appear`, added when appear transition is triggered, removed one frame after.
-- `.barba-appear-active`: **active state** for `appear`, applied during the entire appearing phase, then added when appear transition is triggered and removed when transition/animation finishes. This class can be used to define the duration, delay and easing curve.
-- `.barba-appear-to`: **ending state** for `appear`, added one frame after transition is triggered (at the same time `barba-appear` is removed) and removed when transition/animation finishes.
+- `.barba-once`: **starting state** for `once`, added when first load transition is triggered, removed one frame after.
+- `.barba-once-active`: **active state** for `once`, applied during the entire appearing phase, then added when once transition is triggered and removed when transition/animation finishes. This class can be used to define the duration, delay and easing curve.
+- `.barba-once-to`: **ending state** for `once`, added one frame after transition is triggered (at the same time `barba-once` is removed) and removed when transition/animation finishes.
 
 ### leave
 
@@ -40,21 +40,22 @@ During the transition process, Barba defines custom classes according to the tra
 Example with default naming:
 
 ```js
-import barba from '@barba/core'
-import barbaCss from '@barba/css'
+import barba from '@barba/core';
+import barbaCss from '@barba/css';
 
 // tell Barba to use the css module
-barba.use(barbaCss)
+barba.use(barbaCss);
 
 // init Barba
-barba.init()
+barba.init();
 ```
 
 Then customize your CSS classes like this:
 
 ```css
 /* transition active state (same for leave and enter) */
-.barba-leave-active .barba-enter-active {
+.barba-leave-active,
+.barba-enter-active {
   transition: opacity 450ms ease;
 }
 
@@ -79,21 +80,21 @@ Then customize your CSS classes like this:
 /* Note that this code can be refactored for optimization */
 ```
 
-If you want to play some transition on first load, use `appear`:
+If you want to play some transition on first load, use `once`:
 
 ```css
-/* appear: active state, define the transition */
-.barba-appear-active {
+/* once: active state, define the transition */
+.barba-once-active {
   transition: opacity 450ms ease;
 }
 
-/* appear: initial state */
-.barba-appear {
+/* once: initial state */
+.barba-once {
   opacity: 0;
 }
 
-/* appear: ending state */
-.barba-appear-to {
+/* once: ending state */
+.barba-once-to {
   opacity: 1;
 }
 ```
@@ -103,12 +104,14 @@ If you want to play some transition on first load, use `appear`:
 If you want different transitions, you can name them and use rules.
 The transition `name` will be used as **CSS "prefix"**.
 
+> !!! To use a "custom named" **once** transition, you need to explicitly add a `once() {}` hook to your transition.
+
 ```js
-import barba from '@barba/core'
-import barbaCss from '@barba/css'
+import barba from '@barba/core';
+import barbaCss from '@barba/css';
 
 // tell Barba to use the css module
-barba.use(barbaCss)
+barba.use(barbaCss);
 
 // init Barba
 barba.init({
@@ -116,15 +119,23 @@ barba.init({
     {
       // css classes will look like `.fade-xxx-[-xxx]`
       name: 'fade',
+
+      // if you want to use `.fade-once[-xxx]`
+      // add this empty hook…
+      once() {},
     },
     {
       // css classes will look like `.slide-xxx[-xxx]`
       name: 'slide',
-      from: { namespace: 'home' },
-      to: { namespace: 'products' },
+      from: {
+        namespace: 'home',
+      },
+      to: {
+        namespace: 'products',
+      },
     },
   ],
-})
+});
 ```
 
 ```css

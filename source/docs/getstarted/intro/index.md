@@ -15,13 +15,13 @@ url: 'docs/getstarted/intro/'
 [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](https://github.com/barbajs/barba/blob/master/LICENSE)
 [![Slack channel](https://img.shields.io/badge/slack-channel-purple.svg?style=flat-square&logo=slack)](https://barbajs.slack.com)
 
-**Barba.js** is a small (7kb minified and compressed) and easy-to-use library that helps you create fluid and smooth transitions between your website's pages.
+**Barba.js** is a small (7kb minified and compressed) and easy-to-use library that helps you creating fluid and smooth transitions between your website's pages.
 
-It helps reduce the delay between your pages, minimize browser HTTP requests and enhance your users’ web experience.
+It helps reducing the delay between your pages, minimizing browser HTTP requests and enhancing your user's web experience.
 
-> Notice: this guide assumes intermediate knowledge of HTML, CSS, and JavaScript. It is worth mentioning that all code examples use ES6+ syntax. If you are not comfortable with this syntax we would encourage you to grasp the basics then come back.
+> Notice: this guide assumes intermediate level knowledge of HTML, CSS, and JavaScript. It is worth mentioning that all the code examples use ES6+ syntax. If you are not comfortable with, we encourage you to grasp the basics then come back.
 >
-> In case of emergency, check this ["legacy" code example](/docs/getstarted/legacy/).
+> In case of emergency, check this ["legacy" code example](legacy.md).
 
 ## Useful links
 
@@ -34,7 +34,7 @@ It helps reduce the delay between your pages, minimize browser HTTP requests and
   - @barba/preset _(coming soon)_
 - [API documentation](https://barba.js.org/docs/v2/api/)
 - [Github repo](https://github.com/barbajs/barba)
-- [Slack channel](https://barbajs.slack.com)
+- [Slack channel](https://barbajs.slack.com) (Not in the channel? Use the [invite link](https://join.slack.com/t/barbajs/shared_invite/enQtNTU3NTAyMjkxMzAyLTkxYWUwZmM1YWQxMmNlYmE0ZjY4NDQxMGUxYjkwYWFlMzEzOWM4OTRhMWRmYTQyYzFlMmQ3OGFmYmI3MWY0OWY) 👋🏻)
 
 ## Install
 
@@ -102,9 +102,9 @@ barba.init({
     sync: true,
 
     // available hooks…
-    beforeAppear() {},
-    appear() {},
-    afterAppear() {},
+    beforeOnce() {},
+    once() {},
+    afterOnce() {},
     beforeLeave() {},
     leave() {},
     afterLeave() {},
