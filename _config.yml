@@ -132,6 +132,9 @@ docs:
         url: 'docs/plugins/preset/'
       - title: 'Head'
         url: 'docs/plugins/head/'
+  - title: 'API'
+    url: 'api'
+    path: 'api'
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/

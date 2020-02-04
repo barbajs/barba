@@ -17,7 +17,7 @@ Based on _Intersection Observer_, it processes **all eligible links** that enter
 
 ## Usage
 
-You can use this feature regardless of the [`prefetchIgnore`](core.md#prefetchignore) core property: since the links will be prefetched depending on the viewport, it will prevent the core prefetch process from prefetching a link on enter.
+You can use this feature regardless of the [`prefetchIgnore`](/docs/userguide/syntax/#prefetchIgnore) core property: since the links will be prefetched depending on the viewport, it will prevent the core prefetch process from prefetching a link on enter.
 
 Example:
 

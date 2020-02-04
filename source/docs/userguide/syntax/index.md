@@ -15,15 +15,15 @@ Barba core manages your **page transitions** with ease.
 
 | Option                              | Type                          | Default           | Description                                   |
 | ----------------------------------- | ----------------------------- | ----------------- | --------------------------------------------- |
-| `transitions`                       | Array                         | []                | Array of [`<Transition>`](#transition-object) |
-| `views`                             | Array                         | []                | Array of [`<View>`](#view-object)             |
+| `transitions`                       | Array                         | []                | Array of [`<Transition>`](#lt-transition-gt-object) |
+| `views`                             | Array                         | []                | Array of [`<View>`](#lt-view-gt-object)             |
 | [`debug`](#debug)                   | Boolean                       | false             | Set logLevel to 'debug'                       |
-| [`logLevel`](#loglevel)             | string                        | 'off'             | Log level                                     |
+| [`logLevel`](#logLevel)             | string                        | 'off'             | Log level                                     |
 | [`schema`](#schema)                 | Object                        | `schemaAttribute` | Data attributes                               |
-| [`cacheIgnore`](#cacheignore)       | Boolean \| string \| string[] | false             | Cache strategy                                |
-| [`prefetchIgnore`](#prefetchignore) | Boolean \| string \| string[] | true              | Prefetch strategy                             |
+| [`cacheIgnore`](#cacheIgnore)       | Boolean \| string \| string[] | false             | Cache strategy                                |
+| [`prefetchIgnore`](#prefetchIgnore) | Boolean \| string \| string[] | true              | Prefetch strategy                             |
 | [`prevent`](#prevent)               | Function                      | (optional)        | Custom prevent test                           |
-| [`requestError`](#requesterror)     | Function                      | (optional)        | Custom request error callback                 |
+| [`requestError`](#requestError)     | Function                      | (optional)        | Custom request error callback                 |
 
 #### `<transition>` object
 
@@ -70,7 +70,7 @@ All hooks are **methods** and receive the same [`data`](#data-argument) object.
 
 > "Hooks can be run either synchronously or asynchronously using the common `this.async()` style ([see run-async](https://github.com/sboudrias/run-async#readme)) or returning a promise.
 >
-> If you use [`sync: true`](#sync-mode), as **leave** and **enter** will be concurrent, order will differ: all before\*, then enter/leave, then all after\*.
+> If you use [`sync: true`](#Sync-mode), as **leave** and **enter** will be concurrent, order will differ: all before\*, then enter/leave, then all after\*.
 >
 > Note that you can define **global hooks** using `barba.hooks` and apply it to all your transitions.
 
@@ -131,12 +131,12 @@ barba.init({
 
 ##### `data` argument
 
-Data argument is an object passed to all [transition hooks](#hooks), [view hooks subset](#view-object) and [custom rules](#rules).
+Data argument is an object passed to all [transition hooks](#Hooks), [view hooks subset](#lt-view-gt-object) and [custom rules](#Rules).
 
 | Property                                  | Type              | Description                        |
 | ----------------------------------------- | ----------------- | ---------------------------------- |
-| [`data.current`](#currentnext-properties) | Object            | Current page related               |
-| [`data.next`](#currentnext-properties)    | Object            | Next page related                  |
+| [`data.current`](current-next-properties) | Object            | Current page related               |
+| [`data.next`](#current-next-properties)    | Object            | Next page related                  |
 | `data.trigger`                            | HTMLElement       | Link that triggered the transition |
 |                                           | string 'popstate' | Browser back/forward               |
 |                                           | string 'barba'    | Programmatic navigation            |
@@ -147,13 +147,13 @@ Properties attached to `data.current` and `data.next` objects.
 
 | Name                         | Type        | Description       |
 | ---------------------------- | ----------- | ----------------- |
-| [`container`](#container)    | HTMLElement | Barba container   |
-| [`namespace`](#namespace)    | string      | Barba namespace   |
+| [`container`](/docs/userguide/markup/#Container)    | HTMLElement | Barba container   |
+| [`namespace`](/docs/userguide/markup/#Namespace)    | string      | Barba namespace   |
 | [`url`](#url-properties)     | Object      | URL data the page |
 | `html`                       | string      | HTML of the page  |
 | [`route`](#route-properties) | Object      | Route object      |
 
-> Depending on [rules](#rules), [sync mode](#sync-mode) or [cache availability](#cacheignore), some properties can be `undefined`.
+> Depending on [rules](#Rules), [sync mode](#Sync-mode) or [cache availability](#cacheIgnore), some properties can be `undefined`.
 
 ###### `url` properties
 
@@ -256,7 +256,7 @@ barba.init({
 });
 ```
 
-In this example, based on the [priority order](#priority), Barba will use the `custom-transition`:
+In this example, based on the [priority order](#Priority), Barba will use the `custom-transition`:
 
 - if the link you clicked on contains a `.use-custom-transition` CSS class
 - if you come **from** the `index` or `product` route
@@ -346,7 +346,7 @@ barba.init({
 #### debug
 
 Useful `console.info` about transition used, for **debugging purpose** only.
-It sets [logLevel](#loglevel) to `debug`. Default is `off`.
+It sets [logLevel](#logLevel) to `debug`. Default is `off`.
 
 Example:
 
@@ -393,7 +393,7 @@ Saving pages in the cache results in **less bandwidth usage** and **less server-
 
 If disabled, Barba will retrieve each page **from the server** on every request: this could be useful if your page contains scripts that need to be evaluated on each page call.
 
-You can also define "route" pattern(s) ([see @barba/router](router.md)).
+You can also define "route" pattern(s) ([see @barba/router](/docs/plugins/router/)).
 
 | Value               | Description             |
 | ------------------- | ----------------------- |
@@ -421,7 +421,7 @@ Since there is a 100-300ms delay during the user hover and the click, Barba is u
 
 It follows the same logic as the above `cacheIgnore` option…
 
-> To prefetch all eligible links that enter the viewport, use the [@barba/prefetch](prefetch.md) module.
+> To prefetch all eligible links that enter the viewport, use the [@barba/prefetch](/docs/plugins/prefetch/) module.
 
 Example:
 
@@ -469,7 +469,7 @@ If this function returns `false`, wrong links will not be "force" triggered.
 | Argument   | Type                | Description                                                                                                                  |
 | ---------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | `trigger`  | HTMLElement\|string | The clicked/hovered HTMLElement, string 'popstate' or string 'barba' (see [`data.trigger`](#data-argument))                  |
-| `action`   | string              | The user action on the link: 'enter' when hovering, 'click' when clicking, or 'prefetch' with [@barba/prefetch](prefetch.md) |
+| `action`   | string              | The user action on the link: 'enter' when hovering, 'click' when clicking, or 'prefetch' with [@barba/prefetch](/docs/plugins/prefetch/) |
 | `url`      | string              | Requested URL                                                                                                                |
 | `response` | Object              | Fetch error with `message` or response with `status`, `statusText`, …                                                        |
 
