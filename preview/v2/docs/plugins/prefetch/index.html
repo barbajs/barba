@@ -51,7 +51,7 @@
     window.BARBA = {
       root: '/preview/v2/',
       menu: JSON.parse('[{"title":"Features","url":"features/user-friendly/","slug":"/features","subpages":[{"title":"User friendly","url":"features/user-friendly/"},{"title":"Easy peasy","url":"features/easy-peasy/"},{"title":"Smart","url":"features/smart/"},{"title":"Extensible","url":"features/extensible/"},{"title":"Futureproof","url":"features/futureproof/"},{"title":"Community","url":"features/community/"}]},{"title":"Examples","url":"examples/","slug":"/examples"},{"title":"Showcases","url":"showcase/","slug":"/showcase"},{"title":"Docs","url":"docs/getstarted/intro/","slug":"/docs"}]'),
-      docs: JSON.parse('[{"title":"Get Started","url":"docs/getstarted/intro/","path":"docs/getstarted","nextpage":{"label":"USER GUIDE","url":"docs/userguide/markup/"}},{"title":"User Guide (Core)","url":"docs/userguide/markup/","path":"docs/userguide","subpages":[{"title":"Markup","url":"docs/userguide/markup/"},{"title":"Syntax","url":"docs/userguide/syntax/"}]},{"title":"Plugins","url":"docs/plugins/css/","path":"docs/plugins","subpages":[{"title":"Css","url":"docs/plugins/css/"},{"title":"Router","url":"docs/plugins/router/"},{"title":"Prefetch","url":"docs/plugins/prefetch/"},{"title":"Preset","url":"docs/plugins/preset/"},{"title":"Head","url":"docs/plugins/head/"}]}]'),
+      docs: JSON.parse('[{"title":"Get Started","url":"docs/getstarted/intro/","path":"docs/getstarted","nextpage":{"label":"USER GUIDE","url":"docs/userguide/markup/"}},{"title":"User Guide (Core)","url":"docs/userguide/markup/","path":"docs/userguide","subpages":[{"title":"Markup","url":"docs/userguide/markup/"},{"title":"Syntax","url":"docs/userguide/syntax/"}]},{"title":"Plugins","url":"docs/plugins/css/","path":"docs/plugins","subpages":[{"title":"Css","url":"docs/plugins/css/"},{"title":"Router","url":"docs/plugins/router/"},{"title":"Prefetch","url":"docs/plugins/prefetch/"},{"title":"Preset","url":"docs/plugins/preset/"},{"title":"Head","url":"docs/plugins/head/"}]},{"title":"API","url":"/docs/v2/api","path":"api"}]'),
     }
 
     document.documentElement.classList.add('js');
@@ -392,6 +392,17 @@
 
     </li>
     
+    <li>
+      <a href="/preview/v2//docs/v2/api">
+        <h1 class="docs__nav__title ">API</h1>
+      </a>
+
+      <!-- Subpages -->
+      
+      <!-- Subpages [end]-->
+
+    </li>
+    
     <!-- Page [end]-->
 
   </ul>
@@ -402,13 +413,13 @@
   <h1 id="barba-prefetch"><a href="#barba-prefetch" class="headerlink" title="@barba/prefetch"></a>@barba/prefetch</h1><p>Barba <strong>prefetches automatically and cache</strong> your pages.</p>
 <p>It is mainly inspired by <a href="https://github.com/GoogleChromeLabs/quicklink" target="_blank" rel="noopener">quicklink</a>.</p>
 <h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>Based on <em>Intersection Observer</em>, it processes <strong>all eligible links</strong> that enter the viewport. Note that depending on your browser, you may need a polyfill to properly use this module.</p>
-<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>You can use this feature regardless of the <a href="core.md#prefetchignore"><code>prefetchIgnore</code></a> core property: since the links will be prefetched depending on the viewport, it will prevent the core prefetch process from prefetching a link on enter.</p>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>You can use this feature regardless of the <a href="/docs/userguide/syntax/#prefetchIgnore"><code>prefetchIgnore</code></a> core property. Since the links will be prefetched depending on the viewport, it will prevent the core prefetch process from prefetching a link on enter.</p>
 <p>Example:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span></span><br><span class="line"><span class="keyword">import</span> barbaPrefetch <span class="keyword">from</span> <span class="string">'@barba/prefetch'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// tell Barba to use the prefetch module</span></span><br><span class="line">barba.use(barbaPrefetch)</span><br><span class="line"></span><br><span class="line"><span class="comment">// init Barba</span></span><br><span class="line">barba.init()</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span>;</span><br><span class="line"><span class="keyword">import</span> barbaPrefetch <span class="keyword">from</span> <span class="string">'@barba/prefetch'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tell Barba to use the prefetch module</span></span><br><span class="line">barba.use(barbaPrefetch);</span><br><span class="line"></span><br><span class="line"><span class="comment">// init Barba</span></span><br><span class="line">barba.init();</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>On slow network or with a high page weight, the server can take time to prefetch the response and can lead Barba to abort the transition and display a <em>Timeout error [2000]</em> message.</p>
-<p>See the <a href="core.md#timeout"><code>timeout</code></a> setting to properly manage this behavior.</p>
+<p>See the <a href="/docs/userguide/syntax/#timeout"><code>timeout</code></a> setting to properly manage this behavior.</p>
 </blockquote>
 
 </div>

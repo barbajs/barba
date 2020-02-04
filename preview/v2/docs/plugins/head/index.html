@@ -51,7 +51,7 @@
     window.BARBA = {
       root: '/preview/v2/',
       menu: JSON.parse('[{"title":"Features","url":"features/user-friendly/","slug":"/features","subpages":[{"title":"User friendly","url":"features/user-friendly/"},{"title":"Easy peasy","url":"features/easy-peasy/"},{"title":"Smart","url":"features/smart/"},{"title":"Extensible","url":"features/extensible/"},{"title":"Futureproof","url":"features/futureproof/"},{"title":"Community","url":"features/community/"}]},{"title":"Examples","url":"examples/","slug":"/examples"},{"title":"Showcases","url":"showcase/","slug":"/showcase"},{"title":"Docs","url":"docs/getstarted/intro/","slug":"/docs"}]'),
-      docs: JSON.parse('[{"title":"Get Started","url":"docs/getstarted/intro/","path":"docs/getstarted","nextpage":{"label":"USER GUIDE","url":"docs/userguide/markup/"}},{"title":"User Guide (Core)","url":"docs/userguide/markup/","path":"docs/userguide","subpages":[{"title":"Markup","url":"docs/userguide/markup/"},{"title":"Syntax","url":"docs/userguide/syntax/"}]},{"title":"Plugins","url":"docs/plugins/css/","path":"docs/plugins","subpages":[{"title":"Css","url":"docs/plugins/css/"},{"title":"Router","url":"docs/plugins/router/"},{"title":"Prefetch","url":"docs/plugins/prefetch/"},{"title":"Preset","url":"docs/plugins/preset/"},{"title":"Head","url":"docs/plugins/head/"}]}]'),
+      docs: JSON.parse('[{"title":"Get Started","url":"docs/getstarted/intro/","path":"docs/getstarted","nextpage":{"label":"USER GUIDE","url":"docs/userguide/markup/"}},{"title":"User Guide (Core)","url":"docs/userguide/markup/","path":"docs/userguide","subpages":[{"title":"Markup","url":"docs/userguide/markup/"},{"title":"Syntax","url":"docs/userguide/syntax/"}]},{"title":"Plugins","url":"docs/plugins/css/","path":"docs/plugins","subpages":[{"title":"Css","url":"docs/plugins/css/"},{"title":"Router","url":"docs/plugins/router/"},{"title":"Prefetch","url":"docs/plugins/prefetch/"},{"title":"Preset","url":"docs/plugins/preset/"},{"title":"Head","url":"docs/plugins/head/"}]},{"title":"API","url":"/docs/v2/api","path":"api"}]'),
     }
 
     document.documentElement.classList.add('js');
@@ -392,6 +392,17 @@
 
     </li>
     
+    <li>
+      <a href="/preview/v2//docs/v2/api">
+        <h1 class="docs__nav__title ">API</h1>
+      </a>
+
+      <!-- Subpages -->
+      
+      <!-- Subpages [end]-->
+
+    </li>
+    
     <!-- Page [end]-->
 
   </ul>
@@ -419,6 +430,18 @@
     <span class="docs__nav__lateral__label">Preset</span>
   </a>
    
+  <a
+    href="/preview/v2//docs/v2/api"
+    class="docs__nav__lateral__link--next"
+    data-ref="docs-nav-lateral.link"
+  >
+    <span class="docs__nav__lateral__label">API</span>
+    <svg viewBox="0 0 21 15" aria-hidden="true" class="icon--barba">
+  <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-next"></use> -->
+  <use xlink:href="#barba-arrow-next"></use>
+</svg>
+  </a>
+  
   <button class="docs__nav__lateral__button">
     All topics
   </button>

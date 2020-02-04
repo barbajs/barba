@@ -51,7 +51,7 @@
     window.BARBA = {
       root: '/preview/v2/',
       menu: JSON.parse('[{"title":"Features","url":"features/user-friendly/","slug":"/features","subpages":[{"title":"User friendly","url":"features/user-friendly/"},{"title":"Easy peasy","url":"features/easy-peasy/"},{"title":"Smart","url":"features/smart/"},{"title":"Extensible","url":"features/extensible/"},{"title":"Futureproof","url":"features/futureproof/"},{"title":"Community","url":"features/community/"}]},{"title":"Examples","url":"examples/","slug":"/examples"},{"title":"Showcases","url":"showcase/","slug":"/showcase"},{"title":"Docs","url":"docs/getstarted/intro/","slug":"/docs"}]'),
-      docs: JSON.parse('[{"title":"Get Started","url":"docs/getstarted/intro/","path":"docs/getstarted","nextpage":{"label":"USER GUIDE","url":"docs/userguide/markup/"}},{"title":"User Guide (Core)","url":"docs/userguide/markup/","path":"docs/userguide","subpages":[{"title":"Markup","url":"docs/userguide/markup/"},{"title":"Syntax","url":"docs/userguide/syntax/"}]},{"title":"Plugins","url":"docs/plugins/css/","path":"docs/plugins","subpages":[{"title":"Css","url":"docs/plugins/css/"},{"title":"Router","url":"docs/plugins/router/"},{"title":"Prefetch","url":"docs/plugins/prefetch/"},{"title":"Preset","url":"docs/plugins/preset/"},{"title":"Head","url":"docs/plugins/head/"}]}]'),
+      docs: JSON.parse('[{"title":"Get Started","url":"docs/getstarted/intro/","path":"docs/getstarted","nextpage":{"label":"USER GUIDE","url":"docs/userguide/markup/"}},{"title":"User Guide (Core)","url":"docs/userguide/markup/","path":"docs/userguide","subpages":[{"title":"Markup","url":"docs/userguide/markup/"},{"title":"Syntax","url":"docs/userguide/syntax/"}]},{"title":"Plugins","url":"docs/plugins/css/","path":"docs/plugins","subpages":[{"title":"Css","url":"docs/plugins/css/"},{"title":"Router","url":"docs/plugins/router/"},{"title":"Prefetch","url":"docs/plugins/prefetch/"},{"title":"Preset","url":"docs/plugins/preset/"},{"title":"Head","url":"docs/plugins/head/"}]},{"title":"API","url":"/docs/v2/api","path":"api"}]'),
     }
 
     document.documentElement.classList.add('js');
@@ -392,6 +392,17 @@
 
     </li>
     
+    <li>
+      <a href="/preview/v2//docs/v2/api">
+        <h1 class="docs__nav__title ">API</h1>
+      </a>
+
+      <!-- Subpages -->
+      
+      <!-- Subpages [end]-->
+
+    </li>
+    
     <!-- Page [end]-->
 
   </ul>
@@ -400,7 +411,7 @@
 
   <div class="docs__markdown">
   <h1 id="barba-router"><a href="#barba-router" class="headerlink" title="@barba/router"></a>@barba/router</h1><p>Barba router allows you to use <strong>custom routes</strong> for page transitions.</p>
-<h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>This module adds a <strong>route</strong> rule to Barba, that is less important than <code>custom()</code> but more than <code>namespace</code>. You can check the core <a href="core.md#rules">transition rules</a> for details.</p>
+<h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>This module adds a <strong>route</strong> rule to Barba, that is less important than <code>custom()</code> but more than <code>namespace</code>. You can check the core <a href="/docs/userguide/syntax/#Rules">transition rules</a> for details.</p>
 <h2 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h2><h3 id="barba-use-router-lt-options-gt"><a href="#barba-use-router-lt-options-gt" class="headerlink" title="barba.use(router, &lt;options&gt;)"></a><code>barba.use(router, &lt;options&gt;)</code></h3><table>
 <thead>
 <tr>
@@ -414,7 +425,7 @@
 <td><code>routes</code></td>
 <td>Array</td>
 <td>[]</td>
-<td>Array of <a href="#route-object"><code>&lt;Route&gt;</code></a></td>
+<td>Array of <a href="/docs/userguide/syntax/#route-properties"><code>&lt;Route&gt;</code></a></td>
 </tr>
 </tbody></table>
 <h4 id="lt-route-gt-object"><a href="#lt-route-gt-object" class="headerlink" title="&lt;route&gt; object"></a><code>&lt;route&gt;</code> object</h4><table>
@@ -440,8 +451,7 @@
 <p><code>path</code> supports dynamic segments <code>/product/:id</code> and regular expressions <code>/:lang(fr|en)/:post</code><br>See the <a href="https://github.com/pillarjs/path-to-regexp" target="_blank" rel="noopener">path-to-regexp</a> for detailed documentation.</p>
 </blockquote>
 <p>Example:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span></span><br><span class="line"><span class="keyword">import</span> barbaRouter <span class="keyword">from</span> <span class="string">'@barba/router'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// define your routes</span></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">'/index'</span>,</span><br><span class="line">    name: <span class="string">'home'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">'/product/:id'</span>,</span><br><span class="line">    name: <span class="string">'item'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">// tell Barba to use the router with your custom routes</span></span><br><span class="line">barba.use(barbaRouter, &#123;</span><br><span class="line">  routes,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// init Barba</span></span><br><span class="line">barba.init()</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span>;</span><br><span class="line"><span class="keyword">import</span> barbaRouter <span class="keyword">from</span> <span class="string">'@barba/router'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// define your routes</span></span><br><span class="line"><span class="keyword">const</span> routes = [&#123;</span><br><span class="line">  path: <span class="string">'/index'</span>,</span><br><span class="line">  name: <span class="string">'home'</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">  path: <span class="string">'/product/:id'</span>,</span><br><span class="line">  name: <span class="string">'item'</span></span><br><span class="line">&#125;];</span><br><span class="line"></span><br><span class="line"><span class="comment">// tell Barba to use the router with your custom routes</span></span><br><span class="line">barba.use(barbaRouter, &#123;</span><br><span class="line">  routes,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// init Barba</span></span><br><span class="line">barba.init();</span><br></pre></td></tr></table></figure>
 </div>
 
 
