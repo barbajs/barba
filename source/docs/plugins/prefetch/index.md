@@ -7,7 +7,7 @@ url: 'docs/plugins/prefetch/'
 
 # @barba/prefetch
 
-Barba prefetch **automatically fetch and cache** your pages.
+Barba **prefetches automatically and cache** your pages.
 
 It is mainly inspired by [quicklink](https://github.com/GoogleChromeLabs/quicklink).
 
@@ -17,7 +17,7 @@ Based on _Intersection Observer_, it processes **all eligible links** that enter
 
 ## Usage
 
-You can use this feature regardless the [`prefetchIgnore`](core.md#prefetchignore) core property: since the links will be prefetched depending on the viewport, it will prevent the core prefetch process from prefetching a link on enter.
+You can use this feature regardless of the [`prefetchIgnore`](core.md#prefetchignore) core property. Since the links will be prefetched depending on the viewport, it will prevent the core prefetch process from prefetching a link on enter.
 
 Example:
 

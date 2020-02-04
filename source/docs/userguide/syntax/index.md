@@ -220,7 +220,7 @@ You can combine **multiple rules** on each transition.
 | x.2      | `to`            | Rule(s) match for `next` data               |
 | x.3      | `from`          | Rule(s) match for `current` data            |
 
-> Notice that you can use `from` and `to` properties independently.
+> Note: you can use `from` and `to` properties independently.
 
 Example:
 
@@ -260,7 +260,7 @@ barba.init({
 
 In this example, based on the [priority order](#priority), Barba will use the `custom-transition`:
 
-- if the link you clicked contains a `.use-custom-transition` CSS class
+- if the link you clicked on contains a `.use-custom-transition` CSS class
 - if you come **from** the `index` or `product` route
 - if you are navigating **to** the `home` or `item` namespace AND **from** the `index` or `product` route
 
@@ -282,7 +282,7 @@ The _transition resolution_ follows this order:
 
 ##### Sync mode
 
-A mode that indicate whether **leave** and **enter** hooks should "play together".
+A mode that indicates whether **leave** and **enter** hooks should "play together".
 This involves waiting until the next page is available (fetched or cached).
 
 By default the sync mode is set to `false`.
@@ -309,8 +309,8 @@ barba.init({
 
 #### `<view>` object
 
-Views allow you to have some **logic related to the content of a namespace**.
-You can see it as "lifecycle" into Barba. It is a good place to init or destroy things…
+Views allows you to have some **logic related to the content of a namespace**.
+You can see it a "lifecycle" into Barba. It is a good place to init or destroy things…
 They use a subset of transition hooks and receive the same [`data`](#data-argument) object.
 
 Available hooks are:
@@ -389,7 +389,7 @@ barba.init({
 
 Allows Barba to cache your pages.
 
-Saving pages in the cache result in **less bandwidth usage** and **less server-side load**: no `XMLHttpRequest` are made for pages that have already been visited.
+Saving pages in the cache results in **less bandwidth usage** and **less server-side load**: no `XMLHttpRequest` are made for pages that have already been visited.
 
 If disabled, Barba will retrieve each page **from the server** on every request: this could be useful if your page contains scripts that need to be evaluated on each page call.
 
@@ -417,7 +417,7 @@ barba.init({
 
 Allows Barba to prefetch your pages on `mouseover` or `touchstart` events.
 
-Since there is a 100-300ms delay during the user hover and the click, Barba is using this time to start prefetching the next page. Most of the time this dead time is enough to get the next page ready!
+Since there is a 100-300ms delay during the user hover and the click, Barba is using this time to start prefetching the next page. Most of the time, this is enough to get the next page ready!
 
 If follows the same logic as the above `cacheIgnore` option…
 
@@ -470,7 +470,7 @@ barba.init({
 });
 ```
 
-> Note that you can prevent a link of using Barba with the `data-barba-prevent` attribute:
+> Note that you can prevent a link from using Barba with the `data-barba-prevent` attribute:
 >
 > 1. `data-barba-prevent` or `data-barba-prevent="self"` prevents the current link
 > 2. `data-barba-prevent="all"` prevents all children links of a container (`div`, `p`, etc.)

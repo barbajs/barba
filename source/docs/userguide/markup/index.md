@@ -34,14 +34,14 @@ By default, it uses this markup structure in your pages:
 
 ### Wrapper
 
-The wrapper is **the main Barba section** that contains all your page structure and the Barba [container](#container). Be aware, everything inside of this wrapper and outside of the container **will not be updated by Barba**: you can put your `<header>`, `<footer>` or `<nav>` safely here. It is mainly defined on the `<body>` tag, but you can add it on a `div` or `section` for example.
+The wrapper is **the main Barba section** that contains all your page structure and the Barba [container](#container). Beware, everything inside of this wrapper and outside of the container **will not be updated by Barba**: you can put your `<header>`, `<footer>` or `<nav>` safely here. It is mainly defined on the `<body>` tag, but you can add it on a `div` or `section` for example.
 
 ### Container
 
-The container defines **a section in which content is updated automatically** when you navigate between your pages. Be aware, everything inside of this container **will be updated by Barba**: you can put your `<footer>` safely here. It is mainly defined on the `<main>` tag, but you can add it on a `div` or `section` for example.
+The container defines **a section in which content is updated automatically** when you navigate between your pages. Beware, everything inside of this container **will be updated by Barba**: you can put your `<footer>` safely here. It is mainly defined on the `<main>` tag, but you can add it on a `div` or `section` for example.
 
 ### Namespace
 
-The namespace allow you to define **a unique name for each pages**. Barba mainly uses this namespace for transition [rules](#rules) and [views](#view-object).
+The namespace allows you to define **a unique name for each page**. Barba mainly uses this namespace for transition [rules](#rules) and [views](#view-object).
 
-> Note that all **data-barba** attributes can be easily customized using the Barba [schema](#schema).
+> Note: all **data-barba** attributes can be easily customized using the Barba [schema](#schema).
