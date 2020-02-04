@@ -21,7 +21,7 @@ It helps reduce the delay between your pages, minimize browser HTTP requests and
 
 > Notice: this guide assumes intermediate knowledge of HTML, CSS, and JavaScript. It is worth mentioning that all code examples use ES6+ syntax. If you are not comfortable with this syntax we would encourage you to grasp the basics then come back.
 >
-> In case of emergency, check this ["legacy" code example](legacy.md).
+> In case of emergency, check this ["legacy" code example](/docs/getstarted/legacy/).
 
 ## Useful links
 
