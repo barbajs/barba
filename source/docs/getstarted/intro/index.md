@@ -25,14 +25,14 @@ It helps reduce the delay between your pages, minimize browser HTTP requests and
 
 ## Useful links
 
-- [User guide](https://barba.js.org/docs/v2/user/)
-  - [@barba/core](https://barba.js.org/docs/v2/user/core.html)
-  - [@barba/router](https://barba.js.org/docs/v2/user/router.html)
-  - [@barba/prefetch](https://barba.js.org/docs/v2/user/prefetch.html)
-  - [@barba/css](https://barba.js.org/docs/v2/user/css.html)
+- [User guide](https://barba.js.org/docs/userguide/markup/)
+  - [@barba/core](https://barba.js.org/docs/userguide/markup/)
+  - [@barba/router](https://barba.js.org/docs/plugins/router/)
+  - [@barba/prefetch](https://barba.js.org/docs/plugins/prefetch/)
+  - [@barba/css](https://barba.js.org/docs/plugins/css/)
   - @barba/head _(coming soon)_
   - @barba/preset _(coming soon)_
-- [API documentation](https://barba.js.org/api/)
+- <a href="https://barba.js.org/api/" target="_blank">API documentation</a>
 - [Github repo](https://github.com/barbajs/barba)
 - [Slack channel](https://barbajs.slack.com) (Not in the channel? Use the [invite link](https://join.slack.com/t/barbajs/shared_invite/enQtNTU3NTAyMjkxMzAyLTkxYWUwZmM1YWQxMmNlYmE0ZjY4NDQxMGUxYjkwYWFlMzEzOWM4OTRhMWRmYTQyYzFlMmQ3OGFmYmI3MWY0OWY) 👋🏻)
 
