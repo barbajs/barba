@@ -13,6 +13,10 @@ export default {
 
     transitionTitle.innerHTML = next.container.dataset.barbaNamespace
 
+    if (next.container.dataset.barbaNamespace === 'showcase') {
+      transitionTitle.innerHTML = 'showcases';
+    }
+
     if (next.container.dataset.barbaNamespace === 'feature') {
       const featureInstance = getInstance(next.container, 'feature')
       const nextFeatureSlug = next.container.querySelector('.feature').dataset
