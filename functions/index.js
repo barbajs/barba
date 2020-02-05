@@ -164,32 +164,32 @@ exports.showcaseValidation = functions.https.onRequest((req, res) => {
  * => Send slack notifiaction to whom may be interessed
  * to show the new Barba showcase
  */
-// exports.showcaseNotifications = functions.firestore
-//   .document('showcases/{documentId}')
-//   .onUpdate(async change => {
-//     // Initialize webhook for public channel post (#showcase on barbajs.slack.com)
-//     const webhook = new IncomingWebhook(functions.config().slack.public)
-//     const showcase = change.after.data()
+exports.showcaseNotifications = functions.firestore
+  .document('showcases/{documentId}')
+  .onUpdate(async change => {
+    // Initialize webhook for public channel post (#showcase on barbajs.slack.com)
+    const webhook = new IncomingWebhook(functions.config().slack.public)
+    const showcase = change.after.data()
 
-//     // The notification is sent only if isValidated change from false to true, not for the other updates
-//     if (!change.before.data().isValidated && showcase.isValidated) {
-//       const slackNotification = {
-//         text: 'A new showcase has been published.',
-//         attachments: [
-//           {
-//             author_name: showcase.authorName,
-//             author_link: showcase.authorUrl,
-//             title: showcase.siteName,
-//             title_link: showcase.siteUrl,
-//             fallback: 'Showcase informations',
-//             callback_id: 'showcase_submission',
-//             color: '#2e5bdc',
-//             image_url: showcase.pictureUrl,
-//             alt_text: 'Barba.js Showcase',
-//           },
-//         ],
-//       }
+    // The notification is sent only if isValidated change from false to true, not for the other updates
+    if (!change.before.data().isValidated && showcase.isValidated) {
+      const slackNotification = {
+        text: 'A new showcase has been published.',
+        attachments: [
+          {
+            author_name: showcase.authorName,
+            author_link: showcase.authorUrl,
+            title: showcase.siteName,
+            title_link: showcase.siteUrl,
+            fallback: 'Showcase informations',
+            callback_id: 'showcase_submission',
+            color: '#2e5bdc',
+            image_url: showcase.pictureUrl,
+            alt_text: 'Barba.js Showcase',
+          },
+        ],
+      }
 
-//       await webhook.send(slackNotification)
-//     }
-//   })
+      await webhook.send(slackNotification)
+    }
+  })
