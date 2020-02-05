@@ -6,7 +6,7 @@
     <!-- Page -->
     <% theme.docs.forEach(function(page) { %>
     <li>
-      <a href="<%- theme.root %><%- page.url %>">
+      <a href="<%- theme.root %><%- page.url %>" <%- page.extern ? 'target="_blank"' : '' %>>
         <h1 class="docs__nav__title <%- is_current(page.path) ? 'is-open' : '' %>"><%- page.title %></h1>
       </a>
 
@@ -21,6 +21,7 @@
             <h2 class="docs__nav__subtitle <%- is_current(subpage.url) ? 'is-open' : '' %>">
               <%- subpage.title %>
             </h2>
+          </a>
         </li>
         <% }); %>
         <!-- Subpage [end]-->

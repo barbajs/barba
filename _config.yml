@@ -135,6 +135,7 @@ docs:
   - title: 'API'
     url: 'api/'
     path: 'api'
+    extern: true
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
