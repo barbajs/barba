@@ -51,7 +51,7 @@
     window.BARBA = {
       root: '/',
       menu: JSON.parse('[{"title":"Features","url":"features/user-friendly/","slug":"/features","subpages":[{"title":"User friendly","url":"features/user-friendly/"},{"title":"Easy peasy","url":"features/easy-peasy/"},{"title":"Smart","url":"features/smart/"},{"title":"Extensible","url":"features/extensible/"},{"title":"Futureproof","url":"features/futureproof/"},{"title":"Community","url":"features/community/"}]},{"title":"Examples","url":"examples/","slug":"/examples"},{"title":"Showcases","url":"showcase/","slug":"/showcase"},{"title":"Docs","url":"docs/getstarted/intro/","slug":"/docs"}]'),
-      docs: JSON.parse('[{"title":"Get Started","url":"docs/getstarted/intro/","path":"docs/getstarted","nextpage":{"label":"USER GUIDE","url":"docs/userguide/markup/"}},{"title":"User Guide (Core)","url":"docs/userguide/markup/","path":"docs/userguide","subpages":[{"title":"Markup","url":"docs/userguide/markup/"},{"title":"Syntax","url":"docs/userguide/syntax/"}]},{"title":"Plugins","url":"docs/plugins/css/","path":"docs/plugins","subpages":[{"title":"Css","url":"docs/plugins/css/"},{"title":"Router","url":"docs/plugins/router/"},{"title":"Prefetch","url":"docs/plugins/prefetch/"},{"title":"Preset","url":"docs/plugins/preset/"},{"title":"Head","url":"docs/plugins/head/"}]},{"title":"API","url":"api/","path":"api"}]'),
+      docs: JSON.parse('[{"title":"Get Started","url":"docs/getstarted/intro/","path":"docs/getstarted","nextpage":{"label":"USER GUIDE","url":"docs/userguide/markup/"}},{"title":"User Guide (Core)","url":"docs/userguide/markup/","path":"docs/userguide","subpages":[{"title":"Markup","url":"docs/userguide/markup/"},{"title":"Syntax","url":"docs/userguide/syntax/"}]},{"title":"Plugins","url":"docs/plugins/css/","path":"docs/plugins","subpages":[{"title":"Css","url":"docs/plugins/css/"},{"title":"Router","url":"docs/plugins/router/"},{"title":"Prefetch","url":"docs/plugins/prefetch/"},{"title":"Preset","url":"docs/plugins/preset/"},{"title":"Head","url":"docs/plugins/head/"}]},{"title":"API","url":"api/","path":"api","extern":true}]'),
     }
 
     document.documentElement.classList.add('js');
@@ -295,7 +295,7 @@
     <!-- Page -->
     
     <li>
-      <a href="/docs/getstarted/intro/">
+      <a href="/docs/getstarted/intro/" >
         <h1 class="docs__nav__title ">Get Started</h1>
       </a>
 
@@ -306,7 +306,7 @@
     </li>
     
     <li>
-      <a href="/docs/userguide/markup/">
+      <a href="/docs/userguide/markup/" >
         <h1 class="docs__nav__title is-open">User Guide (Core)</h1>
       </a>
 
@@ -321,6 +321,7 @@
             <h2 class="docs__nav__subtitle ">
               Markup
             </h2>
+          </a>
         </li>
         
         <li class="is-open">
@@ -328,6 +329,7 @@
             <h2 class="docs__nav__subtitle is-open">
               Syntax
             </h2>
+          </a>
         </li>
         
         <!-- Subpage [end]-->
@@ -339,7 +341,7 @@
     </li>
     
     <li>
-      <a href="/docs/plugins/css/">
+      <a href="/docs/plugins/css/" >
         <h1 class="docs__nav__title ">Plugins</h1>
       </a>
 
@@ -354,6 +356,7 @@
             <h2 class="docs__nav__subtitle ">
               Css
             </h2>
+          </a>
         </li>
         
         <li class="">
@@ -361,6 +364,7 @@
             <h2 class="docs__nav__subtitle ">
               Router
             </h2>
+          </a>
         </li>
         
         <li class="">
@@ -368,6 +372,7 @@
             <h2 class="docs__nav__subtitle ">
               Prefetch
             </h2>
+          </a>
         </li>
         
         <li class="">
@@ -375,6 +380,7 @@
             <h2 class="docs__nav__subtitle ">
               Preset
             </h2>
+          </a>
         </li>
         
         <li class="">
@@ -382,6 +388,7 @@
             <h2 class="docs__nav__subtitle ">
               Head
             </h2>
+          </a>
         </li>
         
         <!-- Subpage [end]-->
@@ -393,7 +400,7 @@
     </li>
     
     <li>
-      <a href="/api/">
+      <a href="/api/" target="_blank">
         <h1 class="docs__nav__title ">API</h1>
       </a>
 
@@ -408,7 +415,6 @@
   </ul>
 </div>
 <!-- Docs Nav [end]-->
-
   <div class="docs__markdown">
   <h1 id="barba-core"><a href="#barba-core" class="headerlink" title="@barba/core"></a>@barba/core</h1><p>Barba core manages your <strong>page transitions</strong> with ease.</p>
 <h2 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h2><h3 id="barba-init-lt-options-gt"><a href="#barba-init-lt-options-gt" class="headerlink" title="barba.init(&lt;options&gt;)"></a><code>barba.init(&lt;options&gt;)</code></h3><table>
