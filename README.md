@@ -14,7 +14,7 @@
 
 **Barba.js** is a small (7kb minified and compressed) and easy-to-use library that helps you create fluid and smooth transitions between your website's pages.
 
-It helps reduce the delay between your pages, minimize browser HTTP requests and enhance your users' web experience.
+It helps reduce the delay between your pages, minimize browser HTTP requests and enhance your user's web experience.
 
 ## Documentation
 
