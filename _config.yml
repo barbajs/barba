@@ -118,6 +118,8 @@ docs:
         url: 'docs/userguide/markup/'
       - title: 'Syntax'
         url: 'docs/userguide/syntax/'
+      - title: 'Analytics'
+        url: 'docs/userguide/analytics/'
   - title: 'Plugins'
     url: 'docs/plugins/css/'
     path: 'docs/plugins'
