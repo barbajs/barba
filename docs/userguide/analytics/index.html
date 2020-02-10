@@ -307,7 +307,7 @@
     
     <li>
       <a href="/docs/userguide/markup/" >
-        <h1 class="docs__nav__title ">User Guide (Core)</h1>
+        <h1 class="docs__nav__title is-open">User Guide (Core)</h1>
       </a>
 
       <!-- Subpages -->
@@ -332,9 +332,9 @@
           </a>
         </li>
         
-        <li class="">
+        <li class="is-open">
           <a href="/docs/userguide/analytics/">
-            <h2 class="docs__nav__subtitle ">
+            <h2 class="docs__nav__subtitle is-open">
               Analytics
             </h2>
           </a>
@@ -350,7 +350,7 @@
     
     <li>
       <a href="/docs/plugins/css/" >
-        <h1 class="docs__nav__title is-open">Plugins</h1>
+        <h1 class="docs__nav__title ">Plugins</h1>
       </a>
 
       <!-- Subpages -->
@@ -391,9 +391,9 @@
           </a>
         </li>
         
-        <li class="is-open">
+        <li class="">
           <a href="/docs/plugins/head/">
-            <h2 class="docs__nav__subtitle is-open">
+            <h2 class="docs__nav__subtitle ">
               Head
             </h2>
           </a>
@@ -424,7 +424,17 @@
 </div>
 <!-- Docs Nav [end]-->
   <div class="docs__markdown">
-  <h1 id="barba-head"><a href="#barba-head" class="headerlink" title="@barba/head"></a>@barba/head</h1><h3 id="Coming-soon"><a href="#Coming-soon" class="headerlink" title="Coming soon."></a>Coming soon.</h3>
+  <h1 id="Analytics"><a href="#Analytics" class="headerlink" title="Analytics"></a>Analytics</h1><p>Using Barba means that your website it’s going to behave like a <strong>SPA</strong> <em>(Single Page Application)</em>. All your inline <code>&lt;script&gt;</code> will be executed once, and they won’t be executed after a page change done through barba.</p>
+<p>This might be result in some unexpected behavior when using classic tracking methods or thirdy part scripts such as Google Analytics.</p>
+<p>We encourage you to check the specific documentation provided by the vendors on how handle Single Page Applications (or HTML Pushstate API in general).</p>
+<h2 id="analytics-js"><a href="#analytics-js" class="headerlink" title="analytics.js"></a>analytics.js</h2><p>With <code>analytics.js</code> you can manually send a pageview with the following snippet:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">barba.hooks.after(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  ga(<span class="string">'set'</span>, <span class="string">'page'</span>, <span class="built_in">window</span>.location.pathname);</span><br><span class="line">  ga(<span class="string">'send'</span>, <span class="string">'pageview'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>see <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications" target="_blank" rel="noopener">here</a> for more details.</p>
+<h2 id="Google-Tag-Manager"><a href="#Google-Tag-Manager" class="headerlink" title="Google Tag Manager"></a>Google Tag Manager</h2><p>Although you can manually send a page view, GTM has a <code>History change trigger</code> made specifically to track virtual pageview in SPA. See <a href="https://support.google.com/tagmanager/answer/7679322" target="_blank" rel="noopener">here</a> for more info.</p>
+<h2 id="Useful-links"><a href="#Useful-links" class="headerlink" title="Useful links:"></a>Useful links:</h2><ul>
+<li><a href="https://www.simoahava.com/gtm-tips/fix-rogue-referral-problem-single-page-sites/" target="_blank" rel="noopener">Fix rogoue referral with GTM</a></li>
+</ul>
+
 </div>
 
 
@@ -433,7 +443,7 @@
 <div class="docs__nav__lateral" data-component="docs-nav-lateral">
   
   <a
-    href="/docs/plugins/preset/"
+    href="/docs/userguide/syntax/"
     class="docs__nav__lateral__link--prev"
     data-ref="docs-nav-lateral.link"
   >
@@ -441,15 +451,15 @@
   <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-prev"></use> -->
   <use xlink:href="#barba-arrow-prev"></use>
 </svg>
-    <span class="docs__nav__lateral__label">Preset</span>
+    <span class="docs__nav__lateral__label">Syntax</span>
   </a>
    
   <a
-    href="/api/"
+    href="/docs/plugins/css/"
     class="docs__nav__lateral__link--next"
     data-ref="docs-nav-lateral.link"
   >
-    <span class="docs__nav__lateral__label">API</span>
+    <span class="docs__nav__lateral__label">Css</span>
     <svg viewBox="0 0 21 15" aria-hidden="true" class="icon--barba">
   <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-next"></use> -->
   <use xlink:href="#barba-arrow-next"></use>
