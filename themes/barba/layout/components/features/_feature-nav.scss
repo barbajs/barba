@@ -3,7 +3,7 @@
   z-index: 10;
   top: 50%;
   left: 0;
-  display: none;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100vw;
@@ -12,10 +12,6 @@
   list-style: none;
   transform: translateY(-50%);
   pointer-events: none;
-
-  @include mq(m) {
-    display: flex;
-  }
 
   li {
     pointer-events: all;

@@ -32,7 +32,15 @@
   height: 100%;
 }
 
+.page-inner {
+  @include mq(l) {
+    padding: 0 10rem;
+  }
+}
+
 .page__header {
+  max-width: 60rem;
+
   h1 {
     margin: 0;
     color: $c-blue-light;
@@ -49,6 +57,7 @@
     @include mq(l) {
       font-size: 6.5rem;
       line-height: 6.5rem;
+
     }
 
     [data-barba-namespace*='--black'] & {
