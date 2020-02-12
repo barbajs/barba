@@ -3,15 +3,22 @@
   @include get-all-space;
 
   display: block;
-  padding: 16rem 4rem 6rem;
+  margin-top: 20rem !important;
+  margin-bottom: 10rem !important;
+  // padding: 16rem 4rem 6rem;
   perspective: 1000px;
 
   @include mq(m) {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
     padding: 4rem;
   }
 
   .is-transitioning & {
-    overflow: hidden;
+
+    @include mq(l) {
+      overflow: hidden;
+    }
   }
 }
 
@@ -191,10 +198,24 @@
 .feature .logo.featured {
   @include center-x;
 
-  @include mq(l, xxxl) {
-    top: 45%;
+  z-index: 10;
+  top: -10rem;
+  width: 23.5rem;
+
+  @include mq(m) {
+    top: 4rem;
+  }
+
+  .base {
+    position: relative;
+    z-index: 100;
+  }
+
+  .big {
+    display: block;
   }
 }
+
 
 .credits-table {
   tr {

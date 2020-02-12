@@ -1,10 +1,11 @@
 /* stylelint-disable selector-max-combinators, selector-max-compound-selectors, max-nesting-depth, no-descending-specificity */
 .feature-box {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 50%;
   width: 100%;
   max-width: 85vw;
+  margin-top: 10rem;
   background: rgba($white, 0.8);
   border-radius: 10px;
   box-shadow: 0 1.4rem 3rem rgba($gray-light, 0.3);
@@ -14,6 +15,7 @@
     top: initial;
     bottom: 1rem;
     width: 80rem;
+    margin-top: 0;
   }
 
   @include mq(xxxl) {
@@ -107,23 +109,4 @@
   border-top: 0.1px solid $gray-lighter;
 }
 
-.feature .logo.featured {
-  @include center-x;
 
-  z-index: 10;
-  top: 10rem;
-  width: 23.5rem;
-
-  @include mq(m) {
-    top: 4rem;
-  }
-
-  .base {
-    position: relative;
-    z-index: 100;
-  }
-
-  .big {
-    display: block;
-  }
-}
