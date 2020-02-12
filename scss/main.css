@@ -1978,10 +1978,13 @@ body {
   align-items: center;
   width: 100vw;
   margin: 0;
-  padding: 0 5rem;
+  padding: 0 1rem;
   list-style: none;
   transform: translateY(-50%);
   pointer-events: none; }
+  @media only screen and (min-width: 48em) {
+    .feature__nav {
+      padding: 0 5rem; } }
   .feature__nav li {
     pointer-events: all; }
   .feature__nav a {
