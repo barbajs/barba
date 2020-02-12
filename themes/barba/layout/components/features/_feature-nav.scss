@@ -8,10 +8,14 @@
   align-items: center;
   width: 100vw;
   margin: 0;
-  padding: 0 5rem;
+  padding: 0 1rem;
   list-style: none;
   transform: translateY(-50%);
   pointer-events: none;
+
+  @include mq(m) {
+    padding: 0 5rem;
+  }
 
   li {
     pointer-events: all;
