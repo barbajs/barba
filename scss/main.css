@@ -2037,6 +2037,7 @@ body {
   display: block;
   margin-top: 20rem !important;
   margin-bottom: 10rem !important;
+  padding: 0 4rem;
   perspective: 1000px; }
   @media only screen and (min-width: 48em) {
     .feature {
