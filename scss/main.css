@@ -2038,13 +2038,17 @@ body {
   width: 100%;
   height: 100%;
   display: block;
-  padding: 16rem 4rem 6rem;
+  margin-top: 20rem !important;
+  margin-bottom: 10rem !important;
   perspective: 1000px; }
   @media only screen and (min-width: 48em) {
     .feature {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
       padding: 4rem; } }
-  .is-transitioning .feature {
-    overflow: hidden; }
+  @media only screen and (min-width: 64em) {
+    .is-transitioning .feature {
+      overflow: hidden; } }
 
 .big-shape-outer {
   position: absolute;
@@ -2175,10 +2179,18 @@ body {
 .feature .logo.featured {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%); }
-  @media only screen and (min-width: 64em) and (max-width: 99.99em) {
+  transform: translateX(-50%);
+  z-index: 10;
+  top: -10rem;
+  width: 23.5rem; }
+  @media only screen and (min-width: 48em) {
     .feature .logo.featured {
-      top: 45%; } }
+      top: 4rem; } }
+  .feature .logo.featured .base {
+    position: relative;
+    z-index: 100; }
+  .feature .logo.featured .big {
+    display: block; }
 
 .credits-table tr {
   display: inline; }
@@ -2206,10 +2218,11 @@ body {
 /* stylelint-disable selector-max-combinators, selector-max-compound-selectors, max-nesting-depth, no-descending-specificity */
 .feature-box {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 50%;
   width: 100%;
   max-width: 85vw;
+  margin-top: 10rem;
   background: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   box-shadow: 0 1.4rem 3rem rgba(160, 160, 160, 0.3);
@@ -2218,7 +2231,8 @@ body {
     .feature-box {
       top: initial;
       bottom: 1rem;
-      width: 80rem; } }
+      width: 80rem;
+      margin-top: 0; } }
   @media only screen and (min-width: 100em) {
     .feature-box {
       bottom: 10rem; } }
@@ -2298,22 +2312,6 @@ body {
   align-items: center;
   padding: 2rem;
   border-top: 0.1px solid silver; }
-
-.feature .logo.featured {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  top: 10rem;
-  width: 23.5rem; }
-  @media only screen and (min-width: 48em) {
-    .feature .logo.featured {
-      top: 4rem; } }
-  .feature .logo.featured .base {
-    position: relative;
-    z-index: 100; }
-  .feature .logo.featured .big {
-    display: block; }
 
 [data-barba='container'] {
   position: relative;
