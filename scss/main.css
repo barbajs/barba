@@ -1973,7 +1973,7 @@ body {
   z-index: 10;
   top: 50%;
   left: 0;
-  display: none;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100vw;
@@ -1982,9 +1982,6 @@ body {
   list-style: none;
   transform: translateY(-50%);
   pointer-events: none; }
-  @media only screen and (min-width: 48em) {
-    .feature__nav {
-      display: flex; } }
   .feature__nav li {
     pointer-events: all; }
   .feature__nav a {
@@ -2468,40 +2465,45 @@ body {
   width: 100%;
   height: 100%; }
 
-.page__header h1 {
-  margin: 0;
-  color: #5a82f1;
-  font-family: "Space Mono", monospace;
-  font-size: 2.8rem;
-  font-weight: 400;
-  line-height: 3.2rem; }
-  @media only screen and (min-width: 48em) {
-    .page__header h1 {
-      font-size: 3.6rem;
-      line-height: 4.2rem; } }
-  @media only screen and (min-width: 64em) {
-    .page__header h1 {
-      font-size: 6.5rem;
-      line-height: 6.5rem; } }
-  [data-barba-namespace*='--black'] .page__header h1 {
-    color: white; }
+@media only screen and (min-width: 64em) {
+  .page-inner {
+    padding: 0 10rem; } }
 
-.page__header p {
-  margin: 0;
-  margin-top: 2rem;
-  font-size: 1.8rem;
-  line-height: 2.4rem; }
-  @media only screen and (min-width: 48em) {
-    .page__header p {
-      font-size: 2.4rem;
-      line-height: 3.2rem; } }
-  @media only screen and (min-width: 64em) {
-    .page__header p {
-      margin-top: 5.4rem;
-      font-size: 3.5rem;
-      line-height: 4.8rem; } }
-  [data-barba-namespace*='--black'] .page__header p {
-    color: white; }
+.page__header {
+  max-width: 60rem; }
+  .page__header h1 {
+    margin: 0;
+    color: #5a82f1;
+    font-family: "Space Mono", monospace;
+    font-size: 2.8rem;
+    font-weight: 400;
+    line-height: 3.2rem; }
+    @media only screen and (min-width: 48em) {
+      .page__header h1 {
+        font-size: 3.6rem;
+        line-height: 4.2rem; } }
+    @media only screen and (min-width: 64em) {
+      .page__header h1 {
+        font-size: 6.5rem;
+        line-height: 6.5rem; } }
+    [data-barba-namespace*='--black'] .page__header h1 {
+      color: white; }
+  .page__header p {
+    margin: 0;
+    margin-top: 2rem;
+    font-size: 1.8rem;
+    line-height: 2.4rem; }
+    @media only screen and (min-width: 48em) {
+      .page__header p {
+        font-size: 2.4rem;
+        line-height: 3.2rem; } }
+    @media only screen and (min-width: 64em) {
+      .page__header p {
+        margin-top: 5.4rem;
+        font-size: 3.5rem;
+        line-height: 4.8rem; } }
+    [data-barba-namespace*='--black'] .page__header p {
+      color: white; }
 
 .page__separator {
   width: 5rem;
