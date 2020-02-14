@@ -26,11 +26,11 @@
 .feature-box__body {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 3rem;
   padding: 3rem;
 
   @include mq(l) {
     grid-template-columns: repeat(6, 1fr);
+    grid-gap: 3rem;
     padding: 4rem;
   }
 }
@@ -49,6 +49,7 @@
     @include mq($until: l) {
       display: flex;
       flex-wrap: wrap;
+      grid-column: span 4;
     }
   }
 
@@ -69,7 +70,11 @@
   margin: 0 1rem 1rem 0;
 
   &[class*='big'] {
-    display: none;
+    // display: none;
+    width: 18rem;
+    height: 13rem;
+    margin: 0 auto;
+
 
     @include mq(l) {
       display: block;
@@ -102,6 +107,7 @@
   line-height: 1.5 !important; //stylelint-disable-line declaration-no-important
 
   @include mq(l) {
+    margin: 0;
     font-size: 1.6rem !important; //stylelint-disable-line declaration-no-important
   }
 }
