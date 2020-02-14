@@ -69,8 +69,13 @@
   margin: 0 1rem 1rem 0;
 
   &[class*='big'] {
-    width: 18rem;
-    height: 13rem;
+    display: none;
+
+    @include mq(l) {
+      display: block;
+      width: 18rem;
+      height: 13rem;
+    }
   }
 
   .partial-image {

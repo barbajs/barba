@@ -72,11 +72,13 @@
     }
   }
 
-  a:hover {
-    span {
-      opacity: 1;
-      pointer-events: initial;
-      transform: translate3d(0, -50%, 0);
+  @include mq(m) {
+    a:hover {
+      span {
+        opacity: 1;
+        pointer-events: initial;
+        transform: translate3d(0, -50%, 0);
+      }
     }
   }
 }
