@@ -23,6 +23,8 @@ export default {
       document.querySelector('.site-footer'),
     ]
 
+    const scale = window.innerWidth < 800 ? 1 : 1.5;
+
     document.documentElement.classList.add('is-transitioning')
     console.log(logoItems)
     const tl = gsap.timeline({
@@ -36,7 +38,7 @@ export default {
       logo,
       {
         duration: 1,
-        scale: 1.5,
+        scale,
         ease: 'back.out',
       },
       0.3
@@ -49,7 +51,7 @@ export default {
           ease: 'back.out',
           stagger: 0.05,
         },
-        '<'
+        '0'
       )
       .to(
         logoItemsColor,
