@@ -23,7 +23,7 @@ export default {
       document.querySelector('.site-footer'),
     ]
 
-    const scale = window.innerWidth < 800 ? 1.2 : 1.5;
+    const scale = window.innerWidth < 800 ? 1.1 : 1.5;
 
     document.documentElement.classList.add('is-transitioning')
     console.log(logoItems)
