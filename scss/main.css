@@ -2190,7 +2190,7 @@ body {
       top: 4rem; } }
   .feature .logo.featured .base {
     position: relative;
-    z-index: 100; }
+    z-index: 50; }
   .feature .logo.featured .big {
     display: block; }
 
@@ -2220,6 +2220,7 @@ body {
 /* stylelint-disable selector-max-combinators, selector-max-compound-selectors, max-nesting-depth, no-descending-specificity */
 .feature-box {
   position: absolute;
+  z-index: 99;
   top: 0;
   left: 50%;
   width: 100%;
