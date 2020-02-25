@@ -323,9 +323,9 @@ small {
  */
 sub,
 sup {
+  position: relative;
   font-size: 75%;
   line-height: 0;
-  position: relative;
   vertical-align: baseline; }
 
 sup {
@@ -1055,6 +1055,7 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
+  overflow: hidden;
   min-height: 100vh;
   opacity: 0.07;
   pointer-events: none; }
@@ -2067,6 +2068,7 @@ body {
   transform: translateY(-50%);
   right: 0;
   left: 0;
+  height: 100vh;
   opacity: 0.8; }
   .big-shape-outer svg {
     display: block;
@@ -2394,6 +2396,8 @@ body {
     .homepage__title {
       width: 80%;
       font-size: 2.5rem; } }
+  .homepage__title .line {
+    overflow: hidden; }
   .homepage__title span {
     display: inline-block; }
 
