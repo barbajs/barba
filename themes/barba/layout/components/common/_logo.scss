@@ -100,6 +100,8 @@
 
   &.grow.b1,
   .detail-feature &.b1 {
+    z-index: 9;
+
     rect {
       transform: scale(6) translate(-3vw, -4vh) rotate(20deg);
     }
@@ -111,6 +113,8 @@
 
   &.grow.a2,
   .detail-feature &.a2 {
+    z-index: 9;
+
     circle {
       transform: scale(6) translate(1vw, -1vh) rotate(64deg);
     }
@@ -122,6 +126,8 @@
 
   &.grow.r3,
   .detail-feature &.r3 {
+    z-index: 9;
+
     path {
       transform: scale(7) translate(10vw, -2vh) rotate(-147deg);
     }
@@ -133,6 +139,8 @@
 
   &.grow.b4,
   .detail-feature &.b4 {
+    z-index: 9;
+
     rect {
       transform: scale(7) translate(4vw, -4vh) rotate(-27deg);
     }
@@ -144,6 +152,8 @@
 
   &.grow.a5,
   .detail-feature &.a5 {
+    z-index: 9;
+
     rect {
       transform: scale(7) translate(-15vw, -5vh) rotate(-24deg);
     }
@@ -155,6 +165,8 @@
 
   &.grow.c6,
   .detail-feature &.c6 {
+    z-index: 9;
+
     .togrow {
       transform: scale(5) rotate(-35deg);
     }
