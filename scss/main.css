@@ -2376,7 +2376,9 @@ body {
   left: 0; }
   @media only screen and (max-width: 47.99em) {
     .homepage__logo {
-      padding: 2rem 0; } }
+      padding: 2rem 0; }
+      .homepage__logo .logo.only-big {
+        padding: 2rem 0; } }
   .to-feature .homepage__logo {
     z-index: -1; }
 
