@@ -2367,6 +2367,9 @@ body {
 .homepage__logo-outer {
   position: relative;
   width: 100%; }
+  @media only screen and (max-width: 47.99em) {
+    .homepage__logo-outer .logo.only-big {
+      padding: 2rem 0; } }
 
 .homepage__logo {
   position: absolute;
@@ -2376,9 +2379,7 @@ body {
   left: 0; }
   @media only screen and (max-width: 47.99em) {
     .homepage__logo {
-      padding: 2rem 0; }
-      .homepage__logo .logo.only-big {
-        padding: 2rem 0; } }
+      padding: 2rem 0; } }
   .to-feature .homepage__logo {
     z-index: -1; }
 
