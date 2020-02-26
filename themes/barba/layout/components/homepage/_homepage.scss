@@ -17,6 +17,13 @@
 .homepage__logo-outer {
   position: relative;
   width: 100%;
+
+  @include mq($until: m) {
+
+    .logo.only-big {
+      padding: 2rem 0;
+    }
+  }
 }
 
 .homepage__logo {
@@ -29,10 +36,6 @@
 
   @include mq($until: m) {
     padding: 2rem 0;
-
-    .logo.only-big {
-      padding: 2rem 0;
-    }
   }
 
   .to-feature & {
