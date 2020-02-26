@@ -2066,9 +2066,9 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  z-index: -1;
   right: 0;
   left: 0;
-  height: 100vh;
   opacity: 0.8; }
   .big-shape-outer svg {
     display: block;
@@ -2079,6 +2079,9 @@ body {
       display: none; }
   .big-shape-outer * {
     pointer-events: none; }
+  @media only screen and (max-width: 63.99em) {
+    .big-shape-outer {
+      height: 100vh; } }
 
 [data-feature-order='0'] .colored {
   color: #38d1f1; }
@@ -2371,6 +2374,9 @@ body {
   right: 0;
   bottom: 0;
   left: 0; }
+  @media only screen and (max-width: 47.99em) {
+    .homepage__logo {
+      padding: 2rem 0; } }
   .to-feature .homepage__logo {
     z-index: -1; }
 
