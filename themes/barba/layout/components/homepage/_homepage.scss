@@ -27,6 +27,9 @@
   left: 0;
   // transform: scale(0.7);
 
+  @include mq($until: m) {
+    padding: 2rem 0;
+  }
 
   .to-feature & {
     z-index: -1;
