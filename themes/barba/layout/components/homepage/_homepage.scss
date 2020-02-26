@@ -29,6 +29,10 @@
 
   @include mq($until: m) {
     padding: 2rem 0;
+
+    .logo.only-big {
+      padding: 2rem 0;
+    }
   }
 
   .to-feature & {
