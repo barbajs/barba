@@ -64,7 +64,7 @@ It helps reduce the delay between your pages, minimize browser HTTP requests and
 - [Sync mode](https://barba.js.org/docs/userguide/syntax/#Sync-mode) will start `leave` and `enter` transitions concurrently
 
 ## How it works?
-BarbaJS make your site work like a *Single Page Application* (SPA), allowing you to create smooth transitions **without having to reload the whole site**, reducing load delay, browser requests and enhancing user's web experience. Here is a small lifecycle diagram that describe **Barba's main concept** when navigating between two pages.
+BarbaJS makes your site work like a *Single Page Application* (SPA), allowing you to create smooth transitions **without having to reload the whole site**, reducing load delay, browser requests and enhancing user's web experience. Here is a small lifecycle diagram that describe **Barba's main concept** when navigating between two pages.
 
 [![Barba lifecycle diagram](lifecycle-diagram.png "Barba lifecycle diagram")](lifecycle-diagram.png?raw=true)
 
