@@ -56,13 +56,14 @@ or using a CDN:
 
 ## Getting started
 
-> See [@barba/core](https://barba.js.org/docs/v2/user/core.html) for more details…
+> See [@barba/core syntax documentation](https://barba.js.org/docs/userguide/syntax/) for more details…
+
+Basic default transition (with no rules and minimal hooks):
 
 ```js
 // do not import Barba like this if you load the library through the browser
 import barba from '@barba/core';
 
-// basic default transition (with no rules and minimal hooks)
 barba.init({
   transitions: [{
     leave({ current, next, trigger }) {
@@ -75,8 +76,11 @@ barba.init({
     }
   }]
 });
+```
 
-// dummy example to illustrate rules and hooks
+Example to illustrate rules and hooks:
+
+```javascript
 barba.init({
   transitions: [{
     name: 'dummy-transition',

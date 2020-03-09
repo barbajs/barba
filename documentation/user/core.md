@@ -42,31 +42,44 @@ The container defines **a section in which content is updated automatically** wh
 
 ### Namespace
 
-The namespace allow you to define **a unique name for each pages**. Barba mainly uses this namespace for transition [rules](#rules) and [views](#view-object).
+The namespace allow you to define **a unique name for each pages**. Barba mainly uses this namespace for transition [rules](#transition-rules) and [views](#view-objects).
 
-> Note that all **data-barba** attributes can be easily customized using the Barba [schema](#schema).
+> Note that all **data-barba** attributes can be easily customized using the Barba [schema](#schema-property).
 
 ## Syntax
 
+For samples, see the [**Getting Started** docs page](https://barba.js.org/docs/getstarted/intro/)'s "Getting Started" section.
+
 ### `barba.init(<options>)`
 
-| Option                              | Type                          | Default           | Description                                       |
-| ----------------------------------- | ----------------------------- | ----------------- | ------------------------------------------------- |
-| `transitions`                       | Array                         | []                | Array of [`<Transition>`](#transition-object)     |
-| `views`                             | Array                         | []                | Array of [`<View>`](#view-object)                 |
-| [`debug`](#debug)                   | Boolean                       | false             | Set logLevel to 'debug'                           |
-| [`logLevel`](#loglevel)             | string                        | 'off'             | Log level                                         |
-| [`schema`](#schema)                 | Object                        | `schemaAttribute` | Data attributes                                   |
-| [`cacheIgnore`](#cacheignore)       | Boolean \| string \| string[] | false             | Cache strategy                                    |
-| [`prefetchIgnore`](#prefetchignore) | Boolean \| string \| string[] | true              | Prefetch strategy                                 |
-| [`preventRunning`](#preventrunning) | Boolean                       | false             | Prevent "force reload" when transition is running |
-| [`prevent`](#prevent)               | Function                      | (optional)        | Custom prevent test                               |
-| [`requestError`](#requesterror)     | Function                      | (optional)        | Custom request error callback                     |
-| [`timeout`](#timeout)               | Integer                       | 2000              | Custom request timeout (ms)                       |
+| Option                                       | Type                                 | Default           | Description                                       |
+| -------------------------------------------- | ------------------------------------ | ----------------- | ------------------------------------------------- |
+| `transitions`                                | Array                                | []                | Array of [`<Transition>`](#transition-objects)    |
+| `views`                                      | Array                                | []                | Array of [`<View>`](#view-objects)                |
+| [`debug`](#debug-property)                   | Boolean                              | false             | Set logLevel to 'debug'                           |
+| [`logLevel`](#loglevel-property)             | String                               | 'off'             | Log level                                         |
+| [`schema`](#schema-property)                 | Object                               | `schemaAttribute` | Data attributes used when parsing the DOM         |
+| [`cacheIgnore`](#cacheignore-property)       | Boolean, string, or array of strings | false             | Cache strategy                                    |
+| [`prefetchIgnore`](#prefetchignore-property) | Boolean, string, or array of strings | true              | Prefetch strategy                                 |
+| [`preventRunning`](#preventrunning-property) | Boolean                              | false             | Prevent "force reload" when transition is running |
+| [`prevent`](#prevent-property)               | Function                             |                   | Prevent Barba from running on certain links       |
+| [`requestError`](#requesterror-property)     | Function                             |                   | Callback to handle request errors                 |
+| [`timeout`](#timeout-property)               | Integer                              | 2000              | Request timeout duration (ms)                     |
 
-#### `<transition>` object
+`<Transition>`s and `<View>`'s make use of the [`data` object](#data-object).
 
-##### name
+#### `<Transition>` objects
+
+Define your transitions as `<Transition>` objects in the `barba.init` `transitions` array. `<Transitions>` have the following properties:
+
+| Property                      | Type                             | Description                                                                                               |
+| ----------------------------- | -------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| [`name`](#transition-name)    | String                           | Identifier                                                                                                |
+| [hooks](#transition-hooks)    | Methods with Barba-defined names | Where you define what happens during a page transition                                                    |
+| [rules](#transition-rules)    | Mixed                            | Logic determining whether or not to use a given transition                                                |
+| [sync](#transition-sync-mode) | Boolean                          | Whether or not hooks related to the outgoing page run at the same time as those related to incoming page. |
+
+##### Transition `name`
 
 An optional name for your transition.
 
@@ -78,23 +91,23 @@ import barba from '@barba/core';
 barba.init({
   transitions: [{
     name: 'svg-circle',
-    ...
+    // ...
   }, {
     name: 'svg-slide',
-    ...
+    // ...
   }]
 });
 ```
 
-##### Hooks
+##### Transition hooks
 
-All hooks are **methods** and receive the same [`data`](#data-argument) object.
+All hooks are **methods** and receive the same [`data`](#data-object) object.
 
 | Order | Name         | Description                      |
 | ----- | ------------ | -------------------------------- |
 | 1     | `beforeOnce` | Before **once** transition       |
 | 2     | `once`       | Current page **once** transition |
-| 3     | `afterOnce`  | Before **once** transition       |
+| 3     | `afterOnce`  | After **once** transition        |
 
 | Order | Name          | Description                                                     |
 | ----- | ------------- | --------------------------------------------------------------- |
@@ -107,36 +120,45 @@ All hooks are **methods** and receive the same [`data`](#data-argument) object.
 | 7     | `afterEnter`  | After **enter** transition                                      |
 | 8     | `after`       | After everything                                                |
 
-> Hooks can be run either synchronously or asynchronously using the common `this.async()` style ([see run-async](https://github.com/sboudrias/run-async#readme)) or returning a promise.
->
-> If you use [`sync: true`](#sync-mode), as **leave** and **enter** will be concurrent, order will differ: all before\*, then enter/leave, then all after\*.
->
-> Note that you can define **global hooks** using `barba.hooks` and apply it to all your transitions.
+For transitions using [`sync: true`](#transition-sync-mode), the order changes because **leave** and **enter** are concurrent:
 
-Example:
+| Order | Name                                      |
+| ----- | ----------------------------------------- |
+| 1     | `before`, `beforeEnter` and `beforeLeave` |
+| 2     | `enter` and `leave`                       |
+| 3     | `after`, `afterEnter`, and `afterLeave`   |
+
+Hooks can be run either synchronously or asynchronously. Asynchronous hooks can be written with the `async/await` pattern, the `this.async()` pattern (thanks to [run-async](https://github.com/sboudrias/run-async#readme)), or by returning a promise.
+
+See [`data` object](#data-object) for an explanation of the `data` used in the following hook examples.
+
+Example: a synchronous hook
 
 ```js
 import barba from '@barba/core';
 
-// define a global hook
-barba.hooks.leave((data) => {
-  // this hook will be called for each transitions
+barba.init({
+  transitions: [{
+    leave(data) {
+      // `leave` animation here
+    }
+  }]
 });
+```
+
+Example: four possible patterns for an asynchronous. Assume `asyncAnimation` and `callbackAnimation` are defined animation functions.
+
+```js
+import barba from '@barba/core';
 
 barba.init({
   transitions: [{
-
-    // basic style
-    leave(data) {
-      // create your stunning leave animation here
-    },
-
-    // async/await style
+    // async/await
     async leave(data) {
       await asyncAnimation(data.current.container);
     },
 
-    // `this.async()` style
+    // `this.async()`
     leave(data) {
       const done = this.async();
 
@@ -147,13 +169,10 @@ barba.init({
       });
     },
 
-    // using a promise, returned with arrow function
+    // a promise returned with arrow function
     leave: (data) => asyncAnimation(data.current.container),
 
-    // es6 syntax: `{ current } = data.current`
-    leave: ({ current }) => asyncAnimation(current.container),
-
-    // using a promise
+    // an explicit promise
     leave(data) => {
       return new Promise(resolve => {
         callbackAnimation(data.current.container, {
@@ -167,99 +186,49 @@ barba.init({
 });
 ```
 
-##### `data` argument
+###### Global `hooks`
 
-Data argument is an object passed to all [transition hooks](#hooks), [view hooks subset](#view-object) and [custom rules](#rules).
+To share a hook across all `<Transition>`s in the `transitions` array, create a global hook on `barba.hooks`.
 
-| Property                                  | Type             | Description                        |
-| ----------------------------------------- | ---------------- | ---------------------------------- |
-| [`data.current`](#currentnext-properties) | Object           | Current page related               |
-| [`data.next`](#currentnext-properties)    | Object           | Next page related                  |
-| `data.trigger`                            | HTMLElement      | Link that triggered the transition |
-|                                           | string 'barba'   | Programmatic navigation            |
-|                                           | string 'back'    | Browser back button                |
-|                                           | string 'forward' | Browser forward button             |
-
-###### `current/next` properties
-
-Properties attached to `data.current` and `data.next` objects.
-
-| Name                         | Type        | Description       |
-| ---------------------------- | ----------- | ----------------- |
-| [`container`](#container)    | HTMLElement | Barba container   |
-| [`namespace`](#namespace)    | string      | Barba namespace   |
-| [`url`](#url-properties)     | Object      | URL data the page |
-| `html`                       | string      | HTML of the page  |
-| [`route`](#route-properties) | Object      | Route object      |
-
-> Depending on [rules](#rules), [sync mode](#sync-mode) or [cache availability](#cacheignore), some properties can be `undefined`.
-
-###### `url` properties
-
-Properties attached to `data.current.url` and `data.next.url` objects.
-
-| Property | Type   | Default         | Description                               |
-| -------- | ------ | --------------- | ----------------------------------------- |
-| `hash`   | string |                 | URL hash                                  |
-| `href`   | string | `location.href` | Complete URL                              |
-| `path`   | string |                 | URL path (without origin, hash and query) |
-| `query`  | Object | {}              | URL query (key: value)                    |
-
-###### `route` properties
-
-Properties attached to `data.current.route` and `data.next.route` objects.
-
-> `route` is available with `@barba/router`
-
-| Property | Type   | Default | Description          |
-| -------- | ------ | ------- | -------------------- |
-| `name`   | String | -       | Route name           |
-| `params` | Object | {}      | Route segment params |
-
-Example:
+Example
 
 ```js
 import barba from '@barba/core';
 
-barba.init({
-  transitions: [
-    {
-      name: 'svg-circle',
-      leave(data) {
-        // retrieve the current page url
-        const from = data.current.url;
-      },
-      enter({ next }) {
-        // retrieve the next page url (short syntax)
-        const to = next.url;
-      },
-    },
-  ],
+barba.hooks.leave((data) => {
+  // `leave` hook shared by all `<Transition>`s in `transitions`
 });
 ```
 
-##### Rules
+##### Transition rules
 
-Rules define the _transition resolution_, concretely "selecting the right transition to use".
-You can combine **multiple rules** on each transition.
+Rules determine which transition is applied, the _transition resolution_. You can combine **multiple rules** on each transition.
 
-| Priority | Name        | Type             | Argument                      | Apply when…                |
-| -------- | ----------- | ---------------- | ----------------------------- | -------------------------- |
-| 1        | `custom`    | Function         | [data](#data-argument) object | Return `true`              |
-| 2        | `route`     | String\|String[] | -                             | `current.route.name` match |
-| 3        | `namespace` | String\|String[] | -                             | `current.namespace` match  |
+There are two rule objects, `<Transition>.from` and `<Transition>.to`. `data.current` determines which `from` rule(s) will be used; `data.next` determines with `to` rule(s) will be used.
 
-> Any rules can be used within `from` and/or `to` properties.
+There are three types of rules, _any or all of which_ may be used by a given transition's `to` or `from`: `custom`, `route`, and `namespace`:
+
+| Priority | Name        | Type             | Argument                      | Apply when…                                                        |
+| -------- | ----------- | ---------------- | ----------------------------- | ------------------------------------------------------------------ |
+| 1        | `custom`    | Function         | [`data` object](#data-object) | Rule returns `true`                                                |
+| 2        | `route`     | String or Array  |                               | Value includes `data.current.route.name`. Requires `@barba/router` |
+| 3        | `namespace` | String or Array  |                               | Value includes `data.current.namespace`                            |
+
+###### Transition rules' priority
 
 | Priority | Usage           | Apply when…                                 |
 | -------- | --------------- | ------------------------------------------- |
-| x.1      | `from` AND `to` | Rule(s) match for `current` AND `next` data |
-| x.2      | `to`            | Rule(s) match for `next` data               |
-| x.3      | `from`          | Rule(s) match for `current` data            |
+| 1        | `from` AND `to` | Rule(s) match for `current` AND `next` data |
+| 2        | `to`            | Rule(s) match for `next` data               |
+| 3        | `from`          | Rule(s) match for `current` data            |
 
-> Notice that you can use `from` and `to` properties independently.
+> Notice that you can use `from` and `to` properties independently. A given transition could be used when leaving Page 1 and also when going to Page 2, even if there is no link on Page 1 to Page 2.
 
-Example:
+Example: the transition named "custom-transition" will be used in any of these scenarios, assuming their is not a higher priority match in the transition named "other-transition".
+
+- the clicked link has the CSS class `.use-custom-transition`
+- the current page is the "index" or "product" `route`
+- the destination is in the "home" or "item" `namespace`
 
 ```js
 import barba from '@barba/core';
@@ -267,9 +236,12 @@ import barba from '@barba/core';
 barba.init({
   transitions: [{
     name: 'custom-transition',
-    from: {
 
-      // define a custom rule based on the trigger class
+    // ...
+
+    // rules
+    from: {
+      // define a custom rule based on `data.trigger`'s CSS
       custom: ({ trigger }) => {
         return trigger.classList && trigger.classList.contains('use-custom-transition');
       },
@@ -281,8 +253,7 @@ barba.init({
       ]
     },
     to: {
-
-      // define rule based on multiple namespaces
+      // Define rule based on multiple namespaces
       namespace: [
         'home',
         'item'
@@ -290,39 +261,18 @@ barba.init({
     }
   }, {
     name: 'other-transition',
-    ...
+    // ...
   }]
 });
 ```
 
-In this example, based on the [priority order](#priority), Barba will use the `custom-transition`:
+##### Transition sync mode
 
-- if the link you clicked contains a `.use-custom-transition` CSS class
-- if you come **from** the `index` or `product` route
-- if you are navigating **to** the `home` or `item` namespace AND **from** the `index` or `product` route
+If sync mode is set to true, the transition's **leave** and **enter** [hooks](#transition-hooks) will run at the same time.
 
-##### Priority
+> Note that this means the **leave** hook will not start until the next page is available (fetched or cached).
 
-The _transition resolution_ follows this order:
-
-1. Rule(s) priority
-2. `from` and/or `to` priority
-3. Declaration order
-
-> The common/default behaviour is to start **leave** as soon as possible.
-> **enter** will be called when **leave** ends _AND_ next page is "available" (fetched or cached).
-> If you use some `to` logic, Barba can not predict and select the right transition until the next page is available.
-> This also applies when using `sync: true`.
-> But this does not apply if `to` is used with `route` property because "next route" is known when the click occurs…
->
-> Bear with this!
-
-##### Sync mode
-
-A mode that indicate whether **leave** and **enter** hooks should "play together".
-This involves waiting until the next page is available (fetched or cached).
-
-By default the sync mode is set to `false`.
+By default sync mode is `false`.
 
 Example:
 
@@ -339,23 +289,50 @@ barba.init({
       enter() {
         // transition that will play concurrently to `leave`
       },
+
+      // rules...
     },
   ],
 });
 ```
 
-#### `<view>` object
+##### Transition resolution priority
 
-Views allow you to have some **logic related to the content of a namespace**.
-You can see it as "lifecycle" into Barba. It is a good place to init or destroy things…
-They use a subset of transition hooks and receive the same [`data`](#data-argument) object.
+It is possible for multiple transitions to match the current page change context. _Transition resolution_ —which transition to use— is determined by this priority order:
+
+1. [Rule(s) priority](#transition-rules-priority)
+2. `from` and/or `to` priority
+3. Declaration order in the `transitions` array
+
+> The default behaviour is to start **leave** as soon as possible, and to start **enter** when **leave** ends _AND_ the next page is "available" (fetched or cached). If using [sync mode](#transition-sync-mode), or `to.custom` or `to.namespace` [rules](#transition-rules), **leave** will not start until the next page is available, at which time its namespace and DOM content will be known. (`to.route` rules do not introduce this **leave** delay because "next route" is known when the click occurs.)
+
+### `<View>` objects
+
+Define behaviors for all pages in a given namespace as `<View>` objects in the `barba.init` `views` array. You can see `<View>`s as "lifecycle" into Barba. It is a good place to initialize or destroy things.
+
+`<View>s` have the following properties:
+
+| Property                       | Type                             | Description                                                |
+| ------------------------------ | -------------------------------- | ---------------------------------------------------------- |
+| [`namespace`](#view-namespace) | String                           | Logic determining whether or not to use a given transition |
+| [hooks](#view-hooks)           | Methods with Barba-defined names | Where you define what happens during a page transition     |
+
+##### View namespace
+
+The `<View>`'s `namespace` determines which Barba namespace the `<View>`'s hooks will apply to.
+
+##### View hooks
+
+The available hooks are a subset of [transition hooks](#transition-hooks). They receive the [`data` object](#data-object).
 
 Available hooks are:
 
-- `beforeLeave`
-- `afterLeave`
-- `beforeEnter`
-- `afterEnter`
+| Order | Name          | Description                                                     |
+| ----- | ------------- | --------------------------------------------------------------- |
+| 1     | `beforeLeave` | Before **leave** transition                                     |
+| 2     | `afterLeave`  | After **leave** transition                                      |
+| 3     | `beforeEnter` | Before **enter** transition and after adding **next container** |
+| 4     | `afterEnter`  | After **enter** transition                                      |
 
 Example:
 
@@ -380,10 +357,75 @@ barba.init({
 });
 ```
 
-#### debug
+##### `data` object
+
+The Barba `data` object is available to all [transition hooks](#transition-hooks), [view hooks](#view-hooks), and [`custom`-type transition rules](#transition-rules). It has the properties `current`, `next`, and `trigger`.
+
+| Property                                     | Type                  | Description                                                                                                                                                                                                   |
+| -------------------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`current`](#datacurrentdatanext-properties) | Object                | Current page                                                                                                                                                                                                  |
+| [`next`](#datacurrentdatanext-properties)    | Object                | Next page                                                                                                                                                                                                     |
+| `trigger`                                    | HTMLElement or String | If HTMLElement, the link that triggered the transition.<br>If string, either programmatic navigation (value 'barba'), the browser back button (value 'back'), or the browser forward button (value 'forward') |
+
+The last three are useful for example when using the [`requestError` property](#requesterror-property).
+
+###### `data.current`/`data.next` properties
+
+| Name                                                 | Type        | Description                              |
+| ---------------------------------------------------- | ----------- | ---------------------------------------- |
+| [`container`](#container)                            | HTMLElement | Barba container                          |
+| [`namespace`](#namespace)                            | String      | Barba namespace                          |
+| [`url`](#datacurrenturldatanexturl-properties)       | Object      | URL data the page                        |
+| `html`                                               | String      | HTML of the page                         |
+| [`route`](#datacurrentroutedatanextroute-properties) | Object      | Route object. _Requires `@barba/router`_ |
+
+> Depending on the transition's [rules](#transition-rules) and [sync mode](#transition-sync-mode), and the pages' [cache availability](#cacheignore-property), some properties can be `undefined`.
+
+###### `data.current.url`/`data.next.url` properties
+
+| Property | Type   | Default         | Description                               |
+| -------- | ------ | --------------- | ----------------------------------------- |
+| `hash`   | String |                 | URL hash                                  |
+| `href`   | String | `location.href` | Complete URL                              |
+| `path`   | String |                 | URL path (without origin, hash and query) |
+| `query`  | Object | {}              | URL query (key: value)                    |
+
+###### `data.current.route`/`data.next.route` properties
+
+Requires `@barba/router`.
+
+| Property | Type   | Default | Description          |
+| -------- | ------ | ------- | -------------------- |
+| `name`   | String |         | Route name           |
+| `params` | Object | {}      | Route segment params |
+
+Example:
+
+```js
+import barba from '@barba/core';
+import barbaRouter from '@barba/router';
+
+barba.init({
+  transitions: [
+    {
+      name: 'svg-circle',
+      leave(data) {
+        // retrieve the current page url
+        const from = data.current.url;
+      },
+      enter({ next }) {
+        // retrieve the next page, using destructings syntax
+        const to = next.url;
+      },
+    },
+  ],
+});
+```
+
+### `debug` property
 
 Useful `console.info` about transition used, for **debugging purpose** only.
-It sets [logLevel](#loglevel) to `debug`. Default is `off`.
+It sets [logLevel](#loglevel-property) to `debug`. Default is `off`.
 
 Example:
 
@@ -395,7 +437,7 @@ barba.init({
 });
 ```
 
-#### logLevel
+### `logLevel` property
 
 ```
 - 0 = off
@@ -405,9 +447,9 @@ barba.init({
 - 4 = debug   = console.log()
 ```
 
-#### schema
+### `schema` property
 
-Allows you to override data attributes. See default [`schemaAttribute`](https://github.com/barbajs/barba/blob/master/packages/core/src/schemas/attribute.ts).
+Allows you to customize the data attributes Barba looks for in your markup. See the default [`schemaAttribute`](https://github.com/barbajs/barba/blob/master/packages/core/src/schemas/attribute.ts).
 
 Example:
 
@@ -422,7 +464,7 @@ barba.init({
 });
 ```
 
-#### cacheIgnore
+#### `cacheIgnore` property
 
 Allows Barba to cache your pages.
 
@@ -432,11 +474,11 @@ If disabled, Barba will retrieve each page **from the server** on every request:
 
 You can also define "route" pattern(s) ([see @barba/router](router.md)).
 
-| Value               | Description             |
-| ------------------- | ----------------------- |
-| `false` (default)   | Cache all               |
-| `true`              | Ignore all              |
-| `string | string[]` | Ignore route pattern(s) |
+| Value                      | Description             |
+| -------------------------- | ----------------------- |
+| `false` (default)          | Cache all               |
+| `true`                     | Ignore all              |
+| String or Array of strings | Ignore route pattern(s) |
 
 > Cache **lifetime** is restricted to Barba instance and will be cleared when leaving the site.
 
@@ -450,13 +492,13 @@ barba.init({
 });
 ```
 
-#### prefetchIgnore
+#### `prefetchIgnore` property
 
-Allows Barba to prefetch your pages on `mouseover` or `touchstart` events.
+Allows Barba to prefetch your pages on `mouseover` or `touchstart` events. Default is `true`.
 
 Since there is a 100-300ms delay during the user hover and the click, Barba is using this time to start prefetching the next page. Most of the time this dead time is enough to get the next page ready!
 
-If follows the same logic as the above `cacheIgnore` option…
+If follows the same logic as the above `cacheIgnore` option.
 
 > To prefetch all eligible links that enter the viewport, use the [@barba/prefetch](prefetch.md) module.
 
@@ -470,9 +512,9 @@ barba.init({
 });
 ```
 
-#### preventRunning
+#### `preventRunning` property
 
-Tells Barba to not "force reload" the page when a transition is running and the user clicks on an eligible link.
+Tells Barba to not "force reload" the page when a transition is running and the user clicks on an eligible link. Default is `false`.
 
 Example:
 
@@ -484,10 +526,10 @@ barba.init({
 });
 ```
 
-#### prevent
+#### `prevent` property
 
-Allows you to add a custom "prevent" test.
-If your function returns `true`, Barba will not be enabled.
+Allows you to add a custom "prevent" test to prevent Barba from running on specific links.
+If your function returns `true`, Barba will not run.
 
 | Argument | Property | Description     |
 | -------- | -------- | --------------- |
@@ -501,28 +543,27 @@ Example:
 import barba from '@barba/core';
 
 barba.init({
-  // define a custom function that will prevent Barba
-  // from working on links that contains a `prevent` CSS class
+  // prevent Barba from working on links with the CSS class `prevent`
   prevent: ({ el }) => el.classList && el.classList.contains('prevent'),
 });
 ```
 
-> Note that you can prevent a link of using Barba with the `data-barba-prevent` attribute:
+> Note that you can also prevent a link from using Barba with the `data-barba-prevent` attribute:
 >
-> 1. `data-barba-prevent` or `data-barba-prevent="self"` prevents the current link
-> 2. `data-barba-prevent="all"` prevents all children links of a container (`div`, `p`, etc.)
+> 1. `data-barba-prevent` or `data-barba-prevent="self"` on a link prevents Barba from working on it
+> 2. `data-barba-prevent="all"` on a parent prevents Barba from working on all child links
 
-#### requestError
+#### `requestError` property
 
 Allows you to catch request errors.
-If this function returns `false`, wrong links will not be "force" triggered.
+If this function returns `false`, broken links will not be followed.
 
-| Argument   | Type                | Description                                                                                                                  |
-| ---------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `trigger`  | HTMLElement\|string | The clicked/hovered HTMLElement, string 'back \| forward' or string 'barba' (see [`data.trigger`](#data-argument))           |
-| `action`   | string              | The user action on the link: 'enter' when hovering, 'click' when clicking, or 'prefetch' with [@barba/prefetch](prefetch.md) |
-| `url`      | string              | Requested URL                                                                                                                |
-| `response` | Object              | Fetch error with `message` or response with `status`, `statusText`, …                                                        |
+| Argument   | Type                  | Description                                                                                                                  |
+| ---------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `trigger`  | HTMLElement or String | The clicked/hovered HTMLElement, or string 'back', 'forward', or 'barba' (see [`data.trigger`](#data-object))                |
+| `action`   | String                | The user action on the link: 'enter' when hovering, 'click' when clicking, or 'prefetch' with [@barba/prefetch](prefetch.md) |
+| `url`      | String                | Requested URL                                                                                                                |
+| `response` | Object                | Fetch error with `message` or response with `status`, `statusText`, …                                                        |
 
 Example:
 
@@ -545,9 +586,9 @@ barba.init({
 
 > Note that if you use `barba.go()` directive without returning `false`, you will be redirected to the requested URL because Barba uses `barba.force()` to reach the page.
 
-#### timeout
+#### `timeout` property
 
-On slow network or with a high page weight, the server can take time to give a response to the user. In case the page take **more than timeout** to be loaded, it lead Barba to abort the transition and display a _Timeout error [2000]_ message.
+On slow connection or with a high page weight, the server can take time to give a response to the user. In case the page take **more than timeout** to be loaded, it lead Barba to abort the transition and display a _Timeout error [2000]_ message.
 
 To prevent this behavior, you can increase the `timeout`:
 
@@ -559,7 +600,7 @@ barba.init({
 });
 ```
 
-In addition, you can properly catch the error by using the [`requestError`](#requesterror) callback.
+In addition, you can properly catch the error by using the [`requestError`](#requesterror-property) callback.
 
 ## Partial output
 
