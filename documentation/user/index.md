@@ -93,8 +93,7 @@ barba.init({
     },
 
     // apply only if clicked link contains `.cta`
-    custom: ({ current, next, trigger })
-      => trigger.classList && trigger.classList.contains('cta'),
+    custom: ({ current, next, trigger }) => trigger.classList && trigger.classList.contains('cta'),
 
     // do leave and enter concurrently
     sync: true,
