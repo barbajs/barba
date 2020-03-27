@@ -5,6 +5,7 @@
   top: 0;
   left: 0;
   background: $white;
+  pointer-events: none;
 
   @include mq(nav) {
     background: transparent;
@@ -26,6 +27,7 @@
 .header__infos {
   display: flex;
   align-items: center;
+  pointer-events: auto;
 
   @include mq(m) {
     position: fixed;
@@ -72,6 +74,7 @@
 .header__external-links {
   z-index: 1000;
   display: flex;
+  pointer-events: auto;
 
   @include mq(m) {
     position: fixed;
