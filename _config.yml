@@ -105,21 +105,26 @@ menu:
 ### Docs Navigation
 docs:
   - title: 'Get Started'
-    url: 'docs/getstarted/intro/'
-    path: 'docs/getstarted'
-    nextpage:
-      label: 'USER GUIDE'
-      url: 'docs/userguide/markup/'
-  - title: 'User Guide (Core)'
-    url: 'docs/userguide/markup/'
-    path: 'docs/userguide'
     subpages:
-      - title: 'Markup'
-        url: 'docs/userguide/markup/'
-      - title: 'Syntax'
-        url: 'docs/userguide/syntax/'
-      - title: 'Analytics'
-        url: 'docs/userguide/analytics/'
+      - title: 'Intro'
+      - title: 'Install (npm, yarn, ..)'
+      - title: 'Markup (syntax)'
+      - title: 'Base transition (simple transition)'
+      - title: 'Run custom code (refresh a component, init something, ..)'
+      - title: 'Legacy example (es5, cdn, code, ..)'
+      - title: 'Browser support (promise, set, map, ..)'
+      - title: 'Useful links (core, router, slack, codepen, YT video, ..)'
+  - title: 'Advanced'
+    subpages:
+      - title: 'Lifecycle (diagram)'
+      - title: 'Hooks (methods, data object argument, ..)'
+      - title: 'Transitions (rules, priority, sync ..)'
+      - title: 'Views (namespace, ..)'
+      - title: 'Strategies (cache, prefetch, prevent ..)'
+      - title: 'Recipes (debug, x-barba partial output, timeout, error, ..)'
+      - title: 'Utils (destroy, force, go, ..)'
+      - title: 'Third party modules (Analytics, Maps, etc.)'
+      - title: 'Developer API'
   - title: 'Plugins'
     url: 'docs/plugins/css/'
     path: 'docs/plugins'
@@ -134,10 +139,42 @@ docs:
         url: 'docs/plugins/preset/'
       - title: 'Head'
         url: 'docs/plugins/head/'
-  - title: 'API'
-    url: 'api/'
-    path: 'api'
-    extern: true
+
+# docs:
+#   - title: 'Get Started'
+#     url: 'docs/getstarted/intro/'
+#     path: 'docs/getstarted'
+#     nextpage:
+#       label: 'USER GUIDE'
+#       url: 'docs/userguide/markup/'
+#   - title: 'User Guide (Core)'
+#     url: 'docs/userguide/markup/'
+#     path: 'docs/userguide'
+#     subpages:
+#       - title: 'Markup'
+#         url: 'docs/userguide/markup/'
+#       - title: 'Syntax'
+#         url: 'docs/userguide/syntax/'
+#       - title: 'Analytics'
+#         url: 'docs/userguide/analytics/'
+#   - title: 'Plugins'
+#     url: 'docs/plugins/css/'
+#     path: 'docs/plugins'
+#     subpages:
+#       - title: 'Css'
+#         url: 'docs/plugins/css/'
+#       - title: 'Router'
+#         url: 'docs/plugins/router/'
+#       - title: 'Prefetch'
+#         url: 'docs/plugins/prefetch/'
+#       - title: 'Preset'
+#         url: 'docs/plugins/preset/'
+#       - title: 'Head'
+#         url: 'docs/plugins/head/'
+#   - title: 'API'
+#     url: 'api/'
+#     path: 'api'
+#     extern: true
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
