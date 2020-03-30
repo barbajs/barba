@@ -110,7 +110,7 @@ docs:
     subpages:
       - title: 'Intro'
         url: 'docs/getstarted/intro/'
-      - title: 'Install (npm, yarn, ..)'
+      - title: 'Install'
         url: 'docs/getstarted/install/'
       - title: 'Markup (syntax)'
         url: 'docs/getstarted/markup/'
