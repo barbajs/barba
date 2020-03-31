@@ -114,7 +114,7 @@ docs:
         url: 'docs/getstarted/install/'
       - title: 'Markup'
         url: 'docs/getstarted/markup/'
-      - title: 'Basic transition (simple transition)'
+      - title: 'Basic transition'
         url: 'docs/getstarted/basic-transition/'
       - title: 'Run custom code (refresh a component, init something, ..)'
         url: 'docs/getstarted/custom-code/'
