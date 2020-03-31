@@ -112,7 +112,7 @@ docs:
         url: 'docs/getstarted/intro/'
       - title: 'Install'
         url: 'docs/getstarted/install/'
-      - title: 'Markup (syntax)'
+      - title: 'Markup'
         url: 'docs/getstarted/markup/'
       - title: 'Basic transition (simple transition)'
         url: 'docs/getstarted/basic-transition/'
