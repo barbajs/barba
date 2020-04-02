@@ -47,19 +47,13 @@ barba.init({
   transitions: [{
     name: 'opacity-transition',
     leave(data) {
-      var done = this.async();
-
-      gsap.to(data.current.container, {
-        opacity: 0,
-        onComplete: done
+      return gsap.to(data.current.container, {
+        opacity: 0
       });
     },
     enter(data) {
-      var done = this.async();
-
-      gsap.from(data.next.container, {
-        opacity: 0,
-        onComplete: done
+      return gsap.from(data.next.container, {
+        opacity: 0
       });
     }
   }]
