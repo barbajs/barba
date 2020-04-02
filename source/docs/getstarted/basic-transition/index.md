@@ -59,3 +59,5 @@ barba.init({
   }]
 });
 ```
+
+There is **a lot of syntaxes** that you can use when running your animation transitions. Take a look at the [advanced transitions guide](/docs/advanced/transitions/) to learn more.
