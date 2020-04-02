@@ -118,7 +118,7 @@ docs:
         url: 'docs/getstarted/basic-transition/'
       - title: 'Run custom code (refresh a component, init something, ..)'
         url: 'docs/getstarted/custom-code/'
-      - title: 'Legacy example (es5, cdn, code, ..)'
+      - title: 'Legacy example'
         url: 'docs/getstarted/legacy/'
       - title: 'Browser support'
         url: 'docs/getstarted/browser-support/'

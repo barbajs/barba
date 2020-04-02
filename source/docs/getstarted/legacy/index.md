@@ -1,58 +1,61 @@
 ---
-title: Get started Legacy
+title: Legacy example
 namespace: docs
 layout: components/docs/docs
 url: 'docs/getstarted/legacy/'
 ---
 
-# barba.js <small>[v2]</small>
+# Legacy example
 
-## Getting started (legacy)
+This example do not use **any modern javascript syntax**, neither modules.
+You can safely copy/paste this legacy code and use it as a starting point for playing with barba.
 
-> This example does not use any modern JS syntax neither modules…
+## Code
 
-### Prepare your HTML
-In your web page, put the Barba structure and load scripts.
+In a web page called `index.html`, put the following code:
 
 ```html
-<div data-barba="wrapper">
-  <div data-barba="container" data-barba-namespace="home">
-    <!-- put here the content you wish to change between your pages -->
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>BarbaJS legacy example</title>
+  </head>
+  <body>
 
-<!-- load some animation library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+    <!-- define the wrapper and the container -->
+    <div data-barba="wrapper">
+      <div data-barba="container" data-barba-namespace="page-a">
+        <h1>Home</h1>
+      </div>
+    </div>
 
-<!-- load barba.js (this will use the latest UMD version of the library) -->
-<script src="https://unpkg.com/@barba/core"></script>
+    <!-- load barba (UMD version) -->
+    <script src="https://unpkg.com/@barba/core"></script>
 
-<!-- load your scripts -->
-<script src="your-main-script-file.js"></script>
+    <!-- load gsap animation library (minified version) -->
+    <script src="https://unpkg.com/gsap@latest/dist/gsap.min.js"></script>
+
+    <!-- init barba with a simple opacity transition -->
+    <script type="text/javascript">
+      barba.init({
+        transitions: [{
+          name: 'opacity-transition',
+          leave(data) {
+            return gsap.to(data.current.container, {
+              opacity: 0
+            });
+          },
+          enter(data) {
+            return gsap.from(data.next.container, {
+              opacity: 0
+            });
+          }
+        }]
+      });
+    </script>
+  </body>
+</html>
 ```
 
-### Configure Barba
-In your main script file, init the library.
-
-```js
-// init Barba with a default "opacity" transition
-barba.init({
-  transitions: [{
-    name: 'legacy-example',
-    leave: function(data) {
-      var done = this.async();
-      TweenMax.to(data.current.container, 1, {
-        opacity: 0,
-        onComplete: done
-      });
-    },
-    enter: function(data) {
-      var done = this.async();
-      TweenMax.from(data.next.container, 1, {
-        opacity: 0,
-        onComplete: done
-      });
-    }
-  }]
-});
-```
+> In order to see the opacity transition properly run, you need to **add another page next this one** and link them together
