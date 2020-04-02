@@ -120,7 +120,7 @@ docs:
         url: 'docs/getstarted/custom-code/'
       - title: 'Legacy example (es5, cdn, code, ..)'
         url: 'docs/getstarted/legacy/'
-      - title: 'Browser support (promise, set, map, ..)'
+      - title: 'Browser support'
         url: 'docs/getstarted/browser-support/'
       - title: 'Useful links (core, router, slack, codepen, YT video, ..)'
         url: 'docs/getstarted/useful-links/'
