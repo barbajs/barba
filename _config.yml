@@ -149,7 +149,7 @@ docs:
         path: 'api'
         extern: true
   - title: 'Plugins'
-    url: 'docs/plugins/css/'
+    url: 'docs/plugins/router/'
     path: 'docs/plugins'
     subpages:
       - title: 'Router'
