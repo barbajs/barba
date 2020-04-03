@@ -39,7 +39,7 @@ The container defines **a section in which content is updated automatically** wh
 
 ### Namespace
 
-The namespace allows you to define **a unique name for each page**. Barba mainly uses this namespace for [hooks](/docs/advanced/hooks/).
+The namespace allows you to define **a unique name for each page**. Barba mainly uses this namespace for [Transition rules](/docs/advanced/transitions#Rules) and [Views](/docs/advanced/views/).
 
 ## Schema
 
