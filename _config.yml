@@ -116,6 +116,8 @@ docs:
         url: 'docs/getstarted/markup/'
       - title: 'Basic transition'
         url: 'docs/getstarted/basic-transition/'
+      - title: 'Lifecycle'
+        url: 'docs/getstarted/lifecycle/'
       - title: 'Run custom code (refresh a component, init something, ..)'
         url: 'docs/getstarted/custom-code/'
       - title: 'Legacy example'
@@ -128,8 +130,6 @@ docs:
     url: 'docs/advanced/lifecycle/'
     path: 'docs/advanced'
     subpages:
-      - title: 'Lifecycle (diagram)'
-        url: 'docs/advanced/lifecycle/'
       - title: 'Hooks (methods, data object argument, ..)'
         url: 'docs/advanced/hooks/'
       - title: 'Transitions (rules, priority, sync ..)'
