@@ -152,16 +152,16 @@ docs:
     url: 'docs/plugins/css/'
     path: 'docs/plugins'
     subpages:
-      - title: 'Css'
-        url: 'docs/plugins/css/'
       - title: 'Router'
         url: 'docs/plugins/router/'
       - title: 'Prefetch'
         url: 'docs/plugins/prefetch/'
-      - title: 'Preset'
-        url: 'docs/plugins/preset/'
+      - title: 'Css'
+        url: 'docs/plugins/css/'
       - title: 'Head'
         url: 'docs/plugins/head/'
+      - title: 'Preset'
+        url: 'docs/plugins/preset/'
 
 # docs:
 #   - title: 'Get Started'
