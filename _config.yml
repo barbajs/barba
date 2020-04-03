@@ -122,7 +122,7 @@ docs:
         url: 'docs/getstarted/legacy/'
       - title: 'Browser support'
         url: 'docs/getstarted/browser-support/'
-      - title: 'Useful links (core, router, slack, codepen, YT video, ..)'
+      - title: 'Useful links'
         url: 'docs/getstarted/useful-links/'
   - title: 'Advanced'
     url: 'docs/advanced/lifecycle/'
