@@ -127,7 +127,7 @@ docs:
       - title: 'Useful links'
         url: 'docs/getstarted/useful-links/'
   - title: 'Advanced'
-    url: 'docs/advanced/lifecycle/'
+    url: 'docs/advanced/hooks/'
     path: 'docs/advanced'
     subpages:
       - title: 'Hooks'
