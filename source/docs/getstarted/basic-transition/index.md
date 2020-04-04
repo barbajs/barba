@@ -27,7 +27,7 @@ barba.init({
 });
 ```
 
-> Take a look at the [lifecycle diagram](/docs/advanced/lifecycle/) to understand when `leave` and `enter` hooks are triggered during your page transition
+> Take a look at the [lifecycle diagram](/docs/getstarted/lifecycle/) to understand when `leave` and `enter` hooks are triggered during your page transition
 
 ## Animation
 
