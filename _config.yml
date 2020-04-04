@@ -130,7 +130,7 @@ docs:
     url: 'docs/advanced/lifecycle/'
     path: 'docs/advanced'
     subpages:
-      - title: 'Hooks (methods, data object argument, ..)'
+      - title: 'Hooks'
         url: 'docs/advanced/hooks/'
       - title: 'Transitions (rules, priority, sync ..)'
         url: 'docs/advanced/transitions/'
