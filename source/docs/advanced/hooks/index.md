@@ -69,14 +69,13 @@ barba.init({
 
 Properties attached to `data` object:
 
-| Property                                   | Type             | Description                        |
-| ------------------------------------------ | ---------------- | ---------------------------------- |
-| [`data.current`](#current-next-properties) | Object           | Current page related               |
-| [`data.next`](#current-next-properties)    | Object           | Next page related                  |
-| `data.trigger`                             | HTMLElement      | Link that triggered the transition |
-|                                            | String 'barba'   | Programmatic navigation            |
-|                                            | String 'back'    | Browser back button                |
-|                                            | String 'forward' | Browser forward button             |
+| Property                                   | Type                           | Description                        |
+| ------------------------------------------ | ------------------------------ | ---------------------------------- |
+| [`data.current`](#current-next-properties) | Object                         | Current page related               |
+| [`data.next`](#current-next-properties)    | Object                         | Next page related                  |
+| `data.trigger`                             | HTMLElement                    | Link that triggered the transition |
+|                                            | String `'barba'`               | Programmatic navigation            |
+|                                            | String `'back'` \| `'forward'` | Browser backward/forward button    |
 
 #### `current/next` properties
 
