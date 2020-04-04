@@ -134,7 +134,7 @@ docs:
         url: 'docs/advanced/hooks/'
       - title: 'Transitions (rules, priority, sync ..)'
         url: 'docs/advanced/transitions/'
-      - title: 'Views (namespace, ..)'
+      - title: 'Views'
         url: 'docs/advanced/views/'
       - title: 'Strategies (cache, prefetch, prevent ..)'
         url: 'docs/advanced/strategies/'
