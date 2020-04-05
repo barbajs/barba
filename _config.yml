@@ -136,7 +136,7 @@ docs:
         url: 'docs/advanced/transitions/'
       - title: 'Views'
         url: 'docs/advanced/views/'
-      - title: 'Strategies (cache, prefetch, prevent ..)'
+      - title: 'Strategies'
         url: 'docs/advanced/strategies/'
       - title: 'Recipes'
         url: 'docs/advanced/recipes/'
