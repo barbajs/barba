@@ -138,7 +138,7 @@ docs:
         url: 'docs/advanced/views/'
       - title: 'Strategies (cache, prefetch, prevent ..)'
         url: 'docs/advanced/strategies/'
-      - title: 'Recipes (debug, x-barba partial output, timeout, error, ..)'
+      - title: 'Recipes'
         url: 'docs/advanced/recipes/'
       - title: 'Utils (destroy, force, go, ..)'
         url: 'docs/advanced/utils/'
