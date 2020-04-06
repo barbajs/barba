@@ -22,6 +22,7 @@
       margin: 0;
       color: $c-gray-dark;
       font-family: $ff-code;
+      font-weight: 400;
       line-height: 1.6rem;
 
       @include mq(s) {
