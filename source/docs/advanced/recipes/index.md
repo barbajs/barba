@@ -26,7 +26,7 @@ barba.init({
 
 ### `logLevel`
 
-When debugging with Barba, you can easily set the log level of debug informations that the browser display:
+When debugging with Barba, you can easily **set the log level of debug informations** that the browser display:
 
 - `off` → log is disabled
 - `error` → use `console.error()`
@@ -93,7 +93,7 @@ In addition, you can properly catch the error by using the [`requestError`](#req
 
 ## Partial output
 
-Barba sends a custom **HTTP Header** named `x-barba` in the `XMLHttpRequest`.
+Barba sends **a custom HTTP Header** named `x-barba` in the `XMLHttpRequest`.
 
 If you are using a server side language like PHP, you can detect this custom HTTP Header and output just the container instead of the entire page: this could result in **less bandwidth usage** and **less server-side load**.
 
