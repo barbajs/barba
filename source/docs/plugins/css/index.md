@@ -7,44 +7,25 @@ url: 'docs/plugins/css/'
 
 # @barba/css
 
+[![NPM version](https://img.shields.io/npm/v/@barba/css?style=flat-square)](https://www.npmjs.com/package/@barba/css)
+[![Dependencies](https://img.shields.io/librariesio/release/npm/@barba/css?style=flat-square)](https://github.com/barbajs/barba/network/dependencies)
+
 Barba CSS is a **style helper** that manage you CSS classes during transitions.
 
 It is mainly inspired by [Vue.js transitions](https://vuejs.org/v2/guide/transitions.html#Transition-Classes).
 
-## Definition
+## How it works?
 
-This module adds/removes CSS classes from the `data-barba="container"` DOM element automatically. By default, it uses `.barba-xxx[-xxx]` but if you add a `name` property to your transition, it uses `.name-xxx[-xxx]` CSS classes instead.
+This plugin **adds/removes [CSS classes](#CSS-classes)** from the [`data-barba="container"`](/docs/getstarted/markup#Container) DOM element automatically.
 
-## Usage
-
-During the transition process, Barba defines custom classes according to the transition `once` / `leave` / `enter` hooks and the transition name, if specified. Here is the list of hooks supported by the module:
-
-### once
-
-- `.barba-once`: **starting state** for `once`, added when first load transition is triggered, removed one frame after.
-- `.barba-once-active`: **active state** for `once`, applied during the entire appearing phase, then added when once transition is triggered and removed when transition/animation finishes. This class can be used to define the duration, delay and easing curve.
-- `.barba-once-to`: **ending state** for `once`, added one frame after transition is triggered (at the same time `barba-once` is removed) and removed when transition/animation finishes.
-
-### leave
-
-- `.barba-leave`: **starting state** for `leave`, added when leave transition is triggered, removed one frame after.
-- `.barba-leave-active`: **active state** for `leave`, applied during the entire leaving phase, then added when leave transition is triggered and removed when transition/animation finishes. This class can be used to define the duration, delay and easing curve.
-- `.barba-leave-to`: **ending state** for `leave`, added one frame after transition is triggered (at the same time `barba-leave` is removed) and removed when transition/animation finishes.
-
-### enter
-
-- `.barba-enter`: **starting state** for `enter`, added when enter transition is triggered, removed one frame after next container is inserted.
-- `.barba-enter-active`: **active state** for `enter`, applied during the entire leaving phase, then added after next container is inserted and removed when transition/animation finishes. This class can be used to define the duration, delay and easing curve.
-- `.barba-enter-to`: **ending state** for `enter`, added one frame after next container is inserted (at the same time `barba-enter` is removed) and removed when transition/animation finishes.
-
-Example with default naming:
+To create a simple opacity transition, use the plugin in your build:
 
 ```js
 import barba from '@barba/core';
-import barbaCss from '@barba/css';
+import css from '@barba/css';
 
-// tell Barba to use the css module
-barba.use(barbaCss);
+// tell Barba to use the css plugin
+barba.use(css);
 
 // init Barba
 barba.init();
@@ -53,93 +34,155 @@ barba.init();
 Then customize your CSS classes like this:
 
 ```css
-/* transition active state (same for leave and enter) */
 .barba-leave-active,
 .barba-enter-active {
   transition: opacity 450ms ease;
 }
 
-/* initial state */
-.barba-leave {
-  opacity: 1;
-}
-
-.barba-enter {
-  opacity: 0;
-}
-
-/* ending state */
-.barba-leave-to {
-  opacity: 0;
-}
-
+.barba-leave,
 .barba-enter-to {
   opacity: 1;
 }
 
-/* Note that this code can be refactored for optimization */
+.barba-enter,
+.barba-leave-to {
+  opacity: 0;
+}
 ```
 
-If you want to play some transition on first load, use `once`:
+## CSS classes
+
+During the transition process, Barba defines **custom classes** according to the transition hook state. If a transition name is specified, it will be used as a [CSS prefix](#CSS-prefix) in your classes instead.
+
+Here is the list of all default CSS classes grouped by hooks:
+
+### once
+
+- `.barba-once` → **starting state** for `once` hook, added when first load transition is triggered, removed one frame after.
+- `.barba-once-active` → **active state** for `once` hook, applied during the entire appearing phase, then added when once transition is triggered and removed when transition/animation finishes. This class can be used to define the duration, delay and easing curve.
+- `.barba-once-to` → **ending state** for `once` hook, added one frame after transition is triggered (at the same time `barba-once` is removed) and removed when transition/animation finishes.
+
+### leave
+
+- `.barba-leave` → **starting state** for `leave` hook, added when leave transition is triggered, removed one frame after.
+- `.barba-leave-active` → **active state** for `leave` hook, applied during the entire leaving phase, then added when leave transition is triggered and removed when transition/animation finishes. This class can be used to define the duration, delay and easing curve.
+- `.barba-leave-to` → **ending state** for `leave` hook, added one frame after transition is triggered (at the same time `barba-leave` is removed) and removed when transition/animation finishes.
+
+### enter
+
+- `.barba-enter` → **starting state** for `enter` hook, added when enter transition is triggered, removed one frame after next container is inserted.
+- `.barba-enter-active` → **active state** for `enter` hook, applied during the entire leaving phase, then added after next container is inserted and removed when transition/animation finishes. This class can be used to define the duration, delay and easing curve.
+- `.barba-enter-to` → **ending state** for `enter` hook, added one frame after next container is inserted (at the same time `barba-enter` is removed) and removed when transition/animation finishes.
+
+## CSS prefix
+
+By default, the plugin uses `.barba-hook` **prefix** to generate the `.barba-hook[-state]` CSS classes, but if you add a `name` property to your transition, it uses `.name-hook[-state]` CSS classes instead.
+
+Setting a transition name like this ...
+
+```js
+barba.init({
+  transitions: [{
+    name: 'hello'
+    once: () => {}
+  }]
+});
+```
+
+... will generate those CSS classes:
+```css
+/* transition name is used as prefix for `once` hook */
+.hello-once {}
+.hello-once-active {}
+.hello-once-to {}
+
+/* default prefix is used for `leave` and `enter` hooks */
+.barba-leave {}
+.barba-leave-active {}
+.barba-leave-to {}
+.barba-enter {}
+.barba-enter-active {}
+.barba-enter-to {}
+```
+
+> Be careful, you need to add an **empty `once` / `leave` / `enter` hook** in order to let the plugin use the transition name as class prefix.
+>
+> This **may evolve** in a next release.
+
+## Transition hooks
+
+As Barba CSS plugin overrides main `once` / `leave` / `enter` hooks in order to run, the **code you will put inside those hooks won't be executed**. However, you can safely use every other transition hooks to run custom code with the plugin:
+
+```js
+barba.init({
+  transitions: [{
+    name: 'hello'
+    once: () => {
+      // code here won't run...
+    },
+    beforeLeave: () => {
+      console.log('This message will be displayed in the console!');
+    }
+  }]
+});
+```
+
+> This **may evolve** in a next release
+
+## Complex transition
+
+### Browser load
+
+If you want to play some transition on first load, use the `once` hook:
 
 ```css
-/* once: active state, define the transition */
 .barba-once-active {
   transition: opacity 450ms ease;
 }
 
-/* once: initial state */
 .barba-once {
   opacity: 0;
 }
 
-/* once: ending state */
 .barba-once-to {
   opacity: 1;
 }
 ```
 
----
+> Don't forget to set the `.barba-once-active` class in order to see the transition
 
-If you want different transitions, you can name them and use rules.
-The transition `name` will be used as **CSS "prefix"**.
+### Custom rule
 
-> !!! To use a "custom named" **once** transition, you need to explicitly add a `once() {}` hook to your transition.
+You can use custom [transition rules](/docs/advanced/transitions#Rules) to play transitions depending on the namespace or route.
 
 ```js
 import barba from '@barba/core';
-import barbaCss from '@barba/css';
+import css from '@barba/css';
 
-// tell Barba to use the css module
-barba.use(barbaCss);
+// tell Barba to use the css plugin
+barba.use(css);
 
 // init Barba
 barba.init({
-  transitions: [
-    {
-      // css classes will look like `.fade-xxx-[-xxx]`
-      name: 'fade',
-
-      // if you want to use `.fade-once[-xxx]`
-      // add this empty hook…
-      once() {},
+  transitions: [{
+    name: 'fade',
+    leave() {},
+    enter() {}
+  }, {
+    name: 'slide',
+    leave() {},
+    enter() {},
+    from: {
+      namespace: 'home'
     },
-    {
-      // css classes will look like `.slide-xxx[-xxx]`
-      name: 'slide',
-      from: {
-        namespace: 'home',
-      },
-      to: {
-        namespace: 'products',
-      },
-    },
-  ],
+    to: {
+      namespace: 'products'
+    }
+  }]
 });
 ```
 
 ```css
-/* fade and slide transition active states (same for leave and enter) */
 .fade-leave-active,
 .fade-enter-active,
 .slide-leave-active,
@@ -147,7 +190,6 @@ barba.init({
   transition: opacity 450ms ease, transform 650ms ease-in-out;
 }
 
-/* fade transition states */
 .fade-leave,
 .fade-enter-to {
   opacity: 1;
@@ -158,7 +200,6 @@ barba.init({
   opacity: 0;
 }
 
-/* slide transition states */
 .slide-leave,
 .slide-enter-to {
   transform: translateX(0);
