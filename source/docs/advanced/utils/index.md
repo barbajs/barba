@@ -11,7 +11,7 @@ Barba is brought to you with a bunch of **useful utilities**.
 
 - `barba.version` → Retrieve the **current @barba/core version**
 - `barba.destroy()` → **Destroy the Barba instance** and properly remove `EventListener` on eligible links
-- `barba.go(href: string, trigger?: Trigger, e?: LinkEvent \| PopStateEvent)` → Tell Barba to **go to a specific URL** and play your transitions, if available, without using a browser "force reload"
+- `barba.go(href: string, trigger?: Trigger, e?: LinkEvent | PopStateEvent)` → Tell Barba to **go to a specific URL** and play your transitions, if available, without using a browser "force reload"
 - `barba.force(href: string)` → Force Barba to **redirect to a specific URL** without playing your transitions, equivalent to `location.href` change
 - `barba.prefetch(href: string)` → Prefetch the given URL
 - `barba.url.parse(url: string)` → Parse the given URL and retrieve a [`IUrlBase`](https://barba.js.org/api/modules/_core_src_utils_url_.html#parse)
