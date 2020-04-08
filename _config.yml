@@ -149,9 +149,11 @@ docs:
         path: 'api'
         extern: true
   - title: 'Plugins'
-    url: 'docs/plugins/router/'
+    url: 'docs/plugins/intro/'
     path: 'docs/plugins'
     subpages:
+      - title: 'Intro'
+        url: 'docs/plugins/intro/'
       - title: 'Router'
         url: 'docs/plugins/router/'
       - title: 'Prefetch'
