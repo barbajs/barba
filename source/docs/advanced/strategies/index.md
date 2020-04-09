@@ -21,7 +21,7 @@ Saving pages in the cache results in **less bandwidth usage** and **less server-
 | -------------------- | ----------------------------------------------------------------------------------------------- |
 | `false` _(default)_  | Cache all                                                                                       |
 | `true`               | Ignore all                                                                                      |
-| `string \| string[]` | Ignore route pattern(s), **only** available when using [`@barba/router`](/docs/plugins/router/) |
+| `String \| String[]` | Ignore route pattern(s), **only** available when using [`@barba/router`](/docs/plugins/router/) |
 
 Use it like this:
 
@@ -45,7 +45,7 @@ Since there is a **100-300ms delay** during the user hover and the click, Barba 
 | -------------------- | ----------------------------------------------------------------------------------------------- |
 | `false` _(default)_  | Prefetch all                                                                                    |
 | `true`               | Ignore all                                                                                      |
-| `string \| string[]` | Ignore route pattern(s), **only** available when using [`@barba/router`](/docs/plugins/router/) |
+| `String \| String[]` | Ignore route pattern(s), **only** available when using [`@barba/router`](/docs/plugins/router/) |
 
 Use it like this:
 
