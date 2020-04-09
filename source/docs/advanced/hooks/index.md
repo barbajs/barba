@@ -148,4 +148,4 @@ Properties attached to `data.current.route` and `data.next.route` objects:
 | `name`   | String | `undefined` | Route name           |
 | `params` | Object | {}          | Route segment params |
 
-> `route` is **only** available when using [`@barba/router`](/docs/plugins/router/).
+> `route` is **only** available when using [@barba/router](/docs/plugins/router/).

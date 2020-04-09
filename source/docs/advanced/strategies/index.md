@@ -17,11 +17,11 @@ Allows Barba to **cache your pages**.
 
 Saving pages in the cache results in **less bandwidth usage** and **less server-side load**: no more `XMLHttpRequest` are made for pages that have already been visited.
 
-| Value                | Description                                                                                     |
-| -------------------- | ----------------------------------------------------------------------------------------------- |
-| `false` _(default)_  | Cache all                                                                                       |
-| `true`               | Ignore all                                                                                      |
-| `String \| String[]` | Ignore route pattern(s), **only** available when using [`@barba/router`](/docs/plugins/router/) |
+| Value                | Description                                                                                   |
+| -------------------- | --------------------------------------------------------------------------------------------- |
+| `false` _(default)_  | Cache all                                                                                     |
+| `true`               | Ignore all                                                                                    |
+| `String \| String[]` | Ignore route pattern(s), **only** available when using [@barba/router](/docs/plugins/router/) |
 
 Use it like this:
 
@@ -41,11 +41,11 @@ Allows Barba to **prefetch your pages** on `mouseover` or `touchstart` events.
 
 Since there is a **100-300ms delay** during the user hover and the click, Barba use this time to start prefetching the next page. Most of time, this is enough to get the next page ready.
 
-| Value                | Description                                                                                     |
-| -------------------- | ----------------------------------------------------------------------------------------------- |
-| `false` _(default)_  | Prefetch all                                                                                    |
-| `true`               | Ignore all                                                                                      |
-| `String \| String[]` | Ignore route pattern(s), **only** available when using [`@barba/router`](/docs/plugins/router/) |
+| Value                | Description                                                                                   |
+| -------------------- | --------------------------------------------------------------------------------------------- |
+| `false` _(default)_  | Prefetch all                                                                                  |
+| `true`               | Ignore all                                                                                    |
+| `String \| String[]` | Ignore route pattern(s), **only** available when using [@barba/router](/docs/plugins/router/) |
 
 Use it like this:
 
