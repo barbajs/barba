@@ -29,7 +29,7 @@ Barba uses a collection of base hooks for `Transitions` and `Views`:
 | 10    | `afterEnter`  | After **enter** transition/view                                     | x           | x     |
 | 11    | `after`       | After everything                                                    | x           |       |
 
-> Each hook run in **a precise order**. If the [sync mode](/docs/transitions#Sync-mode) is enabled, as **leave** and **enter** will be concurrent, order will differ: first all before\*, then enter/leave, and finally all after\*
+> Each hook run in **a precise order**. If the [sync mode](/docs/advanced/transitions#Sync-mode) is enabled, as **leave** and **enter** will be concurrent, order will differ: first all before\*, then enter/leave, and finally all after\*
 
 You can define them in **many different ways**, depending on your code implementation:
 
