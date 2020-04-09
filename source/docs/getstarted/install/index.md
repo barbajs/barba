@@ -7,6 +7,8 @@ url: 'docs/getstarted/install/'
 
 # Install
 
+Want to try Barba? Let's install it!
+
 ## Use with a bundler
 
 Barba is published on the **NPM registry**, so you can install it through the command line interpreter using your favorite package manager. This is the best way to install the library if you are comfortable with **javascript bundlers** like `webpack` or `rollup`.

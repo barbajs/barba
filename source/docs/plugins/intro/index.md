@@ -9,6 +9,10 @@ url: 'docs/plugins/intro/'
 
 Barba plugins are **components that you can plug** to improve the default library behavior.
 
+## Available
+
+Here is the list of all available plugins for Barba:
+
 - [@barba/router](/docs/plugins/router/) → allows you to use custom routes for page transitions
 - [@barba/prefetch](/docs/plugins/prefetch/) → prefetches automatically and cache your pages
 - [@barba/css](/docs/plugins/css/) → a style helper that manage you CSS classes during transitions

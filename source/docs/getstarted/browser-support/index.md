@@ -7,9 +7,9 @@ url: 'docs/getstarted/browser-support/'
 
 # Browser support
 
-## Compatibility
-
 Barba can be viewed as a [progressive enhancement](https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/).
+
+## Compatibility
 
 Main **modern features** used are:
 

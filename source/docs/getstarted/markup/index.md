@@ -7,9 +7,10 @@ url: 'docs/getstarted/markup/'
 
 # Markup
 
+At the beginning, Barba needs to know a little bit about your **site architecture**.
+
 ## DOM structure
 
-At the beginning, Barba needs to know a little bit about your **site architecture**.
 By default, it uses this markup in your pages:
 
 ```html
