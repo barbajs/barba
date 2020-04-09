@@ -21,6 +21,16 @@ npm install @barba/core
 yarn add @barba/core
 ```
 
+Then **import it like any other module** inside your build:
+
+```js
+import barba from '@barba/core';
+
+barba.init({
+  // ...
+});
+```
+
 > Using a bundler has **many advantages** like output compression, code splitting, tree shaking, etc., so we encourage you to use this kind of tool with Barba
 
 ## Use with a CDN
@@ -33,6 +43,16 @@ To rapidly **include the minified production file** in your webpage, load the la
 
 <!-- jsdelivr -->
 <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
+```
+
+Then init barba:
+
+```html
+<script>
+  barba.init({
+    // ...
+  })
+</script>
 ```
 
 > By default, if no one is specified, the CDN will automatically target the **@latest** version of Barba and load the **UMD build** from `dist/barba.umd.js`
