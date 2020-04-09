@@ -127,7 +127,7 @@ barba.init({
 });
 ```
 
-> This **may evolve** in a next release
+> This **may evolve** in a next release.
 
 ## Complex transition
 
@@ -149,7 +149,7 @@ If you want to play some transition on first load, use the `once` hook:
 }
 ```
 
-> Don't forget to set the `.barba-once-active` class in order to see the transition
+> Don't forget to set the `.barba-once-active` class in order to see the transition.
 
 ### Custom rule
 

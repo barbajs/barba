@@ -58,4 +58,4 @@ In a web page called `index.html`, put the following code:
 </html>
 ```
 
-> In order to see the opacity transition properly run, you need to **add another page next this one** and link them together
+> In order to see the opacity transition properly run, you need to **add another page next this one** and link them together.

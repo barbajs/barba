@@ -31,7 +31,7 @@ barba.init({
 });
 ```
 
-> Cache lifetime is **restricted to Barba instance** and will be cleared when leaving the site
+> Cache lifetime is **restricted to Barba instance** and will be cleared when leaving the site.
 
 ## Prefetch
 
@@ -55,7 +55,7 @@ barba.init({
 });
 ```
 
-> To prefetch all eligible links that **enter the viewport**, use the [@barba/prefetch](/docs/plugins/prefetch/) plugin
+> To prefetch all eligible links that **enter the viewport**, use the [@barba/prefetch](/docs/plugins/prefetch/) plugin.
 
 ## Prevent
 

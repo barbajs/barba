@@ -53,5 +53,5 @@ Barba router plugin `routes` property accepts an array of [`Route`](#Route-objec
 | `name`   | String | Value to be used with transitions |
 | `path`   | String | URL pattern                       |
 
-> `path` supports dynamic segments `/product/:id` and regular expressions `/:lang(fr|en)/:post`
-> See the [path-to-regexp](https://github.com/pillarjs/path-to-regexp) for detailed documentation
+> `path` supports dynamic segments `/product/:id` and regular expressions `/:lang(fr|en)/:post`.
+> See the [path-to-regexp](https://github.com/pillarjs/path-to-regexp) for detailed documentation.

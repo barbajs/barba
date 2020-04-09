@@ -29,7 +29,7 @@ Barba uses a collection of base hooks for `Transitions` and `Views`:
 | 10    | `afterEnter`  | After **enter** transition/view                                     | x           | x     |
 | 11    | `after`       | After everything                                                    | x           |       |
 
-> Each hook run in **a precise order**. If the [sync mode](/docs/advanced/transitions#Sync-mode) is enabled, as **leave** and **enter** will be concurrent, order will differ: first all before\*, then enter/leave, and finally all after\*
+> Each hook run in **a precise order**. If the [sync mode](/docs/advanced/transitions#Sync-mode) is enabled, as **leave** and **enter** will be concurrent, order will differ: first all before\*, then enter/leave, and finally all after\*.
 
 You can define them in **many different ways**, depending on your code implementation:
 
@@ -80,7 +80,7 @@ barba.hooks.enter(() => {
 });
 ```
 
-> Note that `beforeOnce`, `once` and `afterOnce` global hooks are not permitted
+> Note that `beforeOnce`, `once` and `afterOnce` global hooks are not permitted.
 
 ## Parameters
 
@@ -100,7 +100,7 @@ barba.init({
 });
 ```
 
-> You can use **ES6 shorthand argument** syntax `({ current })` to easily access `data.current` inside the hook
+> You can use **ES6 shorthand argument** syntax `({ current })` to easily access `data.current` inside the hook.
 
 #### `data` properties
 
@@ -126,7 +126,7 @@ Properties attached to `data.current` and `data.next` objects:
 | [`route`](#route-properties)                      | Object      | Route object     |
 | `html`                                            | String      | HTML of the page |
 
-> According to the [lifecycle](/docs/getstarted/lifecycle/), [rules](/docs/advanced/transitions#Rules), [sync mode](/docs/advanced/transitions#Sync-mode) or [cache availability](/docs/advanced/strategies#cacheIgnore), some properties may be `undefined`
+> According to the [lifecycle](/docs/getstarted/lifecycle/), [rules](/docs/advanced/transitions#Rules), [sync mode](/docs/advanced/transitions#Sync-mode) or [cache availability](/docs/advanced/strategies#cacheIgnore), some properties may be `undefined`.
 
 #### `url` properties
 
@@ -148,4 +148,4 @@ Properties attached to `data.current.route` and `data.next.route` objects:
 | `name`   | String | `undefined` | Route name           |
 | `params` | Object | {}          | Route segment params |
 
-> `route` is **only** available when using [`@barba/router`](/docs/plugins/router/)
+> `route` is **only** available when using [`@barba/router`](/docs/plugins/router/).

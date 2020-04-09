@@ -30,4 +30,4 @@ barba.init({
 });
 ```
 
-> Keep in mind that a view is always related to **a unique namespace**
+> Keep in mind that a view is always related to **a unique namespace**.

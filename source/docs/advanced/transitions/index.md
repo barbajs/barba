@@ -27,7 +27,7 @@ barba.init({
 });
 ```
 
-> transition `name` is optional, but recommended
+> transition `name` is optional, but recommended.
 
 ## Rules
 
@@ -64,7 +64,7 @@ They must contain a set of [condition(s)](#Condition-s), and run within a priori
 | 2        | `to`                | `next` container                    | Condition(s) of `to` is/are fulfilled             |
 | 3        | `from`              | `current` container                 | Condition(s) of `from` is/are fulfilled           |
 
-> Note that you can use `from` and `to` properties **independently**
+> Note that you can use `from` and `to` properties **independently**.
 
 ### Condition(s)
 
@@ -94,7 +94,7 @@ Barba will then select the right transition to use and play it **only if all con
 | 2        | `route`     | String \| String[] | _none_                                              | `current.route.name` match |
 | 3        | `namespace` | String \| String[] | _none_                                              | `current.namespace` match  |
 
-> Any conditions can be used within `from` and/or `to` keywords
+> Any conditions can be used within `from` and/or `to` keywords.
 
 ### Priority
 

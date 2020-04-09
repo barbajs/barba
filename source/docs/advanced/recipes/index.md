@@ -22,7 +22,7 @@ barba.init({
 });
 ```
 
-> We recommend you to **enable the debugger only in development environment** to properly catch transition errors
+> We recommend you to **enable the debugger only in development environment** to properly catch transition errors.
 
 ### `logLevel`
 
@@ -75,7 +75,7 @@ barba.init({
 });
 ```
 
-> Note that if you use `barba.go()` directive without returning `false`, you will be redirected to the requested URL because Barba uses `barba.force()` to reach the page
+> Note that if you use `barba.go()` directive without returning `false`, you will be redirected to the requested URL because Barba uses `barba.force()` to reach the page.
 
 ### `timeout`
 
@@ -108,4 +108,4 @@ If you are using a server side language like PHP, you can detect this custom HTT
 ?>
 ```
 
-> Note that doing so, you have to manually handle the update of the page `title`
+> Note that doing so, you have to manually handle the update of the page `title`.

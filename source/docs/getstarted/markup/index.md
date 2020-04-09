@@ -28,7 +28,7 @@ By default, it uses this markup in your pages:
 </body>
 ```
 
-> Note that you can build the `html` in many ways, but keep in mind that the `wrapper` should always wrap the `container`
+> Note that you can build the `html` in many ways, but keep in mind that the `wrapper` should always wrap the `container`.
 
 ### Wrapper
 
@@ -57,4 +57,4 @@ barba.init({
 
 Now you can use `data-custom-wrap` in your HTML instead of `data-barba-wrapper`.
 
-> See the list of all customizable attributes in the default [`schema`](https://github.com/barbajs/barba/blob/master/packages/core/src/schemas/attribute.ts)
+> See the list of all customizable attributes in the default [`schema`](https://github.com/barbajs/barba/blob/master/packages/core/src/schemas/attribute.ts).

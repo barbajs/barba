@@ -18,4 +18,4 @@ Barba is brought to you with a bunch of **useful utilities**.
 - `barba.history.previous` → Get the previous history [`IStateItem`](https://barba.js.org/api/interfaces/_core_src_utils_history_.istateitem.html) object, with URL, namespace and scroll x/y positions
 - `barba.history.add(url: string, trigger: Trigger)` → Add a new state in the browser history, allowing you to add "sub-URL" in the same page
 
-> This is a draft section of **@barba/core utilities** that shows the most important you could use in your project, check the [Developer API](https://barba.js.org/api) for more informations
+> This is a draft section of **@barba/core utilities** that shows the most important you could use in your project, check the [Developer API](https://barba.js.org/api) for more informations.
