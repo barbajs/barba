@@ -7,8 +7,8 @@ url: 'docs/plugins/prefetch/'
 
 # @barba/prefetch
 
-[![NPM version](https://img.shields.io/npm/v/@barba/prefetch?style=flat-square)](https://www.npmjs.com/package/@barba/prefetch)
-[![Dependencies](https://img.shields.io/librariesio/release/npm/@barba/prefetch?style=flat-square)](https://github.com/barbajs/barba/network/dependencies)
+[![NPM version](https://img.shields.io/npm/v/@barba/prefetch?style=flat-square)](https://www.npmjs.com/package/@barba/prefetch "Badge")
+[![Dependencies](https://img.shields.io/librariesio/release/npm/@barba/prefetch?style=flat-square)](https://github.com/barbajs/barba/network/dependencies "Badge")
 
 Barba **prefetches automatically and cache** your pages.
 

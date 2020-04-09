@@ -218,4 +218,29 @@
     color: $gray-light;
     border-left: 3px solid $gray-lighter;
   }
+
+  a:not([title='Badge']) {
+    position: relative;
+    color: $c-blue-medium;
+    white-space: nowrap;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.2;
+      transition: opacity 350ms ease;
+      pointer-events: none;
+    }
+
+    &:hover {
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
 }
