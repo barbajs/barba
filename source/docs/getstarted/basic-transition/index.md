@@ -7,9 +7,11 @@ url: 'docs/getstarted/basic-transition/'
 
 # Basic transition
 
-## Syntax
+One of **the most important thing** that you will use is `transitions`.
 
-One of the most important thing that you will use is `transitions`. Barba allows you to define **global transitions**, that run everywhere on your site, and/or **specific transitions** that can be used for navigating from one page to another.
+## What is it?
+
+A transition run between two pages of your site, leading the user to see a **fluid and smooth animation** instead of a browser "force reload" with a blank page.
 
 A basic transition is made of a `leave` animation, that is executed when leaving the current page, and an `enter` animation that is executed when entering the next page:
 

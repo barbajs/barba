@@ -132,7 +132,7 @@ docs:
     subpages:
       - title: 'Hooks'
         url: 'docs/advanced/hooks/'
-      - title: 'Transitions (rules, priority, sync ..)'
+      - title: 'Transitions'
         url: 'docs/advanced/transitions/'
       - title: 'Views'
         url: 'docs/advanced/views/'

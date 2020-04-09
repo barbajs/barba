@@ -11,8 +11,6 @@ A "hook" is a **regular method** that is called at a specific time in the Barba 
 
 Hooks are triggered by [`Transitions`](/docs/advanced/transitions/) and [`Views`](/docs/advanced/views/), but are not "shared" between them: **they run separately**, either **synchronously or asynchronously** using the common `this.async()` syntax _([see run-async](https://github.com/sboudrias/run-async#readme))_ or returning a promise.
 
-> See all available syntaxes in the [`Transitions`](/docs/advanced/transitions/) section
-
 ## Base hooks
 
 Barba uses a collection of base hooks for `Transitions` and `Views`:
@@ -32,6 +30,43 @@ Barba uses a collection of base hooks for `Transitions` and `Views`:
 | 11    | `after`       | After everything                                                    | x           |       |
 
 > Each hook run in **a precise order**. If the [sync mode](/docs/transitions#Sync-mode) is enabled, as **leave** and **enter** will be concurrent, order will differ: first all before\*, then enter/leave, and finally all after\*
+
+You can define them in **many different ways**, depending on your code implementation:
+
+```js
+// using a promise (returned with arrow function)
+leave: (data) => asyncAnimation(data.current.container)
+
+// using a promise (with ES6 argument syntax)
+leave: ({ current }) => asyncAnimation(current.container)
+
+// using a promise (with a resolve call)
+leave: (data) => {
+  return new Promise(resolve => {
+    callbackAnimation(data.current.container, {
+      onComplete: () => {
+        resolve();
+      }
+    });
+  });
+}
+
+// `this.async()`
+leave(data) {
+  const done = this.async();
+
+  callbackAnimation(data.current.container, {
+    onComplete: () => {
+      done();
+    }
+  });
+}
+
+// async/await
+async leave(data) {
+  await asyncAnimation(data.current.container);
+}
+```
 
 ## Global hooks
 
