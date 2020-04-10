@@ -2,7 +2,7 @@
 title: Useful links
 namespace: docs
 layout: components/docs/docs
-url: 'docs/getstarted/markup/'
+url: 'docs/getstarted/useful-links/'
 ---
 
 # Useful links
