@@ -1,5 +1,5 @@
 ---
-title: CSS
+title: Plugins
 namespace: docs
 layout: components/docs/docs
 url: 'docs/plugins/intro/'

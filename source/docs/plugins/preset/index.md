@@ -1,5 +1,5 @@
 ---
-title: Transitions
+title: Preset
 namespace: docs
 layout: components/docs/docs
 url: 'docs/plugins/preset/'
