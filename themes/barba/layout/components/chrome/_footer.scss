@@ -8,6 +8,7 @@
   color: $black;
   font-size: 1.1rem;
   letter-spacing: 0.15em;
+  pointer-events: none;
 
   @include mq(l) {
     padding: 5rem;
