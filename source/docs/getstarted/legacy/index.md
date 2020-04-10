@@ -8,7 +8,7 @@ url: 'docs/getstarted/legacy/'
 # Legacy example
 
 This example do not use **any modern javascript syntax**, neither modules.
-You can safely copy/paste this legacy code and use it as a starting point for playing with barba.
+You can safely copy/paste this legacy code and use it as a starting point for playing with Barba.
 
 ## Code
 

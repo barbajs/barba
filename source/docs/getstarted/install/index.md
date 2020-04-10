@@ -45,7 +45,7 @@ To rapidly **include the minified production file** in your webpage, load the la
 <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
 ```
 
-Then init barba:
+Then init Barba:
 
 ```html
 <script>
