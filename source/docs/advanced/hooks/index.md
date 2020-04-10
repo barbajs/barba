@@ -13,7 +13,7 @@ Hooks are triggered by [`Transitions`](/docs/advanced/transitions/) and [`Views`
 
 ## Base hooks
 
-Barba uses a collection of base hooks for `Transitions` and `Views`:
+Barba uses a collection of base hooks:
 
 | Order | Name          | Description                                                         | Transitions | Views |
 | ----- | ------------- | ------------------------------------------------------------------- | ----------- | ----- |
@@ -70,7 +70,7 @@ async leave(data) {
 
 ## Global hooks
 
-In order to improve and optimize your code, Barba offer a way to define global hooks through `barba.hooks`. This will **execute code everytime the hook is called** in the lifecycle. What makes the hook global is that the definition is not wrap inside a `Transition` or a `View`.
+In order to improve and optimize your code, Barba offer a way to define global hooks through `barba.hooks`. This will **execute code everytime the hook is called** in the lifecycle. What makes the hook global is that the definition is not wrap inside a `Transition` or a `View`. You can combine base and global hooks.
 
 For example, if you want to scroll the window to the top **everytime you enter a new page**, just do:
 
