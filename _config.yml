@@ -140,7 +140,7 @@ docs:
         url: 'docs/advanced/strategies/'
       - title: 'Recipes'
         url: 'docs/advanced/recipes/'
-      - title: 'Third party modules (Analytics, Maps, etc.)'
+      - title: 'Third party scripts'
         url: 'docs/advanced/third-party/'
       - title: 'Utils'
         url: 'docs/advanced/utils/'
