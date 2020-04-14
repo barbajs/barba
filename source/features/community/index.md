@@ -6,11 +6,11 @@ order: 5
 layout: components/features/feature
 ---
 
-barba.js started as a weekend side-project, and thanks to the community it is now widely used by agencies and individuals.
+Barba.js is started as a weekend side-project and, thanks to the community, it is now widely used by agencies and individuals.
 
-Used by Google, New York Times and many more.
+Used by Google, New York Times and many more!
 
-A big 🤗 to <a class="link" href="https://epic.net" target="_blank">EPIC Agency</a>
+A big <span title="THANKS">👏</span> to <a class="link" href="https://epic.net" target="_blank">EPIC Agency</a>
 
 <div class="credits-table">
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->

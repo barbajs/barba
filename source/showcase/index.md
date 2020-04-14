@@ -9,4 +9,4 @@ grid: true
 
 # Showcases
 
-Our special gallery displays the best websites using barba.js.
+Our special gallery displays the best websites using Barba.js

@@ -8,4 +8,4 @@ grid: true
 
 # Examples
 
-Some small codepens exploring facets of barba.js
+Some small codepens exploring facets of Barba.js
