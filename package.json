@@ -19,7 +19,7 @@
     "@barba/router": "^2.1.10",
     "cryptr": "^6.0.2",
     "firebase-functions": "^3.6.0",
-    "gsap": "3.0.4",
+    "gsap": "^3.2.6",
     "hexo": "^4.2.0",
     "kapla": "^2.0.1",
     "lottie-web": "^5.6.8",
