@@ -13,6 +13,8 @@ html {
 }
 
 body {
+  overflow-x: hidden;
+
   &.prevent-scroll {
     overflow: hidden;
     height: 100vh;
