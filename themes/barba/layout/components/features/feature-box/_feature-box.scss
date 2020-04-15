@@ -70,12 +70,16 @@
   height: 3rem;
   margin: 0 1rem 1rem 0;
 
+  @include mq(l) {
+    width: 4rem;
+    height: 4rem;
+  }
+
   &[class*='big'] {
     // display: none;
     width: 18rem;
     height: 13rem;
     margin: 0 auto;
-
 
     @include mq(l) {
       display: block;
@@ -86,11 +90,6 @@
 
   .partial-image {
     object-fit: contain;
-  }
-
-  @include mq(l) {
-    width: 4rem;
-    height: 4rem;
   }
 }
 
@@ -120,5 +119,3 @@
   padding: 2rem;
   border-top: 0.1px solid $gray-lighter;
 }
-
-

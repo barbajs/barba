@@ -3,19 +3,18 @@
   @include get-all-space;
 
   display: block;
-  margin-top: 20rem !important;
-  margin-bottom: 10rem !important;
+  margin-top: 20rem !important; //stylelint-disable-line declaration-no-important
+  margin-bottom: 10rem !important; //stylelint-disable-line declaration-no-important
   padding: 0 4rem;
   perspective: 1000px;
 
   @include mq(m) {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+    margin-top: 0 !important; //stylelint-disable-line declaration-no-important
+    margin-bottom: 0 !important; //stylelint-disable-line declaration-no-important
     padding: 4rem;
   }
 
   .is-transitioning & {
-
     @include mq(l) {
       overflow: hidden;
     }
@@ -24,10 +23,15 @@
 
 .big-shape-outer {
   @include center-y;
+
   z-index: -1;
   right: 0;
   left: 0;
   opacity: 0.8;
+
+  @include mq($until: l) {
+    height: 100vh;
+  }
 
   svg {
     display: block;
@@ -42,10 +46,6 @@
 
   * {
     pointer-events: none;
-  }
-
-  @include mq($until: l) {
-    height: 100vh;
   }
 }
 

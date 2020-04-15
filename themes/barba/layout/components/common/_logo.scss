@@ -414,12 +414,12 @@
       fill: $c-blue-medium;
       opacity: 0.1;
 
-      &.to-animate {
-        transform: scale(18) translate(-10%, 10%) rotate(-30deg);
-      }
-
       @include mq(m) {
         display: block;
+      }
+
+      &.to-animate {
+        transform: scale(18) translate(-10%, 10%) rotate(-30deg);
       }
     }
   }

@@ -56,9 +56,9 @@
 
   font-size: calc(
     #{$font-min-size} + (
-        #{strip-unit($font-max-size)} - #{strip-unit($font-min-size)}
-      ) * ((100vw - #{$font-min-break}) /
-          (#{strip-unit($font-max-break)} - #{strip-unit($font-min-break)}))
+      #{strip-unit($font-max-size)} - #{strip-unit($font-min-size)}
+    ) * ((100vw - #{$font-min-break}) /
+    (#{strip-unit($font-max-break)} - #{strip-unit($font-min-break)}))
   );
 
   @include mq($until: $font-min-break) {
@@ -298,17 +298,17 @@
 }
 
 @mixin default-border {
-  border-top: 1px solid $c-gray-light;
   padding-top: $spacing * 2.5;
+  border-top: 1px solid $c-gray-light;
 
   @include mq(m) {
-    border-top: 1px solid $c-gray-light;
     padding-top: $spacing * 3;
+    border-top: 1px solid $c-gray-light;
   }
 
   @include mq(l) {
-    border-top: 1px solid $c-gray-light;
     padding-top: $spacing * 5;
+    border-top: 1px solid $c-gray-light;
   }
 }
 

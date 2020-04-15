@@ -50,6 +50,16 @@
 }
 
 .feature__nav__el {
+  @include mq(m) {
+    a:hover {
+      span {
+        opacity: 1;
+        pointer-events: initial;
+        transform: translate3d(0, -50%, 0);
+      }
+    }
+  }
+
   &:first-child a {
     .icon--barba {
       margin-right: 1rem;
@@ -69,16 +79,6 @@
     span {
       right: 3.1rem;
       transform: translate(-10%, -50%);
-    }
-  }
-
-  @include mq(m) {
-    a:hover {
-      span {
-        opacity: 1;
-        pointer-events: initial;
-        transform: translate3d(0, -50%, 0);
-      }
     }
   }
 }

@@ -21,7 +21,7 @@
     pointer-events: initial;
   }
 
-  >div {
+  > div {
     width: 100%;
   }
 }
@@ -91,7 +91,7 @@
 }
 
 .menu__pages__item {
-  &+& {
+  & + & {
     margin-top: $spacing;
 
     @media screen and (max-height: 850px) {
@@ -134,7 +134,7 @@
   font-size: 1.6rem;
   line-height: 1.2em;
 
-  &+& {
+  & + & {
     margin-top: $spacing * 0.75;
   }
 }
