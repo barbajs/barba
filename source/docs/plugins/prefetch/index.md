@@ -16,7 +16,7 @@ It is mainly inspired by [quicklink](https://github.com/GoogleChromeLabs/quickli
 
 ## How it works?
 
-Based on _Intersection Observer_, it processes **all eligible links** that enter the viewport. Depending on your browser, you may need a [polyfill](/docs/getstarted/browser-support#Polyfill) to properly use this plugin.
+Based on _Intersection Observer_, it processes **all eligible links** that enter the viewport. Depending on your browser, you may need a [polyfill](/docs/getstarted/browser-support/#Polyfill) to properly use this plugin.
 
 You can use this feature regardless of the [`prefetchIgnore`](/docs/advanced/strategies/#prefetchIgnore) core property. Since the links will be prefetched depending on the viewport, it will **prevent the core prefetch process** from prefetching a link on enter.
 
