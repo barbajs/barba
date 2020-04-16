@@ -12,7 +12,7 @@ Most time, you need to run custom code on your website in order to **refresh a c
 ## Where?
 
 Barba [`Views`](/docs/advanced/views) is **the best place** to run custom code.
-They are conditioned by a unique page [`namespace`](/docs/getstarted/markup#Namespace).
+They are conditioned by a unique page [`namespace`](/docs/getstarted/markup/#Namespace).
 
 ```js
 barba.init({

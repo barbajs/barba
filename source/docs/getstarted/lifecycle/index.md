@@ -21,6 +21,6 @@ Here is a small diagram that describe **Barba's main concept** when navigating b
 
 ![Lifecycle diagram](/assets/diagram/lifecycle.png)
 
-> Note that using the `sync` property will end in a different page lifecycle, see transition [sync mode](/docs/advanced/transitions#Sync-mode).
+> Note that using the `sync` property will end in a different page lifecycle, see transition [sync mode](/docs/advanced/transitions/#Sync-mode).
 
 During the transition process, **Barba doesn't apply any styles on the wrapper or container**: you need to manage it by yourself with an animation library, this is where the magic happen!

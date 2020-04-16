@@ -14,7 +14,7 @@ Barba router allows you to use **custom routes** for page transitions.
 
 ## How it works?
 
-This module adds a __route__ rule to Barba, that is less important than `custom()` but more than `namespace`. Take a look at the [transition rules](/docs/advanced/transitions#Rules) for priority order and details.
+This module adds a __route__ rule to Barba, that is less important than `custom()` but more than `namespace`. Take a look at the [transition rules](/docs/advanced/transitions/#Rules) for priority order and details.
 
 Start to define your routes, then tell Barba to use the plugin **before** the `init()` step:
 

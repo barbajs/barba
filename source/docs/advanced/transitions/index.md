@@ -9,7 +9,7 @@ url: 'docs/advanced/transitions/'
 
 Barba allows you to define a **global transition**, that run everywhere on your site, and/or **specific transitions** using [rules](#Rules) that run when navigating from one page to another.
 
-They use all [base `hooks`](/docs/advanced/hooks#Base-hooks).
+They use all [base `hooks`](/docs/advanced/hooks/#Base-hooks).
 
 ## Syntax
 
@@ -90,7 +90,7 @@ Barba will then select the right transition to use and play it **only if all con
 
 | Priority | Condition   | Type               | Argument                                            | Fulfilled when...          |
 | -------- | ----------- | ------------------ | --------------------------------------------------- | -------------------------- |
-| 1        | `custom`    | Function           | [data](/docs/advanced/hooks#data-argument) argument | Return `true`              |
+| 1        | `custom`    | Function           | [data](/docs/advanced/hooks/#data-argument) argument | Return `true`              |
 | 2        | `route`     | String \| String[] | _none_                                              | `current.route.name` match |
 | 3        | `namespace` | String \| String[] | _none_                                              | `current.namespace` match  |
 

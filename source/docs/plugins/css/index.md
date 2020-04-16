@@ -16,7 +16,7 @@ It is mainly inspired by [Vue.js transitions](https://vuejs.org/v2/guide/transit
 
 ## How it works?
 
-This plugin **adds/removes [CSS classes](#CSS-classes)** from the [`data-barba="container"`](/docs/getstarted/markup#Container) DOM element automatically.
+This plugin **adds/removes [CSS classes](#CSS-classes)** from the [`data-barba="container"`](/docs/getstarted/markup/#Container) DOM element automatically.
 
 To create a simple opacity transition, use the plugin in your build:
 
@@ -153,7 +153,7 @@ If you want to play some transition on first load, use the `once` hook:
 
 ### Custom rule
 
-You can use custom [transition rules](/docs/advanced/transitions#Rules) to play transitions depending on the namespace or route.
+You can use custom [transition rules](/docs/advanced/transitions/#Rules) to play transitions depending on the namespace or route.
 
 ```js
 import barba from '@barba/core';

@@ -10,7 +10,7 @@ url: 'docs/advanced/views/'
 Views allows you to have **some logic related to the content of a [`namespace`](/docs/getstarted/markup#Namespace)**.
 It's a good place to init or destroy things, making the code run in a confined place.
 
-They use a subset of [base `hooks`](/docs/advanced/hooks#Base-hooks).
+They use a subset of [base `hooks`](/docs/advanced/hooks/#Base-hooks).
 
 ## Syntax
 

@@ -18,7 +18,7 @@ This might be result in some **unexpected behaviors** when using classic third p
 ### analytics.js
 
 With `analytics.js`, you can manually send a pageview with the following snippet.
-The best place to do that is in the `after` [global hook](/docs/advanced/hooks#Global-hooks), as it is applied to all your pages:
+The best place to do that is in the `after` [global hook](/docs/advanced/hooks/#Global-hooks), as it is applied to all your pages:
 
 ```javascript
 barba.hooks.after(() => {

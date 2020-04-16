@@ -18,7 +18,7 @@ It is mainly inspired by [quicklink](https://github.com/GoogleChromeLabs/quickli
 
 Based on _Intersection Observer_, it processes **all eligible links** that enter the viewport. Depending on your browser, you may need a [polyfill](/docs/getstarted/browser-support#Polyfill) to properly use this plugin.
 
-You can use this feature regardless of the [`prefetchIgnore`](/docs/advanced/strategies#prefetchIgnore) core property. Since the links will be prefetched depending on the viewport, it will **prevent the core prefetch process** from prefetching a link on enter.
+You can use this feature regardless of the [`prefetchIgnore`](/docs/advanced/strategies/#prefetchIgnore) core property. Since the links will be prefetched depending on the viewport, it will **prevent the core prefetch process** from prefetching a link on enter.
 
 ```js
 import barba from '@barba/core';
@@ -33,4 +33,4 @@ barba.init();
 
 > On slow network or with a high page weight, the server can take time to prefetch the response and can lead Barba to abort the transition and display a *Timeout error* message.
 >
-> See the [`timeout`](/docs/advanced/recipes#timeout) setting to properly manage this behavior.
+> See the [`timeout`](/docs/advanced/recipes/#timeout) setting to properly manage this behavior.
