@@ -112,9 +112,9 @@
 				</a>
 				<ul>
 					<li>Barba now use <code>data-barba-*</code> attributes:<ul>
-							<li>data-barba-container for the <a href="https://barba.js.org/docs/userguide/markup/#Container">container</a></li>
-							<li>data-barba-wrapper for the <a href="https://barba.js.org/docs/userguide/markup/#Wrapper">wrapper</a></li>
-							<li>data-barba-namespace for the <a href="https://barba.js.org/docs/userguide/markup/#Namespace">namespace</a></li>
+							<li>data-barba-wrapper for the <a href="https://barba.js.org/docs/getstarted/markup/#Wrapper">wrapper</a></li>
+							<li>data-barba-container for the <a href="https://barba.js.org/docs/getstarted/markup/#Container">container</a></li>
+							<li>data-barba-namespace for the <a href="https://barba.js.org/docs/getstarted/markup/#Namespace">namespace</a></li>
 						</ul>
 					</li>
 					<li>2 main methods:<ul>
@@ -122,15 +122,15 @@
 							<li><code>barba.use()</code> for plugins (router, css, prefetch, etc.)</li>
 						</ul>
 					</li>
-					<li><a href="https://barba.js.org/docs/userguide/syntax/#lt-transition-gt-object">Transitions</a>:<ul>
+					<li><a href="https://barba.js.org/docs/advanced/transitions/">Transitions</a>:<ul>
 							<li>are plain JS objects</li>
 							<li>are declared via the <code>barba.init({ transitions })</code></li>
-							<li>use &quot;<a href="https://barba.js.org/docs/userguide/syntax/#Hooks">hooks</a>&quot; corresponding to animation steps<ul>
+							<li>use &quot;<a href="https://barba.js.org/docs/advanced/hooks/">hooks</a>&quot; corresponding to animation steps<ul>
 									<li>hooks can be synchronous or asynchronous (via <code>this.async()</code> or Promise based)</li>
-									<li>all hooks receive same <a href="https://barba.js.org/docs/userguide/syntax/#data-argument"><code>data</code> argument</a></li>
+									<li>all hooks receive same <a href="https://barba.js.org/docs/advanced/hooks/#data-argument"><code>data</code> argument</a></li>
 								</ul>
 							</li>
-							<li>use &quot;<a href="https://barba.js.org/docs/userguide/syntax/#Rules">rules</a>&quot; to select which transition to use<ul>
+							<li>use &quot;<a href="https://barba.js.org/docs/advanced/transitions/#Rules">rules</a>&quot; to select which transition to use<ul>
 									<li>default rules are <code>namespace</code> and <code>custom</code></li>
 									<li><code>@barba/router</code> adds <code>route</code> rule</li>
 									<li>they can be combined within <code>from</code> and <code>to</code> properties</li>
@@ -138,26 +138,18 @@
 							</li>
 						</ul>
 					</li>
-					<li><a href="https://barba.js.org/docs/userguide/syntax/#lt-view-gt-object">Views</a>:<ul>
+					<li><a href="https://barba.js.org/docs/advanced/views/">Views</a>:<ul>
 							<li>are plain JS objects</li>
 							<li>are declared via the <code>barba.init({ views })</code></li>
 							<li>use a subset of animation &quot;hooks&quot;:<ul>
 									<li><code>beforeOnce</code>, <code>afterOnce</code>, <code>beforeLeave</code>, <code>afterLeave</code>, <code>beforeEnter</code>, <code>afterEnter</code></li>
-									<li>receive the same <a href="https://barba.js.org/docs/userguide/syntax/#data-argument"><code>data</code> argument</a></li>
+									<li>receive the same <a href="https://barba.js.org/docs/advanced/hooks/#data-argument"><code>data</code> argument</a></li>
 								</ul>
 							</li>
 						</ul>
 					</li>
-					<li><a href="https://barba.js.org/docs/userguide/syntax/#Sync-mode">Sync mode</a> will start <code>leave</code> and <code>enter</code> transitions concurrently</li>
+					<li><a href="https://barba.js.org/docs/advanced/transitions/#Sync-mode">Sync mode</a> will start <code>leave</code> and <code>enter</code> transitions concurrently</li>
 				</ul>
-				<a href="#how-it-works" id="how-it-works" style="color: inherit; text-decoration: none;">
-					<h2>How it works?</h2>
-				</a>
-				<p>BarbaJS makes your site work like a <em>Single Page Application</em> (SPA), allowing you to create smooth transitions <strong>without having to reload the whole site</strong>, reducing load delay, browser requests and enhancing user&#39;s web experience. Here is a small lifecycle diagram that describe <strong>Barba&#39;s main concept</strong> when navigating between two pages.</p>
-				<p><a href="lifecycle-diagram.png?raw=true"><img src="lifecycle-diagram.png" alt="Barba lifecycle diagram" title="Barba lifecycle diagram"></a></p>
-				<blockquote>
-					<p>Note that using the <code>sync</code> property will end in a different page lifecycle, see <a href="https://barba.js.org/docs/userguide/syntax/#Sync-mode">https://barba.js.org/docs/userguide/syntax/#Sync-mode</a></p>
-				</blockquote>
 				<a href="#how-to-contribute" id="how-to-contribute" style="color: inherit; text-decoration: none;">
 					<h2>How to contribute</h2>
 				</a>
