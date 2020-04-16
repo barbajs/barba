@@ -542,7 +542,7 @@
 <!-- Docs Nav [end]-->
   <div class="docs__markdown">
   <h1 id="Transitions"><a href="#Transitions" class="headerlink" title="Transitions"></a>Transitions</h1><p>Barba allows you to define a <strong>global transition</strong>, that run everywhere on your site, and/or <strong>specific transitions</strong> using <a href="#Rules">rules</a> that run when navigating from one page to another.</p>
-<p>They use all <a href="/docs/advanced/hooks#Base-hooks">base <code>hooks</code></a>.</p>
+<p>They use all <a href="/docs/advanced/hooks/#Base-hooks">base <code>hooks</code></a>.</p>
 <h2 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  transitions: [&#123;</span><br><span class="line">    name: <span class="string">'default-transition'</span>,</span><br><span class="line">    leave() &#123;</span><br><span class="line">      <span class="comment">// create your stunning leave animation here</span></span><br><span class="line">    &#125;,</span><br><span class="line">    enter() &#123;</span><br><span class="line">      <span class="comment">// create your amazing enter animation here</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
@@ -604,7 +604,7 @@
 <td>1</td>
 <td><code>custom</code></td>
 <td>Function</td>
-<td><a href="/docs/advanced/hooks#data-argument">data</a> argument</td>
+<td><a href="/docs/advanced/hooks/#data-argument">data</a> argument</td>
 <td>Return <code>true</code></td>
 </tr>
 <tr>

@@ -545,12 +545,12 @@
 <p>Barba <strong>prefetches automatically and cache</strong> your pages.</p>
 <p>It is mainly inspired by <a href="https://github.com/GoogleChromeLabs/quicklink" target="_blank" rel="noopener">quicklink</a>.</p>
 <h2 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works?"></a>How it works?</h2><p>Based on <em>Intersection Observer</em>, it processes <strong>all eligible links</strong> that enter the viewport. Depending on your browser, you may need a <a href="/docs/getstarted/browser-support#Polyfill">polyfill</a> to properly use this plugin.</p>
-<p>You can use this feature regardless of the <a href="/docs/advanced/strategies#prefetchIgnore"><code>prefetchIgnore</code></a> core property. Since the links will be prefetched depending on the viewport, it will <strong>prevent the core prefetch process</strong> from prefetching a link on enter.</p>
+<p>You can use this feature regardless of the <a href="/docs/advanced/strategies/#prefetchIgnore"><code>prefetchIgnore</code></a> core property. Since the links will be prefetched depending on the viewport, it will <strong>prevent the core prefetch process</strong> from prefetching a link on enter.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span>;</span><br><span class="line"><span class="keyword">import</span> prefetch <span class="keyword">from</span> <span class="string">'@barba/prefetch'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tell Barba to use the prefetch plugin</span></span><br><span class="line">barba.use(prefetch);</span><br><span class="line"></span><br><span class="line"><span class="comment">// init Barba</span></span><br><span class="line">barba.init();</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>On slow network or with a high page weight, the server can take time to prefetch the response and can lead Barba to abort the transition and display a <em>Timeout error</em> message.</p>
-<p>See the <a href="/docs/advanced/recipes#timeout"><code>timeout</code></a> setting to properly manage this behavior.</p>
+<p>See the <a href="/docs/advanced/recipes/#timeout"><code>timeout</code></a> setting to properly manage this behavior.</p>
 </blockquote>
 
 </div>
