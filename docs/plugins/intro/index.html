@@ -479,9 +479,9 @@
 
         <!-- Subpage -->
         
-        <li class="">
+        <li class="is-open">
           <a href="/docs/plugins/intro/">
-            <h2 class="docs__nav__subtitle ">
+            <h2 class="docs__nav__subtitle is-open">
               Intro
             </h2>
           </a>
@@ -495,9 +495,9 @@
           </a>
         </li>
         
-        <li class="is-open">
+        <li class="">
           <a href="/docs/plugins/prefetch/">
-            <h2 class="docs__nav__subtitle is-open">
+            <h2 class="docs__nav__subtitle ">
               Prefetch
             </h2>
           </a>
@@ -541,17 +541,17 @@
 </div>
 <!-- Docs Nav [end]-->
   <div class="docs__markdown">
-  <h1 id="barba-prefetch"><a href="#barba-prefetch" class="headerlink" title="@barba/prefetch"></a>@barba/prefetch</h1><p><a href="https://www.npmjs.com/package/@barba/prefetch" target="_blank" rel="noopener" title="Badge"><img src="https://img.shields.io/npm/v/@barba/prefetch?style=flat-square" alt="NPM version"></a><br><a href="https://github.com/barbajs/barba/network/dependencies" target="_blank" rel="noopener" title="Badge"><img src="https://img.shields.io/librariesio/release/npm/@barba/prefetch?style=flat-square" alt="Dependencies"></a></p>
-<p>Barba <strong>prefetches automatically and cache</strong> your pages.</p>
-<p>It is mainly inspired by <a href="https://github.com/GoogleChromeLabs/quicklink" target="_blank" rel="noopener">quicklink</a>.</p>
-<h2 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works?"></a>How it works?</h2><p>Based on <em>Intersection Observer</em>, it processes <strong>all eligible links</strong> that enter the viewport. Depending on your browser, you may need a <a href="/docs/getstarted/browser-support#Polyfill">polyfill</a> to properly use this plugin.</p>
-<p>You can use this feature regardless of the <a href="/docs/advanced/strategies#prefetchIgnore"><code>prefetchIgnore</code></a> core property. Since the links will be prefetched depending on the viewport, it will <strong>prevent the core prefetch process</strong> from prefetching a link on enter.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span>;</span><br><span class="line"><span class="keyword">import</span> prefetch <span class="keyword">from</span> <span class="string">'@barba/prefetch'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tell Barba to use the prefetch plugin</span></span><br><span class="line">barba.use(prefetch);</span><br><span class="line"></span><br><span class="line"><span class="comment">// init Barba</span></span><br><span class="line">barba.init();</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>On slow network or with a high page weight, the server can take time to prefetch the response and can lead Barba to abort the transition and display a <em>Timeout error</em> message.</p>
-<p>See the <a href="/docs/advanced/recipes#timeout"><code>timeout</code></a> setting to properly manage this behavior.</p>
-</blockquote>
+  <h1 id="Plugins"><a href="#Plugins" class="headerlink" title="Plugins"></a>Plugins</h1><p>Barba plugins are <strong>components that you can plug</strong> to improve the default library behavior.</p>
+<h2 id="Available"><a href="#Available" class="headerlink" title="Available"></a>Available</h2><p>Here is the list of all available plugins for Barba:</p>
+<ul>
+<li><a href="/docs/plugins/router/">@barba/router</a> → allows you to use custom routes for page transitions</li>
+<li><a href="/docs/plugins/prefetch/">@barba/prefetch</a> → prefetches automatically and cache your pages</li>
+<li><a href="/docs/plugins/css/">@barba/css</a> → a style helper that manage you CSS classes during transitions</li>
+<li><a href="/docs/plugins/head/">@barba/head</a> → keep your <code>&lt;head&gt;</code> up to date <em><strong>(coming soon)</strong></em></li>
+<li><a href="/docs/plugins/preset/">@barba/preset</a> → ready-to-use basic transitions pack <em><strong>(coming soon)</strong></em></li>
+</ul>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>To use a plugin, simply tell Barba what plugin(s) you want to use <strong>before initialize</strong> it:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span>;</span><br><span class="line"><span class="keyword">import</span> prefetch <span class="keyword">from</span> <span class="string">'@barba/prefetch'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tell Barba what plugins to use</span></span><br><span class="line">barba.use(prefetch);</span><br><span class="line"></span><br><span class="line"><span class="comment">// init Barba</span></span><br><span class="line">barba.init(&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 </div>
 
@@ -561,7 +561,7 @@
 <div class="docs__nav__lateral" data-component="docs-nav-lateral">
   
   <a
-    href="/docs/plugins/router/"
+    href="/api/"
     class="docs__nav__lateral__link--prev"
     data-ref="docs-nav-lateral.link"
   >
@@ -569,15 +569,15 @@
   <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-prev"></use> -->
   <use xlink:href="#barba-arrow-prev"></use>
 </svg>
-    <span class="docs__nav__lateral__label">Router</span>
+    <span class="docs__nav__lateral__label">Developer API</span>
   </a>
    
   <a
-    href="/docs/plugins/css/"
+    href="/docs/plugins/router/"
     class="docs__nav__lateral__link--next"
     data-ref="docs-nav-lateral.link"
   >
-    <span class="docs__nav__lateral__label">Css</span>
+    <span class="docs__nav__lateral__label">Router</span>
     <svg viewBox="0 0 21 15" aria-hidden="true" class="icon--barba">
   <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-next"></use> -->
   <use xlink:href="#barba-arrow-next"></use>

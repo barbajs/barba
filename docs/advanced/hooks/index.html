@@ -387,18 +387,18 @@
     
     <li>
       <a href="/docs/advanced/hooks/" >
-        <h1 class="docs__nav__title ">Advanced</h1>
+        <h1 class="docs__nav__title is-open">Advanced</h1>
       </a>
 
       <!-- Subpages -->
       
-      <ol class="docs__nav__sublist ">
+      <ol class="docs__nav__sublist is-open">
 
         <!-- Subpage -->
         
-        <li class="">
+        <li class="is-open">
           <a href="/docs/advanced/hooks/">
-            <h2 class="docs__nav__subtitle ">
+            <h2 class="docs__nav__subtitle is-open">
               Hooks
             </h2>
           </a>
@@ -470,12 +470,12 @@
     
     <li>
       <a href="/docs/plugins/intro/" >
-        <h1 class="docs__nav__title is-open">Plugins</h1>
+        <h1 class="docs__nav__title ">Plugins</h1>
       </a>
 
       <!-- Subpages -->
       
-      <ol class="docs__nav__sublist is-open">
+      <ol class="docs__nav__sublist ">
 
         <!-- Subpage -->
         
@@ -495,9 +495,9 @@
           </a>
         </li>
         
-        <li class="is-open">
+        <li class="">
           <a href="/docs/plugins/prefetch/">
-            <h2 class="docs__nav__subtitle is-open">
+            <h2 class="docs__nav__subtitle ">
               Prefetch
             </h2>
           </a>
@@ -541,16 +541,249 @@
 </div>
 <!-- Docs Nav [end]-->
   <div class="docs__markdown">
-  <h1 id="barba-prefetch"><a href="#barba-prefetch" class="headerlink" title="@barba/prefetch"></a>@barba/prefetch</h1><p><a href="https://www.npmjs.com/package/@barba/prefetch" target="_blank" rel="noopener" title="Badge"><img src="https://img.shields.io/npm/v/@barba/prefetch?style=flat-square" alt="NPM version"></a><br><a href="https://github.com/barbajs/barba/network/dependencies" target="_blank" rel="noopener" title="Badge"><img src="https://img.shields.io/librariesio/release/npm/@barba/prefetch?style=flat-square" alt="Dependencies"></a></p>
-<p>Barba <strong>prefetches automatically and cache</strong> your pages.</p>
-<p>It is mainly inspired by <a href="https://github.com/GoogleChromeLabs/quicklink" target="_blank" rel="noopener">quicklink</a>.</p>
-<h2 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works?"></a>How it works?</h2><p>Based on <em>Intersection Observer</em>, it processes <strong>all eligible links</strong> that enter the viewport. Depending on your browser, you may need a <a href="/docs/getstarted/browser-support#Polyfill">polyfill</a> to properly use this plugin.</p>
-<p>You can use this feature regardless of the <a href="/docs/advanced/strategies#prefetchIgnore"><code>prefetchIgnore</code></a> core property. Since the links will be prefetched depending on the viewport, it will <strong>prevent the core prefetch process</strong> from prefetching a link on enter.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span>;</span><br><span class="line"><span class="keyword">import</span> prefetch <span class="keyword">from</span> <span class="string">'@barba/prefetch'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tell Barba to use the prefetch plugin</span></span><br><span class="line">barba.use(prefetch);</span><br><span class="line"></span><br><span class="line"><span class="comment">// init Barba</span></span><br><span class="line">barba.init();</span><br></pre></td></tr></table></figure>
+  <h1 id="Hooks"><a href="#Hooks" class="headerlink" title="Hooks"></a>Hooks</h1><p>A “hook” is a <strong>regular method</strong> that is called at a specific time in the Barba lifecycle.</p>
+<p>Hooks are triggered by <a href="/docs/advanced/transitions/"><code>Transitions</code></a> and <a href="/docs/advanced/views/"><code>Views</code></a>, but are not “shared” between them: <strong>they run separately</strong>, either <strong>synchronously or asynchronously</strong> using the common <code>this.async()</code> syntax <em>(<a href="https://github.com/sboudrias/run-async#readme" target="_blank" rel="noopener">see run-async</a>)</em> or returning a promise.</p>
+<h2 id="Base-hooks"><a href="#Base-hooks" class="headerlink" title="Base hooks"></a>Base hooks</h2><p>Barba uses a collection of base hooks:</p>
+<table>
+<thead>
+<tr>
+<th>Order</th>
+<th>Name</th>
+<th>Description</th>
+<th>Transitions</th>
+<th>Views</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>beforeOnce</code></td>
+<td>Before <strong>once</strong> transition <em>(browser first load)</em></td>
+<td>x</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>once</code></td>
+<td>Current page <strong>once</strong> transition <em>(browser first load)</em></td>
+<td>x</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>afterOnce</code></td>
+<td>Before <strong>once</strong> transition <em>(browser first load)</em></td>
+<td>x</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>before</code></td>
+<td>Before everything</td>
+<td>x</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>beforeLeave</code></td>
+<td>Before <strong>leave</strong> transition/view</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>leave</code></td>
+<td>Current page <strong>leave</strong> transition</td>
+<td>x</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>afterLeave</code></td>
+<td>After <strong>leave</strong> transition/view <em>(next container is <strong>DOM ready</strong>)</em></td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>beforeEnter</code></td>
+<td>Before <strong>enter</strong> transition/view</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>enter</code></td>
+<td>Next page <strong>enter</strong> transition</td>
+<td>x</td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>afterEnter</code></td>
+<td>After <strong>enter</strong> transition/view</td>
+<td>x</td>
+<td>x</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>after</code></td>
+<td>After everything</td>
+<td>x</td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Each hook run in <strong>a precise order</strong>. If the <a href="/docs/advanced/transitions#Sync-mode">sync mode</a> is enabled, as <strong>leave</strong> and <strong>enter</strong> will be concurrent, order will differ: first all before*, then enter/leave, and finally all after*.</p>
+</blockquote>
+<p>You can define them in <strong>many different ways</strong>, depending on your code implementation:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// using a promise (returned with arrow function)</span></span><br><span class="line">leave: <span class="function">(<span class="params">data</span>) =&gt;</span> asyncAnimation(data.current.container)</span><br><span class="line"></span><br><span class="line"><span class="comment">// using a promise (with ES6 argument syntax)</span></span><br><span class="line">leave: <span class="function">(<span class="params">&#123; current &#125;</span>) =&gt;</span> asyncAnimation(current.container)</span><br><span class="line"></span><br><span class="line"><span class="comment">// using a promise (with a resolve call)</span></span><br><span class="line">leave: <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">    callbackAnimation(data.current.container, &#123;</span><br><span class="line">      onComplete: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        resolve();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// `this.async()`</span></span><br><span class="line">leave(data) &#123;</span><br><span class="line">  <span class="keyword">const</span> done = <span class="keyword">this</span>.async();</span><br><span class="line"></span><br><span class="line">  callbackAnimation(data.current.container, &#123;</span><br><span class="line">    onComplete: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      done();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// async/await</span></span><br><span class="line"><span class="keyword">async</span> leave(data) &#123;</span><br><span class="line">  <span class="keyword">await</span> asyncAnimation(data.current.container);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Global-hooks"><a href="#Global-hooks" class="headerlink" title="Global hooks"></a>Global hooks</h2><p>In order to improve and optimize your code, Barba offer a way to define global hooks through <code>barba.hooks</code>. This will <strong>execute code everytime the hook is called</strong> in the lifecycle. What makes the hook global is that the definition is not wrap inside a <code>Transition</code> or a <code>View</code>. You can combine base and global hooks.</p>
+<p>For example, if you want to scroll the window to the top <strong>everytime you enter a new page</strong>, just do:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">barba.hooks.enter(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>On slow network or with a high page weight, the server can take time to prefetch the response and can lead Barba to abort the transition and display a <em>Timeout error</em> message.</p>
-<p>See the <a href="/docs/advanced/recipes#timeout"><code>timeout</code></a> setting to properly manage this behavior.</p>
+<p>Note that <code>beforeOnce</code>, <code>once</code> and <code>afterOnce</code> global hooks are not permitted.</p>
+</blockquote>
+<h2 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h2><h3 id="data-argument"><a href="#data-argument" class="headerlink" title="data argument"></a><code>data</code> argument</h3><p>All hooks receive the same <code>data</code> argument object that contains <strong>current and next page properties</strong>.<br>This allows access to useful informations, like namespace, route or URL:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  transitions: [&#123;</span><br><span class="line">    leave(data) &#123;</span><br><span class="line">      <span class="comment">// get the current URL</span></span><br><span class="line">      <span class="keyword">let</span> href = data.current.url.href;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>You can use <strong>ES6 shorthand argument</strong> syntax <code>({ current })</code> to easily access <code>data.current</code> inside the hook.</p>
+</blockquote>
+<h4 id="data-properties"><a href="#data-properties" class="headerlink" title="data properties"></a><code>data</code> properties</h4><p>Properties attached to <code>data</code> object:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="#current-next-properties"><code>data.current</code></a></td>
+<td>Object</td>
+<td>Current page related</td>
+</tr>
+<tr>
+<td><a href="#current-next-properties"><code>data.next</code></a></td>
+<td>Object</td>
+<td>Next page related</td>
+</tr>
+<tr>
+<td><code>data.trigger</code></td>
+<td>HTMLElement</td>
+<td>Link that triggered the transition</td>
+</tr>
+<tr>
+<td></td>
+<td>String <code>&#39;barba&#39;</code></td>
+<td>Programmatic navigation</td>
+</tr>
+<tr>
+<td></td>
+<td>String <code>&#39;back&#39;</code> | <code>&#39;forward&#39;</code></td>
+<td>Browser backward/forward button</td>
+</tr>
+</tbody></table>
+<h4 id="current-next-properties"><a href="#current-next-properties" class="headerlink" title="current/next properties"></a><code>current/next</code> properties</h4><p>Properties attached to <code>data.current</code> and <code>data.next</code> objects:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="/docs/getstarted/markup/#Container"><code>container</code></a></td>
+<td>HTMLElement</td>
+<td>Barba container</td>
+</tr>
+<tr>
+<td><a href="/docs/getstarted/markup/#Namespace"><code>namespace</code></a></td>
+<td>String</td>
+<td>Barba namespace</td>
+</tr>
+<tr>
+<td><a href="#url-properties"><code>url</code></a></td>
+<td>Object</td>
+<td>URL of the page</td>
+</tr>
+<tr>
+<td><a href="#route-properties"><code>route</code></a></td>
+<td>Object</td>
+<td>Route object</td>
+</tr>
+<tr>
+<td><code>html</code></td>
+<td>String</td>
+<td>HTML of the page</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>According to the <a href="/docs/getstarted/lifecycle/">lifecycle</a>, <a href="/docs/advanced/transitions#Rules">rules</a>, <a href="/docs/advanced/transitions#Sync-mode">sync mode</a> or <a href="/docs/advanced/strategies#cacheIgnore">cache availability</a>, some properties may be <code>undefined</code>.</p>
+</blockquote>
+<h4 id="url-properties"><a href="#url-properties" class="headerlink" title="url properties"></a><code>url</code> properties</h4><p>Properties attached to <code>data.current.url</code> and <code>data.next.url</code> objects:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>hash</code></td>
+<td>String</td>
+<td><code>undefined</code></td>
+<td>URL hash</td>
+</tr>
+<tr>
+<td><code>href</code></td>
+<td>String</td>
+<td><code>location.href</code></td>
+<td>URL complete location</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td>String</td>
+<td><code>location.pathname</code></td>
+<td>URL path (without origin, hash and query)</td>
+</tr>
+<tr>
+<td><code>query</code></td>
+<td>Object</td>
+<td>{}</td>
+<td>URL query (key: value)</td>
+</tr>
+</tbody></table>
+<h4 id="route-properties"><a href="#route-properties" class="headerlink" title="route properties"></a><code>route</code> properties</h4><p>Properties attached to <code>data.current.route</code> and <code>data.next.route</code> objects:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>name</code></td>
+<td>String</td>
+<td><code>undefined</code></td>
+<td>Route name</td>
+</tr>
+<tr>
+<td><code>params</code></td>
+<td>Object</td>
+<td>{}</td>
+<td>Route segment params</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><code>route</code> is <strong>only</strong> available when using <a href="/docs/plugins/router/">@barba/router</a>.</p>
 </blockquote>
 
 </div>
@@ -561,7 +794,7 @@
 <div class="docs__nav__lateral" data-component="docs-nav-lateral">
   
   <a
-    href="/docs/plugins/router/"
+    href="/docs/getstarted/useful-links/"
     class="docs__nav__lateral__link--prev"
     data-ref="docs-nav-lateral.link"
   >
@@ -569,15 +802,15 @@
   <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-prev"></use> -->
   <use xlink:href="#barba-arrow-prev"></use>
 </svg>
-    <span class="docs__nav__lateral__label">Router</span>
+    <span class="docs__nav__lateral__label">Useful links</span>
   </a>
    
   <a
-    href="/docs/plugins/css/"
+    href="/docs/advanced/transitions/"
     class="docs__nav__lateral__link--next"
     data-ref="docs-nav-lateral.link"
   >
-    <span class="docs__nav__lateral__label">Css</span>
+    <span class="docs__nav__lateral__label">Transitions</span>
     <svg viewBox="0 0 21 15" aria-hidden="true" class="icon--barba">
   <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-next"></use> -->
   <use xlink:href="#barba-arrow-next"></use>

@@ -387,12 +387,12 @@
     
     <li>
       <a href="/docs/advanced/hooks/" >
-        <h1 class="docs__nav__title ">Advanced</h1>
+        <h1 class="docs__nav__title is-open">Advanced</h1>
       </a>
 
       <!-- Subpages -->
       
-      <ol class="docs__nav__sublist ">
+      <ol class="docs__nav__sublist is-open">
 
         <!-- Subpage -->
         
@@ -428,9 +428,9 @@
           </a>
         </li>
         
-        <li class="">
+        <li class="is-open">
           <a href="/docs/advanced/recipes/">
-            <h2 class="docs__nav__subtitle ">
+            <h2 class="docs__nav__subtitle is-open">
               Recipes
             </h2>
           </a>
@@ -470,12 +470,12 @@
     
     <li>
       <a href="/docs/plugins/intro/" >
-        <h1 class="docs__nav__title is-open">Plugins</h1>
+        <h1 class="docs__nav__title ">Plugins</h1>
       </a>
 
       <!-- Subpages -->
       
-      <ol class="docs__nav__sublist is-open">
+      <ol class="docs__nav__sublist ">
 
         <!-- Subpage -->
         
@@ -495,9 +495,9 @@
           </a>
         </li>
         
-        <li class="is-open">
+        <li class="">
           <a href="/docs/plugins/prefetch/">
-            <h2 class="docs__nav__subtitle is-open">
+            <h2 class="docs__nav__subtitle ">
               Prefetch
             </h2>
           </a>
@@ -541,16 +541,81 @@
 </div>
 <!-- Docs Nav [end]-->
   <div class="docs__markdown">
-  <h1 id="barba-prefetch"><a href="#barba-prefetch" class="headerlink" title="@barba/prefetch"></a>@barba/prefetch</h1><p><a href="https://www.npmjs.com/package/@barba/prefetch" target="_blank" rel="noopener" title="Badge"><img src="https://img.shields.io/npm/v/@barba/prefetch?style=flat-square" alt="NPM version"></a><br><a href="https://github.com/barbajs/barba/network/dependencies" target="_blank" rel="noopener" title="Badge"><img src="https://img.shields.io/librariesio/release/npm/@barba/prefetch?style=flat-square" alt="Dependencies"></a></p>
-<p>Barba <strong>prefetches automatically and cache</strong> your pages.</p>
-<p>It is mainly inspired by <a href="https://github.com/GoogleChromeLabs/quicklink" target="_blank" rel="noopener">quicklink</a>.</p>
-<h2 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works?"></a>How it works?</h2><p>Based on <em>Intersection Observer</em>, it processes <strong>all eligible links</strong> that enter the viewport. Depending on your browser, you may need a <a href="/docs/getstarted/browser-support#Polyfill">polyfill</a> to properly use this plugin.</p>
-<p>You can use this feature regardless of the <a href="/docs/advanced/strategies#prefetchIgnore"><code>prefetchIgnore</code></a> core property. Since the links will be prefetched depending on the viewport, it will <strong>prevent the core prefetch process</strong> from prefetching a link on enter.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span>;</span><br><span class="line"><span class="keyword">import</span> prefetch <span class="keyword">from</span> <span class="string">'@barba/prefetch'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tell Barba to use the prefetch plugin</span></span><br><span class="line">barba.use(prefetch);</span><br><span class="line"></span><br><span class="line"><span class="comment">// init Barba</span></span><br><span class="line">barba.init();</span><br></pre></td></tr></table></figure>
+  <h1 id="Recipes"><a href="#Recipes" class="headerlink" title="Recipes"></a>Recipes</h1><h2 id="Debug-with-Barba"><a href="#Debug-with-Barba" class="headerlink" title="Debug with Barba"></a>Debug with Barba</h2><h3 id="debug"><a href="#debug" class="headerlink" title="debug"></a><code>debug</code></h3><p>This property displays useful <code>console.info</code> about transition used, for <strong>debugging purpose</strong> only.<br>It sets <a href="#logLevel">logLevel</a> to <code>debug</code>. Default is <code>off</code>.</p>
+<p>Enable it like this:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  debug: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>On slow network or with a high page weight, the server can take time to prefetch the response and can lead Barba to abort the transition and display a <em>Timeout error</em> message.</p>
-<p>See the <a href="/docs/advanced/recipes#timeout"><code>timeout</code></a> setting to properly manage this behavior.</p>
+<p>We recommend you to <strong>enable the debugger only in development environment</strong> to properly catch transition errors.</p>
+</blockquote>
+<h3 id="logLevel"><a href="#logLevel" class="headerlink" title="logLevel"></a><code>logLevel</code></h3><p>When debugging with Barba, you can easily <strong>set the log level of debug informations</strong> that the browser display:</p>
+<ul>
+<li><code>off</code> → log is disabled</li>
+<li><code>error</code> → use <code>console.error()</code></li>
+<li><code>warning</code> → use <code>console.warn()</code></li>
+<li><code>info</code> → use <code>console.info()</code></li>
+<li><code>debug</code> → use <code>console.log()</code></li>
+</ul>
+<p>Use this syntax to adjust the log level:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  logLevel: <span class="string">'error'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Manage-browser-requests"><a href="#Manage-browser-requests" class="headerlink" title="Manage browser requests"></a>Manage browser requests</h2><h3 id="requestError"><a href="#requestError" class="headerlink" title="requestError"></a><code>requestError</code></h3><p>Allows you to <strong>catch request errors</strong>.<br>If this function returns <code>false</code>, wrong links will not be “force” triggered.</p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>trigger</code></td>
+<td>HTMLElement</td>
+<td>The clicked/hovered HTMLElement</td>
+</tr>
+<tr>
+<td></td>
+<td>String <code>&#39;barba&#39;</code></td>
+<td>Programmatic navigation</td>
+</tr>
+<tr>
+<td></td>
+<td>String <code>&#39;back&#39;</code> | <code>&#39;forward&#39;</code></td>
+<td>Browser backward/forward button</td>
+</tr>
+<tr>
+<td><code>action</code></td>
+<td>String</td>
+<td>The user action on the link: <code>&#39;enter&#39;</code> when hovering, <code>&#39;click&#39;</code> when clicking, or <code>&#39;prefetch&#39;</code> when prefetching with <a href="/docs/plugins/prefetch/">@barba/prefetch</a></td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>String</td>
+<td>Requested URL</td>
+</tr>
+<tr>
+<td><code>response</code></td>
+<td>Object</td>
+<td>Fetch error with <code>message</code> or response with <code>status</code>, <code>statusText</code>, etc.</td>
+</tr>
+</tbody></table>
+<p>Here is an example to manage 404 server responses with a custom page:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  requestError: <span class="function">(<span class="params">trigger, action, url, response</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// go to a custom 404 page if the user click on a link that return a 404 response status</span></span><br><span class="line">    <span class="keyword">if</span> (action === <span class="string">'click'</span> &amp;&amp; response.status &amp;&amp; response.status === <span class="number">404</span>) &#123;</span><br><span class="line">      barba.go(<span class="string">'/404'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// prevent Barba from redirecting the user to the requested URL</span></span><br><span class="line">    <span class="comment">// this is equivalent to e.preventDefault() in this context</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Note that if you use <code>barba.go()</code> directive without returning <code>false</code>, you will be redirected to the requested URL because Barba uses <code>barba.force()</code> to reach the page.</p>
+</blockquote>
+<h3 id="timeout"><a href="#timeout" class="headerlink" title="timeout"></a><code>timeout</code></h3><p>On slow network or with a high page weight, the server can take time to give a response to the user. In case the page take <strong>more than timeout</strong> to be loaded, it lead Barba to abort the transition and display a <em>Timeout error</em> message.</p>
+<p>To prevent this behavior, you can increase the <code>timeout</code>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  timeout: <span class="number">5000</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>In addition, you can properly catch the error by using the <a href="#requestError"><code>requestError</code></a> callback.</p>
+<h2 id="Partial-output"><a href="#Partial-output" class="headerlink" title="Partial output"></a>Partial output</h2><p>Barba sends <strong>a custom HTTP Header</strong> named <code>x-barba</code> in the <code>XMLHttpRequest</code>.</p>
+<p>If you are using a server side language like PHP, you can detect this custom HTTP Header and output just the container instead of the entire page: this could result in <strong>less bandwidth usage</strong> and <strong>less server-side load</strong>.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="comment">// check for the server side x-barba request header</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">isset</span>($_SERVER[<span class="string">'HTTP_X_BARBA'</span>])) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// this content will only be displayed if the page is called with BarbaJS</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"I ❤ Barba"</span>;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Note that doing so, you have to manually handle the update of the page <code>title</code>.</p>
 </blockquote>
 
 </div>
@@ -561,7 +626,7 @@
 <div class="docs__nav__lateral" data-component="docs-nav-lateral">
   
   <a
-    href="/docs/plugins/router/"
+    href="/docs/advanced/strategies/"
     class="docs__nav__lateral__link--prev"
     data-ref="docs-nav-lateral.link"
   >
@@ -569,15 +634,15 @@
   <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-prev"></use> -->
   <use xlink:href="#barba-arrow-prev"></use>
 </svg>
-    <span class="docs__nav__lateral__label">Router</span>
+    <span class="docs__nav__lateral__label">Strategies</span>
   </a>
    
   <a
-    href="/docs/plugins/css/"
+    href="/docs/advanced/third-party/"
     class="docs__nav__lateral__link--next"
     data-ref="docs-nav-lateral.link"
   >
-    <span class="docs__nav__lateral__label">Css</span>
+    <span class="docs__nav__lateral__label">Third party scripts</span>
     <svg viewBox="0 0 21 15" aria-hidden="true" class="icon--barba">
   <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-next"></use> -->
   <use xlink:href="#barba-arrow-next"></use>

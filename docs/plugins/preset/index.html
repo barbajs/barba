@@ -51,7 +51,7 @@
     window.BARBA = {
       root: '/',
       menu: JSON.parse('[{"title":"Features","url":"features/user-friendly/","slug":"/features","subpages":[{"title":"User friendly","url":"features/user-friendly/"},{"title":"Easy peasy","url":"features/easy-peasy/"},{"title":"Smart","url":"features/smart/"},{"title":"Extensible","url":"features/extensible/"},{"title":"Futureproof","url":"features/futureproof/"},{"title":"Community","url":"features/community/"}]},{"title":"Examples","url":"examples/","slug":"/examples"},{"title":"Showcases","url":"showcase/","slug":"/showcase"},{"title":"Docs","url":"docs/getstarted/intro/","slug":"/docs"}]'),
-      docs: JSON.parse('[{"title":"Get Started","url":"docs/getstarted/intro/","path":"docs/getstarted","nextpage":{"label":"USER GUIDE","url":"docs/userguide/markup/"}},{"title":"User Guide (Core)","url":"docs/userguide/markup/","path":"docs/userguide","subpages":[{"title":"Markup","url":"docs/userguide/markup/"},{"title":"Syntax","url":"docs/userguide/syntax/"},{"title":"Analytics","url":"docs/userguide/analytics/"}]},{"title":"Plugins","url":"docs/plugins/css/","path":"docs/plugins","subpages":[{"title":"Css","url":"docs/plugins/css/"},{"title":"Router","url":"docs/plugins/router/"},{"title":"Prefetch","url":"docs/plugins/prefetch/"},{"title":"Preset","url":"docs/plugins/preset/"},{"title":"Head","url":"docs/plugins/head/"}]},{"title":"API","url":"api/","path":"api","extern":true}]'),
+      docs: JSON.parse('[{"title":"Get Started","url":"docs/getstarted/intro/","path":"docs/getstarted","subpages":[{"title":"Intro","url":"docs/getstarted/intro/"},{"title":"Install","url":"docs/getstarted/install/"},{"title":"Markup","url":"docs/getstarted/markup/"},{"title":"Basic transition","url":"docs/getstarted/basic-transition/"},{"title":"Run custom code","url":"docs/getstarted/custom-code/"},{"title":"Lifecycle","url":"docs/getstarted/lifecycle/"},{"title":"Legacy example","url":"docs/getstarted/legacy/"},{"title":"Browser support","url":"docs/getstarted/browser-support/"},{"title":"Useful links","url":"docs/getstarted/useful-links/"}]},{"title":"Advanced","url":"docs/advanced/hooks/","path":"docs/advanced","subpages":[{"title":"Hooks","url":"docs/advanced/hooks/"},{"title":"Transitions","url":"docs/advanced/transitions/"},{"title":"Views","url":"docs/advanced/views/"},{"title":"Strategies","url":"docs/advanced/strategies/"},{"title":"Recipes","url":"docs/advanced/recipes/"},{"title":"Third party scripts","url":"docs/advanced/third-party/"},{"title":"Utils","url":"docs/advanced/utils/"},{"title":"Developer API","url":"api/","path":"api","extern":true}]},{"title":"Plugins","url":"docs/plugins/intro/","path":"docs/plugins","subpages":[{"title":"Intro","url":"docs/plugins/intro/"},{"title":"Router","url":"docs/plugins/router/"},{"title":"Prefetch","url":"docs/plugins/prefetch/"},{"title":"Css","url":"docs/plugins/css/"},{"title":"Head","url":"docs/plugins/head/"},{"title":"Preset","url":"docs/plugins/preset/"}]}]'),
     }
 
     document.documentElement.classList.add('js');
@@ -301,23 +301,28 @@
 
       <!-- Subpages -->
       
-      <!-- Subpages [end]-->
-
-    </li>
-    
-    <li>
-      <a href="/docs/userguide/markup/" >
-        <h1 class="docs__nav__title ">User Guide (Core)</h1>
-      </a>
-
-      <!-- Subpages -->
-      
-      <ol class="docs__nav__sublist">
+      <ol class="docs__nav__sublist ">
 
         <!-- Subpage -->
         
         <li class="">
-          <a href="/docs/userguide/markup/">
+          <a href="/docs/getstarted/intro/">
+            <h2 class="docs__nav__subtitle ">
+              Intro
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/getstarted/install/">
+            <h2 class="docs__nav__subtitle ">
+              Install
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/getstarted/markup/">
             <h2 class="docs__nav__subtitle ">
               Markup
             </h2>
@@ -325,17 +330,49 @@
         </li>
         
         <li class="">
-          <a href="/docs/userguide/syntax/">
+          <a href="/docs/getstarted/basic-transition/">
             <h2 class="docs__nav__subtitle ">
-              Syntax
+              Basic transition
             </h2>
           </a>
         </li>
         
         <li class="">
-          <a href="/docs/userguide/analytics/">
+          <a href="/docs/getstarted/custom-code/">
             <h2 class="docs__nav__subtitle ">
-              Analytics
+              Run custom code
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/getstarted/lifecycle/">
+            <h2 class="docs__nav__subtitle ">
+              Lifecycle
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/getstarted/legacy/">
+            <h2 class="docs__nav__subtitle ">
+              Legacy example
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/getstarted/browser-support/">
+            <h2 class="docs__nav__subtitle ">
+              Browser support
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/getstarted/useful-links/">
+            <h2 class="docs__nav__subtitle ">
+              Useful links
             </h2>
           </a>
         </li>
@@ -349,20 +386,103 @@
     </li>
     
     <li>
-      <a href="/docs/plugins/css/" >
+      <a href="/docs/advanced/hooks/" >
+        <h1 class="docs__nav__title ">Advanced</h1>
+      </a>
+
+      <!-- Subpages -->
+      
+      <ol class="docs__nav__sublist ">
+
+        <!-- Subpage -->
+        
+        <li class="">
+          <a href="/docs/advanced/hooks/">
+            <h2 class="docs__nav__subtitle ">
+              Hooks
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/advanced/transitions/">
+            <h2 class="docs__nav__subtitle ">
+              Transitions
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/advanced/views/">
+            <h2 class="docs__nav__subtitle ">
+              Views
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/advanced/strategies/">
+            <h2 class="docs__nav__subtitle ">
+              Strategies
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/advanced/recipes/">
+            <h2 class="docs__nav__subtitle ">
+              Recipes
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/advanced/third-party/">
+            <h2 class="docs__nav__subtitle ">
+              Third party scripts
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/advanced/utils/">
+            <h2 class="docs__nav__subtitle ">
+              Utils
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/api/">
+            <h2 class="docs__nav__subtitle ">
+              Developer API
+            </h2>
+          </a>
+        </li>
+        
+        <!-- Subpage [end]-->
+
+      </ol>
+      
+      <!-- Subpages [end]-->
+
+    </li>
+    
+    <li>
+      <a href="/docs/plugins/intro/" >
         <h1 class="docs__nav__title is-open">Plugins</h1>
       </a>
 
       <!-- Subpages -->
       
-      <ol class="docs__nav__sublist">
+      <ol class="docs__nav__sublist is-open">
 
         <!-- Subpage -->
         
         <li class="">
-          <a href="/docs/plugins/css/">
+          <a href="/docs/plugins/intro/">
             <h2 class="docs__nav__subtitle ">
-              Css
+              Intro
             </h2>
           </a>
         </li>
@@ -383,10 +503,10 @@
           </a>
         </li>
         
-        <li class="is-open">
-          <a href="/docs/plugins/preset/">
-            <h2 class="docs__nav__subtitle is-open">
-              Preset
+        <li class="">
+          <a href="/docs/plugins/css/">
+            <h2 class="docs__nav__subtitle ">
+              Css
             </h2>
           </a>
         </li>
@@ -399,20 +519,17 @@
           </a>
         </li>
         
+        <li class="is-open">
+          <a href="/docs/plugins/preset/">
+            <h2 class="docs__nav__subtitle is-open">
+              Preset
+            </h2>
+          </a>
+        </li>
+        
         <!-- Subpage [end]-->
 
       </ol>
-      
-      <!-- Subpages [end]-->
-
-    </li>
-    
-    <li>
-      <a href="/api/" target="_blank">
-        <h1 class="docs__nav__title ">API</h1>
-      </a>
-
-      <!-- Subpages -->
       
       <!-- Subpages [end]-->
 
@@ -424,7 +541,9 @@
 </div>
 <!-- Docs Nav [end]-->
   <div class="docs__markdown">
-  <h1 id="barba-preset"><a href="#barba-preset" class="headerlink" title="@barba/preset"></a>@barba/preset</h1><h3 id="Coming-soon"><a href="#Coming-soon" class="headerlink" title="Coming soon."></a>Coming soon.</h3>
+  <h1 id="barba-preset"><a href="#barba-preset" class="headerlink" title="@barba/preset"></a>@barba/preset</h1><h2 id="Coming-soon"><a href="#Coming-soon" class="headerlink" title="Coming soon!"></a>Coming soon!</h2><p>Ready-to-use basic transitions pack.</p>
+<p>This plugin will help you <strong>implement basic transitions</strong> (fade, slide, etc.) with ease.</p>
+
 </div>
 
 
@@ -433,7 +552,7 @@
 <div class="docs__nav__lateral" data-component="docs-nav-lateral">
   
   <a
-    href="/docs/plugins/prefetch/"
+    href="/docs/plugins/head/"
     class="docs__nav__lateral__link--prev"
     data-ref="docs-nav-lateral.link"
   >
@@ -441,21 +560,9 @@
   <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-prev"></use> -->
   <use xlink:href="#barba-arrow-prev"></use>
 </svg>
-    <span class="docs__nav__lateral__label">Prefetch</span>
+    <span class="docs__nav__lateral__label">Head</span>
   </a>
    
-  <a
-    href="/docs/plugins/head/"
-    class="docs__nav__lateral__link--next"
-    data-ref="docs-nav-lateral.link"
-  >
-    <span class="docs__nav__lateral__label">Head</span>
-    <svg viewBox="0 0 21 15" aria-hidden="true" class="icon--barba">
-  <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-next"></use> -->
-  <use xlink:href="#barba-arrow-next"></use>
-</svg>
-  </a>
-  
   <button class="docs__nav__lateral__button">
     All topics
   </button>

@@ -296,12 +296,12 @@
     
     <li>
       <a href="/docs/getstarted/intro/" >
-        <h1 class="docs__nav__title ">Get Started</h1>
+        <h1 class="docs__nav__title is-open">Get Started</h1>
       </a>
 
       <!-- Subpages -->
       
-      <ol class="docs__nav__sublist ">
+      <ol class="docs__nav__sublist is-open">
 
         <!-- Subpage -->
         
@@ -313,9 +313,9 @@
           </a>
         </li>
         
-        <li class="">
+        <li class="is-open">
           <a href="/docs/getstarted/install/">
-            <h2 class="docs__nav__subtitle ">
+            <h2 class="docs__nav__subtitle is-open">
               Install
             </h2>
           </a>
@@ -470,12 +470,12 @@
     
     <li>
       <a href="/docs/plugins/intro/" >
-        <h1 class="docs__nav__title is-open">Plugins</h1>
+        <h1 class="docs__nav__title ">Plugins</h1>
       </a>
 
       <!-- Subpages -->
       
-      <ol class="docs__nav__sublist is-open">
+      <ol class="docs__nav__sublist ">
 
         <!-- Subpage -->
         
@@ -495,9 +495,9 @@
           </a>
         </li>
         
-        <li class="is-open">
+        <li class="">
           <a href="/docs/plugins/prefetch/">
-            <h2 class="docs__nav__subtitle is-open">
+            <h2 class="docs__nav__subtitle ">
               Prefetch
             </h2>
           </a>
@@ -541,17 +541,26 @@
 </div>
 <!-- Docs Nav [end]-->
   <div class="docs__markdown">
-  <h1 id="barba-prefetch"><a href="#barba-prefetch" class="headerlink" title="@barba/prefetch"></a>@barba/prefetch</h1><p><a href="https://www.npmjs.com/package/@barba/prefetch" target="_blank" rel="noopener" title="Badge"><img src="https://img.shields.io/npm/v/@barba/prefetch?style=flat-square" alt="NPM version"></a><br><a href="https://github.com/barbajs/barba/network/dependencies" target="_blank" rel="noopener" title="Badge"><img src="https://img.shields.io/librariesio/release/npm/@barba/prefetch?style=flat-square" alt="Dependencies"></a></p>
-<p>Barba <strong>prefetches automatically and cache</strong> your pages.</p>
-<p>It is mainly inspired by <a href="https://github.com/GoogleChromeLabs/quicklink" target="_blank" rel="noopener">quicklink</a>.</p>
-<h2 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works?"></a>How it works?</h2><p>Based on <em>Intersection Observer</em>, it processes <strong>all eligible links</strong> that enter the viewport. Depending on your browser, you may need a <a href="/docs/getstarted/browser-support#Polyfill">polyfill</a> to properly use this plugin.</p>
-<p>You can use this feature regardless of the <a href="/docs/advanced/strategies#prefetchIgnore"><code>prefetchIgnore</code></a> core property. Since the links will be prefetched depending on the viewport, it will <strong>prevent the core prefetch process</strong> from prefetching a link on enter.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span>;</span><br><span class="line"><span class="keyword">import</span> prefetch <span class="keyword">from</span> <span class="string">'@barba/prefetch'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tell Barba to use the prefetch plugin</span></span><br><span class="line">barba.use(prefetch);</span><br><span class="line"></span><br><span class="line"><span class="comment">// init Barba</span></span><br><span class="line">barba.init();</span><br></pre></td></tr></table></figure>
+  <h1 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h1><p>Want to try Barba? Let’s install it!</p>
+<h2 id="Use-with-a-bundler"><a href="#Use-with-a-bundler" class="headerlink" title="Use with a bundler"></a>Use with a bundler</h2><p>Barba is published on the <strong>NPM registry</strong>, so you can install it through the command line interpreter using your favorite package manager. This is the best way to install the library if you are comfortable with <strong>javascript bundlers</strong> like <code>webpack</code> or <code>rollup</code>.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># npm</span></span><br><span class="line">npm install @barba/core</span><br><span class="line"></span><br><span class="line"><span class="comment"># yarn</span></span><br><span class="line">yarn add @barba/core</span><br></pre></td></tr></table></figure>
+
+<p>Then <strong>import it like any other module</strong> inside your build:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span>;</span><br><span class="line"></span><br><span class="line">barba.init(&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>On slow network or with a high page weight, the server can take time to prefetch the response and can lead Barba to abort the transition and display a <em>Timeout error</em> message.</p>
-<p>See the <a href="/docs/advanced/recipes#timeout"><code>timeout</code></a> setting to properly manage this behavior.</p>
+<p>Using a bundler has <strong>many advantages</strong> like output compression, code splitting, tree shaking, etc., so we encourage you to use this kind of tool with Barba.</p>
 </blockquote>
+<h2 id="Use-with-a-CDN"><a href="#Use-with-a-CDN" class="headerlink" title="Use with a CDN"></a>Use with a CDN</h2><p>To rapidly <strong>include the minified production file</strong> in your webpage, load the latest build from your favorite CDN using a generic script markup:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- unpkg --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/@barba/core"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- jsdelivr --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/@barba/core"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Then init Barba:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">  barba.init(&#123;</span><br><span class="line"><span class="actionscript">    <span class="comment">// ...</span></span></span><br><span class="line">  &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>By default, if no one is specified, the CDN will automatically target the <strong>@latest</strong> version of Barba and load the <strong>UMD build</strong> from <code>dist/barba.umd.js</code>.</p>
+</blockquote>
+<h2 id="Other-setup"><a href="#Other-setup" class="headerlink" title="Other setup"></a>Other setup</h2><p>Barba is build upon <code>microbundle</code> and is provided with an <strong>ESM</strong> and <strong>Modern</strong> version include in the package <code>dist</code> folder.</p>
 
 </div>
 
@@ -561,7 +570,7 @@
 <div class="docs__nav__lateral" data-component="docs-nav-lateral">
   
   <a
-    href="/docs/plugins/router/"
+    href="/docs/getstarted/intro/"
     class="docs__nav__lateral__link--prev"
     data-ref="docs-nav-lateral.link"
   >
@@ -569,15 +578,15 @@
   <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-prev"></use> -->
   <use xlink:href="#barba-arrow-prev"></use>
 </svg>
-    <span class="docs__nav__lateral__label">Router</span>
+    <span class="docs__nav__lateral__label">Intro</span>
   </a>
    
   <a
-    href="/docs/plugins/css/"
+    href="/docs/getstarted/markup/"
     class="docs__nav__lateral__link--next"
     data-ref="docs-nav-lateral.link"
   >
-    <span class="docs__nav__lateral__label">Css</span>
+    <span class="docs__nav__lateral__label">Markup</span>
     <svg viewBox="0 0 21 15" aria-hidden="true" class="icon--barba">
   <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-next"></use> -->
   <use xlink:href="#barba-arrow-next"></use>

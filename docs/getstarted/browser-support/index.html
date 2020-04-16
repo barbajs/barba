@@ -296,12 +296,12 @@
     
     <li>
       <a href="/docs/getstarted/intro/" >
-        <h1 class="docs__nav__title ">Get Started</h1>
+        <h1 class="docs__nav__title is-open">Get Started</h1>
       </a>
 
       <!-- Subpages -->
       
-      <ol class="docs__nav__sublist ">
+      <ol class="docs__nav__sublist is-open">
 
         <!-- Subpage -->
         
@@ -361,9 +361,9 @@
           </a>
         </li>
         
-        <li class="">
+        <li class="is-open">
           <a href="/docs/getstarted/browser-support/">
-            <h2 class="docs__nav__subtitle ">
+            <h2 class="docs__nav__subtitle is-open">
               Browser support
             </h2>
           </a>
@@ -470,12 +470,12 @@
     
     <li>
       <a href="/docs/plugins/intro/" >
-        <h1 class="docs__nav__title is-open">Plugins</h1>
+        <h1 class="docs__nav__title ">Plugins</h1>
       </a>
 
       <!-- Subpages -->
       
-      <ol class="docs__nav__sublist is-open">
+      <ol class="docs__nav__sublist ">
 
         <!-- Subpage -->
         
@@ -495,9 +495,9 @@
           </a>
         </li>
         
-        <li class="is-open">
+        <li class="">
           <a href="/docs/plugins/prefetch/">
-            <h2 class="docs__nav__subtitle is-open">
+            <h2 class="docs__nav__subtitle ">
               Prefetch
             </h2>
           </a>
@@ -541,17 +541,23 @@
 </div>
 <!-- Docs Nav [end]-->
   <div class="docs__markdown">
-  <h1 id="barba-prefetch"><a href="#barba-prefetch" class="headerlink" title="@barba/prefetch"></a>@barba/prefetch</h1><p><a href="https://www.npmjs.com/package/@barba/prefetch" target="_blank" rel="noopener" title="Badge"><img src="https://img.shields.io/npm/v/@barba/prefetch?style=flat-square" alt="NPM version"></a><br><a href="https://github.com/barbajs/barba/network/dependencies" target="_blank" rel="noopener" title="Badge"><img src="https://img.shields.io/librariesio/release/npm/@barba/prefetch?style=flat-square" alt="Dependencies"></a></p>
-<p>Barba <strong>prefetches automatically and cache</strong> your pages.</p>
-<p>It is mainly inspired by <a href="https://github.com/GoogleChromeLabs/quicklink" target="_blank" rel="noopener">quicklink</a>.</p>
-<h2 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works?"></a>How it works?</h2><p>Based on <em>Intersection Observer</em>, it processes <strong>all eligible links</strong> that enter the viewport. Depending on your browser, you may need a <a href="/docs/getstarted/browser-support#Polyfill">polyfill</a> to properly use this plugin.</p>
-<p>You can use this feature regardless of the <a href="/docs/advanced/strategies#prefetchIgnore"><code>prefetchIgnore</code></a> core property. Since the links will be prefetched depending on the viewport, it will <strong>prevent the core prefetch process</strong> from prefetching a link on enter.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span>;</span><br><span class="line"><span class="keyword">import</span> prefetch <span class="keyword">from</span> <span class="string">'@barba/prefetch'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tell Barba to use the prefetch plugin</span></span><br><span class="line">barba.use(prefetch);</span><br><span class="line"></span><br><span class="line"><span class="comment">// init Barba</span></span><br><span class="line">barba.init();</span><br></pre></td></tr></table></figure>
+  <h1 id="Browser-support"><a href="#Browser-support" class="headerlink" title="Browser support"></a>Browser support</h1><p>Barba can be viewed as a <a href="https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/" target="_blank" rel="noopener">progressive enhancement</a>.</p>
+<h2 id="Compatibility"><a href="#Compatibility" class="headerlink" title="Compatibility"></a>Compatibility</h2><p>Main <strong>modern features</strong> used are:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener">Promise</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set" target="_blank" rel="noopener">Set()</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map" target="_blank" rel="noopener">Map()</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find" target="_blank" rel="noopener">Array.prototype.find</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API" target="_blank" rel="noopener">IntersectionObserver</a> <em>(used by <a href="/docs/plugins/prefetch/">@barba/prefetch</a>)</em></li>
+</ul>
+<p>Cross-browser support is as follows:</p>
+<ul>
+<li>without polyfills: modern browsers (Chrome, Firefox, Edge, Safari, Opera)</li>
+<li>with polyfills for abovementioned: IE10+</li>
+</ul>
+<h2 id="Polyfill"><a href="#Polyfill" class="headerlink" title="Polyfill"></a>Polyfill</h2><p>You can use the <a href="https://polyfill.io/v3/" target="_blank" rel="noopener">polyfill.io</a> service for <strong>easy polyfilling</strong>.<br>Just include this script tag, it will output the appropriate polyfills based on the user-agent:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span></span></span><br><span class="line"><span class="tag">  <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">src</span>=<span class="string">"https://polyfill.io/v3/polyfill.min.js?features=default%2CArray.prototype.find%2CIntersectionObserver"</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>On slow network or with a high page weight, the server can take time to prefetch the response and can lead Barba to abort the transition and display a <em>Timeout error</em> message.</p>
-<p>See the <a href="/docs/advanced/recipes#timeout"><code>timeout</code></a> setting to properly manage this behavior.</p>
-</blockquote>
+<p>… or implement your own solution (<a href="https://github.com/stefanpenner/es6-promise" target="_blank" rel="noopener">es6-promise</a> and <a href="https://github.com/zloirock/core-js" target="_blank" rel="noopener">Core.js</a> or <a href="https://github.com/paulmillr/es6-shim/blob/master/README.md" target="_blank" rel="noopener">es6-shim</a>, etc.).</p>
 
 </div>
 
@@ -561,7 +567,7 @@
 <div class="docs__nav__lateral" data-component="docs-nav-lateral">
   
   <a
-    href="/docs/plugins/router/"
+    href="/docs/getstarted/legacy/"
     class="docs__nav__lateral__link--prev"
     data-ref="docs-nav-lateral.link"
   >
@@ -569,15 +575,15 @@
   <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-prev"></use> -->
   <use xlink:href="#barba-arrow-prev"></use>
 </svg>
-    <span class="docs__nav__lateral__label">Router</span>
+    <span class="docs__nav__lateral__label">Legacy example</span>
   </a>
    
   <a
-    href="/docs/plugins/css/"
+    href="/docs/getstarted/useful-links/"
     class="docs__nav__lateral__link--next"
     data-ref="docs-nav-lateral.link"
   >
-    <span class="docs__nav__lateral__label">Css</span>
+    <span class="docs__nav__lateral__label">Useful links</span>
     <svg viewBox="0 0 21 15" aria-hidden="true" class="icon--barba">
   <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-next"></use> -->
   <use xlink:href="#barba-arrow-next"></use>

@@ -387,12 +387,12 @@
     
     <li>
       <a href="/docs/advanced/hooks/" >
-        <h1 class="docs__nav__title ">Advanced</h1>
+        <h1 class="docs__nav__title is-open">Advanced</h1>
       </a>
 
       <!-- Subpages -->
       
-      <ol class="docs__nav__sublist ">
+      <ol class="docs__nav__sublist is-open">
 
         <!-- Subpage -->
         
@@ -420,9 +420,9 @@
           </a>
         </li>
         
-        <li class="">
+        <li class="is-open">
           <a href="/docs/advanced/strategies/">
-            <h2 class="docs__nav__subtitle ">
+            <h2 class="docs__nav__subtitle is-open">
               Strategies
             </h2>
           </a>
@@ -470,12 +470,12 @@
     
     <li>
       <a href="/docs/plugins/intro/" >
-        <h1 class="docs__nav__title is-open">Plugins</h1>
+        <h1 class="docs__nav__title ">Plugins</h1>
       </a>
 
       <!-- Subpages -->
       
-      <ol class="docs__nav__sublist is-open">
+      <ol class="docs__nav__sublist ">
 
         <!-- Subpage -->
         
@@ -495,9 +495,9 @@
           </a>
         </li>
         
-        <li class="is-open">
+        <li class="">
           <a href="/docs/plugins/prefetch/">
-            <h2 class="docs__nav__subtitle is-open">
+            <h2 class="docs__nav__subtitle ">
               Prefetch
             </h2>
           </a>
@@ -541,16 +541,99 @@
 </div>
 <!-- Docs Nav [end]-->
   <div class="docs__markdown">
-  <h1 id="barba-prefetch"><a href="#barba-prefetch" class="headerlink" title="@barba/prefetch"></a>@barba/prefetch</h1><p><a href="https://www.npmjs.com/package/@barba/prefetch" target="_blank" rel="noopener" title="Badge"><img src="https://img.shields.io/npm/v/@barba/prefetch?style=flat-square" alt="NPM version"></a><br><a href="https://github.com/barbajs/barba/network/dependencies" target="_blank" rel="noopener" title="Badge"><img src="https://img.shields.io/librariesio/release/npm/@barba/prefetch?style=flat-square" alt="Dependencies"></a></p>
-<p>Barba <strong>prefetches automatically and cache</strong> your pages.</p>
-<p>It is mainly inspired by <a href="https://github.com/GoogleChromeLabs/quicklink" target="_blank" rel="noopener">quicklink</a>.</p>
-<h2 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works?"></a>How it works?</h2><p>Based on <em>Intersection Observer</em>, it processes <strong>all eligible links</strong> that enter the viewport. Depending on your browser, you may need a <a href="/docs/getstarted/browser-support#Polyfill">polyfill</a> to properly use this plugin.</p>
-<p>You can use this feature regardless of the <a href="/docs/advanced/strategies#prefetchIgnore"><code>prefetchIgnore</code></a> core property. Since the links will be prefetched depending on the viewport, it will <strong>prevent the core prefetch process</strong> from prefetching a link on enter.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span>;</span><br><span class="line"><span class="keyword">import</span> prefetch <span class="keyword">from</span> <span class="string">'@barba/prefetch'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tell Barba to use the prefetch plugin</span></span><br><span class="line">barba.use(prefetch);</span><br><span class="line"></span><br><span class="line"><span class="comment">// init Barba</span></span><br><span class="line">barba.init();</span><br></pre></td></tr></table></figure>
+  <h1 id="Strategies"><a href="#Strategies" class="headerlink" title="Strategies"></a>Strategies</h1><p>Barba implement <strong>modern browser strategies</strong> to keep your site run as fast as possible.</p>
+<h2 id="Cache"><a href="#Cache" class="headerlink" title="Cache"></a>Cache</h2><h3 id="cacheIgnore"><a href="#cacheIgnore" class="headerlink" title="cacheIgnore"></a><code>cacheIgnore</code></h3><p>Allows Barba to <strong>cache your pages</strong>.</p>
+<p>Saving pages in the cache results in <strong>less bandwidth usage</strong> and <strong>less server-side load</strong>: no more <code>XMLHttpRequest</code> are made for pages that have already been visited.</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>false</code> <em>(default)</em></td>
+<td>Cache all</td>
+</tr>
+<tr>
+<td><code>true</code></td>
+<td>Ignore all</td>
+</tr>
+<tr>
+<td><code>String | String[]</code></td>
+<td>Ignore route pattern(s), <strong>only</strong> available when using <a href="/docs/plugins/router/">@barba/router</a></td>
+</tr>
+</tbody></table>
+<p>Use it like this:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  cacheIgnore: [<span class="string">'/contact/'</span>, <span class="string">'/:category/post?'</span>]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>On slow network or with a high page weight, the server can take time to prefetch the response and can lead Barba to abort the transition and display a <em>Timeout error</em> message.</p>
-<p>See the <a href="/docs/advanced/recipes#timeout"><code>timeout</code></a> setting to properly manage this behavior.</p>
+<p>Cache lifetime is <strong>restricted to Barba instance</strong> and will be cleared when leaving the site.</p>
+</blockquote>
+<h2 id="Prefetch"><a href="#Prefetch" class="headerlink" title="Prefetch"></a>Prefetch</h2><h3 id="prefetchIgnore"><a href="#prefetchIgnore" class="headerlink" title="prefetchIgnore"></a><code>prefetchIgnore</code></h3><p>Allows Barba to <strong>prefetch your pages</strong> on <code>mouseover</code> or <code>touchstart</code> events.</p>
+<p>Since there is a <strong>100-300ms delay</strong> during the user hover and the click, Barba use this time to start prefetching the next page. Most of time, this is enough to get the next page ready.</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>false</code> <em>(default)</em></td>
+<td>Prefetch all</td>
+</tr>
+<tr>
+<td><code>true</code></td>
+<td>Ignore all</td>
+</tr>
+<tr>
+<td><code>String | String[]</code></td>
+<td>Ignore route pattern(s), <strong>only</strong> available when using <a href="/docs/plugins/router/">@barba/router</a></td>
+</tr>
+</tbody></table>
+<p>Use it like this:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  prefetchIgnore: <span class="string">'/home/'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>To prefetch all eligible links that <strong>enter the viewport</strong>, use the <a href="/docs/plugins/prefetch/">@barba/prefetch</a> plugin.</p>
+</blockquote>
+<h2 id="Prevent"><a href="#Prevent" class="headerlink" title="Prevent"></a>Prevent</h2><h3 id="preventRunning"><a href="#preventRunning" class="headerlink" title="preventRunning"></a><code>preventRunning</code></h3><p>Tells Barba to <strong>prevent page “force reload”</strong> when the user clicks on an eligible link during a transition is running.<br>This option is useful if you don’t want your users to break running transitions, especially if they are long.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  preventRunning: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="prevent"><a href="#prevent" class="headerlink" title="prevent"></a><code>prevent</code></h3><p>Allows you to add a <strong>custom “prevent” test</strong> on eligible links.<br>If this function returns <code>true</code>, Barba will be disable for links that pass the test.</p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Object</td>
+<td><code>el</code></td>
+<td>Clicked element</td>
+</tr>
+<tr>
+<td></td>
+<td><code>event</code></td>
+<td>Triggered event</td>
+</tr>
+<tr>
+<td></td>
+<td><code>href</code></td>
+<td>Next page href</td>
+</tr>
+</tbody></table>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  <span class="comment">// define a custom function that will prevent Barba</span></span><br><span class="line">  <span class="comment">// from working on links that contains a `prevent` CSS class</span></span><br><span class="line">  prevent: <span class="function">(<span class="params">&#123; el &#125;</span>) =&gt;</span> el.classList &amp;&amp; el.classList.contains(<span class="string">'prevent'</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Note that you can prevent a link from using Barba with the <code>data-barba-prevent</code> attribute:</p>
+<ol>
+<li><code>data-barba-prevent</code> or <code>data-barba-prevent=&quot;self&quot;</code> prevents the current link</li>
+<li><code>data-barba-prevent=&quot;all&quot;</code> prevents all children links in a container (<code>div</code>, <code>p</code>, etc.)</li>
+</ol>
 </blockquote>
 
 </div>
@@ -561,7 +644,7 @@
 <div class="docs__nav__lateral" data-component="docs-nav-lateral">
   
   <a
-    href="/docs/plugins/router/"
+    href="/docs/advanced/views/"
     class="docs__nav__lateral__link--prev"
     data-ref="docs-nav-lateral.link"
   >
@@ -569,15 +652,15 @@
   <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-prev"></use> -->
   <use xlink:href="#barba-arrow-prev"></use>
 </svg>
-    <span class="docs__nav__lateral__label">Router</span>
+    <span class="docs__nav__lateral__label">Views</span>
   </a>
    
   <a
-    href="/docs/plugins/css/"
+    href="/docs/advanced/recipes/"
     class="docs__nav__lateral__link--next"
     data-ref="docs-nav-lateral.link"
   >
-    <span class="docs__nav__lateral__label">Css</span>
+    <span class="docs__nav__lateral__label">Recipes</span>
     <svg viewBox="0 0 21 15" aria-hidden="true" class="icon--barba">
   <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-next"></use> -->
   <use xlink:href="#barba-arrow-next"></use>

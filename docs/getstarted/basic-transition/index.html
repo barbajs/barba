@@ -296,12 +296,12 @@
     
     <li>
       <a href="/docs/getstarted/intro/" >
-        <h1 class="docs__nav__title ">Get Started</h1>
+        <h1 class="docs__nav__title is-open">Get Started</h1>
       </a>
 
       <!-- Subpages -->
       
-      <ol class="docs__nav__sublist ">
+      <ol class="docs__nav__sublist is-open">
 
         <!-- Subpage -->
         
@@ -329,9 +329,9 @@
           </a>
         </li>
         
-        <li class="">
+        <li class="is-open">
           <a href="/docs/getstarted/basic-transition/">
-            <h2 class="docs__nav__subtitle ">
+            <h2 class="docs__nav__subtitle is-open">
               Basic transition
             </h2>
           </a>
@@ -470,12 +470,12 @@
     
     <li>
       <a href="/docs/plugins/intro/" >
-        <h1 class="docs__nav__title is-open">Plugins</h1>
+        <h1 class="docs__nav__title ">Plugins</h1>
       </a>
 
       <!-- Subpages -->
       
-      <ol class="docs__nav__sublist is-open">
+      <ol class="docs__nav__sublist ">
 
         <!-- Subpage -->
         
@@ -495,9 +495,9 @@
           </a>
         </li>
         
-        <li class="is-open">
+        <li class="">
           <a href="/docs/plugins/prefetch/">
-            <h2 class="docs__nav__subtitle is-open">
+            <h2 class="docs__nav__subtitle ">
               Prefetch
             </h2>
           </a>
@@ -541,17 +541,27 @@
 </div>
 <!-- Docs Nav [end]-->
   <div class="docs__markdown">
-  <h1 id="barba-prefetch"><a href="#barba-prefetch" class="headerlink" title="@barba/prefetch"></a>@barba/prefetch</h1><p><a href="https://www.npmjs.com/package/@barba/prefetch" target="_blank" rel="noopener" title="Badge"><img src="https://img.shields.io/npm/v/@barba/prefetch?style=flat-square" alt="NPM version"></a><br><a href="https://github.com/barbajs/barba/network/dependencies" target="_blank" rel="noopener" title="Badge"><img src="https://img.shields.io/librariesio/release/npm/@barba/prefetch?style=flat-square" alt="Dependencies"></a></p>
-<p>Barba <strong>prefetches automatically and cache</strong> your pages.</p>
-<p>It is mainly inspired by <a href="https://github.com/GoogleChromeLabs/quicklink" target="_blank" rel="noopener">quicklink</a>.</p>
-<h2 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works?"></a>How it works?</h2><p>Based on <em>Intersection Observer</em>, it processes <strong>all eligible links</strong> that enter the viewport. Depending on your browser, you may need a <a href="/docs/getstarted/browser-support#Polyfill">polyfill</a> to properly use this plugin.</p>
-<p>You can use this feature regardless of the <a href="/docs/advanced/strategies#prefetchIgnore"><code>prefetchIgnore</code></a> core property. Since the links will be prefetched depending on the viewport, it will <strong>prevent the core prefetch process</strong> from prefetching a link on enter.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span>;</span><br><span class="line"><span class="keyword">import</span> prefetch <span class="keyword">from</span> <span class="string">'@barba/prefetch'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tell Barba to use the prefetch plugin</span></span><br><span class="line">barba.use(prefetch);</span><br><span class="line"></span><br><span class="line"><span class="comment">// init Barba</span></span><br><span class="line">barba.init();</span><br></pre></td></tr></table></figure>
+  <h1 id="Basic-transition"><a href="#Basic-transition" class="headerlink" title="Basic transition"></a>Basic transition</h1><p>One of <strong>the most important thing</strong> that you will use is <code>transitions</code>.</p>
+<h2 id="What-is-it"><a href="#What-is-it" class="headerlink" title="What is it?"></a>What is it?</h2><p>A transition run between two pages of your site, leading the user to see a <strong>fluid and smooth animation</strong> instead of a browser “force reload” with a blank page.</p>
+<p>A basic transition is made of a <code>leave</code> animation, that is executed when leaving the current page, and an <code>enter</code> animation that is executed when entering the next page:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  transitions: [&#123;</span><br><span class="line">    name: <span class="string">'default-transition'</span>,</span><br><span class="line">    leave() &#123;</span><br><span class="line">      <span class="comment">// create your stunning leave animation here</span></span><br><span class="line">    &#125;,</span><br><span class="line">    enter() &#123;</span><br><span class="line">      <span class="comment">// create your amazing enter animation here</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>On slow network or with a high page weight, the server can take time to prefetch the response and can lead Barba to abort the transition and display a <em>Timeout error</em> message.</p>
-<p>See the <a href="/docs/advanced/recipes#timeout"><code>timeout</code></a> setting to properly manage this behavior.</p>
+<p>Take a look at the <a href="/docs/getstarted/lifecycle/">lifecycle diagram</a> to understand when <code>leave</code> and <code>enter</code> hooks are triggered during your page transition.</p>
 </blockquote>
+<h2 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h2><p>The important part for a good transition is animation. As <strong>Barba is not an animation library</strong>, you will need to import one in order to animate elements on the interface to create your transition.</p>
+<p>There is a lot of javascript animation libraries on the web, here is a good start:</p>
+<ul>
+<li><a href="https://greensock.com/gsap/" target="_blank" rel="noopener">gsap</a> — <em>professional-grade animation for the modern web</em></li>
+<li><a href="https://popmotion.io/" target="_blank" rel="noopener">popmotion</a> — <em>simple libraries for delightful interfaces</em></li>
+<li><a href="https://animejs.com/" target="_blank" rel="noopener">animejs</a> — <em>a lightweight library with a simple and powerful API</em></li>
+<li><a href="https://mojs.github.io/" target="_blank" rel="noopener">mojs</a> — <em>the motion graphics toolbelt for the web</em></li>
+<li><a href="https://spiritjs.io/" target="_blank" rel="noopener">spirit</a> — <em>the ultimate tool to create high-quality animations directly in the browser</em></li>
+</ul>
+<p>For the demonstration, here is a basic <strong>opacity transition</strong> with gsap that consist of making the current page transparent, while the next page become opaque:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  transitions: [&#123;</span><br><span class="line">    name: <span class="string">'opacity-transition'</span>,</span><br><span class="line">    leave(data) &#123;</span><br><span class="line">      <span class="keyword">return</span> gsap.to(data.current.container, &#123;</span><br><span class="line">        opacity: <span class="number">0</span></span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    enter(data) &#123;</span><br><span class="line">      <span class="keyword">return</span> gsap.from(data.next.container, &#123;</span><br><span class="line">        opacity: <span class="number">0</span></span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>There is <strong>a lot of syntaxes</strong> that you can use when running your animation transitions. Take a look at the <a href="/docs/advanced/transitions/">advanced transitions guide</a> to learn more.</p>
 
 </div>
 
@@ -561,7 +571,7 @@
 <div class="docs__nav__lateral" data-component="docs-nav-lateral">
   
   <a
-    href="/docs/plugins/router/"
+    href="/docs/getstarted/markup/"
     class="docs__nav__lateral__link--prev"
     data-ref="docs-nav-lateral.link"
   >
@@ -569,15 +579,15 @@
   <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-prev"></use> -->
   <use xlink:href="#barba-arrow-prev"></use>
 </svg>
-    <span class="docs__nav__lateral__label">Router</span>
+    <span class="docs__nav__lateral__label">Markup</span>
   </a>
    
   <a
-    href="/docs/plugins/css/"
+    href="/docs/getstarted/custom-code/"
     class="docs__nav__lateral__link--next"
     data-ref="docs-nav-lateral.link"
   >
-    <span class="docs__nav__lateral__label">Css</span>
+    <span class="docs__nav__lateral__label">Run custom code</span>
     <svg viewBox="0 0 21 15" aria-hidden="true" class="icon--barba">
   <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-next"></use> -->
   <use xlink:href="#barba-arrow-next"></use>

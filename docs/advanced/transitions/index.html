@@ -387,12 +387,12 @@
     
     <li>
       <a href="/docs/advanced/hooks/" >
-        <h1 class="docs__nav__title ">Advanced</h1>
+        <h1 class="docs__nav__title is-open">Advanced</h1>
       </a>
 
       <!-- Subpages -->
       
-      <ol class="docs__nav__sublist ">
+      <ol class="docs__nav__sublist is-open">
 
         <!-- Subpage -->
         
@@ -404,9 +404,9 @@
           </a>
         </li>
         
-        <li class="">
+        <li class="is-open">
           <a href="/docs/advanced/transitions/">
-            <h2 class="docs__nav__subtitle ">
+            <h2 class="docs__nav__subtitle is-open">
               Transitions
             </h2>
           </a>
@@ -470,12 +470,12 @@
     
     <li>
       <a href="/docs/plugins/intro/" >
-        <h1 class="docs__nav__title is-open">Plugins</h1>
+        <h1 class="docs__nav__title ">Plugins</h1>
       </a>
 
       <!-- Subpages -->
       
-      <ol class="docs__nav__sublist is-open">
+      <ol class="docs__nav__sublist ">
 
         <!-- Subpage -->
         
@@ -495,9 +495,9 @@
           </a>
         </li>
         
-        <li class="is-open">
+        <li class="">
           <a href="/docs/plugins/prefetch/">
-            <h2 class="docs__nav__subtitle is-open">
+            <h2 class="docs__nav__subtitle ">
               Prefetch
             </h2>
           </a>
@@ -541,17 +541,113 @@
 </div>
 <!-- Docs Nav [end]-->
   <div class="docs__markdown">
-  <h1 id="barba-prefetch"><a href="#barba-prefetch" class="headerlink" title="@barba/prefetch"></a>@barba/prefetch</h1><p><a href="https://www.npmjs.com/package/@barba/prefetch" target="_blank" rel="noopener" title="Badge"><img src="https://img.shields.io/npm/v/@barba/prefetch?style=flat-square" alt="NPM version"></a><br><a href="https://github.com/barbajs/barba/network/dependencies" target="_blank" rel="noopener" title="Badge"><img src="https://img.shields.io/librariesio/release/npm/@barba/prefetch?style=flat-square" alt="Dependencies"></a></p>
-<p>Barba <strong>prefetches automatically and cache</strong> your pages.</p>
-<p>It is mainly inspired by <a href="https://github.com/GoogleChromeLabs/quicklink" target="_blank" rel="noopener">quicklink</a>.</p>
-<h2 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works?"></a>How it works?</h2><p>Based on <em>Intersection Observer</em>, it processes <strong>all eligible links</strong> that enter the viewport. Depending on your browser, you may need a <a href="/docs/getstarted/browser-support#Polyfill">polyfill</a> to properly use this plugin.</p>
-<p>You can use this feature regardless of the <a href="/docs/advanced/strategies#prefetchIgnore"><code>prefetchIgnore</code></a> core property. Since the links will be prefetched depending on the viewport, it will <strong>prevent the core prefetch process</strong> from prefetching a link on enter.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span>;</span><br><span class="line"><span class="keyword">import</span> prefetch <span class="keyword">from</span> <span class="string">'@barba/prefetch'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tell Barba to use the prefetch plugin</span></span><br><span class="line">barba.use(prefetch);</span><br><span class="line"></span><br><span class="line"><span class="comment">// init Barba</span></span><br><span class="line">barba.init();</span><br></pre></td></tr></table></figure>
+  <h1 id="Transitions"><a href="#Transitions" class="headerlink" title="Transitions"></a>Transitions</h1><p>Barba allows you to define a <strong>global transition</strong>, that run everywhere on your site, and/or <strong>specific transitions</strong> using <a href="#Rules">rules</a> that run when navigating from one page to another.</p>
+<p>They use all <a href="/docs/advanced/hooks#Base-hooks">base <code>hooks</code></a>.</p>
+<h2 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  transitions: [&#123;</span><br><span class="line">    name: <span class="string">'default-transition'</span>,</span><br><span class="line">    leave() &#123;</span><br><span class="line">      <span class="comment">// create your stunning leave animation here</span></span><br><span class="line">    &#125;,</span><br><span class="line">    enter() &#123;</span><br><span class="line">      <span class="comment">// create your amazing enter animation here</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>On slow network or with a high page weight, the server can take time to prefetch the response and can lead Barba to abort the transition and display a <em>Timeout error</em> message.</p>
-<p>See the <a href="/docs/advanced/recipes#timeout"><code>timeout</code></a> setting to properly manage this behavior.</p>
+<p>transition <code>name</code> is optional, but recommended.</p>
 </blockquote>
+<h2 id="Rules"><a href="#Rules" class="headerlink" title="Rules"></a>Rules</h2><p>Rules <strong>define the “transition resolution”</strong>, concretely “selecting the right transition to use”.<br>This allows you to create specific transitions, based on namespace, route or custom logic.</p>
+<p>They are made of <a href="#Keyword-s">keyword(s)</a> and <a href="#Condition-s">condition(s)</a>.</p>
+<h3 id="Keyword-s"><a href="#Keyword-s" class="headerlink" title="Keyword(s)"></a>Keyword(s)</h3><p>Rules keyword(s) define the <strong>logic to follow</strong>, if your transition should play when leaving the <code>current.container</code>, using <code>from</code>, and/or when entering the <code>next.container</code>, using <code>to</code>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  transitions: [&#123;</span><br><span class="line">    name: <span class="string">'custom-transition'</span>,</span><br><span class="line">    <span class="keyword">from</span>: &#123;</span><br><span class="line">      <span class="comment">// set of conditions to be fulfilled</span></span><br><span class="line">      <span class="comment">// to play the transition</span></span><br><span class="line">    &#125;,</span><br><span class="line">    to: &#123;</span><br><span class="line">      <span class="comment">// set of conditions to be fulfilled</span></span><br><span class="line">      <span class="comment">// to play the transition</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>They must contain a set of <a href="#Condition-s">condition(s)</a>, and run within a priority order:</p>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Keyword</th>
+<th>Rule apply to…</th>
+<th>Rule apply when…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>from</code> <strong>AND</strong> <code>to</code></td>
+<td><code>current</code> <strong>AND</strong> <code>next</code> containers</td>
+<td>Condition(s) of <code>from</code> <strong>AND</strong> <code>to</code> are fulfilled</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>to</code></td>
+<td><code>next</code> container</td>
+<td>Condition(s) of <code>to</code> is/are fulfilled</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>from</code></td>
+<td><code>current</code> container</td>
+<td>Condition(s) of <code>from</code> is/are fulfilled</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Note that you can use <code>from</code> and <code>to</code> properties <strong>independently</strong>.</p>
+</blockquote>
+<h3 id="Condition-s"><a href="#Condition-s" class="headerlink" title="Condition(s)"></a>Condition(s)</h3><p>Rules condition(s) define the <strong>logic to fulfilled</strong> inside <a href="#Keyword-s">keyword(s)</a> in order to play the transition.</p>
+<p>They are defined within keyword(s):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  transitions: [&#123;</span><br><span class="line">    name: <span class="string">'custom-transition'</span>,</span><br><span class="line">    <span class="keyword">from</span>: &#123;</span><br><span class="line">      namespace: [</span><br><span class="line">        <span class="string">'home'</span></span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Condition(s) can be applied to a namespace, route or through a custom function.<br>Barba will then select the right transition to use and play it <strong>only if all conditions are fulfilled</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Condition</th>
+<th>Type</th>
+<th>Argument</th>
+<th>Fulfilled when…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><code>custom</code></td>
+<td>Function</td>
+<td><a href="/docs/advanced/hooks#data-argument">data</a> argument</td>
+<td>Return <code>true</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>route</code></td>
+<td>String | String[]</td>
+<td><em>none</em></td>
+<td><code>current.route.name</code> match</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>namespace</code></td>
+<td>String | String[]</td>
+<td><em>none</em></td>
+<td><code>current.namespace</code> match</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Any conditions can be used within <code>from</code> and/or <code>to</code> keywords.</p>
+</blockquote>
+<h3 id="Priority"><a href="#Priority" class="headerlink" title="Priority"></a>Priority</h3><p>The “transition resolution” follows this steps:</p>
+<ol>
+<li>Condition(s) priority</li>
+<li>Keyword(s) priority</li>
+<li>Declaration order</li>
+</ol>
+<blockquote>
+<p>The common/default behaviour is to start <strong>leave</strong> as soon as possible.<br>Then <strong>enter</strong> will be called when <strong>leave</strong> ends <em>AND</em> next page is “available”: fetched or cached.</p>
+<p>If you use some <code>to</code> logic, Barba can not predict and select the right transition until the next page is available. This also applies when using the <a href="#Sync-mode">sync mode</a>, but this does not apply if <code>to</code> is used with <code>route</code> property because “next route” is known when the click occurs.</p>
+<p>Bear with this!</p>
+</blockquote>
+<h3 id="Multiple-rules"><a href="#Multiple-rules" class="headerlink" title="Multiple rules"></a>Multiple rules</h3><p>You can combine <strong>multiple rules</strong> on each transition.<br>Here is an example of what you could do with multiple rules:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  transitions: [&#123;</span><br><span class="line">    name: <span class="string">'custom-transition'</span>,</span><br><span class="line">    <span class="keyword">from</span>: &#123;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// define a custom rule based on the trigger class</span></span><br><span class="line">      custom: <span class="function">(<span class="params">&#123; trigger &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> trigger.classList &amp;&amp; trigger.classList.contains(<span class="string">'use-custom-transition'</span>);</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// define rule based on multiple route names</span></span><br><span class="line">      route: [</span><br><span class="line">        <span class="string">'index'</span>,</span><br><span class="line">        <span class="string">'product'</span></span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line">    to: &#123;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// define rule based on multiple namespaces</span></span><br><span class="line">      namespace: [</span><br><span class="line">        <span class="string">'home'</span>,</span><br><span class="line">        <span class="string">'item'</span></span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Based on the <a href="#Priority">priority order</a>, Barba will play the <code>custom-transition</code>:</p>
+<ul>
+<li>if the link you clicked on contains a <code>.use-custom-transition</code> CSS class</li>
+<li>if you come <strong>from</strong> the <code>index</code> or <code>product</code> route</li>
+<li>if you are navigating <strong>to</strong> the <code>home</code> or <code>item</code> namespace AND <strong>from</strong> the <code>index</code> or <code>product</code> route</li>
+</ul>
+<h2 id="Sync-mode"><a href="#Sync-mode" class="headerlink" title="Sync mode"></a>Sync mode</h2><p>A mode that indicates whether <strong>leave</strong> and <strong>enter</strong> hooks should “play together”.<br>This involves <strong>waiting until the next page is available</strong>: fetched or cached.</p>
+<p>The <strong>sync mode is disabled by default</strong>, but you can easily enable it using the <code>sync</code> option:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  transitions: [&#123;</span><br><span class="line">    sync: <span class="literal">true</span>,</span><br><span class="line">    leave() &#123;</span><br><span class="line">      <span class="comment">// transition that will play concurrently to `enter`</span></span><br><span class="line">    &#125;,</span><br><span class="line">    enter() &#123;</span><br><span class="line">      <span class="comment">// transition that will play concurrently to `leave`</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 </div>
 
@@ -561,7 +657,7 @@
 <div class="docs__nav__lateral" data-component="docs-nav-lateral">
   
   <a
-    href="/docs/plugins/router/"
+    href="/docs/advanced/hooks/"
     class="docs__nav__lateral__link--prev"
     data-ref="docs-nav-lateral.link"
   >
@@ -569,15 +665,15 @@
   <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-prev"></use> -->
   <use xlink:href="#barba-arrow-prev"></use>
 </svg>
-    <span class="docs__nav__lateral__label">Router</span>
+    <span class="docs__nav__lateral__label">Hooks</span>
   </a>
    
   <a
-    href="/docs/plugins/css/"
+    href="/docs/advanced/views/"
     class="docs__nav__lateral__link--next"
     data-ref="docs-nav-lateral.link"
   >
-    <span class="docs__nav__lateral__label">Css</span>
+    <span class="docs__nav__lateral__label">Views</span>
     <svg viewBox="0 0 21 15" aria-hidden="true" class="icon--barba">
   <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-next"></use> -->
   <use xlink:href="#barba-arrow-next"></use>

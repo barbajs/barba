@@ -51,7 +51,7 @@
     window.BARBA = {
       root: '/',
       menu: JSON.parse('[{"title":"Features","url":"features/user-friendly/","slug":"/features","subpages":[{"title":"User friendly","url":"features/user-friendly/"},{"title":"Easy peasy","url":"features/easy-peasy/"},{"title":"Smart","url":"features/smart/"},{"title":"Extensible","url":"features/extensible/"},{"title":"Futureproof","url":"features/futureproof/"},{"title":"Community","url":"features/community/"}]},{"title":"Examples","url":"examples/","slug":"/examples"},{"title":"Showcases","url":"showcase/","slug":"/showcase"},{"title":"Docs","url":"docs/getstarted/intro/","slug":"/docs"}]'),
-      docs: JSON.parse('[{"title":"Get Started","url":"docs/getstarted/intro/","path":"docs/getstarted","nextpage":{"label":"USER GUIDE","url":"docs/userguide/markup/"}},{"title":"User Guide (Core)","url":"docs/userguide/markup/","path":"docs/userguide","subpages":[{"title":"Markup","url":"docs/userguide/markup/"},{"title":"Syntax","url":"docs/userguide/syntax/"},{"title":"Analytics","url":"docs/userguide/analytics/"}]},{"title":"Plugins","url":"docs/plugins/css/","path":"docs/plugins","subpages":[{"title":"Css","url":"docs/plugins/css/"},{"title":"Router","url":"docs/plugins/router/"},{"title":"Prefetch","url":"docs/plugins/prefetch/"},{"title":"Preset","url":"docs/plugins/preset/"},{"title":"Head","url":"docs/plugins/head/"}]},{"title":"API","url":"api/","path":"api","extern":true}]'),
+      docs: JSON.parse('[{"title":"Get Started","url":"docs/getstarted/intro/","path":"docs/getstarted","subpages":[{"title":"Intro","url":"docs/getstarted/intro/"},{"title":"Install","url":"docs/getstarted/install/"},{"title":"Markup","url":"docs/getstarted/markup/"},{"title":"Basic transition","url":"docs/getstarted/basic-transition/"},{"title":"Run custom code","url":"docs/getstarted/custom-code/"},{"title":"Lifecycle","url":"docs/getstarted/lifecycle/"},{"title":"Legacy example","url":"docs/getstarted/legacy/"},{"title":"Browser support","url":"docs/getstarted/browser-support/"},{"title":"Useful links","url":"docs/getstarted/useful-links/"}]},{"title":"Advanced","url":"docs/advanced/hooks/","path":"docs/advanced","subpages":[{"title":"Hooks","url":"docs/advanced/hooks/"},{"title":"Transitions","url":"docs/advanced/transitions/"},{"title":"Views","url":"docs/advanced/views/"},{"title":"Strategies","url":"docs/advanced/strategies/"},{"title":"Recipes","url":"docs/advanced/recipes/"},{"title":"Third party scripts","url":"docs/advanced/third-party/"},{"title":"Utils","url":"docs/advanced/utils/"},{"title":"Developer API","url":"api/","path":"api","extern":true}]},{"title":"Plugins","url":"docs/plugins/intro/","path":"docs/plugins","subpages":[{"title":"Intro","url":"docs/plugins/intro/"},{"title":"Router","url":"docs/plugins/router/"},{"title":"Prefetch","url":"docs/plugins/prefetch/"},{"title":"Css","url":"docs/plugins/css/"},{"title":"Head","url":"docs/plugins/head/"},{"title":"Preset","url":"docs/plugins/preset/"}]}]'),
     }
 
     document.documentElement.classList.add('js');
@@ -301,23 +301,28 @@
 
       <!-- Subpages -->
       
-      <!-- Subpages [end]-->
-
-    </li>
-    
-    <li>
-      <a href="/docs/userguide/markup/" >
-        <h1 class="docs__nav__title ">User Guide (Core)</h1>
-      </a>
-
-      <!-- Subpages -->
-      
-      <ol class="docs__nav__sublist">
+      <ol class="docs__nav__sublist ">
 
         <!-- Subpage -->
         
         <li class="">
-          <a href="/docs/userguide/markup/">
+          <a href="/docs/getstarted/intro/">
+            <h2 class="docs__nav__subtitle ">
+              Intro
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/getstarted/install/">
+            <h2 class="docs__nav__subtitle ">
+              Install
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/getstarted/markup/">
             <h2 class="docs__nav__subtitle ">
               Markup
             </h2>
@@ -325,17 +330,49 @@
         </li>
         
         <li class="">
-          <a href="/docs/userguide/syntax/">
+          <a href="/docs/getstarted/basic-transition/">
             <h2 class="docs__nav__subtitle ">
-              Syntax
+              Basic transition
             </h2>
           </a>
         </li>
         
         <li class="">
-          <a href="/docs/userguide/analytics/">
+          <a href="/docs/getstarted/custom-code/">
             <h2 class="docs__nav__subtitle ">
-              Analytics
+              Run custom code
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/getstarted/lifecycle/">
+            <h2 class="docs__nav__subtitle ">
+              Lifecycle
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/getstarted/legacy/">
+            <h2 class="docs__nav__subtitle ">
+              Legacy example
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/getstarted/browser-support/">
+            <h2 class="docs__nav__subtitle ">
+              Browser support
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/getstarted/useful-links/">
+            <h2 class="docs__nav__subtitle ">
+              Useful links
             </h2>
           </a>
         </li>
@@ -349,20 +386,103 @@
     </li>
     
     <li>
-      <a href="/docs/plugins/css/" >
+      <a href="/docs/advanced/hooks/" >
+        <h1 class="docs__nav__title ">Advanced</h1>
+      </a>
+
+      <!-- Subpages -->
+      
+      <ol class="docs__nav__sublist ">
+
+        <!-- Subpage -->
+        
+        <li class="">
+          <a href="/docs/advanced/hooks/">
+            <h2 class="docs__nav__subtitle ">
+              Hooks
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/advanced/transitions/">
+            <h2 class="docs__nav__subtitle ">
+              Transitions
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/advanced/views/">
+            <h2 class="docs__nav__subtitle ">
+              Views
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/advanced/strategies/">
+            <h2 class="docs__nav__subtitle ">
+              Strategies
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/advanced/recipes/">
+            <h2 class="docs__nav__subtitle ">
+              Recipes
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/advanced/third-party/">
+            <h2 class="docs__nav__subtitle ">
+              Third party scripts
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/docs/advanced/utils/">
+            <h2 class="docs__nav__subtitle ">
+              Utils
+            </h2>
+          </a>
+        </li>
+        
+        <li class="">
+          <a href="/api/">
+            <h2 class="docs__nav__subtitle ">
+              Developer API
+            </h2>
+          </a>
+        </li>
+        
+        <!-- Subpage [end]-->
+
+      </ol>
+      
+      <!-- Subpages [end]-->
+
+    </li>
+    
+    <li>
+      <a href="/docs/plugins/intro/" >
         <h1 class="docs__nav__title is-open">Plugins</h1>
       </a>
 
       <!-- Subpages -->
       
-      <ol class="docs__nav__sublist">
+      <ol class="docs__nav__sublist is-open">
 
         <!-- Subpage -->
         
-        <li class="is-open">
-          <a href="/docs/plugins/css/">
-            <h2 class="docs__nav__subtitle is-open">
-              Css
+        <li class="">
+          <a href="/docs/plugins/intro/">
+            <h2 class="docs__nav__subtitle ">
+              Intro
             </h2>
           </a>
         </li>
@@ -383,10 +503,10 @@
           </a>
         </li>
         
-        <li class="">
-          <a href="/docs/plugins/preset/">
-            <h2 class="docs__nav__subtitle ">
-              Preset
+        <li class="is-open">
+          <a href="/docs/plugins/css/">
+            <h2 class="docs__nav__subtitle is-open">
+              Css
             </h2>
           </a>
         </li>
@@ -399,20 +519,17 @@
           </a>
         </li>
         
+        <li class="">
+          <a href="/docs/plugins/preset/">
+            <h2 class="docs__nav__subtitle ">
+              Preset
+            </h2>
+          </a>
+        </li>
+        
         <!-- Subpage [end]-->
 
       </ol>
-      
-      <!-- Subpages [end]-->
-
-    </li>
-    
-    <li>
-      <a href="/api/" target="_blank">
-        <h1 class="docs__nav__title ">API</h1>
-      </a>
-
-      <!-- Subpages -->
       
       <!-- Subpages [end]-->
 
@@ -424,42 +541,61 @@
 </div>
 <!-- Docs Nav [end]-->
   <div class="docs__markdown">
-  <h1 id="barba-css"><a href="#barba-css" class="headerlink" title="@barba/css"></a>@barba/css</h1><p>Barba CSS is a <strong>style helper</strong> that manage you CSS classes during transitions.</p>
+  <h1 id="barba-css"><a href="#barba-css" class="headerlink" title="@barba/css"></a>@barba/css</h1><p><a href="https://www.npmjs.com/package/@barba/css" target="_blank" rel="noopener" title="Badge"><img src="https://img.shields.io/npm/v/@barba/css?style=flat-square" alt="NPM version"></a><br><a href="https://github.com/barbajs/barba/network/dependencies" target="_blank" rel="noopener" title="Badge"><img src="https://img.shields.io/librariesio/release/npm/@barba/css?style=flat-square" alt="Dependencies"></a></p>
+<p>Barba CSS is a <strong>style helper</strong> that manage you CSS classes during transitions.</p>
 <p>It is mainly inspired by <a href="https://vuejs.org/v2/guide/transitions.html#Transition-Classes" target="_blank" rel="noopener">Vue.js transitions</a>.</p>
-<h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>This module adds/removes CSS classes from the <code>data-barba=&quot;container&quot;</code> DOM element automatically. By default, it uses <code>.barba-xxx[-xxx]</code> but if you add a <code>name</code> property to your transition, it uses <code>.name-xxx[-xxx]</code> CSS classes instead.</p>
-<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>During the transition process, Barba defines custom classes according to the transition <code>once</code> / <code>leave</code> / <code>enter</code> hooks and the transition name, if specified. Here is the list of hooks supported by the module:</p>
-<h3 id="once"><a href="#once" class="headerlink" title="once"></a>once</h3><ul>
-<li><code>.barba-once</code>: <strong>starting state</strong> for <code>once</code>, added when first load transition is triggered, removed one frame after.</li>
-<li><code>.barba-once-active</code>: <strong>active state</strong> for <code>once</code>, applied during the entire appearing phase, then added when once transition is triggered and removed when transition/animation finishes. This class can be used to define the duration, delay and easing curve.</li>
-<li><code>.barba-once-to</code>: <strong>ending state</strong> for <code>once</code>, added one frame after transition is triggered (at the same time <code>barba-once</code> is removed) and removed when transition/animation finishes.</li>
-</ul>
-<h3 id="leave"><a href="#leave" class="headerlink" title="leave"></a>leave</h3><ul>
-<li><code>.barba-leave</code>: <strong>starting state</strong> for <code>leave</code>, added when leave transition is triggered, removed one frame after.</li>
-<li><code>.barba-leave-active</code>: <strong>active state</strong> for <code>leave</code>, applied during the entire leaving phase, then added when leave transition is triggered and removed when transition/animation finishes. This class can be used to define the duration, delay and easing curve.</li>
-<li><code>.barba-leave-to</code>: <strong>ending state</strong> for <code>leave</code>, added one frame after transition is triggered (at the same time <code>barba-leave</code> is removed) and removed when transition/animation finishes.</li>
-</ul>
-<h3 id="enter"><a href="#enter" class="headerlink" title="enter"></a>enter</h3><ul>
-<li><code>.barba-enter</code>: <strong>starting state</strong> for <code>enter</code>, added when enter transition is triggered, removed one frame after next container is inserted.</li>
-<li><code>.barba-enter-active</code>: <strong>active state</strong> for <code>enter</code>, applied during the entire leaving phase, then added after next container is inserted and removed when transition/animation finishes. This class can be used to define the duration, delay and easing curve.</li>
-<li><code>.barba-enter-to</code>: <strong>ending state</strong> for <code>enter</code>, added one frame after next container is inserted (at the same time <code>barba-enter</code> is removed) and removed when transition/animation finishes.</li>
-</ul>
-<p>Example with default naming:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span>;</span><br><span class="line"><span class="keyword">import</span> barbaCss <span class="keyword">from</span> <span class="string">'@barba/css'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tell Barba to use the css module</span></span><br><span class="line">barba.use(barbaCss);</span><br><span class="line"></span><br><span class="line"><span class="comment">// init Barba</span></span><br><span class="line">barba.init();</span><br></pre></td></tr></table></figure>
+<h2 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works?"></a>How it works?</h2><p>This plugin <strong>adds/removes <a href="#CSS-classes">CSS classes</a></strong> from the <a href="/docs/getstarted/markup#Container"><code>data-barba=&quot;container&quot;</code></a> DOM element automatically.</p>
+<p>To create a simple opacity transition, use the plugin in your build:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span>;</span><br><span class="line"><span class="keyword">import</span> css <span class="keyword">from</span> <span class="string">'@barba/css'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tell Barba to use the css plugin</span></span><br><span class="line">barba.use(css);</span><br><span class="line"></span><br><span class="line"><span class="comment">// init Barba</span></span><br><span class="line">barba.init();</span><br></pre></td></tr></table></figure>
 
 <p>Then customize your CSS classes like this:</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* transition active state (same for leave and enter) */</span></span><br><span class="line"><span class="selector-class">.barba-leave-active</span>,</span><br><span class="line"><span class="selector-class">.barba-enter-active</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: opacity <span class="number">450ms</span> ease;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* initial state */</span></span><br><span class="line"><span class="selector-class">.barba-leave</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.barba-enter</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* ending state */</span></span><br><span class="line"><span class="selector-class">.barba-leave-to</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.barba-enter-to</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Note that this code can be refactored for optimization */</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.barba-leave-active</span>,</span><br><span class="line"><span class="selector-class">.barba-enter-active</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: opacity <span class="number">450ms</span> ease;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.barba-leave</span>,</span><br><span class="line"><span class="selector-class">.barba-enter-to</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.barba-enter</span>,</span><br><span class="line"><span class="selector-class">.barba-leave-to</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>If you want to play some transition on first load, use <code>once</code>:</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* once: active state, define the transition */</span></span><br><span class="line"><span class="selector-class">.barba-once-active</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: opacity <span class="number">450ms</span> ease;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* once: initial state */</span></span><br><span class="line"><span class="selector-class">.barba-once</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* once: ending state */</span></span><br><span class="line"><span class="selector-class">.barba-once-to</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="CSS-classes"><a href="#CSS-classes" class="headerlink" title="CSS classes"></a>CSS classes</h2><p>During the transition process, Barba defines <strong>custom classes</strong> according to the transition hook state. If a transition name is specified, it will be used as a <a href="#CSS-prefix">CSS prefix</a> in your classes instead.</p>
+<p>Here is the list of all default CSS classes grouped by hooks:</p>
+<h3 id="once"><a href="#once" class="headerlink" title="once"></a>once</h3><ul>
+<li><code>.barba-once</code> → <strong>starting state</strong> for <code>once</code> hook, added when first load transition is triggered, removed one frame after.</li>
+<li><code>.barba-once-active</code> → <strong>active state</strong> for <code>once</code> hook, applied during the entire appearing phase, then added when once transition is triggered and removed when transition/animation finishes. This class can be used to define the duration, delay and easing curve.</li>
+<li><code>.barba-once-to</code> → <strong>ending state</strong> for <code>once</code> hook, added one frame after transition is triggered (at the same time <code>barba-once</code> is removed) and removed when transition/animation finishes.</li>
+</ul>
+<h3 id="leave"><a href="#leave" class="headerlink" title="leave"></a>leave</h3><ul>
+<li><code>.barba-leave</code> → <strong>starting state</strong> for <code>leave</code> hook, added when leave transition is triggered, removed one frame after.</li>
+<li><code>.barba-leave-active</code> → <strong>active state</strong> for <code>leave</code> hook, applied during the entire leaving phase, then added when leave transition is triggered and removed when transition/animation finishes. This class can be used to define the duration, delay and easing curve.</li>
+<li><code>.barba-leave-to</code> → <strong>ending state</strong> for <code>leave</code> hook, added one frame after transition is triggered (at the same time <code>barba-leave</code> is removed) and removed when transition/animation finishes.</li>
+</ul>
+<h3 id="enter"><a href="#enter" class="headerlink" title="enter"></a>enter</h3><ul>
+<li><code>.barba-enter</code> → <strong>starting state</strong> for <code>enter</code> hook, added when enter transition is triggered, removed one frame after next container is inserted.</li>
+<li><code>.barba-enter-active</code> → <strong>active state</strong> for <code>enter</code> hook, applied during the entire leaving phase, then added after next container is inserted and removed when transition/animation finishes. This class can be used to define the duration, delay and easing curve.</li>
+<li><code>.barba-enter-to</code> → <strong>ending state</strong> for <code>enter</code> hook, added one frame after next container is inserted (at the same time <code>barba-enter</code> is removed) and removed when transition/animation finishes.</li>
+</ul>
+<h2 id="CSS-prefix"><a href="#CSS-prefix" class="headerlink" title="CSS prefix"></a>CSS prefix</h2><p>By default, the plugin uses <code>.barba-hook</code> <strong>prefix</strong> to generate the <code>.barba-hook[-state]</code> CSS classes, but if you add a <code>name</code> property to your transition, it uses <code>.name-hook[-state]</code> CSS classes instead.</p>
+<p>Setting a transition name like this …</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  transitions: [&#123;</span><br><span class="line">    name: <span class="string">'hello'</span></span><br><span class="line">    once: <span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<hr>
-<p>If you want different transitions, you can name them and use rules.<br>The transition <code>name</code> will be used as <strong>CSS “prefix”</strong>.</p>
+<p>… will generate those CSS classes:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* transition name is used as prefix for `once` hook */</span></span><br><span class="line"><span class="selector-class">.hello-once</span> &#123;&#125;</span><br><span class="line"><span class="selector-class">.hello-once-active</span> &#123;&#125;</span><br><span class="line"><span class="selector-class">.hello-once-to</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* default prefix is used for `leave` and `enter` hooks */</span></span><br><span class="line"><span class="selector-class">.barba-leave</span> &#123;&#125;</span><br><span class="line"><span class="selector-class">.barba-leave-active</span> &#123;&#125;</span><br><span class="line"><span class="selector-class">.barba-leave-to</span> &#123;&#125;</span><br><span class="line"><span class="selector-class">.barba-enter</span> &#123;&#125;</span><br><span class="line"><span class="selector-class">.barba-enter-active</span> &#123;&#125;</span><br><span class="line"><span class="selector-class">.barba-enter-to</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
-<p>!!! To use a “custom named” <strong>once</strong> transition, you need to explicitly add a <code>once() {}</code> hook to your transition.</p>
+<p>Be careful, you need to add an <strong>empty <code>once</code> / <code>leave</code> / <code>enter</code> hook</strong> in order to let the plugin use the transition name as class prefix.</p>
+<p>This <strong>may evolve</strong> in a next release.</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span>;</span><br><span class="line"><span class="keyword">import</span> barbaCss <span class="keyword">from</span> <span class="string">'@barba/css'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tell Barba to use the css module</span></span><br><span class="line">barba.use(barbaCss);</span><br><span class="line"></span><br><span class="line"><span class="comment">// init Barba</span></span><br><span class="line">barba.init(&#123;</span><br><span class="line">  transitions: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">// css classes will look like `.fade-xxx-[-xxx]`</span></span><br><span class="line">      name: <span class="string">'fade'</span>,</span><br><span class="line"></span><br><span class="line">      <span class="comment">// if you want to use `.fade-once[-xxx]`</span></span><br><span class="line">      <span class="comment">// add this empty hook…</span></span><br><span class="line">      once() &#123;&#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">// css classes will look like `.slide-xxx[-xxx]`</span></span><br><span class="line">      name: <span class="string">'slide'</span>,</span><br><span class="line">      <span class="keyword">from</span>: &#123;</span><br><span class="line">        namespace: <span class="string">'home'</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      to: &#123;</span><br><span class="line">        namespace: <span class="string">'products'</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="Transition-hooks"><a href="#Transition-hooks" class="headerlink" title="Transition hooks"></a>Transition hooks</h2><p>As Barba CSS plugin overrides main <code>once</code> / <code>leave</code> / <code>enter</code> hooks in order to run, the <strong>code you will put inside those hooks won’t be executed</strong>. However, you can safely use every other transition hooks to run custom code with the plugin:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  transitions: [&#123;</span><br><span class="line">    name: <span class="string">'hello'</span></span><br><span class="line">    once: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// code here won't run...</span></span><br><span class="line">    &#125;,</span><br><span class="line">    beforeLeave: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'This message will be displayed in the console!'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* fade and slide transition active states (same for leave and enter) */</span></span><br><span class="line"><span class="selector-class">.fade-leave-active</span>,</span><br><span class="line"><span class="selector-class">.fade-enter-active</span>,</span><br><span class="line"><span class="selector-class">.slide-leave-active</span>,</span><br><span class="line"><span class="selector-class">.slide-enter-active</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: opacity <span class="number">450ms</span> ease, transform <span class="number">650ms</span> ease-in-out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* fade transition states */</span></span><br><span class="line"><span class="selector-class">.fade-leave</span>,</span><br><span class="line"><span class="selector-class">.fade-enter-to</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.fade-enter</span>,</span><br><span class="line"><span class="selector-class">.fade-leave-to</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* slide transition states */</span></span><br><span class="line"><span class="selector-class">.slide-leave</span>,</span><br><span class="line"><span class="selector-class">.slide-enter-to</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateX</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.slide-enter</span>,</span><br><span class="line"><span class="selector-class">.slide-leave-to</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateX</span>(<span class="number">100%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>This <strong>may evolve</strong> in a next release.</p>
+</blockquote>
+<h2 id="Complex-transition"><a href="#Complex-transition" class="headerlink" title="Complex transition"></a>Complex transition</h2><h3 id="Browser-load"><a href="#Browser-load" class="headerlink" title="Browser load"></a>Browser load</h3><p>If you want to play some transition on first load, use the <code>once</code> hook:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.barba-once-active</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: opacity <span class="number">450ms</span> ease;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.barba-once</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.barba-once-to</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Don’t forget to set the <code>.barba-once-active</code> class in order to see the transition.</p>
+</blockquote>
+<h3 id="Custom-rule"><a href="#Custom-rule" class="headerlink" title="Custom rule"></a>Custom rule</h3><p>You can use custom <a href="/docs/advanced/transitions#Rules">transition rules</a> to play transitions depending on the namespace or route.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span>;</span><br><span class="line"><span class="keyword">import</span> css <span class="keyword">from</span> <span class="string">'@barba/css'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tell Barba to use the css plugin</span></span><br><span class="line">barba.use(css);</span><br><span class="line"></span><br><span class="line"><span class="comment">// init Barba</span></span><br><span class="line">barba.init(&#123;</span><br><span class="line">  transitions: [&#123;</span><br><span class="line">    name: <span class="string">'fade'</span>,</span><br><span class="line">    leave() &#123;&#125;,</span><br><span class="line">    enter() &#123;&#125;</span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    name: <span class="string">'slide'</span>,</span><br><span class="line">    leave() &#123;&#125;,</span><br><span class="line">    enter() &#123;&#125;,</span><br><span class="line">    <span class="keyword">from</span>: &#123;</span><br><span class="line">      namespace: <span class="string">'home'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    to: &#123;</span><br><span class="line">      namespace: <span class="string">'products'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.fade-leave-active</span>,</span><br><span class="line"><span class="selector-class">.fade-enter-active</span>,</span><br><span class="line"><span class="selector-class">.slide-leave-active</span>,</span><br><span class="line"><span class="selector-class">.slide-enter-active</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: opacity <span class="number">450ms</span> ease, transform <span class="number">650ms</span> ease-in-out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.fade-leave</span>,</span><br><span class="line"><span class="selector-class">.fade-enter-to</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.fade-enter</span>,</span><br><span class="line"><span class="selector-class">.fade-leave-to</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.slide-leave</span>,</span><br><span class="line"><span class="selector-class">.slide-enter-to</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateX</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.slide-enter</span>,</span><br><span class="line"><span class="selector-class">.slide-leave-to</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateX</span>(<span class="number">100%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 </div>
 
 
@@ -468,7 +604,7 @@
 <div class="docs__nav__lateral" data-component="docs-nav-lateral">
   
   <a
-    href="/docs/userguide/analytics/"
+    href="/docs/plugins/prefetch/"
     class="docs__nav__lateral__link--prev"
     data-ref="docs-nav-lateral.link"
   >
@@ -476,15 +612,15 @@
   <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-prev"></use> -->
   <use xlink:href="#barba-arrow-prev"></use>
 </svg>
-    <span class="docs__nav__lateral__label">Analytics</span>
+    <span class="docs__nav__lateral__label">Prefetch</span>
   </a>
    
   <a
-    href="/docs/plugins/router/"
+    href="/docs/plugins/head/"
     class="docs__nav__lateral__link--next"
     data-ref="docs-nav-lateral.link"
   >
-    <span class="docs__nav__lateral__label">Router</span>
+    <span class="docs__nav__lateral__label">Head</span>
     <svg viewBox="0 0 21 15" aria-hidden="true" class="icon--barba">
   <!-- <use attr.xlink:href="assets/svg/sprite.svg#barba-arrow-next"></use> -->
   <use xlink:href="#barba-arrow-next"></use>
