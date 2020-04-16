@@ -58,6 +58,10 @@
     a {
       color: $gray-darker;
     }
+
+    &:last-child {
+      border-bottom: none;
+    }
   }
 }
 
@@ -67,6 +71,7 @@
   line-height: 2rem;
   text-transform: uppercase;
   opacity: 0.3;
+  transition: opacity 450ms ease;
 
   @include mq(s) {
     font-size: 1.2rem;
@@ -79,9 +84,16 @@
   &.is-open {
     opacity: 0.7;
   }
+
+  &:hover:not(.is-open) {
+    opacity: 0.5;
+    transition-duration: 250ms;
+  }
 }
 
 .docs__nav__sublist {
+  overflow: hidden;
+  height: 0;
   margin: 0;
   padding-left: 1rem;
   list-style: none;
@@ -94,7 +106,7 @@
     padding-left: 3rem;
   }
 
-  li .is-open {
+  li {
     position: relative;
 
     &::before {
@@ -107,11 +119,24 @@
       border-width: 0.35em 0 0.35em 0.45em;
       border-style: solid;
       border-color: transparent $c-blue-light;
+      opacity: 0;
+      transition: opacity 450ms ease;
 
       @include mq(l) {
-        top: 0.3em;
+        top: calc(50% - 0.35em);
       }
     }
+
+    &.is-open {
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.is-open {
+    height: auto;
+    margin-bottom: 2rem;
   }
 }
 
@@ -119,6 +144,7 @@
   font-size: 1rem;
   font-weight: 400;
   line-height: 2rem;
+  transition: color 450ms ease;
 
   @include mq(s) {
     font-size: 1.2rem;
@@ -130,5 +156,10 @@
 
   &.is-open {
     color: $c-blue-light;
+  }
+
+  &:hover:not(.is-open) {
+    color: $c-blue-light;
+    transition-duration: 250ms;
   }
 }

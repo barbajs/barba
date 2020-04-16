@@ -12,7 +12,7 @@
 
       <!-- Subpages -->
       <% if (page.subpages) { %>
-      <ol class="docs__nav__sublist">
+      <ol class="docs__nav__sublist <%- page.subpages.filter(subpage => url.indexOf(subpage.url) != -1).length != 0 ? 'is-open' : '' %>">
 
         <!-- Subpage -->
         <% page.subpages.forEach(function(subpage) { %>
