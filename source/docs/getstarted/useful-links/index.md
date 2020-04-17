@@ -26,6 +26,6 @@ Discover the amazing things that Barba can do!
 
 ## Developer
 Get technical informations, open an issue/pull request or join the (amazing) community!
-  - [API documentation](https://barba.js.org/api/)
+  - <a href="https://barba.js.org/api/" target="_blank">API documentation</a>
   - [Github](https://github.com/barbajs/barba/)
   - [Slack workspace](https://barbajs.slack.com) _(Not in the workspace yet? Use the [invite link](https://join.slack.com/t/barbajs/shared_invite/enQtNTU3NTAyMjkxMzAyLTkxYWUwZmM1YWQxMmNlYmE0ZjY4NDQxMGUxYjkwYWFlMzEzOWM4OTRhMWRmYTQyYzFlMmQ3OGFmYmI3MWY0OWY) 🔓)_
