@@ -55,7 +55,7 @@
     "commit": "npx git-cz || exit 0",
     "commit-retry": "npx git-cz --retry || exit 0",
     "coverage": "cat ./coverage/lcov.info | coveralls",
-    "doc": "typedoc packages/**/src --tsconfig typedoc.json --sourcefile-url-prefix 'https://github.com/barbajs/barba/tree/master/packages/'",
+    "doc": "typedoc packages/**/src --tsconfig typedoc.json --sourcefile-url-prefix 'https://github.com/barbajs/barba/tree/master/'",
     "lint": "tslint packages/**/src/**",
     "ls": "lerna ls",
     "prepublish": "yarn run build",
