@@ -9,7 +9,9 @@
           viewbox: '0 0 32 32',
         }) %>
       </a>
-      <span class="header__infos__version">v2.x</span>
+      <span class="header__infos__version">
+        <%- partial('components/global/barba-version') %>
+      </span>
       <% if (is_current('/docs')) { %>
       <span class="header__infos__docs">/ DOCS</span>
       <% }; %>
