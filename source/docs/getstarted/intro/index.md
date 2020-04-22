@@ -7,7 +7,7 @@ url: 'docs/getstarted/intro/'
 
 # barba.js <small>[v2]</small>
 
-![stability-beta](https://img.shields.io/badge/stability-beta-lightgrey.svg?style=flat-square "Badge")
+![Stability](https://img.shields.io/badge/stability-stable-brightgreen.svg?style=flat-square "Badge")
 [![CircleCI](https://img.shields.io/circleci/project/github/barbajs/barba/master.svg?style=flat-square)](https://circleci.com/gh/barbajs/barba/tree/master "Badge")
 [![Coverage Status](https://img.shields.io/coveralls/github/barbajs/barba/master.svg?style=flat-square)](https://coveralls.io/github/barbajs/barba?branch=master "Badge")
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/ "Badge")
