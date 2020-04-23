@@ -154,8 +154,6 @@ Based on the [priority order](#Priority), Barba will play the `custom-transition
 ## Sync mode
 
 A mode that indicates whether **leave** and **enter** hooks should "play together".
-This involves **waiting until the next page is available**: fetched or cached.
-
 The **sync mode is disabled by default**, but you can easily enable it using the `sync` option:
 
 ```js
@@ -171,3 +169,9 @@ barba.init({
   }]
 });
 ```
+
+This involves **waiting until the next page is available**: fetched or cached.
+
+In another words, regarding the [legacy example](/docs/getstarted/legacy/), if you have an opacity transition from `1 -> 0` for `leave` and `0 -> 1` for `enter`:
+- using `sync: false` will play the `leave` transition first, making your page content goes transparent, then play the `enter` transition, making the next page content goes opaque _(two step transition)_
+- using `sync: true` will make the current page goes transparent while the next page becomes opaque at the same time _(crossfade transition)_
