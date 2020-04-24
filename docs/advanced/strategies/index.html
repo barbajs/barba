@@ -604,6 +604,9 @@
 <h2 id="Prevent"><a href="#Prevent" class="headerlink" title="Prevent"></a>Prevent</h2><h3 id="preventRunning"><a href="#preventRunning" class="headerlink" title="preventRunning"></a><code>preventRunning</code></h3><p>Tells Barba to <strong>prevent page “force reload”</strong> when the user clicks on an eligible link during a transition is running.<br>This option is useful if you don’t want your users to break running transitions, especially if they are long.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  preventRunning: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p>You can also programmatically check if a transition is running using <code>barba.transitions.isRunning</code> whenever you want in your code.</p>
+</blockquote>
 <h3 id="prevent"><a href="#prevent" class="headerlink" title="prevent"></a><code>prevent</code></h3><p>Allows you to add a <strong>custom “prevent” test</strong> on eligible links.<br>If this function returns <code>true</code>, Barba will be disable for links that pass the test.</p>
 <table>
 <thead>
