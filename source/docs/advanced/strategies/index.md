@@ -70,6 +70,8 @@ barba.init({
 });
 ```
 
+> You can also programmatically check if a transition is running using `barba.transitions.isRunning` whenever you want in your code.
+
 ### `prevent`
 
 Allows you to add a **custom "prevent" test** on eligible links.
