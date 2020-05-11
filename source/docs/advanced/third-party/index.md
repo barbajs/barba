@@ -13,6 +13,11 @@ This might be result in some **unexpected behaviors** when using classic third p
 
 > We encourage you to **check the specific documentation provided by the vendors** on how handle *Single Page Applications* or *HTML Pushstate API* in general.
 
+## Summary
+1. [Google Analytics](#Google-Analytics)
+2. [Google ReCaptcha](#Google-ReCaptcha)
+3. [Locomotive scroll](#Locomotive-scroll)
+
 ## Google Analytics
 
 ### analytics.js
