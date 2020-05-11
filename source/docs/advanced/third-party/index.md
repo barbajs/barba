@@ -36,6 +36,39 @@ Although you can **manually send a page view**, as Google Tag Manager has a `His
 >
 > Know issue: [How to fix rogue referral with Google Tag Manager](https://www.simoahava.com/gtm-tips/fix-rogue-referral-problem-single-page-sites/)
 
+## Google ReCaptcha
+
+Start by [generating your public/private keys](https://www.google.com/recaptcha/admin/create) and add the script inside your page:
+
+```html
+<script src="https://www.google.com/recaptcha/api.js?render=RECAPTCHA_PUBLIC_KEY"></script>
+```
+
+Then generate the captcha **on the appropriate page** using a [`View`](/docs/advanced/views/):
+
+```javascript
+barba.init({
+  views: [{
+    namespace: 'index',
+    beforeEnter() {
+      grecaptcha.ready(() => {
+        grecaptcha.execute(key, {
+          action: 'captcha_index'
+        }).then((token) => {
+          // send token to your backend in order to check the captcha:
+          // you will need to make a POST request with token and private key
+          // see https://developers.google.com/recaptcha/docs/verify#api_request
+        });
+      });
+    }
+  }
+});
+```
+
+> Be sure to call `grecaptcha.ready()` after adding the reCaptcha `script`.
+>
+> See [Google reCAPTCHA v3 guide](https://developers.google.com/recaptcha/docs/v3) for more details.
+
 ## Locomotive scroll
 
 This library is **well compatible with Barba**, but you can encounter issues when implementing it. You need to deal with your page template, Barba lifecycle and LocomotiveScroll settings.
