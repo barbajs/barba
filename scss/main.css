@@ -1652,11 +1652,11 @@ body {
     padding: 0 4rem;
     color: #a0a0a0;
     border-left: 3px solid silver; }
-  .docs__markdown a:not([title='Badge']) {
+  .docs__markdown a:not([title='Badge']):not(.headerlink) {
     position: relative;
     color: #2e5bdc;
     white-space: nowrap; }
-    .docs__markdown a:not([title='Badge'])::before {
+    .docs__markdown a:not([title='Badge']):not(.headerlink)::before {
       content: '';
       position: absolute;
       bottom: -2px;
@@ -1667,8 +1667,31 @@ body {
       opacity: 0.2;
       transition: opacity 350ms ease;
       pointer-events: none; }
-    .docs__markdown a:not([title='Badge']):hover::before {
+    .docs__markdown a:not([title='Badge']):not(.headerlink):hover::before {
       opacity: 1; }
+  .docs__markdown .headerlink {
+    position: absolute;
+    left: -30px;
+    width: 30px;
+    opacity: 0;
+    transition: opacity 250ms ease; }
+    .docs__markdown .headerlink::before {
+      content: '#';
+      color: #5a82f1; }
+  .docs__markdown h2,
+  .docs__markdown h3,
+  .docs__markdown h4,
+  .docs__markdown h5,
+  .docs__markdown h6 {
+    position: relative; }
+    .docs__markdown h2:hover .headerlink,
+    .docs__markdown h3:hover .headerlink,
+    .docs__markdown h4:hover .headerlink,
+    .docs__markdown h5:hover .headerlink,
+    .docs__markdown h6:hover .headerlink {
+      opacity: 1; }
+  .docs__markdown h1 a.headerlink {
+    display: none; }
 
 .docs__nav__lateral {
   position: static;
