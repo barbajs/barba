@@ -219,7 +219,7 @@
     border-left: 3px solid $gray-lighter;
   }
 
-  a:not([title='Badge']) {
+  a:not([title='Badge']):not(.headerlink) {
     position: relative;
     color: $c-blue-medium;
     white-space: nowrap;
@@ -242,5 +242,36 @@
         opacity: 1;
       }
     }
+  }
+
+  .headerlink {
+    position: absolute;
+    left: -30px;
+    width: 30px;
+    opacity: 0;
+    transition: opacity 250ms ease;
+
+    &::before {
+      content: '#';
+      color: $c-blue-light;
+    }
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    position: relative;
+
+    &:hover {
+      .headerlink {
+        opacity: 1;
+      }
+    }
+  }
+
+  h1 a.headerlink {
+    display: none;
   }
 }
