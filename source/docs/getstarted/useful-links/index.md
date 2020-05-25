@@ -23,6 +23,7 @@ Discover the amazing things that Barba can do!
   - [Creating sick page transitions](https://www.youtube.com/watch?v=aMucZErEdZg) _(Youtube video)_
   - [Starter template](https://github.com/mrsamse/barba-starter-template) _(Community repo)_
   - [Page transition](https://github.com/karanmhatre1/barba-page-transition-example) _(Community repo)_
+  - [Enhance your web page transitions](https://smth.uk/enhance-your-web-page-transitions/) _(Article about [@barba/css](/docs/plugins/css/))_
 
 ## Developer
 Get technical informations, open an issue/pull request or join the (amazing) community!
