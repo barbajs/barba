@@ -21,7 +21,7 @@ import { schemaAttribute } from '../schemas/attribute';
 
 export class Dom {
   private _attr: ISchemaAttribute = schemaAttribute;
-  private _parser: DOMParser = new DOMParser();
+  private _parser: DOMParser;
 
   /**
    * Convert HTMLDocument to string.
@@ -36,6 +36,10 @@ export class Dom {
   // see https://github.com/barbajs/barba/issues/362
   // Seems that using DOMParser.parseFromString causes this issue.
   public toDocument(htmlString: string): HTMLDocument {
+    /* istanbul ignore else */
+    if (!this._parser) {
+      this._parser = new DOMParser();
+    }
     return this._parser.parseFromString(htmlString, 'text/html');
   }
 
