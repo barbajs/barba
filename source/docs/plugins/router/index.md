@@ -20,7 +20,7 @@ Start to define your routes, then tell Barba to use the plugin **before** the `i
 
 ```js
 import barba from '@barba/core';
-import router from '@barba/router';
+import barbaRouter from '@barba/router';
 
 // define your routes
 const myRoutes = [{
@@ -32,7 +32,7 @@ const myRoutes = [{
 }];
 
 // tell Barba to use the router with your routes
-barba.use(router, {
+barba.use(barbaRouter, {
   routes: myRoutes
 });
 

@@ -22,10 +22,10 @@ To create a simple opacity transition, use the plugin in your build:
 
 ```js
 import barba from '@barba/core';
-import css from '@barba/css';
+import barbaCss from '@barba/css';
 
 // tell Barba to use the css plugin
-barba.use(css);
+barba.use(barbaCss);
 
 // init Barba
 barba.init();
@@ -157,10 +157,10 @@ You can use custom [transition rules](/docs/advanced/transitions/#Rules) to play
 
 ```js
 import barba from '@barba/core';
-import css from '@barba/css';
+import barbaCss from '@barba/css';
 
 // tell Barba to use the css plugin
-barba.use(css);
+barba.use(barbaCss);
 
 // init Barba
 barba.init({

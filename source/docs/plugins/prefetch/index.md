@@ -22,10 +22,10 @@ You can use this feature regardless of the [`prefetchIgnore`](/docs/advanced/str
 
 ```js
 import barba from '@barba/core';
-import prefetch from '@barba/prefetch';
+import barbaPrefetch from '@barba/prefetch';
 
 // tell Barba to use the prefetch plugin
-barba.use(prefetch);
+barba.use(barbaPrefetch);
 
 // init Barba
 barba.init();

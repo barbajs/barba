@@ -24,13 +24,15 @@ To use a plugin, simply tell Barba what plugin(s) you want to use **before initi
 
 ```js
 import barba from '@barba/core';
-import prefetch from '@barba/prefetch';
+import barbaPrefetch from '@barba/prefetch';
 
 // tell Barba what plugins to use
-barba.use(prefetch);
+barba.use(barbaPrefetch);
 
 // init Barba
 barba.init({
   ...
 });
 ```
+
+> **Be careful**, you can easily rename the import when using a bundler, which is not the case when using the plugin through a CDN: the name should be prefixed by `barba`, meaning `@barba/plugin` will need to be call as `barba.use(barbaPlugin)`.
