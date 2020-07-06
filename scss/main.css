@@ -1789,7 +1789,7 @@ body {
     left: 0;
     width: inherit;
     height: 14rem;
-    background: linear-gradient(to bottom, #f5f7fc, 97%, transparent); }
+    background: #f5f7fc; }
 
 .docs__nav__list {
   display: block;
