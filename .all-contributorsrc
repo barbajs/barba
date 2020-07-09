@@ -47,9 +47,10 @@
       "login": "xavierfoucrier",
       "name": "Xavier Foucrier",
       "avatar_url": "https://avatars1.githubusercontent.com/u/2471223?v=4",
-      "profile": "https://www.xavierfoucrier.fr",
+      "profile": "https://www.xavierfoucrier.dev",
       "contributions": [
         "ideas",
+        "code",
         "doc",
         "question",
         "test",
