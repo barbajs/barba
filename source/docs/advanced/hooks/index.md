@@ -80,8 +80,6 @@ barba.hooks.enter(() => {
 });
 ```
 
-> Note that `beforeOnce`, `once` and `afterOnce` global hooks are not permitted.
-
 ## Parameters
 
 ### `data` argument
