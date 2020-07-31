@@ -18,11 +18,11 @@ They are conditioned by a unique page [`namespace`](/docs/getstarted/markup/#Nam
 barba.init({
   views: [{
     namespace: 'home',
-    before() {
+    beforeEnter() {
       // update the menu based on user navigation
       menu.update();
     },
-    enter() {
+    afterEnter() {
       // refresh the parallax based on new page content
       parallax.refresh();
     }
