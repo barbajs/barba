@@ -19,7 +19,7 @@ Barba uses a collection of base hooks:
 | ----- | ------------- | ------------------------------------------------------------------- | ----------- | ----- |
 | 1     | `beforeOnce`  | Before **once** transition _(browser first load)_                   | x           |       |
 | 2     | `once`        | Current page **once** transition _(browser first load)_             | x           |       |
-| 3     | `afterOnce`   | after **once** transition _(browser first load)_                    | x           |       |
+| 3     | `afterOnce`   | After **once** transition _(browser first load)_                    | x           |       |
 | 4     | `before`      | Before everything                                                   | x           |       |
 | 5     | `beforeLeave` | Before **leave** transition/view                                    | x           | x     |
 | 6     | `leave`       | Current page **leave** transition                                   | x           |       |
