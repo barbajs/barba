@@ -19,7 +19,7 @@ Barba's default behavior:
 
 Here is a small diagram that describe **Barba's main concept** when navigating between two pages:
 
-![Lifecycle diagram](/assets/diagram/lifecycle.png)
+[![Lifecycle diagram](/assets/diagram/lifecycle.png "Lifecycle diagram")](https://barba.js.org/assets/diagram/lifecycle.png)
 
 > Note that using the `sync` property will end in a different page lifecycle, see transition [sync mode](/docs/advanced/transitions/#Sync-mode).
 
