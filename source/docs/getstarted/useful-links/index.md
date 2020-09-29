@@ -20,6 +20,8 @@ The base documentation you need to get started with Barba.
 Discover the amazing things that Barba can do!
   - [Showcase](/showcase/) _(Official showcase)_
   - [Examples](/examples/) _(Official examples)_
+  - [Barba.js 101 course](https://ihatetomatoes.net/get-barba-101/) _(Free online course)_
+  - [Barba.js 101 playlist](https://www.youtube.com/playlist?list=PLkEZWD8wbltmopvSzUvXw9itOosGXPEJ6) _(Youtube video series)_
   - [Creating sick page transitions](https://www.youtube.com/watch?v=aMucZErEdZg) _(Youtube video)_
   - [Starter template](https://github.com/mrsamse/barba-starter-template) _(Community repo)_
   - [Page transition](https://github.com/karanmhatre1/barba-page-transition-example) _(Community repo)_
