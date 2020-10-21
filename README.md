@@ -1,3 +1,6 @@
+---
+This is great.
+---
 <p align="center"><a href="http://barbajs.org" target="_blank"><img width="300" src="http://barbajs.org/images/logo.svg"></a></p>
 
 <p align="center">
