@@ -235,7 +235,7 @@ export class Transitions {
         }
       }
 
-      // Remove current contaienr
+      // Remove current container
       await this.remove(data);
 
       await this._doAsyncHook('after', data, t);
