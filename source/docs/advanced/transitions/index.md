@@ -151,6 +151,21 @@ Based on the [priority order](#Priority), Barba will play the `custom-transition
 - if you come **from** the `index` or `product` route
 - if you are navigating **to** the `home` or `item` namespace AND **from** the `index` or `product` route
 
+## Self
+
+Barba have an internal mechanism called "self transition": it allows you to call a transition **when navigating into the same page**. Just define a transition with the "magic" name `self`, then links that point to your current page, like `page.html#hash`, will call this specific transition.
+
+```js
+transitions: [{
+  name: 'self',
+  enter() {
+    // create your self transition here
+  },
+}]
+```
+
+> Like a regular transition, this one can use all base hooks.
+
 ## Sync mode
 
 A mode that indicates whether **leave** and **enter** hooks should "play together".
