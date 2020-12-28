@@ -648,15 +648,29 @@
 <li>if you come <strong>from</strong> the <code>index</code> or <code>product</code> route</li>
 <li>if you are navigating <strong>to</strong> the <code>home</code> or <code>item</code> namespace AND <strong>from</strong> the <code>index</code> or <code>product</code> route</li>
 </ul>
+<h2 id="Self"><a href="#Self" class="headerlink" title="Self"></a>Self</h2><p>Barba have an internal mechanism called “self transition”: it allows you to call a transition <strong>when navigating into the same page</strong>. Just define a transition with the “magic” name <code>self</code>, then links that point to your current page, like <code>page.html#hash</code>, will call this specific transition.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">transitions: [&#123;</span><br><span class="line">  name: <span class="string">'self'</span>,</span><br><span class="line">  enter() &#123;</span><br><span class="line">    <span class="comment">// create your self transition here</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Like a regular transition, this one can use all base hooks.</p>
+</blockquote>
 <h2 id="Sync-mode"><a href="#Sync-mode" class="headerlink" title="Sync mode"></a>Sync mode</h2><p>A mode that indicates whether <strong>leave</strong> and <strong>enter</strong> hooks should “play together”.<br>The <strong>sync mode is disabled by default</strong>, but you can easily enable it using the <code>sync</code> option:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  transitions: [&#123;</span><br><span class="line">    sync: <span class="literal">true</span>,</span><br><span class="line">    leave() &#123;</span><br><span class="line">      <span class="comment">// transition that will play concurrently to `enter`</span></span><br><span class="line">    &#125;,</span><br><span class="line">    enter() &#123;</span><br><span class="line">      <span class="comment">// transition that will play concurrently to `leave`</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>This involves <strong>waiting until the next page is available</strong>: fetched or cached.</p>
 <p>In another words, regarding the <a href="/docs/getstarted/legacy/">legacy example</a>, if you have an opacity transition from <code>1 -&gt; 0</code> for <code>leave</code> and <code>0 -&gt; 1</code> for <code>enter</code>:</p>
 <ul>
-<li>using <code>sync: false</code> will play the <code>leave</code> transition first, making your page content goes transparent, then play the <code>enter</code> transition, making the next page content goes opaque <em>(two step transition)</em></li>
-<li>using <code>sync: true</code> will make the current page goes transparent while the next page becomes opaque at the same time <em>(crossfade transition)</em></li>
+<li><code>sync: false</code> will play the <code>leave</code> transition first, making your page content goes transparent, then play the <code>enter</code> transition, making the next page content goes opaque <em>(two step transition)</em></li>
 </ul>
+<blockquote>
+<p>This will immediately run the <code>before</code>, <code>beforeLeave</code> and <code>leave</code> hooks on user click, then it will wait for the next page to be “ready” (prefetched) in order to run the <code>enter</code> transition with the other hooks.</p>
+</blockquote>
+<ul>
+<li><code>sync: true</code> will make the current page goes transparent while the next page becomes opaque at the same time <em>(crossfade transition)</em></li>
+</ul>
+<blockquote>
+<p>This will do nothing on user click, even if doing something inside <code>before</code> or <code>beforeLeave</code> hooks, this mode will always wait for the next page to be “ready” (prefetched) in order to run both <code>leave</code>/<code>enter</code> transitions.</p>
+</blockquote>
 
 </div>
 
