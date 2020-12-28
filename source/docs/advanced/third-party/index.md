@@ -97,46 +97,29 @@ barba.init();
 
 ### Smooth scroll
 
-When using smooth scrolling, as Barba duplicate containers in the DOM in order to make a transition, **two LocomotiveScroll containers may be present at the same time...** making hard for the library to target the more relevant. Here is how you can easily deal with that:
+When using smooth scrolling, the more relevant solution is to nest the `data-barba="container"` inside the `data-scroll-container`, like this:
 
 ```html
 <body data-barba="wrapper">
-  <main data-barba="container" data-barba-namespace="home">
-    <div data-scroll-container>
-      <!-- page content to scroll here -->
-    </div>
-  </main>
+  <div data-scroll-container>
+    <main data-barba="container" data-barba-namespace="home">
+      <!-- page content -->
+    </main>
+  </div>
 </body>
 ```
 
 ```javascript
-let scroll;
-
-barba.init({
-  transitions: [{
-    name: 'custom-transition',
-    once({ next }) {
-
-      // init LocomotiveScroll on page load
-      smooth(next.container);
-    },
-    beforeEnter({ next }) {
-
-      // destroy the previous scroll
-      scroll.destroy();
-
-      // init LocomotiveScroll regarding the next page
-      smooth(next.container);
-    }
-  }]
+// init LocomotiveScroll on page load
+let scroll = new LocomotiveScroll({
+  el: container.querySelector('[data-scroll-container]'),
+  smooth: true
 });
 
-function smooth(container) {
-  scroll = new LocomotiveScroll({
-    el: container.querySelector('[data-scroll-container]'),
-    smooth: true
-  });
-}
+// update the scroll after entering a page
+barba.hooks.after(() => {
+  scroll.update();
+});
 ```
 
 > The LocomotiveScroll implementation really depends on where you set the `data-scroll-container` attribute: it can be whenever you want on the page, no matter outside or inside Barba wrapper/container, but keep in mind that **when using it inside the Barba container, it will be duplicated**. Bear with this!
