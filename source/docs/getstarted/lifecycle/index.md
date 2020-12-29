@@ -12,10 +12,10 @@ Barba makes your site work like a *Single Page Application* (SPA), allowing you 
 ## How it works?
 
 Barba's default behavior:
-- prefetch the next page
-- store it in the cache
-- add `barba-container` of the next page inside the `barba-wrapper` element
-- remove the current page content from the DOM when transition is done
+- [prefetch](/docs/advanced/strategies/#Prefetch) the next page
+- store it in the [cache](/docs/advanced/strategies/#Cache)
+- add the `data-barba="container"` of the next page at the end of the `data-barba="wrapper"` element
+- remove the current `data-barba="container"` from the DOM when transition is done
 
 Here is a small diagram that describe **Barba's main concept** when navigating between two pages:
 
