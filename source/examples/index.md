@@ -3,6 +3,7 @@ title: Examples
 name: examples
 namespace: examples
 layout: components/page/page
+separator: true
 grid: true
 ---
 
