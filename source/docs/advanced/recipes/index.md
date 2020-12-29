@@ -50,6 +50,35 @@ During a page transition, Barba use two `data-barba="container"` to discern `cur
 - `data.current.container.remove()`: manually remove the current container when you need to, this is useful if you need to "clean" the DOM before calling some custom scripts
 - `position: absolute`: keep containers superimposed, this is useful when making a `sync` (crossfade) transition
 
+## Scroll position
+
+After a page transition, the browser won't "hard reload" the current tab, meaning that you will need to **"reset" the scroll position before entering a new page**. This can be easily done using a [global `hook`](/docs/advanced/hooks/#Global-hooks).
+
+Wait... my browser still continue to restore the scroll position when I am using backward/forward buttons, why? Because this is the default behavior in most modern browsers. To disable it, you will need to set the **scroll restoration to be "manual"** instead of "auto":
+
+```js
+if (history.scrollRestoration) {
+  history.scrollRestoration = 'manual';
+}
+```
+
+> Note that some third party plugins like LocomotiveScroll implement this feature.
+
+If you need to restore the scroll position while `history.scrollRestoration` is enabled, you can store the x/y scroll position using the Barba `history` object, like this:
+
+```js
+let scrollX = 0
+let scrollY = 0
+
+barba.hooks.leave(() => {
+  scrollX = barba.history.current.scroll.x;
+  scrollY = barba.history.current.scroll.y;
+});
+
+// then later in the code...
+window.scrollTo(scrollX, scrollY);
+```
+
 ## Manage browser requests
 
 ### `requestError`
