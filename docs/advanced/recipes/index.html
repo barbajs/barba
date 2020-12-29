@@ -50,7 +50,7 @@
   <script>
     window.BARBA = {
       root: '/',
-      menu: JSON.parse('[{"title":"Features","url":"features/user-friendly/","slug":"/features","subpages":[{"title":"User friendly","url":"features/user-friendly/"},{"title":"Easy peasy","url":"features/easy-peasy/"},{"title":"Smart","url":"features/smart/"},{"title":"Extensible","url":"features/extensible/"},{"title":"Futureproof","url":"features/futureproof/"},{"title":"Community","url":"features/community/"}]},{"title":"Examples","url":"examples/","slug":"/examples"},{"title":"Showcases","url":"showcase/","slug":"/showcase"},{"title":"Docs","url":"docs/getstarted/intro/","slug":"/docs"}]'),
+      menu: JSON.parse('[{"title":"Features","url":"features/user-friendly/","slug":"/features","subpages":[{"title":"User friendly","url":"features/user-friendly/"},{"title":"Easy peasy","url":"features/easy-peasy/"},{"title":"Smart","url":"features/smart/"},{"title":"Extensible","url":"features/extensible/"},{"title":"Futureproof","url":"features/futureproof/"},{"title":"Community","url":"features/community/"}]},{"title":"Examples","url":"examples/","slug":"/examples"},{"title":"Showcases","url":"showcase/","slug":"/showcase"},{"title":"Docs","url":"docs/getstarted/intro/","slug":"/docs"},{"title":"FAQ","url":"faq/","slug":"/faq"}]'),
       docs: JSON.parse('[{"title":"Get Started","url":"docs/getstarted/intro/","path":"docs/getstarted","subpages":[{"title":"Intro","url":"docs/getstarted/intro/"},{"title":"Install","url":"docs/getstarted/install/"},{"title":"Markup","url":"docs/getstarted/markup/"},{"title":"Basic transition","url":"docs/getstarted/basic-transition/"},{"title":"Run custom code","url":"docs/getstarted/custom-code/"},{"title":"Lifecycle","url":"docs/getstarted/lifecycle/"},{"title":"Legacy example","url":"docs/getstarted/legacy/"},{"title":"Browser support","url":"docs/getstarted/browser-support/"},{"title":"Useful links","url":"docs/getstarted/useful-links/"}]},{"title":"Advanced","url":"docs/advanced/hooks/","path":"docs/advanced","subpages":[{"title":"Hooks","url":"docs/advanced/hooks/"},{"title":"Transitions","url":"docs/advanced/transitions/"},{"title":"Views","url":"docs/advanced/views/"},{"title":"Strategies","url":"docs/advanced/strategies/"},{"title":"Recipes","url":"docs/advanced/recipes/"},{"title":"Third party scripts","url":"docs/advanced/third-party/"},{"title":"Utils","url":"docs/advanced/utils/"},{"title":"Developer API","url":"api/","path":"api","extern":true}]},{"title":"Plugins","url":"docs/plugins/intro/","path":"docs/plugins","subpages":[{"title":"Intro","url":"docs/plugins/intro/"},{"title":"Router","url":"docs/plugins/router/"},{"title":"Prefetch","url":"docs/plugins/prefetch/"},{"title":"Css","url":"docs/plugins/css/"},{"title":"Head","url":"docs/plugins/head/"},{"title":"Preset","url":"docs/plugins/preset/"}]}]'),
     }
 
@@ -232,6 +232,18 @@
           <a class="menu__pages__item__link is-active"
             href="/docs/getstarted/intro/">
             Docs
+          </a>
+
+          <!-- Subpages -->
+          
+          <!-- Subpages [end]-->
+
+        </li>
+        
+        <li class="menu__pages__item" data-ref="menu.item">
+          <a class="menu__pages__item__link "
+            href="/faq/">
+            FAQ
           </a>
 
           <!-- Subpages -->
@@ -568,6 +580,16 @@
 <li><code>data.current.container.remove()</code>: manually remove the current container when you need to, this is useful if you need to “clean” the DOM before calling some custom scripts</li>
 <li><code>position: absolute</code>: keep containers superimposed, this is useful when making a <code>sync</code> (crossfade) transition</li>
 </ul>
+<h2 id="Scroll-position"><a href="#Scroll-position" class="headerlink" title="Scroll position"></a>Scroll position</h2><p>After a page transition, the browser won’t “hard reload” the current tab, meaning that you will need to <strong>“reset” the scroll position before entering a new page</strong>. This can be easily done using a <a href="/docs/advanced/hooks/#Global-hooks">global <code>hook</code></a>.</p>
+<p>Wait… my browser still continue to restore the scroll position when I am using backward/forward buttons, why? Because this is the default behavior in most modern browsers. To disable it, you will need to set the <strong>scroll restoration to be “manual”</strong> instead of “auto”:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (history.scrollRestoration) &#123;</span><br><span class="line">  history.scrollRestoration = <span class="string">'manual'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Note that some third party plugins like LocomotiveScroll implement this feature.</p>
+</blockquote>
+<p>If you need to restore the scroll position while <code>history.scrollRestoration</code> is enabled, you can store the x/y scroll position using the Barba <code>history</code> object, like this:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> scrollX = <span class="number">0</span></span><br><span class="line"><span class="keyword">let</span> scrollY = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">barba.hooks.leave(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  scrollX = barba.history.current.scroll.x;</span><br><span class="line">  scrollY = barba.history.current.scroll.y;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// then later in the code...</span></span><br><span class="line"><span class="built_in">window</span>.scrollTo(scrollX, scrollY);</span><br></pre></td></tr></table></figure>
+
 <h2 id="Manage-browser-requests"><a href="#Manage-browser-requests" class="headerlink" title="Manage browser requests"></a>Manage browser requests</h2><h3 id="requestError"><a href="#requestError" class="headerlink" title="requestError"></a><code>requestError</code></h3><p>Allows you to <strong>catch request errors</strong>.<br>If this function returns <code>false</code>, wrong links will not be “force” triggered.</p>
 <table>
 <thead>

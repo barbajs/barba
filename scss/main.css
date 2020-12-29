@@ -596,6 +596,26 @@ html.is-transitioning * {
     display: block;
     padding: 0; }
 
+code {
+  padding: 0 2px;
+  font-family: "Source Code Pro", monaco, menlo, consolas, monospace;
+  background: #f5f7fc;
+  border-radius: 4px; }
+
+blockquote {
+  margin: 2rem 0;
+  padding: 0 4rem;
+  color: #a0a0a0;
+  border-left: 3px solid #e0e0e0; }
+
+hr {
+  display: inline-flex;
+  background: #2e5bdc;
+  width: 5rem;
+  height: 0.2rem;
+  margin: 2rem 0;
+  border: none; }
+
 /**
  * Global settings
  */
@@ -1642,16 +1662,6 @@ body {
       border-width: 0.35em 0 0.35em 0.45em;
       border-style: solid;
       border-color: transparent #5a82f1; }
-  .docs__markdown code {
-    padding: 0 2px;
-    font-family: "Source Code Pro", monaco, menlo, consolas, monospace;
-    background: #f5f7fc;
-    border-radius: 4px; }
-  .docs__markdown blockquote {
-    margin: 2rem 0;
-    padding: 0 4rem;
-    color: #a0a0a0;
-    border-left: 3px solid silver; }
   .docs__markdown a:not([title='Badge']):not(.headerlink) {
     position: relative;
     color: #2e5bdc;
@@ -2602,21 +2612,41 @@ body {
     [data-barba-namespace*='--black'] .page__header h1 {
       color: white; }
   .page__header p {
-    margin: 0;
-    margin-top: 2rem;
-    font-size: 1.8rem;
+    margin: 2rem 0;
+    font-size: 1.6rem;
     line-height: 2.4rem; }
-    @media only screen and (min-width: 48em) {
-      .page__header p {
-        font-size: 2.4rem;
-        line-height: 3.2rem; } }
-    @media only screen and (min-width: 64em) {
-      .page__header p {
-        margin-top: 5.4rem;
-        font-size: 3.5rem;
-        line-height: 4.8rem; } }
     [data-barba-namespace*='--black'] .page__header p {
       color: white; }
+    .page__header p a {
+      position: relative;
+      color: #2e5bdc;
+      white-space: nowrap; }
+      .page__header p a::before {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: currentColor;
+        opacity: 0.2;
+        transition: opacity 350ms ease;
+        pointer-events: none; }
+      .page__header p a:hover::before {
+        opacity: 1; }
+  .page__header ul a {
+    color: #2e5bdc; }
+  @media only screen and (min-width: 48em) {
+    .page__header h1 + p {
+      font-size: 2.4rem;
+      line-height: 3.2rem; } }
+  @media only screen and (min-width: 64em) {
+    .page__header h1 + p {
+      margin-top: 5.4rem;
+      font-size: 3.5rem;
+      line-height: 4.8rem; } }
+  .page__header blockquote {
+    margin: 5rem 0; }
 
 .page__separator {
   width: 5rem;
