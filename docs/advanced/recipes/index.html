@@ -562,6 +562,12 @@
 <p>Use this syntax to adjust the log level:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  logLevel: <span class="string">'error'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
+<h2 id="Manage-containers"><a href="#Manage-containers" class="headerlink" title="Manage containers"></a>Manage containers</h2><p>During a page transition, Barba use two <code>data-barba=&quot;container&quot;</code> to discern <code>current</code> and <code>next</code> page, leading the wrapper to contain <strong>both at the same time</strong> until the transition is done. In order to make a fluent transition and prevent containers to be badly positioned, use one of this mechanism:</p>
+<ul>
+<li>default: do nothing and let Barba remove the container itself</li>
+<li><code>data.current.container.remove()</code>: manually remove the current container when you need to, this is useful if you need to “clean” the DOM before calling some custom scripts</li>
+<li><code>position: absolute</code>: keep containers superimposed, this is useful when making a <code>sync</code> (crossfade) transition</li>
+</ul>
 <h2 id="Manage-browser-requests"><a href="#Manage-browser-requests" class="headerlink" title="Manage browser requests"></a>Manage browser requests</h2><h3 id="requestError"><a href="#requestError" class="headerlink" title="requestError"></a><code>requestError</code></h3><p>Allows you to <strong>catch request errors</strong>.<br>If this function returns <code>false</code>, wrong links will not be “force” triggered.</p>
 <table>
 <thead>

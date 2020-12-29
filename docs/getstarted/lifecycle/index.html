@@ -547,10 +547,10 @@
   <h1 id="Lifecycle"><a href="#Lifecycle" class="headerlink" title="Lifecycle"></a>Lifecycle</h1><p>Barba makes your site work like a <em>Single Page Application</em> (SPA), allowing you to create smooth transitions <strong>without having to reload the whole site</strong>.</p>
 <h2 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works?"></a>How it works?</h2><p>Barba’s default behavior:</p>
 <ul>
-<li>prefetch the next page</li>
-<li>store it in the cache</li>
-<li>add <code>barba-container</code> of the next page inside the <code>barba-wrapper</code> element</li>
-<li>remove the current page content from the DOM when transition is done</li>
+<li><a href="/docs/advanced/strategies/#Prefetch">prefetch</a> the next page</li>
+<li>store it in the <a href="/docs/advanced/strategies/#Cache">cache</a></li>
+<li>add the <code>data-barba=&quot;container&quot;</code> of the next page at the end of the <code>data-barba=&quot;wrapper&quot;</code> element</li>
+<li>remove the current <code>data-barba=&quot;container&quot;</code> from the DOM when transition is done</li>
 </ul>
 <p>Here is a small diagram that describe <strong>Barba’s main concept</strong> when navigating between two pages:</p>
 <a href="/assets/diagram/lifecycle.png" target="_blank">
@@ -560,7 +560,7 @@
 <blockquote>
 <p>Note that using the <code>sync</code> property will end in a different page lifecycle, see transition <a href="/docs/advanced/transitions/#Sync-mode">sync mode</a>.</p>
 </blockquote>
-<p>During the transition process, <strong>Barba doesn’t apply any styles on the wrapper or container</strong>: you need to manage it by yourself with an animation library, this is where the magic happen!</p>
+<p>During the transition process, <strong>Barba doesn’t apply any styles to the container</strong>: you need to manage it by yourself with an animation library, this is where the magic happen! Be sure to take a look at the recipes to discover how to properly <a href="/docs/advanced/recipes/#Manage-containers">manage containers</a>.</p>
 
 </div>
 
