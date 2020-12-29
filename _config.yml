@@ -101,6 +101,9 @@ menu:
   - title: 'Docs'
     url: 'docs/getstarted/intro/'
     slug: '/docs'
+  - title: 'FAQ'
+    url: 'faq/'
+    slug: '/faq'
 
 ### Docs Navigation
 docs:

@@ -68,3 +68,26 @@ html.is-transitioning {
     padding: 0;
   }
 }
+
+code {
+  padding: 0 2px;
+  font-family: $ff-code;
+  background: $c-blue-lightest;
+  border-radius: 4px;
+}
+
+blockquote {
+  margin: 2rem 0;
+  padding: 0 4rem;
+  color: $gray-light;
+  border-left: 3px solid $gray-lightest;
+}
+
+hr {
+  display: inline-flex;
+  background: $c-main;
+  width: 5rem;
+  height: 0.2rem;
+  margin: 2rem 0;
+  border: none;
+}

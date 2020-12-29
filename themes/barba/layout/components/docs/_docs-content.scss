@@ -205,20 +205,6 @@
     }
   }
 
-  code {
-    padding: 0 2px;
-    font-family: $ff-code;
-    background: $c-blue-lightest;
-    border-radius: 4px;
-  }
-
-  blockquote {
-    margin: 2rem 0;
-    padding: 0 4rem;
-    color: $gray-light;
-    border-left: 3px solid $gray-lighter;
-  }
-
   a:not([title='Badge']):not(.headerlink) {
     position: relative;
     color: $c-blue-medium;
