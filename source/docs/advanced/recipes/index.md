@@ -42,6 +42,14 @@ barba.init({
 });
 ```
 
+## Manage containers
+
+During a page transition, Barba use two `data-barba="container"` to discern `current` and `next` page, leading the wrapper to contain **both at the same time** until the transition is done. In order to make a fluent transition and prevent containers to be badly positioned, use one of this mechanism:
+
+- default: do nothing and let Barba remove the container itself
+- `data.current.container.remove()`: manually remove the current container when you need to, this is useful if you need to "clean" the DOM before calling some custom scripts
+- `position: absolute`: keep containers superimposed, this is useful when making a `sync` (crossfade) transition
+
 ## Manage browser requests
 
 ### `requestError`
