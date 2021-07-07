@@ -14,6 +14,7 @@ next = nav[1] %>
   </a>
   <% }; %> <% if (next !== null) { %>
   <a
+    target="<%- next.extern ? '_blank' : '_self' %>"
     href="<%- theme.root %><%- next.url %>"
     class="docs__nav__lateral__link--next"
     data-ref="docs-nav-lateral.link"
