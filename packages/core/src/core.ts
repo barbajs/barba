@@ -406,7 +406,7 @@ export class Core {
       // If transition error and no debug mode, force reload page.
       /* istanbul ignore else */
       if (Logger.getLevel() === 0) {
-        this.force(data.current.url.href);
+        this.force(data.next.url.href);
       }
     }
   }
