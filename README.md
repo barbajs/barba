@@ -25,7 +25,7 @@ It helps reduce the delay between your pages, minimize browser HTTP requests and
 ## What's new?
 
 - Simplified API
-- Hook sytem for `transitions` and `views`
+- Hook system for `transitions` and `views`
 - _Transition resolution_: declare your transitions and let Barba pick the right one
 - Use of `data-barba` attributes
 - Sync mode
