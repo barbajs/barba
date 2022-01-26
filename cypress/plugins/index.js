@@ -24,4 +24,4 @@ module.exports = (on, config) => {
     }
   });
 };
-/* eslint-enable consitent-return, no-unused-vars */
+/* eslint-enable consistent-return, no-unused-vars */
