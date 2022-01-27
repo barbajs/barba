@@ -65,7 +65,7 @@ It helps reduce the delay between your pages, minimize browser HTTP requests and
 
 ## How to contribute
 
-If you want to report a bug or if you just want to request for a new feature/improvement, please **follow [those instructions](CONTRIBUTING.md) before**.
+If you want to report a bug or if you just want to request for a new feature/improvement, please **follow [those instructions](.github/CONTRIBUTING.md) before**.
 
 Thanks for taking time to contribute to Barba :tada: :+1:
 
