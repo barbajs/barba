@@ -132,7 +132,7 @@ export class Hooks extends HookMethods {
   public help(): void {
     this.logger.info(`Available hooks: ${this.all.join(',')}`);
     const registered: string[] = [];
-    this.registered.forEach((value, key) => registered.push(key));
+    this.registered.forEach((_value: any, key: string) => registered.push(key));
     this.logger.info(`Registered hooks: ${registered.join(',')}`);
   }
 }
