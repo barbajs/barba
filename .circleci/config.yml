@@ -4,7 +4,7 @@ executors:
   node-lts:
     working_directory: ~/repo
     docker:
-      - image: circleci/node:lts
+      - image: cimg/node:lts
 
 jobs:
   build:
