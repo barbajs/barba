@@ -4,7 +4,7 @@ executors:
   node-lts:
     working_directory: ~/repo
     docker:
-      - image: cimg/node:lts
+      - image: cimg/node:12.22.12
 
 jobs:
   build:
