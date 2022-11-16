@@ -11,7 +11,7 @@ At the beginning, Barba needs to know a little bit about your **site architectur
 
 ## DOM structure
 
-By default, it uses this markup in your pages:
+By default, you can use this markup insinde your pages:
 
 ```html
 <body data-barba="wrapper">
@@ -28,7 +28,9 @@ By default, it uses this markup in your pages:
 </body>
 ```
 
-> Note that you can build the `html` in many ways, but keep in mind that the `wrapper` should always wrap the `container`.
+> Note that you can build the `html` in many ways: if your header/nav/links need to be updated along the pages, put them inside the `container`, same if you have additional links in your footer that change between pages.
+>
+> Keep in mind that the `wrapper` should always wrap the `container`.
 
 ### Wrapper
 
@@ -37,6 +39,8 @@ The wrapper is **the main Barba section** that contains all your page structure 
 ### Container
 
 The container defines **a section in which content is updated automatically** when you navigate between your pages. Beware, everything inside of this container **will be updated by Barba**: you can put your `<footer>` safely here. It is mainly defined on the `<main>` tag, but you can add it on a `div` or `section` for example.
+
+> Beware, Barba appends the container to the wrapper, so it will always end up at the bottom and if you have more DOM elements in there, they will be bumped up.
 
 ### Namespace
 
