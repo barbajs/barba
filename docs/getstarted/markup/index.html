@@ -557,14 +557,18 @@
 <!-- Docs Nav [end]-->
   <div class="docs__markdown">
   <h1 id="Markup"><a href="#Markup" class="headerlink" title="Markup"></a>Markup</h1><p>At the beginning, Barba needs to know a little bit about your <strong>site architecture</strong>.</p>
-<h2 id="DOM-structure"><a href="#DOM-structure" class="headerlink" title="DOM structure"></a>DOM structure</h2><p>By default, it uses this markup in your pages:</p>
+<h2 id="DOM-structure"><a href="#DOM-structure" class="headerlink" title="DOM structure"></a>DOM structure</h2><p>By default, you can use this markup insinde your pages:</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">data-barba</span>=<span class="string">"wrapper"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- put here content that will not change</span></span><br><span class="line"><span class="comment">  between your pages, like &lt;header&gt; or &lt;nav&gt; --&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">main</span> <span class="attr">data-barba</span>=<span class="string">"container"</span> <span class="attr">data-barba-namespace</span>=<span class="string">"home"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- put here the content you wish to change</span></span><br><span class="line"><span class="comment">    between your pages, like your main content &lt;h1&gt; or &lt;p&gt; --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- put here content that will not change</span></span><br><span class="line"><span class="comment">  between your pages, like &lt;footer&gt; --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>Note that you can build the <code>html</code> in many ways, but keep in mind that the <code>wrapper</code> should always wrap the <code>container</code>.</p>
+<p>Note that you can build the <code>html</code> in many ways: if your header/nav/links need to be updated along the pages, put them inside the <code>container</code>, same if you have additional links in your footer that change between pages.</p>
+<p>Keep in mind that the <code>wrapper</code> should always wrap the <code>container</code>.</p>
 </blockquote>
 <h3 id="Wrapper"><a href="#Wrapper" class="headerlink" title="Wrapper"></a>Wrapper</h3><p>The wrapper is <strong>the main Barba section</strong> that contains all your page structure and the Barba <a href="#Container">container</a>. Beware, everything inside of this wrapper and outside of the container <strong>will not be updated by Barba</strong>: you can put your <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code> or <code>&lt;nav&gt;</code> safely here. It is mainly defined on the <code>&lt;body&gt;</code> tag, but you can add it on a <code>div</code> or <code>section</code> for example.</p>
 <h3 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h3><p>The container defines <strong>a section in which content is updated automatically</strong> when you navigate between your pages. Beware, everything inside of this container <strong>will be updated by Barba</strong>: you can put your <code>&lt;footer&gt;</code> safely here. It is mainly defined on the <code>&lt;main&gt;</code> tag, but you can add it on a <code>div</code> or <code>section</code> for example.</p>
+<blockquote>
+<p>Beware, Barba appends the container to the wrapper, so it will always end up at the bottom and if you have more DOM elements in there, they will be bumped up.</p>
+</blockquote>
 <h3 id="Namespace"><a href="#Namespace" class="headerlink" title="Namespace"></a>Namespace</h3><p>The namespace allows you to define <strong>a unique name for each page</strong>. Barba mainly uses this namespace for <a href="/docs/advanced/transitions/#Rules">Transition rules</a> and <a href="/docs/advanced/views/">Views</a>.</p>
 <h2 id="Schema"><a href="#Schema" class="headerlink" title="Schema"></a>Schema</h2><p>You can easily override every <strong>data-barba</strong> attributes.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  schema: &#123;</span><br><span class="line">    prefix: <span class="string">'data-custom'</span>,</span><br><span class="line">    wrapper: <span class="string">'wrap'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
@@ -619,7 +623,7 @@
     </main><!-- end .site-main -->
 
     <footer class="site-footer footer">
-  b.js©2021
+  b.js©2022
 </footer>
 
   </div>
