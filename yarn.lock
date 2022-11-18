@@ -3324,28 +3324,28 @@ detect-file@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/detect-file/-/detect-file-1.0.0.tgz#f0d66d03672a825cb1b73bdb3fe62310c8e552b7"
 
-detect-hover@^1.0.3:
+detect-hover@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/detect-hover/-/detect-hover-1.0.3.tgz#7392507cbced1bedc9f129a56b197c1eef9076c3"
 
-detect-it@^3.0.4:
-  version "3.0.7"
-  resolved "https://registry.yarnpkg.com/detect-it/-/detect-it-3.0.7.tgz#54fcaff8265f8a581a6fd2d7d797b392497c9c27"
+detect-it@3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/detect-it/-/detect-it-3.0.4.tgz#79df04f25cc5b2529ebfa37c0fa1baa0e1d41862"
   dependencies:
-    detect-hover "^1.0.3"
-    detect-passive-events "^1.0.5"
-    detect-pointer "^1.0.3"
-    detect-touch-events "^2.0.2"
+    detect-hover "^1.0.2"
+    detect-passive-events "^1.0.4"
+    detect-pointer "^1.0.2"
+    detect-touch-events "^2.0.1"
 
-detect-passive-events@^1.0.5:
+detect-passive-events@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/detect-passive-events/-/detect-passive-events-1.0.5.tgz#ce324db665123bef9e368b8059ff95d95217cc05"
 
-detect-pointer@^1.0.3:
+detect-pointer@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/detect-pointer/-/detect-pointer-1.0.3.tgz#27d86d0837951e6c5a0785c8a7fddd9cf5754e08"
 
-detect-touch-events@^2.0.2:
+detect-touch-events@^2.0.1:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/detect-touch-events/-/detect-touch-events-2.0.2.tgz#541cc49b05ca544726a3bf2802c5b23e53aeeebb"
 
@@ -3820,9 +3820,9 @@ event-target-shim@^5.0.0:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/event-target-shim/-/event-target-shim-5.0.1.tgz#5d4d3ebdf9583d63a5333ce2deb7480ab2b05789"
 
-eventemitter3@^3.0.1:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-3.1.2.tgz#2d3d48f9c346698fce83a85d7d664e98535df6e7"
+eventemitter3@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-3.0.1.tgz#4ce66c3fc5b5a6b9f2245e359e1938f1ab10f960"
 
 eventemitter3@^4.0.0:
   version "4.0.7"
@@ -3839,7 +3839,7 @@ evp_bytestokey@^1.0.0, evp_bytestokey@^1.0.3:
     md5.js "^1.3.4"
     safe-buffer "^5.1.1"
 
-exclamation@thierrymichel/exclamation#master:
+"exclamation@github:thierrymichel/exclamation#master":
   version "1.0.0"
   resolved "https://codeload.github.com/thierrymichel/exclamation/tar.gz/e07cc81d8a8fe84e7f68004429a34bafae5e0093"
 
@@ -5676,12 +5676,12 @@ jws@^4.0.0:
     jwa "^2.0.0"
     safe-buffer "^5.0.1"
 
-kapla@^2.0.1:
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/kapla/-/kapla-2.1.4.tgz#d139d9966463b0ea5c3dafe59a30cb594a5bc353"
+kapla@^2.1.7:
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/kapla/-/kapla-2.1.7.tgz#deca64a2570a1ae63a20f178e1c1bc8b68afeec7"
   dependencies:
-    detect-it "^3.0.4"
-    eventemitter3 "^3.0.1"
+    detect-it "3.0.4"
+    eventemitter3 "3.0.1"
     exclamation thierrymichel/exclamation#master
 
 kew@^0.7.0:

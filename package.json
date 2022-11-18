@@ -21,7 +21,7 @@
     "firebase-functions": "^3.13.0",
     "gsap": "^3.11.3",
     "hexo": "^4.2.0",
-    "kapla": "^2.0.1",
+    "kapla": "^2.1.7",
     "lottie-web": "^5.9.6",
     "prismjs": "^1.29.0",
     "request": "^2.88.2",
