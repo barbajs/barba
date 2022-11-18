@@ -23,7 +23,7 @@
     "hexo": "^4.2.0",
     "kapla": "^2.0.1",
     "lottie-web": "^5.9.6",
-    "prismjs": "^1.22.0",
+    "prismjs": "^1.29.0",
     "request": "^2.88.2",
     "request-promise": "^4.2.4",
     "spin.js": "^4.0.0",
