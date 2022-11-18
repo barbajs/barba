@@ -31,3 +31,18 @@ barba.init({
 ```
 
 > Keep in mind that a view is always related to **a unique namespace**.
+
+## Programmatic use
+
+In some cases, you may want to **programmatically call a `View`** inside your code, this is possible since Barba store all your views by [`namespace`](/docs/getstarted/markup/#Namespace) internally.
+
+```js
+// return all views as a Map
+const views = barba.views.byNamespace;
+
+// get the view of the `home` namespace
+const homeView = views.get('home');
+
+// call the home `afterEnter` view
+homeView.afterEnter();
+```
