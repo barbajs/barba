@@ -8304,9 +8304,9 @@ specificity@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/specificity/-/specificity-0.4.1.tgz#aab5e645012db08ba182e151165738d00887b019"
 
-spin.js@^4.0.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/spin.js/-/spin.js-4.1.0.tgz#afcf12738fafd5f6aa0a385a5b4cec45c86a3555"
+spin.js@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/spin.js/-/spin.js-4.1.1.tgz#567464a08620541e523da856cb5f67af2d0f48ad"
 
 split-string@^3.0.1, split-string@^3.0.2:
   version "3.1.0"
