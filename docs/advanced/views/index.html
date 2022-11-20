@@ -563,6 +563,8 @@
 <blockquote>
 <p>Keep in mind that a view is always related to <strong>a unique namespace</strong>.</p>
 </blockquote>
+<h2 id="Programmatic-use"><a href="#Programmatic-use" class="headerlink" title="Programmatic use"></a>Programmatic use</h2><p>In some cases, you may want to <strong>programmatically call a <code>View</code></strong> inside your code, this is possible since Barba store all your views by <a href="/docs/getstarted/markup/#Namespace"><code>namespace</code></a> internally.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// return all views as a Map</span></span><br><span class="line"><span class="keyword">const</span> views = barba.views.byNamespace;</span><br><span class="line"></span><br><span class="line"><span class="comment">// get the view of the `home` namespace</span></span><br><span class="line"><span class="keyword">const</span> homeView = views.get(<span class="string">'home'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// call the home `afterEnter` view</span></span><br><span class="line">homeView.afterEnter();</span><br></pre></td></tr></table></figure>
 
 </div>
 
