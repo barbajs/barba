@@ -126,6 +126,39 @@ barba.hooks.after(() => {
 >
 > Note that this code assume that you have the `data-scroll-container` attribute on every pages, so you need to add the appropriate checks if LocomotiveScroll is not used on the whole site.
 
+### Hooks workflow
+
+Inside a SPA, **it's not needed to have multiple instance of LocomotiveScroll**, but in order to properly update it, it's necessary to use Barba hooks to have a consistent result when transitioning.
+
+```javascript
+const scroll = new LocomotiveScroll();
+
+// lock the scroll to prevent further animations when transitioning
+barba.hooks.before(() => {
+  scroll.stop();
+});
+
+// reset scroll position and update the scroll when the next page is fetched
+barba.hooks.enter(() => {
+  scroll.scrollTo({
+    offset: 0,
+    smooth: false,
+    disableLerp: true,
+    duration: 0
+  });
+
+  scroll.update();
+});
+
+// unlock the scroll, in order to let the user be able to scroll again
+barba.hooks.after(() => {
+  scroll.start();
+});
+```
+
+> Depending on what's inside your website, you can also reset/update the LocomotiveScroll instance inside the Barba `after` hook instead.
+
+
 ## Other third party scripts
 
 This is a draft section that **may evolve in time**, and many other important third party scripts will be added.
