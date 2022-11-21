@@ -7,6 +7,17 @@ url: 'docs/advanced/recipes/'
 
 # Recipes
 
+Become a Barba cooker!
+
+Based on your project and website features to implement, those recipes may help you **during the development process**: debugging, managing containers, scroll position, browser requests, etc..
+
+## Summary
+1. [Debug with Barba](#Debug-with-Barba)
+2. [Manage containers](#Manage-containers)
+3. [Scroll position](#Scroll-position)
+4. [Manage browser requests](#Manage-browser-requests)
+5. [Partial output](#Partial-output)
+
 ## Debug with Barba
 
 ### `debug`

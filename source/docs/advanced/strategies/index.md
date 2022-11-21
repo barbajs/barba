@@ -9,6 +9,11 @@ url: 'docs/advanced/strategies/'
 
 Barba implement **modern browser strategies** to keep your site run as fast as possible.
 
+## Summary
+1. [Cache](#Cache)
+2. [Prefetch](#Prefetch)
+3. [Prevent](#Prevent)
+
 ## Cache
 
 ### `cacheIgnore`
