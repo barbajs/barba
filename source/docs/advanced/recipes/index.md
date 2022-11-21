@@ -12,13 +12,13 @@ Become a Barba cooker!
 Based on your project and website features to implement, those recipes may help you **during the development process**: debugging, managing containers, scroll position, browser requests, etc..
 
 ## Summary
-1. [Debug with Barba](#Debug-with-Barba)
-2. [Manage containers](#Manage-containers)
+1. [Debug](#Debug)
+2. [Containers](#Containers)
 3. [Scroll position](#Scroll-position)
-4. [Manage browser requests](#Manage-browser-requests)
+4. [Browser requests](#Browser-requests)
 5. [Partial output](#Partial-output)
 
-## Debug with Barba
+## Debug
 
 ### `debug`
 
@@ -53,7 +53,7 @@ barba.init({
 });
 ```
 
-## Manage containers
+## Containers
 
 During a page transition, Barba use two `data-barba="container"` to discern `current` and `next` page, leading the wrapper to contain **both at the same time** until the transition is done. In order to make a fluent transition and prevent containers to be badly positioned, use one of this mechanism:
 
@@ -90,7 +90,7 @@ barba.hooks.leave(() => {
 window.scrollTo(scrollX, scrollY);
 ```
 
-## Manage browser requests
+## Browser requests
 
 ### `requestError`
 
