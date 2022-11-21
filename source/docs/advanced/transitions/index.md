@@ -88,11 +88,11 @@ barba.init({
 Condition(s) can be applied to a namespace, route or through a custom function.
 Barba will then select the right transition to use and play it **only if all conditions are fulfilled**.
 
-| Priority | Condition   | Type               | Argument                                            | Fulfilled when...          |
-| -------- | ----------- | ------------------ | --------------------------------------------------- | -------------------------- |
-| 1        | `custom`    | Function           | [data](/docs/advanced/hooks/#data-argument) argument | Return `true`              |
-| 2        | `route`     | String \| String[] | _none_                                              | `current.route.name` match |
-| 3        | `namespace` | String \| String[] | _none_                                              | `current.namespace` match  |
+| Priority | Condition   | Type               | Argument                                             | Fulfilled when...            |
+| -------- | ----------- | ------------------ | ---------------------------------------------------- | ---------------------------- |
+| 1        | `custom`    | Function           | [data](/docs/advanced/hooks/#data-argument) argument | `true` is returned           |
+| 2        | `route`     | String \| String[] | _none_                                               | `current.route.name` matched |
+| 3        | `namespace` | String \| String[] | _none_                                               | `current.namespace` matched  |
 
 > Any conditions can be used within `from` and/or `to` keywords.
 
