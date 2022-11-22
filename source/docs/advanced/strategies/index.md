@@ -13,6 +13,7 @@ Barba implement **modern browser strategies** to keep your site run as fast as p
 1. [Cache](#Cache)
 2. [Prefetch](#Prefetch)
 3. [Prevent](#Prevent)
+4. [History](#History)
 
 ## Cache
 
@@ -100,3 +101,38 @@ barba.init({
 >
 > 1. `data-barba-prevent` or `data-barba-prevent="self"` prevents the current link
 > 2. `data-barba-prevent="all"` prevents all children links in a container (`div`, `p`, etc.)
+
+## History
+
+### `barba.history`
+
+While browsing the website, Barba stores useful navigation informations into the `history` property. You can **access those informations at any time** in your application.
+
+#### `history.previous|current`
+
+The most useful are the `previous` and `current` history attributes. It allows you to access the page `namespace`, the window `scroll` position and the page `url`. For example, if you want to restore scroll position between pages, have a look at the [scroll position](/docs/advanced/recipes/#Scroll-position) recipe.
+
+They both shares the same set of properties.
+
+| Property | Type   | Description                       |
+| -------- | ------ | --------------------------------- |
+| `ns`     | String | Namespace of the page             |
+| `scroll` | Object | `x` / `y` positions of the scroll |
+| `url`    | String | URL of the history position       |
+
+> Be careful, `barba.history.previous` object equals `null` when your application is starting.
+
+### `data-barba-history`
+
+Sometimes, you may want to "alter" the browser history by **replacing the current entry without having to push a new one**. This can easily be done with the `data-barba-history="replace"` attribute.
+
+In the example below, if you come from the `index` page and click on `black` link, the `barba.history.previous` will equal `index` while `barba.history.current` will equal `black`. Clicking on `white` will replace the current `black` entry with the `white` one, while the previous entry remains intact and equal to `index`.
+
+```html
+<a href="/theme?color=black" data-barba-history="replace">black</a>
+<a href="/theme?color=white" data-barba-history="replace">white</a>
+```
+
+> The default Barba behavior for history is `push`, so you don't have to manually write `data-barba-history="push"` on all your links.
+>
+> As of today, `data-barba-history="replace"` is the only way to properly replace a state into the `window.history`: this will evolve in the next release.
