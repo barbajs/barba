@@ -561,6 +561,7 @@
 <li><a href="#Cache">Cache</a></li>
 <li><a href="#Prefetch">Prefetch</a></li>
 <li><a href="#Prevent">Prevent</a></li>
+<li><a href="#History">History</a></li>
 </ol>
 <h2 id="Cache"><a href="#Cache" class="headerlink" title="Cache"></a>Cache</h2><h3 id="cacheIgnore"><a href="#cacheIgnore" class="headerlink" title="cacheIgnore"></a><code>cacheIgnore</code></h3><p>Allows Barba to <strong>cache your pages</strong>.</p>
 <p>Saving pages in the cache results in <strong>less bandwidth usage</strong> and <strong>less server-side load</strong>: no more <code>XMLHttpRequest</code> are made for pages that have already been visited.</p>
@@ -657,6 +658,44 @@
 <li><code>data-barba-prevent</code> or <code>data-barba-prevent=&quot;self&quot;</code> prevents the current link</li>
 <li><code>data-barba-prevent=&quot;all&quot;</code> prevents all children links in a container (<code>div</code>, <code>p</code>, etc.)</li>
 </ol>
+</blockquote>
+<h2 id="History"><a href="#History" class="headerlink" title="History"></a>History</h2><h3 id="barba-history"><a href="#barba-history" class="headerlink" title="barba.history"></a><code>barba.history</code></h3><p>While browsing the website, Barba stores useful navigation informations into the <code>history</code> property. You can <strong>access those informations at any time</strong> in your application.</p>
+<h4 id="history-previous-current"><a href="#history-previous-current" class="headerlink" title="history.previous|current"></a><code>history.previous|current</code></h4><p>The most useful are the <code>previous</code> and <code>current</code> history attributes. It allows you to access the page <code>namespace</code>, the window <code>scroll</code> position and the page <code>url</code>. For example, if you want to restore scroll position between pages, have a look at the <a href="/docs/advanced/recipes/#Scroll-position">scroll position</a> recipe.</p>
+<p>They both shares the same set of properties.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ns</code></td>
+<td>String</td>
+<td>Namespace of the page</td>
+</tr>
+<tr>
+<td><code>scroll</code></td>
+<td>Object</td>
+<td><code>x</code> / <code>y</code> positions of the scroll</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>String</td>
+<td>URL of the history position</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Be careful, <code>barba.history.previous</code> object equals <code>null</code> when your application is starting.</p>
+</blockquote>
+<h3 id="data-barba-history"><a href="#data-barba-history" class="headerlink" title="data-barba-history"></a><code>data-barba-history</code></h3><p>Sometimes, you may want to “alter” the browser history by <strong>replacing the current entry without having to push a new one</strong>. This can easily be done with the <code>data-barba-history=&quot;replace&quot;</code> attribute.</p>
+<p>In the example below, if you come from the <code>index</code> page and click on <code>black</code> link, the <code>barba.history.previous</code> will equal <code>index</code> while <code>barba.history.current</code> will equal <code>black</code>. Clicking on <code>white</code> will replace the current <code>black</code> entry with the <code>white</code> one, while the previous entry remains intact and equal to <code>index</code>.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/theme?color=black"</span> <span class="attr">data-barba-history</span>=<span class="string">"replace"</span>&gt;</span>black<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/theme?color=white"</span> <span class="attr">data-barba-history</span>=<span class="string">"replace"</span>&gt;</span>white<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>The default Barba behavior for history is <code>push</code>, so you don’t have to manually write <code>data-barba-history=&quot;push&quot;</code> on all your links.</p>
+<p>As of today, <code>data-barba-history=&quot;replace&quot;</code> is the only way to properly replace a state into the <code>window.history</code>: this will evolve in the next release.</p>
 </blockquote>
 
 </div>
