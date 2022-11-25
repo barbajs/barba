@@ -38,7 +38,7 @@
     "typedoc-plugin-sourcefile-url": "^1.0.4",
     "typescript": "^3.3.3333",
     "typescript-tslint-plugin": "0.5.5",
-    "wait-for-expect": "3.0.1",
+    "wait-for-expect": "3.0.2",
     "xhr-mock": "^2.4.1"
   },
   "license": "MIT",
