@@ -35,7 +35,7 @@
     "tslint": "^5.13.1",
     "typedoc": "0.15.3",
     "typedoc-plugin-external-module-name": "^2.0.0",
-    "typedoc-plugin-sourcefile-url": "^1.0.4",
+    "typedoc-plugin-sourcefile-url": "^1.0.6",
     "typescript": "^3.3.3333",
     "typescript-tslint-plugin": "0.5.5",
     "wait-for-expect": "3.0.2",
