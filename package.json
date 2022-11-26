@@ -14,7 +14,7 @@
     "coveralls": "^3.1.1",
     "cypress": "^3.2.0",
     "cz-ccgls": "0.4.3",
-    "eslint": "6.7.2",
+    "eslint": "8.28.0",
     "eslint-plugin-cypress": "^2.12.1",
     "gzip-size": "^5.0.0",
     "http-server": "0.12.0",
