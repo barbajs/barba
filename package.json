@@ -23,7 +23,7 @@
     "jest-environment-jsdom-global": "^1.1.1",
     "jest-watch-lerna-packages": "^1.1.0",
     "lerna": "3.19.0",
-    "lint-staged": "9.5.0",
+    "lint-staged": "13.0.4",
     "lodash": "^4.17.11",
     "microbundle": "^0.12.0-next.6",
     "npm-run-all": "4.1.5",
