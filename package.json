@@ -16,7 +16,7 @@
     "cz-ccgls": "0.4.3",
     "eslint": "8.28.0",
     "eslint-plugin-cypress": "^2.12.1",
-    "gzip-size": "^5.0.0",
+    "gzip-size": "^7.0.0",
     "http-server": "0.12.0",
     "husky": "3.1.0",
     "jest": "24.9.0",
