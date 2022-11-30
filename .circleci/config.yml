@@ -76,7 +76,7 @@ jobs:
           command: yarn doc
       - persist_to_workspace:
           root: ~/repo
-          paths: documentation
+          paths: [documentation]
   docs-deploy:
     <<: *defaults
     steps:
