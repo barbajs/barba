@@ -47,7 +47,7 @@
     "tag:next": "npm dist-tag add @barba/core@$npm_package_version next"
   },
   "dependencies": {
-    "is-promise": "^2.1.0",
+    "is-promise": "^2.2.2",
     "path-to-regexp": "^3.0.0"
   },
   "gitHead": "33c213bc36a0996f6333185dfc695fcd0d37c9d9"
