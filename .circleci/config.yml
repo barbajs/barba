@@ -12,6 +12,7 @@ defaults: &defaults
 jobs:
   build:
     <<: *defaults
+    resource_class: large
     steps:
       - checkout
       - restore_cache:
@@ -43,6 +44,7 @@ jobs:
             - node_modules
   test:
     <<: *defaults
+    resource_class: large
     steps:
       - checkout
       - attach_workspace:
