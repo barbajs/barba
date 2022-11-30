@@ -20,7 +20,7 @@
     "http-server": "0.12.0",
     "husky": "3.1.0",
     "jest": "24.9.0",
-    "jest-environment-jsdom-global": "^1.1.1",
+    "jest-environment-jsdom-global": "^1.2.1",
     "jest-watch-lerna-packages": "^1.1.0",
     "lerna": "3.19.0",
     "lint-staged": "13.0.4",
