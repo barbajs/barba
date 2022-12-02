@@ -18,7 +18,7 @@
     "eslint-plugin-cypress": "^2.12.1",
     "gzip-size": "^7.0.0",
     "http-server": "14.1.1",
-    "husky": "3.1.0",
+    "husky": "8.0.2",
     "jest": "24.9.0",
     "jest-environment-jsdom-global": "^1.2.1",
     "jest-watch-lerna-packages": "^1.1.0",
