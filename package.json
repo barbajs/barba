@@ -22,7 +22,7 @@
     "gsap": "^3.11.4",
     "hexo": "^4.2.0",
     "kapla": "^2.1.7",
-    "lottie-web": "^5.9.6",
+    "lottie-web": "^5.10.1",
     "prismjs": "^1.29.0",
     "request": "^2.88.2",
     "request-promise": "^4.2.4",
