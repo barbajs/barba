@@ -1255,9 +1255,10 @@
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@google-cloud/promisify/-/promisify-3.0.1.tgz#8d724fb280f47d1ff99953aee0c1669b25238c2e"
 
-"@google-cloud/storage@^6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@google-cloud/storage/-/storage-6.7.0.tgz#c164d70e2b485b9db52e91fcf34609e047c1eeda"
+"@google-cloud/storage@^6.9.0":
+  version "6.9.0"
+  resolved "https://registry.yarnpkg.com/@google-cloud/storage/-/storage-6.9.0.tgz#6808487208c6dc9c8698a420f74b87e8fd010e23"
+  integrity sha512-0mn9DUe3dtyTWLsWLplQP3gzPolJ5kD4PwHuzeD3ye0SAQ+oFfDbT8d+vNZxqyvddL2c6uNP72TKETN2PQxDKg==
   dependencies:
     "@google-cloud/paginator" "^3.0.7"
     "@google-cloud/projectify" "^3.0.0"
