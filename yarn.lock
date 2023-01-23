@@ -5740,10 +5740,10 @@ longest@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/longest/-/longest-1.0.1.tgz#30a0b2da38f73770e8294a0d22e6625ed77d0097"
 
-lottie-web@^5.10.1:
-  version "5.10.1"
-  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.10.1.tgz#fde8e6be374afc3906f78b4152ada9be44ce3ccf"
-  integrity sha512-u17bVNf/vA3oK9Wkyb1Vpo83WUIEQwaT0GeEN0qcvaExizyJ/RjmcbjSDj0CnwQCtpGqTgYhqprCC7cTWuXMNw==
+lottie-web@^5.10.2:
+  version "5.10.2"
+  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.10.2.tgz#a1c952b6734759fcd369eba73b6b7e3d9a76ce0b"
+  integrity sha512-d0PFIGiwuMsJYaF4uPo+qG8dEorlI+xFI2zrrFtE1bGO4WoLIz+NjremxEq1swpR7juR10aeOtmNh3d6G3ub0A==
 
 loud-rejection@^1.0.0:
   version "1.6.0"
