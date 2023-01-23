@@ -30,7 +30,7 @@
     "prettier": "^2.8.3",
     "rimraf": "3.0.2",
     "source-map-explorer": "2.5.3",
-    "start-server-and-test": "^1.15.2",
+    "start-server-and-test": "^1.15.3",
     "ts-jest": "24.3.0",
     "tslint": "^5.13.1",
     "typedoc": "0.15.8",
