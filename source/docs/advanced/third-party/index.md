@@ -17,6 +17,7 @@ This might be result in some **unexpected behaviors** when using classic third p
 1. [Google Analytics](#Google-Analytics)
 2. [Google ReCaptcha](#Google-ReCaptcha)
 3. [Locomotive scroll](#Locomotive-scroll)
+3. [Scroll Trigger](#Scroll-Trigger)
 
 ## Google Analytics
 
@@ -167,6 +168,68 @@ barba.hooks.after(() => {
 
 > Depending on what's inside your website, you can also reset/update the LocomotiveScroll instance inside the Barba `after` hook instead.
 
+
+## Scroll Trigger
+
+There are **no specific issues** when trying to implement this library in a website that uses Barba. Depending on how your website animations are shared along all your pages, and also how you have planned to deal with scroll "triggers", you may prefer using a view hook instead of a global hook.
+
+### View hook
+
+```html
+<body data-barba="wrapper">
+  <div data-scroll-container>
+    <main data-barba="container" data-barba-namespace="home">
+      <!-- put content here to have a scrollbar -->
+      <div class="scrolltrigger-element">
+        <p>This element is animated by ScrollTrigger</p>
+      </div>
+      <!-- put content here to have a scrollbar -->
+    </main>
+  </div>
+</body>
+```
+
+```javascript
+import barba from '@barba/core';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+
+// global instance
+const instance;
+
+// init barba
+barba.init({
+  views: [{
+    namespace: 'home',
+    beforeEnter() {
+
+      // get the element you want to animate
+      const element = document.querySelector('.scrolltrigger-element');
+
+      // create a basic timeline
+      const timeline = gsap.to(element, {
+        x: 500,
+        duration: 2
+      });
+
+      // create instance each time you enter the page
+      instance = ScrollTrigger.create({
+        animation: timeline,
+        trigger: element,
+        start: 'center 75%',
+        markers: true
+      });
+    },
+    afterLeave() {
+
+      // kill instance each time you leave the page
+      instance.kill();
+    },
+  }]
+});
+```
+
+> Keep in mind that **it is very important to kill ScrollTrigger instances** when navigating between two pages, otherwise your instances will overlap together.
 
 ## Other third party scripts
 
