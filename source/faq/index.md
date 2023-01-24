@@ -21,6 +21,7 @@ Frequently Asked Questions when starting using BarbaJS.
 - [How can I preload some images before loading the next page?](#How-can-I-preload-some-images-before-transitioning)
 - [How can I get the current/next page informations?](#How-can-I-get-the-current-next-page-informations)
 - [What about SEO concerns?](#What-about-SEO-concerns)
+- [Can I use Barba inside a React/Vue/Next app?](#Can-I-use-Barba-inside-a-React-Vue-Next-app)
 
 > **Missing a question?** Search into the [repository issues](https://github.com/barbajs/barba/issues?q=is%3Aissue) first before creating a new one. If you need further help or instant code support, join the community using the [developer link](/docs/getstarted/useful-links/#Developer). Finally, don’t hesitate to ask the Barba team [on Slack](https://barbajs.slack.com/) if you want a question to be present on this page.
 
@@ -59,3 +60,7 @@ The current/next page informations are passed to all hooks, through the [`data` 
 ### What about SEO concerns?
 
 Barba care about automatically updating the document `title` when navigating between your pages, mainly to keep a good user experience and know on which page you are. When your website is crawled by search engines or bots, the correct metadata will be loaded. Knowing this, there is no need to update your page metadata keywords/description.
+
+### Can I use Barba inside a React/Vue/Next app?
+
+When using a front-end framework like **React, Vue or Next**, you should take a look at the framework documentation and use everything the framework is bringing you, like page transitions, routes, etc. instead of trying to implement another library over a complex framework layout.
