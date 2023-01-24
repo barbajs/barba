@@ -12,7 +12,7 @@
 /***/
 
 // Third-party
-import ptr from 'path-to-regexp';
+import { pathToRegexp as ptr } from 'path-to-regexp';
 // Definitions
 import { ITransitionData } from '../defs';
 // Utils
