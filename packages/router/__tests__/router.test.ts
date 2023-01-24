@@ -41,16 +41,15 @@ it('has routes', () => {
   expect(router.routesByName.foo).toEqual({
     keys: [
       {
-        delimiter: '/',
+        modifier: '',
         name: 'bar',
-        optional: false,
-        pattern: '[^\\/]+?',
+        pattern: '[^\\/#\\?]+?',
         prefix: '/',
-        repeat: false,
+        suffix: '',
       },
     ],
     path: '/foo/:bar',
-    regex: /^\/foo\/([^\/]+?)(?:\/)?$/i,
+    regex: /^\/foo(?:\/([^\/#\?]+?))[\/#\?]?$/i,
   });
 });
 

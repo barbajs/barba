@@ -9261,10 +9261,10 @@ path-parse@^1.0.7:
   resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.7.tgz#fbc114b60ca42b30d9daf5858e4bd68bbedb6735"
   integrity sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==
 
-path-to-regexp@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-5.0.0.tgz#e56dd58778b9dc06e76f0f3e39e741bbddc0bd26"
-  integrity sha512-VOQVA+0mivusQfaveeWlrW7ddXKuStHMTdovn/1epf7cEpUL4dpzGl7eq8ho96H9w90/q66yJLsqn84jSCfkmQ==
+path-to-regexp@^6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-6.2.1.tgz#d54934d6798eb9e5ef14e7af7962c945906918e5"
+  integrity sha512-JLyh7xT1kizaEvcaXOQwOc2/Yhw6KZOvPf1S8401UyLk86CU79LN3vl7ztXGm/pZ+YjoyAJ4rxmHwbkBXJX+yw==
 
 path-type@^3.0.0:
   version "3.0.0"
