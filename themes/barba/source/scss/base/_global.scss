@@ -15,6 +15,41 @@ html {
 body {
   overflow-x: hidden;
 
+  ::selection {
+    color: #fff;
+    background: $c-blue-medium;
+  }
+
+  [data-feature-order='0'] {
+    ::selection {
+      background: $c-menu-feature-0;
+    }
+  }
+
+  [data-feature-order='1'] {
+    ::selection {
+      background: $c-menu-feature-1;
+    }
+  }
+
+  [data-feature-order='2'] {
+    ::selection {
+      background: $c-menu-feature-2;
+    }
+  }
+
+  [data-feature-order='3'] {
+    ::selection {
+      background: $c-menu-feature-3;
+    }
+  }
+
+  [data-feature-order='4'] {
+    ::selection {
+      background: $c-menu-feature-4;
+    }
+  }
+
   &.prevent-scroll {
     overflow: hidden;
     height: 100vh;
