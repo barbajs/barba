@@ -20,15 +20,24 @@ This might be result in some **unexpected behaviors** when using classic third p
 
 ## Google Analytics
 
-### analytics.js
+### GA4
 
-With `analytics.js`, you can manually send a pageview with the following snippet.
+With `Google Analytics 4`, you can manually send a `pageview` with the following snippet.
 The best place to do that is in the `after` [global hook](/docs/advanced/hooks/#Global-hooks), as it is applied to all your pages:
 
 ```javascript
+// disable automatic page view
+gtag('config', GTAG_ID, {
+  send_page_view: false,
+});
+
+// after each transition, push page_view event to Analytics
 barba.hooks.after(() => {
-  ga('set', 'page', window.location.pathname);
-  ga('send', 'pageview');
+  gtag('event', 'page_view', {
+    'page_title': document.title,
+    'page_location': location.href,
+    'page_path': location.pathname,
+  });
 });
 ```
 > See [Google SPA guide](https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications) for more details.
