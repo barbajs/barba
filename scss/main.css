@@ -554,6 +554,19 @@ html.js {
 
 body {
   overflow-x: hidden; }
+  body ::selection {
+    color: #fff;
+    background: #2e5bdc; }
+  body [data-feature-order='0'] ::selection {
+    background: #38d1f1; }
+  body [data-feature-order='1'] ::selection {
+    background: #04bf0c; }
+  body [data-feature-order='2'] ::selection {
+    background: #ffa543; }
+  body [data-feature-order='3'] ::selection {
+    background: #ec4343; }
+  body [data-feature-order='4'] ::selection {
+    background: #8c44d9; }
   body.prevent-scroll {
     overflow: hidden;
     height: 100vh;
