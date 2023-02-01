@@ -183,7 +183,6 @@ export class Core {
     if (!this._wrapper) {
       throw new Error('[@barba/core] No Barba wrapper found');
     }
-    this._wrapper.setAttribute('aria-live', 'polite'); // A11y
 
     // 3. Init pages (get "current" data)
     this._resetData();
