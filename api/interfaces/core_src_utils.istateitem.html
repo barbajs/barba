@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>core/modules/Logger | barba.js
+	<title>IStateItem | barba.js
 	</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -56,10 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="core_modules_logger.html">core/modules/Logger</a>
+					<a href="../modules/core_src_utils.html">core/src/utils</a>
+				</li>
+				<li>
+					<a href="core_src_utils.istateitem.html">IStateItem</a>
 				</li>
 			</ul>
-			<h1>External module core/modules/Logger</h1>
+			<h1>Interface IStateItem</h1>
 		</div>
 	</div>
 </header>
@@ -68,58 +71,89 @@
 		<div class="col-8 col-content">
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>History item.</p>
+					</div>
 					<dl class="tsd-comment-tags">
-						<dt>barba/core/modules/logger</dt>
-						<dd><p><br><br></p>
-							<a href="#logger" id="logger" style="color: inherit; text-decoration: none;">
-								<h2>Logger.</h2>
-							</a>
-							<ul>
-								<li>Display informations via the console</li>
-							</ul>
+						<dt>property</dt>
+						<dd><p>namespace</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>scroll</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>URL</p>
 						</dd>
 					</dl>
 				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">IStateItem</span>
+					</li>
+				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
-							<h3>Enumerations</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-enum tsd-parent-kind-external-module"><a href="../enums/core_modules_logger.loglevels.html" class="tsd-kind-icon">Log<wbr>Levels</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Classes</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/core_modules_logger.logger.html" class="tsd-kind-icon">Logger</a></li>
-							</ul>
-						</section>
 						<section class="tsd-index-section tsd-is-not-exported">
-							<h3>Variables</h3>
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="core_modules_logger.html#_level" class="tsd-kind-icon">_level</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="core_src_utils.istateitem.html#ns" class="tsd-kind-icon">ns</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="core_src_utils.istateitem.html#scroll" class="tsd-kind-icon">scroll</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="core_src_utils.istateitem.html#url" class="tsd-kind-icon">url</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
-				<h2>Variables</h2>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="_level" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagLet">Let</span> _level</h3>
-					<div class="tsd-signature tsd-kind-icon">_level<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;LogLevels.off</span></div>
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="ns" class="tsd-anchor"></a>
+					<h3>ns</h3>
+					<div class="tsd-signature tsd-kind-icon">ns<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/modules/Logger.ts#L34">packages/core/src/modules/Logger.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/history.ts#L46">packages/core/src/utils/history.ts:46</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Global log level</p>
+							<p>namespace</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="scroll" class="tsd-anchor"></a>
+					<h3>scroll</h3>
+					<div class="tsd-signature tsd-kind-icon">scroll<span class="tsd-signature-symbol">:</span> <a href="core_src_utils.icoords.html" class="tsd-signature-type">ICoords</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/history.ts#L48">packages/core/src/utils/history.ts:48</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Scroll position</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="url" class="tsd-anchor"></a>
+					<h3>url</h3>
+					<div class="tsd-signature tsd-kind-icon">url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/utils/history.ts#L50">packages/core/src/utils/history.ts:50</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>URL</p>
 						</div>
 					</div>
 				</section>
@@ -131,48 +165,111 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/core_modules_logger.html">core/modules/<wbr>Logger</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/core_src.html">core/src</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/core_src_defs.html">core/src/defs</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/core_src_modules.html">core/src/modules</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/core_src_schemas.html">core/src/schemas</a>
+					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="core_modules_logger.html">core/modules/<wbr>Logger</a>
+						<a href="../modules/core_src_utils.html">core/src/utils</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="core_src.html">core/src</a>
+						<a href="../modules/css_src.html">css/src</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="core_src_defs.html">core/src/defs</a>
+						<a href="../modules/prefetch_polyfills.html">prefetch/polyfills</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="core_src_modules.html">core/src/modules</a>
+						<a href="../modules/prefetch_src.html">prefetch/src</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="core_src_schemas.html">core/src/schemas</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="core_src_utils.html">core/src/utils</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="css_src.html">css/src</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="prefetch_polyfills.html">prefetch/polyfills</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="prefetch_src.html">prefetch/src</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="router_src.html">router/src</a>
+						<a href="../modules/router_src.html">router/src</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/core_modules_logger.loglevels.html" class="tsd-kind-icon">Log<wbr>Levels</a>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/core_src_utils.dom.html" class="tsd-kind-icon">Dom</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/core_modules_logger.logger.html" class="tsd-kind-icon">Logger</a>
+						<a href="../classes/core_src_utils.history.html" class="tsd-kind-icon">History</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="core_src_utils.icoords.html" class="tsd-kind-icon">ICoords</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="core_src_utils.ihistoryitem.html" class="tsd-kind-icon">IHistory<wbr>Item</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="core_src_utils.istateitem.html" class="tsd-kind-icon">IState<wbr>Item</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="core_src_utils.istateitem.html#ns" class="tsd-kind-icon">ns</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="core_src_utils.istateitem.html#scroll" class="tsd-kind-icon">scroll</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="core_src_utils.istateitem.html#url" class="tsd-kind-icon">url</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/core_src_utils.html#dom-1" class="tsd-kind-icon">dom</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="core_modules_logger.html#_level" class="tsd-kind-icon">_level</a>
+						<a href="../modules/core_src_utils.html#history-1" class="tsd-kind-icon">history</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/core_src_utils.html#pathtoregexp" class="tsd-kind-icon">path<wbr>ToRegexp</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/core_src_utils.html#clean" class="tsd-kind-icon">clean</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/core_src_utils.html#gethref" class="tsd-kind-icon">get<wbr>Href</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/core_src_utils.html#getorigin" class="tsd-kind-icon">get<wbr>Origin</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/core_src_utils.html#getpath" class="tsd-kind-icon">get<wbr>Path</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/core_src_utils.html#getport" class="tsd-kind-icon">get<wbr>Port</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/core_src_utils.html#nexttick" class="tsd-kind-icon">next<wbr>Tick</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/core_src_utils.html#parse" class="tsd-kind-icon">parse</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/core_src_utils.html#parsequery" class="tsd-kind-icon">parse<wbr>Query</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/core_src_utils.html#request" class="tsd-kind-icon">request</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/core_src_utils.html#runasync" class="tsd-kind-icon">run<wbr>Async</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/core_src_utils.html#update" class="tsd-kind-icon">update</a>
 					</li>
 				</ul>
 			</nav>

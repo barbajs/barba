@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>core/modules/Logger | barba.js
+	<title>ISchemaAttribute | barba.js
 	</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -56,10 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="core_modules_logger.html">core/modules/Logger</a>
+					<a href="../modules/core_src_defs.html">core/src/defs</a>
+				</li>
+				<li>
+					<a href="core_src_defs.ischemaattribute.html">ISchemaAttribute</a>
 				</li>
 			</ul>
-			<h1>External module core/modules/Logger</h1>
+			<h1>Interface ISchemaAttribute</h1>
 		</div>
 	</div>
 </header>
@@ -68,60 +71,120 @@
 		<div class="col-8 col-content">
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<a href="#define-html-data-attribute-used-by-barba" id="define-html-data-attribute-used-by-barba" style="color: inherit; text-decoration: none;">
+							<h3>Define HTML <code>data-attribute</code> used by Barba.</h3>
+						</a>
+					</div>
 					<dl class="tsd-comment-tags">
-						<dt>barba/core/modules/logger</dt>
-						<dd><p><br><br></p>
-							<a href="#logger" id="logger" style="color: inherit; text-decoration: none;">
-								<h2>Logger.</h2>
-							</a>
-							<ul>
-								<li>Display informations via the console</li>
-							</ul>
+						<dt>param</dt>
+						<dd><p>data-<strong>prefix</strong></p>
+						</dd>
+						<dt>param</dt>
+						<dd><p>data-prefix=&quot;<strong>wrapper</strong>&quot;</p>
+						</dd>
+						<dt>param</dt>
+						<dd><p>data-prefix=&quot;<strong>container</strong>&quot;</p>
+						</dd>
+						<dt>param</dt>
+						<dd><p>data-prefix-<strong>prevent</strong></p>
+						</dd>
+						<dt>param</dt>
+						<dd><p>data-prefix-<strong>history</strong></p>
+						</dd>
+						<dt>param</dt>
+						<dd><p>data-prefix-<strong>namespace</strong></p>
 						</dd>
 					</dl>
 				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">ISchemaAttribute</span>
+					</li>
+				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Enumerations</h3>
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-enum tsd-parent-kind-external-module"><a href="../enums/core_modules_logger.loglevels.html" class="tsd-kind-icon">Log<wbr>Levels</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Classes</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/core_modules_logger.logger.html" class="tsd-kind-icon">Logger</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-not-exported">
-							<h3>Variables</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="core_modules_logger.html#_level" class="tsd-kind-icon">_level</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_src_defs.ischemaattribute.html#container" class="tsd-kind-icon">container</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_src_defs.ischemaattribute.html#history" class="tsd-kind-icon">history</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_src_defs.ischemaattribute.html#namespace" class="tsd-kind-icon">namespace</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_src_defs.ischemaattribute.html#prefix" class="tsd-kind-icon">prefix</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_src_defs.ischemaattribute.html#prevent" class="tsd-kind-icon">prevent</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_src_defs.ischemaattribute.html#wrapper" class="tsd-kind-icon">wrapper</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
-				<h2>Variables</h2>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="_level" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagLet">Let</span> _level</h3>
-					<div class="tsd-signature tsd-kind-icon">_level<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;LogLevels.off</span></div>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="container" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> container</h3>
+					<div class="tsd-signature tsd-kind-icon">container<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/modules/Logger.ts#L34">packages/core/src/modules/Logger.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/schemas.ts#L32">packages/core/src/defs/schemas.ts:32</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Global log level</p>
-						</div>
-					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="history" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> history</h3>
+					<div class="tsd-signature tsd-kind-icon">history<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/schemas.ts#L34">packages/core/src/defs/schemas.ts:34</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="namespace" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> namespace</h3>
+					<div class="tsd-signature tsd-kind-icon">namespace<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/schemas.ts#L35">packages/core/src/defs/schemas.ts:35</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="prefix" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> prefix</h3>
+					<div class="tsd-signature tsd-kind-icon">prefix<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/schemas.ts#L30">packages/core/src/defs/schemas.ts:30</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="prevent" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> prevent</h3>
+					<div class="tsd-signature tsd-kind-icon">prevent<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/schemas.ts#L33">packages/core/src/defs/schemas.ts:33</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="wrapper" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> wrapper</h3>
+					<div class="tsd-signature tsd-kind-icon">wrapper<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/schemas.ts#L31">packages/core/src/defs/schemas.ts:31</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -131,49 +194,67 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/core_modules_logger.html">core/modules/<wbr>Logger</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/core_src.html">core/src</a>
+					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="core_modules_logger.html">core/modules/<wbr>Logger</a>
+						<a href="../modules/core_src_defs.html">core/src/defs</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="core_src.html">core/src</a>
+						<a href="../modules/core_src_modules.html">core/src/modules</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="core_src_defs.html">core/src/defs</a>
+						<a href="../modules/core_src_schemas.html">core/src/schemas</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="core_src_modules.html">core/src/modules</a>
+						<a href="../modules/core_src_utils.html">core/src/utils</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="core_src_schemas.html">core/src/schemas</a>
+						<a href="../modules/css_src.html">css/src</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="core_src_utils.html">core/src/utils</a>
+						<a href="../modules/prefetch_polyfills.html">prefetch/polyfills</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="css_src.html">css/src</a>
+						<a href="../modules/prefetch_src.html">prefetch/src</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="prefetch_polyfills.html">prefetch/polyfills</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="prefetch_src.html">prefetch/src</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="router_src.html">router/src</a>
+						<a href="../modules/router_src.html">router/src</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/core_modules_logger.loglevels.html" class="tsd-kind-icon">Log<wbr>Levels</a>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="core_src_defs.ischemaattribute.html" class="tsd-kind-icon">ISchema<wbr>Attribute</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_src_defs.ischemaattribute.html#container" class="tsd-kind-icon">container</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_src_defs.ischemaattribute.html#history" class="tsd-kind-icon">history</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_src_defs.ischemaattribute.html#namespace" class="tsd-kind-icon">namespace</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_src_defs.ischemaattribute.html#prefix" class="tsd-kind-icon">prefix</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_src_defs.ischemaattribute.html#prevent" class="tsd-kind-icon">prevent</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_src_defs.ischemaattribute.html#wrapper" class="tsd-kind-icon">wrapper</a>
+							</li>
+						</ul>
 					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/core_modules_logger.logger.html" class="tsd-kind-icon">Logger</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="core_modules_logger.html#_level" class="tsd-kind-icon">_level</a>
-					</li>
+				</ul>
+				<ul class="after-current">
 				</ul>
 			</nav>
 		</div>

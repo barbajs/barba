@@ -587,7 +587,7 @@ ul.tsd-descriptions > li > :last-child > :last-child > :last-child {
     height: 17px;
     margin: 0 3px 2px 0;
     background-image: url(../images/icons.png); }
-    @media (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
       .tsd-kind-icon:before {
         background-image: url(../images/icons@2x.png);
         background-size: 238px 204px; } }
@@ -1558,7 +1558,6 @@ pre {
     position: fixed !important;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    overflow-scrolling: touch;
     z-index: 1024;
     top: 0 !important;
     bottom: 0 !important;
@@ -1647,7 +1646,6 @@ html.minimal .tsd-navigation {
   position: fixed !important;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  overflow-scrolling: touch;
   box-sizing: border-box;
   z-index: 1;
   left: 0;
@@ -1825,11 +1823,6 @@ footer {
       -o-column-count: 2;
       column-count: 2; } }
   .tsd-index-panel ul.tsd-index-list li {
-    -webkit-column-break-inside: avoid;
-    -moz-column-break-inside: avoid;
-    -ms-column-break-inside: avoid;
-    -o-column-break-inside: avoid;
-    column-break-inside: avoid;
     -webkit-page-break-inside: avoid;
     -moz-page-break-inside: avoid;
     -ms-page-break-inside: avoid;
@@ -2237,7 +2230,7 @@ ul.tsd-type-parameters {
   background-repeat: no-repeat;
   text-indent: -1024px;
   vertical-align: bottom; }
-  @media (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
     .tsd-widget:before, .tsd-select .tsd-select-label:before, .tsd-select .tsd-select-list li:before {
       background-image: url(../images/widgets@2x.png);
       background-size: 320px 40px; } }

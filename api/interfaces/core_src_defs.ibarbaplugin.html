@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>core/modules/Logger | barba.js
+	<title>IBarbaPlugin | barba.js
 	</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -56,72 +56,151 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="core_modules_logger.html">core/modules/Logger</a>
+					<a href="../modules/core_src_defs.html">core/src/defs</a>
+				</li>
+				<li>
+					<a href="core_src_defs.ibarbaplugin.html">IBarbaPlugin</a>
 				</li>
 			</ul>
-			<h1>External module core/modules/Logger</h1>
+			<h1>Interface IBarbaPlugin&lt;T&gt;</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<dl class="tsd-comment-tags">
-						<dt>barba/core/modules/logger</dt>
-						<dd><p><br><br></p>
-							<a href="#logger" id="logger" style="color: inherit; text-decoration: none;">
-								<h2>Logger.</h2>
-							</a>
-							<ul>
-								<li>Display informations via the console</li>
-							</ul>
-						</dd>
-					</dl>
-				</div>
+			<section class="tsd-panel tsd-type-parameters">
+				<h3>Type parameters</h3>
+				<ul class="tsd-type-parameters">
+					<li>
+						<h4>T</h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">IBarbaPlugin</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implemented by</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../classes/css_src.css.html" class="tsd-signature-type">Css</a></li>
+					<li><a href="../classes/prefetch_src.prefetch.html" class="tsd-signature-type">Prefetch</a></li>
+					<li><a href="../classes/router_src.router.html" class="tsd-signature-type">Router</a></li>
+				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Enumerations</h3>
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-enum tsd-parent-kind-external-module"><a href="../enums/core_modules_logger.loglevels.html" class="tsd-kind-icon">Log<wbr>Levels</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_src_defs.ibarbaplugin.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_src_defs.ibarbaplugin.html#version" class="tsd-kind-icon">version</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
-							<h3>Classes</h3>
+							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/core_modules_logger.logger.html" class="tsd-kind-icon">Logger</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-not-exported">
-							<h3>Variables</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="core_modules_logger.html#_level" class="tsd-kind-icon">_level</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="core_src_defs.ibarbaplugin.html#init" class="tsd-kind-icon">init</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="core_src_defs.ibarbaplugin.html#install" class="tsd-kind-icon">install</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
-				<h2>Variables</h2>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="_level" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagLet">Let</span> _level</h3>
-					<div class="tsd-signature tsd-kind-icon">_level<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;LogLevels.off</span></div>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="name" class="tsd-anchor"></a>
+					<h3>name</h3>
+					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/modules/Logger.ts#L34">packages/core/src/modules/Logger.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/barba.ts#L48">packages/core/src/defs/barba.ts:48</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Global log level</p>
+							<p>Plugin name</p>
 						</div>
 					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="version" class="tsd-anchor"></a>
+					<h3>version</h3>
+					<div class="tsd-signature tsd-kind-icon">version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/barba.ts#L46">packages/core/src/defs/barba.ts:46</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Plugin version</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="init" class="tsd-anchor"></a>
+					<h3>init</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">init<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/barba.ts#L52">packages/core/src/defs/barba.ts:52</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Init method</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="install" class="tsd-anchor"></a>
+					<h3>install</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">install<span class="tsd-signature-symbol">(</span>barba<span class="tsd-signature-symbol">: </span><a href="../classes/core_src.core.html" class="tsd-signature-type">Core</a>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/barba.ts#L50">packages/core/src/defs/barba.ts:50</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Install method</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>barba: <a href="../classes/core_src.core.html" class="tsd-signature-type">Core</a></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <span class="tsd-signature-type">T</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -131,49 +210,61 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/core_modules_logger.html">core/modules/<wbr>Logger</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/core_src.html">core/src</a>
+					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="core_modules_logger.html">core/modules/<wbr>Logger</a>
+						<a href="../modules/core_src_defs.html">core/src/defs</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="core_src.html">core/src</a>
+						<a href="../modules/core_src_modules.html">core/src/modules</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="core_src_defs.html">core/src/defs</a>
+						<a href="../modules/core_src_schemas.html">core/src/schemas</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="core_src_modules.html">core/src/modules</a>
+						<a href="../modules/core_src_utils.html">core/src/utils</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="core_src_schemas.html">core/src/schemas</a>
+						<a href="../modules/css_src.html">css/src</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="core_src_utils.html">core/src/utils</a>
+						<a href="../modules/prefetch_polyfills.html">prefetch/polyfills</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="css_src.html">css/src</a>
+						<a href="../modules/prefetch_src.html">prefetch/src</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="prefetch_polyfills.html">prefetch/polyfills</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="prefetch_src.html">prefetch/src</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="router_src.html">router/src</a>
+						<a href="../modules/router_src.html">router/src</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/core_modules_logger.loglevels.html" class="tsd-kind-icon">Log<wbr>Levels</a>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="core_src_defs.ibarbaplugin.html" class="tsd-kind-icon">IBarba<wbr>Plugin</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_src_defs.ibarbaplugin.html#name" class="tsd-kind-icon">name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_src_defs.ibarbaplugin.html#version" class="tsd-kind-icon">version</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="core_src_defs.ibarbaplugin.html#init" class="tsd-kind-icon">init</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="core_src_defs.ibarbaplugin.html#install" class="tsd-kind-icon">install</a>
+							</li>
+						</ul>
 					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/core_modules_logger.logger.html" class="tsd-kind-icon">Logger</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="core_modules_logger.html#_level" class="tsd-kind-icon">_level</a>
-					</li>
+				</ul>
+				<ul class="after-current">
 				</ul>
 			</nav>
 		</div>

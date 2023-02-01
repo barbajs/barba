@@ -3,19 +3,19 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>barba.js
+	<title>ISchemaPage | barba.js
 	</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-	<link rel="stylesheet" href="assets/css/override.css">
+	<link rel="stylesheet" href="../assets/css/main.css">
+	<link rel="stylesheet" href="../assets/css/override.css">
 </head>
 <body>
 <header>
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -24,7 +24,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">barba.js</a>
+					<a href="../index.html" class="title">barba.js</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -53,79 +53,193 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="globals.html">Globals</a>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/core_src_defs.html">core/src/defs</a>
+				</li>
+				<li>
+					<a href="core_src_defs.ischemapage.html">ISchemaPage</a>
 				</li>
 			</ul>
-			<h1> barba.js</h1>
+			<h1>Interface ISchemaPage</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<a href="#define-quotpagequot-data-structure" id="define-quotpagequot-data-structure" style="color: inherit; text-decoration: none;">
+							<h3>Define &quot;page&quot; data structure.</h3>
+						</a>
+					</div>
+					<p>Used by <code>data.current</code> and <code>data.next</code>.<br>
+					Set to <code>undefined</code> until values are available.</p>
+					<dl class="tsd-comment-tags">
+						<dt>param</dt>
+						<dd><p>Barba container element</p>
+						</dd>
+						<dt>param</dt>
+						<dd><p>Full stringified HTML</p>
+						</dd>
+						<dt>param</dt>
+						<dd><p>Namespace</p>
+						</dd>
+						<dt>param</dt>
+						<dd><p>URL</p>
+						</dd>
+						<dt>param</dt>
+						<dd><p>Route name (with <code>@barba/router</code>)</p>
+						</dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">ISchemaPage</span>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>External modules</h3>
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-external-module"><a href="modules/core_modules_logger.html" class="tsd-kind-icon">core/modules/<wbr>Logger</a></li>
-								<li class="tsd-kind-external-module"><a href="modules/core_src.html" class="tsd-kind-icon">core/src</a></li>
-								<li class="tsd-kind-external-module"><a href="modules/core_src_defs.html" class="tsd-kind-icon">core/src/defs</a></li>
-								<li class="tsd-kind-external-module"><a href="modules/core_src_modules.html" class="tsd-kind-icon">core/src/modules</a></li>
-								<li class="tsd-kind-external-module"><a href="modules/core_src_schemas.html" class="tsd-kind-icon">core/src/schemas</a></li>
-								<li class="tsd-kind-external-module"><a href="modules/core_src_utils.html" class="tsd-kind-icon">core/src/utils</a></li>
-								<li class="tsd-kind-external-module"><a href="modules/css_src.html" class="tsd-kind-icon">css/src</a></li>
-								<li class="tsd-kind-external-module"><a href="modules/prefetch_polyfills.html" class="tsd-kind-icon">prefetch/polyfills</a></li>
-								<li class="tsd-kind-external-module"><a href="modules/prefetch_src.html" class="tsd-kind-icon">prefetch/src</a></li>
-								<li class="tsd-kind-external-module"><a href="modules/router_src.html" class="tsd-kind-icon">router/src</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_src_defs.ischemapage.html#container" class="tsd-kind-icon">container</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_src_defs.ischemapage.html#html" class="tsd-kind-icon">html</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_src_defs.ischemapage.html#namespace" class="tsd-kind-icon">namespace</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_src_defs.ischemapage.html#route" class="tsd-kind-icon">route</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="core_src_defs.ischemapage.html#url" class="tsd-kind-icon">url</a></li>
 							</ul>
 						</section>
 					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="container" class="tsd-anchor"></a>
+					<h3>container</h3>
+					<div class="tsd-signature tsd-kind-icon">container<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">HTMLElement</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/schemas.ts#L52">packages/core/src/defs/schemas.ts:52</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="html" class="tsd-anchor"></a>
+					<h3>html</h3>
+					<div class="tsd-signature tsd-kind-icon">html<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/schemas.ts#L53">packages/core/src/defs/schemas.ts:53</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="namespace" class="tsd-anchor"></a>
+					<h3>namespace</h3>
+					<div class="tsd-signature tsd-kind-icon">namespace<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/schemas.ts#L54">packages/core/src/defs/schemas.ts:54</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="route" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> route</h3>
+					<div class="tsd-signature tsd-kind-icon">route<span class="tsd-signature-symbol">:</span> <a href="core_src_defs.irouteresolved.html" class="tsd-signature-type">IRouteResolved</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/schemas.ts#L56">packages/core/src/defs/schemas.ts:56</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="url" class="tsd-anchor"></a>
+					<h3>url</h3>
+					<div class="tsd-signature tsd-kind-icon">url<span class="tsd-signature-symbol">:</span> <a href="core_src_defs.iurlfull.html" class="tsd-signature-type">IUrlFull</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/master/packages/core/src/defs/schemas.ts#L55">packages/core/src/defs/schemas.ts:55</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals current ">
-						<a href="globals.html"><em>Globals</em></a>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/core_modules_logger.html">core/modules/<wbr>Logger</a>
+						<a href="../modules/core_modules_logger.html">core/modules/<wbr>Logger</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/core_src.html">core/src</a>
+						<a href="../modules/core_src.html">core/src</a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="../modules/core_src_defs.html">core/src/defs</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/core_src_defs.html">core/src/defs</a>
+						<a href="../modules/core_src_modules.html">core/src/modules</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/core_src_modules.html">core/src/modules</a>
+						<a href="../modules/core_src_schemas.html">core/src/schemas</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/core_src_schemas.html">core/src/schemas</a>
+						<a href="../modules/core_src_utils.html">core/src/utils</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/core_src_utils.html">core/src/utils</a>
+						<a href="../modules/css_src.html">css/src</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/css_src.html">css/src</a>
+						<a href="../modules/prefetch_polyfills.html">prefetch/polyfills</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/prefetch_polyfills.html">prefetch/polyfills</a>
+						<a href="../modules/prefetch_src.html">prefetch/src</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/prefetch_src.html">prefetch/src</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/router_src.html">router/src</a>
+						<a href="../modules/router_src.html">router/src</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="core_src_defs.ischemapage.html" class="tsd-kind-icon">ISchema<wbr>Page</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_src_defs.ischemapage.html#container" class="tsd-kind-icon">container</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_src_defs.ischemapage.html#html" class="tsd-kind-icon">html</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_src_defs.ischemapage.html#namespace" class="tsd-kind-icon">namespace</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_src_defs.ischemapage.html#route" class="tsd-kind-icon">route</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="core_src_defs.ischemapage.html#url" class="tsd-kind-icon">url</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
 				</ul>
 			</nav>
 		</div>
@@ -195,7 +309,7 @@
 	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>
