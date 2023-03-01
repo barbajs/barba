@@ -43,6 +43,7 @@ it('do go', async () => {
   expect(barba.page).toHaveBeenCalledWith(
     'http://localhost/foo',
     'barba',
+    undefined,
     false
   );
 });
@@ -77,24 +78,32 @@ it('use self transition on same url [barba]', async () => {
 
   await barba.go('http://localhost/');
 
-  expect(barba.page).toHaveBeenCalledWith('http://localhost/', 'barba', true);
+  expect(barba.page).toHaveBeenCalledWith(
+    'http://localhost/',
+    'barba',
+    undefined,
+    true
+  );
 });
 
 it('use self transition on same url [popstate]', async () => {
   barba.page = jest.fn();
   barba.transitions.store.add('transition', { name: 'self' });
 
-  await barba.go('http://localhost/', 'popstate', {
+  const event = {
     state: {
       index: 0,
     },
     stopPropagation() {},
     preventDefault() {},
-  } as PopStateEvent);
+  } as PopStateEvent;
+
+  await barba.go('http://localhost/', 'popstate', event);
 
   expect(barba.page).toHaveBeenCalledWith(
     'http://localhost/',
     'popstate',
+    event,
     true
   );
 });
@@ -113,19 +122,22 @@ it('add history', async () => {
 it('manage direction', async () => {
   barba.page = jest.fn();
 
-  await barba.go('http://localhost/foo');
-  await barba.go('http://localhost/bar');
-  await barba.go('http://localhost/foo', 'popstate', {
+  const event = {
     state: {
       index: 1,
     },
     stopPropagation() {},
     preventDefault() {},
-  } as PopStateEvent);
+  } as PopStateEvent;
+
+  await barba.go('http://localhost/foo');
+  await barba.go('http://localhost/bar');
+  await barba.go('http://localhost/foo', 'popstate', event);
 
   expect(barba.page).toHaveBeenCalledWith(
     'http://localhost/foo',
     'back',
+    event,
     false
   );
 });

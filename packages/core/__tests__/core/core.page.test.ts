@@ -85,7 +85,7 @@ it('do page', async () => {
     trigger: 'barba',
   };
 
-  await barba.page(nextUrl, 'barba', false);
+  await barba.page(nextUrl, 'barba', undefined, false);
 
   expect(spyCacheHas).toHaveBeenCalledTimes(1);
   expect(spyCacheSet).toHaveBeenCalledTimes(1);
@@ -114,7 +114,7 @@ it('do page [has cache]', async () => {
   // to avoid prevent "sameURL"
   barba.transitions.store.add('transition', { name: 'self' });
   barba.transitions.store.add('transition', { leave() {}, enter() {} });
-  await barba.page(sameUrl, 'barba', false);
+  await barba.page(sameUrl, 'barba', undefined, false);
 
   expect(spyCacheHas).toHaveBeenCalledTimes(1);
   expect(spyCacheUpdate).toHaveBeenCalledTimes(1);
@@ -130,7 +130,7 @@ it('do page [waiting]', async () => {
     enter() {},
     to: { namespace: 'ns' },
   });
-  await barba.page(nextUrl, 'barba', false);
+  await barba.page(nextUrl, 'barba', undefined, false);
 
   expect(barba.data.next.html).toMatch(checkDoc);
 });
@@ -147,7 +147,7 @@ it('force on error', async () => {
     },
   });
 
-  await barba.page(nextUrl, 'barba', false);
+  await barba.page(nextUrl, 'barba', undefined, false);
 
   expect(barba.transitions.logger.error).toHaveBeenCalledWith(errorLeave);
   expect(barba.force).toHaveBeenCalledTimes(1);

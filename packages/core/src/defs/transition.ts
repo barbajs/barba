@@ -4,12 +4,14 @@
 
 // Definitions
 import { ISchemaPage, Trigger } from './index';
+import { LinkEvent } from '../defs';
 
 // Data
 export interface ITransitionData {
   current: ISchemaPage;
   next: ISchemaPage;
   trigger: Trigger;
+  event?: LinkEvent | PopStateEvent;
 }
 
 // Filter

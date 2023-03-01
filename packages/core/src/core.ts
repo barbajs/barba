@@ -312,7 +312,7 @@ export class Core {
       e.preventDefault();
     }
 
-    return this.page(href, trigger, self);
+    return this.page(href, trigger, e ?? undefined, self);
   }
 
   /**
@@ -352,6 +352,7 @@ export class Core {
   public async page(
     href: string,
     trigger: Trigger,
+    event: LinkEvent | PopStateEvent,
     self: boolean
   ): Promise<void> {
     this.data.next.url = {
@@ -359,6 +360,7 @@ export class Core {
       ...this.url.parse(href),
     };
     this.data.trigger = trigger;
+    this.data.event = event;
 
     const page = this.cache.has(href)
       ? this.cache.update(href, { action: 'click' }).request
@@ -599,6 +601,7 @@ export class Core {
 
     this._data = {
       current,
+      event: undefined,
       next: { ...this.schemaPage },
       trigger: undefined,
     };
