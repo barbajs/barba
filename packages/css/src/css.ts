@@ -108,9 +108,8 @@ export class Css implements IBarbaPlugin<{}> {
         this.callbacks[kind] = resolve;
 
         container.addEventListener('transitionend', resolve, false);
-        await this.barba.helpers.nextTick();
         this.remove(container, kind); // CSS: remove kind
-        // await this.barba.helpers.nextTick();
+        await this.barba.helpers.nextTick();
         this.add(container, `${kind}-to`); // CSS: add kind-to
         await this.barba.helpers.nextTick();
       });
@@ -222,10 +221,6 @@ export class Css implements IBarbaPlugin<{}> {
    * `beforeEnter` hook.
    */
   private _beforeEnter(data: ITransitionData): Promise<void> {
-    // Avoid on first load
-    if (this.barba.history.size === 1) {
-      return Promise.resolve();
-    }
     return this.start(data.next.container, 'enter');
   }
 
@@ -245,10 +240,6 @@ export class Css implements IBarbaPlugin<{}> {
    * `afterEnter` hook.
    */
   private _afterEnter(data: ITransitionData): Promise<void> {
-    // Avoid on first load
-    if (this.barba.history.size === 1) {
-      return Promise.resolve();
-    }
     return this.end(data.next.container, 'enter');
   }
 }
