@@ -171,7 +171,10 @@ export class Css implements IBarbaPlugin<{}> {
   /**
    * `once` hook.
    */
-  private async _once(data: ITransitionData, t: ITransitionPage): Promise<any> {
+  private async _once(
+    data: ITransitionData,
+    t: ITransitionPage
+  ): Promise<any> {
     await this.barba.hooks.do('once', data, t);
 
     return this.next(data.next.container, 'once');
