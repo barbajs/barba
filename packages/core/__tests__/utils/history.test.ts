@@ -101,7 +101,7 @@ it('gets state(s)', () => {
 
   expect(state1).toEqual(first);
   expect(state2).toEqual(tmp);
-  expect(state2).toEqual(tmp);
+  expect(state).toEqual(tmp);
 });
 
 it('gets directions', () => {
