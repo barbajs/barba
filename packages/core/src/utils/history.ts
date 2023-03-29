@@ -113,7 +113,6 @@ export class History {
   public add(url: string, trigger: Trigger): void {
     // If no state, it will be updated later.
     const ns = 'tmp';
-    const index = this.size;
     const action = this._getAction(trigger);
     const state: IStateItem = {
       ns,
@@ -124,12 +123,21 @@ export class History {
       url,
     };
 
-    this._states.push(state);
-    this._pointer = index;
+    switch (action) {
+      case 'push':
+        this._pointer = this.size;
+        this._states.push(state);
+        break;
+      case 'replace':
+        this.set(this._pointer, state);
+        break;
+      /* istanbul ignore next */
+      default:
+    }
 
     const item: IHistoryItem = {
       from: this._session,
-      index,
+      index: this._pointer,
       states: [...this._states],
     };
 
