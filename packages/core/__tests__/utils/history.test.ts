@@ -97,7 +97,7 @@ it('gets state(s)', () => {
   history.change(second.url, 'barba');
   const state1 = history.get(0);
   const state2 = history.get(1);
-  const state = history.state;
+  const state = history.current;
 
   expect(state1).toEqual(first);
   expect(state2).toEqual(tmp);

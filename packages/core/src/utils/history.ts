@@ -210,13 +210,6 @@ export class History {
   }
 
   /**
-   * Get the last state (top of the history stack).
-   */
-  get state(): IStateItem {
-    return this._states[this._states.length - 1];
-  }
-
-  /**
    * Get the previous state.
    */
   get previous(): IStateItem | null {
