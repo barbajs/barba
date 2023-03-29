@@ -60,7 +60,6 @@ export class History {
    */
   public init(url: string, ns: string): void {
     this._session = 'barba';
-    const index = 0;
 
     const state: IStateItem = {
       ns,
@@ -71,12 +70,12 @@ export class History {
       url,
     };
 
+    this._pointer = 0;
     this._states.push(state);
-    this._pointer = index;
 
     const item: IHistoryItem = {
       from: this._session,
-      index,
+      index: this._pointer,
       states: [...this._states],
     };
 
