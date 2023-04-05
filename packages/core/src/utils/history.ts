@@ -48,6 +48,8 @@ interface IStateItem {
   scroll: ICoords;
   /** URL */
   url: string;
+  /** data */
+  data: object;
 }
 
 export class History {
@@ -68,6 +70,7 @@ export class History {
         y: window.scrollY,
       },
       url,
+      data: {},
     };
 
     this._pointer = 0;
@@ -121,6 +124,7 @@ export class History {
         y: window.scrollY,
       },
       url,
+      data: {},
     };
 
     switch (action) {
@@ -152,6 +156,32 @@ export class History {
       default:
     }
   }
+
+  /**
+   * Store custom user data per state.
+   */
+   public store(data: object, i?: number): void {
+     const index = i || this._pointer;
+     const state = this.get(index);
+
+     // merge data (allow data overwrite)
+     state.data = {
+       ...state.data,
+       ...data
+     };
+
+     // update states
+     this.set(index, state);
+
+     const item: IHistoryItem = {
+       from: this._session,
+       index: this._pointer,
+       states: [...this._states],
+     };
+
+     // update browser history
+     window.history.replaceState(item, '');
+   }
 
   /**
    * Update state.
