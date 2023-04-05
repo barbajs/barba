@@ -198,7 +198,7 @@ export class History {
   /**
    * Get state by index.
    */
-  public get(index: number) {
+  public get(index: number): IStateItem {
     return this._states[index];
   }
 
