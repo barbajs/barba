@@ -7,6 +7,7 @@ const first = {
     y: 0,
   },
   url: 'url1',
+  data: {},
 };
 const second = {
   ns: 'ns2',
@@ -15,6 +16,7 @@ const second = {
     y: 0,
   },
   url: 'url2',
+  data: {},
 };
 const tmp = {
   ...second,
@@ -152,4 +154,52 @@ it('manage history with data-barba-history="replace"', async () => {
 
   expect(h.ps).toHaveBeenCalledTimes(0);
   expect(h.rs).toHaveBeenCalledTimes(1);
+});
+
+it('store custom user data', async () => {
+  const custom = {
+    custom: 'data',
+  };
+
+  history.init(first.url, first.ns);
+  history.store(custom);
+
+  expect(history.current.data).toEqual(custom);
+});
+
+it('store custom user data per state', async () => {
+  const state1 = {
+    state: 1,
+  };
+
+  const state2 = {
+    state: 2,
+  };
+
+  history.init(first.url, first.ns);
+  history.store(state1);
+  history.change(second.url, 'barba');
+  history.store(state2);
+
+  expect(history.previous.data).toEqual(state1);
+  expect(history.current.data).toEqual(state2);
+});
+
+it('merge custom user data with existing one', async () => {
+  const custom = {
+    custom: 'data',
+  };
+
+  const update = {
+    additional: 'data',
+  };
+
+  history.init(first.url, first.ns);
+  history.store(custom);
+  history.store(update);
+
+  expect(history.current.data).toEqual({
+    ...custom,
+    ...update,
+  });
 });

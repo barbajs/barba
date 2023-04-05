@@ -81,6 +81,7 @@ it('init history', () => {
       y: 0,
     },
     url: 'http://localhost/',
+    data: {}
   });
 });
 
