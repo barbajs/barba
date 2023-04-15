@@ -6,7 +6,7 @@
       "npmClient": "npm"
     },
     "version": {
-      "allowBranch": "master"
+      "allowBranch": "main"
     }
   },
   "npmClient": "yarn",

@@ -12,7 +12,7 @@ assignees: ''
 ## Prerequisites
 
 - We realize there may be a lot of data requested here. We ask only that you do your best to provide as much information as possible so we can better help you.
-- Read the [contributing guidelines](https://github.com/barbajs/barba/blob/master/.github/CONTRIBUTING.md).
+- Read the [contributing guidelines](https://github.com/barbajs/barba/blob/main/.github/CONTRIBUTING.md).
 - Support questions are better asked in one of the following locations:
   - [Our chat](https://barbajs.slack.com)
   - [Stack Overflow](https://stackoverflow.com/questions/tagged/barbajs)
