@@ -369,7 +369,8 @@ export class Core {
           this.request(
             href,
             this.timeout,
-            this.onRequestError.bind(this, trigger)
+            this.onRequestError.bind(this, trigger),
+            this.cache
           ),
           'click',
           'pending'
@@ -456,7 +457,8 @@ export class Core {
       this.request(
         href,
         this.timeout,
-        this.onRequestError.bind(this, 'barba')
+        this.onRequestError.bind(this, 'barba'),
+        this.cache
       ).catch((error: RequestErrorOrResponse) => {
         this.logger.error(error);
       }),
@@ -520,7 +522,8 @@ export class Core {
       this.request(
         href,
         this.timeout,
-        this.onRequestError.bind(this, link)
+        this.onRequestError.bind(this, link),
+        this.cache
       ).catch((error: RequestErrorOrResponse) => {
         this.logger.error(error);
       }),
