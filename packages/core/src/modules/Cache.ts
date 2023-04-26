@@ -65,6 +65,13 @@ export class Cache extends Ignore {
   }
 
   /**
+   * Get status from cache
+   */
+  public getStatus(href: string): CacheStatus {
+    return this._state.get(href).status;
+  }
+
+  /**
    * Check if value exists into cache
    */
   public has(href: string): boolean {
