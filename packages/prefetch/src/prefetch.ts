@@ -87,7 +87,8 @@ class Prefetch implements IBarbaPlugin<IPrefetchOptions> {
                   .catch(error => {
                     this.logger.error(error);
                   }),
-                'prefetch'
+                'prefetch',
+                'pending'
               );
             } else {
               this.barba.cache.update(href, { action: 'prefetch' });
