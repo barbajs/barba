@@ -34,6 +34,7 @@ function request(
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
           resolve(xhr.responseText);
+          cache.update(url, { status: 'fulfilled' });
         } else if (xhr.status) {
           // HTTP code is not 200, reject with response.
           const res = {
@@ -42,6 +43,7 @@ function request(
           };
           requestError(url, res);
           reject(res);
+          cache.update(url, { status: 'rejected' });
         }
       }
     };
@@ -49,11 +51,13 @@ function request(
       const err = new Error(`Timeout error [${ttl}]`);
       requestError(url, err);
       reject(err);
+      cache.update(url, { status: 'rejected' });
     };
     xhr.onerror = () => {
       const err = new Error(`Fetch error`);
       requestError(url, err);
       reject(err);
+      cache.update(url, { status: 'rejected' });
     };
 
     xhr.open('GET', url);
