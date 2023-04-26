@@ -371,7 +371,8 @@ export class Core {
             this.timeout,
             this.onRequestError.bind(this, trigger)
           ),
-          'click'
+          'click',
+          'pending'
         ).request;
 
     // Need to wait before getting the right transition
@@ -459,7 +460,8 @@ export class Core {
       ).catch((error: RequestErrorOrResponse) => {
         this.logger.error(error);
       }),
-      'prefetch'
+      'prefetch',
+      'pending'
     );
   }
 
@@ -522,7 +524,8 @@ export class Core {
       ).catch((error: RequestErrorOrResponse) => {
         this.logger.error(error);
       }),
-      'enter'
+      'enter',
+      'pending'
     );
   }
 
