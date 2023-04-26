@@ -10,7 +10,7 @@
 /***/
 
 // Definitions
-import { CacheAction, CacheRequest, ICacheData, IgnoreOption } from '../defs';
+import { CacheAction, CacheRequest, CacheStatus, ICacheData, IgnoreOption } from '../defs';
 // Modules
 import { Ignore } from './Ignore';
 
@@ -27,16 +27,19 @@ export class Cache extends Ignore {
   public set(
     href: string,
     request: CacheRequest,
-    action: CacheAction
+    action: CacheAction,
+    status: CacheStatus,
   ): ICacheData {
     this._state.set(href, {
       action,
       request,
+      status,
     });
 
     return {
       action,
       request,
+      status,
     };
   }
 
