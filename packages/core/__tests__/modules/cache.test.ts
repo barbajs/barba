@@ -5,21 +5,24 @@ const cache = new Cache(false);
 const key = 'key';
 const request = Promise.resolve();
 const action = 'enter';
+const status = 'pending';
 const data = {
   action,
   request,
+  status,
 };
 
 it('sets, gets and has', () => {
-  cache.set(key, request, action);
+  cache.set(key, request, action, status);
 
   expect(cache.has(key)).toBeTruthy();
   expect(cache.get(key)).toEqual(data);
 });
 
-it('gets action and request', () => {
+it('gets action, request and status', () => {
   expect(cache.getAction(key)).toBe(action);
   expect(cache.getRequest(key)).toBe(request);
+  expect(cache.getStatus(key)).toBe(status);
 });
 
 it('update ', () => {
