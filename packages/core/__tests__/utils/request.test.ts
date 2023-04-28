@@ -41,6 +41,7 @@ it('throws fetch error', async () => {
 
   await expect(request(url, 2e3, requestError, barba.cache)).rejects.toEqual(error);
   expect(requestError).toHaveBeenCalledWith(url, error);
+  expect(barba.cache.getStatus(url)).toEqual('rejected');
 });
 
 it('throws result error with 404', async () => {
@@ -53,6 +54,7 @@ it('throws result error with 404', async () => {
 
   await expect(request(url, 2e3, requestError, barba.cache)).rejects.toEqual(error);
   expect(requestError).toHaveBeenCalledWith(url, error);
+  expect(barba.cache.getStatus(url)).toEqual('rejected');
 });
 
 it('throws timeout error', async () => {
@@ -62,6 +64,7 @@ it('throws timeout error', async () => {
 
   await expect(request(url, 100, requestError, barba.cache)).rejects.toEqual(error);
   expect(requestError).toHaveBeenCalledWith(url, error);
+  expect(barba.cache.getStatus(url)).toEqual('rejected');
 }, 1000);
 
 it('fetch text content', async () => {
@@ -70,6 +73,7 @@ it('fetch text content', async () => {
   await expect(request(url, undefined, requestError, barba.cache)).resolves.toBe('content');
   // expect((global as any).window.clearTimeout).toHaveBeenCalledTimes(1);
   expect(requestError).not.toHaveBeenCalled();
+  expect(barba.cache.getStatus(url)).toEqual('fulfilled');
 });
 
 // it('throws bad connection error', async () => {
