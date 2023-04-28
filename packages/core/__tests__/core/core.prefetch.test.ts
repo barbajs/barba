@@ -23,7 +23,7 @@ it('prefetch url', () => {
 
   barba.prefetch(url);
 
-  expect(spySet).toHaveBeenCalledWith(url, Promise.resolve(), 'prefetch');
+  expect(spySet).toHaveBeenCalledWith(url, Promise.resolve(), 'prefetch', 'pending');
 });
 
 it('prefetch wrong url', async () => {
