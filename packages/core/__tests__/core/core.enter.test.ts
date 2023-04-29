@@ -43,7 +43,7 @@ it('handle link enter', () => {
 });
 
 it('handle link enter with same url', () => {
-  barba.cache.set(sameUrl, Promise.resolve(sameHtml), 'init');
+  barba.cache.set(sameUrl, Promise.resolve(sameHtml), 'init', 'pending');
   spySet.mockRestore();
   link.href = sameUrl;
   span.dispatchEvent(mouseover);

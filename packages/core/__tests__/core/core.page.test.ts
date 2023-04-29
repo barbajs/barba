@@ -107,7 +107,7 @@ it('do page', async () => {
 
 it('do page [has cache]', async () => {
   barba.history.add = jest.fn();
-  barba.cache.set(sameUrl, Promise.resolve(sameHtml), 'init');
+  barba.cache.set(sameUrl, Promise.resolve(sameHtml), 'init', 'pending');
   spyCacheSet.mockRestore();
 
   // NOTE: as we use "same URL" (localhost), we need a "self" transition

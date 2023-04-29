@@ -11,7 +11,7 @@ const error = 'error';
 const request = Promise.resolve();
 
 it('forces URL on click', () => {
-  barba.cache.set(href, request, 'enter');
+  barba.cache.set(href, request, 'enter', 'pending');
   barba.onRequestError(trigger, href, error);
   expect(barba.force).not.toHaveBeenCalled();
 
@@ -22,7 +22,7 @@ it('forces URL on click', () => {
 
 it('calls custom request error', () => {
   barba['_requestCustomError'] = jest.fn();
-  barba.cache.set(href, request, 'click');
+  barba.cache.set(href, request, 'click', 'pending');
   barba.onRequestError(trigger, href, error);
   expect(barba['_requestCustomError']).toHaveBeenCalledWith(
     trigger,
@@ -35,7 +35,7 @@ it('calls custom request error', () => {
 
 it('does not force URL with falsy custom request error', () => {
   barba['_requestCustomError'] = jest.fn(() => false);
-  barba.cache.set(href, request, 'click');
+  barba.cache.set(href, request, 'click', 'pending');
   barba.onRequestError(trigger, href, error);
   expect(barba['_requestCustomError']).toHaveBeenCalledWith(
     trigger,
