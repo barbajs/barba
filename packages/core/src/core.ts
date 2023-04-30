@@ -208,23 +208,22 @@ export class Core {
       this.prevent.add('preventCustom', preventCustom);
     }
 
-    // 5. Use "current" data
-    // Init history
+    // 5. Init history
     this.history.init(current.url.href, current.namespace);
-    // Add to cache
-    // TODO: do not cache renderer HTML, only request results…
-    // this.cache.set(current.url.href, Promise.resolve(current.html), 'init');
 
-    // 6. Bind context
+    // 6. Add to cache
+    this.cache.set(current.url.href, Promise.resolve(current.html), 'init', 'fulfilled');
+
+    // 7. Bind context
     this._onLinkEnter = this._onLinkEnter.bind(this);
     this._onLinkClick = this._onLinkClick.bind(this);
     this._onStateChange = this._onStateChange.bind(this);
     this._bind();
 
-    // 7. Init plugins
+    // 8. Init plugins
     this.plugins.forEach(plugin => plugin.init());
 
-    // 8. Barba ready
+    // 9. Barba ready
     // Set next + trigger for once and `beforeEnter`/`afterEnter` view on page load.
     const onceData = this.data;
 
