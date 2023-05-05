@@ -9,6 +9,9 @@
 
 /***/
 
+// Definitions
+import { HeaderList, IHeaderData } from '../defs';
+
 export class Headers {
   private _list: HeaderList = new Map([
     ['x-barba', 'yes'],
