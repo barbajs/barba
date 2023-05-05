@@ -68,6 +68,7 @@ function request(
       'Accept',
       'text/html,application/xhtml+xml,application/xml'
     );
+    xhr.setRequestHeader('x-barba', 'yes');
 
     headers.all().forEach((value, key) => {
       xhr.setRequestHeader(key, value);
