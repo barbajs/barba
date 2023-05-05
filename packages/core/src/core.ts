@@ -35,6 +35,7 @@ import {
 import { hooks } from './hooks';
 // Modules
 import { Cache } from './modules/Cache';
+import { Headers } from './modules/Headers';
 import { Logger } from './modules/Logger';
 import { Prevent } from './modules/Prevent';
 import { Transitions } from './modules/Transitions';
@@ -84,6 +85,7 @@ export class Core {
    */
   // public history: History;
   public cache: Cache;
+  public headers: Headers;
   public prevent: Prevent;
   public transitions: Transitions;
   public views: Views;
@@ -195,6 +197,7 @@ export class Core {
 
     // 4. Init other modules
     this.cache = new Cache(cacheIgnore);
+    this.headers = new Headers();
     this.prevent = new Prevent(prefetchIgnore);
     this.transitions = new Transitions(transitions);
     this.views = new Views(views);
