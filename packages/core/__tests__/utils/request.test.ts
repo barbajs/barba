@@ -33,6 +33,18 @@ it('set correct headers', async () => {
   await request(url, 2e3, requestError, barba.cache, barba.headers);
 });
 
+it('set custom request headers', async() => {
+  barba.headers.set('x-custom-header', 'custom-value');
+
+  xhrMock.get(url, (req, res) => {
+    expect(req.header('x-custom-header')).toEqual('custom-value');
+
+    return res.status(200);
+  });
+
+  await request(url, 2e3, requestError, barba.cache, barba.headers);
+});
+
 it('throws fetch error', async () => {
   const error = new Error('Fetch error');
 
