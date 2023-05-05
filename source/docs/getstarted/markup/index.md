@@ -61,4 +61,4 @@ barba.init({
 
 Now you can use `data-custom="wrap"` in your HTML instead of `data-barba="wrapper"`.
 
-> See the list of all customizable attributes in the default [`schema`](https://github.com/barbajs/barba/blob/master/packages/core/src/schemas/attribute.ts).
+> See the list of all customizable attributes in the default [`schema`](https://github.com/barbajs/barba/blob/main/packages/core/src/schemas/attribute.ts).
