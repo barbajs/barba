@@ -16,6 +16,7 @@
 // Definitions
 import { RequestError } from '../defs';
 import { Cache } from '@barba/core/src/modules/Cache';
+import { Headers } from '@barba/core/src/modules/Headers';
 
 /**
  * Init a page request.
@@ -25,7 +26,8 @@ function request(
   url: string,
   ttl: number = 2e3,
   requestError: RequestError,
-  cache: Cache
+  cache: Cache,
+  headers: Headers
 ): Promise<string> {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
