@@ -22,7 +22,7 @@ it('set correct headers', async () => {
   expect.assertions(2);
 
   xhrMock.get(url, (req, res) => {
-    expect(req.header('accept')).toEqual(
+    expect(req.header('Accept')).toEqual(
       'text/html,application/xhtml+xml,application/xml'
     );
     expect(req.header('x-barba')).toEqual('yes');
