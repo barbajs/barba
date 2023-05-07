@@ -35,6 +35,7 @@ import {
 import { hooks } from './hooks';
 // Modules
 import { Cache } from './modules/Cache';
+import { Headers } from './modules/Headers';
 import { Logger } from './modules/Logger';
 import { Prevent } from './modules/Prevent';
 import { Transitions } from './modules/Transitions';
@@ -84,6 +85,7 @@ export class Core {
    */
   // public history: History;
   public cache: Cache;
+  public headers: Headers;
   public prevent: Prevent;
   public transitions: Transitions;
   public views: Views;
@@ -195,6 +197,7 @@ export class Core {
 
     // 4. Init other modules
     this.cache = new Cache(cacheIgnore);
+    this.headers = new Headers();
     this.prevent = new Prevent(prefetchIgnore);
     this.transitions = new Transitions(transitions);
     this.views = new Views(views);
@@ -369,7 +372,8 @@ export class Core {
             href,
             this.timeout,
             this.onRequestError.bind(this, trigger),
-            this.cache
+            this.cache,
+            this.headers
           ),
           'click',
           'pending'
@@ -457,7 +461,8 @@ export class Core {
         href,
         this.timeout,
         this.onRequestError.bind(this, 'barba'),
-        this.cache
+        this.cache,
+        this.headers
       ).catch((error: RequestErrorOrResponse) => {
         this.logger.error(error);
       }),
@@ -522,7 +527,8 @@ export class Core {
         href,
         this.timeout,
         this.onRequestError.bind(this, link),
-        this.cache
+        this.cache,
+        this.headers
       ).catch((error: RequestErrorOrResponse) => {
         this.logger.error(error);
       }),

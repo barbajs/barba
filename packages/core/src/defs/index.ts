@@ -1,5 +1,6 @@
 export * from './barba';
 // export * from './core';
+export * from './headers';
 export * from './cache';
 export * from './dom';
 export * from './global';
