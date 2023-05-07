@@ -27,7 +27,7 @@
     "lodash": "^4.17.11",
     "microbundle": "0.15.1",
     "npm-run-all": "4.1.5",
-    "prettier": "^2.8.3",
+    "prettier": "^2.8.8",
     "rimraf": "3.0.2",
     "source-map-explorer": "2.5.3",
     "start-server-and-test": "^1.15.3",
