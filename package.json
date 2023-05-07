@@ -6,7 +6,7 @@
     "@commitlint/config-conventional": "^17.4.2",
     "@commitlint/config-lerna-scopes": "^17.4.2",
     "@types/jest": "24.9.1",
-    "@types/lodash": "^4.14.191",
+    "@types/lodash": "^4.14.194",
     "all-contributors-cli": "^6.24.0",
     "babel-eslint": "^10.1.0",
     "commitizen": "^4.3.0",
