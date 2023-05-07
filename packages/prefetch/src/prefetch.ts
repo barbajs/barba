@@ -83,7 +83,8 @@ class Prefetch implements IBarbaPlugin<IPrefetchOptions> {
                     href,
                     this.barba.timeout,
                     this.barba['onRequestError'].bind(this.barba, 'barba'), // tslint:disable-line:no-string-literal
-                    this.barba.cache
+                    this.barba.cache,
+                    this.barba.headers
                   )
                   .catch(error => {
                     this.logger.error(error);
