@@ -196,16 +196,58 @@ it('add container', () => {
   expect(wrapper.children.length).toBe(1);
 });
 
-it('add container with sibling', () => {
-  const sibling = document.createElement('div');
-
+it('add container with container sibling', () => {
   wrapper.appendChild(currentContainer);
   document.body.appendChild(wrapper);
-  wrapper.appendChild(sibling);
 
   dom.addContainer(nextContainer, wrapper);
-  dom.removeContainer(currentContainer);
 
   expect(wrapper.children.length).toBe(2);
-  expect(nextContainer.nextElementSibling).toBe(sibling);
+  expect(nextContainer.previousElementSibling).toBe(currentContainer);
+  expect(dom.getContainer()).toBe(currentContainer);
+});
+
+it('add container with before sibling', () => {
+  const before = document.createElement('div');
+
+  wrapper.appendChild(before);
+  wrapper.appendChild(currentContainer);
+  document.body.appendChild(wrapper);
+
+  dom.removeContainer(currentContainer);
+  dom.addContainer(nextContainer, wrapper);
+
+  expect(wrapper.children.length).toBe(2);
+  expect(nextContainer.previousElementSibling).toBe(before);
+  expect(dom.getSibling().before).not.toBeNull();
+});
+
+it('add container with after sibling', () => {
+  const after = document.createElement('div');
+
+  wrapper.appendChild(currentContainer);
+  wrapper.appendChild(after);
+  document.body.appendChild(wrapper);
+
+  dom.removeContainer(currentContainer);
+  dom.addContainer(nextContainer, wrapper);
+
+  expect(wrapper.children.length).toBe(2);
+  expect(nextContainer.nextElementSibling).toBe(after);
+  expect(dom.getSibling().after).not.toBeNull();
+});
+
+it('add container with parent sibling', () => {
+  const parent = document.createElement('div');
+
+  parent.appendChild(currentContainer);
+  wrapper.appendChild(parent);
+  document.body.appendChild(wrapper);
+
+  dom.removeContainer(currentContainer);
+  dom.addContainer(nextContainer, wrapper);
+
+  expect(wrapper.children.length).toBe(1);
+  expect(nextContainer.parentNode).toBe(parent);
+  expect(dom.getSibling().parent).not.toBeNull();
 });
