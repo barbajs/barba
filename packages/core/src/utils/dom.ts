@@ -98,12 +98,7 @@ export class Dom {
    */
   public removeContainer(container: HTMLElement) {
     if (document.body.contains(container)) {
-      this._sibling = {
-        before: container.previousElementSibling,
-        after: container.nextElementSibling,
-        parent: container.parentElement
-      };
-
+      this._updateSibling(container);
       container.parentNode.removeChild(container);
     }
   }
@@ -211,6 +206,19 @@ export class Dom {
    */
   private _insertAfter(newNode: Node, referenceNode: Node) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+  }
+
+  /**
+  * Update current dom sibling regarding container
+  */
+  private _updateSibling(container: HTMLElement): IDomSibling {
+    this._sibling = {
+      before: container.previousElementSibling,
+      after: container.nextElementSibling,
+      parent: container.parentElement
+    };
+
+    return this._sibling;
   }
 }
 
