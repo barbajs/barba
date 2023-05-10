@@ -15,14 +15,18 @@
 import path from 'path';
 
 // Definitions
-import { ISchemaAttribute, Link, Scope, Wrapper } from '../defs';
+import { ISchemaAttribute, IDomSibling, Link, Scope, Wrapper } from '../defs';
 // Schemas
 import { schemaAttribute } from '../schemas/attribute';
 
 export class Dom {
   private _attr: ISchemaAttribute = schemaAttribute;
   private _parser: DOMParser;
-  private _sibling: Element | null;
+  private _sibling: IDomSibling = {
+    before: null,
+    after: null,
+    parent: null
+  };
 
   /**
    * Convert HTMLDocument to string.
@@ -94,22 +98,33 @@ export class Dom {
    */
   public removeContainer(container: HTMLElement) {
     if (document.body.contains(container)) {
-      this._sibling = container.previousElementSibling;
+      this._updateSibling(container);
       container.parentNode.removeChild(container);
     }
   }
 
   /**
-   * Add container before next sibling or at the end of the wrapper.
+   * Add container near previous container
    */
   public addContainer(container: HTMLElement, wrapper: HTMLElement) {
-    const existingSibling = this.getContainer() || this._sibling;
+    const siblingBefore = this.getContainer() || this._sibling.before;
 
-    if (existingSibling) {
-      this._insertAfter(container, existingSibling);
+    if (siblingBefore) {
+      this._insertAfter(container, siblingBefore);
+    } else if (this._sibling.after) {
+      this._sibling.after.parentNode.insertBefore(container, this._sibling.after);
+    } else if (this._sibling.parent) {
+      this._sibling.parent.appendChild(container);
     } else {
       wrapper.appendChild(container);
     }
+  }
+
+  /**
+  * Get current dom sibling
+  */
+  public getSibling(): IDomSibling {
+    return this._sibling;
   }
 
   /**
@@ -191,6 +206,19 @@ export class Dom {
    */
   private _insertAfter(newNode: Node, referenceNode: Node) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+  }
+
+  /**
+  * Update current dom sibling regarding container
+  */
+  private _updateSibling(container: HTMLElement): IDomSibling {
+    this._sibling = {
+      before: container.previousElementSibling,
+      after: container.nextElementSibling,
+      parent: container.parentElement
+    };
+
+    return this._sibling;
   }
 }
 
