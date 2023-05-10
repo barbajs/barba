@@ -126,6 +126,13 @@ export class Dom {
   }
 
   /**
+  * Get current dom sibling
+  */
+  public getSibling(): IDomSibling {
+    return this._sibling;
+  }
+
+  /**
    * Get `[data-barba-namespace]`.
    */
   public getNamespace(scope: Scope = document): string | null {
