@@ -39,6 +39,10 @@ const h = {
   rs: (global as any).window.history.replaceState = jest.fn(),
 };
 
+const data = {
+  custom: 'data',
+};
+
 afterEach(() => {
   history.clear();
 });
@@ -171,32 +175,20 @@ it('manage history with programmatic replace', async () => {
 });
 
 it('manage history with programmatic push and custom data', async () => {
-  const custom = {
-    custom: 'data',
-  };
-
-  history.add(first.url, 'barba', 'push', custom);
-  expect(history.current.data).toEqual(custom);
+  history.add(first.url, 'barba', 'push', data);
+  expect(history.current.data).toEqual(data);
 });
 
 it('manage history with programmatic replace and custom data', async () => {
-  const custom = {
-    custom: 'data',
-  };
-
-  history.add(first.url, 'barba', 'replace', custom);
-  expect(history.current.data).toEqual(custom);
+  history.add(first.url, 'barba', 'replace', data);
+  expect(history.current.data).toEqual(data);
 });
 
 it('store custom user data', async () => {
-  const custom = {
-    custom: 'data',
-  };
-
   history.init(first.url, first.ns);
-  history.store(custom);
+  history.store(data);
 
-  expect(history.current.data).toEqual(custom);
+  expect(history.current.data).toEqual(data);
 });
 
 it('store custom user data per state', async () => {
@@ -218,20 +210,16 @@ it('store custom user data per state', async () => {
 });
 
 it('merge custom user data with existing one', async () => {
-  const custom = {
-    custom: 'data',
-  };
-
   const update = {
     additional: 'data',
   };
 
   history.init(first.url, first.ns);
-  history.store(custom);
+  history.store(data);
   history.store(update);
 
   expect(history.current.data).toEqual({
-    ...custom,
+    ...data,
     ...update,
   });
 });
