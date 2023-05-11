@@ -170,6 +170,24 @@ it('manage history with programmatic replace', async () => {
   expect(h.rs).toHaveBeenCalledTimes(1);
 });
 
+it('manage history with programmatic push and custom data', async () => {
+  const custom = {
+    custom: 'data',
+  };
+
+  history.add(first.url, 'barba', 'push', custom);
+  expect(history.current.data).toEqual(custom);
+});
+
+it('manage history with programmatic replace and custom data', async () => {
+  const custom = {
+    custom: 'data',
+  };
+
+  history.add(first.url, 'barba', 'replace', custom);
+  expect(history.current.data).toEqual(custom);
+});
+
 it('store custom user data', async () => {
   const custom = {
     custom: 'data',

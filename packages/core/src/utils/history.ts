@@ -113,7 +113,7 @@ export class History {
   /**
    * Add a new state.
    */
-  public add(url: string, trigger: Trigger, action?: HistoryAction): void {
+  public add(url: string, trigger: Trigger, action?: HistoryAction, data?: object): void {
     // If no state, it will be updated later.
     const ns = 'tmp';
     const method = action ?? this._getAction(trigger);
@@ -124,7 +124,7 @@ export class History {
         y: window.scrollY,
       },
       url,
-      data: {},
+      data: data ?? {},
     };
 
     switch (method) {
