@@ -156,6 +156,20 @@ it('manage history with data-barba-history="replace"', async () => {
   expect(h.rs).toHaveBeenCalledTimes(1);
 });
 
+it('manage history with programmatic push', async () => {
+  history.add(first.url, 'barba', 'push');
+
+  expect(h.ps).toHaveBeenCalledTimes(1);
+  expect(h.rs).toHaveBeenCalledTimes(0);
+});
+
+it('manage history with programmatic replace', async () => {
+  history.add(first.url, 'barba', 'replace');
+
+  expect(h.ps).toHaveBeenCalledTimes(0);
+  expect(h.rs).toHaveBeenCalledTimes(1);
+});
+
 it('store custom user data', async () => {
   const custom = {
     custom: 'data',

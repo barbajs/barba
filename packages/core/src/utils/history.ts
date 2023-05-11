@@ -113,10 +113,10 @@ export class History {
   /**
    * Add a new state.
    */
-  public add(url: string, trigger: Trigger): void {
+  public add(url: string, trigger: Trigger, action?: HistoryAction): void {
     // If no state, it will be updated later.
     const ns = 'tmp';
-    const action = this._getAction(trigger);
+    const method = action ?? this._getAction(trigger);
     const state: IStateItem = {
       ns,
       scroll: {
@@ -127,7 +127,7 @@ export class History {
       data: {},
     };
 
-    switch (action) {
+    switch (method) {
       case 'push':
         this._pointer = this.size;
         this._states.push(state);
@@ -145,7 +145,7 @@ export class History {
       states: [...this._states],
     };
 
-    switch (action) {
+    switch (method) {
       case 'push':
         window.history && window.history.pushState(item, '', url);
         break;
