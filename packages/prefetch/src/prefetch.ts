@@ -28,6 +28,7 @@ class Prefetch implements IBarbaPlugin<IPrefetchOptions> {
   public observer: IntersectionObserver;
   public root: HTMLElement | HTMLDocument;
   public timeout: number;
+  public limit: number;
   public toPrefetch: Set<string> = new Set();
 
   /**
@@ -35,13 +36,14 @@ class Prefetch implements IBarbaPlugin<IPrefetchOptions> {
    */
   public install(
     barba: Core,
-    { root = document.body, timeout = 2e3 }: IPrefetchOptions = {}
+    { root = document.body, timeout = 2e3, limit = 0 }: IPrefetchOptions = {}
   ) {
     this.logger = new barba.Logger(this.name);
     this.logger.info(this.version);
     this.barba = barba;
     this.root = root;
     this.timeout = timeout;
+    this.limit = limit;
   }
 
   /**
