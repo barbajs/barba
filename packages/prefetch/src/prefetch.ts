@@ -112,8 +112,14 @@ class Prefetch implements IBarbaPlugin<IPrefetchOptions> {
 
     requestIdleCallback(
       () => {
+        let links = Array.from(this.root.querySelectorAll('a'));
+
+        if (this.limit > 0) {
+          links = links.slice(0, this.limit);
+        }
+
         // If not, find all links and use IntersectionObserver.
-        this.root.querySelectorAll('a').forEach(el => {
+        links.forEach(el => {
           const link = (el as unknown) as Link;
           const href = this.barba.dom.getHref(link);
 
