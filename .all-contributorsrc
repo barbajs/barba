@@ -731,6 +731,17 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "nicolas-cusan",
+      "name": "Nicolas Cusan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1353931?v=4",
+      "profile": "https://www.nicolascusan.com/",
+      "contributions": [
+        "question",
+        "bug",
+        "code"
+      ]
     }
   ],
   "commitConvention": "angular"
