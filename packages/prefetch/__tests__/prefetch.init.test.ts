@@ -31,6 +31,7 @@ it('init with defaults', () => {
 
   expect(prefetch.root).toBe(document.body);
   expect(prefetch.timeout).toBe(2e3);
+  expect(prefetch.limit).toBe(0);
   expect(prefetch.observe).toHaveBeenCalled();
 });
 
@@ -40,11 +41,13 @@ it('init with options', () => {
   barba.use(prefetch, {
     root: wrapper,
     timeout: 0,
+    limit: 0
   });
   barba.init();
 
   expect(prefetch.root).toBe(wrapper);
   expect(prefetch.timeout).toBe(0);
+  expect(prefetch.limit).toBe(0);
 });
 
 it('registers hooks', () => {
