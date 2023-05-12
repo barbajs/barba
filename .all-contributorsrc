@@ -702,6 +702,17 @@
       "contributions": [
         "question"
       ]
+    },
+    {
+      "login": "andersonleite",
+      "name": "Anderson Leite",
+      "avatar_url": "https://avatars.githubusercontent.com/u/52427?v=4",
+      "profile": "https://github.com/andersonleite",
+      "contributions": [
+        "question",
+        "bug"
+      ]
     }
-  ]
+  ],
+  "commitConvention": "angular"
 }
