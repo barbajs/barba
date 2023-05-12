@@ -28,6 +28,7 @@ class Prefetch implements IBarbaPlugin<IPrefetchOptions> {
   public observer: IntersectionObserver;
   public root: HTMLElement | HTMLDocument;
   public timeout: number;
+  public limit: number;
   public toPrefetch: Set<string> = new Set();
 
   /**
@@ -35,13 +36,14 @@ class Prefetch implements IBarbaPlugin<IPrefetchOptions> {
    */
   public install(
     barba: Core,
-    { root = document.body, timeout = 2e3 }: IPrefetchOptions = {}
+    { root = document.body, timeout = 2e3, limit = 0 }: IPrefetchOptions = {}
   ) {
     this.logger = new barba.Logger(this.name);
     this.logger.info(this.version);
     this.barba = barba;
     this.root = root;
     this.timeout = timeout;
+    this.limit = limit;
   }
 
   /**
@@ -68,38 +70,44 @@ class Prefetch implements IBarbaPlugin<IPrefetchOptions> {
     /* istanbul ignore next */
     this.observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const link = entry.target as Link;
-          const href = this.barba.dom.getHref(link);
+        if (!entry.isIntersecting) {
+          return;
+        }
 
-          if (this.toPrefetch.has(href)) {
-            this.observer.unobserve(link);
-            // Prefetch and cache
-            if (!this.barba.cache.has(href)) {
-              this.barba.cache.set(
+        const link = entry.target as Link;
+        const href = this.barba.dom.getHref(link);
+
+        if (!this.toPrefetch.has(href)) {
+          return;
+        }
+
+        this.observer.unobserve(link);
+
+        // Prefetch and cache
+        if (!this.barba.cache.has(href)) {
+          this.barba.cache.set(
+            href,
+            this.barba
+              .request(
                 href,
-                this.barba
-                  .request(
-                    href,
-                    this.barba.timeout,
-                    this.barba['onRequestError'].bind(this.barba, 'barba'), // tslint:disable-line:no-string-literal
-                    this.barba.cache,
-                    this.barba.headers
-                  )
-                  .catch(error => {
-                    this.logger.error(error);
-                  }),
-                'prefetch',
-                'pending'
-              );
-            } else {
-              this.barba.cache.update(href, { action: 'prefetch' });
-            }
-          }
+                this.barba.timeout,
+                this.barba['onRequestError'].bind(this.barba, 'barba'), // tslint:disable-line:no-string-literal
+                this.barba.cache,
+                this.barba.headers
+              )
+              .catch(error => {
+                this.logger.error(error);
+              }),
+            'prefetch',
+            'pending'
+          );
+        } else {
+          this.barba.cache.update(href, { action: 'prefetch' });
         }
       });
     });
     this.observe();
+
     // Register hooks
     this.barba.hooks.after(this.observe, this);
   }
@@ -110,8 +118,14 @@ class Prefetch implements IBarbaPlugin<IPrefetchOptions> {
 
     requestIdleCallback(
       () => {
+        let links = Array.from(this.root.querySelectorAll('a'));
+
+        if (this.limit > 0) {
+          links = links.slice(0, this.limit);
+        }
+
         // If not, find all links and use IntersectionObserver.
-        this.root.querySelectorAll('a').forEach(el => {
+        links.forEach(el => {
           const link = (el as unknown) as Link;
           const href = this.barba.dom.getHref(link);
 
