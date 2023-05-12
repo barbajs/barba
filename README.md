@@ -171,6 +171,7 @@ Thanks for taking time to contribute to Barba :tada: :+1:
       <td align="center" valign="top" width="14.28%"><a href="https://luis.pt"><img src="https://avatars3.githubusercontent.com/u/14956453?v=4?s=100" width="100px;" alt="Luís Carvalho"/><br /><sub><b>Luís Carvalho</b></sub></a><br /><a href="#question-luis-pt" title="Answering Questions">💬</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mrsamse"><img src="https://avatars2.githubusercontent.com/u/20925205?v=4?s=100" width="100px;" alt="Samuel Berisha"/><br /><sub><b>Samuel Berisha</b></sub></a><br /><a href="#question-mrsamse" title="Answering Questions">💬</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/andersonleite"><img src="https://avatars.githubusercontent.com/u/52427?v=4?s=100" width="100px;" alt="Anderson Leite"/><br /><sub><b>Anderson Leite</b></sub></a><br /><a href="#question-andersonleite" title="Answering Questions">💬</a> <a href="https://github.com/barbajs/barba/issues?q=author%3Aandersonleite" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://jaycollett.co/"><img src="https://avatars.githubusercontent.com/u/13233809?v=4?s=100" width="100px;" alt="Jay Collett"/><br /><sub><b>Jay Collett</b></sub></a><br /><a href="#question-JayBox325" title="Answering Questions">💬</a> <a href="https://github.com/barbajs/barba/issues?q=author%3AJayBox325" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>

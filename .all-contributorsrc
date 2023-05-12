@@ -712,6 +712,16 @@
         "question",
         "bug"
       ]
+    },
+    {
+      "login": "JayBox325",
+      "name": "Jay Collett",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13233809?v=4",
+      "profile": "https://jaycollett.co/",
+      "contributions": [
+        "question",
+        "bug"
+      ]
     }
   ],
   "commitConvention": "angular"
