@@ -3,7 +3,12 @@
  */
 
 // Definitions
-import { Trigger } from './index';
+import { IUrlFull, Trigger } from './index';
+
+export interface IResponse {
+  url: IUrlFull;
+  html: string;
+}
 
 export type RequestError = (
   url: string,
