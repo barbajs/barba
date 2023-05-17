@@ -47,27 +47,29 @@ function request(
 
         } else if (xhr.status) {
           // HTTP code is not 200, reject with response.
-          const res = {
+          const response = {
             status: xhr.status,
             statusText: xhr.statusText,
           };
-          requestError(url, res);
-          reject(res);
-          cache.update(url, { status: 'rejected' });
+
+          requestError(xhr.responseURL, response);
+          reject(response);
+
+          cache.update(xhr.responseURL, { status: 'rejected' });
         }
       }
     };
     xhr.ontimeout = () => {
-      const err = new Error(`Timeout error [${ttl}]`);
-      requestError(url, err);
-      reject(err);
-      cache.update(url, { status: 'rejected' });
+      const error = new Error(`Timeout error [${ttl}]`);
+      requestError(xhr.responseURL, error);
+      reject(error);
+      cache.update(xhr.responseURL, { status: 'rejected' });
     };
     xhr.onerror = () => {
-      const err = new Error(`Fetch error`);
-      requestError(url, err);
-      reject(err);
-      cache.update(url, { status: 'rejected' });
+      const error = new Error(`Fetch error`);
+      requestError(xhr.responseURL, error);
+      reject(error);
+      cache.update(xhr.responseURL, { status: 'rejected' });
     };
 
     xhr.open('GET', url);
