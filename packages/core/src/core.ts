@@ -367,20 +367,28 @@ export class Core {
     this.data.trigger = trigger;
     this.data.event = event;
 
-    const page = this.cache.has(href)
-      ? this.cache.update(href, { action: 'click' }).request
-      : this.cache.set(
-          href,
-          this.request(
-            href,
-            this.timeout,
-            this.onRequestError.bind(this, trigger),
-            this.cache,
-            this.headers
-          ),
-          'click',
-          'pending'
-        ).request;
+    let page;
+
+    if (this.cache.has(href)) {
+      page = this.cache.update(href, { action: 'click' }).request;
+    } else {
+      const request = this.request(
+        href,
+        this.timeout,
+        this.onRequestError.bind(this, trigger),
+        this.cache,
+        this.headers
+      );
+
+      // manage 301 server response: replace history
+      request.then((response) => {
+        if (response.url.href !== href) {
+          this.history.add(response.url.href, trigger, 'replace');
+        }
+      });
+
+      page = this.cache.set(href, request, 'click', 'pending').request;
+    }
 
     // Need to wait before getting the right transition
     if (this.transitions.shouldWait) {
