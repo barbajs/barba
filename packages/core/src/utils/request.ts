@@ -36,7 +36,6 @@ function request(
     xhr.onreadystatechange = () => {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
-          cache.update(url, { status: 'fulfilled' });
           resolve({
             url: {
               href: xhr.responseURL,
@@ -45,6 +44,10 @@ function request(
             html: xhr.responseText
           });
 
+          cache.update(url, {
+            status: 'fulfilled',
+            target: xhr.responseURL
+          });
         } else if (xhr.status) {
           // HTTP code is not 200, reject with response.
           const response = {
