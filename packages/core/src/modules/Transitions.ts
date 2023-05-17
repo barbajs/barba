@@ -19,6 +19,7 @@ import {
   ITransitionFilters,
   ITransitionOnce,
   ITransitionPage,
+  IResponse,
   Wrapper,
 } from '../defs';
 // Hooks
@@ -150,7 +151,7 @@ export class Transitions {
   }: {
     data: ITransitionData;
     transition: ITransitionPage;
-    page: Promise<string | void>;
+    page: Promise<IResponse | void>;
     wrapper: Wrapper;
   }) {
     const t = transition || {};

@@ -14,9 +14,10 @@
 /***/
 
 // Definitions
-import { RequestError } from '../defs';
+import { IResponse, RequestError } from '../defs';
 import { Cache } from '@barba/core/src/modules/Cache';
 import { Headers } from '@barba/core/src/modules/Headers';
+import { parse } from './url';
 
 /**
  * Init a page request.
@@ -28,15 +29,22 @@ function request(
   requestError: RequestError,
   cache: Cache,
   headers: Headers
-): Promise<string> {
+): Promise<IResponse> {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = () => {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
-          resolve(xhr.responseText);
           cache.update(url, { status: 'fulfilled' });
+          resolve({
+            url: {
+              href: xhr.responseURL,
+              ...parse(xhr.responseURL)
+            },
+            html: xhr.responseText
+          });
+
         } else if (xhr.status) {
           // HTTP code is not 200, reject with response.
           const res = {
