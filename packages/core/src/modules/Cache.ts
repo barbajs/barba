@@ -75,6 +75,13 @@ export class Cache extends Ignore {
   }
 
   /**
+   * Get target from cache
+   */
+  public getTarget(href: string): CacheTarget {
+    return this._state.get(href).target;
+  }
+
+  /**
    * Check if value exists into cache
    */
   public has(href: string): boolean {
