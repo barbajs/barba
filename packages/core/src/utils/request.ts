@@ -59,12 +59,14 @@ function request(
         }
       }
     };
+
     xhr.ontimeout = () => {
       const error = new Error(`Timeout error [${ttl}]`);
       requestError(xhr.responseURL, error);
       reject(error);
       cache.update(xhr.responseURL, { status: 'rejected' });
     };
+
     xhr.onerror = () => {
       const error = new Error(`Fetch error`);
       requestError(xhr.responseURL, error);
