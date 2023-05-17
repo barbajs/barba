@@ -310,7 +310,7 @@ export class Core {
       return;
     }
 
-    trigger = this.history.change(href, trigger, e);
+    trigger = this.history.change(this.cache.has(href) ? this.cache.get(href).target : href, trigger, e);
 
     if (e) {
       e.stopPropagation();
