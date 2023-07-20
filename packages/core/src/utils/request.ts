@@ -36,6 +36,7 @@ function request(
     xhr.onreadystatechange = () => {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
+          /* istanbul ignore next: bypass jest since xhr-mock doesn't support custom xhr.responseURL */
           const responseURL = xhr.responseURL !== '' && xhr.responseURL !== url ? xhr.responseURL : url;
 
           resolve({

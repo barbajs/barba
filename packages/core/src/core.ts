@@ -382,6 +382,7 @@ export class Core {
 
       // manage 301 server response: replace history
       request.then((response) => {
+        /* istanbul ignore next: bypass jest since xhr-mock doesn't support custom xhr.responseURL */
         if (response.url.href !== href) {
           this.history.add(response.url.href, trigger, 'replace');
         }
