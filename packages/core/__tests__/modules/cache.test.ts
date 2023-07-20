@@ -6,23 +6,32 @@ const key = 'key';
 const request = Promise.resolve();
 const action = 'enter';
 const status = 'pending';
+const target = key;
 const data = {
   action,
   request,
   status,
+  target,
 };
 
 it('sets, gets and has', () => {
-  cache.set(key, request, action, status);
+  cache.set(key, request, action, status, target);
 
   expect(cache.has(key)).toBeTruthy();
   expect(cache.get(key)).toEqual(data);
 });
 
-it('gets action, request and status', () => {
+it('set empty target', () => {
+  cache.set(key, request, action, status);
+
+  expect(cache.getTarget(key)).toBe(key);
+});
+
+it('gets action, request, status and target', () => {
   expect(cache.getAction(key)).toBe(action);
   expect(cache.getRequest(key)).toBe(request);
   expect(cache.getStatus(key)).toBe(status);
+  expect(cache.getTarget(key)).toBe(target);
 });
 
 it('update ', () => {
