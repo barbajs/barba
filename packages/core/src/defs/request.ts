@@ -6,8 +6,8 @@
 import { IUrlFull, Trigger } from './index';
 
 export interface IResponse {
-  url: IUrlFull;
   html: string;
+  url: IUrlFull;
 }
 
 export type RequestError = (

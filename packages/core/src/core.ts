@@ -216,8 +216,8 @@ export class Core {
 
     // 6. Add to cache
     this.cache.set(current.url.href, Promise.resolve({
+      html: current.html,
       url: current.url,
-      html: current.html
     }), 'init', 'fulfilled');
 
     // 7. Bind context
@@ -372,7 +372,7 @@ export class Core {
     if (this.cache.has(href)) {
       page = this.cache.update(href, { action: 'click' }).request;
     } else {
-      const request = this.request(
+      const pageRequest = this.request(
         href,
         this.timeout,
         this.onRequestError.bind(this, trigger),
@@ -381,14 +381,14 @@ export class Core {
       );
 
       // manage 301 server response: replace history
-      request.then((response) => {
+      pageRequest.then(response => {
         /* istanbul ignore next: bypass jest since xhr-mock doesn't support custom xhr.responseURL */
         if (response.url.href !== href) {
           this.history.add(response.url.href, trigger, 'replace');
         }
       });
 
-      page = this.cache.set(href, request, 'click', 'pending').request;
+      page = this.cache.set(href, pageRequest, 'click', 'pending').request;
     }
 
     // Need to wait before getting the right transition

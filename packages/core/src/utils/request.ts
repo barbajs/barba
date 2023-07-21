@@ -40,11 +40,11 @@ function request(
           const responseURL = xhr.responseURL !== '' && xhr.responseURL !== url ? xhr.responseURL : url;
 
           resolve({
+            html: xhr.responseText,
             url: {
               href: responseURL,
               ...parse(responseURL)
             },
-            html: xhr.responseText
           });
 
           cache.update(url, {
