@@ -14,7 +14,7 @@
 // Third-party
 import { pathToRegexp as ptr } from 'path-to-regexp';
 // Definitions
-import { ITransitionData, IResponse } from '../defs';
+import { IResponse, ITransitionData } from '../defs';
 // Utils
 import { dom } from './dom';
 import { history } from './history';

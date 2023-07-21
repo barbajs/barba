@@ -3,8 +3,8 @@
  */
 
 // Definitions
-import { ISchemaPage, Trigger } from './index';
 import { LinkEvent } from '../defs';
+import { ISchemaPage, Trigger } from './index';
 
 // Data
 export interface ITransitionData {

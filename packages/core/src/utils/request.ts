@@ -14,9 +14,9 @@
 /***/
 
 // Definitions
-import { IResponse, RequestError } from '../defs';
 import { Cache } from '@barba/core/src/modules/Cache';
 import { Headers } from '@barba/core/src/modules/Headers';
+import { IResponse, RequestError } from '../defs';
 import { parse } from './url';
 
 /**

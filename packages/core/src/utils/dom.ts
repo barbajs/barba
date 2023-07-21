@@ -15,7 +15,7 @@
 import path from 'path';
 
 // Definitions
-import { ISchemaAttribute, IDomSibling, Link, Scope, Wrapper } from '../defs';
+import { IDomSibling, ISchemaAttribute, Link, Scope, Wrapper } from '../defs';
 // Schemas
 import { schemaAttribute } from '../schemas/attribute';
 
