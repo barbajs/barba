@@ -121,8 +121,8 @@ export class Dom {
   }
 
   /**
-  * Get current dom sibling
-  */
+   * Get current dom sibling
+   */
   public getSibling(): IDomSibling {
     return this._sibling;
   }
@@ -209,8 +209,8 @@ export class Dom {
   }
 
   /**
-  * Update current dom sibling regarding container
-  */
+   * Update current dom sibling regarding container
+   */
   private _updateSibling(container: HTMLElement): IDomSibling {
     this._sibling = {
       after: container.nextElementSibling,
