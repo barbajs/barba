@@ -11,6 +11,7 @@ export interface IUrlBase {
   query: IGenericObject;
   port: number;
 }
+
 export interface IUrlFull extends IUrlBase {
   href: string | undefined;
 }

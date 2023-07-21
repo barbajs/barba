@@ -14,9 +14,10 @@
 /***/
 
 // Definitions
-import { RequestError } from '../defs';
+import { IResponse, RequestError } from '../defs';
 import { Cache } from '@barba/core/src/modules/Cache';
 import { Headers } from '@barba/core/src/modules/Headers';
+import { parse } from './url';
 
 /**
  * Init a page request.
@@ -28,37 +29,54 @@ function request(
   requestError: RequestError,
   cache: Cache,
   headers: Headers
-): Promise<string> {
+): Promise<IResponse> {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = () => {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
-          resolve(xhr.responseText);
-          cache.update(url, { status: 'fulfilled' });
+          /* istanbul ignore next: bypass jest since xhr-mock doesn't support custom xhr.responseURL */
+          const responseURL = xhr.responseURL !== '' && xhr.responseURL !== url ? xhr.responseURL : url;
+
+          resolve({
+            url: {
+              href: responseURL,
+              ...parse(responseURL)
+            },
+            html: xhr.responseText
+          });
+
+          cache.update(url, {
+            status: 'fulfilled',
+            target: responseURL
+          });
         } else if (xhr.status) {
           // HTTP code is not 200, reject with response.
-          const res = {
+          const response = {
             status: xhr.status,
             statusText: xhr.statusText,
           };
-          requestError(url, res);
-          reject(res);
+
+          requestError(url, response);
+          reject(response);
+
           cache.update(url, { status: 'rejected' });
         }
       }
     };
+
     xhr.ontimeout = () => {
-      const err = new Error(`Timeout error [${ttl}]`);
-      requestError(url, err);
-      reject(err);
+      const error = new Error(`Timeout error [${ttl}]`);
+      requestError(url, error);
+      reject(error);
       cache.update(url, { status: 'rejected' });
     };
+
     xhr.onerror = () => {
-      const err = new Error(`Fetch error`);
-      requestError(url, err);
-      reject(err);
+      const error = new Error(`Fetch error`);
+      requestError(url, error);
+      reject(error);
       cache.update(url, { status: 'rejected' });
     };
 

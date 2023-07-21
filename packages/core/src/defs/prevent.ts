@@ -4,6 +4,7 @@
 
 // Definitions
 import { Link } from './index';
+
 /**
  * Available data for all prevent checks.
  *

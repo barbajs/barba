@@ -1,7 +1,9 @@
 import xhrMock from 'xhr-mock';
 import { init } from '../../__mocks__/barba';
 import { request } from '../../src/utils';
+import { parse } from '../../src/utils/url';
 import barba from '../../src';
+import { IUrlFull, IResponse } from '../../src/defs';
 
 init();
 
@@ -9,6 +11,14 @@ init();
 (global as any).window.clearTimeout = jest.fn();
 const requestError = jest.fn();
 const url = 'url';
+const content = 'content';
+const response = {
+  url: {
+    href: url,
+    ...parse(url)
+  } as IUrlFull,
+  html: content
+} as IResponse;
 
 beforeEach(() => {
   xhrMock.setup();
@@ -80,9 +90,9 @@ it('throws timeout error', async () => {
 }, 1000);
 
 it('fetch text content', async () => {
-  xhrMock.get(url, (req, res) => res.status(200).body('content'));
+  xhrMock.get(url, (req, res) => res.status(200).body(content));
 
-  await expect(request(url, undefined, requestError, barba.cache, barba.headers)).resolves.toBe('content');
+  await expect(request(url, undefined, requestError, barba.cache, barba.headers)).resolves.toStrictEqual(response);
   // expect((global as any).window.clearTimeout).toHaveBeenCalledTimes(1);
   expect(requestError).not.toHaveBeenCalled();
   expect(barba.cache.getStatus(url)).toEqual('fulfilled');

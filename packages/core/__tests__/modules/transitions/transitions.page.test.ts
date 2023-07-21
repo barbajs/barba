@@ -1,7 +1,7 @@
 /* tslint:disable:no-empty */
 import { init } from '../../../__mocks__/barba';
 import barba from '../../../src';
-import { ISchemaPage, ITransitionData } from '../../../src/defs';
+import { ISchemaPage, ITransitionData, IResponse } from '../../../src/defs';
 import { hooks } from '../../../src/hooks';
 import { Logger } from '../../../src/modules/Logger';
 import { Transitions } from '../../../src/modules/Transitions';
@@ -62,7 +62,10 @@ beforeEach(() => {
   };
 });
 
-const page = Promise.resolve(nextHtml);
+const page = Promise.resolve({
+  url: {},
+  html: nextHtml
+} as IResponse);
 
 it('leaves falsy', async () => {
   expect.assertions(1);

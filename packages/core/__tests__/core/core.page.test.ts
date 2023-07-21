@@ -5,6 +5,8 @@ import barba from '../../src';
 import { hooks } from '../../src/hooks';
 import { Logger } from '../../src/modules/Logger';
 import { schemaAttribute } from '../../src/schemas/attribute';
+import { parse } from '../../src/utils/url';
+import { IUrlFull } from '../../src/defs';
 
 // Silence is gold… :)
 Logger.setLevel('off');
@@ -107,7 +109,13 @@ it('do page', async () => {
 
 it('do page [has cache]', async () => {
   barba.history.add = jest.fn();
-  barba.cache.set(sameUrl, Promise.resolve(sameHtml), 'init', 'pending');
+  barba.cache.set(sameUrl, Promise.resolve({
+    url: {
+      href: sameUrl,
+      ...parse(sameUrl)
+    } as IUrlFull,
+    html: sameHtml
+  }), 'init', 'pending');
   spyCacheSet.mockRestore();
 
   // NOTE: as we use "same URL" (localhost), we need a "self" transition
