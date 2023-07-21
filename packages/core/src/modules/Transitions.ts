@@ -15,11 +15,11 @@
 import {
   HooksTransition,
   HooksTransitionMap,
+  IResponse,
   ITransitionData,
   ITransitionFilters,
   ITransitionOnce,
   ITransitionPage,
-  IResponse,
   Wrapper,
 } from '../defs';
 // Hooks

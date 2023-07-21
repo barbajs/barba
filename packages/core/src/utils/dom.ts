@@ -23,8 +23,8 @@ export class Dom {
   private _attr: ISchemaAttribute = schemaAttribute;
   private _parser: DOMParser;
   private _sibling: IDomSibling = {
-    before: null,
     after: null,
+    before: null,
     parent: null
   };
 
@@ -213,8 +213,8 @@ export class Dom {
   */
   private _updateSibling(container: HTMLElement): IDomSibling {
     this._sibling = {
-      before: container.previousElementSibling,
       after: container.nextElementSibling,
+      before: container.previousElementSibling,
       parent: container.parentElement
     };
 

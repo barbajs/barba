@@ -42,14 +42,14 @@ interface ICoords {
  * @property URL
  */
 interface IStateItem {
+  /** data */
+  data: object;
   /** namespace */
   ns: string | undefined;
   /** Scroll position */
   scroll: ICoords;
   /** URL */
   url: string;
-  /** data */
-  data: object;
 }
 
 export class History {
@@ -64,13 +64,13 @@ export class History {
     this._session = 'barba';
 
     const state: IStateItem = {
+      data: {},
       ns,
       scroll: {
         x: window.scrollX,
         y: window.scrollY,
       },
       url,
-      data: {},
     };
 
     this._pointer = 0;
@@ -118,13 +118,13 @@ export class History {
     const ns = 'tmp';
     const method = action ?? this._getAction(trigger);
     const state: IStateItem = {
+      data: data ?? {},
       ns,
       scroll: {
         x: window.scrollX,
         y: window.scrollY,
       },
       url,
-      data: data ?? {},
     };
 
     switch (method) {
