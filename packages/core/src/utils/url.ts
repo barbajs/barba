@@ -36,12 +36,12 @@ export const getPath = (url: string = window.location.href) => parse(url).path;
 /**
  * Get query object from URL.
  */
-// export const getQuery = (url: string): IGenericObject => parse(url).query;
+export const getQuery = (url: string, stringify: boolean = false): IGenericObject|string => stringify ? JSON.stringify(parse(url).query) : parse(url).query;
 
 /**
  * Get hash from URL.
  */
-// export const getHash = (url: string): string => parse(url).hash;
+export const getHash = (url: string): string => parse(url).hash;
 
 /**
  * Parse URL for path, query and hash and more.
