@@ -86,6 +86,7 @@
 								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core_src_defs.igenericobject.html" class="tsd-kind-icon">IGeneric<wbr>Object</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core_src_defs.iheaderdata.html" class="tsd-kind-icon">IHeader<wbr>Data</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core_src_defs.ipreventcheckdata.html" class="tsd-kind-icon">IPrevent<wbr>Check<wbr>Data</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core_src_defs.iresponse.html" class="tsd-kind-icon">IResponse</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported"><a href="../interfaces/core_src_defs.irouteresolved.html" class="tsd-kind-icon">IRoute<wbr>Resolved</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core_src_defs.irule.html" class="tsd-kind-icon">IRule</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/core_src_defs.irules.html" class="tsd-kind-icon">IRules</a></li>
@@ -109,6 +110,7 @@
 								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="core_src_defs.html#cacheaction" class="tsd-kind-icon">Cache<wbr>Action</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="core_src_defs.html#cacherequest" class="tsd-kind-icon">Cache<wbr>Request</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="core_src_defs.html#cachestatus" class="tsd-kind-icon">Cache<wbr>Status</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="core_src_defs.html#cachetarget" class="tsd-kind-icon">Cache<wbr>Target</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="core_src_defs.html#headerlist" class="tsd-kind-icon">Header<wbr>List</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="core_src_defs.html#historyaction" class="tsd-kind-icon">History<wbr>Action</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="core_src_defs.html#hookfunction" class="tsd-kind-icon">Hook<wbr>Function</a></li>
@@ -147,17 +149,17 @@
 					<div class="tsd-signature tsd-kind-icon">Cache<wbr>Action<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"init"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"enter"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"click"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"prefetch"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/main/packages/core/src/defs/cache.ts#L11">packages/core/src/defs/cache.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/main/packages/core/src/defs/cache.ts#L15">packages/core/src/defs/cache.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
 					<a name="cacherequest" class="tsd-anchor"></a>
 					<h3>Cache<wbr>Request</h3>
-					<div class="tsd-signature tsd-kind-icon">Cache<wbr>Request<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">Cache<wbr>Request<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/core_src_defs.iresponse.html" class="tsd-signature-type">IResponse</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/main/packages/core/src/defs/cache.ts#L10">packages/core/src/defs/cache.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/main/packages/core/src/defs/cache.ts#L14">packages/core/src/defs/cache.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -167,7 +169,17 @@
 					<div class="tsd-signature tsd-kind-icon">Cache<wbr>Status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"pending"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"fulfilled"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"rejected"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/main/packages/core/src/defs/cache.ts#L12">packages/core/src/defs/cache.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/main/packages/core/src/defs/cache.ts#L16">packages/core/src/defs/cache.ts:16</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
+					<a name="cachetarget" class="tsd-anchor"></a>
+					<h3>Cache<wbr>Target</h3>
+					<div class="tsd-signature tsd-kind-icon">Cache<wbr>Target<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/main/packages/core/src/defs/cache.ts#L17">packages/core/src/defs/cache.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -359,7 +371,7 @@
 					<div class="tsd-signature tsd-kind-icon">Prevent<wbr>Check<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/main/packages/core/src/defs/prevent.ts#L26">packages/core/src/defs/prevent.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/main/packages/core/src/defs/prevent.ts#L27">packages/core/src/defs/prevent.ts:27</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -399,7 +411,7 @@
 					<div class="tsd-signature tsd-kind-icon">Request<wbr>Custom<wbr>Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/main/packages/core/src/defs/request.ts#L17">packages/core/src/defs/request.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/main/packages/core/src/defs/request.ts#L24">packages/core/src/defs/request.ts:24</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -439,7 +451,7 @@
 					<div class="tsd-signature tsd-kind-icon">Request<wbr>Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/main/packages/core/src/defs/request.ts#L8">packages/core/src/defs/request.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/main/packages/core/src/defs/request.ts#L13">packages/core/src/defs/request.ts:13</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -473,7 +485,7 @@
 					<div class="tsd-signature tsd-kind-icon">Request<wbr>Error<wbr>OrResponse<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Error</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/core_src_defs.ixhrresponse.html" class="tsd-signature-type">IXhrResponse</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/main/packages/core/src/defs/request.ts#L27">packages/core/src/defs/request.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/main/packages/core/src/defs/request.ts#L36">packages/core/src/defs/request.ts:36</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -493,7 +505,7 @@
 					<div class="tsd-signature tsd-kind-icon">Rule<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"strings"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"object"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"function"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/barbajs/barba/tree/main/packages/core/src/defs/rules.ts#L9">packages/core/src/defs/rules.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/barbajs/barba/tree/main/packages/core/src/defs/rules.ts#L10">packages/core/src/defs/rules.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -603,6 +615,9 @@
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/core_src_defs.ipreventcheckdata.html" class="tsd-kind-icon">IPrevent<wbr>Check<wbr>Data</a>
 					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/core_src_defs.iresponse.html" class="tsd-kind-icon">IResponse</a>
+					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="../interfaces/core_src_defs.irouteresolved.html" class="tsd-kind-icon">IRoute<wbr>Resolved</a>
 					</li>
@@ -656,6 +671,9 @@
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
 						<a href="core_src_defs.html#cachestatus" class="tsd-kind-icon">Cache<wbr>Status</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="core_src_defs.html#cachetarget" class="tsd-kind-icon">Cache<wbr>Target</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
 						<a href="core_src_defs.html#headerlist" class="tsd-kind-icon">Header<wbr>List</a>
