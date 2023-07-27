@@ -13,7 +13,7 @@
     "commitlint-config-ccgls": "1.4.0",
     "coveralls": "^3.1.1",
     "cypress": "^12.17.2",
-    "cz-ccgls": "^0.5.1",
+    "cz-ccgls": "^0.4.6",
     "eslint": "^8.45.0",
     "eslint-plugin-cypress": "^2.13.3",
     "gzip-size": "^7.0.0",
