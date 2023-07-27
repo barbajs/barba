@@ -4176,10 +4176,10 @@ cypress@^12.17.2:
     untildify "^4.0.0"
     yauzl "^2.10.0"
 
-cz-ccgls@^0.4.6:
-  version "0.4.6"
-  resolved "https://registry.yarnpkg.com/cz-ccgls/-/cz-ccgls-0.4.6.tgz#0f4145f041dbb578b74c485bdf47a2e84d531658"
-  integrity sha512-4UkPwrRUWSNPEXxtY34BLLzO+6yZ3d0Bwzvs3ixI64IymFadsWU9tlyU6OotK1hHr6YHo6kpvy+0hG13m4jU6w==
+cz-ccgls@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/cz-ccgls/-/cz-ccgls-0.5.1.tgz#77cd7562960100d67ab1a84aeeaafb23d92d466e"
+  integrity sha512-0xX0KbFqtbP5mBrZnFLqUyjp/4d7GdZruQRMgCy95a+VT/zYL/C7CuQTKbKYAyfiMhv71J3LjsS+9sf2Xr7R5Q==
   dependencies:
     conventional-commit-types "^3.0.0"
     find-cache-dir "^3.3.2"
