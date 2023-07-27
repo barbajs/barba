@@ -38,18 +38,19 @@ it('get path', () => {
   expect(path).toBe('/foo.html');
 });
 
-// DEV: unused
-// it('get query', () => {
-//   const query = url.getQuery('http://localhost/foo.html?foo=bar#hash');
+it('get query', () => {
+  const query = url.getQuery('http://localhost/foo.html?foo=bar#hash');
+  const queryAsString = url.getQuery('http://localhost/foo.html?foo=bar#hash', true);
 
-//   expect(query).toEqual({ foo: 'bar' });
-// });
+  expect(query).toEqual({ foo: 'bar' });
+  expect(queryAsString).toEqual('{"foo":"bar"}');
+});
 
-// it('get hash', () => {
-//   const hash = url.getHash('http://localhost/foo.html?foo=bar#hash');
+it('get hash', () => {
+  const hash = url.getHash('http://localhost/foo.html?foo=bar#hash');
 
-//   expect(hash).toBe('hash');
-// });
+  expect(hash).toBe('hash');
+});
 
 it('parse minimal path', () => {
   const { path, query, hash } = url.parse('/');
