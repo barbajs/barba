@@ -117,6 +117,7 @@ export class Store {
       const match = {};
 
       if (filters.self && t.name === 'self') {
+        matching.set(t, match);
         return true;
       }
 
