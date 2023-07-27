@@ -301,7 +301,8 @@ export class Core {
     if (trigger === 'popstate') {
       self =
         this.history.current &&
-        this.history.current.url === href;
+        this.url.getPath(this.history.current.url) === this.url.getPath(href) &&
+        this.url.getQuery(this.history.current.url, true) === this.url.getQuery(href, true);
     } else {
       self = this.prevent.run('sameUrl', null, null, href);
     }
