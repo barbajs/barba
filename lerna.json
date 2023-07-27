@@ -10,7 +10,9 @@
     }
   },
   "npmClient": "yarn",
-  "packages": ["packages/*"],
-  "useWorkspaces": true,
-  "version": "independent"
+  "packages": [
+    "packages/*"
+  ],
+  "version": "independent",
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json"
 }
