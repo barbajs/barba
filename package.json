@@ -47,7 +47,6 @@
   ],
   "types": "typings",
   "scripts": {
-    "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
     "build:watch": "lerna run build:watch --parallel",
     "clean": "rimraf docs && lerna clean",

@@ -35,9 +35,6 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - node_modules
-      - run:
-          name: Bootstrap Lerna monorepo
-          command: yarn bootstrap
       - persist_to_workspace:
           root: ~/repo
           paths:
