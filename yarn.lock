@@ -4094,13 +4094,14 @@ commitizen@^4.3.0:
     strip-bom "4.0.0"
     strip-json-comments "3.1.1"
 
-commitlint-config-ccgls@1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/commitlint-config-ccgls/-/commitlint-config-ccgls-1.3.0.tgz#9256695b3fe006d8711079005dd02189583a7672"
-  integrity sha512-7leWO0RmPudmFtpmJBYE3SXaZiPAW5CDruNA7fhaECMtOBYcU20mWtLBNB4xu6noIuLu4eaY8yjFpeNpTLmu0g==
+commitlint-config-ccgls@1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/commitlint-config-ccgls/-/commitlint-config-ccgls-1.4.0.tgz#47e35f0fffcfdca830c48d2155d66b43d6bfef6a"
+  integrity sha512-X9HWboKjmPnpQxcCCr9Qf89VI5skwNzid+qTTIbayzIjWJzzO0JA+V6YA+XmwdZhP4MPqXSn8aaJEVR0Ts32aw==
   dependencies:
     "@commitlint/config-conventional" "^14.1.0"
     "@lerna/project" "^4.0.0"
+    emoji-regex "^10.2.1"
     import-from "^4.0.0"
     read-pkg-up "^7.0.1"
 
@@ -4858,6 +4859,11 @@ electron-to-chromium@^1.4.251:
   version "1.4.284"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.284.tgz#61046d1e4cab3a25238f6bf7413795270f125592"
   integrity sha512-M8WEXFuKXMYMVr45fo8mq0wUrrJHheiKZf6BArTKk9ZBYCKJEOU5H8cdWgDT+qCVZf7Na4lVUaZsA+h6uA9+PA==
+
+emoji-regex@^10.2.1:
+  version "10.2.1"
+  resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-10.2.1.tgz#a41c330d957191efd3d9dfe6e1e8e1e9ab048b3f"
+  integrity sha512-97g6QgOk8zlDRdgq1WxwgTMgEWGVAQvB5Fdpgc1MkNy56la5SKP9GsMXKDOdqwn90/41a8yPwIGk1Y6WVbeMQA==
 
 emoji-regex@^7.0.1:
   version "7.0.3"

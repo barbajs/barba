@@ -10,7 +10,7 @@
     "all-contributors-cli": "^6.26.1",
     "babel-eslint": "^10.1.0",
     "commitizen": "^4.3.0",
-    "commitlint-config-ccgls": "1.3.0",
+    "commitlint-config-ccgls": "1.4.0",
     "coveralls": "^3.1.1",
     "cypress": "^12.17.2",
     "cz-ccgls": "^0.4.6",
