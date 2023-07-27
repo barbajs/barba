@@ -3,7 +3,7 @@ version: 2
 defaults: &defaults
   working_directory: ~/repo
   docker:
-    - image: cimg/node:18.12
+    - image: cimg/node:20.4
   # Not working: Job \"build\" has filters configured in the job definition. These filters are incompatible with workflows.
   # branches:
   #   only:
