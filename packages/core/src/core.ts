@@ -527,7 +527,7 @@ export class Core {
       return;
     }
 
-    const href = this.barba.url.getAbsoluteHref(this.dom.getHref(link));
+    const href = this.url.getAbsoluteHref(this.dom.getHref(link));
 
     if (this.prevent.checkHref(href)) {
       return;
