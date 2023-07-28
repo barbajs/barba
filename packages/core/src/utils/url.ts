@@ -19,8 +19,8 @@ import { IGenericObject, IUrlBase } from '../defs';
 export const getHref = () => window.location.href;
 
 /**
-* Get absolute href from URL.
-*/
+ * Get absolute href from URL.
+ */
 export const getAbsoluteHref = (url: string, base: string = document.baseURI): string => new URL(url, base).href;
 
 /**
