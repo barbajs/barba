@@ -462,6 +462,10 @@ export class Core {
    * Programmatically prefetch
    */
   public prefetch(href: string) {
+
+    // only prefetch absolute href
+    href = this.url.getAbsoluteHref(href);
+
     // Already in cache
     /* istanbul ignore next */
     if (this.cache.has(href)) {
