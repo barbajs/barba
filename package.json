@@ -37,7 +37,7 @@
     "typedoc-plugin-external-module-name": "^4.0.6",
     "typedoc-plugin-sourcefile-url": "^1.0.6",
     "typescript": "^3.9.10",
-    "typescript-tslint-plugin": "0.5.5",
+    "typescript-tslint-plugin": "1.0.2",
     "wait-for-expect": "3.0.2",
     "xhr-mock": "^2.4.1"
   },
