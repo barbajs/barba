@@ -26,6 +26,15 @@ it('prefetch url', () => {
   expect(spySet).toHaveBeenCalledWith(url, Promise.resolve(), 'prefetch', 'pending');
 });
 
+it('prefetch and cache absolute url only', () => {
+  const url = '/page.html';
+
+  barba.prefetch(url);
+
+  expect(barba.cache.has('/page.html')).toBeFalsy();
+  expect(barba.cache.has('http://localhost/page.html')).toBeTruthy();
+});
+
 it('prefetch wrong url', async () => {
   const url = 'http://localhost/bad';
 

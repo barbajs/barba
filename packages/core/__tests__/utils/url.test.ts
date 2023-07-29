@@ -7,6 +7,14 @@ it('get href', () => {
   expect(href).toBe(window.location.href);
 });
 
+it('get absolute href', () => {
+  const href1 = url.getAbsoluteHref('/foo.html');
+  const href2 = url.getAbsoluteHref('/foo.html', 'https://barba.js.org');
+
+  expect(href1).toBe('http://localhost/foo.html');
+  expect(href2).toBe('https://barba.js.org/foo.html');
+});
+
 it('get origin', () => {
   const origin = url.getOrigin();
 

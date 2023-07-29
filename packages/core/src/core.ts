@@ -462,6 +462,10 @@ export class Core {
    * Programmatically prefetch
    */
   public prefetch(href: string) {
+
+    // only prefetch absolute href
+    href = this.url.getAbsoluteHref(href);
+
     // Already in cache
     /* istanbul ignore next */
     if (this.cache.has(href)) {
@@ -523,7 +527,7 @@ export class Core {
       return;
     }
 
-    const href = this.dom.getHref(link);
+    const href = this.url.getAbsoluteHref(this.dom.getHref(link));
 
     if (this.prevent.checkHref(href)) {
       return;

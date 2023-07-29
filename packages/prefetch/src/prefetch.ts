@@ -75,7 +75,7 @@ class Prefetch implements IBarbaPlugin<IPrefetchOptions> {
         }
 
         const link = entry.target as Link;
-        const href = this.barba.dom.getHref(link);
+        const href = this.barba.url.getAbsoluteHref(this.barba.dom.getHref(link));
 
         if (!this.toPrefetch.has(href)) {
           return;
