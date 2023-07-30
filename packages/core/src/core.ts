@@ -101,6 +101,7 @@ export class Core {
   private _data: ITransitionData;
   private _requestCustomError: RequestCustomError;
   private _wrapper: Wrapper;
+  private _linkEvent: LinkEvent;
 
   /**
    * ### Init plugin with options.
@@ -286,6 +287,8 @@ export class Core {
     trigger: Trigger = 'barba',
     e?: LinkEvent | PopStateEvent
   ): Promise<void> {
+    this._linkEvent = null;
+
     // If animation running, force reload
     if (this.transitions.isRunning) {
       this.force(href);
@@ -562,6 +565,8 @@ export class Core {
    * Go for a Barba transition.
    */
   private _onLinkClick(e: LinkEvent): void {
+    this._linkEvent = e;
+
     // This use `prevent.checkLink` under the hood to get eligible link.
     const link = this._getLinkElement(e);
 
@@ -586,6 +591,11 @@ export class Core {
    * Go for a Barba transition.
    */
   private _onStateChange(e: PopStateEvent): void {
+    // istanbul ignore next: prevent running popstate if a non-eligible link has been clicked
+    if (this._linkEvent && !this._getLinkElement(this._linkEvent)) {
+      return;
+    }
+
     this.go(this.url.getHref(), 'popstate', e);
   }
 
