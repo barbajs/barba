@@ -34,26 +34,26 @@ it('gets action, request, status and target', () => {
   expect(cache.getTarget(key)).toBe(target);
 });
 
-it('update ', () => {
+it('update', () => {
   cache.update(key, { action: 'click' });
 
   expect(cache.getAction(key)).toBe('click');
 });
 
-it('deletes ', () => {
+it('deletes', () => {
   cache.delete(key);
 
   expect(cache.has(key)).toBeFalsy();
 });
 
-it('checks url ', () => {
+it('checks url', () => {
   cache.checkHref = jest.fn();
   cache.has(key);
 
   expect(cache.checkHref).toHaveBeenCalled();
 });
 
-it('uses cacheIgnore ', () => {
+it('uses cacheIgnore', () => {
   cache.checkHref = jest.fn().mockImplementation(() => true);
   const res = cache.has(key);
 

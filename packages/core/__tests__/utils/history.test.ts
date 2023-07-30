@@ -47,7 +47,7 @@ afterEach(() => {
   history.clear();
 });
 
-it('has no history ', () => {
+it('has no history', () => {
   expect(history.current).toBeUndefined();
 });
 

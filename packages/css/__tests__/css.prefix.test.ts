@@ -42,7 +42,7 @@ it('prefixes with transition name', async () => {
   expect(css.prefix).toBe(name);
 });
 
-it('prefixes with default ', async () => {
+it('prefixes with default', async () => {
   await barba.hooks.do('before', data, unnamed);
   expect(css.prefix).toBe('barba');
   css.prefix = null;

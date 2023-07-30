@@ -17,14 +17,14 @@ it('ignores all', () => {
   expect(ignore.checkHref(url)).toBeTruthy();
 });
 
-it('ignores URL ', () => {
+it('ignores URL', () => {
   ignore = new Ignore('/');
 
   expect(ignore.checkHref(url)).toBeTruthy();
   expect(ignore.checkHref(url2)).toBeFalsy();
 });
 
-it('ignores URLs ', () => {
+it('ignores URLs', () => {
   ignore = new Ignore(['/', '/:segment/foo.html']);
 
   expect(ignore.checkHref(url)).toBeTruthy();
