@@ -220,10 +220,12 @@ export class Core {
     this.history.init(current.url.href, current.namespace);
 
     // 6. Add to cache
-    this.cache.set(current.url.href, Promise.resolve({
-      html: current.html,
-      url: current.url,
-    }), 'init', 'fulfilled');
+    if (cacheFirstPage) {
+      this.cache.set(current.url.href, Promise.resolve({
+        html: current.html,
+        url: current.url,
+      }), 'init', 'fulfilled');
+    }
 
     // 7. Bind context
     this._onLinkEnter = this._onLinkEnter.bind(this);
