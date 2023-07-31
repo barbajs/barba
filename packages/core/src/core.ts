@@ -74,6 +74,7 @@ export class Core {
    */
   public timeout: number;
   public cacheIgnore: IgnoreOption;
+  public cacheFirstPage: boolean;
   public prefetchIgnore: IgnoreOption;
   public preventRunning: boolean;
   /**
@@ -140,6 +141,7 @@ export class Core {
    * - schema: [[SchemaAttribute]]
    * - timeout: `2e3`
    * - cacheIgnore: `false`
+   * - cacheFirstPage: `false`
    * - prefetchIgnore: `false`
    * - preventRunning: `false`
    * - prevent: `null`,
@@ -154,6 +156,7 @@ export class Core {
       requestError,
       timeout = 2e3,
       cacheIgnore = false,
+      cacheFirstPage = false,
       prefetchIgnore = false,
       /* istanbul ignore next */
       preventRunning = false,
@@ -178,6 +181,7 @@ export class Core {
     this._requestCustomError = requestError;
     this.timeout = timeout;
     this.cacheIgnore = cacheIgnore;
+    this.cacheFirstPage = cacheFirstPage;
     this.prefetchIgnore = prefetchIgnore;
     this.preventRunning = preventRunning;
 
