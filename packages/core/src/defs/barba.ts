@@ -27,6 +27,8 @@ export interface IBarbaOptions {
   requestError?: RequestCustomError | undefined;
   /** Disable cache or ignore some routes. */
   cacheIgnore?: IgnoreOption;
+  /** Disable cache on the first rendered page. */
+  cacheFirstPage?: boolean;
   /** Disable prefetch or ignore routes. */
   prefetchIgnore?: IgnoreOption;
   /** Custom prevent check. */

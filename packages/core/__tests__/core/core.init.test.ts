@@ -122,3 +122,11 @@ it('has other options', () => {
   expect(requestError()).toBeFalsy();
   expect(barba.wrapper).toBe(wrapper);
 });
+
+it('cache the first rendered page', () => {
+  barba.init({
+    cacheFirstPage: true,
+  });
+
+  expect(barba.cache.has('http://localhost/')).toBeTruthy();
+});
