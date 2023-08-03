@@ -1,9 +1,9 @@
 import xhrMock from 'xhr-mock';
 import { init } from '../../__mocks__/barba';
+import barba from '../../src';
+import { IResponse, IUrlFull } from '../../src/defs';
 import { request } from '../../src/utils';
 import { parse } from '../../src/utils/url';
-import barba from '../../src';
-import { IUrlFull, IResponse } from '../../src/defs';
 
 init();
 
@@ -13,11 +13,11 @@ const requestError = jest.fn();
 const url = 'url';
 const content = 'content';
 const response = {
+  html: content,
   url: {
     href: url,
     ...parse(url)
   } as IUrlFull,
-  html: content
 } as IResponse;
 
 beforeEach(() => {
@@ -43,7 +43,7 @@ it('set correct headers', async () => {
   await request(url, 2e3, requestError, barba.cache, barba.headers);
 });
 
-it('set custom request headers', async() => {
+it('set custom request headers', async () => {
   barba.headers.set('x-custom-header', 'custom-value');
 
   xhrMock.get(url, (req, res) => {

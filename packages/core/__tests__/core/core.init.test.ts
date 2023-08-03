@@ -75,13 +75,13 @@ it('has current page content', () => {
 it('init history', () => {
   barba.init();
   expect(barba.history.current).toEqual({
+    data: {},
     ns: 'ns',
     scroll: {
       x: 0,
       y: 0,
     },
     url: 'http://localhost/',
-    data: {}
   });
 });
 

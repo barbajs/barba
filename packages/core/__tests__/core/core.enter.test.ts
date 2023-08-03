@@ -2,8 +2,8 @@ import waitForExpect from 'wait-for-expect';
 import xhrMock from 'xhr-mock';
 import { init } from '../../__mocks__/barba';
 import barba from '../../src';
-import { parse } from '../../src/utils/url';
 import { IUrlFull } from '../../src/defs';
+import { parse } from '../../src/utils/url';
 
 const { link, span, mouseover } = init();
 
@@ -46,11 +46,11 @@ it('handle link enter', () => {
 
 it('handle link enter with same url', () => {
   barba.cache.set(sameUrl, Promise.resolve({
+    html: sameHtml,
     url: {
       href: sameUrl,
       ...parse(sameUrl)
     } as IUrlFull,
-    html: sameHtml
   }), 'init', 'pending');
   spySet.mockRestore();
   link.href = sameUrl;

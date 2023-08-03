@@ -1,22 +1,22 @@
 import { history } from '../../src/utils/history';
 
 const first = {
+  data: {},
   ns: 'ns1',
   scroll: {
     x: 0,
     y: 0,
   },
   url: 'url1',
-  data: {},
 };
 const second = {
+  data: {},
   ns: 'ns2',
   scroll: {
     x: 0,
     y: 0,
   },
   url: 'url2',
-  data: {},
 };
 const tmp = {
   ...second,
