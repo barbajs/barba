@@ -119,6 +119,16 @@ it('add history', async () => {
   );
 });
 
+it('change history', async () => {
+  spyHistory = jest.spyOn(barba.history, 'change');
+
+  await barba.prefetch('http://localhost/');
+  await barba.go('http://localhost/foo', 'barba');
+  await barba.go('http://localhost/', 'barba');
+
+  expect(barba.history.change).toHaveBeenCalledTimes(2);
+});
+
 it('manage direction', async () => {
   barba.page = jest.fn();
 
