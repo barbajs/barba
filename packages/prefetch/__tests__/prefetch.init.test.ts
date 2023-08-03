@@ -39,9 +39,9 @@ it('init with options', () => {
   prefetch.observe = jest.fn();
   barba.destroy();
   barba.use(prefetch, {
+    limit: 0,
     root: wrapper,
     timeout: 0,
-    limit: 0
   });
   barba.init();
 
