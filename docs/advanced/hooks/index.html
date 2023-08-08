@@ -558,6 +558,11 @@
   <div class="docs__markdown">
   <h1 id="Hooks"><a href="#Hooks" class="headerlink" title="Hooks"></a>Hooks</h1><p>A “hook” is a <strong>regular method</strong> that is called at a specific time in the Barba lifecycle.</p>
 <p>Hooks are triggered by <a href="/docs/advanced/transitions/"><code>Transitions</code></a> and <a href="/docs/advanced/views/"><code>Views</code></a>, but are not “shared” between them: <strong>they run separately</strong>, either <strong>synchronously or asynchronously</strong> using the common <code>this.async()</code> syntax <em>(<a href="https://github.com/sboudrias/run-async#readme" target="_blank" rel="noopener">see run-async</a>)</em> or returning a promise.</p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><ol>
+<li><a href="#Base-hooks">Base hooks</a></li>
+<li><a href="#Global-hooks">Global hooks</a></li>
+<li><a href="#Parameters">Parameters</a></li>
+</ol>
 <h2 id="Base-hooks"><a href="#Base-hooks" class="headerlink" title="Base hooks"></a>Base hooks</h2><p>Barba uses a collection of base hooks:</p>
 <table>
 <thead>

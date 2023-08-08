@@ -558,6 +558,10 @@
   <div class="docs__markdown">
   <h1 id="Views"><a href="#Views" class="headerlink" title="Views"></a>Views</h1><p>Views allows you to have <strong>some logic related to the content of a <a href="/docs/getstarted/markup/#Namespace"><code>namespace</code></a></strong>.<br>It’s a good place to init or destroy things, making the code run in a confined place.</p>
 <p>They use a subset of <a href="/docs/advanced/hooks/#Base-hooks">base <code>hooks</code></a>.</p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><ol>
+<li><a href="#Syntax">Syntax</a></li>
+<li><a href="#Programmatic-use">Programmatic use</a></li>
+</ol>
 <h2 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  views: [&#123;</span><br><span class="line">    namespace: <span class="string">'index'</span>,</span><br><span class="line">    beforeLeave(data) &#123;</span><br><span class="line">      <span class="comment">// do something before leaving the current `index` namespace</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    namespace: <span class="string">'contact'</span>,</span><br><span class="line">    beforeEnter(data) &#123;</span><br><span class="line">      <span class="comment">// do something before entering the `contact` namespace</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
