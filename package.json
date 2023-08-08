@@ -37,7 +37,7 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.3.0",
     "cpx": "^1.5.0",
-    "dotenv": "^16.0.3",
+    "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "ejs-compiled-loader": "^3.1.0",
     "eslint": "^8.46.0",
