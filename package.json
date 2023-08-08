@@ -33,7 +33,7 @@
     "@babel/core": "^7.22.10",
     "@babel/plugin-proposal-class-properties": "^7.18.6",
     "@babel/preset-env": "^7.22.10",
-    "@google-cloud/storage": "^6.9.0",
+    "@google-cloud/storage": "^6.12.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.3.0",
     "cpx": "^1.5.0",
