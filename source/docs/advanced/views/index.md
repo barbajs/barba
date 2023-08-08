@@ -12,6 +12,10 @@ It's a good place to init or destroy things, making the code run in a confined p
 
 They use a subset of [base `hooks`](/docs/advanced/hooks/#Base-hooks).
 
+## Summary
+1. [Syntax](#Syntax)
+2. [Programmatic use](#Programmatic-use)
+
 ## Syntax
 
 ```js

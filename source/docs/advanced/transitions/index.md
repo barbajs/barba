@@ -11,6 +11,12 @@ Barba allows you to define a **global transition**, that run everywhere on your 
 
 They use all [base `hooks`](/docs/advanced/hooks/#Base-hooks).
 
+## Summary
+1. [Syntax](#Syntax)
+2. [Rules](#Rules)
+3. [Self](#Self)
+4. [Sync mode](#Sync-mode)
+
 ## Syntax
 
 ```js

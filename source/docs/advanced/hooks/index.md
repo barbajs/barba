@@ -11,6 +11,11 @@ A "hook" is a **regular method** that is called at a specific time in the Barba 
 
 Hooks are triggered by [`Transitions`](/docs/advanced/transitions/) and [`Views`](/docs/advanced/views/), but are not "shared" between them: **they run separately**, either **synchronously or asynchronously** using the common `this.async()` syntax _([see run-async](https://github.com/sboudrias/run-async#readme))_ or returning a promise.
 
+## Summary
+1. [Base hooks](#Base-hooks)
+2. [Global hooks](#Global-hooks)
+3. [Parameters](#Parameters)
+
 ## Base hooks
 
 Barba uses a collection of base hooks:
