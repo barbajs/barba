@@ -38,7 +38,7 @@
     "babel-loader": "^8.3.0",
     "cpx": "^1.5.0",
     "dotenv": "^16.0.3",
-    "ejs": "^3.1.8",
+    "ejs": "^3.1.9",
     "ejs-compiled-loader": "^3.1.0",
     "eslint": "^8.46.0",
     "firebase": "^7.24.0",
