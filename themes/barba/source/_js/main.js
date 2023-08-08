@@ -78,7 +78,7 @@ class Main {
       })
 
       barba.init({
-        debug: true,
+        // debug: true,
         transitions: [
           defaultTransition,
           homeToFeature,
