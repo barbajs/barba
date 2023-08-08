@@ -27,7 +27,7 @@ Frequently Asked Questions when starting using BarbaJS.
 
 ### Why Barba reload the page on same url?
 
-This is the intended behavior. When a page take time to load and reach the [request timeout](/docs/advanced/recipes/#timeout), it will reload instead of doing "nothing", which can be very frustrating for most users. Use a [`prevent` strategy](/docs/advanced/strategies/#prevent) to change this behavior.
+This is the intended behavior. When a page take time to load and reach the [request timeout](/docs/advanced/recipes/#timeout), it will reload or redirect instead of doing "nothing", which can be very frustrating for most users. Use a [`prevent` strategy](/docs/advanced/strategies/#prevent) to change this behavior.
 
 ### How to prevent transitions to break?
 

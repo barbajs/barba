@@ -139,6 +139,8 @@ barba.init({
 
 In addition, you can properly catch the error by using the [`requestError`](#requestError) callback.
 
+> If a timeout occurs when you are trying to go to another page, Barba will redirect you instead of reloading the page.
+
 ## Partial output
 
 Barba sends **a custom HTTP Header** named `x-barba` in the `XMLHttpRequest`.
