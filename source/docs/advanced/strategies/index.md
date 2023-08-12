@@ -119,8 +119,33 @@ They both shares the same set of properties.
 | `ns`     | String | Namespace of the page             |
 | `scroll` | Object | `x` / `y` positions of the scroll |
 | `url`    | String | URL of the history position       |
+| `data`   | Object | Custom data for the current page  |
 
 > Be careful, `barba.history.previous` object equals `null` when your application is starting.
+
+#### `history.store`
+
+In some situation, you may need to **store custom information based on user navigation** and access them later in your code. Barba now offer a way of doing this with ease using the `barba.history.store` method.
+
+```js
+barba.history.store({
+  id: 2547,
+  random: Math.random(),
+  href: window.location.href,
+});
+```
+
+> Be careful, data will be overwritten if you call twice the `store` method with the same data attribute.
+
+Then later in the code, after a page transition, you can **access your custom data** from the previous page:
+
+```js
+const id = barba.history.previous.data.id;
+const random = barba.history.previous.data.random;
+const href = barba.history.previous.data.href;
+```
+
+As it's using `replaceState` API under the hood, data are automatically rolled within the history, meaning if you call the `store` method before a page transition, the custom data will be stored inside `history.current`, then after a page transition, data will be available inside `history.previous` while `history.current` stay empty until you put something inside it.
 
 ### `data-barba-history`
 
