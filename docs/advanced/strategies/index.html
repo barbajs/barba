@@ -685,10 +685,25 @@
 <td>String</td>
 <td>URL of the history position</td>
 </tr>
+<tr>
+<td><code>data</code></td>
+<td>Object</td>
+<td>Custom data for the current page</td>
+</tr>
 </tbody></table>
 <blockquote>
 <p>Be careful, <code>barba.history.previous</code> object equals <code>null</code> when your application is starting.</p>
 </blockquote>
+<h4 id="history-store"><a href="#history-store" class="headerlink" title="history.store"></a><code>history.store</code></h4><p>In some situation, you may need to <strong>store custom information based on user navigation</strong> and access them later in your code. Barba now offer a way of doing this with ease using the <code>barba.history.store</code> method.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">barba.history.store(&#123;</span><br><span class="line">  id: <span class="number">2547</span>,</span><br><span class="line">  random: <span class="built_in">Math</span>.random(),</span><br><span class="line">  href: <span class="built_in">window</span>.location.href,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Be careful, data will be overwritten if you call twice the <code>store</code> method with the same data attribute.</p>
+</blockquote>
+<p>Then later in the code, after a page transition, you can <strong>access your custom data</strong> from the previous page:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> id = barba.history.previous.data.id;</span><br><span class="line"><span class="keyword">const</span> random = barba.history.previous.data.random;</span><br><span class="line"><span class="keyword">const</span> href = barba.history.previous.data.href;</span><br></pre></td></tr></table></figure>
+
+<p>As it’s using <code>replaceState</code> API under the hood, data are automatically rolled within the history, meaning if you call the <code>store</code> method before a page transition, the custom data will be stored inside <code>history.current</code>, then after a page transition, data will be available inside <code>history.previous</code> while <code>history.current</code> stay empty until you put something inside it.</p>
 <h3 id="data-barba-history"><a href="#data-barba-history" class="headerlink" title="data-barba-history"></a><code>data-barba-history</code></h3><p>Sometimes, you may want to “alter” the browser history by <strong>replacing the current entry without having to push a new one</strong>. This can easily be done with the <code>data-barba-history=&quot;replace&quot;</code> attribute.</p>
 <p>In the example below, if you come from the <code>index</code> page and click on <code>black</code> link, the <code>barba.history.previous</code> will equal <code>index</code> while <code>barba.history.current</code> will equal <code>black</code>. Clicking on <code>white</code> will replace the current <code>black</code> entry with the <code>white</code> one, while the previous entry remains intact and equal to <code>index</code>.</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/theme?color=black"</span> <span class="attr">data-barba-history</span>=<span class="string">"replace"</span>&gt;</span>black<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/theme?color=white"</span> <span class="attr">data-barba-history</span>=<span class="string">"replace"</span>&gt;</span>white<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -744,7 +759,7 @@
 
     <footer class="site-footer footer">
   b.js©2023<br>
-  Last updated on Aug 8th 23
+  Last updated on Aug 12th 23
 </footer>
 
   </div>
