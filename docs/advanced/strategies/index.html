@@ -591,6 +591,87 @@
 <blockquote>
 <p>Cache lifetime is <strong>restricted to Barba instance</strong> and will be cleared when leaving the site.</p>
 </blockquote>
+<h3 id="cacheFirstPage"><a href="#cacheFirstPage" class="headerlink" title="cacheFirstPage"></a><code>cacheFirstPage</code></h3><p>Allows Barba to <strong>cache the first rendered page</strong>.</p>
+<p>In some situations it is useful to cache that page, but most time it is worse to cache the rendered HTML, because <strong>it may be modified by other scripts</strong> and those scripts have to deal with the cached page later.</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>false</code> <em>(default)</em></td>
+<td>Do not cache the first rendered page</td>
+</tr>
+<tr>
+<td><code>true</code></td>
+<td>Cache the first rendered page</td>
+</tr>
+</tbody></table>
+<p>Use it like this:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  cacheFirstPage: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="barba-cache"><a href="#barba-cache" class="headerlink" title="barba.cache"></a><code>barba.cache</code></h3><p>When cache is enabled, Barba internally use a <strong>cache instance</strong> to store cache data of all pages.</p>
+<h4 id="Cache-data"><a href="#Cache-data" class="headerlink" title="Cache data"></a>Cache data</h4><p>Using the internal <code>cache.get(url)</code> method, you can easily retrieve <strong>cache informations for a specified URL</strong>.<br>Useful in some situations when you need to know request status and progression during a page transition.</p>
+<p>It returns a <a href="https://barba.js.org/api/interfaces/core_src_defs.icachedata.html" target="_blank"><code>ICacheData</code> object</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>action</code></td>
+<td>String <code>&#39;init&#39;</code></td>
+<td>Page has been cached <strong>on init</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>String <code>&#39;enter&#39;</code></td>
+<td>Page has been cached <strong>on mouseover</strong><br>regarding the <a href="/docs/advanced/strategies/#prefetchIgnore"><code>prefetchIgnore</code></a> strategy</td>
+</tr>
+<tr>
+<td></td>
+<td>String <code>&#39;click&#39;</code></td>
+<td>Page has been cached with a <strong>user click</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>String <code>&#39;prefetch&#39;</code></td>
+<td>Page has been cached with a <strong>programmatic prefetch</strong><br>or the <a href="/docs/plugins/prefetch/">@barba/prefetch</a> plugin</td>
+</tr>
+<tr>
+<td><code>request</code></td>
+<td>Object <code>Promise</code></td>
+<td>Request associated to the page</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>String <code>&#39;pending&#39;</code></td>
+<td>Request has started and <code>Promise</code> is pending</td>
+</tr>
+<tr>
+<td></td>
+<td>String <code>&#39;fulfilled&#39;</code></td>
+<td>Request has been fulfilled</td>
+</tr>
+<tr>
+<td></td>
+<td>String <code>&#39;rejected&#39;</code></td>
+<td>Request has been rejected (an error occured)</td>
+</tr>
+<tr>
+<td><code>target</code></td>
+<td>String</td>
+<td>Target URL stored in the cache</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>See <a href="https://barba.js.org/api/classes/core_src_modules.cache.html" target="_blank"><code>Cache</code> module</a> API documentation to learn more.</p>
+</blockquote>
 <h2 id="Prefetch"><a href="#Prefetch" class="headerlink" title="Prefetch"></a>Prefetch</h2><h3 id="prefetchIgnore"><a href="#prefetchIgnore" class="headerlink" title="prefetchIgnore"></a><code>prefetchIgnore</code></h3><p>Allows Barba to <strong>prefetch your pages</strong> on <code>mouseover</code> or <code>touchstart</code> events.</p>
 <p>Since there is a <strong>100-300ms delay</strong> during the user hover and the click, Barba use this time to start prefetching the next page. Most of time, this is enough to get the next page ready.</p>
 <table>
@@ -759,7 +840,7 @@
 
     <footer class="site-footer footer">
   b.js©2023<br>
-  Last updated on Aug 12th 23
+  Last updated on Aug 16th 23
 </footer>
 
   </div>
