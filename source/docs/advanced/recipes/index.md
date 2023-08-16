@@ -16,7 +16,8 @@ Based on your project and website features to implement, those recipes may help 
 2. [Containers](#Containers)
 3. [Scroll position](#Scroll-position)
 4. [Browser requests](#Browser-requests)
-5. [Partial output](#Partial-output)
+5. [Custom headers](#Custom-headers)
+6. [Partial output](#Partial-output)
 
 ## Debug
 
@@ -141,11 +142,43 @@ In addition, you can properly catch the error by using the [`requestError`](#req
 
 > If a timeout occurs when you are trying to go to another page, Barba will redirect you instead of reloading the page.
 
+## Custom headers
+
+You can **pass custom request headers** to the `XMLHttpRequest` object and manage them using exposed methods:
+
+```js
+// set request headers
+barba.headers.set('x-header-name', 'headerValue');
+barba.headers.set('x-another-header-name', 'anotherHeaderValue');
+
+// overwrite one
+barba.headers.set('x-header-name', 'overwrite');
+
+// get a specific header
+const header = barba.headers.get('x-header-name');
+
+// get all header
+const headers = barba.headers.all();
+
+// check if a custom header exists
+if (barba.headers.has('x-header-name')) {
+  // do something
+}
+
+// delete a custom header
+barba.headers.delete('x-header-name');
+
+// clear all headers
+barba.headers.clear();
+```
+
+> Keep in mind that if you want a request header to be present server-side, you need to set it **before Barba starts the page transition**.
+>
+> By default, Barba sends **a non-removable custom HTTP Header** named `x-barba`.
+
 ## Partial output
 
-Barba sends **a custom HTTP Header** named `x-barba` in the `XMLHttpRequest`.
-
-If you are using a server side language like PHP, you can detect this custom HTTP Header and output just the container instead of the entire page: this could result in **less bandwidth usage** and **less server-side load**.
+If you are using a **server side language like PHP**, you can detect your [custom HTTP headers](/docs/advanced/recipes/#Custom-headers) and output just the container instead of the entire page: this could result in **less bandwidth usage** and **less server-side load**.
 
 ```php
 <?php
