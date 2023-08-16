@@ -567,6 +567,18 @@
 <p>On slow network or with a high page weight, the server can take time to prefetch the response and can lead Barba to abort the transition and display a <em>Timeout error</em> message.</p>
 <p>See the <a href="/docs/advanced/recipes/#timeout"><code>timeout</code></a> setting to properly manage this behavior.</p>
 </blockquote>
+<h2 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h2><h3 id="root"><a href="#root" class="headerlink" title="root"></a><code>root</code></h3><p>The <code>HTMLElement</code> or <code>HTMLDocument</code> to wrap, by default it uses the <code>document.body</code>.</p>
+<p>You can <strong>pass a custom element</strong> to prevent the plugin from prefetching all links from the entire wrapper. You can also apply a custom <a href="/docs/plugins/prefetch/#limit">limit</a> to only prefetch the 4th first link of the <code>root</code> element.</p>
+<h3 id="timeout"><a href="#timeout" class="headerlink" title="timeout"></a><code>timeout</code></h3><p>Delay before internal <code>requestIdleCallback</code> call is canceled, in <code>milliseconds</code>.</p>
+<blockquote>
+<p>See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback#parameters" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback#parameters</a>.</p>
+</blockquote>
+<h3 id="limit"><a href="#limit" class="headerlink" title="limit"></a><code>limit</code></h3><p>Number limit of links to be prefetched.</p>
+<blockquote>
+<p><strong>Zero mean “no limit”</strong>: the plugin will prefetch all eligible links of the <a href="/docs/plugins/prefetch/#root">root</a> element.</p>
+</blockquote>
+<p>Here is an example with all options passed to the plugin:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span>;</span><br><span class="line"><span class="keyword">import</span> barbaPrefetch <span class="keyword">from</span> <span class="string">'@barba/prefetch'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// get the wrapper</span></span><br><span class="line"><span class="keyword">const</span> wrapper = <span class="built_in">document</span>.querySelector(<span class="string">'.prefetch-wrapper'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// tell Barba to use the prefetch plugin</span></span><br><span class="line">barba.use(barbaPrefetch, &#123;</span><br><span class="line">  root: wrapper,</span><br><span class="line">  timeout: <span class="number">2500</span>,</span><br><span class="line">  limit: <span class="number">0</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// init Barba</span></span><br><span class="line">barba.init();</span><br></pre></td></tr></table></figure>
 
 </div>
 
