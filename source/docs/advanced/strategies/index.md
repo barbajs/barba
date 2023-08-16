@@ -39,6 +39,31 @@ barba.init({
 
 > Cache lifetime is **restricted to Barba instance** and will be cleared when leaving the site.
 
+### `barba.cache`
+
+When cache is enabled, Barba internally use a **cache instance** to store cache data of all pages.
+
+#### Cache data
+
+Using the internal `cache.get(url)` method, you can easily retrieve **cache informations for a specified URL**.
+Useful in some situations when you need to know request status and progression during a page transition.
+
+It returns a <a href="https://barba.js.org/api/interfaces/core_src_defs.icachedata.html" target="_blank">`ICacheData` object</a>:
+
+| Property  | Type                 | Description                                                                                                                   |
+| --------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `action`  | String `'init'`      | Page has been cached **on init**                                                                                              |
+|           | String `'enter'`     | Page has been cached **on mouseover**<br>regarding the [`prefetchIgnore`](/docs/advanced/strategies/#prefetchIgnore) strategy |
+|           | String `'click'`     | Page has been cached with a **user click**                                                                                    |
+|           | String `'prefetch'`  | Page has been cached with a **programmatic prefetch**<br>or the [@barba/prefetch](/docs/plugins/prefetch/) plugin             |
+| `request` | Object `Promise`     | Request associated to the page                                                                                                |
+| `status`  | String `'pending'`   | Request has started and `Promise` is pending                                                                                  |
+|           | String `'fulfilled'` | Request has been fulfilled                                                                                                    |
+|           | String `'rejected'`  | Request has been rejected (an error occured)                                                                                  |
+| `target`  | String               | Target URL stored in the cache                                                                                                |
+
+> See <a href="https://barba.js.org/api/classes/core_src_modules.cache.html" target="_blank">`Cache` module</a> API documentation to learn more.
+
 ## Prefetch
 
 ### `prefetchIgnore`
