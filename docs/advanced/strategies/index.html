@@ -700,6 +700,12 @@
 <blockquote>
 <p>To prefetch all eligible links that <strong>enter the viewport</strong>, use the <a href="/docs/plugins/prefetch/">@barba/prefetch</a> plugin.</p>
 </blockquote>
+<h3 id="Prefetch-URL"><a href="#Prefetch-URL" class="headerlink" title="Prefetch URL"></a>Prefetch URL</h3><p>You can <strong>programmatically prefetch some URLs</strong> using the <code>barba.prefetch</code> code method:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">barba.prefetch(<span class="string">'about.html'</span>);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Note that <strong>all prefetched URLs are stored absolute</strong> in the <a href="/docs/recipes#barba-cache">barba.cache</a>: if you prefetch <code>about.html</code>, it will be stored in the cache as <code>https://localhost/about.html</code> instead. This prevent caching twice the same page if you omit to prefix your URLs in the output.</p>
+</blockquote>
 <h2 id="Prevent"><a href="#Prevent" class="headerlink" title="Prevent"></a>Prevent</h2><h3 id="preventRunning"><a href="#preventRunning" class="headerlink" title="preventRunning"></a><code>preventRunning</code></h3><p>Tells Barba to <strong>prevent page “force reload”</strong> when the user clicks on an eligible link during a transition is running.<br>This option is useful if you don’t want your users to break running transitions, especially if they are long.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  preventRunning: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
