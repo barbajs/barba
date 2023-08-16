@@ -39,6 +39,25 @@ barba.init({
 
 > Cache lifetime is **restricted to Barba instance** and will be cleared when leaving the site.
 
+### `cacheFirstPage`
+
+Allows Barba to **cache the first rendered page**.
+
+In some situations it is useful to cache that page, but most time it is worse to cache the rendered HTML, because **it may be modified by other scripts** and those scripts have to deal with the cached page later.
+
+| Value                | Description                          |
+| -------------------- | ------------------------------------ |
+| `false` _(default)_  | Do not cache the first rendered page |
+| `true`               | Cache the first rendered page        |
+
+Use it like this:
+
+```js
+barba.init({
+  cacheFirstPage: true
+});
+```
+
 ### `barba.cache`
 
 When cache is enabled, Barba internally use a **cache instance** to store cache data of all pages.
