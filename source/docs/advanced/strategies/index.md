@@ -115,7 +115,7 @@ You can **programmatically prefetch some URLs** using the `barba.prefetch` code 
 barba.prefetch('about.html');
 ```
 
-> Note that **all prefetched URLs are stored absolute** in the [barba.cache](/docs/recipes#barba-cache): if you prefetch `about.html`, it will be stored in the cache as `https://localhost/about.html` instead. This prevent caching twice the same page if you omit to prefix your URLs in the output.
+> Note that **all prefetched URLs are stored absolute** in the [barba.cache](/docs/advanced/recipes#barba-cache): if you prefetch `about.html`, it will be stored in the cache as `https://localhost/about.html` instead. This prevent caching twice the same page if you omit to prefix your URLs in the output.
 
 ## Prevent
 
