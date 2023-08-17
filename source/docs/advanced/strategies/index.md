@@ -185,6 +185,28 @@ They both shares the same set of properties.
 
 > Be careful, `barba.history.previous` object equals `null` when your application is starting.
 
+#### `history.add`
+
+This method bring the ability to **programmatically push or replace history entries** to easily keep the history up to date in your application based on user interaction.
+
+| Argument  | Type                      | Description                                             |
+| --------- | ------------------------- | ------------------------------------------------------- |
+| `url`     | String                    | URL of the page you want to push/replace in the history |
+| `trigger` | Object `Trigger`          | The element that triggers the history action            |
+|           | String 'barba'            | Programmatic trigger                                    |
+| `action`  | String 'push' _(default)_ | Push a new entry in the history                         |
+|           | String 'replace'          | Replace the current entry in the history                |
+
+```js
+// push a new entry in the history
+history.add('push.html', 'barba', 'push');
+
+// replace a history entry
+history.add('replace.html', 'barba', 'replace');
+```
+
+> See <a href="https://barba.js.org/api/classes/core_src_utils.history.html" target="_blank">`History` utility</a> API documentation to learn more.
+
 #### `history.store`
 
 In some situation, you may need to **store custom information based on user navigation** and access them later in your code. Barba now offer a way of doing this with ease using the `barba.history.store` method.
@@ -221,5 +243,3 @@ In the example below, if you come from the `index` page and click on `black` lin
 ```
 
 > The default Barba behavior for history is `push`, so you don't have to manually write `data-barba-history="push"` on all your links.
->
-> As of today, `data-barba-history="replace"` is the only way to properly replace a state into the `window.history`: this will evolve in the next release.

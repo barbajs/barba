@@ -15,8 +15,9 @@ Barba is brought to you with a bunch of **useful utilities**.
 - `barba.force(href: string)` → Force Barba to **redirect to a specific URL** without playing your transitions, equivalent to `location.href` change
 - `barba.prefetch(href: string)` → Prefetch the given URL, see [prefetch strategy](/docs/advanced/strategies/#Prefetch)
 - `barba.url.parse(url: string)` → Parse the given URL and retrieve a <a href="https://barba.js.org/api/interfaces/_core_src_defs_url_.iurlbase.html" target="_blank">`IUrlBase`</a>
-- `barba.history.previous` → Get the previous history <a href="https://barba.js.org/api/interfaces/_core_src_utils_history_.istateitem.html" target="_blank">`IStateItem`</a> object, with URL, namespace and scroll x/y positions
-- `barba.history.add(url: string, trigger: Trigger)` → Add a new state in the browser history, allowing you to add "sub-URL" in the same page
+- `barba.history.previous` → Get the previous history object, see [history strategy](/docs/advanced/strategies/#history-previous-current)
+- `barba.history.current` → Get the current history object, see [history strategy](/docs/advanced/strategies/#history-previous-current)
+- `barba.history.add(url: string, trigger: Trigger, action?: HistoryAction)` → Push or replace a new state in the browser history, see [history strategy](/docs/advanced/strategies/#history-add)
 - `barba.cache.get(url: string)` → Get [cache data](/docs/advanced/strategies/#Cache-data) for a given URL and retrieve action, request, status and target
 
 > This is a draft section of **@barba/core utilities** that shows the most important you could use in your project, check the [Developer API](https://barba.js.org/api) for more informations.
