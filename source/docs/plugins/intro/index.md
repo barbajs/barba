@@ -20,14 +20,16 @@ Here is the list of all available plugins for Barba:
 - [@barba/preset](/docs/plugins/preset/) → ready-to-use basic transitions pack _**(coming soon)**_
 
 ## Usage
-To use a plugin, simply tell Barba what plugin(s) you want to use **before initialize** it:
+To use a plugin, simply tell Barba what plugin(s) and option(s) you want to use **before initialize** it:
 
 ```js
 import barba from '@barba/core';
-import barbaPrefetch from '@barba/prefetch';
+import barbaPlugin from '@barba/plugin';
 
-// tell Barba what plugins to use
-barba.use(barbaPrefetch);
+// tell Barba what plugin to use
+barba.use(barbaPlugin, {
+  custom: 'value',
+});
 
 // init Barba
 barba.init({

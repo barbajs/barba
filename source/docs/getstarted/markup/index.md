@@ -11,7 +11,7 @@ At the beginning, Barba needs to know a little bit about your **site architectur
 
 ## DOM structure
 
-By default, you can use this markup insinde your pages:
+By default, you can use this markup inside your pages:
 
 ```html
 <body data-barba="wrapper">

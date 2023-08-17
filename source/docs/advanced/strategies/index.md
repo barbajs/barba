@@ -145,11 +145,11 @@ barba.init({
 Allows you to add a **custom "prevent" test** on eligible links.
 If this function returns `true`, Barba will be disable for links that pass the test.
 
-| Argument | Property | Description     |
-| -------- | -------- | --------------- |
-| Object   | `el`     | Clicked element |
-|          | `event`  | Triggered event |
-|          | `href`   | Next page href  |
+| Argument | Description     |
+| -------- | --------------- |
+| `el`     | Clicked element |
+| `event`  | Triggered event |
+| `href`   | Next page href  |
 
 ```js
 barba.init({
@@ -189,13 +189,13 @@ They both shares the same set of properties.
 
 This method bring the ability to **programmatically push or replace history entries** to easily keep the history up to date in your application based on user interaction.
 
-| Argument  | Type                      | Description                                             |
-| --------- | ------------------------- | ------------------------------------------------------- |
-| `url`     | String                    | URL of the page you want to push/replace in the history |
-| `trigger` | Object `Trigger`          | The element that triggers the history action            |
-|           | String 'barba'            | Programmatic trigger                                    |
-| `action`  | String 'push' _(default)_ | Push a new entry in the history                         |
-|           | String 'replace'          | Replace the current entry in the history                |
+| Argument  | Type                        | Description                                             |
+| --------- | --------------------------- | ------------------------------------------------------- |
+| `url`     | String                      | URL of the page you want to push/replace in the history |
+| `trigger` | Object `Trigger`            | The element that triggers the history action            |
+|           | String `'barba'`            | Programmatic trigger                                    |
+| `action`  | String `'push'` _(default)_ | Push a new entry in the history                         |
+|           | String `'replace'`          | Replace the current entry in the history                |
 
 ```js
 // push a new entry in the history

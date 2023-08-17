@@ -98,21 +98,24 @@ window.scrollTo(scrollX, scrollY);
 Allows you to **catch request errors**.
 If this function returns `false`, wrong links will not be "force" triggered.
 
-| Argument   | Type                           | Description                                                                                                                                                     |
-| ---------- | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `trigger`  | HTMLElement                    | The clicked/hovered HTMLElement                                                                                                                                 |
-|            | String `'barba'`               | Programmatic navigation                                                                                                                                         |
-|            | String `'back'` \| `'forward'` | Browser backward/forward button                                                                                                                                 |
-| `action`   | String                         | The user action on the link: `'enter'` when hovering, `'click'` when clicking, or `'prefetch'` when prefetching with [@barba/prefetch](/docs/plugins/prefetch/) |
-| `url`      | String                         | Requested URL                                                                                                                                                   |
-| `response` | Object                         | Fetch error with `message` or response with `status`, `statusText`, etc.                                                                                        |
+| Argument   | Type                           | Description                                                                                                               |
+| ---------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
+| `trigger`  | HTMLElement                    | The clicked/hovered HTMLElement                                                                                           |
+|            | String `'barba'`               | Programmatic navigation                                                                                                   |
+|            | String `'back'` \| `'forward'` | Browser backward/forward button                                                                                           |
+| `action`   | String `'enter'`               | Page was reached **on mouseover**<br>regarding the [`prefetchIgnore`](/docs/advanced/strategies/#prefetchIgnore) strategy |
+|            | String `'click'`               | Page was reached with a **user click**                                                                                    |
+|            | String `'prefetch'`            | Page was reached with a **programmatic prefetch**<br>or the [@barba/prefetch](/docs/plugins/prefetch/) plugin             |
+| `url`      | String                         | Requested URL                                                                                                             |
+| `response` | Object                         | Fetch error with `message` or response with `status`, `statusText`, etc.                                                  |
 
 Here is an example to manage 404 server responses with a custom page:
 
 ```js
 barba.init({
   requestError: (trigger, action, url, response) => {
-    // go to a custom 404 page if the user click on a link that return a 404 response status
+
+    // go to a custom 404 page if server respond with a 404 response status
     if (action === 'click' && response.status && response.status === 404) {
       barba.go('/404');
     }

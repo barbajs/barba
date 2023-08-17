@@ -59,3 +59,5 @@ In a web page called `index.html`, put the following code:
 ```
 
 > In order to see the opacity transition properly run, you need to **add another page next this one** and link them together.
+>
+> Be sure to read the [markup section](/docs/getstarted/markup/) before diving into Barba.

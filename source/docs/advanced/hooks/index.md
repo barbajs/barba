@@ -7,7 +7,7 @@ url: 'docs/advanced/hooks/'
 
 # Hooks
 
-A "hook" is a **regular method** that is called at a specific time in the Barba lifecycle.
+A "hook" is a **regular method** that is called at a specific time in the Barba [lifecycle](/docs/getstarted/lifecycle/).
 
 Hooks are triggered by [`Transitions`](/docs/advanced/transitions/) and [`Views`](/docs/advanced/views/), but are not "shared" between them: **they run separately**, either **synchronously or asynchronously** using the common `this.async()` syntax _([see run-async](https://github.com/sboudrias/run-async#readme))_ or returning a promise.
 
@@ -75,7 +75,7 @@ async leave(data) {
 
 ## Global hooks
 
-In order to improve and optimize your code, Barba offer a way to define global hooks through `barba.hooks`. This will **execute code everytime the hook is called** in the lifecycle. What makes the hook global is that the definition is not wrap inside a `Transition` or a `View`. You can combine base and global hooks.
+In order to improve and optimize your code, Barba offer a way to define global hooks through `barba.hooks`. This will **execute code everytime the hook is called** in the [lifecycle](/docs/getstarted/lifecycle/). What makes the hook global is that the definition is not wrap inside a `Transition` or a `View`. You can combine base and global hooks.
 
 For example, if you want to display the namespace **everytime you enter a new page**, just do:
 
