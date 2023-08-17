@@ -79,9 +79,17 @@ It returns a <a href="https://barba.js.org/api/interfaces/core_src_defs.icacheda
 | `status`  | String `'pending'`   | Request has started and `Promise` is pending                                                                                  |
 |           | String `'fulfilled'` | Request has been fulfilled                                                                                                    |
 |           | String `'rejected'`  | Request has been rejected (an error occured)                                                                                  |
-| `target`  | String               | Target URL stored in the cache                                                                                                |
+| [`target`](#Cache-target)  | String               | Target URL stored in the cache                                                                                                |
 
 > See <a href="https://barba.js.org/api/classes/core_src_modules.cache.html" target="_blank">`Cache` module</a> API documentation to learn more.
+
+#### Cache `target`
+
+The cache `target` contains the targetted URL of the page.
+
+In case of **`301` redirection**, Barba cares of keeping in the cache the server `reseponseURL` instead of the requested one. In addition, the browser URL will be properly updated.
+
+> Note that if you start prefetching a URL that have a 301 redirection, cache `target` will be set based on the requested URL since cache `status` is in "pending" mode. After cache `status` switch to "fulfilled", the cache `target` will contain the final response URL.
 
 ## Prefetch
 
