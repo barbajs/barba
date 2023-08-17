@@ -565,8 +565,8 @@
 <li><a href="/docs/plugins/head/">@barba/head</a> → keep your <code>&lt;head&gt;</code> up to date <em><strong>(coming soon)</strong></em></li>
 <li><a href="/docs/plugins/preset/">@barba/preset</a> → ready-to-use basic transitions pack <em><strong>(coming soon)</strong></em></li>
 </ul>
-<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>To use a plugin, simply tell Barba what plugin(s) you want to use <strong>before initialize</strong> it:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span>;</span><br><span class="line"><span class="keyword">import</span> barbaPrefetch <span class="keyword">from</span> <span class="string">'@barba/prefetch'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tell Barba what plugins to use</span></span><br><span class="line">barba.use(barbaPrefetch);</span><br><span class="line"></span><br><span class="line"><span class="comment">// init Barba</span></span><br><span class="line">barba.init(&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>To use a plugin, simply tell Barba what plugin(s) and option(s) you want to use <strong>before initialize</strong> it:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span>;</span><br><span class="line"><span class="keyword">import</span> barbaPlugin <span class="keyword">from</span> <span class="string">'@barba/plugin'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// tell Barba what plugin to use</span></span><br><span class="line">barba.use(barbaPlugin, &#123;</span><br><span class="line">  custom: <span class="string">'value'</span>,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// init Barba</span></span><br><span class="line">barba.init(&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p><strong>Be careful</strong>, you can easily rename the import when using a bundler, which is not the case when using the plugin through a CDN: the name should be prefixed by <code>barba</code>, meaning <code>@barba/plugin</code> will need to be call as <code>barba.use(barbaPlugin)</code>.</p>
@@ -617,8 +617,8 @@
     </main><!-- end .site-main -->
 
     <footer class="site-footer footer">
-  b.js©2023<br>
-  Last updated on Aug 17th 23
+  barba.js ©️2023<br>
+  Last updated on Aug 17th
 </footer>
 
   </div>

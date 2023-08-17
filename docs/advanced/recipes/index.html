@@ -626,8 +626,18 @@
 </tr>
 <tr>
 <td><code>action</code></td>
-<td>String</td>
-<td>The user action on the link: <code>&#39;enter&#39;</code> when hovering, <code>&#39;click&#39;</code> when clicking, or <code>&#39;prefetch&#39;</code> when prefetching with <a href="/docs/plugins/prefetch/">@barba/prefetch</a></td>
+<td>String <code>&#39;enter&#39;</code></td>
+<td>Page was reached <strong>on mouseover</strong><br>regarding the <a href="/docs/advanced/strategies/#prefetchIgnore"><code>prefetchIgnore</code></a> strategy</td>
+</tr>
+<tr>
+<td></td>
+<td>String <code>&#39;click&#39;</code></td>
+<td>Page was reached with a <strong>user click</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>String <code>&#39;prefetch&#39;</code></td>
+<td>Page was reached with a <strong>programmatic prefetch</strong><br>or the <a href="/docs/plugins/prefetch/">@barba/prefetch</a> plugin</td>
 </tr>
 <tr>
 <td><code>url</code></td>
@@ -641,7 +651,7 @@
 </tr>
 </tbody></table>
 <p>Here is an example to manage 404 server responses with a custom page:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  requestError: <span class="function">(<span class="params">trigger, action, url, response</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// go to a custom 404 page if the user click on a link that return a 404 response status</span></span><br><span class="line">    <span class="keyword">if</span> (action === <span class="string">'click'</span> &amp;&amp; response.status &amp;&amp; response.status === <span class="number">404</span>) &#123;</span><br><span class="line">      barba.go(<span class="string">'/404'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// prevent Barba from redirecting the user to the requested URL</span></span><br><span class="line">    <span class="comment">// this is equivalent to e.preventDefault() in this context</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  requestError: <span class="function">(<span class="params">trigger, action, url, response</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// go to a custom 404 page if server respond with a 404 response status</span></span><br><span class="line">    <span class="keyword">if</span> (action === <span class="string">'click'</span> &amp;&amp; response.status &amp;&amp; response.status === <span class="number">404</span>) &#123;</span><br><span class="line">      barba.go(<span class="string">'/404'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// prevent Barba from redirecting the user to the requested URL</span></span><br><span class="line">    <span class="comment">// this is equivalent to e.preventDefault() in this context</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>Note that if you use <code>barba.go()</code> directive without returning <code>false</code>, you will be redirected to the requested URL because Barba uses <code>barba.force()</code> to reach the page.</p>
@@ -713,8 +723,8 @@
     </main><!-- end .site-main -->
 
     <footer class="site-footer footer">
-  b.js©2023<br>
-  Last updated on Aug 17th 23
+  barba.js ©️2023<br>
+  Last updated on Aug 17th
 </footer>
 
   </div>

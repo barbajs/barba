@@ -561,7 +561,7 @@
 <ul>
 <li><a href="/docs/advanced/strategies/#Prefetch">prefetch</a> the next page</li>
 <li>store it in the <a href="/docs/advanced/strategies/#Cache">cache</a></li>
-<li>add the <code>data-barba=&quot;container&quot;</code> of the next page at the end of the <code>data-barba=&quot;wrapper&quot;</code> element</li>
+<li>manage <a href="/docs/getstarted/markup/#Container">containers</a>: add the <code>data-barba=&quot;container&quot;</code> of the next page at the end of the <code>data-barba=&quot;wrapper&quot;</code> element</li>
 <li>remove the current <code>data-barba=&quot;container&quot;</code> from the DOM when transition is done</li>
 </ul>
 <p>Here is a small diagram that describe <strong>Barba’s main concept</strong> when navigating between two pages:</p>
@@ -572,7 +572,7 @@
 <blockquote>
 <p>Note that using the <code>sync</code> property will end in a different page lifecycle, see transition <a href="/docs/advanced/transitions/#Sync-mode">sync mode</a>.</p>
 </blockquote>
-<p>During the transition process, <strong>Barba doesn’t apply any styles to the container</strong>: you need to manage it by yourself with an animation library, this is where the magic happen! Be sure to take a look at the recipes to discover how to properly manage <a href="/docs/advanced/recipes/#Containers">containers</a>.</p>
+<p>During the transition process, <strong>Barba doesn’t apply any styles to the container</strong>: you need to manage them by yourself with an animation library, this is where the magic happen! Be sure to take a look at the recipes to discover how to properly manage <a href="/docs/advanced/recipes/#Containers">containers</a>.</p>
 
 </div>
 
@@ -619,8 +619,8 @@
     </main><!-- end .site-main -->
 
     <footer class="site-footer footer">
-  b.js©2023<br>
-  Last updated on Aug 17th 23
+  barba.js ©️2023<br>
+  Last updated on Aug 17th
 </footer>
 
   </div>
