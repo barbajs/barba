@@ -786,6 +786,46 @@
 <blockquote>
 <p>Be careful, <code>barba.history.previous</code> object equals <code>null</code> when your application is starting.</p>
 </blockquote>
+<h4 id="history-add"><a href="#history-add" class="headerlink" title="history.add"></a><code>history.add</code></h4><p>This method bring the ability to <strong>programmatically push or replace history entries</strong> to easily keep the history up to date in your application based on user interaction.</p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>url</code></td>
+<td>String</td>
+<td>URL of the page you want to push/replace in the history</td>
+</tr>
+<tr>
+<td><code>trigger</code></td>
+<td>Object <code>Trigger</code></td>
+<td>The element that triggers the history action</td>
+</tr>
+<tr>
+<td></td>
+<td>String ‘barba’</td>
+<td>Programmatic trigger</td>
+</tr>
+<tr>
+<td><code>action</code></td>
+<td>String ‘push’ <em>(default)</em></td>
+<td>Push a new entry in the history</td>
+</tr>
+<tr>
+<td></td>
+<td>String ‘replace’</td>
+<td>Replace the current entry in the history</td>
+</tr>
+</tbody></table>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// push a new entry in the history</span></span><br><span class="line">history.add(<span class="string">'push.html'</span>, <span class="string">'barba'</span>, <span class="string">'push'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// replace a history entry</span></span><br><span class="line">history.add(<span class="string">'replace.html'</span>, <span class="string">'barba'</span>, <span class="string">'replace'</span>);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>See <a href="https://barba.js.org/api/classes/core_src_utils.history.html" target="_blank"><code>History</code> utility</a> API documentation to learn more.</p>
+</blockquote>
 <h4 id="history-store"><a href="#history-store" class="headerlink" title="history.store"></a><code>history.store</code></h4><p>In some situation, you may need to <strong>store custom information based on user navigation</strong> and access them later in your code. Barba now offer a way of doing this with ease using the <code>barba.history.store</code> method.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">barba.history.store(&#123;</span><br><span class="line">  id: <span class="number">2547</span>,</span><br><span class="line">  random: <span class="built_in">Math</span>.random(),</span><br><span class="line">  href: <span class="built_in">window</span>.location.href,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
@@ -802,7 +842,6 @@
 
 <blockquote>
 <p>The default Barba behavior for history is <code>push</code>, so you don’t have to manually write <code>data-barba-history=&quot;push&quot;</code> on all your links.</p>
-<p>As of today, <code>data-barba-history=&quot;replace&quot;</code> is the only way to properly replace a state into the <code>window.history</code>: this will evolve in the next release.</p>
 </blockquote>
 
 </div>

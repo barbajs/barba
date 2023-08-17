@@ -564,8 +564,9 @@
 <li><code>barba.force(href: string)</code> → Force Barba to <strong>redirect to a specific URL</strong> without playing your transitions, equivalent to <code>location.href</code> change</li>
 <li><code>barba.prefetch(href: string)</code> → Prefetch the given URL, see <a href="/docs/advanced/strategies/#Prefetch">prefetch strategy</a></li>
 <li><code>barba.url.parse(url: string)</code> → Parse the given URL and retrieve a <a href="https://barba.js.org/api/interfaces/_core_src_defs_url_.iurlbase.html" target="_blank"><code>IUrlBase</code></a></li>
-<li><code>barba.history.previous</code> → Get the previous history <a href="https://barba.js.org/api/interfaces/_core_src_utils_history_.istateitem.html" target="_blank"><code>IStateItem</code></a> object, with URL, namespace and scroll x/y positions</li>
-<li><code>barba.history.add(url: string, trigger: Trigger)</code> → Add a new state in the browser history, allowing you to add “sub-URL” in the same page</li>
+<li><code>barba.history.previous</code> → Get the previous history object, see <a href="/docs/advanced/strategies/#history-previous-current">history strategy</a></li>
+<li><code>barba.history.current</code> → Get the current history object, see <a href="/docs/advanced/strategies/#history-previous-current">history strategy</a></li>
+<li><code>barba.history.add(url: string, trigger: Trigger, action?: HistoryAction)</code> → Push or replace a new state in the browser history, see <a href="/docs/advanced/strategies/#history-add">history strategy</a></li>
 <li><code>barba.cache.get(url: string)</code> → Get <a href="/docs/advanced/strategies/#Cache-data">cache data</a> for a given URL and retrieve action, request, status and target</li>
 </ul>
 <blockquote>
