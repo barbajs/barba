@@ -62,4 +62,6 @@ barba.init({
 });
 ```
 
+> Be careful when using cross-fading transition, usually with [sync mode](/docs/advanced/transitions/#Sync-mode), you need to **properly place your [container](/docs/getstarted/markup/#Container) using CSS** to prevent it from moving to the bottom or right.
+
 There is **a lot of syntaxes** that you can use when running your animation transitions. Take a look at the [advanced transitions guide](/docs/advanced/transitions/) to learn more.
