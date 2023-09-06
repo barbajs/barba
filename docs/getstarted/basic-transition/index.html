@@ -576,6 +576,9 @@
 <p>For the demonstration, here is a basic <strong>opacity transition</strong> with gsap that consist of making the current page transparent, while the next page become opaque:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">barba.init(&#123;</span><br><span class="line">  transitions: [&#123;</span><br><span class="line">    name: <span class="string">'opacity-transition'</span>,</span><br><span class="line">    leave(data) &#123;</span><br><span class="line">      <span class="keyword">return</span> gsap.to(data.current.container, &#123;</span><br><span class="line">        opacity: <span class="number">0</span></span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    enter(data) &#123;</span><br><span class="line">      <span class="keyword">return</span> gsap.from(data.next.container, &#123;</span><br><span class="line">        opacity: <span class="number">0</span></span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p>Be careful when using cross-fading transition, usually with <a href="/docs/advanced/transitions/#Sync-mode">sync mode</a>, you need to <strong>properly place your <a href="/docs/getstarted/markup/#Container">container</a> using CSS</strong> to prevent it from moving to the bottom or right.</p>
+</blockquote>
 <p>There is <strong>a lot of syntaxes</strong> that you can use when running your animation transitions. Take a look at the <a href="/docs/advanced/transitions/">advanced transitions guide</a> to learn more.</p>
 
 </div>
@@ -624,7 +627,7 @@
 
     <footer class="site-footer footer">
   barba.js ©️2023<br>
-  Last updated on Aug 17th
+  Last updated on Sep 6th
 </footer>
 
   </div>
