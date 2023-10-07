@@ -15,7 +15,7 @@
     "cypress": "^12.17.3",
     "cz-ccgls": "^0.4.6",
     "eslint": "^8.51.0",
-    "eslint-plugin-cypress": "^2.13.3",
+    "eslint-plugin-cypress": "^2.15.1",
     "gzip-size": "^7.0.0",
     "http-server": "14.1.1",
     "husky": "^8.0.3",
