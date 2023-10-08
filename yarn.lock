@@ -3569,10 +3569,10 @@ commitizen@^4.3.0:
     strip-bom "4.0.0"
     strip-json-comments "3.1.1"
 
-commitlint-config-ccgls@1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/commitlint-config-ccgls/-/commitlint-config-ccgls-1.4.0.tgz#47e35f0fffcfdca830c48d2155d66b43d6bfef6a"
-  integrity sha512-X9HWboKjmPnpQxcCCr9Qf89VI5skwNzid+qTTIbayzIjWJzzO0JA+V6YA+XmwdZhP4MPqXSn8aaJEVR0Ts32aw==
+commitlint-config-ccgls@1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/commitlint-config-ccgls/-/commitlint-config-ccgls-1.4.1.tgz#668024bfe073f976cb89991922bf28567c48f9d3"
+  integrity sha512-toF53RxQHz25lVWeW+Jq0KVqeDA+iix1suIBFUKdskuPqnCKyADwSvI0UsHnrKt28XRvkbEyS16WuJoA+bLoRA==
   dependencies:
     "@commitlint/config-conventional" "^14.1.0"
     "@lerna/project" "^4.0.0"
