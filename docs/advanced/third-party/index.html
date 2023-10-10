@@ -566,6 +566,7 @@
 <li><a href="#Google-ReCaptcha">Google ReCaptcha</a></li>
 <li><a href="#Locomotive-scroll">Locomotive scroll</a></li>
 <li><a href="#Scroll-Trigger">Scroll Trigger</a></li>
+<li><a href="#WordPress">WordPress</a></li>
 </ol>
 <h2 id="Google-Analytics"><a href="#Google-Analytics" class="headerlink" title="Google Analytics"></a>Google Analytics</h2><h3 id="GA4"><a href="#GA4" class="headerlink" title="GA4"></a>GA4</h3><p>With <code>Google Analytics 4</code>, you can manually send a <code>pageview</code> with the following snippet.<br>The best place to do that is in the <code>after</code> <a href="/docs/advanced/hooks/#Global-hooks">global hook</a>, as it is applied to all your pages:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// disable automatic page view</span></span><br><span class="line">gtag(<span class="string">'config'</span>, GTAG_ID, &#123;</span><br><span class="line">  send_page_view: <span class="literal">false</span>,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// after each transition, push page_view event to Analytics</span></span><br><span class="line">barba.hooks.after(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  gtag(<span class="string">'event'</span>, <span class="string">'page_view'</span>, &#123;</span><br><span class="line">    <span class="string">'page_title'</span>: <span class="built_in">document</span>.title,</span><br><span class="line">    <span class="string">'page_location'</span>: location.href,</span><br><span class="line">    <span class="string">'page_path'</span>: location.pathname,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
@@ -618,6 +619,12 @@
 <blockquote>
 <p>Keep in mind that <strong>it is very important to kill ScrollTrigger instances</strong> when navigating between two pages, otherwise your instances will overlap together.</p>
 </blockquote>
+<h2 id="WordPress"><a href="#WordPress" class="headerlink" title="WordPress"></a>WordPress</h2><h3 id="Update-body-classes"><a href="#Update-body-classes" class="headerlink" title="Update body classes"></a>Update <code>body</code> classes</h3><p>When using the <strong>WordPress CMS</strong> you might notice that <code>body</code> classes could be different from one page to another. If you need to keep consistency between pages, you need to manually update the classes, mainly because the <code>body</code> element is placed outside of the <code>data-barba=&quot;container&quot;</code>. The implementation below show you how to <strong>replace all <code>body</code> classes</strong> from the current page with all classes of the next page.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// init barba</span></span><br><span class="line">barba.init(&#123;</span><br><span class="line">  transitions: [&#123;</span><br><span class="line">    enter() &#123;&#125;,</span><br><span class="line">    beforeEnter: <span class="function">(<span class="params">&#123; next &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> matches = next.html.match(<span class="regexp">/&lt;body.+?class="([^""]*)"/i</span>);</span><br><span class="line">      <span class="built_in">document</span>.body.setAttribute(<span class="string">'class'</span>, (matches &amp;&amp; matches.at(<span class="number">1</span>)) ?? <span class="string">''</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Depending on your needs, you will need to adapt the script.</p>
+</blockquote>
 <h2 id="Other-third-party-scripts"><a href="#Other-third-party-scripts" class="headerlink" title="Other third party scripts"></a>Other third party scripts</h2><p>This is a draft section that <strong>may evolve in time</strong>, and many other important third party scripts will be added.</p>
 <blockquote>
 <p>Don’t hesitate to <strong>ask the Barba team <a href="https://barbajs.slack.com/" target="_blank" rel="noopener">on Slack</a></strong> if you want to request one to be present on this page.</p>
@@ -669,7 +676,7 @@
 
     <footer class="site-footer footer">
   barba.js ©️2023<br>
-  Last updated on Sep 6th
+  Last updated on Oct 10th
 </footer>
 
   </div>
