@@ -18,6 +18,7 @@ This might be result in some **unexpected behaviors** when using classic third p
 2. [Google ReCaptcha](#Google-ReCaptcha)
 3. [Locomotive scroll](#Locomotive-scroll)
 4. [Scroll Trigger](#Scroll-Trigger)
+4. [WordPress](#WordPress)
 
 ## Google Analytics
 
@@ -230,6 +231,31 @@ barba.init({
 ```
 
 > Keep in mind that **it is very important to kill ScrollTrigger instances** when navigating between two pages, otherwise your instances will overlap together.
+
+
+## WordPress
+
+### Update `body` classes
+
+When using the **WordPress CMS** you might notice that `body` classes could be different from one page to another. If you need to keep consistency between pages, you need to manually update the classes, mainly because the `body` element is placed outside of the `data-barba="container"`.
+
+```javascript
+import barba from '@barba/core';
+
+// init barba
+barba.init({
+  transitions: [{
+    enter() {},
+    beforeEnter: ({ next }) => {
+      const matches = next.html.match(/<body.+?class="([^""]*)"/i);
+      document.body.setAttribute('class', (matches && matches.at(1)) ?? '');
+    }
+  }]
+});
+```
+
+> The implementation above **replace all `body` classes** from the current page with all classes from the next page. Be sure to adapt it depending on your needs.
+
 
 ## Other third party scripts
 
