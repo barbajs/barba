@@ -17,7 +17,7 @@ This might be result in some **unexpected behaviors** when using classic third p
 1. [Google Analytics](#Google-Analytics)
 2. [Google ReCaptcha](#Google-ReCaptcha)
 3. [Locomotive scroll](#Locomotive-scroll)
-3. [Scroll Trigger](#Scroll-Trigger)
+4. [Scroll Trigger](#Scroll-Trigger)
 
 ## Google Analytics
 
