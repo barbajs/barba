@@ -1,4 +1,6 @@
 .docs {
+  width: 100%;
+
   // Code-snippets formatting
   .highlight {
     overflow: auto;
@@ -122,7 +124,12 @@
   background-color: $c-blue-light;
 
   @include mq(m) {
-    left: 25vw;
-    width: 75vw;
+    left: 28vw;
+    width: calc(100vw - 28vw);
+  }
+
+  @include mq(l) {
+    left: 380px;
+    width: calc(100vw - 380px);
   }
 }

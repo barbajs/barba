@@ -8,20 +8,21 @@
   align-items: center;
   width: 100%;
 
-  @include mq($until: l) {
+  @include mq(m) {
     margin-bottom: 6rem;
   }
 
   @include mq(m) {
-    width: 74vw;
-    margin-bottom: 6rem;
-    margin-left: 25vw;
+    max-width: 60vw;
+    left: calc(28vw + ((100% - 28vw) / 2) - (60vw / 2));
+    position: relative;
   }
 
   @include mq(l) {
-    min-width: 50vw;
-    max-width: 80rem;
-    padding: 0 6rem;
+    max-width: 55vw;
+    left: calc(380px + ((100% - 380px) / 2) - (55vw / 2));
+    position: relative;
+    padding: 0 4rem;
   }
 
   .icon--barba {
@@ -60,7 +61,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-width: 25%;
+  min-width: 20%;
   margin: 2rem;
   padding: 1rem 2rem;
   color: $c-menu-feature-5;
@@ -82,5 +83,9 @@
         stroke: $white;
       }
     }
+  }
+
+  @include mq(l) {
+    margin: 0;
   }
 }

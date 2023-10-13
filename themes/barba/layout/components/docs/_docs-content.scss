@@ -2,18 +2,20 @@
 
 .docs__markdown {
   overflow: hidden;
-  width: 100vw;
-  padding: 12rem 2rem;
+  width: 100%;
+  padding: 12rem 3rem;
 
   @include mq(m) {
-    width: 74vw;
-    margin-left: 25vw;
+    max-width: 60vw;
+    left: calc(28vw + ((100% - 28vw) / 2) - (60vw / 2));
+    position: relative;
   }
 
   @include mq(l) {
-    min-width: 50vw;
-    max-width: 80rem;
-    padding: 12rem 6rem 4rem;
+    max-width: 55vw;
+    left: calc(380px + ((100% - 380px) / 2) - (55vw / 2));
+    position: relative;
+    padding: 12rem 4rem 6rem 4rem;
   }
 
   h1 {

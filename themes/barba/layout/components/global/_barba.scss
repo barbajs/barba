@@ -5,5 +5,6 @@
   .is-transitioning & {
     position: absolute;
     width: 100%;
+    overflow: hidden;
   }
 }

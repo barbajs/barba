@@ -14,6 +14,10 @@
     padding: 4.5rem;
   }
 
+  @include mq($until: m) {
+    display: none;
+  }
+
   [data-barba="container"]:not([data-barba-namespace="docs"]) & {
     display: none;
   }

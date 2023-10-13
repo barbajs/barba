@@ -14,7 +14,11 @@
 
   @include mq(m) {
     right: unset;
-    width: 25vw;
+    width: 28vw;
+  }
+
+  @include mq(l) {
+    width: 380px;
   }
 
   @include mq($until: m) {
@@ -32,6 +36,7 @@
     top: 0;
     left: 0;
     width: inherit;
+    max-width: inherit;
     height: 14rem;
     background: $c-blue-lightest;
   }
@@ -40,16 +45,18 @@
 .docs__nav__list {
   display: block;
   overflow: auto;
-  margin-left: 1rem;
   padding: 0;
   list-style: none;
+  padding-left: 3rem;
+  padding-right: 3rem;
 
-  @include mq(s) {
-    margin-left: 5rem;
+  @include mq(m) {
+    padding-left: 5rem;
+    padding-right: 3rem;
   }
 
   @include mq(l) {
-    margin: 0 12%;
+    padding-right: 5rem;
   }
 
   & > li {
@@ -66,16 +73,16 @@
 }
 
 .docs__nav__title {
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 600;
   line-height: 2rem;
   text-transform: uppercase;
   opacity: 0.3;
   transition: opacity 450ms ease;
 
-  @include mq(s) {
-    font-size: 1.2rem;
-  }
+  // @include mq(s) {
+  //   font-size: 1.2rem;
+  // }
 
   @include mq(l) {
     font-size: 1.5rem;
@@ -141,14 +148,14 @@
 }
 
 .docs__nav__subtitle {
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 400;
   line-height: 2rem;
   transition: color 450ms ease;
 
-  @include mq(s) {
-    font-size: 1.2rem;
-  }
+  // @include mq(s) {
+  //   font-size: 1.2rem;
+  // }
 
   @include mq(l) {
     font-size: 1.5rem;

@@ -5,7 +5,7 @@
   display: block;
   margin-top: 20rem !important; //stylelint-disable-line declaration-no-important
   margin-bottom: 10rem !important; //stylelint-disable-line declaration-no-important
-  padding: 0 4rem;
+  padding: 0 2rem;
   perspective: 1000px;
 
   @include mq(m) {
@@ -28,10 +28,6 @@
   right: 0;
   left: 0;
   opacity: 0.8;
-
-  @include mq($until: l) {
-    height: 100vh;
-  }
 
   svg {
     display: block;
@@ -197,6 +193,10 @@
 
   z-index: -1;
   width: 100vw;
+
+  @include mq($until: m) {
+    display: none;
+  }
 }
 
 .feature .logo.featured {
