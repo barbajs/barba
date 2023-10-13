@@ -11,6 +11,10 @@
   pointer-events: none;
 
   @include mq(l) {
-    padding: 5rem;
+    padding: 4.5rem;
+  }
+
+  [data-barba="container"]:not([data-barba-namespace="docs"]) & {
+    display: none;
   }
 }
