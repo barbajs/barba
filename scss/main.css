@@ -1965,6 +1965,11 @@ body {
     /* stylelint-disable selector-max-combinators, selector-max-compound-selectors, selector-max-class, no-descending-specificity */ }
     .docs .highlight .gutter {
       display: none; }
+    .docs .highlight table {
+      margin: 0;
+      overflow: hidden; }
+    .docs .highlight tbody {
+      display: flex; }
     .docs .highlight th,
     .docs .highlight td,
     .docs .highlight tr {
