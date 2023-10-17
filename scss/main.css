@@ -610,7 +610,7 @@ html.is-transitioning * {
     padding: 0; }
 
 code {
-  padding: 0 2px;
+  padding: 2px 4px;
   font-family: "Source Code Pro", monaco, menlo, consolas, monospace;
   background: #f5f7fc;
   border-radius: 4px; }
@@ -619,7 +619,7 @@ blockquote {
   margin: 2rem 0;
   padding: 0 2.5rem;
   color: #a0a0a0;
-  border-left: 3px solid #e0e0e0; }
+  border-left: 3px solid currentcolor; }
 
 hr {
   display: inline-flex;
@@ -680,7 +680,7 @@ body {
   bottom: 0;
   left: 0;
   padding: 2rem;
-  color: black;
+  color: currentcolor;
   font-size: 1.1rem;
   letter-spacing: 0.15em;
   pointer-events: none; }
@@ -1669,7 +1669,7 @@ body {
     display: block;
     overflow: auto;
     width: 100%;
-    margin: 0.5rem 0 1rem; }
+    margin: 2rem 0; }
     .docs__markdown table th,
     .docs__markdown table td,
     .docs__markdown table tr {
@@ -1730,6 +1730,8 @@ body {
       pointer-events: none; }
     .docs__markdown a:not([title='Badge']):not(.headerlink):hover::before {
       opacity: 1; }
+    .docs__markdown a:not([title='Badge']):not(.headerlink) code {
+      border-radius: 4px 4px 0 0; }
   .docs__markdown .headerlink {
     position: absolute;
     left: -30px;
@@ -1859,7 +1861,7 @@ body {
     width: inherit;
     max-width: inherit;
     height: 14rem;
-    background: #f5f7fc; }
+    background: inherit; }
 
 .docs__nav__list {
   display: block;
@@ -1949,6 +1951,12 @@ body {
 
 .docs {
   width: 100%; }
+  .docs a[title="Badge"] {
+    display: inline-flex; }
+    .docs a[title="Badge"] img {
+      border-radius: 4px; }
+  .docs img[title="Badge"] {
+    border-radius: 4px; }
   .docs .highlight {
     overflow: auto;
     margin: 2rem 0;
