@@ -12,6 +12,10 @@
   background: $c-blue-lightest;
   transition: transform 0.3s $ease-out-quad;
 
+  @media (prefers-color-scheme: dark) {
+    background: $c-darkmode-dark;
+  }
+
   @include mq(m) {
     right: unset;
     width: 28vw;
@@ -64,6 +68,10 @@
 
     a {
       color: $gray-darker;
+
+      @media (prefers-color-scheme: dark) {
+        color: $c-darkmode-color;
+      }
     }
 
     &:last-child {

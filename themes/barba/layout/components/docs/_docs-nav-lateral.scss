@@ -73,6 +73,10 @@
   transition: 0.2s $ease-out-quad;
   transition-property: color, background-color;
 
+  @media (prefers-color-scheme: dark) {
+    color: rgba($white, 0.8);
+  }
+
   @include mq(s) {
     &:hover {
       color: $white;

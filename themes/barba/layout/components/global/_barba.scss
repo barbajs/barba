@@ -7,4 +7,9 @@
     width: 100%;
     overflow: hidden;
   }
+
+  @media (prefers-color-scheme: dark) {
+    background: $c-darkmode-light;
+    color: $c-darkmode-color;
+  }
 }

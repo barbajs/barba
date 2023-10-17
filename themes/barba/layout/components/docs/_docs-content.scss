@@ -162,6 +162,10 @@
       font-size: 1.2rem;
       border: 1px solid $c-gray-lighter;
 
+      @media (prefers-color-scheme: dark) {
+        border: 1px solid $c-darkmode-doc-table;
+      }
+
       @include mq(s) {
         padding: 0.7rem;
         font-size: 1.2rem;
@@ -211,6 +215,18 @@
     position: relative;
     color: $c-blue-medium;
     white-space: nowrap;
+
+    @media (prefers-color-scheme: dark) {
+      color: $c-darkmode-links;
+
+      &:has(code) {
+        color: $c-darkmode-color;
+
+        &::before {
+          color: rgba($white, 0.7);
+        }
+      }
+    }
 
     &::before {
       content: '';
