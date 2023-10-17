@@ -1675,7 +1675,7 @@ body {
     .docs__markdown table tr {
       padding: 0.5rem;
       font-size: 1.2rem;
-      border: 1px solid #dedede; }
+      border: 1px solid #ebebeb; }
       @media only screen and (min-width: 37.5em) {
         .docs__markdown table th,
         .docs__markdown table td,
