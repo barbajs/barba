@@ -153,14 +153,14 @@
     display: block;
     overflow: auto;
     width: 100%;
-    margin: 0.5rem 0 1rem;
+    margin: 2rem 0;
 
     th,
     td,
     tr {
       padding: 0.5rem;
       font-size: 1.2rem;
-      border: 1px solid $c-gray-light;
+      border: 1px solid $c-gray-lighter;
 
       @include mq(s) {
         padding: 0.7rem;
@@ -229,6 +229,10 @@
       &::before {
         opacity: 1;
       }
+    }
+
+    code {
+      border-radius: 4px 4px 0 0;
     }
   }
 

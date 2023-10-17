@@ -1,6 +1,18 @@
 .docs {
   width: 100%;
 
+  a[title="Badge"] {
+    display: inline-flex;
+
+    img {
+      border-radius: 4px;
+    }
+  }
+
+  img[title="Badge"] {
+    border-radius: 4px;
+  }
+
   // Code-snippets formatting
   .highlight {
     overflow: auto;
@@ -10,6 +22,15 @@
 
     .gutter {
       display: none;
+    }
+
+    table {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    tbody {
+      display: flex;
     }
 
     th,

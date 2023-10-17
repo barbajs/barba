@@ -105,7 +105,7 @@ html.is-transitioning {
 }
 
 code {
-  padding: 0 2px;
+  padding: 2px 4px;
   font-family: $ff-code;
   background: $c-blue-lightest;
   border-radius: 4px;
@@ -115,7 +115,7 @@ blockquote {
   margin: 2rem 0;
   padding: 0 2.5rem;
   color: $gray-light;
-  border-left: 3px solid $gray-lightest;
+  border-left: 3px solid currentcolor;
 }
 
 hr {
