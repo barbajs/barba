@@ -15,6 +15,11 @@ html {
 body {
   overflow-x: hidden;
 
+  @media (prefers-color-scheme: dark) {
+    background: $c-darkmode-light;
+    color: $c-darkmode-color;
+  }
+
   ::selection {
     color: #fff;
     background: $c-blue-medium;
