@@ -41,6 +41,10 @@
   stroke-dashoffset: 160px;
   transition: stroke-dashoffset 0.6s $ease-out-quart;
 
+  @media (prefers-color-scheme: dark) {
+    stroke: $c-darkmode-links;
+  }
+
   [data-feature-order='0'] & {
     stroke: $c-menu-feature-0;
   }
@@ -107,6 +111,10 @@
   transform: translate(-50%, -50%);
   transform-origin: center center;
   transition: top 0.4s, transform 0.4s, opacity 0.4s ease-in-out;
+
+  @media (prefers-color-scheme: dark) {
+    background: $c-darkmode-links;
+  }
 
   [data-feature-order='0'] & {
     background-color: $c-menu-feature-0;

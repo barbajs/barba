@@ -38,6 +38,10 @@
   transition: opacity 0.4s ease-in-out;
   cursor: pointer;
 
+  @media (prefers-color-scheme: dark) {
+    background: rgba($c-darkmode-light, 0.9);
+  }
+
   .is-open & {
     opacity: 1;
     pointer-events: initial;
@@ -58,6 +62,11 @@
   box-shadow: 10px 10px 10px 10px $c-blue-lighter;
   transform: translateX(110%);
 
+  @media (prefers-color-scheme: dark) {
+    background: rgba($c-darkmode-dark, 0.9);
+    box-shadow: 10px 10px 10px 10px $c-darkmode-dark;
+  }
+
   @include mq(m) {
     padding: 180px 50px 50px;
 
@@ -73,7 +82,6 @@
     left: 0;
     width: 100%;
     height: 10rem;
-    background: $white;
 
     @include mq(m) {
       height: 18rem;
@@ -109,8 +117,17 @@
   line-height: 1.2em;
   transition: color 0.2s ease-out;
 
+  @media (prefers-color-scheme: dark) {
+    color: $c-darkmode-links;
+  }
+
   &.is-active {
     color: $black;
+    pointer-events: none;
+
+    @media (prefers-color-scheme: dark) {
+      color: currentcolor;
+    }
   }
 
   @media screen and (max-height: 850px) {
@@ -120,6 +137,10 @@
 }
 
 .menu__pages__item__link:not(.is-active) {
+  [data-feature-order='0'] & {
+    color: $c-menu-feature-0;
+  }
+
   [data-feature-order='1'] & {
     color: $c-menu-feature-1;
   }
@@ -143,6 +164,10 @@
   &:hover,
   &.is-active {
     color: $black;
+
+    @media (prefers-color-scheme: dark) {
+      color: currentcolor;
+    }
   }
 }
 
@@ -211,6 +236,10 @@
   color: $c-gray-medium;
   transition: color 0.2s ease-out;
 
+  @media (prefers-color-scheme: dark) {
+    color: $c-darkmode-color;
+  }
+
   .menu-subpages__item:nth-child(1):hover &,
   .menu-subpages__item:nth-child(1).is-active & {
     color: $c-menu-feature-0;
@@ -272,6 +301,10 @@
     background: $c-blue-medium;
   }
 
+  [data-feature-order='0'] & {
+    background-color: $c-menu-feature-0;
+  }
+
   [data-feature-order='1'] & {
     background-color: $c-menu-feature-1;
   }
@@ -310,7 +343,7 @@
   align-items: center;
   height: 14px;
   margin-right: $spacing * 2;
-  color: $black;
+  color: currentcolor;
 }
 
 .menu-extra__twitter__icon {
@@ -318,7 +351,7 @@
   width: 16px;
   height: 13px;
   margin-right: $spacing / 2;
-  fill: $black;
+  fill: currentcolor;
 }
 
 .menu-extra__twitter__label {
@@ -334,6 +367,14 @@
   color: $black;
   font-size: 1.1rem;
   letter-spacing: 0.1em;
+
+  a {
+    display: flex;
+
+    @media (prefers-color-scheme: dark) {
+      opacity: 0.8;
+    }
+  }
 
   a img {
     border-radius: 4px;

@@ -75,6 +75,7 @@
   z-index: 1000;
   display: flex;
   pointer-events: auto;
+  user-select: none;
 
   @include mq(m) {
     position: fixed;
