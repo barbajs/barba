@@ -61,7 +61,7 @@
 
 <body data-barba="wrapper" data-slug="<%- page.slug || page.namespace || 'home' %>">
   <%- partial('svg/sprite') %>
-  <div data-barba="container" data-barba-namespace="<%- page.namespace || 'home' %>" <% if (page.order) { %>
+  <div data-barba="container" data-barba-namespace="<%- page.namespace || 'home' %>" <% if (page.order || page.order === 0) { %>
     data-feature-order="<%- page.order %>" <% }; %>>
 
     <%- partial('components/chrome/header') %>
