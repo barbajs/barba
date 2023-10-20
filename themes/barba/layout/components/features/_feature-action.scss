@@ -14,7 +14,7 @@
   }
 
   [data-feature-order='0'] & {
-    background-color: $c-menu-feature-0-light;
+    background-color: rgba($c-menu-feature-0-light, 0.1);
 
     svg {
       fill: $c-menu-feature-0;
@@ -23,7 +23,7 @@
   }
 
   [data-feature-order='1'] & {
-    background-color: $c-menu-feature-1-light;
+    background-color: rgba($c-menu-feature-1-light, 0.05);
 
     svg {
       fill: $c-menu-feature-1;
@@ -32,7 +32,7 @@
   }
 
   [data-feature-order='2'] & {
-    background-color: $c-menu-feature-2-light;
+    background-color: rgba($c-menu-feature-2-light, 0.05);
 
     svg {
       fill: $c-menu-feature-2;
@@ -41,7 +41,7 @@
   }
 
   [data-feature-order='3'] & {
-    background-color: $c-menu-feature-3-light;
+    background-color: rgba($c-menu-feature-3-light, 0.05);
 
     svg {
       fill: $c-menu-feature-3;
@@ -50,7 +50,7 @@
   }
 
   [data-feature-order='4'] & {
-    background-color: $c-menu-feature-4-light;
+    background-color: rgba($c-menu-feature-4-light, 0.05);
 
     svg {
       fill: $c-menu-feature-4;
@@ -59,7 +59,7 @@
   }
 
   [data-feature-order='5'] & {
-    background-color: $c-menu-feature-5-light;
+    background-color: rgba($c-menu-feature-5-light, 0.05);
 
     svg {
       fill: $c-menu-feature-5;
