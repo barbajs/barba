@@ -297,6 +297,10 @@
   outline: 0;
   transition: background 0.2s ease-out;
 
+  @media (prefers-color-scheme: dark) {
+    color: $c-darkmode-dark;
+  }
+
   &:hover {
     background: $c-blue-medium;
   }

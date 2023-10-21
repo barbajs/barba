@@ -109,6 +109,13 @@
 [class*='button--'][class*='--fill'][class*='--black'] {
   background: currentcolor;
   border-color: transparent;
+
+  @media (prefers-color-scheme: dark) {
+    .is-open & {
+      background: $c-darkmode-light;
+      border-color: $c-darkmode-light;
+    }
+  }
 }
 
 [class*='button--'][class*='--github'] {
@@ -120,6 +127,10 @@
     color 0.4s,
     border-color 0.4s,
     transform 0.4s;
+
+  @media (prefers-color-scheme: dark) {
+    color: $c-darkmode-dark;
+  }
 
   span {
     pointer-events: none;
@@ -135,6 +146,10 @@
     .is-open & {
       pointer-events: auto;
       opacity: 1;
+
+      @media (prefers-color-scheme: dark) {
+        color: $c-darkmode-color;
+      }
     }
   }
 }
