@@ -122,6 +122,7 @@
     transform 0.4s;
 
   span {
+    pointer-events: none;
     position: absolute;
     top: 50%;
     left: 100%;
@@ -132,6 +133,7 @@
     transition: opacity 0.4s ease-in-out;
 
     .is-open & {
+      pointer-events: auto;
       opacity: 1;
     }
   }
