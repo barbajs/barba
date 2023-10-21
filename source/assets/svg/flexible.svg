@@ -4,12 +4,12 @@
     <title>flexible</title>
     <desc>Created with Sketch.</desc>
     <g id="flexible" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="disc-bg" fill="#C0CDF4" fill-rule="nonzero" x="16" y="1" width="18" height="18" rx="9"></rect>
-        <rect id="disc" fill="#2E5BDC" fill-rule="nonzero" x="22" y="7" width="6" height="6" rx="3"></rect>
-        <rect id="disc" fill="#2E5BDC" fill-rule="nonzero" x="5" y="7" width="6" height="6" rx="3"></rect>
-        <rect id="disc" fill="#2E5BDC" fill-rule="nonzero" x="5" y="25" width="6" height="6" rx="3"></rect>
-        <rect id="disc" fill="#2E5BDC" fill-rule="nonzero" x="23" y="25" width="6" height="6" rx="3"></rect>
-        <path d="M9,16 L8.99978644,18.585 L10,17.5857864 L11.4142136,19 L8,22.4142136 L4.58578644,19 L6,17.5857864 L6.99978644,18.585 L7,16 L9,16 Z" id="arrow" fill="#2E5BDC" fill-rule="nonzero"></path>
-        <path d="M17.7928932,24.7928932 L17.7926797,27.3778932 L18.7928932,26.3786797 L20.2071068,27.7928932 L16.7928932,31.2071068 L13.3786797,27.7928932 L14.7928932,26.3786797 L15.7926797,27.3778932 L15.7928932,24.7928932 L17.7928932,24.7928932 Z" id="arrow" fill="#2E5BDC" fill-rule="nonzero" transform="translate(16.792893, 28.000000) rotate(90.000000) translate(-16.792893, -28.000000) "></path>
+        <rect id="disc-bg" fill="#C6F5FF" fill-rule="nonzero" x="16" y="1" width="18" height="18" rx="9"></rect>
+        <rect id="disc" fill="#3A84CD" fill-rule="nonzero" x="22" y="7" width="6" height="6" rx="3"></rect>
+        <rect id="disc" fill="#3A84CD" fill-rule="nonzero" x="5" y="7" width="6" height="6" rx="3"></rect>
+        <rect id="disc" fill="#3A84CD" fill-rule="nonzero" x="5" y="25" width="6" height="6" rx="3"></rect>
+        <rect id="disc" fill="#3A84CD" fill-rule="nonzero" x="23" y="25" width="6" height="6" rx="3"></rect>
+        <path d="M9,16 L8.99978644,18.585 L10,17.5857864 L11.4142136,19 L8,22.4142136 L4.58578644,19 L6,17.5857864 L6.99978644,18.585 L7,16 L9,16 Z" id="arrow" fill="#3A84CD" fill-rule="nonzero"></path>
+        <path d="M17.7928932,24.7928932 L17.7926797,27.3778932 L18.7928932,26.3786797 L20.2071068,27.7928932 L16.7928932,31.2071068 L13.3786797,27.7928932 L14.7928932,26.3786797 L15.7926797,27.3778932 L15.7928932,24.7928932 L17.7928932,24.7928932 Z" id="arrow" fill="#3A84CD" fill-rule="nonzero" transform="translate(16.792893, 28.000000) rotate(90.000000) translate(-16.792893, -28.000000) "></path>
     </g>
 </svg>
