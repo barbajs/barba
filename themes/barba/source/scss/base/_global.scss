@@ -23,6 +23,10 @@ body {
   ::selection {
     color: #fff;
     background: $c-blue-medium;
+
+    @media (prefers-color-scheme: dark) {
+      color: $c-darkmode-dark;
+    }
   }
 
   [data-feature-order='0'] {
