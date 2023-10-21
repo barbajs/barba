@@ -16,6 +16,7 @@
   @media (prefers-color-scheme: dark) {
     background: rgba($c-darkmode-dark, 0.7);
     box-shadow: 0 1.4rem 3rem rgba($c-darkmode-dark, 0.3);
+    color: rgba($white, 0.8);
   }
 
   @include mq(m) {
