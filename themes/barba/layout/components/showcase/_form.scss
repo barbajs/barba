@@ -28,6 +28,7 @@
   margin: 1.5rem 3rem;
   background: $c-blue-dark;
   border: 1rem solid $c-blue-darker;
+  user-select: none;
 
   &.highlight {
     border: 1rem solid $white;
@@ -45,6 +46,7 @@
   padding: 4rem;
   color: $c-blue-darkest;
   font-family: $ff-alt;
+  border-radius: 7px;
 
   .icon--barba {
     width: 6rem;
@@ -82,6 +84,7 @@
   flex-direction: column;
   margin: 1.5rem 3rem;
   background: $c-blue-darker;
+  border-radius: 7px;
 
   @include mq(m) {
     flex-direction: row;
@@ -107,6 +110,7 @@
   font-family: $ff-alt;
   background: $c-blue-dark;
   border: 0;
+  border-radius: 3px;
 
   @include mq(m) {
     width: 22rem;
@@ -145,6 +149,7 @@
   letter-spacing: 0.2rem;
   background: $white;
   border: 0;
+  border-radius: 7px;
 
   .is-invalid & {
     opacity: 0.5;
