@@ -32,6 +32,8 @@
     letter-spacing: 0.212rem;
 
     @media (prefers-color-scheme: dark) {
+      color: $c-darkmode-color;
+
       [data-feature-order='0'] & {
         color: $c-menu-feature-0;
       }
