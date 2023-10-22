@@ -23,6 +23,10 @@
   font-weight: 300;
   line-height: 2.2rem;
   letter-spacing: 0.25rem;
+
+  @media (prefers-color-scheme: dark) {
+    color: $c-darkmode-color;
+  }
 }
 
 .showcase__card__footer__author {
@@ -33,6 +37,10 @@
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   opacity: 0.3;
+
+  @media (prefers-color-scheme: dark) {
+    color: $c-darkmode-color;
+  }
 }
 
 .link--view {
