@@ -181,6 +181,33 @@
       float: right;
     }
   }
+
+  // lifecycle diagrams
+  .lifecycle-diagram {
+    transition: opacity 250ms ease;
+
+    &::before {
+      display: none;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &.dark {
+      display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      &.light {
+        display: none;
+      }
+
+      &.dark {
+        display: flex;
+      }
+    }
+  }
 }
 
 .docs__page-transition {
