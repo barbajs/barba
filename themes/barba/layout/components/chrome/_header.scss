@@ -7,6 +7,10 @@
   background: $white;
   pointer-events: none;
 
+  @media (prefers-color-scheme: dark) {
+    background: $c-darkmode-light;
+  }
+
   @include mq(nav) {
     background: transparent;
   }
@@ -75,6 +79,7 @@
   z-index: 1000;
   display: flex;
   pointer-events: auto;
+  user-select: none;
 
   @include mq(m) {
     position: fixed;

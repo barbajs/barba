@@ -19,8 +19,11 @@ Barba's default behavior:
 
 Here is a small diagram that describe **Barba's main concept** when navigating between two pages:
 
-<a href="/assets/diagram/lifecycle.png" target="_blank">
-  <img src="/assets/diagram/lifecycle.png" alt="Lifecycle diagram"/>
+<a href="/assets/diagram/lifecycle-light.svg" target="_blank" class="lifecycle-diagram light">
+  <img src="/assets/diagram/lifecycle-light.svg" alt="Lifecycle diagram"/>
+</a>
+<a href="/assets/diagram/lifecycle-dark.svg" target="_blank" class="lifecycle-diagram dark">
+  <img src="/assets/diagram/lifecycle-dark.svg" alt="Lifecycle diagram"/>
 </a>
 
 > Note that using the `sync` property will end in a different page lifecycle, see transition [sync mode](/docs/advanced/transitions/#Sync-mode).

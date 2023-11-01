@@ -33,6 +33,10 @@
     [data-feature-order='4'] ~ & {
       background-color: $c-menu-feature-4;
     }
+
+    @media (prefers-color-scheme: dark) {
+      background: $c-darkmode-dark !important; //stylelint-disable-line declaration-no-important
+    }
   }
 }
 

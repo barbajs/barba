@@ -21,6 +21,23 @@ $gray-lightest            : rgb(224, 224, 224);
 $white                    : rgb(255, 255, 255);
 $transparent              : transparent;
 
+// Dark mode colors
+$c-darkmode-color         : #9da5b4; // foreground
+$c-darkmode-light         : #282c34; // background
+$c-darkmode-dark          : #21252b; // background (darker)
+$c-darkmode-select        : #3e4451; // user select
+$c-darkmode-code          : #777d88; // code
+$c-darkmode-comment       : #434a59; // code comment
+$c-darkmode-blockquote    : #575c67; // blockquote
+$c-darkmode-doc-string    : #98c379; // doc
+$c-darkmode-doc-tag       : #ec4343; // doc
+$c-darkmode-doc-attr      : #d19a66; // doc
+$c-darkmode-doc-keyword   : #c678dd; // doc
+$c-darkmode-doc-function  : #61afef; // doc
+$c-darkmode-doc-table     : #181a1f; // doc
+$c-darkmode-doc-number    : #d19a66; // doc
+$c-darkmode-links         : #5a82f1; // global a
+
 // Dev colors
 $c-dev-bg                 : #3e4b55;
 $c-dev-error              : #d90b0b;

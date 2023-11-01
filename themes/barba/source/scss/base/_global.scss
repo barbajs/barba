@@ -15,9 +15,18 @@ html {
 body {
   overflow-x: hidden;
 
+  @media (prefers-color-scheme: dark) {
+    background: $c-darkmode-light;
+    color: $c-darkmode-color;
+  }
+
   ::selection {
     color: #fff;
     background: $c-blue-medium;
+
+    @media (prefers-color-scheme: dark) {
+      color: $c-darkmode-dark;
+    }
   }
 
   [data-feature-order='0'] {
@@ -109,6 +118,10 @@ code {
   font-family: $ff-code;
   background: $c-blue-lightest;
   border-radius: 4px;
+
+  @media (prefers-color-scheme: dark) {
+    background: $c-darkmode-select;
+  }
 }
 
 blockquote {
@@ -116,6 +129,15 @@ blockquote {
   padding: 0 2.5rem;
   color: $gray-light;
   border-left: 3px solid currentcolor;
+  overflow: hidden;
+
+  @media (prefers-color-scheme: dark) {
+    color: $c-darkmode-blockquote;
+
+    code {
+      color: $c-darkmode-color;
+    }
+  }
 }
 
 hr {

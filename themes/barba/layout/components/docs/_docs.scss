@@ -4,6 +4,15 @@
   a[title="Badge"] {
     display: inline-flex;
 
+    @media (prefers-color-scheme: dark) {
+      opacity: 0.8;
+      transition: opacity 250ms ease;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
     img {
       border-radius: 4px;
     }
@@ -11,6 +20,10 @@
 
   img[title="Badge"] {
     border-radius: 4px;
+
+    @media (prefers-color-scheme: dark) {
+      opacity: 0.8;
+    }
   }
 
   // Code-snippets formatting
@@ -19,6 +32,10 @@
     margin: 2rem 0;
     background: $c-blue-lightest;
     border-radius: 4px;
+
+    @media (prefers-color-scheme: dark) {
+      background: $c-darkmode-dark;
+    }
 
     .gutter {
       display: none;
@@ -48,6 +65,10 @@
       font-weight: 400;
       line-height: 1.6rem;
 
+      @media (prefers-color-scheme: dark) {
+        color: $c-darkmode-code;
+      }
+
       @include mq(s) {
         line-height: 2rem;
       }
@@ -59,6 +80,10 @@
       .comment,
       .title {
         color: $c-doc-comment;
+
+        @media (prefers-color-scheme: dark) {
+          color: $c-darkmode-comment;
+        }
       }
 
       .variable,
@@ -74,6 +99,10 @@
       .css .class,
       .css .pseudo {
         color: $c-doc-attribute;
+
+        @media (prefers-color-scheme: dark) {
+          color: $c-darkmode-doc-attr;
+        }
       }
 
       .number,
@@ -83,11 +112,19 @@
       .params,
       .constant {
         color: $c-doc-number;
+
+        @media (prefers-color-scheme: dark) {
+          color: $c-darkmode-doc-number;
+        }
       }
 
       .class,
       .css .rules .attribute {
         color: $c-doc-string;
+
+        @media (prefers-color-scheme: dark) {
+          color: $c-darkmode-doc-string;
+        }
       }
 
       .string,
@@ -97,6 +134,10 @@
       .ruby .symbol,
       .xml .cdata {
         color: $c-doc-string;
+
+        @media (prefers-color-scheme: dark) {
+          color: $c-darkmode-doc-string;
+        }
       }
 
       .css .hexcolor {
@@ -106,11 +147,19 @@
       .function,
       .javascript .title {
         color: $c-doc-function;
+
+        @media (prefers-color-scheme: dark) {
+          color: $c-darkmode-doc-function;
+        }
       }
 
       .keyword,
       .javascript .function {
         color: $c-doc-keyword;
+
+        @media (prefers-color-scheme: dark) {
+          color: $c-darkmode-doc-keyword;
+        }
       }
     }
 
@@ -132,6 +181,33 @@
       float: right;
     }
   }
+
+  // lifecycle diagrams
+  .lifecycle-diagram {
+    transition: opacity 250ms ease;
+
+    &::before {
+      display: none;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &.dark {
+      display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      &.light {
+        display: none;
+      }
+
+      &.dark {
+        display: flex;
+      }
+    }
+  }
 }
 
 .docs__page-transition {
@@ -143,6 +219,10 @@
   width: 100%;
   height: 100vh;
   background-color: $c-blue-light;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: $c-darkmode-dark;
+  }
 
   @include mq(m) {
     left: 28vw;

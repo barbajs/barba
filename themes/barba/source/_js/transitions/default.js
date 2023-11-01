@@ -14,7 +14,7 @@ export default {
     transitionTitle.innerHTML = next.container.dataset.barbaNamespace
 
     if (next.container.dataset.barbaNamespace === 'showcase') {
-      transitionTitle.innerHTML = 'showcases';
+      transitionTitle.innerHTML = 'showcase';
     }
 
     if (next.container.dataset.barbaNamespace === 'feature') {

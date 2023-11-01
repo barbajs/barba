@@ -27,6 +27,10 @@
   pointer-events: none;
   transition: opacity 0.4s ease-in-out;
 
+  @media (prefers-color-scheme: dark) {
+    background-color: $c-darkmode-dark;
+  }
+
   .is-open & {
     opacity: 1;
     pointer-events: initial;
@@ -42,7 +46,7 @@
 
   @include mq(m) {
     top: 0;
-    right: -7rem;
+    right: -8rem;
     justify-content: flex-end;
     width: max-content;
     height: max-content;
@@ -64,6 +68,7 @@
   box-shadow: 0 1px 20px rgba($c-blue-darker, 0.4);
   opacity: 0;
   transition: opacity 0.4s ease-in-out;
+  border-radius: 7px;
 
   .is-open & {
     display: flex;

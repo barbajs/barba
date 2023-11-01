@@ -19,6 +19,10 @@
   }
 
   .base {
+    @media (prefers-color-scheme: dark) {
+      fill: rgba($c-darkmode-light, 0.7);
+    }
+
     .js__rect {
       opacity: 0;
     }

@@ -31,11 +31,35 @@
     text-transform: uppercase;
     letter-spacing: 0.212rem;
 
+    @media (prefers-color-scheme: dark) {
+      color: $c-darkmode-color;
+
+      [data-feature-order='0'] & {
+        color: $c-menu-feature-0;
+      }
+
+      [data-feature-order='1'] & {
+        color: $c-menu-feature-1;
+      }
+
+      [data-feature-order='2'] & {
+        color: $c-menu-feature-2;
+      }
+
+      [data-feature-order='3'] & {
+        color: $c-menu-feature-3;
+      }
+
+      [data-feature-order='4'] & {
+        color: $c-menu-feature-4;
+      }
+    }
+
     .icon--barba {
       width: 2.1rem;
       height: 1.5rem;
-      fill: $c-gray-darker;
-      stroke: $c-gray-darker;
+      fill: currentcolor;
+      stroke: currentcolor;
     }
 
     span {
