@@ -22,7 +22,7 @@
     "jest": "24.9.0",
     "jest-environment-jsdom-global": "^1.2.1",
     "jest-watch-lerna-packages": "^1.1.0",
-    "lerna": "^7.3.0",
+    "lerna": "^7.4.2",
     "lint-staged": "13.2.3",
     "lodash": "^4.17.11",
     "microbundle": "0.15.1",
