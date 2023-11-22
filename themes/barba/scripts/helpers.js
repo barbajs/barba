@@ -83,3 +83,8 @@ hexo.extend.helper.register('getDocsNav', (url, docs) => {
 
   return [prev, next]
 })
+
+// slack invite link markdown helper
+hexo.extend.tag.register('slack_invite', () => {
+  return hexo.config.slack_invite;
+});

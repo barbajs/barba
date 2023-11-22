@@ -10,6 +10,7 @@ keywords:
 author: Barba team
 language: en
 timezone:
+slack_invite: https://join.slack.com/t/barbajs/shared_invite/enQtNTU3NTAyMjkxMzAyLTkxYWUwZmM1YWQxMmNlYmE0ZjY4NDQxMGUxYjkwYWFlMzEzOWM4OTRhMWRmYTQyYzFlMmQ3OGFmYmI3MWY0OWY
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
