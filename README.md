@@ -1,71 +1,47 @@
-# barba.js <small>[v2]</small>
+# barba.js – ![Stability](https://img.shields.io/badge/stability-stable-brightgreen.svg?style=flat-square) [![CircleCI](https://img.shields.io/circleci/project/github/barbajs/barba/main.svg?style=flat-square)](https://circleci.com/gh/barbajs/barba/tree/main) [![Coverage Status](https://img.shields.io/coveralls/github/barbajs/barba/main.svg?style=flat-square)](https://coveralls.io/github/barbajs/barba?branch=main) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=flat-square)](https://conventionalcommits.org) [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg?style=flat-square)](https://lernajs.io/) [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](https://github.com/barbajs/barba/blob/main/LICENSE.md) [![All Contributors](https://img.shields.io/badge/all_contributors-73-orange.svg?style=flat-square)](#contributors) [![Slack workspace](https://img.shields.io/badge/slack-workspace-purple.svg?style=flat-square&logo=slack)](https://join.slack.com/t/barbajs/shared_invite/enQtNTU3NTAyMjkxMzAyLTkxYWUwZmM1YWQxMmNlYmE0ZjY4NDQxMGUxYjkwYWFlMzEzOWM4OTRhMWRmYTQyYzFlMmQ3OGFmYmI3MWY0OWY)
 
-![Stability](https://img.shields.io/badge/stability-stable-brightgreen.svg?style=flat-square)
-[![CircleCI](https://img.shields.io/circleci/project/github/barbajs/barba/main.svg?style=flat-square)](https://circleci.com/gh/barbajs/barba/tree/main)
-[![Coverage Status](https://img.shields.io/coveralls/github/barbajs/barba/main.svg?style=flat-square)](https://coveralls.io/github/barbajs/barba?branch=main)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=flat-square)](https://conventionalcommits.org)
-[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg?style=flat-square)](https://lernajs.io/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](https://github.com/barbajs/barba/blob/main/LICENSE)
-[![All Contributors](https://img.shields.io/badge/all_contributors-73-orange.svg?style=flat-square)](#contributors)
-[![Slack channel](https://img.shields.io/badge/slack-channel-purple.svg?style=flat-square&logo=slack)](https://barbajs.slack.com)
+Create **badass, fluid and smooth transitions** between your website’s pages.
 
-> [Invite link to slack channel](https://join.slack.com/t/barbajs/shared_invite/enQtNTU3NTAyMjkxMzAyLTkxYWUwZmM1YWQxMmNlYmE0ZjY4NDQxMGUxYjkwYWFlMzEzOWM4OTRhMWRmYTQyYzFlMmQ3OGFmYmI3MWY0OWY)
+[![barbajs](https://raw.githubusercontent.com/barbajs/.github/main/profile/barbajs.svg "BarbaJS")](https://barba.js.org/)
 
-**Barba.js** is a small (7kb minified and compressed) and easy-to-use library that helps you create fluid and smooth transitions between your website's pages.
+## Intro
 
-It helps reduce the delay between your pages, minimize browser HTTP requests and enhance your user's web experience.
+**Barba.js** — aka *Barba* —  is a small *(7kb minified and compressed)* and easy-to-use library that helps you create fluid and smooth transitions between your website's pages. It makes your website run like a **SPA** *(Single Page Application)* and help reduce the delay between your pages, minimize browser HTTP requests and enhance your user's web experience.
+
+## Features
+Barba is user friendly, smart, extensible and futureproof. The library provides a bunch of **useful features that will make your website shine** like any other website, ever!
+
+* Simplified API - *written in **TypeScript** and works with `Promises`*
+* Cross-browser support - *[progressive enhancement](https://barba.js.org/docs/getstarted/browser-support/) for modern browsers*
+* DOM flexibility - *custom [markup](https://barba.js.org/docs/getstarted/markup/#DOM-structure), [namespaces](https://barba.js.org/docs/getstarted/markup/#Namespace) and `data` attribute [schema](https://barba.js.org/docs/getstarted/markup/#Schema)*
+* Hook system - *regulars lifecycle [methods](https://barba.js.org/docs/advanced/hooks/) for `Transitions` and `Views`*
+* Transition resolution - *[rules](https://barba.js.org/docs/advanced/transitions/#Rules) that let Barba pick the right transition*
+* Sync mode - *indicates whether leave and enter hooks should [“play together”](https://barba.js.org/docs/advanced/transitions/#Sync-mode)*
+* Page related code - *[custom logic](https://barba.js.org/docs/advanced/views/) attached to a specific `View`*
+* Modern browser strategies - *keep your site run [as fast as possible](https://barba.js.org/docs/advanced/strategies/)*
+* Cook like an expert - *improve your [development workflow](https://barba.js.org/docs/advanced/recipes/)*
+* Built-in utilities - *brought to you with a bunch of [useful methods](https://barba.js.org/docs/advanced/utils/)*
+* Plugin system - *supplied with [useful plugins](https://barba.js.org/docs/plugins/intro/)*
+* Wide community - *more than 980+ [amazing developers](https://barba.js.org/docs/getstarted/useful-links/#Developer) can help build your website!*
 
 ## Documentation
+Here you will find the documentation describing **how to use** the library.
 
-- [Site](https://barba.js.org/)
-- [User guide](https://barba.js.org/docs/getstarted/intro/)
-- [API documentation](https://barba.js.org/api/)
+1. [Website](https://barba.js.org/) - official Barba website
+2. [User guide](https://barba.js.org/docs/getstarted/intro/) - how to install and use the plugin
+3. [Lessons, courses and videos](https://barba.js.org/docs/getstarted/useful-links/#Learn) - for in-depth learning
+4. [Showcase](https://barba.js.org/showcase/) - selected works made with Barba
+5. [Developer API](https://barba.js.org/api/) - by developers, for developers
 
-## What's new?
+> **Notice**: this guide assumes intermediate knowledge of HTML, CSS, and JavaScript. It is worth mentioning that all code examples use ES6+ syntax. If you are not comfortable with this syntax, we would encourage you to grasp the basics then come back.
+>
+> In case of emergency, check the ["legacy" code example](https://barba.js.org/docs/getstarted/legacy/).
 
-- Simplified API
-- Hook system for `transitions` and `views`
-- _Transition resolution_: declare your transitions and let Barba pick the right one
-- Use of `data-barba` attributes
-- Sync mode
-- Plugin system
-  - `@barba/router`: use of routes for _transition resolution_
-  - `@barba/css`: automatic addition of CSS classes
-  - `@barba/prefetch`: automatic pages prefetching (and caching), based on viewport
-  - `@barba/head`: update your `<head>` _(coming soon)_
-  - `@barba/preset`: ready-to-use basic transitions pack (fade, slide, …) _(coming soon)_
+## Sponsor
+If you like this library and want to give some recognition, it is now possible to **become a [Github sponsor](https://www.github.com/sponsors/xavierfoucrier)** and support this project by sponsoring BarbaJS maintainer on Github. Even if it's a small contribution, you participate in the effort of making **open source projects maintained for anyone**, and developers to be rewarded for their work/time.
 
-## Main changes (TL;DR)
-
-- Barba now use `data-barba-*` attributes:
-  - data-barba-wrapper for the [wrapper](https://barba.js.org/docs/getstarted/markup/#Wrapper)
-  - data-barba-container for the [container](https://barba.js.org/docs/getstarted/markup/#Container)
-  - data-barba-namespace for the [namespace](https://barba.js.org/docs/getstarted/markup/#Namespace)
-- 2 main methods:
-  - `barba.init()` for transitions, views and Barba core settings
-  - `barba.use()` for plugins (router, css, prefetch, etc.)
-- [Transitions](https://barba.js.org/docs/advanced/transitions/):
-  - are plain JS objects
-  - are declared via the `barba.init({ transitions })`
-  - use "[hooks](https://barba.js.org/docs/advanced/hooks/)" corresponding to animation steps
-    - hooks can be synchronous or asynchronous (via `this.async()` or Promise based)
-    - all hooks receive same [`data` argument](https://barba.js.org/docs/advanced/hooks/#data-argument)
-  - use "[rules](https://barba.js.org/docs/advanced/transitions/#Rules)" to select which transition to use
-    - default rules are `namespace` and `custom`
-    - `@barba/router` adds `route` rule
-    - they can be combined within `from` and `to` properties
-- [Views](https://barba.js.org/docs/advanced/views/):
-  - are plain JS objects
-  - are declared via the `barba.init({ views })`
-  - use a subset of animation "hooks":
-    - `beforeOnce`, `afterOnce`, `beforeLeave`, `afterLeave`, `beforeEnter`, `afterEnter`
-    - receive the same [`data` argument](https://barba.js.org/docs/advanced/hooks/#data-argument)
-- [Sync mode](https://barba.js.org/docs/advanced/transitions/#Sync-mode) will start `leave` and `enter` transitions concurrently
-
-## How to contribute
-
-If you want to report a bug or if you just want to request for a new feature/improvement, please **follow [those instructions](.github/CONTRIBUTING.md) before**.
+## Contribute
+If you want to report a bug or request a new feature/improvement, please **read the project [contributors guidelines](.github/CONTRIBUTING.md) before**.
 
 Thanks for taking time to contribute to Barba :tada: :+1:
 
