@@ -17,7 +17,7 @@ url: 'docs/getstarted/intro/'
 
 ## Intro
 
-**Barba.js** is a small *(7kb minified and compressed)* and easy-to-use library that helps you create fluid and smooth transitions between your website's pages. It makes your website run like a **SPA** *(Single Page Application)* and help reduce the delay between your pages, minimize browser HTTP requests and enhance your user's web experience.
+**Barba.js** — aka *Barba* —  is a small *(7kb minified and compressed)* and easy-to-use library that helps you create fluid and smooth transitions between your website's pages. It makes your website run like a **SPA** *(Single Page Application)* and help reduce the delay between your pages, minimize browser HTTP requests and enhance your user's web experience.
 
 > **Notice**: this guide assumes intermediate knowledge of HTML, CSS, and JavaScript. It is worth mentioning that all code examples use ES6+ syntax. If you are not comfortable with this syntax, we would encourage you to grasp the basics then come back.
 >
