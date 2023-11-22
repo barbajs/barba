@@ -282,4 +282,16 @@
   h1 a.headerlink {
     display: none;
   }
+
+  .info {
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    margin-top: 50px;
+    background: $c-blue-lightest;
+
+    @media (prefers-color-scheme: dark) {
+      background: $c-darkmode-dark;
+    }
+  }
 }
