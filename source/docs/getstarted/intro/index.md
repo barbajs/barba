@@ -11,7 +11,7 @@ url: 'docs/getstarted/intro/'
 
 <div class="info">
   <strong>🚧 IMPORTANT NOTE</strong>
-  <p>The current documentation reflect source code of Barba.js `main` branch, which has not yet been published yet on NPM. We are still working on fixing and improving the code before releasing an new version. Stay tuned, be patient and <a href="https://github.com/barbajs/barba" target="_blank">follow the repository on Github</a> for more updates!</p>
+  <p>The current documentation reflect source code of Barba.js `main` branch, which has not been published yet on NPM. We are still working on fixing and improving the code before releasing an new version. Stay tuned, be patient and <a href="https://github.com/barbajs/barba" target="_blank">follow the repository on Github</a> for more updates!</p>
 </div>
 
 ## Intro
