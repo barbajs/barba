@@ -2,7 +2,7 @@
   "name": "root",
   "private": true,
   "devDependencies": {
-    "@commitlint/cli": "^17.8.1",
+    "@commitlint/cli": "^18.4.4",
     "@commitlint/config-conventional": "^17.8.1",
     "@commitlint/config-lerna-scopes": "^17.8.1",
     "@types/jest": "24.9.1",
