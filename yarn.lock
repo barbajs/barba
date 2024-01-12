@@ -1043,10 +1043,10 @@
   dependencies:
     conventional-changelog-conventionalcommits "^7.0.2"
 
-"@commitlint/config-lerna-scopes@^17.8.1":
-  version "17.8.1"
-  resolved "https://registry.yarnpkg.com/@commitlint/config-lerna-scopes/-/config-lerna-scopes-17.8.1.tgz#b6765be125e547d68636d342cac2bdf67a8cc42c"
-  integrity sha512-F6AlpUo8H17yW9BKv5pbdTGUPkHAidvfZmde9oLPcha5emsWKiUq3YBcLyEV1EShyGpF5uCmQ/+RQ16SPI/D0Q==
+"@commitlint/config-lerna-scopes@^18.4.4":
+  version "18.4.4"
+  resolved "https://registry.yarnpkg.com/@commitlint/config-lerna-scopes/-/config-lerna-scopes-18.4.4.tgz#e8a00e5041d1c880dc0fa623655a2fabd69fade6"
+  integrity sha512-wV4co3x9rN/9T1tl1TMvJOVo0yMq/SUZ3K3zYWBsGdNBwm5cJMvi0nbk4eGzYb8tYy95/0KCHX8m8Nax3gUNng==
   dependencies:
     "@lerna/project" "^6.0.0"
     glob "^8.0.3"

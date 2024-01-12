@@ -4,7 +4,7 @@
   "devDependencies": {
     "@commitlint/cli": "^18.4.4",
     "@commitlint/config-conventional": "^18.4.4",
-    "@commitlint/config-lerna-scopes": "^17.8.1",
+    "@commitlint/config-lerna-scopes": "^18.4.4",
     "@types/jest": "24.9.1",
     "@types/lodash": "^4.14.202",
     "all-contributors-cli": "^6.26.1",
