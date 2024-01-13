@@ -16,5 +16,10 @@
       }
     ]
   },
-  "exclude": ["node_modules", "**/__*__/**/*", "**/polyfills/index.d.ts"]
+  "exclude": [
+    "node_modules",
+    "**/__*__/**/*",
+    "**/polyfills/index.d.ts",
+    "./cypress.config.ts"
+  ]
 }
