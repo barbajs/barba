@@ -1036,10 +1036,10 @@
   dependencies:
     conventional-changelog-conventionalcommits "^4.3.1"
 
-"@commitlint/config-conventional@^18.4.4":
-  version "18.4.4"
-  resolved "https://registry.yarnpkg.com/@commitlint/config-conventional/-/config-conventional-18.4.4.tgz#ad9a4fc19a848821f01e79089ee01dc9ba71766b"
-  integrity sha512-Bz3sPQSboBN+Et/KyZrR+OJ3z9PrHDw7Bls0/hv94PmuHBtMq1dCGxS9XzTGzxeMNlytCC4kxF083tbhPljl3Q==
+"@commitlint/config-conventional@^18.6.0":
+  version "18.6.0"
+  resolved "https://registry.yarnpkg.com/@commitlint/config-conventional/-/config-conventional-18.6.0.tgz#88da3e34e2bfcd8a5d46bcc472553e7f63f35323"
+  integrity sha512-CDCOf2eJz9D/TL44IBks0stM9TmdLCNE2B48owIU3YCadwzts/bobXPScagIgPQF6hhKYMEdj5zpUDlmbwuqwQ==
   dependencies:
     conventional-changelog-conventionalcommits "^7.0.2"
 
