@@ -2,8 +2,8 @@
   "name": "root",
   "private": true,
   "devDependencies": {
-    "@commitlint/cli": "^18.6.0",
-    "@commitlint/config-conventional": "^18.6.0",
+    "@commitlint/cli": "^18.6.1",
+    "@commitlint/config-conventional": "^18.6.3",
     "@commitlint/config-lerna-scopes": "^18.4.4",
     "@types/jest": "24.9.1",
     "@types/lodash": "^4.17.0",
