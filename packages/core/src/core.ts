@@ -68,7 +68,7 @@ export class Core {
   /**
    * Plugins.
    */
-  public plugins: Array<IBarbaPlugin<any>> = [];
+  public plugins: IBarbaPlugin<any>[] = [];
   /**
    * Options
    */
