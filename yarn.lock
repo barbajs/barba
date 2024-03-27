@@ -1121,12 +1121,12 @@
   dependencies:
     conventional-changelog-conventionalcommits "^4.3.1"
 
-"@commitlint/config-conventional@^18.6.3":
-  version "18.6.3"
-  resolved "https://registry.yarnpkg.com/@commitlint/config-conventional/-/config-conventional-18.6.3.tgz#1b2740dbe325d76e05924c46bc1504340b701ca1"
-  integrity sha512-8ZrRHqF6je+TRaFoJVwszwnOXb/VeYrPmTwPhf0WxpzpGTcYy1p0SPyZ2eRn/sRi/obnWAcobtDAq6+gJQQNhQ==
+"@commitlint/config-conventional@^19.1.0":
+  version "19.1.0"
+  resolved "https://registry.yarnpkg.com/@commitlint/config-conventional/-/config-conventional-19.1.0.tgz#6b4b7938aa3bc308214a683247520f602e55961e"
+  integrity sha512-KIKD2xrp6Uuk+dcZVj3++MlzIr/Su6zLE8crEDQCZNvWHNQSeeGbzOlNtsR32TUy6H3JbP7nWgduAHCaiGQ6EA==
   dependencies:
-    "@commitlint/types" "^18.6.1"
+    "@commitlint/types" "^19.0.3"
     conventional-changelog-conventionalcommits "^7.0.2"
 
 "@commitlint/config-lerna-scopes@^18.4.4":
@@ -1314,13 +1314,6 @@
   version "17.4.0"
   resolved "https://registry.yarnpkg.com/@commitlint/types/-/types-17.4.0.tgz#c7c2b97b959f6175c164632bf26208ce417b3f31"
   integrity sha512-2NjAnq5IcxY9kXtUeO2Ac0aPpvkuOmwbH/BxIm36XXK5LtWFObWJWjXOA+kcaABMrthjWu6la+FUpyYFMHRvbA==
-  dependencies:
-    chalk "^4.1.0"
-
-"@commitlint/types@^18.6.1":
-  version "18.6.1"
-  resolved "https://registry.yarnpkg.com/@commitlint/types/-/types-18.6.1.tgz#7eb3ab2d799d9166fbb98b96b0744581e59a4ad4"
-  integrity sha512-gwRLBLra/Dozj2OywopeuHj2ac26gjGkz2cZ+86cTJOdtWfiRRr4+e77ZDAGc6MDWxaWheI+mAV5TLWWRwqrFg==
   dependencies:
     chalk "^4.1.0"
 
