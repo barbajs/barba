@@ -19,7 +19,7 @@ store.add('rule', {
   },
 });
 
-schemaPage.route = { name, params: {} };
+schemaPage.route = { name: '', params: {} };
 const mockData: ITransitionData = {
   current: schemaPage,
   next: schemaPage,
