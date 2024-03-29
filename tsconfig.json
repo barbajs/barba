@@ -3,6 +3,7 @@
     "resolveJsonModule": true,
     "strict": true,
     "strictNullChecks": false,
+    "useUnknownInCatchVariables": false,
     "esModuleInterop": true,
     "target": "es5",
     "plugins": [

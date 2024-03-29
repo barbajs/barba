@@ -82,7 +82,7 @@ class Router implements IBarbaPlugin<IRouterOptions> {
   public resolveUrl(url: string): IRouteResolved | null {
     const { path } = this.barba.url.parse(url);
     const output: IRouteResolved = {
-      name,
+      name: '',
       params: {},
     };
 
