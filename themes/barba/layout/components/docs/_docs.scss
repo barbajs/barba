@@ -3,6 +3,7 @@
 
   a[title="Badge"] {
     display: inline-flex;
+    margin-right: 4px;
 
     @media (prefers-color-scheme: dark) {
       opacity: 0.8;
@@ -20,6 +21,7 @@
 
   img[title="Badge"] {
     border-radius: 4px;
+    margin-right: 4px;
 
     @media (prefers-color-scheme: dark) {
       opacity: 0.8;
