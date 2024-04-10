@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "is-promise": "^4.0.0",
-    "path-to-regexp": "^6.2.1"
+    "path-to-regexp": "^6.2.2"
   },
   "gitHead": "33c213bc36a0996f6333185dfc695fcd0d37c9d9"
 }
