@@ -3361,10 +3361,10 @@ crypto-browserify@^3.11.0:
     randombytes "^2.0.0"
     randomfill "^1.0.3"
 
-cryptr@^6.2.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/cryptr/-/cryptr-6.2.0.tgz#30dd4754447f9f5d18d5ea8a8dfbae08f00e5cbb"
-  integrity sha512-jYi8SxvOFebTT7EYOABiPpHKY6lwWaP9IVcvT/aIVJUVoFdzTgi0ySPCL78q1ig8w2kwfXFCZACXoCXaye57aw==
+cryptr@^6.3.0:
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/cryptr/-/cryptr-6.3.0.tgz#c28dce166dc9cd9ae8cba6028775f5f7334ab699"
+  integrity sha512-TA4byAuorT8qooU9H8YJhBwnqD151i1rcauHfJ3Divg6HmukHB2AYMp0hmjv2873J2alr4t15QqC7zAnWFrtfQ==
 
 css-functions-list@^3.1.0:
   version "3.1.0"
