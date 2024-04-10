@@ -12,21 +12,33 @@ You can safely copy/paste this legacy code and use it as a starting point for pl
 
 ## Code
 
-In a web page called `index.html`, put the following code:
+You need **at least two pages** to make a Barba transition:
+
+- `index.html`, the homepage of the website
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>BarbaJS legacy example</title>
+    <title>Index — BarbaJS legacy example</title>
   </head>
   <body>
 
+    <!-- base styles to prevent container from moving during transition -->
+    <style media="screen">
+      [data-barba="container"] {
+        position: absolute;
+        font-family: monospace;
+      }
+    </style>
+
     <!-- define the wrapper and the container -->
     <div data-barba="wrapper">
-      <div data-barba="container" data-barba-namespace="page-a">
+      <div data-barba="container" data-barba-namespace="home">
         <h1>Home</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <a href="about.html">About</a>
       </div>
     </div>
 
@@ -51,13 +63,34 @@ In a web page called `index.html`, put the following code:
               opacity: 0
             });
           }
-        }]
+        }],
       });
     </script>
   </body>
 </html>
 ```
 
-> In order to see the opacity transition properly run, you need to **add another page next this one** and link them together.
->
+- `about.html`, another page of the website
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>About — BarbaJS legacy example</title>
+  </head>
+  <body>
+    <div data-barba="wrapper">
+      <div data-barba="container" data-barba-namespace="about">
+        <h1>About</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <a href="index.html">Go back home</a>
+      </div>
+    </div>
+
+    <!-- no need to add scripts on the other page since Barba doesn't reload browser between pages -->
+  </body>
+</html>
+```
+
 > Be sure to read the [markup section](/docs/getstarted/markup/) before diving into Barba.
