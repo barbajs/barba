@@ -562,6 +562,7 @@
 <li><a href="#Google-Analytics">Google Analytics</a></li>
 <li><a href="#Google-ReCaptcha">Google ReCaptcha</a></li>
 <li><a href="#Locomotive-scroll">Locomotive scroll</a></li>
+<li><a href="#Lenis-scroll">Lenis scroll</a></li>
 <li><a href="#Scroll-Trigger">Scroll Trigger</a></li>
 <li><a href="#WordPress">WordPress</a></li>
 </ol>
@@ -607,6 +608,12 @@
 
 <blockquote>
 <p>Depending on what’s inside your website, you can also reset/update the LocomotiveScroll instance inside the Barba <code>after</code> hook instead.</p>
+</blockquote>
+<h2 id="Lenis-scroll"><a href="#Lenis-scroll" class="headerlink" title="Lenis scroll"></a>Lenis scroll</h2><p>Unlike LocomotiveScroll that uses scroll hijacking, Lenis is using browser <strong>native scrolling</strong>, meaning you don’t have to update/refresh it between your website pages. It’s simple as this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> barba <span class="keyword">from</span> <span class="string">'@barba/core'</span>;</span><br><span class="line"><span class="keyword">import</span> Lenis <span class="keyword">from</span> <span class="string">'@studio-freight/lenis'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// init lenis</span></span><br><span class="line"><span class="keyword">const</span> lenis = <span class="keyword">new</span> Lenis(&#123;</span><br><span class="line">  lerp: <span class="number">0.1</span>,</span><br><span class="line">  smooth: <span class="literal">true</span>,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> loop = <span class="function">(<span class="params">time</span>) =&gt;</span> &#123;</span><br><span class="line">  lenis.raf(time);</span><br><span class="line">  requestAnimationFrame(loop);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">requestAnimationFrame(loop);</span><br><span class="line"></span><br><span class="line"><span class="comment">// init barba</span></span><br><span class="line">barba.init();</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Note that if you link Lenis with <a href="#Scroll-Trigger">ScrollTrigger</a>, you will need to <strong>deal with triggers</strong>.</p>
 </blockquote>
 <h2 id="Scroll-Trigger"><a href="#Scroll-Trigger" class="headerlink" title="Scroll Trigger"></a>Scroll Trigger</h2><p>There are <strong>no specific issues</strong> when trying to implement this library in a website that uses Barba. Depending on how your website animations are shared along all your pages, and also how you have planned to deal with scroll “triggers”, you may prefer using a view hook instead of a global hook.</p>
 <h3 id="View-hook"><a href="#View-hook" class="headerlink" title="View hook"></a>View hook</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">data-barba</span>=<span class="string">"wrapper"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">data-scroll-container</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">main</span> <span class="attr">data-barba</span>=<span class="string">"container"</span> <span class="attr">data-barba-namespace</span>=<span class="string">"home"</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- put content here to have a scrollbar --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"scrolltrigger-element"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>This element is animated by ScrollTrigger<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- put content here to have a scrollbar --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -673,7 +680,7 @@
 
     <footer class="site-footer footer">
   barba.js ©️2024<br>
-  Last updated on Apr 10th
+  Last updated on Apr 11th
 </footer>
 
   </div>
