@@ -22,10 +22,11 @@ This might be result in some **unexpected behaviors** when using classic third p
 6. [WordPress](#WordPress)
 
 ## Google Analytics
+![Version](https://img.shields.io/badge/%F0%9F%A7%AA%20tested%20with-v4-brightgreen.svg?style=flat-square "Badge")
 
-### GA4
+### Page view
 
-With `Google Analytics 4`, you can manually send a `pageview` with the following snippet.
+With `Google Analytics`, you can manually send a `pageview` with the following snippet.
 The best place to do that is in the `after` [global hook](/docs/advanced/hooks/#Global-hooks), as it is applied to all your pages:
 
 ```javascript
@@ -54,6 +55,7 @@ Although you can **manually send a page view**, as Google Tag Manager has a `His
 > Know issue: [How to fix rogue referral with Google Tag Manager](https://www.simoahava.com/gtm-tips/fix-rogue-referral-problem-single-page-sites/)
 
 ## Google ReCaptcha
+![Version](https://img.shields.io/badge/%F0%9F%A7%AA%20tested%20with-v3-brightgreen.svg?style=flat-square "Badge")
 
 Start by [generating your public/private keys](https://www.google.com/recaptcha/admin/create) and add the script inside your page:
 
@@ -87,6 +89,7 @@ barba.init({
 > See [Google reCAPTCHA v3 guide](https://developers.google.com/recaptcha/docs/v3) for more details.
 
 ## Locomotive scroll
+![Version](https://img.shields.io/badge/%F0%9F%A7%AA%20tested%20with-v4.1.4-brightgreen.svg?style=flat-square "Badge")
 
 This library is **well compatible with Barba**, but you can encounter issues when implementing it. You need to deal with your page template, Barba lifecycle and LocomotiveScroll settings.
 
@@ -172,6 +175,7 @@ barba.hooks.after(() => {
 
 
 ## Lenis scroll
+![Version](https://img.shields.io/badge/%F0%9F%A7%AA%20tested%20with-v1.0.42-brightgreen.svg?style=flat-square "Badge")
 
 Unlike LocomotiveScroll that uses scroll hijacking, Lenis is using browser **native scrolling**, meaning you don't have to update/refresh it between your website pages. It's simple as this:
 
@@ -201,6 +205,7 @@ barba.init();
 
 
 ## Scroll Trigger
+![Version](https://img.shields.io/badge/%F0%9F%A7%AA%20tested%20with-v3.12.5-brightgreen.svg?style=flat-square "Badge")
 
 There are **no specific issues** when trying to implement this library in a website that uses Barba. Depending on how your website animations are shared along all your pages, and also how you have planned to deal with scroll "triggers", you may prefer using a view hook instead of a global hook.
 
@@ -264,6 +269,7 @@ barba.init({
 
 
 ## WordPress
+![Version](https://img.shields.io/badge/%F0%9F%A7%AA%20tested%20with-v6.5.2-brightgreen.svg?style=flat-square "Badge")
 
 ### Update `body` classes
 
