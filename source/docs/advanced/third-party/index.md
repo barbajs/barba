@@ -17,8 +17,9 @@ This might be result in some **unexpected behaviors** when using classic third p
 1. [Google Analytics](#Google-Analytics)
 2. [Google ReCaptcha](#Google-ReCaptcha)
 3. [Locomotive scroll](#Locomotive-scroll)
-4. [Scroll Trigger](#Scroll-Trigger)
-4. [WordPress](#WordPress)
+4. [Lenis scroll](#Lenis-scroll)
+5. [Scroll Trigger](#Scroll-Trigger)
+6. [WordPress](#WordPress)
 
 ## Google Analytics
 
@@ -168,6 +169,35 @@ barba.hooks.after(() => {
 ```
 
 > Depending on what's inside your website, you can also reset/update the LocomotiveScroll instance inside the Barba `after` hook instead.
+
+
+## Lenis scroll
+
+Unlike LocomotiveScroll that uses scroll hijacking, Lenis is using browser **native scrolling**, meaning you don't have to update/refresh it between your website pages. It's simple as this:
+
+```javascript
+import barba from '@barba/core';
+import Lenis from '@studio-freight/lenis';
+
+// init lenis
+const lenis = new Lenis({
+  lerp: 0.1,
+  smooth: true,
+});
+
+const loop = (time) => {
+  lenis.raf(time);
+  requestAnimationFrame(loop);
+};
+
+requestAnimationFrame(loop);
+
+// init barba
+barba.init();
+
+```
+
+> Note that if you link Lenis with [ScrollTrigger](#Scroll-Trigger), you will need to **deal with triggers**.
 
 
 ## Scroll Trigger
