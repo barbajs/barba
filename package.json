@@ -3,7 +3,7 @@
   "private": true,
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",
-    "@commitlint/config-conventional": "^19.1.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@commitlint/config-lerna-scopes": "^19.0.0",
     "@types/jest": "24.9.1",
     "@types/lodash": "^4.17.0",
