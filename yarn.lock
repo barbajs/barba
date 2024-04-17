@@ -1197,13 +1197,13 @@
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
   integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
 
-"@commitlint/cli@^19.2.1":
-  version "19.2.1"
-  resolved "https://registry.yarnpkg.com/@commitlint/cli/-/cli-19.2.1.tgz#8f00d27a8b7c7780e75b06fd4658fdc1e9209f1b"
-  integrity sha512-cbkYUJsLqRomccNxvoJTyv5yn0bSy05BBizVyIcLACkRbVUqYorC351Diw/XFSWC/GtpwiwT2eOvQgFZa374bg==
+"@commitlint/cli@^19.2.2":
+  version "19.2.2"
+  resolved "https://registry.yarnpkg.com/@commitlint/cli/-/cli-19.2.2.tgz#7b6d78596dcf6d716942b147aa07c04c4ee126df"
+  integrity sha512-P8cbOHfg2PQRzfICLSrzUVOCVMqjEZ8Hlth6mtJ4yOEjT47Q5PbIGymgX3rLVylNw+3IAT2Djn9IJ2wHbXFzBg==
   dependencies:
     "@commitlint/format" "^19.0.3"
-    "@commitlint/lint" "^19.1.0"
+    "@commitlint/lint" "^19.2.2"
     "@commitlint/load" "^19.2.0"
     "@commitlint/read" "^19.2.1"
     "@commitlint/types" "^19.0.3"
@@ -1281,20 +1281,20 @@
     "@commitlint/types" "^19.0.3"
     chalk "^5.3.0"
 
-"@commitlint/is-ignored@^19.0.3":
-  version "19.0.3"
-  resolved "https://registry.yarnpkg.com/@commitlint/is-ignored/-/is-ignored-19.0.3.tgz#a64e0e217044f2d916127369d21ea12324a834fe"
-  integrity sha512-MqDrxJaRSVSzCbPsV6iOKG/Lt52Y+PVwFVexqImmYYFhe51iVJjK2hRhOG2jUAGiUHk4jpdFr0cZPzcBkSzXDQ==
+"@commitlint/is-ignored@^19.2.2":
+  version "19.2.2"
+  resolved "https://registry.yarnpkg.com/@commitlint/is-ignored/-/is-ignored-19.2.2.tgz#503ddcf908ac6b2bc4586a49cb53893a1856f5b2"
+  integrity sha512-eNX54oXMVxncORywF4ZPFtJoBm3Tvp111tg1xf4zWXGfhBPKpfKG6R+G3G4v5CPlRROXpAOpQ3HMhA9n1Tck1g==
   dependencies:
     "@commitlint/types" "^19.0.3"
     semver "^7.6.0"
 
-"@commitlint/lint@^19.1.0":
-  version "19.1.0"
-  resolved "https://registry.yarnpkg.com/@commitlint/lint/-/lint-19.1.0.tgz#0f4b26b1452d59a92a28b5fa6de9bdbee18399a1"
-  integrity sha512-ESjaBmL/9cxm+eePyEr6SFlBUIYlYpI80n+Ltm7IA3MAcrmiP05UMhJdAD66sO8jvo8O4xdGn/1Mt2G5VzfZKw==
+"@commitlint/lint@^19.2.2":
+  version "19.2.2"
+  resolved "https://registry.yarnpkg.com/@commitlint/lint/-/lint-19.2.2.tgz#57f69e24bd832a7dcce8ebf82d11e3bf03ccc2a9"
+  integrity sha512-xrzMmz4JqwGyKQKTpFzlN0dx0TAiT7Ran1fqEBgEmEj+PU98crOFtysJgY+QdeSagx6EDRigQIXJVnfrI0ratA==
   dependencies:
-    "@commitlint/is-ignored" "^19.0.3"
+    "@commitlint/is-ignored" "^19.2.2"
     "@commitlint/parse" "^19.0.3"
     "@commitlint/rules" "^19.0.3"
     "@commitlint/types" "^19.0.3"
