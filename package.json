@@ -12,7 +12,7 @@
     "commitizen": "^4.3.0",
     "commitlint-config-ccgls": "1.4.8",
     "coveralls": "^3.1.1",
-    "cypress": "^13.8.0",
+    "cypress": "^13.8.1",
     "cz-ccgls": "^0.4.6",
     "eslint": "^8.57.0",
     "eslint-plugin-cypress": "^2.15.2",
