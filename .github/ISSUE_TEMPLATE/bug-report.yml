@@ -1,0 +1,39 @@
+name: "🐛 Bug report"
+description: "Report an issue with BarbaJS"
+title: "..."
+labels:
+  - bug
+body:
+- type: markdown
+  attributes:
+    value: |
+      By opening an issue, you consider that there is a problem with the library itself, rather than your code. If you are requesting for custom code support, please **use the Slack workspace** in order to ask the whole community. Join using the invite link [https://barba.js.org/docs/getstarted/useful-links/#Developer](https://barba.js.org/docs/getstarted/useful-links/#Developer).
+
+      Alternatively I can provide a custom support for you or your company through [sponsoring/quote](https://github.com/sponsors/xavierfoucrier), don't hesitate to reach me with a private message on Slack ✌️🪴.
+- type: input
+  attributes:
+    label: What version are you using?
+    description: Please provide the version of BarbaJS your are using in your project.
+  validations:
+    required: true
+- type: dropdown
+  attributes:
+    label: What package are you using?
+    description: |
+      Please specify the package with which you are having a problem.
+    options:
+      - "@barba/core"
+      - "@barba/router"
+      - "@barba/prefetch"
+      - "@barba/css"
+      - "@barba/head"
+      - "@barba/preset"
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Describe your issue
+    description: |
+      You can use Markdown in this field.
+  validations:
+    required: true
