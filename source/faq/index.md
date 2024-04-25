@@ -22,6 +22,7 @@ Frequently Asked Questions when starting using BarbaJS.
 - [How can I get the current/next page informations?](#How-can-I-get-the-current-next-page-informations)
 - [What about SEO concerns?](#What-about-SEO-concerns)
 - [Can I use Barba inside a React/Vue/Next app?](#Can-I-use-Barba-inside-a-React-Vue-Next-app)
+- [How can I sponsor the Barba project?](#How-can-I-sponsor-the-Barba-project)
 - [How can I contribute to Barba?](#How-can-I-contribute-to-Barba)
 
 > **Missing a question?** Search into the [repository issues](https://github.com/barbajs/barba/issues?q=is%3Aissue) first before creating a new one. If you need further help or instant code support, join the community using the [developer link](/docs/getstarted/useful-links/#Developer). Finally, don’t hesitate to ask the Barba team [on Slack](https://barbajs.slack.com/) if you want a question to be present on this page.
@@ -65,6 +66,10 @@ Barba care about automatically updating the document `title` when navigating bet
 ### Can I use Barba inside a React/Vue/Next app?
 
 When using a front-end framework like **React, Vue or Next**, you should take a look at the framework documentation and use everything the framework is bringing you, like page transitions, routes, etc. instead of trying to implement another library over a complex framework layout.
+
+### How can I sponsor the Barba project?
+
+It is now possible to **support this project** by **[sponsoring BarbaJS maintainer on Github](https://github.com/sponsors/xavierfoucrier)**. Even if it's a small contribution, you participate in the effort of making open source projects maintained for everyone, and developers to be rewarded for their work/time.
 
 ### How can I contribute to Barba?
 
