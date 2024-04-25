@@ -6,9 +6,9 @@ order: 5
 layout: components/features/feature
 ---
 
-Barba.js is started as a weekend side-project and, thanks to the community, it is now widely used by agencies and individuals.
+Barba.js is started as a weekend side-project and, thanks to the community, it is now widely used by agencies (Google, New York Time and many more!) and individuals.
 
-Used by Google, New York Times and many more!
+If you like this library and want to give some recognition, it is now possible to **become a [Github sponsor](https://www.github.com/sponsors/xavierfoucrier)** and support this project by sponsoring BarbaJS maintainer on Github.
 
 A big <span title="THANKS">👏</span> to <a class="link" href="https://epic.net" target="_blank">EPIC Agency</a>
 
