@@ -7,13 +7,12 @@ body:
 - type: markdown
   attributes:
     value: |
-      By opening an issue, you consider that there is a problem with the library itself, rather than your code. If you are requesting for custom code support, please **use the Slack workspace** in order to ask the whole community. Join using the invite link [https://barba.js.org/docs/getstarted/useful-links/#Developer](https://barba.js.org/docs/getstarted/useful-links/#Developer).
-
-      Alternatively I can provide a custom support for you or your company through [sponsoring/quote](https://github.com/sponsors/xavierfoucrier), don't hesitate to reach me with a private message on Slack ✌️🪴.
+      By opening an issue, you consider that there is a problem with the library itself, rather than your code. If you are requesting for help, please **use the Slack workspace** in order to ask the whole community. Join using the invite link, read [the developer documentation](https://barba.js.org/docs/getstarted/useful-links/#Developer). Alternatively, I can provide a custom code support for you or your company through [sponsoring/quote](https://github.com/sponsors/xavierfoucrier) depending on the amount of work, don't hesitate to reach me by mail or private message on Slack ✌️🪴.
 - type: input
   attributes:
     label: What version are you using?
     description: Please provide the version of BarbaJS your are using in your project.
+    placeholder: e.g. v2.9.7
   validations:
     required: true
 - type: dropdown
