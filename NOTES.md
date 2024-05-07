@@ -22,19 +22,3 @@ To be tested: `--github-release`
 npm adduser --registry http://localhost:4873
 lerna publish --registry http://localhost:4873 --canary --preid next
 ```
-
----
-
-> Questions…
->
-> - [ ] Scroll/lock util?
-> - [⛔️] Build module/nomodule? BOFFFFFF
-> - [ ] Browser support
->   - [ ] doit fonctionner avec IE <= 11? 10?
->   - [x] Integrate with Cypress
-
----
-
-## Showcase
-
-> check old issues + slack channel
