@@ -3,6 +3,61 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.10.0](https://github.com/barbajs/barba/compare/@barba/core@2.9.7...@barba/core@2.10.0) (2024-05-10)
+
+### Bug Fixes
+
+- **core:** :bug: cache first page ([a45bc26](https://github.com/barbajs/barba/commit/a45bc2692802cbb36259604e11ad8cd680e4701f)), closes [#602](https://github.com/barbajs/barba/issues/602)
+- **core:** :bug: fix `data-barba-history="replace"` attribute ([8e38a8f](https://github.com/barbajs/barba/commit/8e38a8f9097f68e92a1a18f42cf88edf1456d637))
+- **core:** :bug: fix container replacement in the dom ([aec3143](https://github.com/barbajs/barba/commit/aec314365942c53497a05b857f7170e9bb0b0a44)), closes [#479](https://github.com/barbajs/barba/issues/479)
+- **core:** :bug: fix DOMParser error on SSR ([cadba05](https://github.com/barbajs/barba/commit/cadba0512eb5459e325f7af82f210a92e05e24d5)), closes [#512](https://github.com/barbajs/barba/issues/512)
+- **core:** :bug: fix request header name case ([167988d](https://github.com/barbajs/barba/commit/167988ddc67654675816ca39d8d28980c423d229))
+- **core:** :bug: prevent `onLinkEnter` prefetch to cache relative URLs ([a7d15ac](https://github.com/barbajs/barba/commit/a7d15acb11f745107a4c11b5d783988a9eca7764))
+- **core:** :bug: prevent assistive technology to read out the entire page ([4baef3e](https://github.com/barbajs/barba/commit/4baef3e8171c0e5b3dd98b8ca886e5ff811a7513)), closes [#681](https://github.com/barbajs/barba/issues/681)
+- **core:** :bug: prevent programmatic prefetch to cache relative URLs ([a021236](https://github.com/barbajs/barba/commit/a021236668082a14d3c3c718acbc30ae0f5e9bdb))
+- **core:** :bug: properly match `self` transition ([f7bd01c](https://github.com/barbajs/barba/commit/f7bd01cfdb333c1d0afad109a7f74d01adcb78f1))
+- **core:** :bug: properly prevent `self` transition ([4c97b59](https://github.com/barbajs/barba/commit/4c97b59c86bc9e5ce9309621334d44849916299c)), closes [#700](https://github.com/barbajs/barba/issues/700)
+- **core:** :pencil2: fix `this.barba` typo ([707c3de](https://github.com/barbajs/barba/commit/707c3de77152dad11e98cb10877a57965e561623))
+- **core:** :pencil2: fix typos in tests ([a748356](https://github.com/barbajs/barba/commit/a748356daf77117a120783eee4750c16e7603ad2))
+- **core:** :rotating_light: align asterisks for jsdoc ([ff837db](https://github.com/barbajs/barba/commit/ff837dbd2569d051164fd6f72cbad2919361cf84))
+- **core:** :rotating_light: fix linter issues inside `core` ([5ae1432](https://github.com/barbajs/barba/commit/5ae1432d34a142154dc4a3928b7ab01a81ff232e))
+- **core:** :rotating_light: fix maxlength line issue ([45df0d6](https://github.com/barbajs/barba/commit/45df0d696f69c2cfbeca6f764d1e5ae465b8d177))
+- **core:** :rotating_light: sort imports alphabetically ([0ccbfda](https://github.com/barbajs/barba/commit/0ccbfdaf5c1a51c60240e4328b062ea8b63e3626))
+- **core:** :rotating_light: sort variables alphabetically ([6c2c3d7](https://github.com/barbajs/barba/commit/6c2c3d70b6f63bb796a95d4778919707f63054a7))
+- **core:** :white_check_mark: fix duplicate expect state ([085794b](https://github.com/barbajs/barba/commit/085794bac6fd32c2082c05c9d59c9135c0320b7f))
+- **core:** :white_check_mark: fix request tests ([151abff](https://github.com/barbajs/barba/commit/151abff58dc8658ef251a96c3fb32db865322f6f))
+- **core:** ✅ fix request tests ([79e207b](https://github.com/barbajs/barba/commit/79e207b4e7ff88c39a33f963d3833cfb9c2ba50b))
+- **core:** 🐛 fix transition with popstate event and query string ([e27736f](https://github.com/barbajs/barba/commit/e27736fc305d0315cbf0a01f74a9209c8337a02e)), closes [#587](https://github.com/barbajs/barba/issues/587)
+- **core:** 🚨 align asterisks for jsdoc ([811b3ab](https://github.com/barbajs/barba/commit/811b3ab0ea67933348228792b39240df01e3fe12))
+- **core:** timeout reload, go to next page instead ([2b8f59a](https://github.com/barbajs/barba/commit/2b8f59a11a1440c4dc9c89126c511fbec4f4bffd))
+
+### Features
+
+- **core:** :sparkles: add `cacheFirstPage` option ([4306972](https://github.com/barbajs/barba/commit/43069722744822853dbc459aea5ab5a4b8bd924f))
+- **core:** :sparkles: add `CacheStatus` to reflect Promise status ([61c28c7](https://github.com/barbajs/barba/commit/61c28c75fff686d19b03da3198776be293399e1b))
+- **core:** :sparkles: add `CacheTarget` type ([a4e9045](https://github.com/barbajs/barba/commit/a4e9045a7ad14cf40dae7bf3084cd8e9a9e89cd7))
+- **core:** :sparkles: add `getTarget` method ([1d187de](https://github.com/barbajs/barba/commit/1d187de72e11b2360b1e1f6c9f19a38d3fd94e97))
+- **core:** :sparkles: add `Headers` module ([141249d](https://github.com/barbajs/barba/commit/141249d3764e5791530e265793ec72722d67958d))
+- **core:** :sparkles: add `IDomSibling` interface ([d3acdb8](https://github.com/barbajs/barba/commit/d3acdb8dec3a494b5a17643312f778921155d22e))
+- **core:** :sparkles: add `IResponse` interface ([c2fa15a](https://github.com/barbajs/barba/commit/c2fa15acfe3d7c8b08659dd0da5d6b409e9609ad))
+- **core:** :sparkles: add a method to retrieve absolute href from URL ([ad96797](https://github.com/barbajs/barba/commit/ad967972a41a324dd9128855225f41bae6142587))
+- **core:** :sparkles: allow `CacheStatus` to be retrieved ([9970f21](https://github.com/barbajs/barba/commit/9970f216c4e629783a7f2a4f828bf8ca707fc70c))
+- **core:** :sparkles: allow custom `data` when adding to history ([2eaab1c](https://github.com/barbajs/barba/commit/2eaab1cf345462692951b9b09418484823e55bbb))
+- **core:** :sparkles: allow custom data in `barba.history` ([920880a](https://github.com/barbajs/barba/commit/920880a8573ee9fc1eb03fd75cce08c872be0d27)), closes [#630](https://github.com/barbajs/barba/issues/630)
+- **core:** :sparkles: allow programmatic `barba.history` management ([e1e4b5f](https://github.com/barbajs/barba/commit/e1e4b5f270cd9e08aa4981a89bb744a8834f41c1)), closes [#601](https://github.com/barbajs/barba/issues/601)
+- **core:** :sparkles: expose `getQuery` and `getHash` methods ([4456f4b](https://github.com/barbajs/barba/commit/4456f4b7d03cd9933a0ea43dd722298be82b9088))
+- **core:** :sparkles: implement `getSibling` method ([4bf2802](https://github.com/barbajs/barba/commit/4bf280265f21e4e5b6a628982d4155be0a6467a9))
+- **core:** :sparkles: pass the trigger event through `hooks` ([a2fef11](https://github.com/barbajs/barba/commit/a2fef11e7947667ff6386bd1e4ef680c30aaadeb)), closes [#622](https://github.com/barbajs/barba/issues/622)
+- **core:** :sparkles: properly manage server response ([ae94e2c](https://github.com/barbajs/barba/commit/ae94e2c929e20ef527f7c91fb2d006da7ae78a19))
+- **core:** :sparkles: resolve `CacheRequest` with `IResponse` instead ([1061245](https://github.com/barbajs/barba/commit/106124553200a6f8c30fe8bdc562c12d38e56b2f))
+- **core:** :sparkles: store `target` in the cache based on server response ([f321926](https://github.com/barbajs/barba/commit/f3219262bd161075d7478be39b60c4a5d3ae59b2))
+- **core:** :sparkles: store response url through `IResponse` interface ([1963609](https://github.com/barbajs/barba/commit/19636096af3128d9ebbf73e7d845a593f13000e2))
+- **core:** :sparkles: update cache `status` to reflect Promise state ([54edab1](https://github.com/barbajs/barba/commit/54edab19834f9e65024f18651c0634ca32f08e0b))
+- **core:** ♻️ add headers type definitions ([5d2f13f](https://github.com/barbajs/barba/commit/5d2f13f098aed2a407dd664a66300c49c62362c2))
+- **core:** ♻️ import `Headers` module ([1b6c418](https://github.com/barbajs/barba/commit/1b6c4181030c1e956fa43708f166f57315d6788d))
+- **core:** ♻️ pass headers to the `request` utility ([60fa820](https://github.com/barbajs/barba/commit/60fa8204ca75c3a925c36d7e8f2c44a550b9c075))
+- **core:** ✨ set custom request headers ([0edbffe](https://github.com/barbajs/barba/commit/0edbffea5d540ed35f1f85094d758c280a6e4d8d))
+
 ## [2.9.7](https://github.com/barbajs/barba/compare/@barba/core@2.9.6...@barba/core@2.9.7) (2020-01-16)
 
 ### Bug Fixes

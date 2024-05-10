@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.16](https://github.com/barbajs/barba/compare/@barba/css@2.1.15...@barba/css@2.1.16) (2024-05-10)
+
+### Bug Fixes
+
+- **core:** :pencil2: fix typos in tests ([a748356](https://github.com/barbajs/barba/commit/a748356daf77117a120783eee4750c16e7603ad2))
+- **css:** :bug: fix broken transition with sync mode and popstate events ([ae6f5f7](https://github.com/barbajs/barba/commit/ae6f5f7359d5994efd5f1d3379fc27ac6992fbb4)), closes [#559](https://github.com/barbajs/barba/issues/559)
+
 ## [2.1.15](https://github.com/barbajs/barba/compare/@barba/css@2.1.14...@barba/css@2.1.15) (2019-11-25)
 
 ### Bug Fixes

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/barbajs/barba/compare/@barba/prefetch@2.1.10...@barba/prefetch@2.2.0) (2024-05-10)
+
+### Bug Fixes
+
+- **prefetch:** :bug: fix missing request headers argument ([56aae92](https://github.com/barbajs/barba/commit/56aae920b1b5d08c221ff136d905aee03bf0b249))
+- **prefetch:** :bug: prevent prefetch plugin to cache relative URLs ([4f7ba02](https://github.com/barbajs/barba/commit/4f7ba028be7024dde39be96c1888e561265d9187))
+
+### Features
+
+- **prefetch:** :sparkles: add `limit` option to `IPrefetchOptions` interface ([28460cb](https://github.com/barbajs/barba/commit/28460cb37a028d480e7949a810eae85c37a3da7d))
+- **prefetch:** :sparkles: limit links to prefetch ([1288029](https://github.com/barbajs/barba/commit/1288029116089d88d7041c82673f36d226640c33))
+
 ## [2.1.10](https://github.com/barbajs/barba/compare/@barba/prefetch@2.1.9...@barba/prefetch@2.1.10) (2019-11-25)
 
 ### Bug Fixes
