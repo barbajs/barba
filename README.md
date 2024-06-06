@@ -33,7 +33,8 @@ Here you will find the documentation describing **how to use** the library.
 4. [Showcase](https://barba.js.org/showcase/) - selected works made with Barba
 5. [Developer API](https://barba.js.org/api/) - by developers, for developers
 
-> **Notice**: this guide assumes intermediate knowledge of HTML, CSS, and JavaScript. It is worth mentioning that all code examples use ES6+ syntax. If you are not comfortable with this syntax, we would encourage you to grasp the basics then come back.
+> [!NOTE]
+> This guide assumes intermediate knowledge of HTML, CSS, and JavaScript. It is worth mentioning that all code examples use ES6+ syntax. If you are not comfortable with this syntax, we would encourage you to grasp the basics then come back.
 >
 > In case of emergency, check the ["legacy" code example](https://barba.js.org/docs/getstarted/legacy/).
 
