@@ -1276,9 +1276,10 @@
     is-promise "^2.1.0"
     path-to-regexp "^3.0.0"
 
-"@barba/css@^2.1.15":
-  version "2.1.15"
-  resolved "https://registry.yarnpkg.com/@barba/css/-/css-2.1.15.tgz#1bb0b1441723d581b032d4b0950c5a568484bb4e"
+"@barba/css@^2.1.16":
+  version "2.1.16"
+  resolved "https://registry.yarnpkg.com/@barba/css/-/css-2.1.16.tgz#649f4d66d2285c21de4d0b161df747b9c5f903d6"
+  integrity sha512-R+umahxX+jiQeM5YGEx7x+iE4tLAZGmonWsQ2MHxe2MIuCUm6VF6XEAuIdAUUkrOw5IYtq1SKfbIB58yuAT8Rw==
 
 "@barba/prefetch@^2.2.0":
   version "2.2.0"
