@@ -1284,9 +1284,10 @@
   version "2.1.10"
   resolved "https://registry.yarnpkg.com/@barba/prefetch/-/prefetch-2.1.10.tgz#69ab0ab579c99b0d78d219acd81dd4de68755e99"
 
-"@barba/router@^2.1.10":
-  version "2.1.10"
-  resolved "https://registry.yarnpkg.com/@barba/router/-/router-2.1.10.tgz#982fa22d74e9600b7d2bf16d51e2f9e730f3a621"
+"@barba/router@^2.1.11":
+  version "2.1.11"
+  resolved "https://registry.yarnpkg.com/@barba/router/-/router-2.1.11.tgz#4c08f82d149a5a65558857b07f1de1ec1f5b3a49"
+  integrity sha512-/s6bYUfp18krmgDoKS/UE3W+Y/E3y0iwJpRguyCMnl2t+gaFXLdEl+C5h3jcaimHaoplBqZsNeOPcyKDY6a/vw==
 
 "@colors/colors@1.5.0":
   version "1.5.0"
