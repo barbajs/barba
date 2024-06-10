@@ -15,7 +15,7 @@
   "dependencies": {
     "@barba/core": "^2.9.7",
     "@barba/css": "^2.1.15",
-    "@barba/prefetch": "^2.1.10",
+    "@barba/prefetch": "^2.2.0",
     "@barba/router": "^2.1.11",
     "cryptr": "^6.3.0",
     "firebase-functions": "^3.24.1",

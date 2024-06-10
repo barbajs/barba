@@ -1280,9 +1280,10 @@
   version "2.1.15"
   resolved "https://registry.yarnpkg.com/@barba/css/-/css-2.1.15.tgz#1bb0b1441723d581b032d4b0950c5a568484bb4e"
 
-"@barba/prefetch@^2.1.10":
-  version "2.1.10"
-  resolved "https://registry.yarnpkg.com/@barba/prefetch/-/prefetch-2.1.10.tgz#69ab0ab579c99b0d78d219acd81dd4de68755e99"
+"@barba/prefetch@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@barba/prefetch/-/prefetch-2.2.0.tgz#d6fa92a9a3b28456f08ef76666af59dcc045961b"
+  integrity sha512-ql56K043GNsKhs9jCzr7et3f1MZpOkpbUN9rtVpSXJqH96Zr+l6JuGrXUgB2TvebtrFycaOOaBZys0oZenTCcg==
 
 "@barba/router@^2.1.11":
   version "2.1.11"
