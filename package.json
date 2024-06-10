@@ -13,7 +13,7 @@
     "svg": "svg-sprite --config svg-sprite.config.json 'themes/barba/source/svg/./**/*.svg'"
   },
   "dependencies": {
-    "@barba/core": "^2.9.7",
+    "@barba/core": "^2.10.0",
     "@barba/css": "^2.1.16",
     "@barba/prefetch": "^2.2.0",
     "@barba/router": "^2.1.11",
