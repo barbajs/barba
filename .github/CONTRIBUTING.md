@@ -3,7 +3,7 @@
 This project uses:
 
 - [TypeScript](http://www.typescriptlang.org/)
-- [Lerna scopes](https://lernajs.io/)
+- [Lerna](https://lerna.js.org/)
 - [Commitizen](http://commitizen.github.io/cz-cli/)
 - [EditorConfig](https://editorconfig.org/)
 - [TSLint](https://palantir.github.io/tslint/)
