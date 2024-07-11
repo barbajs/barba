@@ -566,10 +566,15 @@
 <li>without polyfills: modern browsers (Chrome, Firefox, Edge, Safari, Opera)</li>
 <li>with polyfills for abovementioned: IE10+</li>
 </ul>
-<h2 id="Polyfill"><a href="#Polyfill" class="headerlink" title="Polyfill"></a>Polyfill</h2><p>You can use the <a href="https://polyfill.io/v3/" target="_blank" rel="noopener">polyfill.io</a> service for <strong>easy polyfilling</strong>.<br>Just include this script tag, it will output the appropriate polyfills based on the user-agent:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span></span></span><br><span class="line"><span class="tag">  <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">src</span>=<span class="string">"https://polyfill.io/v3/polyfill.min.js?features=default%2CArray.prototype.find%2CIntersectionObserver"</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>… or implement your own solution (<a href="https://github.com/stefanpenner/es6-promise" target="_blank" rel="noopener">es6-promise</a> and <a href="https://github.com/zloirock/core-js" target="_blank" rel="noopener">Core.js</a> or <a href="https://github.com/paulmillr/es6-shim/blob/master/README.md" target="_blank" rel="noopener">es6-shim</a>, etc.).</p>
+<h2 id="Polyfill"><a href="#Polyfill" class="headerlink" title="Polyfill"></a>Polyfill</h2><p>You can implement your own solution for polyfilling as well, here are some references you could use:</p>
+<ul>
+<li><a href="https://github.com/zloirock/core-js" target="_blank" rel="noopener">core.js</a></li>
+<li><a href="https://github.com/paulmillr/es6-shim/blob/master/README.md" target="_blank" rel="noopener">es6-shim</a></li>
+<li><a href="https://github.com/stefanpenner/es6-promise" target="_blank" rel="noopener">es6-promise</a></li>
+</ul>
+<blockquote>
+<p>⚠️ Since <strong>polyfill.io has been compromised</strong>, it’s no longer safe and recommended to use this web service.<br>Read <a href="https://censys.com/july-2-polyfill-io-supply-chain-attack-digging-into-the-web-of-compromised-domains/" target="_blank" rel="noopener">https://censys.com/july-2-polyfill-io-supply-chain-attack-digging-into-the-web-of-compromised-domains/</a>.</p>
+</blockquote>
 
 </div>
 
@@ -617,7 +622,7 @@
 
     <footer class="site-footer footer">
   barba.js ©️2024<br>
-  Last updated on Jun 10th
+  Last updated on Jul 11th
 </footer>
 
   </div>
