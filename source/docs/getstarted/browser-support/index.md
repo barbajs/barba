@@ -25,14 +25,10 @@ Cross-browser support is as follows:
 
 ## Polyfill
 
-You can use the [polyfill.io](https://polyfill.io/v3/) service for **easy polyfilling**.
-Just include this script tag, it will output the appropriate polyfills based on the user-agent:
+You can implement your own solution for polyfilling as well, here are some references you could use:
+- [core.js](https://github.com/zloirock/core-js)
+- [es6-shim](https://github.com/paulmillr/es6-shim/blob/master/README.md)
+- [es6-promise](https://github.com/stefanpenner/es6-promise)
 
-```html
-<script
-  crossorigin="anonymous"
-  src="https://polyfill.io/v3/polyfill.min.js?features=default%2CArray.prototype.find%2CIntersectionObserver"
-></script>
-```
-
-... or implement your own solution ([es6-promise](https://github.com/stefanpenner/es6-promise) and [Core.js](https://github.com/zloirock/core-js) or [es6-shim](https://github.com/paulmillr/es6-shim/blob/master/README.md), etc.).
+> ⚠️ Since **polyfill.io has been compromised**, it's no longer safe and recommended to use this web service.  
+> Read https://censys.com/july-2-polyfill-io-supply-chain-attack-digging-into-the-web-of-compromised-domains/.
