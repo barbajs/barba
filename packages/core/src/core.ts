@@ -571,7 +571,6 @@ export class Core {
    * Go for a Barba transition.
    */
   private _onLinkClick(e: LinkEvent): void {
-
     // This use `prevent.checkLink` under the hood to get eligible link.
     const link = this._getLinkElement(e);
 
@@ -579,14 +578,14 @@ export class Core {
       return;
     }
 
-    this._linkEvent = e;
-
     if (this.transitions.isRunning && this.preventRunning) {
       e.preventDefault();
       e.stopPropagation();
 
       return;
     }
+
+    this._linkEvent = e;
 
     this.go(this.dom.getHref(link), link, e);
   }
