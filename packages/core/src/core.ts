@@ -571,14 +571,11 @@ export class Core {
    * Go for a Barba transition.
    */
   private _onLinkClick(e: LinkEvent): void {
+
     // This use `prevent.checkLink` under the hood to get eligible link.
     const link = this._getLinkElement(e);
 
-    if (!link) {
-      return;
-    }
-
-    if (this.transitions.isRunning && this.preventRunning) {
+    if (!link || (this.transitions.isRunning && this.preventRunning)) {
       e.preventDefault();
       e.stopPropagation();
 
@@ -597,11 +594,6 @@ export class Core {
    * Go for a Barba transition.
    */
   private _onStateChange(e: PopStateEvent): void {
-    // istanbul ignore next: prevent running popstate if a non-eligible link has been clicked
-    if (this._linkEvent && !this._getLinkElement(this._linkEvent)) {
-      return;
-    }
-
     this.go(this.url.getHref(), 'popstate', e);
   }
 
