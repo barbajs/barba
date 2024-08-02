@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.10.2](https://github.com/barbajs/barba/compare/@barba/core@2.10.0...@barba/core@2.10.2) (2024-08-02)
+
+### Bug Fixes
+
+- **core:** :bug: fix popstate when no link event is present ([680e2e7](https://github.com/barbajs/barba/commit/680e2e73c0a77186ae22112f1cefa2deef9eea04))
+
 # [2.10.0](https://github.com/barbajs/barba/compare/@barba/core@2.9.7...@barba/core@2.10.0) (2024-05-10)
 
 ### Bug Fixes
