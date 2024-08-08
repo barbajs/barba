@@ -11,7 +11,7 @@
   "unpkg": "dist/barba-prefetch.umd.js",
   "module": "dist/barba-prefetch.mjs",
   "source": "src/index.ts",
-  "types": "dist/prefetch/src/typings",
+  "types": "./dist/src/index.d.ts",
   "mangle": {
     "regex": "^_"
   },

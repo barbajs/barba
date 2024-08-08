@@ -11,7 +11,7 @@
   "unpkg": "dist/barba-router.umd.js",
   "module": "dist/barba-router.mjs",
   "source": "src/index.ts",
-  "types": "dist/router/src/typings",
+  "types": "./dist/src/index.d.ts",
   "mangle": {
     "regex": "^_"
   },
