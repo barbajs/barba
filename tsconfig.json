@@ -21,6 +21,8 @@
     "node_modules",
     "**/__*__/**/*",
     "**/polyfills/index.d.ts",
+    "cypress",
+    "**/*.cy.tsx",
     "./cypress.config.ts"
   ]
 }
