@@ -23,6 +23,8 @@ export class Views {
    * Available hook names for views.
    */
   public names: HooksView[] = [
+    'beforeOnce',
+    'afterOnce',
     'beforeLeave',
     'afterLeave',
     'beforeEnter',
@@ -61,7 +63,8 @@ export class Views {
    */
   private _createHook(name: HooksView): Hook {
     return data => {
-      const { namespace } = name.match(/enter/i) ? data.next : data.current;
+      const { namespace } =
+        name.match(/once/i) || name.match(/enter/i) ? data.next : data.current;
       const view = this.byNamespace.get(namespace);
 
       // TODO: manage self…

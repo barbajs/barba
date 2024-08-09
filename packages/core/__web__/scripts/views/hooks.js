@@ -17,6 +17,12 @@ function append(str, prefix = '') {
 
 export const home = {
   namespace: 'home',
+  beforeOnce() {
+    append('beforeOnce');
+  },
+  afterOnce() {
+    append('afterOnce');
+  },
   beforeLeave() {
     append('beforeLeave');
   },

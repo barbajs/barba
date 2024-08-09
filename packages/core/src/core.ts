@@ -347,8 +347,6 @@ export class Core {
    * get the "resolved" transition from the store and start it.
    */
   public async once(readyData: ITransitionData): Promise<void> {
-    await this.hooks.do('beforeEnter', readyData);
-
     // Check if once transition
     if (this.transitions.hasOnce) {
       const transition = this.transitions.get(readyData, {
@@ -357,8 +355,6 @@ export class Core {
 
       await this.transitions.doOnce({ transition, data: readyData });
     }
-
-    await this.hooks.do('afterEnter', readyData);
   }
 
   /**

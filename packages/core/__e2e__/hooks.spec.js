@@ -1,17 +1,11 @@
 /* eslint-disable no-mixed-operators, cypress/no-unnecessary-waiting */
 const onceHooks = [
-  'global:beforeEnter',
-  // 'global:before',
-  // 'before',
   'global:beforeOnce',
   'beforeOnce',
   'global:once',
   'once',
   'global:afterOnce',
   'afterOnce',
-  // 'global:after',
-  // 'after',
-  'global:afterEnter',
 ];
 const hooksDefault = [
   ...onceHooks,

@@ -1,5 +1,5 @@
 /* eslint-disable no-mixed-operators, cypress/no-unnecessary-waiting */
-const loadHooks = ['beforeEnter', 'afterEnter'];
+const loadHooks = ['beforeOnce', 'afterOnce'];
 const transitionHooks = [
   'beforeLeave',
   'afterLeave',
