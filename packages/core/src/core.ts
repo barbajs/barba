@@ -18,6 +18,7 @@ import { version } from '../package.json';
 import {
   IBarbaOptions,
   IBarbaPlugin,
+  IBarbaPluginOptions,
   IgnoreOption,
   ISchemaPage,
   ITransitionData,
@@ -109,7 +110,16 @@ export class Core {
    *
    * See [[IBarbaPlugin]] for more details.
    */
-  public use<T>(plugin: IBarbaPlugin<T>, options?: T): void {
+  public use<T extends IBarbaPluginOptions>(
+    plugin: IBarbaPlugin<T>,
+    options?: T
+  ): void {
+    if (options) {
+      Logger.setLevel(
+        options.debug === true ? 'debug' : options.logLevel || 'off'
+      );
+    }
+
     const installedPlugins = this.plugins;
 
     // Plugin installation

@@ -53,3 +53,10 @@ export interface IBarbaPlugin<T> {
   /** Init method */
   init(): void;
 }
+
+export interface IBarbaPluginOptions {
+  /** Enable debug mode. */
+  debug?: boolean;
+  /** Log level. */
+  logLevel?: keyof typeof LogLevels;
+}

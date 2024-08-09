@@ -2,7 +2,9 @@
  * @module typings/prefetch
  */
 
-export interface IPrefetchOptions {
+import { IBarbaPluginOptions } from '@barba/core/src/defs';
+
+export interface IPrefetchOptions extends IBarbaPluginOptions {
   root?: HTMLElement | HTMLDocument;
   timeout?: number;
   limit?: number;

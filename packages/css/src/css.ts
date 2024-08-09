@@ -18,6 +18,7 @@ import {
   ITransitionData,
   ITransitionPage,
 } from '@barba/core/src/defs';
+import { ICssOptions } from './defs';
 
 import { Core } from '@barba/core/src/core';
 import { Logger } from '@barba/core/src/modules/Logger';
@@ -26,7 +27,7 @@ import { ICssCallbacks } from './defs';
 
 import { version } from '../package.json';
 
-export class Css implements IBarbaPlugin<{}> {
+export class Css implements IBarbaPlugin<ICssOptions> {
   public name = '@barba/css';
   public version = version;
   public barba: Core;

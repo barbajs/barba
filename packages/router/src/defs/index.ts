@@ -1,6 +1,7 @@
 /**
  * @module typings/router
  */
+import { IBarbaPluginOptions } from '@barba/core/src/defs';
 
 export interface IRoute {
   name: string;
@@ -18,6 +19,6 @@ export interface IRouteResolved {
 export interface IRouteByName {
   [key: string]: IRouteParsed;
 }
-export interface IRouterOptions {
+export interface IRouterOptions extends IBarbaPluginOptions {
   routes?: IRoute[];
 }
