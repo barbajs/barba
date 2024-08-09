@@ -75,8 +75,8 @@ it('has duplicate routes', () => {
 it('resolves url', () => {
   const result = router.resolveUrl('http://localhost/foo/something');
 
-  expect(result.name).toBe('foo');
-  expect(result.params.bar).toBe('something');
+  expect(result?.name).toBe('foo');
+  expect(result?.params.bar).toBe('something');
 });
 
 it('resolves unknown url', () => {
@@ -93,8 +93,8 @@ it('resolves data urls (home)', () => {
 
   router.resolveRoutes(data);
 
-  expect(data.current.route.name).toBe('home');
-  expect(data.next.route.name).toBe('home');
+  expect(data.current.route?.name).toBe('home');
+  expect(data.next.route?.name).toBe('home');
 });
 
 it('resolves data urls (foo)', () => {
@@ -105,8 +105,8 @@ it('resolves data urls (foo)', () => {
 
   router.resolveRoutes(data);
 
-  expect(data.current.route.name).toBe('foo');
-  expect(data.next.route.name).toBe('foo');
+  expect(data.current.route?.name).toBe('foo');
+  expect(data.next.route?.name).toBe('foo');
 });
 
 it('resolves unknown data urls', () => {

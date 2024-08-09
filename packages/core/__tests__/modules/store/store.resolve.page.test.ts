@@ -19,7 +19,7 @@ it('has no transition', async () => {
   const emptyStore = new Store();
 
   emptyStore.logger.info = jest.fn();
-  emptyStore.resolve(({} as unknown) as ITransitionData);
+  emptyStore.resolve({} as unknown as ITransitionData);
 
   expect(emptyStore.logger.info).toHaveBeenCalledWith(
     'No transition found [page]'
@@ -27,56 +27,56 @@ it('has no transition', async () => {
 });
 
 it('get "page" transition', () => {
-  const result = store.resolve(({
+  const result = store.resolve({
     current: true,
     next: true,
-  } as unknown) as ITransitionData);
+  } as unknown as ITransitionData);
 
   expect(result).toBe(t);
 });
 
 it('get "page/ns" transition', () => {
-  const result = store.resolve(({
+  const result = store.resolve({
     current: { namespace: 'ns' },
     next: {},
-  } as unknown) as ITransitionData);
+  } as unknown as ITransitionData);
 
   expect(result).toBe(tNs);
 });
 
 it('get "page/from" transition', () => {
-  const result = store.resolve(({
+  const result = store.resolve({
     current: { namespace: 'nsFrom' },
     next: {},
-  } as unknown) as ITransitionData);
+  } as unknown as ITransitionData);
 
   expect(result).toBe(tNsFrom);
 });
 
 it('get "page/to" transition', () => {
-  const result = store.resolve(({
+  const result = store.resolve({
     current: {},
     next: { namespace: 'nsTo' },
-  } as unknown) as ITransitionData);
+  } as unknown as ITransitionData);
 
   expect(result).toBe(tNsTo);
 });
 
 it('get "page/fromTo" transition', () => {
-  const result = store.resolve(({
+  const result = store.resolve({
     current: { namespace: 'nsFrom' },
     next: { namespace: 'nsTo' },
-  } as unknown) as ITransitionData);
+  } as unknown as ITransitionData);
 
   expect(result).toBe(tNsFromTo);
 });
 
 it('get "self" transition', () => {
   const result = store.resolve(
-    ({
+    {
       current: { namespace: 'nsFrom' },
       next: { namespace: 'nsTo' },
-    } as unknown) as ITransitionData,
+    } as unknown as ITransitionData,
     { self: true }
   );
 

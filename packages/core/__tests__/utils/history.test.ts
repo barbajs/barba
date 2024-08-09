@@ -34,9 +34,9 @@ const e = {
 } as PopStateEvent;
 
 const h = {
-  b: (global as any).window.history.back = jest.fn(),
-  ps: (global as any).window.history.pushState = jest.fn(),
-  rs: (global as any).window.history.replaceState = jest.fn(),
+  b: ((global as any).window.history.back = jest.fn()),
+  ps: ((global as any).window.history.pushState = jest.fn()),
+  rs: ((global as any).window.history.replaceState = jest.fn()),
 };
 
 const data = {
@@ -205,7 +205,7 @@ it('store custom user data per state', async () => {
   history.change(second.url, 'barba');
   history.store(state2);
 
-  expect(history.previous.data).toEqual(state1);
+  expect(history.previous?.data).toEqual(state1);
   expect(history.current.data).toEqual(state2);
 });
 

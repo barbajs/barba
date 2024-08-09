@@ -18,7 +18,7 @@ it('has no transition', async () => {
   const emptyStore = new Store();
 
   emptyStore.logger.info = jest.fn();
-  emptyStore.resolve(({} as unknown) as ITransitionData, { once: true });
+  emptyStore.resolve({} as unknown as ITransitionData, { once: true });
 
   expect(emptyStore.logger.info).toHaveBeenCalledWith(
     'No transition found [once]'
@@ -27,9 +27,9 @@ it('has no transition', async () => {
 
 it('get "once" transition', () => {
   const result = store.resolve(
-    ({
+    {
       current: { namespace: 'none' },
-    } as unknown) as ITransitionData,
+    } as unknown as ITransitionData,
     { once: true }
   );
 
@@ -38,9 +38,9 @@ it('get "once" transition', () => {
 
 it('get "once/ns" transition', () => {
   const result = store.resolve(
-    ({
+    {
       current: { namespace: 'ns' },
-    } as unknown) as ITransitionData,
+    } as unknown as ITransitionData,
     { once: true }
   );
 
@@ -49,9 +49,9 @@ it('get "once/ns" transition', () => {
 
 it('get "once/custom" transition', () => {
   const result = store.resolve(
-    ({
+    {
       current: { namespace: 'custom' },
-    } as unknown) as ITransitionData,
+    } as unknown as ITransitionData,
     { once: true }
   );
 

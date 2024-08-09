@@ -3,8 +3,8 @@ import barba from '../../src';
 it('force url change', () => {
   Object.defineProperty(window, 'location', {
     writable: true,
-    value: { assign: jest.fn() }
-  })
+    value: { assign: jest.fn() },
+  });
 
   const url = 'http://localhost/foo.html';
 

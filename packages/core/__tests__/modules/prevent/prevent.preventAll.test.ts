@@ -9,7 +9,7 @@ const parent = document.createElement('div');
 parent.appendChild(el);
 
 beforeEach(() => {
-  check = jest.fn(data => prevent.tests.get('preventAll')(data));
+  check = jest.fn(data => prevent.tests.get('preventAll')!(data));
   [].slice.call(el.attributes).forEach(attr => el.removeAttribute(attr.name));
 });
 

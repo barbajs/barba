@@ -5,7 +5,7 @@ const prevent = new Prevent(false);
 let check: PreventCheck;
 
 beforeEach(() => {
-  check = jest.fn(data => prevent.tests.get('sameUrl')(data));
+  check = jest.fn(data => prevent.tests.get('sameUrl')!(data));
 });
 
 it('pass', () => {

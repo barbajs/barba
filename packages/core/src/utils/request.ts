@@ -37,19 +37,22 @@ function request(
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
           /* istanbul ignore next: bypass jest since xhr-mock doesn't support custom xhr.responseURL */
-          const responseURL = xhr.responseURL !== '' && xhr.responseURL !== url ? xhr.responseURL : url;
+          const responseURL =
+            xhr.responseURL !== '' && xhr.responseURL !== url
+              ? xhr.responseURL
+              : url;
 
           resolve({
             html: xhr.responseText,
             url: {
               href: responseURL,
-              ...parse(responseURL)
+              ...parse(responseURL),
             },
           });
 
           cache.update(url, {
             status: 'fulfilled',
-            target: responseURL
+            target: responseURL,
           });
         } else if (xhr.status) {
           // HTTP code is not 200, reject with response.

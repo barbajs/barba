@@ -108,7 +108,7 @@ it('check valid for inexisting rule "strings"', () => {
   const expected = store['_check'](
     {},
     rule,
-    ({ namespace: 'ns' } as unknown) as ITransitionData,
+    { namespace: 'ns' } as unknown as ITransitionData,
     match
   );
 
@@ -121,7 +121,7 @@ it('check single "strings"', () => {
   const [rule] = store['_rules'].filter(r => r.name === 'namespace');
   const data = { current: { namespace: 'ns' } };
 
-  runStrings(transition, rule, (data as unknown) as ITransitionData);
+  runStrings(transition, rule, data as unknown as ITransitionData);
 });
 
 it('check single "strings" with "from"', () => {
@@ -129,7 +129,7 @@ it('check single "strings" with "from"', () => {
   const [rule] = store['_rules'].filter(r => r.name === 'namespace');
   const data = { current: { namespace: 'ns' } };
 
-  runStrings(transition, rule, (data as unknown) as ITransitionData, 'from');
+  runStrings(transition, rule, data as unknown as ITransitionData, 'from');
 });
 
 it('check single "strings" with "to"', () => {
@@ -137,7 +137,7 @@ it('check single "strings" with "to"', () => {
   const [rule] = store['_rules'].filter(r => r.name === 'namespace');
   const data = { next: { namespace: 'ns' } };
 
-  runStrings(transition, rule, (data as unknown) as ITransitionData, 'to');
+  runStrings(transition, rule, data as unknown as ITransitionData, 'to');
 });
 
 it('check array "strings"', () => {
@@ -145,7 +145,7 @@ it('check array "strings"', () => {
   const [rule] = store['_rules'].filter(r => r.name === 'namespace');
   const data = { current: { namespace: 'ns' } };
 
-  runStrings(transition, rule, (data as unknown) as ITransitionData);
+  runStrings(transition, rule, data as unknown as ITransitionData);
 });
 
 it('check array "strings" with "from"', () => {
@@ -153,7 +153,7 @@ it('check array "strings" with "from"', () => {
   const [rule] = store['_rules'].filter(r => r.name === 'namespace');
   const data = { current: { namespace: 'ns' } };
 
-  runStrings(transition, rule, (data as unknown) as ITransitionData, 'from');
+  runStrings(transition, rule, data as unknown as ITransitionData, 'from');
 });
 
 it('check array "strings" with "to"', () => {
@@ -161,7 +161,7 @@ it('check array "strings" with "to"', () => {
   const [rule] = store['_rules'].filter(r => r.name === 'namespace');
   const data = { next: { namespace: 'ns' } };
 
-  runStrings(transition, rule, (data as unknown) as ITransitionData, 'to');
+  runStrings(transition, rule, data as unknown as ITransitionData, 'to');
 });
 
 // "object" type
@@ -170,7 +170,7 @@ it('check valid for inexisting rule "object"', () => {
   const expected = store['_check'](
     {},
     rule,
-    ({ route: 'r' } as unknown) as ITransitionData,
+    { route: 'r' } as unknown as ITransitionData,
     match
   );
 
@@ -185,7 +185,7 @@ it('check invalid for non matching rule "object"', () => {
   const expected = store['_check'](
     transition,
     rule,
-    (data as unknown) as ITransitionData,
+    data as unknown as ITransitionData,
     match
   );
 
@@ -198,7 +198,7 @@ it('check single "object"', () => {
   const [rule] = store['_rules'].filter(r => r.name === 'route');
   const data = { current: { route: { name: 'r' } } };
 
-  runObject(transition, rule, (data as unknown) as ITransitionData);
+  runObject(transition, rule, data as unknown as ITransitionData);
 });
 
 it('check single "object" with "from"', () => {
@@ -206,7 +206,7 @@ it('check single "object" with "from"', () => {
   const [rule] = store['_rules'].filter(r => r.name === 'route');
   const data = { current: { route: { name: 'r' } } };
 
-  runObject(transition, rule, (data as unknown) as ITransitionData, 'from');
+  runObject(transition, rule, data as unknown as ITransitionData, 'from');
 });
 
 it('check single "object" with "to"', () => {
@@ -214,7 +214,7 @@ it('check single "object" with "to"', () => {
   const [rule] = store['_rules'].filter(r => r.name === 'route');
   const data = { next: { route: { name: 'r' } } };
 
-  runObject(transition, rule, (data as unknown) as ITransitionData, 'to');
+  runObject(transition, rule, data as unknown as ITransitionData, 'to');
 });
 
 it('check array "object"', () => {
@@ -222,7 +222,7 @@ it('check array "object"', () => {
   const [rule] = store['_rules'].filter(r => r.name === 'route');
   const data = { current: { route: { name: 'r' } } };
 
-  runObject(transition, rule, (data as unknown) as ITransitionData);
+  runObject(transition, rule, data as unknown as ITransitionData);
 });
 
 it('check array "object" with "from"', () => {
@@ -230,7 +230,7 @@ it('check array "object" with "from"', () => {
   const [rule] = store['_rules'].filter(r => r.name === 'route');
   const data = { current: { route: { name: 'r' } } };
 
-  runObject(transition, rule, (data as unknown) as ITransitionData, 'from');
+  runObject(transition, rule, data as unknown as ITransitionData, 'from');
 });
 
 it('check array "object" with "to"', () => {
@@ -238,7 +238,7 @@ it('check array "object" with "to"', () => {
   const [rule] = store['_rules'].filter(r => r.name === 'route');
   const data = { next: { route: { name: 'r' } } };
 
-  runObject(transition, rule, (data as unknown) as ITransitionData, 'to');
+  runObject(transition, rule, data as unknown as ITransitionData, 'to');
 });
 
 // "function" type
@@ -248,7 +248,7 @@ it('check valid for inexisting rule "function"', () => {
   const expected = store['_check'](
     {},
     rule,
-    ({} as unknown) as ITransitionData,
+    {} as unknown as ITransitionData,
     match
   );
 

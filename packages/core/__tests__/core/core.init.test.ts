@@ -38,7 +38,7 @@ it('needs barba container', () => {
 
 it('needs valid prevent custom', () => {
   const start = () => {
-    barba.init({ prevent: ('bad' as unknown) as PreventCheck });
+    barba.init({ prevent: 'bad' as unknown as PreventCheck });
   };
 
   expect(start).toThrow('Prevent should be a function');

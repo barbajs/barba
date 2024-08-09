@@ -23,13 +23,13 @@ it('registers hooks', () => {
   barba.use(css);
   barba.init();
 
-  expect(barba.hooks.registered.get('before').size).toBe(1);
-  expect(barba.hooks.registered.get('beforeOnce').size).toBe(2);
-  expect(barba.hooks.registered.get('afterOnce').size).toBe(1);
-  expect(barba.hooks.registered.get('beforeLeave').size).toBe(1);
-  expect(barba.hooks.registered.get('afterLeave').size).toBe(1);
-  expect(barba.hooks.registered.get('beforeEnter').size).toBe(1);
-  expect(barba.hooks.registered.get('afterEnter').size).toBe(1);
+  expect(barba.hooks.registered.get('before')?.size).toBe(1);
+  expect(barba.hooks.registered.get('beforeOnce')?.size).toBe(2);
+  expect(barba.hooks.registered.get('afterOnce')?.size).toBe(1);
+  expect(barba.hooks.registered.get('beforeLeave')?.size).toBe(1);
+  expect(barba.hooks.registered.get('afterLeave')?.size).toBe(1);
+  expect(barba.hooks.registered.get('beforeEnter')?.size).toBe(1);
+  expect(barba.hooks.registered.get('afterEnter')?.size).toBe(1);
 });
 
 it('overrides transitions', () => {

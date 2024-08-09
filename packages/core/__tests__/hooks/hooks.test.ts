@@ -21,15 +21,15 @@ it('register hooks', () => {
   hooks[hookName](fn, ctx);
 
   expect(hooks.registered.has(hookName)).toBeTruthy();
-  expect(hooks.registered.get(hookName).size).toBe(1);
+  expect(hooks.registered.get(hookName)?.size).toBe(1);
 
   hooks[hookName](fn2);
 
-  expect(hooks.registered.get(hookName).size).toBe(2);
+  expect(hooks.registered.get(hookName)?.size).toBe(2);
 
-  const values = hooks.registered.get(hookName).values();
-  const v1 = values.next().value;
-  const v2 = values.next().value;
+  const values = hooks.registered.get(hookName)?.values();
+  const v1 = values?.next().value;
+  const v2 = values?.next().value;
 
   expect(v1.fn).toBe(fn);
   expect(v1.ctx).toBe(ctx);
@@ -38,7 +38,7 @@ it('register hooks', () => {
 });
 
 it('do nothing when no hooks', async () => {
-  const doUnknown = jest.fn(() => hooks.do(('unknown' as unknown) as HooksAll));
+  const doUnknown = jest.fn(() => hooks.do('unknown' as unknown as HooksAll));
   const doUnregistered = jest.fn(() => hooks.do(hooks.all[1]));
 
   expect(doUnknown()).resolves.toBeUndefined();
@@ -76,7 +76,7 @@ it('do with context', async () => {
     fn(): string;
   }
   const ctx: ICtx = {
-    fn: jest.fn(function(this: ICtx) {
+    fn: jest.fn(function (this: ICtx) {
       return this.prop;
     }),
     prop: 'foo',

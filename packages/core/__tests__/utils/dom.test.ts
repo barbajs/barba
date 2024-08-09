@@ -20,10 +20,12 @@ const svgXlink = document.createElementNS('http://www.w3.org/2000/svg', 'a');
 svg.appendChild(svgLink);
 svg.appendChild(svgXlink);
 
-currentContainer.setAttribute(attr.prefix, attr.container);
+attr.prefix &&
+  attr.container &&
+  currentContainer.setAttribute(attr.prefix, attr.container);
 currentContainer.setAttribute(`${attr.prefix}-${attr.namespace}`, namespace);
 
-wrapper.setAttribute(attr.prefix, attr.wrapper);
+attr.prefix && attr.wrapper && wrapper.setAttribute(attr.prefix, attr.wrapper);
 
 // Expected
 const checkDoc = new RegExp(

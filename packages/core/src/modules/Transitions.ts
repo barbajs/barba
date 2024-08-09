@@ -184,10 +184,7 @@ export class Transitions {
           // this.logger.debug('Transition error [sync]');
           // this.logger.error(error);
           if (this._isTransitionError(error)) {
-            throw new BarbaError(
-              (error as Error),
-              'Transition error [sync]'
-            );
+            throw new BarbaError(error as Error, 'Transition error [sync]');
           }
         }
       } else {
@@ -211,7 +208,7 @@ export class Transitions {
           // this.logger.error(error);
           if (this._isTransitionError(error)) {
             throw new BarbaError(
-              (error as Error),
+              error as Error,
               'Transition error [before/after/leave]'
             );
           }
@@ -232,7 +229,7 @@ export class Transitions {
           // this.logger.error(error);
           if (this._isTransitionError(error)) {
             throw new BarbaError(
-              (error as Error),
+              error as Error,
               'Transition error [before/after/enter]'
             );
           }

@@ -75,7 +75,9 @@ class Prefetch implements IBarbaPlugin<IPrefetchOptions> {
         }
 
         const link = entry.target as Link;
-        const href = this.barba.url.getAbsoluteHref(this.barba.dom.getHref(link));
+        const href = this.barba.url.getAbsoluteHref(
+          this.barba.dom.getHref(link)
+        );
 
         if (!this.toPrefetch.has(href)) {
           return;
@@ -126,7 +128,7 @@ class Prefetch implements IBarbaPlugin<IPrefetchOptions> {
 
         // If not, find all links and use IntersectionObserver.
         links.forEach(el => {
-          const link = (el as unknown) as Link;
+          const link = el as unknown as Link;
           const href = this.barba.dom.getHref(link);
 
           if (

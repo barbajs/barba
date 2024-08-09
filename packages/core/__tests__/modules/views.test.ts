@@ -48,10 +48,10 @@ it('register hooks', () => {
   expect(hooks.registered.get('afterEnter')).toBeUndefined();
 
   views = new Views([{ namespace: 'baz' }]);
-  expect(hooks.registered.get('beforeLeave').size).toBe(1);
-  expect(hooks.registered.get('afterLeave').size).toBe(1);
-  expect(hooks.registered.get('beforeEnter').size).toBe(1);
-  expect(hooks.registered.get('afterEnter').size).toBe(1);
+  expect(hooks.registered.get('beforeLeave')?.size).toBe(1);
+  expect(hooks.registered.get('afterLeave')?.size).toBe(1);
+  expect(hooks.registered.get('beforeEnter')?.size).toBe(1);
+  expect(hooks.registered.get('afterEnter')?.size).toBe(1);
 });
 
 /* tslint:disable:object-literal-sort-keys */

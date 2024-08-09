@@ -221,10 +221,15 @@ export class Core {
 
     // 6. Add to cache
     if (cacheFirstPage) {
-      this.cache.set(current.url.href, Promise.resolve({
-        html: current.html,
-        url: current.url,
-      }), 'init', 'fulfilled');
+      this.cache.set(
+        current.url.href,
+        Promise.resolve({
+          html: current.html,
+          url: current.url,
+        }),
+        'init',
+        'fulfilled'
+      );
     }
 
     // 7. Bind context
@@ -311,7 +316,8 @@ export class Core {
       self =
         this.history.current &&
         this.url.getPath(this.history.current.url) === this.url.getPath(href) &&
-        this.url.getQuery(this.history.current.url, true) === this.url.getQuery(href, true);
+        this.url.getQuery(this.history.current.url, true) ===
+          this.url.getQuery(href, true);
     } else {
       self = this.prevent.run('sameUrl', null, null, href);
     }
@@ -320,7 +326,11 @@ export class Core {
       return;
     }
 
-    trigger = this.history.change(this.cache.has(href) ? this.cache.get(href).target : href, trigger, e);
+    trigger = this.history.change(
+      this.cache.has(href) ? this.cache.get(href).target : href,
+      trigger,
+      e
+    );
 
     if (e) {
       e.stopPropagation();
@@ -471,7 +481,6 @@ export class Core {
    * Programmatically prefetch
    */
   public prefetch(href: string) {
-
     // only prefetch absolute href
     href = this.url.getAbsoluteHref(href);
 
@@ -571,7 +580,6 @@ export class Core {
    * Go for a Barba transition.
    */
   private _onLinkClick(e: LinkEvent): void {
-
     // This use `prevent.checkLink` under the hood to get eligible link.
     const link = this._getLinkElement(e);
 
@@ -583,7 +591,6 @@ export class Core {
     }
 
     this._linkEvent = e;
-
     this.go(this.dom.getHref(link), link, e);
   }
 

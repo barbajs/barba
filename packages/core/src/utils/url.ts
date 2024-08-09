@@ -21,7 +21,10 @@ export const getHref = () => window.location.href;
 /**
  * Get absolute href from URL.
  */
-export const getAbsoluteHref = (url: string, base: string = document.baseURI): string => new URL(url, base).href;
+export const getAbsoluteHref = (
+  url: string,
+  base: string = document.baseURI
+): string => new URL(url, base).href;
 
 /**
  * Get location origin.
@@ -41,7 +44,10 @@ export const getPath = (url: string = window.location.href) => parse(url).path;
 /**
  * Get query object from URL.
  */
-export const getQuery = (url: string, stringify: boolean = false): IGenericObject|string => {
+export const getQuery = (
+  url: string,
+  stringify: boolean = false
+): IGenericObject | string => {
   return stringify ? JSON.stringify(parse(url).query) : parse(url).query;
 };
 

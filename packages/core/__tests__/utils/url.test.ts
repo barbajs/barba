@@ -48,7 +48,10 @@ it('get path', () => {
 
 it('get query', () => {
   const query = url.getQuery('http://localhost/foo.html?foo=bar#hash');
-  const queryAsString = url.getQuery('http://localhost/foo.html?foo=bar#hash', true);
+  const queryAsString = url.getQuery(
+    'http://localhost/foo.html?foo=bar#hash',
+    true
+  );
 
   expect(query).toEqual({ foo: 'bar' });
   expect(queryAsString).toEqual('{"foo":"bar"}');

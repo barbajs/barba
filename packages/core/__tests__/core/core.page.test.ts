@@ -2,7 +2,7 @@
 import xhrMock from 'xhr-mock';
 import { init } from '../../__mocks__/barba';
 import barba from '../../src';
-import { IUrlFull } from '../../src/defs';
+import { IUrlFull, LinkEvent } from '../../src/defs';
 import { hooks } from '../../src/hooks';
 import { Logger } from '../../src/modules/Logger';
 import { schemaAttribute } from '../../src/schemas/attribute';
@@ -87,7 +87,7 @@ it('do page', async () => {
     trigger: 'barba',
   };
 
-  await barba.page(nextUrl, 'barba', undefined, false);
+  await barba.page(nextUrl, 'barba', undefined as unknown as LinkEvent, false);
 
   expect(spyCacheHas).toHaveBeenCalledTimes(1);
   expect(spyCacheSet).toHaveBeenCalledTimes(1);
@@ -109,20 +109,25 @@ it('do page', async () => {
 
 it('do page [has cache]', async () => {
   barba.history.add = jest.fn();
-  barba.cache.set(sameUrl, Promise.resolve({
-    html: sameHtml,
-    url: {
-      href: sameUrl,
-      ...parse(sameUrl)
-    } as IUrlFull,
-  }), 'init', 'pending');
+  barba.cache.set(
+    sameUrl,
+    Promise.resolve({
+      html: sameHtml,
+      url: {
+        href: sameUrl,
+        ...parse(sameUrl),
+      } as IUrlFull,
+    }),
+    'init',
+    'pending'
+  );
   spyCacheSet.mockRestore();
 
   // NOTE: as we use "same URL" (localhost), we need a "self" transition
   // to avoid prevent "sameURL"
   barba.transitions.store.add('transition', { name: 'self' });
   barba.transitions.store.add('transition', { leave() {}, enter() {} });
-  await barba.page(sameUrl, 'barba', undefined, false);
+  await barba.page(sameUrl, 'barba', undefined as unknown as LinkEvent, false);
 
   expect(spyCacheHas).toHaveBeenCalledTimes(1);
   expect(spyCacheUpdate).toHaveBeenCalledTimes(1);
@@ -138,7 +143,7 @@ it('do page [waiting]', async () => {
     enter() {},
     to: { namespace: 'ns' },
   });
-  await barba.page(nextUrl, 'barba', undefined, false);
+  await barba.page(nextUrl, 'barba', undefined as unknown as LinkEvent, false);
 
   expect(barba.data.next.html).toMatch(checkDoc);
 });
@@ -155,7 +160,7 @@ it('force on error', async () => {
     },
   });
 
-  await barba.page(nextUrl, 'barba', undefined, false);
+  await barba.page(nextUrl, 'barba', undefined as unknown as LinkEvent, false);
 
   expect(barba.transitions.logger.error).toHaveBeenCalledWith(errorLeave);
   expect(barba.force).toHaveBeenCalledTimes(1);

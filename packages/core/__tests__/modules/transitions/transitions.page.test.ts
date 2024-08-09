@@ -52,12 +52,12 @@ beforeEach(() => {
       container: currentContainer,
       html: undefined,
       url: {},
-    } as ISchemaPage,
+    } as unknown as ISchemaPage,
     next: {
       container: nextContainer,
       html: undefined,
       url: {},
-    } as ISchemaPage,
+    } as unknown as ISchemaPage,
     trigger: 'barba',
   };
 });
@@ -330,12 +330,12 @@ it('ignores "non transition" errors', async () => {
   const enterError3 = () => {
     const err = new Error('Request error');
 
-    delete err.message;
+    delete (err as { message?: string }).message;
     (err as any).status = 500;
     throw err;
   };
   const leaveError4 = () => {
-    delete tError.message;
+    delete (tError as { message?: string }).message;
     throw tError;
   };
   const t1 = { sync: true, leave: leaveError1, enter() {} };

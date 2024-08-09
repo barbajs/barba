@@ -23,7 +23,12 @@ it('prefetch url', () => {
 
   barba.prefetch(url);
 
-  expect(spySet).toHaveBeenCalledWith(url, Promise.resolve(), 'prefetch', 'pending');
+  expect(spySet).toHaveBeenCalledWith(
+    url,
+    Promise.resolve(),
+    'prefetch',
+    'pending'
+  );
 });
 
 it('prefetch and cache absolute url only', () => {

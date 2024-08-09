@@ -6,7 +6,7 @@ let check: PreventCheck;
 const el = document.createElement('a');
 
 beforeEach(() => {
-  check = jest.fn(data => prevent.tests.get('blank')(data));
+  check = jest.fn(data => prevent.tests.get('blank')!(data));
   [].slice.call(el.attributes).forEach(attr => el.removeAttribute(attr.name));
 });
 

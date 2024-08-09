@@ -148,8 +148,8 @@ export class Css implements IBarbaPlugin<{}> {
   /**
    * Get CSS prefix from transition `name` property.
    */
-  private _getPrefix(data: ITransitionData, t: ITransitionPage): void {
-    this.prefix = t.name || 'barba';
+  private _getPrefix(_data: ITransitionData, t?: ITransitionPage): void {
+    this.prefix = t?.name || 'barba';
   }
 
   /**
@@ -170,10 +170,7 @@ export class Css implements IBarbaPlugin<{}> {
   /**
    * `once` hook.
    */
-  private async _once(
-    data: ITransitionData,
-    t: ITransitionPage
-  ): Promise<any> {
+  private async _once(data: ITransitionData, t: ITransitionPage): Promise<any> {
     await this.barba.hooks.do('once', data, t);
 
     return this.next(data.next.container, 'once');

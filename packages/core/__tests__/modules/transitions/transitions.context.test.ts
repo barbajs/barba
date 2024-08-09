@@ -32,7 +32,7 @@ it('calls methods', async () => {
 
   await transitions.doOnce({
     data,
-    transition: (t as any) as ITransitionOnce,
+    transition: t as any as ITransitionOnce,
   });
 
   expect(t.bar).toHaveBeenCalledWith(t.foo);

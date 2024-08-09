@@ -34,7 +34,7 @@ it('does not need once', async () => {
 
   await transitions.doOnce({
     data,
-    transition: undefined as ITransitionOnce,
+    transition: undefined as unknown as ITransitionOnce,
   });
   expect(hooks.do).toHaveBeenNthCalledWith(2, 'once', data, {});
 });

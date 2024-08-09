@@ -22,7 +22,7 @@ export class Headers {
     this._list.set(name, value);
 
     return {
-      name: value
+      name: value,
     };
   }
 

@@ -21,8 +21,8 @@ const t = {
   once: () => Promise.resolve(),
 };
 const data: ITransitionData = {
-  current: ({ container: current } as unknown) as ISchemaPage,
-  next: ({ container: next } as unknown) as ISchemaPage,
+  current: { container: current } as unknown as ISchemaPage,
+  next: { container: next } as unknown as ISchemaPage,
   trigger: 'barba',
 };
 

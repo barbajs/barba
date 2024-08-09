@@ -25,7 +25,7 @@ export class Dom {
   private _sibling: IDomSibling = {
     after: null,
     before: null,
-    parent: null
+    parent: null,
   };
 
   /**
@@ -112,7 +112,10 @@ export class Dom {
     if (siblingBefore) {
       this._insertAfter(container, siblingBefore);
     } else if (this._sibling.after) {
-      this._sibling.after.parentNode.insertBefore(container, this._sibling.after);
+      this._sibling.after.parentNode.insertBefore(
+        container,
+        this._sibling.after
+      );
     } else if (this._sibling.parent) {
       this._sibling.parent.appendChild(container);
     } else {
@@ -158,7 +161,7 @@ export class Dom {
       if (href) {
         // When link comes from SVG, `href` returns an object, not a string.
         const attr: string =
-          ((href as unknown) as SVGAnimatedString).baseVal || href;
+          (href as unknown as SVGAnimatedString).baseVal || href;
 
         return this.resolveUrl(attr);
       }
@@ -215,7 +218,7 @@ export class Dom {
     this._sibling = {
       after: container.nextElementSibling,
       before: container.previousElementSibling,
-      parent: container.parentElement
+      parent: container.parentElement,
     };
 
     return this._sibling;

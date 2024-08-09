@@ -113,7 +113,12 @@ export class History {
   /**
    * Add a new state.
    */
-  public add(url: string, trigger: Trigger, action?: HistoryAction, data?: object): void {
+  public add(
+    url: string,
+    trigger: Trigger,
+    action?: HistoryAction,
+    data?: object
+  ): void {
     // If no state, it will be updated later.
     const ns = 'tmp';
     const method = action ?? this._getAction(trigger);
@@ -160,28 +165,28 @@ export class History {
   /**
    * Store custom user data per state.
    */
-   public store(data: object, i?: number): void {
-     const index = i || this._pointer;
-     const state = this.get(index);
+  public store(data: object, i?: number): void {
+    const index = i || this._pointer;
+    const state = this.get(index);
 
-     // merge data (allow data overwrite)
-     state.data = {
-       ...state.data,
-       ...data
-     };
+    // merge data (allow data overwrite)
+    state.data = {
+      ...state.data,
+      ...data,
+    };
 
-     // update states
-     this.set(index, state);
+    // update states
+    this.set(index, state);
 
-     const item: IHistoryItem = {
-       from: this._session,
-       index: this._pointer,
-       states: [...this._states],
-     };
+    const item: IHistoryItem = {
+      from: this._session,
+      index: this._pointer,
+      states: [...this._states],
+    };
 
-     // update browser history
-     window.history.replaceState(item, '');
-   }
+    // update browser history
+    window.history.replaceState(item, '');
+  }
 
   /**
    * Update state.

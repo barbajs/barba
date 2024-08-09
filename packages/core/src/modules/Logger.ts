@@ -102,9 +102,10 @@ export class Logger {
    */
   private _log(fn: () => void, level: number, objects: any[]): void {
     if (level <= Logger.getLevel()) {
-      fn.apply(console, ([`[${this._source}] `].concat(objects) as unknown) as [
-
-      ]);
+      fn.apply(
+        console,
+        [`[${this._source}] `].concat(objects) as unknown as []
+      );
     }
   }
 }
