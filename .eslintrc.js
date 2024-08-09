@@ -1,4 +1,5 @@
 module.exports = {
+  requireConfigFile: false,
   env: {
     browser: true,
     commonjs: true,
@@ -7,7 +8,7 @@ module.exports = {
     'cypress/globals': true,
   },
   extends: ['eslint:recommended', 'plugin:cypress/recommended'],
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   plugins: ['cypress'],
   rules: {
     'accessor-pairs': 2,
