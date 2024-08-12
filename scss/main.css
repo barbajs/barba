@@ -1851,7 +1851,7 @@ body {
     border-radius: 10px;
     padding: 20px;
     width: 100%;
-    margin-top: 50px;
+    margin: 25px 0;
     background: #f5f7fc; }
     @media (prefers-color-scheme: dark) {
       .docs__markdown .info {
