@@ -131,9 +131,11 @@ docs:
       - title: 'Useful links'
         url: 'docs/getstarted/useful-links/'
   - title: 'Advanced'
-    url: 'docs/advanced/hooks/'
+    url: 'docs/advanced/options/'
     path: 'docs/advanced'
     subpages:
+      - title: 'Options'
+        url: 'docs/advanced/options/'
       - title: 'Hooks'
         url: 'docs/advanced/hooks/'
       - title: 'Transitions'

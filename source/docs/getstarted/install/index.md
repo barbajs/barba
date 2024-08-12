@@ -31,6 +31,8 @@ barba.init({
 });
 ```
 
+> See the list of [all available options](/docs/advanced/options/).
+>
 > Using a bundler has **many advantages** like output compression, code splitting, tree shaking, etc., so we encourage you to use this kind of tool with Barba.
 
 ## Use with a CDN
@@ -60,6 +62,8 @@ Then init Barba:
 </script>
 ```
 
+> See the list of [all available options](/docs/advanced/options/).
+>
 > By default, if no one is specified, the CDN will automatically target the **@latest** version of Barba and load the **UMD build** from `dist/barba.umd.js`.
 
 ## Other setup
