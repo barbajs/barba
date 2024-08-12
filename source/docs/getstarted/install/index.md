@@ -35,6 +35,11 @@ barba.init({
 
 ## Use with a CDN
 
+<div class="info">
+<strong>⚠️ IMPORTANT NOTE</strong>
+<p>Be aware when using a Content Delivery Network: this can lead to issues such as <strong>library downtime unavailability, website latency and bugs</strong> that could be introduced in new releases. You should bundle the library with your scripts using a specific tagged version, not only using `@barba/core` tag from the CDN as well. This is true for all the libraries you are using through a CDN, not only BarbaJS. Read more about CDNs <a href="https://web.dev/articles/content-delivery-networks?hl=fr" target="_blank">in this great article from Google</a>.</p>
+</div>
+
 To rapidly **include the minified production file** in your webpage, load the latest build from your favorite CDN using a generic script markup:
 
 ```html
