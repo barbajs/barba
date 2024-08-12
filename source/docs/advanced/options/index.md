@@ -24,7 +24,7 @@ barba.init({
   cacheFirstPage: false,
   cacheIgnore: false,
   debug: false,
-  logLevel: 'debug',
+  logLevel: 'off',
   prefetchIgnore: false,
   prevent: null,
   preventRunning: false,
