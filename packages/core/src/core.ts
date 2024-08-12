@@ -575,7 +575,11 @@ export class Core {
     // This use `prevent.checkLink` under the hood to get eligible link.
     const link = this._getLinkElement(e);
 
-    if (!link || (this.transitions.isRunning && this.preventRunning)) {
+    if (!link) {
+      return;
+    }
+
+    if (this.transitions.isRunning && this.preventRunning) {
       e.preventDefault();
       e.stopPropagation();
 
