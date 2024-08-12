@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.10.3](https://github.com/barbajs/barba/compare/@barba/core@2.10.2...@barba/core@2.10.3) (2024-08-12)
+
+### Bug Fixes
+
+- **core:** :ambulance: hotfix event propagation ([6d35aa4](https://github.com/barbajs/barba/commit/6d35aa431673e6d37161772483f891d611fef8eb)), closes [#746](https://github.com/barbajs/barba/issues/746)
+
 ## [2.10.2](https://github.com/barbajs/barba/compare/@barba/core@2.10.0...@barba/core@2.10.2) (2024-08-02)
 
 ### Bug Fixes
