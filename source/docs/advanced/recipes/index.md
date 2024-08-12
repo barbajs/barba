@@ -24,7 +24,7 @@ Based on your project and website features to implement, those recipes may help 
 ### `debug`
 
 This property displays useful `console.info` about transition used, for **debugging purpose** only.
-It sets [logLevel](#logLevel) to `debug`. Default is `off`.
+It sets [logLevel](#logLevel) to `debug`. Default is `false`.
 
 Enable it like this:
 
