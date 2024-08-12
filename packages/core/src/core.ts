@@ -146,7 +146,7 @@ export class Core {
    * - preventRunning: `false`
    * - prevent: `null`,
    * - debug: `false`
-   * - logLevel: `'debug'`
+   * - logLevel: `'off'`
    */
   public init(
     /** @ignore */ {
