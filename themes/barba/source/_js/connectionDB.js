@@ -4,7 +4,7 @@ import 'firebase/storage';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyADgPf9rpJamT3hDg5P9UaCYrFWfxXAHps',
+  apiKey: process.env.FIREBASE_KEY,
   authDomain: 'barba-v2.firebaseapp.com',
   databaseURL: 'https://barba-v2.firebaseio.com',
   projectId: 'barba-v2',
